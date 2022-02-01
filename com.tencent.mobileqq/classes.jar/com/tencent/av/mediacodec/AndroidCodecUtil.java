@@ -10,19 +10,13 @@ import java.util.List;
 
 public class AndroidCodecUtil
 {
-  public static int a;
-  public static boolean a;
-  public static int b = 0;
-  public static int c = 0;
-  public static int d = 0;
-  public static int e = 0;
-  public static int f = 0;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_Int = 0;
-  }
+  public static int a = 0;
+  public static boolean a = false;
+  public static int b;
+  public static int c;
+  public static int d;
+  public static int e;
+  public static int f;
   
   @RequiresApi(api=16)
   public static void a()
@@ -31,151 +25,167 @@ public class AndroidCodecUtil
       return;
     }
     String[] arrayOfString = new String[2];
+    int i = 0;
     arrayOfString[0] = "video/avc";
     arrayOfString[1] = "video/hevc";
-    int m = arrayOfString.length;
-    int k = 0;
-    String str;
-    Object localObject;
-    int i;
-    label51:
-    MediaCodecInfo.CodecCapabilities localCodecCapabilities;
-    int j;
-    if (k < m)
+    int j = arrayOfString.length;
+    while (i < j)
     {
-      str = arrayOfString[k];
-      localObject = AndroidCodec.getEndoderInfos(str);
-      i = 0;
-      if (i >= ((List)localObject).size()) {
-        break label790;
-      }
-      localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)((List)localObject).get(i), str);
-      if (localCodecCapabilities != null) {
-        break label115;
-      }
-      j = 0;
+      String str = arrayOfString[i];
+      a(str);
+      b(str);
+      i += 1;
     }
-    for (;;)
+    jdField_a_of_type_Boolean = true;
+  }
+  
+  @RequiresApi(api=16)
+  private static void a(String paramString)
+  {
+    Object localObject = AndroidCodec.getEndoderInfos(paramString);
+    int k = 0;
+    int j = 0;
+    int i = 0;
+    while (i < ((List)localObject).size())
     {
-      if (((List)localObject).size() == 0)
-      {
-        if (AVCoreLog.isColorLevel()) {
-          AVCoreLog.e("NativeCodec", "getEndoderInfos list.size为0");
-        }
-        jdField_a_of_type_Boolean = true;
-        return;
-        label115:
-        j = i;
-        if (ArrayUtils.contains(localCodecCapabilities.colorFormats, 21)) {
-          continue;
-        }
-        j = i;
-        if (ArrayUtils.contains(localCodecCapabilities.colorFormats, 19)) {
-          continue;
-        }
-        i += 1;
-        break label51;
+      MediaCodecInfo.CodecCapabilities localCodecCapabilities = AndroidCodec.getCodecCapabilities((MediaCodecInfo)((List)localObject).get(i), paramString);
+      if (localCodecCapabilities == null) {
+        break;
       }
-      localObject = AndroidCodec.getCodecCapabilities((MediaCodecInfo)((List)localObject).get(j), str);
-      if (localObject != null) {
-        if (str.contains("video/avc"))
+      if ((ArrayUtils.contains(localCodecCapabilities.colorFormats, 21)) || (ArrayUtils.contains(localCodecCapabilities.colorFormats, 19))) {
+        break label89;
+      }
+      i += 1;
+    }
+    i = 0;
+    label89:
+    if (((List)localObject).size() == 0)
+    {
+      if (AVCoreLog.isColorLevel()) {
+        AVCoreLog.e("NativeCodec", "getEndoderInfos list.size为0");
+      }
+      return;
+    }
+    localObject = AndroidCodec.getCodecCapabilities((MediaCodecInfo)((List)localObject).get(i), paramString);
+    if (localObject != null)
+    {
+      if (paramString.contains("video/avc"))
+      {
+        i = j;
+        while (i < ((MediaCodecInfo.CodecCapabilities)localObject).profileLevels.length)
         {
-          i = 0;
-          if (i < ((MediaCodecInfo.CodecCapabilities)localObject).profileLevels.length)
+          paramString = new StringBuilder();
+          paramString.append("AVC ENC caps: ");
+          paramString.append(i);
+          paramString.append(", profile: ");
+          paramString.append(localObject.profileLevels[i].profile);
+          paramString.append(", level:");
+          paramString.append(localObject.profileLevels[i].level);
+          AVCoreLog.d("NativeCodec", paramString.toString());
+          j = localObject.profileLevels[i].profile;
+          if (j != 1)
           {
-            AVCoreLog.d("NativeCodec", "AVC ENC caps: " + i + ", profile: " + localObject.profileLevels[i].profile + ", level:" + localObject.profileLevels[i].level);
-            switch (localObject.profileLevels[i].profile)
-            {
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              jdField_a_of_type_Int = localObject.profileLevels[i].level;
-              continue;
+            if (j == 8) {
               c = localObject.profileLevels[i].level;
             }
           }
-        }
-        else if (str.contains("video/hevc"))
-        {
-          i = 0;
+          else {
+            jdField_a_of_type_Int = localObject.profileLevels[i].level;
+          }
+          i += 1;
         }
       }
-      for (;;)
+      if (paramString.contains("video/hevc"))
       {
-        if (i < ((MediaCodecInfo.CodecCapabilities)localObject).profileLevels.length)
+        i = k;
+        while (i < ((MediaCodecInfo.CodecCapabilities)localObject).profileLevels.length)
         {
-          AVCoreLog.d("NativeCodec", "HEVC ENC caps: " + i + ", profile: " + localObject.profileLevels[i].profile + ", level:" + localObject.profileLevels[i].level);
-          if (localObject.profileLevels[i].profile == 1) {
-            e = localObject.profileLevels[i].level;
-          }
-        }
-        else
-        {
-          localObject = AndroidCodec.getDecoderInfos(str);
-          if (((List)localObject).size() != 0) {
-            break label480;
-          }
-          if (!AVCoreLog.isColorLevel()) {
-            break;
-          }
-          AVCoreLog.e("NativeCodec", "getDecoderInfos list.size为0");
-          break;
-        }
-        i += 1;
-      }
-      label480:
-      localObject = AndroidCodec.getCodecCapabilities((MediaCodecInfo)((List)localObject).get(0), str);
-      if ((localObject != null) && (((MediaCodecInfo.CodecCapabilities)localObject).profileLevels != null)) {
-        if (str.contains("video/avc"))
-        {
-          i = 0;
-          if (i < ((MediaCodecInfo.CodecCapabilities)localObject).profileLevels.length)
+          paramString = new StringBuilder();
+          paramString.append("HEVC ENC caps: ");
+          paramString.append(i);
+          paramString.append(", profile: ");
+          paramString.append(localObject.profileLevels[i].profile);
+          paramString.append(", level:");
+          paramString.append(localObject.profileLevels[i].level);
+          AVCoreLog.d("NativeCodec", paramString.toString());
+          if (localObject.profileLevels[i].profile == 1)
           {
-            AVCoreLog.d("NativeCodec", "AVC DEC caps: " + i + ", profile: " + localObject.profileLevels[i].profile + ", level:" + localObject.profileLevels[i].level);
-            switch (localObject.profileLevels[i].profile)
-            {
-            }
-            for (;;)
-            {
-              i += 1;
-              break;
-              b = localObject.profileLevels[i].level;
-              continue;
+            e = localObject.profileLevels[i].level;
+            return;
+          }
+          i += 1;
+        }
+      }
+    }
+  }
+  
+  @RequiresApi(api=16)
+  private static void b(String paramString)
+  {
+    Object localObject = AndroidCodec.getDecoderInfos(paramString);
+    if (((List)localObject).size() == 0)
+    {
+      if (AVCoreLog.isColorLevel()) {
+        AVCoreLog.e("NativeCodec", "getDecoderInfos list.size为0");
+      }
+      return;
+    }
+    int j = 0;
+    int i = 0;
+    localObject = AndroidCodec.getCodecCapabilities((MediaCodecInfo)((List)localObject).get(0), paramString);
+    if ((localObject != null) && (((MediaCodecInfo.CodecCapabilities)localObject).profileLevels != null))
+    {
+      if (paramString.contains("video/avc")) {
+        while (i < ((MediaCodecInfo.CodecCapabilities)localObject).profileLevels.length)
+        {
+          paramString = new StringBuilder();
+          paramString.append("AVC DEC caps: ");
+          paramString.append(i);
+          paramString.append(", profile: ");
+          paramString.append(localObject.profileLevels[i].profile);
+          paramString.append(", level:");
+          paramString.append(localObject.profileLevels[i].level);
+          AVCoreLog.d("NativeCodec", paramString.toString());
+          j = localObject.profileLevels[i].profile;
+          if (j != 1)
+          {
+            if (j == 8) {
               d = localObject.profileLevels[i].level;
             }
           }
-        }
-        else if (str.contains("video/hevc"))
-        {
-          i = 0;
-        }
-      }
-      for (;;)
-      {
-        if (i < ((MediaCodecInfo.CodecCapabilities)localObject).profileLevels.length)
-        {
-          AVCoreLog.d("NativeCodec", "HEVC DEC caps: " + i + ", profile: " + localObject.profileLevels[i].profile + ", level:" + localObject.profileLevels[i].level);
-          if (localObject.profileLevels[i].profile == 1) {
-            f = localObject.profileLevels[i].level;
+          else {
+            b = localObject.profileLevels[i].level;
           }
+          i += 1;
         }
-        else
-        {
-          k += 1;
-          break;
-        }
-        i += 1;
       }
-      label790:
-      j = 0;
+      if (paramString.contains("video/hevc"))
+      {
+        i = j;
+        while (i < ((MediaCodecInfo.CodecCapabilities)localObject).profileLevels.length)
+        {
+          paramString = new StringBuilder();
+          paramString.append("HEVC DEC caps: ");
+          paramString.append(i);
+          paramString.append(", profile: ");
+          paramString.append(localObject.profileLevels[i].profile);
+          paramString.append(", level:");
+          paramString.append(localObject.profileLevels[i].level);
+          AVCoreLog.d("NativeCodec", paramString.toString());
+          if (localObject.profileLevels[i].profile == 1)
+          {
+            f = localObject.profileLevels[i].level;
+            return;
+          }
+          i += 1;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.mediacodec.AndroidCodecUtil
  * JD-Core Version:    0.7.0.1
  */

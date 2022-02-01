@@ -2,6 +2,7 @@ package com.tencent.mobileqq.kandian.biz.publisher.api;
 
 import android.app.Activity;
 import android.content.Context;
+import com.tencent.mobileqq.kandian.biz.ugc.entity.UgcEntryExtraInfo;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
 import kotlin.Deprecated;
@@ -11,15 +12,19 @@ import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
 @QAPI(process={"all"})
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/api/IKanDianPublisher;", "Lcom/tencent/mobileqq/qroute/QRouteApi;", "buildOriginTopicInfo", "", "config", "Lorg/json/JSONObject;", "topicId", "", "coverUrl", "", "title", "brief", "allowSubmit", "", "buildPublisherScene", "from", "callback", "buildSelectVideoInfo", "duration", "", "fileSize", "coverPath", "width", "height", "filePath", "buildVideoOriginTopicInfo", "topicName", "getRemoteConfig", "Lcom/tencent/mobileqq/kandian/biz/publisher/api/IPublisherRemoteConfig;", "init", "context", "Landroid/content/Context;", "openCreateTopicPage", "extra", "openCreateTopicPageForResult", "activity", "Landroid/app/Activity;", "requestCode", "openEditTopicPage", "openEditTopicPageForResult", "openPublishArticlePage", "openPublishArticlePageForResult", "openSelectVideoPage", "openSelectVideoPageForResult", "registerPublishObserver", "observer", "Lcom/tencent/mobileqq/kandian/biz/publisher/api/IKanDianPublisher$IPublisherObserver;", "unRegisterPublishObserver", "IPublisherObserver", "kandian-api_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/api/IKanDianPublisher;", "Lcom/tencent/mobileqq/qroute/QRouteApi;", "buildKDCommunityInfo", "", "config", "Lorg/json/JSONObject;", "kdCommunityId", "", "kdCommunityName", "buildOriginTopicInfo", "topicId", "", "coverUrl", "title", "brief", "allowSubmit", "", "buildPublisherScene", "from", "callback", "buildSelectVideoInfo", "duration", "", "fileSize", "coverPath", "width", "height", "filePath", "buildUgcEntryExtraInfo", "ugcEntryExtraInfo", "Lcom/tencent/mobileqq/kandian/biz/ugc/entity/UgcEntryExtraInfo;", "buildVideoOriginTopicInfo", "topicName", "getRemoteConfig", "Lcom/tencent/mobileqq/kandian/biz/publisher/api/IPublisherRemoteConfig;", "init", "context", "Landroid/content/Context;", "openCreateTopicPage", "extra", "openCreateTopicPageForResult", "activity", "Landroid/app/Activity;", "requestCode", "openEditTopicPage", "openEditTopicPageForResult", "openPublishArticlePage", "openPublishArticlePageForResult", "openSelectVideoPage", "openSelectVideoPageForResult", "registerPublishObserver", "observer", "Lcom/tencent/mobileqq/kandian/biz/publisher/api/IKanDianPublisher$IPublisherObserver;", "unRegisterPublishObserver", "IPublisherObserver", "kandian-api_release"}, k=1, mv={1, 1, 16})
 public abstract interface IKanDianPublisher
   extends QRouteApi
 {
+  public abstract void buildKDCommunityInfo(@NotNull JSONObject paramJSONObject, @NotNull String paramString1, @NotNull String paramString2);
+  
   public abstract void buildOriginTopicInfo(@NotNull JSONObject paramJSONObject, int paramInt, @Nullable String paramString1, @Nullable String paramString2, @Nullable String paramString3, boolean paramBoolean);
   
   public abstract void buildPublisherScene(@NotNull JSONObject paramJSONObject, int paramInt, @Nullable String paramString);
   
   public abstract void buildSelectVideoInfo(@NotNull JSONObject paramJSONObject, long paramLong1, long paramLong2, @NotNull String paramString1, int paramInt1, int paramInt2, @NotNull String paramString2);
+  
+  public abstract void buildUgcEntryExtraInfo(@NotNull JSONObject paramJSONObject, @NotNull UgcEntryExtraInfo paramUgcEntryExtraInfo);
   
   public abstract void buildVideoOriginTopicInfo(@NotNull JSONObject paramJSONObject, long paramLong, @NotNull String paramString);
   
@@ -52,7 +57,7 @@ public abstract interface IKanDianPublisher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.api.IKanDianPublisher
  * JD-Core Version:    0.7.0.1
  */

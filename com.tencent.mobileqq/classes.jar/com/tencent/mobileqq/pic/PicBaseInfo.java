@@ -40,19 +40,29 @@ public abstract class PicBaseInfo
   
   public boolean a()
   {
+    StringBuilder localStringBuilder;
     if (this.jdField_a_of_type_Int == -1)
     {
-      a("PicBaseInfo.check", "busiType invalid,busiType:" + this.jdField_a_of_type_Int);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("busiType invalid,busiType:");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      a("PicBaseInfo.check", localStringBuilder.toString());
       return false;
     }
     if (this.jdField_b_of_type_Int == -1)
     {
-      a("PicBaseInfo.check", "uinType invalid,uinType:" + this.jdField_b_of_type_Int);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uinType invalid,uinType:");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      a("PicBaseInfo.check", localStringBuilder.toString());
       return false;
     }
     if (this.c == null)
     {
-      a("PicBaseInfo.check", "peerUin invalid,peerUin:" + this.c);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("peerUin invalid,peerUin:");
+      localStringBuilder.append(this.c);
+      a("PicBaseInfo.check", localStringBuilder.toString());
       return false;
     }
     return true;
@@ -74,20 +84,36 @@ public abstract class PicBaseInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nPicBaseInfo");
-    localStringBuilder.append("\n |-").append("localUUID:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uniseq:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("busiType:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("selfUin:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("peerUin:").append(this.c);
-    localStringBuilder.append("\n |-").append("secondId:").append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("md5:").append(this.f);
-    localStringBuilder.append("\n |-").append("errInfo:").append(this.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("localUUID:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("uniseq:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("busiType:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("selfUin:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("peerUin:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("secondId:");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("md5:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("errInfo:");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicBaseInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.biz.pubaccount.CustomWebView.ScrollInterface;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.gamecenter.web.view.BaseNestScrollWebView;
+import com.tencent.mobileqq.qqgamepub.web.view.BaseNestScrollWebView;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
 public class MiniGamePublicAccountWebView
@@ -28,14 +28,16 @@ public class MiniGamePublicAccountWebView
   
   public void onPageFinish(String paramString)
   {
-    setPaddingTop(AIOUtils.a(AIOUtils.a(ImmersiveUtils.getStatusBarHeight(getContext()), getContext().getResources()) + (this.mHeadHeight + 44), getResources()));
+    float f = AIOUtils.a(ImmersiveUtils.getStatusBarHeight(getContext()), getContext().getResources());
+    setPaddingTop(AIOUtils.b(this.mHeadHeight + 44 + f, getResources()));
   }
   
   public void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4, paramView);
-    if (this.mCustomScrollInterface != null) {
-      this.mCustomScrollInterface.onSChanged(paramInt1, paramInt2, paramInt3, paramInt4);
+    paramView = this.mCustomScrollInterface;
+    if (paramView != null) {
+      paramView.onSChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
@@ -56,7 +58,7 @@ public class MiniGamePublicAccountWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountWebView
  * JD-Core Version:    0.7.0.1
  */

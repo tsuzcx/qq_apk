@@ -45,7 +45,7 @@ public class LoverZoneUtils
       paramAppInfo = paramAppInfo.buffer.get();
       try
       {
-        Object localObject = new JSONObject(paramAppInfo);
+        localObject = new JSONObject(paramAppInfo);
         paramAppInfo = ((JSONObject)localObject).optJSONObject("param");
         localObject = ((JSONObject)localObject).optString("_show_mission");
         if ((paramAppInfo != null) && (!TextUtils.isEmpty((CharSequence)localObject)))
@@ -58,7 +58,10 @@ public class LoverZoneUtils
       }
       catch (Exception paramAppInfo)
       {
-        QLog.e("LoverZoneUtils", 1, "buffer handle exception:" + paramAppInfo);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("buffer handle exception:");
+        ((StringBuilder)localObject).append(paramAppInfo);
+        QLog.e("LoverZoneUtils", 1, ((StringBuilder)localObject).toString());
         paramAppInfo.printStackTrace();
       }
     }
@@ -76,23 +79,12 @@ public class LoverZoneUtils
       return;
     }
     String str = QzoneConfig.getInstance().getConfig("sweet_miniapp", "sweet_mainpage", "mqqapi://miniapp/open?_atype=0&_mappid=1108789561&_mvid=&_vt=3&referer=brandonlin&via=brandonlin&_sig=57b13f050e544ea7391452287c2f92c7ebf08e0d4bd1faef7d72c8c961ea80c9");
-    if (!TextUtils.isEmpty(str))
-    {
-      if (!((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(str)) {
-        break label103;
+    if (!TextUtils.isEmpty(str)) {
+      if (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(str))
+      {
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramContext, str, paramInt, null);
       }
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramContext, str, paramInt, null);
-    }
-    for (;;)
-    {
-      a(paramString1, paramString2, "2", LpReportInfo_dc03950.getReportUserType(paramQQAppInterface));
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("intimate_relationship", 2, String.format("goToLoverZone, url: %s", new Object[] { str }));
-      return;
-      label103:
-      if ((str.startsWith("mqqapi://")) && (paramQQAppInterface != null))
+      else if ((str.startsWith("mqqapi://")) && (paramQQAppInterface != null))
       {
         paramContext = JumpParser.a(paramQQAppInterface, paramContext, str);
         if (paramContext != null) {
@@ -110,6 +102,10 @@ public class LoverZoneUtils
         paramContext.startActivity(localIntent);
       }
     }
+    a(paramString1, paramString2, "2", LpReportInfo_dc03950.getReportUserType(paramQQAppInterface));
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, String.format("goToLoverZone, url: %s", new Object[] { str }));
+    }
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -119,7 +115,7 @@ public class LoverZoneUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loverzone.LoverZoneUtils
  * JD-Core Version:    0.7.0.1
  */

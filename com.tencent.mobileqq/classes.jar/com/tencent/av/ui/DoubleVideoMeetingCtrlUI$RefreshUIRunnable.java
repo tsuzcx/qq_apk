@@ -20,44 +20,52 @@ class DoubleVideoMeetingCtrlUI$RefreshUIRunnable
   
   private void a(int paramInt, long paramLong1, long paramLong2)
   {
-    if (paramInt == 1) {
-      this.this$0.a(this.c, true, 1, paramLong1);
-    }
-    do
+    if (paramInt == 1)
     {
-      do
-      {
-        return;
-        if (paramInt == 2)
-        {
-          this.this$0.a(this.c, false, 1, paramLong1);
-          return;
-        }
-        if (paramInt == 3)
-        {
-          this.this$0.a(this.c, true, 2, paramLong1);
-          return;
-        }
-        if (paramInt == 4)
-        {
-          this.this$0.a(this.c, false, 2, paramLong1);
-          return;
-        }
-        if (paramInt == 5)
-        {
-          this.this$0.e(this.c, false);
-          this.this$0.d(this.c, null);
-          DoubleVideoMeetingCtrlUI.c(this.this$0, this.c);
-          return;
-        }
-        if (paramInt != 6) {
-          break;
-        }
-      } while (paramLong1 == this.this$0.b);
-      this.this$0.a(true);
+      this.this$0.a(this.c, true, 1, paramLong1);
       return;
-    } while (!QLog.isColorLevel());
-    QLog.w(this.this$0.d, 1, "refreshUI, ERROR, refreshType[" + paramInt + "], friendUin[" + paramLong1 + "], seq[" + this.c + "]");
+    }
+    if (paramInt == 2)
+    {
+      this.this$0.a(this.c, false, 1, paramLong1);
+      return;
+    }
+    if (paramInt == 3)
+    {
+      this.this$0.a(this.c, true, 2, paramLong1);
+      return;
+    }
+    if (paramInt == 4)
+    {
+      this.this$0.a(this.c, false, 2, paramLong1);
+      return;
+    }
+    if (paramInt == 5)
+    {
+      this.this$0.e(this.c, false);
+      this.this$0.d(this.c, null);
+      DoubleVideoMeetingCtrlUI.c(this.this$0, this.c);
+      return;
+    }
+    if (paramInt == 6)
+    {
+      if (paramLong1 != this.this$0.b) {
+        this.this$0.a(true);
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      String str = this.this$0.d;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refreshUI, ERROR, refreshType[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], friendUin[");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
+    }
   }
   
   public void run()
@@ -70,7 +78,7 @@ class DoubleVideoMeetingCtrlUI$RefreshUIRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoMeetingCtrlUI.RefreshUIRunnable
  * JD-Core Version:    0.7.0.1
  */

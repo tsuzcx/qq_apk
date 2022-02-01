@@ -55,21 +55,21 @@ public class RecyclerViewBase$SmoothScroller$Action
     if (this.changed)
     {
       validate();
-      if (this.mInterpolator == null) {
+      if (this.mInterpolator == null)
+      {
         if (this.mDuration == -2147483648) {
           paramRecyclerViewBase.mViewFlinger.smoothScrollBy(this.mDx, this.mDy, false);
+        } else {
+          paramRecyclerViewBase.mViewFlinger.smoothScrollBy(this.mDx, this.mDy, this.mDuration, false);
         }
       }
-      for (;;)
-      {
-        this.consecutiveUpdates += 1;
-        if (this.consecutiveUpdates > 10) {}
-        this.changed = false;
-        return;
-        paramRecyclerViewBase.mViewFlinger.smoothScrollBy(this.mDx, this.mDy, this.mDuration, false);
-        continue;
+      else {
         paramRecyclerViewBase.mViewFlinger.smoothScrollBy(this.mDx, this.mDy, this.mDuration, this.mInterpolator, false);
       }
+      this.consecutiveUpdates += 1;
+      int i = this.consecutiveUpdates;
+      this.changed = false;
+      return;
     }
     this.consecutiveUpdates = 0;
   }
@@ -112,14 +112,15 @@ public class RecyclerViewBase$SmoothScroller$Action
     if ((this.mInterpolator != null) && (this.mDuration < 1)) {
       throw new IllegalStateException("If you provide an interpolator, you must set a positive duration");
     }
-    if (this.mDuration < 1) {
-      throw new IllegalStateException("Scroll duration must be a positive number");
+    if (this.mDuration >= 1) {
+      return;
     }
+    throw new IllegalStateException("Scroll duration must be a positive number");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase.SmoothScroller.Action
  * JD-Core Version:    0.7.0.1
  */

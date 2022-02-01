@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.uniformdownload.downloader;
 
 import android.os.Bundle;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
 import com.tencent.mobileqq.uniformdownload.core.UniformDownloadMgr;
-import com.tencent.mobileqq.uniformdownload.filemanager.FileManagerUtil;
 import com.tencent.mobileqq.uniformdownload.util.IUniformDownloader;
 import com.tencent.mobileqq.uniformdownload.util.IUniformDownloaderListener;
 import com.tencent.mobileqq.uniformdownload.util.UDConstants;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
 
 public class UniformDownloaderAppBaby
   extends UniformDownloaderAssinfo
@@ -28,14 +28,23 @@ public class UniformDownloaderAppBaby
   private void a()
   {
     String str = UDConstants.a(1);
-    AppRuntime localAppRuntime = UniformDownloadMgr.a().a();
-    if (localAppRuntime != null)
+    Object localObject = UniformDownloadMgr.a().a();
+    if (localObject != null)
     {
-      FileManagerUtil.a(localAppRuntime, this.c, "actFileUfAppBabySdkDownload", this.jdField_a_of_type_Long, "", "", "", "", 1, str, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, str, null);
-      FileManagerUtil.a(localAppRuntime, this.c, "actFileUfAppBabySdkDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 1, str, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, str, null);
+      localObject = (BaseQQAppInterface)localObject;
+      long l1 = this.c;
+      long l2 = this.jdField_a_of_type_Long;
+      long l3 = 1;
+      QQFileManagerUtil.a((BaseQQAppInterface)localObject, l1, "actFileUfAppBabySdkDownload", l2, "", "", "", "", l3, str, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, str, null);
+      QQFileManagerUtil.a((BaseQQAppInterface)localObject, this.c, "actFileUfAppBabySdkDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", l3, str, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, str, null);
       return;
     }
-    QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "].report failed - 9");
+    str = jdField_a_of_type_JavaLangString;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[UniformDL][");
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append("].report failed - 9");
+    QLog.w(str, 1, ((StringBuilder)localObject).toString());
   }
   
   private void a(boolean paramBoolean)
@@ -68,86 +77,145 @@ public class UniformDownloaderAppBaby
   public int a()
   {
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    AppRuntime localAppRuntime = UniformDownloadMgr.a().a();
+    Object localObject1 = UniformDownloadMgr.a().a();
     if (!a())
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] start. not inited");
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[UniformDL][");
+      ((StringBuilder)localObject2).append(this.c);
+      ((StringBuilder)localObject2).append("] start. not inited");
+      QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
       a();
-      if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener.a(1, UDConstants.a(1), null);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener;
+      if (localObject1 != null) {
+        ((IUniformDownloaderListener)localObject1).a(1, UDConstants.a(1), null);
       }
-      i = -1;
-      return i;
+      return -1;
     }
-    if (!NetworkUtil.d(BaseApplication.getContext()))
+    long l1;
+    long l2;
+    long l3;
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
       c(5);
-      str = UDConstants.a(5);
-      if (localAppRuntime != null)
+      localObject2 = UDConstants.a(5);
+      if (localObject1 != null)
       {
-        FileManagerUtil.a(localAppRuntime, this.c, "actFileUfAppBabySdkDownload", this.jdField_a_of_type_Long, "", "", "", "", 5, str, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, str, null);
-        FileManagerUtil.a(localAppRuntime, this.c, "actFileUfAppBabySdkDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 5, str, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, str, null);
+        localObject1 = (BaseQQAppInterface)localObject1;
+        l1 = this.c;
+        l2 = this.jdField_a_of_type_Long;
+        l3 = 5;
+        QQFileManagerUtil.a((BaseQQAppInterface)localObject1, l1, "actFileUfAppBabySdkDownload", l2, "", "", "", "", l3, (String)localObject2, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, (String)localObject2, null);
+        QQFileManagerUtil.a((BaseQQAppInterface)localObject1, this.c, "actFileUfAppBabySdkDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", l3, (String)localObject2, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, (String)localObject2, null);
       }
-      for (;;)
+      else
       {
-        if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener.a(5, str, null);
-        }
-        return -1;
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "].report failed - 8");
+        localObject1 = jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[UniformDL][");
+        localStringBuilder.append(this.c);
+        localStringBuilder.append("].report failed - 8");
+        QLog.w((String)localObject1, 1, localStringBuilder.toString());
       }
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener;
+      if (localObject1 != null) {
+        ((IUniformDownloaderListener)localObject1).a(5, (String)localObject2, null);
+      }
+      return -1;
     }
     int i = e();
     if (2 == i)
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] start. is runing");
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[UniformDL][");
+      ((StringBuilder)localObject2).append(this.c);
+      ((StringBuilder)localObject2).append("] start. is runing");
+      QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
       return 0;
     }
     if ((1 != i) && (6 != i))
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] start. before status is error:" + i);
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[UniformDL][");
+      ((StringBuilder)localObject2).append(this.c);
+      ((StringBuilder)localObject2).append("] start. before status is error:");
+      ((StringBuilder)localObject2).append(i);
+      QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
       return -1;
     }
     a(0);
     if (1 == i)
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] start download. AddDownloadToAppBabySdk");
+      localObject2 = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[UniformDL][");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("] start download. AddDownloadToAppBabySdk");
+      QLog.i((String)localObject2, 1, localStringBuilder.toString());
       i();
     }
-    int j;
-    for (;;)
+    else if ((6 == i) && (!UniformDownloaderAppBabySdk.a().a(this.jdField_b_of_type_JavaLangString)))
     {
-      j = UniformDownloaderAppBabySdk.a().a(this.jdField_b_of_type_JavaLangString);
-      if (j != 0) {
-        break;
-      }
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] start. ST:" + i + " PGR:" + h());
+      localObject2 = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[UniformDL][");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("] resume download and start it. sdk is not this download, AddDownloadToAppBabySdk");
+      QLog.i((String)localObject2, 1, localStringBuilder.toString());
+      i();
+    }
+    int j = UniformDownloaderAppBabySdk.a().a(this.jdField_b_of_type_JavaLangString);
+    if (j == 0)
+    {
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[UniformDL][");
+      ((StringBuilder)localObject2).append(this.c);
+      ((StringBuilder)localObject2).append("] start. ST:");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(" PGR:");
+      ((StringBuilder)localObject2).append(h());
+      QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
       c(2);
       return j;
-      if ((6 == i) && (!UniformDownloaderAppBabySdk.a().a(this.jdField_b_of_type_JavaLangString)))
-      {
-        QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] resume download and start it. sdk is not this download, AddDownloadToAppBabySdk");
-        i();
-      }
     }
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] start failed. ST:" + i + " PGR:" + h());
+    Object localObject2 = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[UniformDL][");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("] start failed. ST:");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" PGR:");
+    localStringBuilder.append(h());
+    QLog.i((String)localObject2, 1, localStringBuilder.toString());
     c(5);
-    String str = UDConstants.a(2);
-    if (localAppRuntime != null)
+    localObject2 = UDConstants.a(2);
+    if (localObject1 != null)
     {
-      FileManagerUtil.a(localAppRuntime, this.c, "actFileUfAppBabySdkDownload", this.jdField_a_of_type_Long, "", "", "", "", 2, str, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, str, null);
-      FileManagerUtil.a(localAppRuntime, this.c, "actFileUfAppBabySdkDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 2, str, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, str, null);
+      localObject1 = (BaseQQAppInterface)localObject1;
+      l1 = this.c;
+      l2 = this.jdField_a_of_type_Long;
+      l3 = 2;
+      QQFileManagerUtil.a((BaseQQAppInterface)localObject1, l1, "actFileUfAppBabySdkDownload", l2, "", "", "", "", l3, (String)localObject2, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, (String)localObject2, null);
+      QQFileManagerUtil.a((BaseQQAppInterface)localObject1, this.c, "actFileUfAppBabySdkDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", l3, (String)localObject2, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, (String)localObject2, null);
     }
-    for (;;)
+    else
     {
-      i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener == null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener.a(2, null, null);
-      return j;
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "].report failed - 8");
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[UniformDL][");
+      ((StringBuilder)localObject2).append(this.c);
+      ((StringBuilder)localObject2).append("].report failed - 8");
+      QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
     }
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener;
+    if (localObject1 != null) {
+      ((IUniformDownloaderListener)localObject1).a(2, null, null);
+    }
+    return j;
   }
   
   public int a(IUniformDownloaderListener paramIUniformDownloaderListener)
@@ -164,7 +232,15 @@ public class UniformDownloaderAppBaby
   public int b()
   {
     int i = e();
-    QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] stop. ST:" + i + " PGR:" + h());
+    String str = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[UniformDL][");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("] stop. ST:");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" PGR:");
+    localStringBuilder.append(h());
+    QLog.i(str, 1, localStringBuilder.toString());
     c(7);
     return UniformDownloaderAppBabySdk.a().c(this.jdField_b_of_type_JavaLangString);
   }
@@ -173,81 +249,142 @@ public class UniformDownloaderAppBaby
   {
     if (!a())
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] pause. not inited");
-      if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener.a(1, UDConstants.a(1), null);
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[UniformDL][");
+      ((StringBuilder)localObject2).append(this.c);
+      ((StringBuilder)localObject2).append("] pause. not inited");
+      QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener;
+      if (localObject1 != null) {
+        ((IUniformDownloaderListener)localObject1).a(1, UDConstants.a(1), null);
       }
-      i = -1;
-      return i;
+      return -1;
     }
     boolean bool = b();
     int i = e();
-    if ((1 == i) || (!bool))
+    if ((1 != i) && (bool))
     {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] waiting and pause. ST:" + i + " PGR:" + h() + "(inited)");
-      c(3);
-      if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener.c(h(), null);
+      if ((3 != i) && (7 != i))
+      {
+        int j = UniformDownloaderAppBabySdk.a().b(this.jdField_b_of_type_JavaLangString);
+        if (j == 0)
+        {
+          localObject1 = jdField_a_of_type_JavaLangString;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[UniformDL][");
+          ((StringBuilder)localObject2).append(this.c);
+          ((StringBuilder)localObject2).append("] pause. ST:");
+          ((StringBuilder)localObject2).append(i);
+          ((StringBuilder)localObject2).append(" PGR:");
+          ((StringBuilder)localObject2).append(h());
+          QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+          c(3);
+          return j;
+        }
+        localObject1 = jdField_a_of_type_JavaLangString;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[UniformDL][");
+        ((StringBuilder)localObject2).append(this.c);
+        ((StringBuilder)localObject2).append("] pause failed. ST:");
+        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append(" PGR:");
+        ((StringBuilder)localObject2).append(h());
+        QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+        c(5);
+        localObject1 = UDConstants.a(15);
+        localObject2 = UniformDownloadMgr.a().a();
+        if (localObject2 != null)
+        {
+          localObject2 = (BaseQQAppInterface)localObject2;
+          long l1 = this.c;
+          long l2 = this.jdField_a_of_type_Long;
+          long l3 = 15;
+          QQFileManagerUtil.a((BaseQQAppInterface)localObject2, l1, "actFileUfAppBabySdkDownload", l2, "", "", "", "", l3, (String)localObject1, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, (String)localObject1, null);
+          QQFileManagerUtil.a((BaseQQAppInterface)localObject2, this.c, "actFileUfAppBabySdkDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", l3, (String)localObject1, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, (String)localObject1, null);
+        }
+        else
+        {
+          localObject1 = jdField_a_of_type_JavaLangString;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[UniformDL][");
+          ((StringBuilder)localObject2).append(this.c);
+          ((StringBuilder)localObject2).append("].report failed - 8");
+          QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener;
+        if (localObject1 != null) {
+          ((IUniformDownloaderListener)localObject1).a(15, null, null);
+        }
+        return j;
       }
+      localObject1 = jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[UniformDL][");
+      ((StringBuilder)localObject2).append(this.c);
+      ((StringBuilder)localObject2).append("] pause. had be paused");
+      QLog.w((String)localObject1, 1, ((StringBuilder)localObject2).toString());
       return 0;
     }
-    if ((3 == i) || (7 == i))
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] pause. had be paused");
-      return 0;
+    Object localObject1 = jdField_a_of_type_JavaLangString;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[UniformDL][");
+    ((StringBuilder)localObject2).append(this.c);
+    ((StringBuilder)localObject2).append("] waiting and pause. ST:");
+    ((StringBuilder)localObject2).append(i);
+    ((StringBuilder)localObject2).append(" PGR:");
+    ((StringBuilder)localObject2).append(h());
+    ((StringBuilder)localObject2).append("(inited)");
+    QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+    c(3);
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener;
+    if (localObject1 != null) {
+      ((IUniformDownloaderListener)localObject1).c(h(), null);
     }
-    int j = UniformDownloaderAppBabySdk.a().b(this.jdField_b_of_type_JavaLangString);
-    if (j == 0)
-    {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] pause. ST:" + i + " PGR:" + h());
-      c(3);
-      return j;
-    }
-    QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] pause failed. ST:" + i + " PGR:" + h());
-    c(5);
-    String str = UDConstants.a(15);
-    AppRuntime localAppRuntime = UniformDownloadMgr.a().a();
-    if (localAppRuntime != null)
-    {
-      FileManagerUtil.a(localAppRuntime, this.c, "actFileUfAppBabySdkDownload", this.jdField_a_of_type_Long, "", "", "", "", 15, str, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, str, null);
-      FileManagerUtil.a(localAppRuntime, this.c, "actFileUfAppBabySdkDownloadDetail", this.jdField_a_of_type_Long, "", "", "", "", 15, str, 0L, h() * this.jdField_b_of_type_Long, this.jdField_b_of_type_Long, this.jdField_b_of_type_JavaLangString, "", 0, str, null);
-    }
-    for (;;)
-    {
-      i = j;
-      if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener == null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener.a(15, null, null);
-      return j;
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "].report failed - 8");
-    }
+    return 0;
   }
   
   public int d()
   {
-    int i = 0;
     if (!a())
     {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] resume. not inited");
-      if (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener.a(1, UDConstants.a(1), null);
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[UniformDL][");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("] resume. not inited");
+      QLog.e((String)localObject, 1, localStringBuilder.toString());
+      localObject = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener;
+      if (localObject != null) {
+        ((IUniformDownloaderListener)localObject).a(1, UDConstants.a(1), null);
       }
-      i = -1;
+      return -1;
     }
-    do
+    int i = e();
+    if ((6 != i) && (2 != i) && (4 != i))
     {
-      return i;
-      int j = e();
-      if ((6 == j) || (2 == j) || (4 == j))
-      {
-        QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] resume. had be resumed");
-        return 0;
-      }
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + this.c + "] resume. ST:" + j + " PGR:" + h());
+      localObject = jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[UniformDL][");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("] resume. ST:");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" PGR:");
+      localStringBuilder.append(h());
+      QLog.i((String)localObject, 1, localStringBuilder.toString());
       c(6);
-    } while (this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener.d(h(), null);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqUniformdownloadUtilIUniformDownloaderListener;
+      if (localObject != null) {
+        ((IUniformDownloaderListener)localObject).d(h(), null);
+      }
+      return 0;
+    }
+    Object localObject = jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[UniformDL][");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("] resume. had be resumed");
+    QLog.w((String)localObject, 1, localStringBuilder.toString());
     return 0;
   }
   
@@ -263,7 +400,7 @@ public class UniformDownloaderAppBaby
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.downloader.UniformDownloaderAppBaby
  * JD-Core Version:    0.7.0.1
  */

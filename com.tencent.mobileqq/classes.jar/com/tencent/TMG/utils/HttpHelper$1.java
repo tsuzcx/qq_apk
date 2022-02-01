@@ -11,412 +11,393 @@ final class HttpHelper$1
   public void run()
   {
     // Byte code:
-    //   0: sipush 200
-    //   3: istore_2
-    //   4: aconst_null
-    //   5: astore 5
-    //   7: new 39	java/net/URL
-    //   10: dup
-    //   11: aload_0
-    //   12: getfield 20	com/tencent/TMG/utils/HttpHelper$1:val$url	Ljava/lang/String;
-    //   15: invokespecial 42	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   18: invokevirtual 46	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   21: checkcast 48	java/net/HttpURLConnection
-    //   24: checkcast 48	java/net/HttpURLConnection
-    //   27: astore_3
-    //   28: aload_3
-    //   29: ldc 50
-    //   31: invokevirtual 53	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   34: aload_3
-    //   35: sipush 5000
-    //   38: invokevirtual 57	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   41: aload_3
-    //   42: sipush 30000
-    //   45: invokevirtual 60	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   48: aload_3
-    //   49: iconst_1
-    //   50: invokevirtual 64	java/net/HttpURLConnection:setDoInput	(Z)V
-    //   53: aload_3
-    //   54: iconst_1
-    //   55: invokevirtual 67	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   58: aload_3
-    //   59: ldc 69
-    //   61: ldc 71
-    //   63: invokevirtual 75	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   66: aload_3
-    //   67: ldc 77
-    //   69: aload_0
-    //   70: getfield 22	com/tencent/TMG/utils/HttpHelper$1:val$req	[B
-    //   73: arraylength
-    //   74: invokestatic 83	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   77: invokevirtual 75	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   80: aload_0
-    //   81: getfield 24	com/tencent/TMG/utils/HttpHelper$1:val$mapPropertys	Ljava/util/Map;
-    //   84: ifnull +146 -> 230
-    //   87: aload_0
-    //   88: getfield 24	com/tencent/TMG/utils/HttpHelper$1:val$mapPropertys	Ljava/util/Map;
-    //   91: invokeinterface 89 1 0
-    //   96: ifne +134 -> 230
-    //   99: aload_0
-    //   100: getfield 24	com/tencent/TMG/utils/HttpHelper$1:val$mapPropertys	Ljava/util/Map;
-    //   103: invokeinterface 93 1 0
-    //   108: invokeinterface 99 1 0
-    //   113: astore 4
-    //   115: aload 4
-    //   117: invokeinterface 104 1 0
-    //   122: ifeq +108 -> 230
-    //   125: aload 4
-    //   127: invokeinterface 108 1 0
-    //   132: checkcast 110	java/util/Map$Entry
-    //   135: astore 6
-    //   137: aload_3
-    //   138: aload 6
-    //   140: invokeinterface 113 1 0
-    //   145: checkcast 79	java/lang/String
-    //   148: aload 6
-    //   150: invokeinterface 116 1 0
-    //   155: checkcast 79	java/lang/String
-    //   158: invokevirtual 75	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   161: goto -46 -> 115
-    //   164: astore 4
-    //   166: aconst_null
-    //   167: astore 5
-    //   169: sipush 200
-    //   172: istore_1
-    //   173: ldc 118
-    //   175: ldc 120
-    //   177: aload 4
-    //   179: invokestatic 126	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   182: pop
-    //   183: aload 5
-    //   185: ifnull +8 -> 193
-    //   188: aload 5
-    //   190: invokevirtual 130	java/io/InputStream:close	()V
-    //   193: aload_3
-    //   194: ifnull +7 -> 201
-    //   197: aload_3
-    //   198: invokevirtual 133	java/net/HttpURLConnection:disconnect	()V
-    //   201: aload_0
-    //   202: getfield 26	com/tencent/TMG/utils/HttpHelper$1:val$listener	Lcom/tencent/TMG/utils/HttpHelper$HttpRequestListener;
-    //   205: ifnull +24 -> 229
-    //   208: aload_0
-    //   209: getfield 26	com/tencent/TMG/utils/HttpHelper$1:val$listener	Lcom/tencent/TMG/utils/HttpHelper$HttpRequestListener;
-    //   212: aload_0
-    //   213: getfield 20	com/tencent/TMG/utils/HttpHelper$1:val$url	Ljava/lang/String;
-    //   216: sipush 404
-    //   219: aconst_null
-    //   220: aload_0
-    //   221: getfield 28	com/tencent/TMG/utils/HttpHelper$1:val$param	Ljava/lang/Object;
-    //   224: invokeinterface 139 5 0
-    //   229: return
-    //   230: aload_3
-    //   231: invokevirtual 143	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   234: aload_0
-    //   235: getfield 22	com/tencent/TMG/utils/HttpHelper$1:val$req	[B
-    //   238: invokevirtual 149	java/io/OutputStream:write	([B)V
-    //   241: aload_3
-    //   242: invokevirtual 153	java/net/HttpURLConnection:getResponseCode	()I
-    //   245: istore_1
-    //   246: iload_1
-    //   247: sipush 200
-    //   250: if_icmpne +125 -> 375
-    //   253: new 155	java/io/BufferedInputStream
-    //   256: dup
-    //   257: aload_3
-    //   258: invokevirtual 159	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   261: invokespecial 162	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   264: astore 4
-    //   266: new 164	java/io/ByteArrayOutputStream
-    //   269: dup
-    //   270: sipush 10240
-    //   273: invokespecial 166	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   0: aconst_null
+    //   1: astore 4
+    //   3: new 39	java/net/URL
+    //   6: dup
+    //   7: aload_0
+    //   8: getfield 20	com/tencent/TMG/utils/HttpHelper$1:val$url	Ljava/lang/String;
+    //   11: invokespecial 42	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   14: invokevirtual 46	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   17: checkcast 48	java/net/HttpURLConnection
+    //   20: checkcast 48	java/net/HttpURLConnection
+    //   23: astore_3
+    //   24: aload_3
+    //   25: ldc 50
+    //   27: invokevirtual 53	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   30: aload_3
+    //   31: sipush 5000
+    //   34: invokevirtual 57	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   37: aload_3
+    //   38: sipush 30000
+    //   41: invokevirtual 60	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   44: aload_3
+    //   45: iconst_1
+    //   46: invokevirtual 64	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   49: aload_3
+    //   50: iconst_1
+    //   51: invokevirtual 67	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   54: aload_3
+    //   55: ldc 69
+    //   57: ldc 71
+    //   59: invokevirtual 75	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   62: aload_3
+    //   63: ldc 77
+    //   65: aload_0
+    //   66: getfield 22	com/tencent/TMG/utils/HttpHelper$1:val$req	[B
+    //   69: arraylength
+    //   70: invokestatic 83	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   73: invokevirtual 75	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   76: aload_0
+    //   77: getfield 24	com/tencent/TMG/utils/HttpHelper$1:val$mapPropertys	Ljava/util/Map;
+    //   80: ifnull +80 -> 160
+    //   83: aload_0
+    //   84: getfield 24	com/tencent/TMG/utils/HttpHelper$1:val$mapPropertys	Ljava/util/Map;
+    //   87: invokeinterface 89 1 0
+    //   92: ifne +68 -> 160
+    //   95: aload_0
+    //   96: getfield 24	com/tencent/TMG/utils/HttpHelper$1:val$mapPropertys	Ljava/util/Map;
+    //   99: invokeinterface 93 1 0
+    //   104: invokeinterface 99 1 0
+    //   109: astore 5
+    //   111: aload 5
+    //   113: invokeinterface 104 1 0
+    //   118: ifeq +42 -> 160
+    //   121: aload 5
+    //   123: invokeinterface 108 1 0
+    //   128: checkcast 110	java/util/Map$Entry
+    //   131: astore 6
+    //   133: aload_3
+    //   134: aload 6
+    //   136: invokeinterface 113 1 0
+    //   141: checkcast 79	java/lang/String
+    //   144: aload 6
+    //   146: invokeinterface 116 1 0
+    //   151: checkcast 79	java/lang/String
+    //   154: invokevirtual 75	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   157: goto -46 -> 111
+    //   160: aload_3
+    //   161: invokevirtual 120	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   164: aload_0
+    //   165: getfield 22	com/tencent/TMG/utils/HttpHelper$1:val$req	[B
+    //   168: invokevirtual 126	java/io/OutputStream:write	([B)V
+    //   171: aload_3
+    //   172: invokevirtual 130	java/net/HttpURLConnection:getResponseCode	()I
+    //   175: istore_1
+    //   176: iload_1
+    //   177: sipush 200
+    //   180: if_icmpne +134 -> 314
+    //   183: new 132	java/io/BufferedInputStream
+    //   186: dup
+    //   187: aload_3
+    //   188: invokevirtual 136	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   191: invokespecial 139	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   194: astore 4
+    //   196: new 141	java/io/ByteArrayOutputStream
+    //   199: dup
+    //   200: sipush 10240
+    //   203: invokespecial 143	java/io/ByteArrayOutputStream:<init>	(I)V
+    //   206: astore 5
+    //   208: sipush 1024
+    //   211: newarray byte
+    //   213: astore 6
+    //   215: aload 4
+    //   217: aload 6
+    //   219: invokevirtual 149	java/io/InputStream:read	([B)I
+    //   222: istore_2
+    //   223: iload_2
+    //   224: ifge +21 -> 245
+    //   227: aload 5
+    //   229: invokevirtual 153	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   232: astore 6
+    //   234: aload 4
+    //   236: astore 5
+    //   238: aload 6
+    //   240: astore 4
+    //   242: goto +110 -> 352
+    //   245: aload 5
+    //   247: aload 6
+    //   249: iconst_0
+    //   250: iload_2
+    //   251: invokevirtual 156	java/io/ByteArrayOutputStream:write	([BII)V
+    //   254: goto -39 -> 215
+    //   257: astore 5
+    //   259: aload_3
+    //   260: astore 6
+    //   262: goto +344 -> 606
+    //   265: astore 7
+    //   267: aload_3
+    //   268: astore 5
+    //   270: goto +183 -> 453
+    //   273: astore 7
+    //   275: aload_3
     //   276: astore 5
-    //   278: sipush 1024
-    //   281: newarray byte
-    //   283: astore 6
-    //   285: aload 4
-    //   287: aload 6
-    //   289: invokevirtual 170	java/io/InputStream:read	([B)I
-    //   292: istore_2
-    //   293: iload_2
-    //   294: ifge +56 -> 350
-    //   297: aload 5
-    //   299: invokevirtual 174	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   302: astore 5
-    //   304: aload 4
-    //   306: ifnull +8 -> 314
-    //   309: aload 4
-    //   311: invokevirtual 130	java/io/InputStream:close	()V
-    //   314: aload_3
-    //   315: ifnull +7 -> 322
-    //   318: aload_3
-    //   319: invokevirtual 133	java/net/HttpURLConnection:disconnect	()V
-    //   322: aload_0
-    //   323: getfield 26	com/tencent/TMG/utils/HttpHelper$1:val$listener	Lcom/tencent/TMG/utils/HttpHelper$HttpRequestListener;
-    //   326: ifnull -97 -> 229
-    //   329: aload_0
-    //   330: getfield 26	com/tencent/TMG/utils/HttpHelper$1:val$listener	Lcom/tencent/TMG/utils/HttpHelper$HttpRequestListener;
-    //   333: aload_0
-    //   334: getfield 20	com/tencent/TMG/utils/HttpHelper$1:val$url	Ljava/lang/String;
-    //   337: iload_1
-    //   338: aload 5
-    //   340: aload_0
-    //   341: getfield 28	com/tencent/TMG/utils/HttpHelper$1:val$param	Ljava/lang/Object;
-    //   344: invokeinterface 139 5 0
-    //   349: return
-    //   350: aload 5
-    //   352: aload 6
-    //   354: iconst_0
-    //   355: iload_2
-    //   356: invokevirtual 177	java/io/ByteArrayOutputStream:write	([BII)V
-    //   359: goto -74 -> 285
-    //   362: astore 6
-    //   364: aload 4
-    //   366: astore 5
-    //   368: aload 6
-    //   370: astore 4
-    //   372: goto -199 -> 173
-    //   375: ldc 118
-    //   377: new 179	java/lang/StringBuilder
-    //   380: dup
-    //   381: invokespecial 180	java/lang/StringBuilder:<init>	()V
-    //   384: ldc 182
-    //   386: invokevirtual 186	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   389: iload_1
-    //   390: invokevirtual 189	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   393: invokevirtual 193	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   396: invokestatic 196	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   399: pop
-    //   400: aconst_null
-    //   401: astore 4
-    //   403: goto -99 -> 304
-    //   406: astore 4
-    //   408: aload 4
-    //   410: invokevirtual 199	java/io/IOException:printStackTrace	()V
-    //   413: goto -99 -> 314
-    //   416: astore 4
-    //   418: aload 4
-    //   420: invokevirtual 199	java/io/IOException:printStackTrace	()V
-    //   423: goto -230 -> 193
-    //   426: astore 5
-    //   428: aconst_null
-    //   429: astore_3
-    //   430: aconst_null
-    //   431: astore 4
-    //   433: iload_2
-    //   434: istore_1
-    //   435: ldc 118
-    //   437: ldc 120
-    //   439: aload 5
-    //   441: invokestatic 126	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
-    //   444: pop
-    //   445: aload_3
-    //   446: ifnull +7 -> 453
-    //   449: aload_3
-    //   450: invokevirtual 130	java/io/InputStream:close	()V
+    //   278: goto +248 -> 526
+    //   281: astore 5
+    //   283: aconst_null
+    //   284: astore 4
+    //   286: aload_3
+    //   287: astore 6
+    //   289: goto +317 -> 606
+    //   292: astore 7
+    //   294: aconst_null
+    //   295: astore 4
+    //   297: aload_3
+    //   298: astore 5
+    //   300: goto +153 -> 453
+    //   303: astore 7
+    //   305: aconst_null
+    //   306: astore 4
+    //   308: aload_3
+    //   309: astore 5
+    //   311: goto +215 -> 526
+    //   314: new 158	java/lang/StringBuilder
+    //   317: dup
+    //   318: invokespecial 159	java/lang/StringBuilder:<init>	()V
+    //   321: astore 5
+    //   323: aload 5
+    //   325: ldc 161
+    //   327: invokevirtual 165	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   330: pop
+    //   331: aload 5
+    //   333: iload_1
+    //   334: invokevirtual 168	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   337: pop
+    //   338: ldc 170
+    //   340: aload 5
+    //   342: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   345: invokestatic 180	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   348: pop
+    //   349: aconst_null
+    //   350: astore 5
+    //   352: aload 5
+    //   354: ifnull +18 -> 372
+    //   357: aload 5
+    //   359: invokevirtual 182	java/io/InputStream:close	()V
+    //   362: goto +10 -> 372
+    //   365: astore 5
+    //   367: aload 5
+    //   369: invokevirtual 185	java/io/IOException:printStackTrace	()V
+    //   372: aload_3
+    //   373: ifnull +7 -> 380
+    //   376: aload_3
+    //   377: invokevirtual 188	java/net/HttpURLConnection:disconnect	()V
+    //   380: aload_0
+    //   381: getfield 26	com/tencent/TMG/utils/HttpHelper$1:val$listener	Lcom/tencent/TMG/utils/HttpHelper$HttpRequestListener;
+    //   384: astore_3
+    //   385: aload_3
+    //   386: ifnull +214 -> 600
+    //   389: aload_3
+    //   390: aload_0
+    //   391: getfield 20	com/tencent/TMG/utils/HttpHelper$1:val$url	Ljava/lang/String;
+    //   394: iload_1
+    //   395: aload 4
+    //   397: aload_0
+    //   398: getfield 28	com/tencent/TMG/utils/HttpHelper$1:val$param	Ljava/lang/Object;
+    //   401: invokeinterface 194 5 0
+    //   406: return
+    //   407: astore 5
+    //   409: goto +17 -> 426
+    //   412: astore 7
+    //   414: goto +29 -> 443
+    //   417: astore 7
+    //   419: goto +97 -> 516
+    //   422: astore 5
+    //   424: aconst_null
+    //   425: astore_3
+    //   426: aconst_null
+    //   427: astore 4
+    //   429: sipush 200
+    //   432: istore_1
+    //   433: aload_3
+    //   434: astore 6
+    //   436: goto +170 -> 606
+    //   439: astore 7
+    //   441: aconst_null
+    //   442: astore_3
+    //   443: aconst_null
+    //   444: astore 4
+    //   446: sipush 200
+    //   449: istore_1
+    //   450: aload_3
+    //   451: astore 5
     //   453: aload 4
-    //   455: ifnull +8 -> 463
-    //   458: aload 4
-    //   460: invokevirtual 133	java/net/HttpURLConnection:disconnect	()V
-    //   463: aload_0
-    //   464: getfield 26	com/tencent/TMG/utils/HttpHelper$1:val$listener	Lcom/tencent/TMG/utils/HttpHelper$HttpRequestListener;
-    //   467: ifnull -238 -> 229
-    //   470: aload_0
-    //   471: getfield 26	com/tencent/TMG/utils/HttpHelper$1:val$listener	Lcom/tencent/TMG/utils/HttpHelper$HttpRequestListener;
-    //   474: aload_0
-    //   475: getfield 20	com/tencent/TMG/utils/HttpHelper$1:val$url	Ljava/lang/String;
-    //   478: iconst_m1
-    //   479: aconst_null
-    //   480: aload_0
-    //   481: getfield 28	com/tencent/TMG/utils/HttpHelper$1:val$param	Ljava/lang/Object;
-    //   484: invokeinterface 139 5 0
-    //   489: return
-    //   490: astore_3
-    //   491: aload_3
-    //   492: invokevirtual 199	java/io/IOException:printStackTrace	()V
-    //   495: goto -42 -> 453
-    //   498: astore_3
-    //   499: aconst_null
-    //   500: astore 5
-    //   502: aconst_null
-    //   503: astore 4
-    //   505: iload_2
-    //   506: istore_1
-    //   507: aload 5
-    //   509: ifnull +8 -> 517
-    //   512: aload 5
-    //   514: invokevirtual 130	java/io/InputStream:close	()V
-    //   517: aload 4
-    //   519: ifnull +8 -> 527
-    //   522: aload 4
-    //   524: invokevirtual 133	java/net/HttpURLConnection:disconnect	()V
-    //   527: aload_0
-    //   528: getfield 26	com/tencent/TMG/utils/HttpHelper$1:val$listener	Lcom/tencent/TMG/utils/HttpHelper$HttpRequestListener;
-    //   531: ifnull +22 -> 553
-    //   534: aload_0
-    //   535: getfield 26	com/tencent/TMG/utils/HttpHelper$1:val$listener	Lcom/tencent/TMG/utils/HttpHelper$HttpRequestListener;
-    //   538: aload_0
-    //   539: getfield 20	com/tencent/TMG/utils/HttpHelper$1:val$url	Ljava/lang/String;
-    //   542: iload_1
-    //   543: aconst_null
-    //   544: aload_0
-    //   545: getfield 28	com/tencent/TMG/utils/HttpHelper$1:val$param	Ljava/lang/Object;
-    //   548: invokeinterface 139 5 0
-    //   553: aload_3
-    //   554: athrow
-    //   555: astore 5
-    //   557: aload 5
-    //   559: invokevirtual 199	java/io/IOException:printStackTrace	()V
-    //   562: goto -45 -> 517
-    //   565: astore 6
-    //   567: aconst_null
-    //   568: astore 5
-    //   570: aload_3
-    //   571: astore 4
-    //   573: aload 6
-    //   575: astore_3
-    //   576: iload_2
-    //   577: istore_1
-    //   578: goto -71 -> 507
-    //   581: astore 6
-    //   583: aconst_null
-    //   584: astore 5
-    //   586: aload_3
-    //   587: astore 4
-    //   589: aload 6
-    //   591: astore_3
-    //   592: goto -85 -> 507
-    //   595: astore 6
-    //   597: aload_3
-    //   598: astore 5
-    //   600: aload 6
-    //   602: astore_3
-    //   603: aload 4
-    //   605: astore 6
-    //   607: aload 5
-    //   609: astore 4
-    //   611: aload 6
-    //   613: astore 5
-    //   615: goto -108 -> 507
-    //   618: astore 6
+    //   455: astore_3
+    //   456: aload 5
+    //   458: astore 6
+    //   460: ldc 170
+    //   462: ldc 196
+    //   464: aload 7
+    //   466: invokestatic 199	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   469: pop
+    //   470: iconst_m1
+    //   471: istore_1
+    //   472: aload 4
+    //   474: ifnull +16 -> 490
+    //   477: aload 4
+    //   479: invokevirtual 182	java/io/InputStream:close	()V
+    //   482: goto +8 -> 490
+    //   485: astore_3
+    //   486: aload_3
+    //   487: invokevirtual 185	java/io/IOException:printStackTrace	()V
+    //   490: aload 5
+    //   492: ifnull +8 -> 500
+    //   495: aload 5
+    //   497: invokevirtual 188	java/net/HttpURLConnection:disconnect	()V
+    //   500: aload_0
+    //   501: getfield 26	com/tencent/TMG/utils/HttpHelper$1:val$listener	Lcom/tencent/TMG/utils/HttpHelper$HttpRequestListener;
+    //   504: astore_3
+    //   505: aload_3
+    //   506: ifnull +94 -> 600
+    //   509: goto +75 -> 584
+    //   512: astore 7
+    //   514: aconst_null
+    //   515: astore_3
+    //   516: aconst_null
+    //   517: astore 4
+    //   519: sipush 200
+    //   522: istore_1
+    //   523: aload_3
+    //   524: astore 5
+    //   526: aload 4
+    //   528: astore_3
+    //   529: aload 5
+    //   531: astore 6
+    //   533: ldc 170
+    //   535: ldc 196
+    //   537: aload 7
+    //   539: invokestatic 199	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)I
+    //   542: pop
+    //   543: sipush 404
+    //   546: istore_1
+    //   547: aload 4
+    //   549: ifnull +16 -> 565
+    //   552: aload 4
+    //   554: invokevirtual 182	java/io/InputStream:close	()V
+    //   557: goto +8 -> 565
+    //   560: astore_3
+    //   561: aload_3
+    //   562: invokevirtual 185	java/io/IOException:printStackTrace	()V
+    //   565: aload 5
+    //   567: ifnull +8 -> 575
+    //   570: aload 5
+    //   572: invokevirtual 188	java/net/HttpURLConnection:disconnect	()V
+    //   575: aload_0
+    //   576: getfield 26	com/tencent/TMG/utils/HttpHelper$1:val$listener	Lcom/tencent/TMG/utils/HttpHelper$HttpRequestListener;
+    //   579: astore_3
+    //   580: aload_3
+    //   581: ifnull +19 -> 600
+    //   584: aload_3
+    //   585: aload_0
+    //   586: getfield 20	com/tencent/TMG/utils/HttpHelper$1:val$url	Ljava/lang/String;
+    //   589: iload_1
+    //   590: aconst_null
+    //   591: aload_0
+    //   592: getfield 28	com/tencent/TMG/utils/HttpHelper$1:val$param	Ljava/lang/Object;
+    //   595: invokeinterface 194 5 0
+    //   600: return
+    //   601: astore 5
+    //   603: aload_3
+    //   604: astore 4
+    //   606: aload 4
+    //   608: ifnull +16 -> 624
+    //   611: aload 4
+    //   613: invokevirtual 182	java/io/InputStream:close	()V
+    //   616: goto +8 -> 624
+    //   619: astore_3
     //   620: aload_3
-    //   621: astore 4
-    //   623: aload 6
-    //   625: astore_3
-    //   626: goto -119 -> 507
-    //   629: astore 6
-    //   631: aload_3
-    //   632: astore 5
-    //   634: aload 6
-    //   636: astore_3
-    //   637: goto -130 -> 507
-    //   640: astore 5
-    //   642: aload_3
-    //   643: astore 4
-    //   645: aconst_null
-    //   646: astore_3
-    //   647: iload_2
-    //   648: istore_1
-    //   649: goto -214 -> 435
-    //   652: astore 5
-    //   654: aload_3
-    //   655: astore 4
-    //   657: aconst_null
-    //   658: astore_3
-    //   659: goto -224 -> 435
-    //   662: astore 5
-    //   664: aload_3
-    //   665: astore 6
-    //   667: aload 4
-    //   669: astore_3
-    //   670: aload 6
-    //   672: astore 4
-    //   674: goto -239 -> 435
-    //   677: astore 4
-    //   679: sipush 200
-    //   682: istore_1
-    //   683: aconst_null
-    //   684: astore 5
-    //   686: aconst_null
-    //   687: astore_3
-    //   688: goto -515 -> 173
-    //   691: astore 4
-    //   693: aconst_null
-    //   694: astore 5
-    //   696: goto -523 -> 173
+    //   621: invokevirtual 185	java/io/IOException:printStackTrace	()V
+    //   624: aload 6
+    //   626: ifnull +8 -> 634
+    //   629: aload 6
+    //   631: invokevirtual 188	java/net/HttpURLConnection:disconnect	()V
+    //   634: aload_0
+    //   635: getfield 26	com/tencent/TMG/utils/HttpHelper$1:val$listener	Lcom/tencent/TMG/utils/HttpHelper$HttpRequestListener;
+    //   638: astore_3
+    //   639: aload_3
+    //   640: ifnull +19 -> 659
+    //   643: aload_3
+    //   644: aload_0
+    //   645: getfield 20	com/tencent/TMG/utils/HttpHelper$1:val$url	Ljava/lang/String;
+    //   648: iload_1
+    //   649: aconst_null
+    //   650: aload_0
+    //   651: getfield 28	com/tencent/TMG/utils/HttpHelper$1:val$param	Ljava/lang/Object;
+    //   654: invokeinterface 194 5 0
+    //   659: goto +6 -> 665
+    //   662: aload 5
+    //   664: athrow
+    //   665: goto -3 -> 662
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	699	0	this	1
-    //   172	511	1	i	int
-    //   3	645	2	j	int
-    //   27	423	3	localHttpURLConnection	java.net.HttpURLConnection
-    //   490	2	3	localIOException1	java.io.IOException
-    //   498	73	3	localObject1	Object
-    //   575	113	3	localObject2	Object
-    //   113	13	4	localIterator	java.util.Iterator
-    //   164	14	4	localUnknownHostException1	java.net.UnknownHostException
-    //   264	138	4	localObject3	Object
-    //   406	3	4	localIOException2	java.io.IOException
-    //   416	3	4	localIOException3	java.io.IOException
-    //   431	242	4	localObject4	Object
-    //   677	1	4	localUnknownHostException2	java.net.UnknownHostException
-    //   691	1	4	localUnknownHostException3	java.net.UnknownHostException
-    //   5	362	5	localObject5	Object
-    //   426	14	5	localIOException4	java.io.IOException
-    //   500	13	5	localObject6	Object
-    //   555	3	5	localIOException5	java.io.IOException
-    //   568	65	5	localObject7	Object
-    //   640	1	5	localIOException6	java.io.IOException
-    //   652	1	5	localIOException7	java.io.IOException
-    //   662	1	5	localIOException8	java.io.IOException
-    //   684	11	5	localObject8	Object
-    //   135	218	6	localObject9	Object
-    //   362	7	6	localUnknownHostException4	java.net.UnknownHostException
-    //   565	9	6	localObject10	Object
-    //   581	9	6	localObject11	Object
-    //   595	6	6	localObject12	Object
-    //   605	7	6	localObject13	Object
-    //   618	6	6	localObject14	Object
-    //   629	6	6	localObject15	Object
-    //   665	6	6	localObject16	Object
+    //   0	668	0	this	1
+    //   175	474	1	i	int
+    //   222	29	2	j	int
+    //   23	433	3	localObject1	Object
+    //   485	2	3	localIOException1	java.io.IOException
+    //   504	25	3	localObject2	Object
+    //   560	2	3	localIOException2	java.io.IOException
+    //   579	25	3	localHttpRequestListener1	HttpHelper.HttpRequestListener
+    //   619	2	3	localIOException3	java.io.IOException
+    //   638	6	3	localHttpRequestListener2	HttpHelper.HttpRequestListener
+    //   1	611	4	localObject3	Object
+    //   109	137	5	localObject4	Object
+    //   257	1	5	localObject5	Object
+    //   268	9	5	localObject6	Object
+    //   281	1	5	localObject7	Object
+    //   298	60	5	localObject8	Object
+    //   365	3	5	localIOException4	java.io.IOException
+    //   407	1	5	localObject9	Object
+    //   422	1	5	localObject10	Object
+    //   451	120	5	localObject11	Object
+    //   601	62	5	localObject12	Object
+    //   131	499	6	localObject13	Object
+    //   265	1	7	localIOException5	java.io.IOException
+    //   273	1	7	localUnknownHostException1	java.net.UnknownHostException
+    //   292	1	7	localIOException6	java.io.IOException
+    //   303	1	7	localUnknownHostException2	java.net.UnknownHostException
+    //   412	1	7	localIOException7	java.io.IOException
+    //   417	1	7	localUnknownHostException3	java.net.UnknownHostException
+    //   439	26	7	localIOException8	java.io.IOException
+    //   512	26	7	localUnknownHostException4	java.net.UnknownHostException
     // Exception table:
     //   from	to	target	type
-    //   28	115	164	java/net/UnknownHostException
-    //   115	161	164	java/net/UnknownHostException
-    //   230	246	164	java/net/UnknownHostException
-    //   266	285	362	java/net/UnknownHostException
-    //   285	293	362	java/net/UnknownHostException
-    //   297	304	362	java/net/UnknownHostException
-    //   350	359	362	java/net/UnknownHostException
-    //   309	314	406	java/io/IOException
-    //   188	193	416	java/io/IOException
-    //   7	28	426	java/io/IOException
-    //   449	453	490	java/io/IOException
-    //   7	28	498	finally
-    //   512	517	555	java/io/IOException
-    //   28	115	565	finally
-    //   115	161	565	finally
-    //   230	246	565	finally
-    //   253	266	581	finally
-    //   375	400	581	finally
-    //   266	285	595	finally
-    //   285	293	595	finally
-    //   297	304	595	finally
-    //   350	359	595	finally
-    //   173	183	618	finally
-    //   435	445	629	finally
-    //   28	115	640	java/io/IOException
-    //   115	161	640	java/io/IOException
-    //   230	246	640	java/io/IOException
-    //   253	266	652	java/io/IOException
-    //   375	400	652	java/io/IOException
-    //   266	285	662	java/io/IOException
-    //   285	293	662	java/io/IOException
-    //   297	304	662	java/io/IOException
-    //   350	359	662	java/io/IOException
-    //   7	28	677	java/net/UnknownHostException
-    //   253	266	691	java/net/UnknownHostException
-    //   375	400	691	java/net/UnknownHostException
+    //   196	215	257	finally
+    //   215	223	257	finally
+    //   227	234	257	finally
+    //   245	254	257	finally
+    //   196	215	265	java/io/IOException
+    //   215	223	265	java/io/IOException
+    //   227	234	265	java/io/IOException
+    //   245	254	265	java/io/IOException
+    //   196	215	273	java/net/UnknownHostException
+    //   215	223	273	java/net/UnknownHostException
+    //   227	234	273	java/net/UnknownHostException
+    //   245	254	273	java/net/UnknownHostException
+    //   183	196	281	finally
+    //   314	349	281	finally
+    //   183	196	292	java/io/IOException
+    //   314	349	292	java/io/IOException
+    //   183	196	303	java/net/UnknownHostException
+    //   314	349	303	java/net/UnknownHostException
+    //   357	362	365	java/io/IOException
+    //   24	111	407	finally
+    //   111	157	407	finally
+    //   160	176	407	finally
+    //   24	111	412	java/io/IOException
+    //   111	157	412	java/io/IOException
+    //   160	176	412	java/io/IOException
+    //   24	111	417	java/net/UnknownHostException
+    //   111	157	417	java/net/UnknownHostException
+    //   160	176	417	java/net/UnknownHostException
+    //   3	24	422	finally
+    //   3	24	439	java/io/IOException
+    //   477	482	485	java/io/IOException
+    //   3	24	512	java/net/UnknownHostException
+    //   552	557	560	java/io/IOException
+    //   460	470	601	finally
+    //   533	543	601	finally
+    //   611	616	619	java/io/IOException
   }
 }
 

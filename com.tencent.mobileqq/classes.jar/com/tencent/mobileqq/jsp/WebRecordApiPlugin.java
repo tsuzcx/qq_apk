@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.jsp;
 
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -21,13 +21,13 @@ public class WebRecordApiPlugin
     this.mPluginNameSpace = "webRecord";
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (!"webRecord".equals(paramString2)) {
       return false;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper == null) {
-      this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper = new WebRecordApiPlugin.AudioApiHelper(this, this.mRuntime.a(), (BaseActivity)this.mRuntime.a());
+      this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper = new WebRecordApiPlugin.AudioApiHelper(this, this.mRuntime.a(), (QBaseActivity)this.mRuntime.a());
     }
     if ("startRecord".equals(paramString3)) {
       try
@@ -41,12 +41,10 @@ public class WebRecordApiPlugin
       }
       catch (JSONException paramJsBridgeListener)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQRecorder", 2, paramJsBridgeListener.getMessage());
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("QQRecorder", 2, paramJsBridgeListener.getMessage());
         }
+        return true;
       }
     }
     if ("stopRecord".equals(paramString3))
@@ -65,12 +63,10 @@ public class WebRecordApiPlugin
       }
       catch (JSONException paramJsBridgeListener)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQRecorder", 2, paramJsBridgeListener.getMessage());
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("QQRecorder", 2, paramJsBridgeListener.getMessage());
         }
+        return true;
       }
     }
     if ("pause".equals(paramString3)) {
@@ -82,12 +78,10 @@ public class WebRecordApiPlugin
       }
       catch (JSONException paramJsBridgeListener)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQRecorder", 2, paramJsBridgeListener.getMessage());
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("QQRecorder", 2, paramJsBridgeListener.getMessage());
         }
+        return true;
       }
     }
     if ("stop".equals(paramString3)) {
@@ -99,12 +93,10 @@ public class WebRecordApiPlugin
       }
       catch (JSONException paramJsBridgeListener)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQRecorder", 2, paramJsBridgeListener.getMessage());
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("QQRecorder", 2, paramJsBridgeListener.getMessage());
         }
+        return true;
       }
     }
     if ("upload".equals(paramString3)) {
@@ -120,12 +112,10 @@ public class WebRecordApiPlugin
       }
       catch (JSONException paramJsBridgeListener)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQRecorder", 2, paramJsBridgeListener.getMessage());
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("QQRecorder", 2, paramJsBridgeListener.getMessage());
         }
+        return true;
       }
     }
     return false;
@@ -134,8 +124,12 @@ public class WebRecordApiPlugin
   public void onDestroy()
   {
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "RecordSoundPanel.onDestroy() is called,isRecording is:" + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RecordSoundPanel.onDestroy() is called,isRecording is:");
+      localStringBuilder.append(bool);
+      QLog.d("AIOAudioPanel", 2, localStringBuilder.toString());
     }
     if (bool) {
       this.jdField_a_of_type_ComTencentMobileqqJspWebRecordApiPlugin$AudioApiHelper.a(1);
@@ -144,7 +138,7 @@ public class WebRecordApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.WebRecordApiPlugin
  * JD-Core Version:    0.7.0.1
  */

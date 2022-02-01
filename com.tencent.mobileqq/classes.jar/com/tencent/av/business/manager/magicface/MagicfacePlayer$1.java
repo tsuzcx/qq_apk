@@ -10,7 +10,10 @@ class MagicfacePlayer$1
   
   public void a(long paramLong, String paramString)
   {
-    AVLog.printColorLog("AVMagicfacePlayer", "play video begin." + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("play video begin.");
+    localStringBuilder.append(paramString);
+    AVLog.printColorLog("AVMagicfacePlayer", localStringBuilder.toString());
     if (this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener != null) {
       this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener.a(paramLong, paramString);
     }
@@ -18,7 +21,15 @@ class MagicfacePlayer$1
   
   public void a(long paramLong, String arg3, int paramInt)
   {
-    QLog.w("AVMagicfacePlayer", 1, "onEndMagicPlay, id[" + ??? + "], reason[" + paramInt + "], seq[" + paramLong + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onEndMagicPlay, id[");
+    localStringBuilder.append(???);
+    localStringBuilder.append("], reason[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    QLog.w("AVMagicfacePlayer", 1, localStringBuilder.toString());
     if (this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener != null) {
       this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener.a(paramLong, ???, paramInt);
     }
@@ -33,24 +44,35 @@ class MagicfacePlayer$1
   
   public void a(long paramLong, String paramString, boolean paramBoolean)
   {
-    AVLog.printColorLog("AVMagicfacePlayer", "play audio begin. id = " + paramString + ", repeat = " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("play audio begin. id = ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(", repeat = ");
+    localStringBuilder.append(paramBoolean);
+    AVLog.printColorLog("AVMagicfacePlayer", localStringBuilder.toString());
     if (paramBoolean)
     {
-      this.a.a(this.a.jdField_a_of_type_JavaLangString, 100);
+      paramString = this.a;
+      paramString.a(paramString.jdField_a_of_type_JavaLangString, 100);
       return;
     }
-    this.a.a(this.a.jdField_a_of_type_JavaLangString, 1);
+    paramString = this.a;
+    paramString.a(paramString.jdField_a_of_type_JavaLangString, 1);
   }
   
   public void b(long paramLong, String paramString)
   {
-    AVLog.printColorLog("AVMagicfacePlayer", "play audio end. id = " + paramString);
-    this.a.a(this.a.jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("play audio end. id = ");
+    localStringBuilder.append(paramString);
+    AVLog.printColorLog("AVMagicfacePlayer", localStringBuilder.toString());
+    paramString = this.a;
+    paramString.a(paramString.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicfacePlayer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,35 +13,44 @@ class RaffleJsPlugin$10
   
   public void run()
   {
-    int i = 1;
     AdProxy localAdProxy = (AdProxy)ProxyManager.get(AdProxy.class);
-    if (localAdProxy == null) {}
-    for (;;)
+    j = 1;
+    if (localAdProxy == null)
     {
-      if (i != 0)
+      i = j;
+    }
+    else
+    {
+      RaffleJsPlugin localRaffleJsPlugin = this.this$0;
+      RaffleJsPlugin.access$2002(localRaffleJsPlugin, localAdProxy.createRewardVideoAdView(this.jdField_a_of_type_AndroidContentContext, RaffleJsPlugin.access$2100(localRaffleJsPlugin), RaffleJsPlugin.access$2200(this.this$0), new RaffleJsPlugin.10.1(this), this.jdField_a_of_type_AndroidOsBundle, RaffleJsPlugin.access$3300(this.this$0)));
+      i = j;
+    }
+    try
+    {
+      if (RaffleJsPlugin.access$2000(this.this$0) != null)
       {
-        RaffleJsPlugin.access$2302(this.this$0, false);
-        RaffleJsPlugin.access$2402(this.this$0, false);
-        this.this$0.hideLoading();
+        RaffleJsPlugin.access$2000(this.this$0).loadAD(this.jdField_a_of_type_AndroidContentContext);
+        i = 0;
       }
-      return;
-      RaffleJsPlugin.access$2002(this.this$0, localAdProxy.createRewardVideoAdView(this.jdField_a_of_type_AndroidContentContext, RaffleJsPlugin.access$2100(this.this$0), RaffleJsPlugin.access$2200(this.this$0), new RaffleJsPlugin.10.1(this), this.jdField_a_of_type_AndroidOsBundle, RaffleJsPlugin.access$3300(this.this$0)));
-      try
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        if (RaffleJsPlugin.access$2000(this.this$0) != null) {
-          RaffleJsPlugin.access$2000(this.this$0).loadAD(this.jdField_a_of_type_AndroidContentContext);
-        }
-        for (i = 0;; i = 1) {
-          break;
-        }
+        i = j;
       }
-      catch (Exception localException) {}
+    }
+    if (i != 0)
+    {
+      RaffleJsPlugin.access$2302(this.this$0, false);
+      RaffleJsPlugin.access$2402(this.this$0, false);
+      this.this$0.hideLoading();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.RaffleJsPlugin.10
  * JD-Core Version:    0.7.0.1
  */

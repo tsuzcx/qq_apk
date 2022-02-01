@@ -39,8 +39,12 @@ public class HighwayConfProcessor
   public HighwayConfBean migrateOldOrDefaultContent(int paramInt)
   {
     HighwayConfBean localHighwayConfBean = new HighwayConfBean();
-    if (QLog.isColorLevel()) {
-      QLog.d("HighwayConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("migrateOldOrDefaultContent ");
+      localStringBuilder.append(paramInt);
+      QLog.d("HighwayConfProcessor", 2, localStringBuilder.toString());
     }
     return localHighwayConfBean;
   }
@@ -56,8 +60,12 @@ public class HighwayConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       HighwayConfBean localHighwayConfBean = HighwayConfBean.parse(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("HighwayConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("HighwayConfProcessor", 2, localStringBuilder.toString());
       }
       return localHighwayConfBean;
     }
@@ -66,8 +74,12 @@ public class HighwayConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HighwayConfProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.d("HighwayConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -83,7 +95,7 @@ public class HighwayConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.HighwayConfProcessor
  * JD-Core Version:    0.7.0.1
  */

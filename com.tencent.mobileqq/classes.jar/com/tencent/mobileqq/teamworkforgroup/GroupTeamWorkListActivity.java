@@ -30,15 +30,19 @@ import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.fpsreport.FPSSwipListView;
 import com.tencent.mobileqq.model.TroopInfoManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.IGroupTeamWorkAdapter;
 import com.tencent.mobileqq.teamwork.OnItemLongClickListener;
 import com.tencent.mobileqq.teamwork.PadInfo;
 import com.tencent.mobileqq.teamwork.TeamWorkConstants;
-import com.tencent.mobileqq.teamwork.TeamWorkHandler;
 import com.tencent.mobileqq.teamwork.TeamWorkManager;
 import com.tencent.mobileqq.teamwork.TeamWorkObserver;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
+import com.tencent.mobileqq.teamwork.api.IGroupTeamWorkAdapterCreator;
+import com.tencent.mobileqq.teamwork.api.IGroupTeamWorkHandler;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkHandler;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtils;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
-import com.tencent.mobileqq.utils.DBUtils;
+import com.tencent.mobileqq.troop.utils.api.ITroopSPUtilApi;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.SharedPreUtils;
@@ -72,12 +76,12 @@ public class GroupTeamWorkListActivity
   TextView jdField_a_of_type_AndroidWidgetTextView;
   private GridOptPopBar jdField_a_of_type_ComTencentMobileqqActivityRecentGridOptPopBar;
   private FPSSwipListView jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView;
-  TeamWorkHandler jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler;
+  private IGroupTeamWorkAdapter jdField_a_of_type_ComTencentMobileqqTeamworkIGroupTeamWorkAdapter;
   TeamWorkManager jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkManager;
   TeamWorkObserver jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkObserver = new GroupTeamWorkListActivity.17(this);
+  IGroupTeamWorkHandler jdField_a_of_type_ComTencentMobileqqTeamworkApiIGroupTeamWorkHandler;
+  ITeamWorkHandler jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkHandler;
   private GroupPadTemplateAdapter jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateAdapter;
-  private GroupTeamWorkAdapter jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter;
-  GroupTeamWorkHandler jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkHandler;
   GroupTeamWorkManager jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkManager;
   GroupTeamWorkObserver jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkObserver = new GroupTeamWorkListActivity.16(this);
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
@@ -115,44 +119,45 @@ public class GroupTeamWorkListActivity
   
   private void a()
   {
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131377356);
-    this.jdField_e_of_type_AndroidViewView = findViewById(2131378975);
-    this.f = findViewById(2131378974);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131376809);
+    this.jdField_e_of_type_AndroidViewView = findViewById(2131378352);
+    this.f = findViewById(2131378351);
     this.f.setOnClickListener(this);
-    this.g = findViewById(2131378960);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378962));
-    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView = ((FPSSwipListView)findViewById(2131370452));
+    this.g = findViewById(2131378337);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378339));
+    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView = ((FPSSwipListView)findViewById(2131370110));
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setDragEnable(true);
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setDivider(null);
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setOnScrollListener(this);
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setOverScrollListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setOverscrollHeader(getResources().getDrawable(2130839540));
-    View localView = LayoutInflater.from(this).inflate(2131563090, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, false);
+    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setOverscrollHeader(getResources().getDrawable(2130839396));
+    View localView = LayoutInflater.from(this).inflate(2131562917, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, false);
     Object localObject = new LinearLayout(this);
     ((LinearLayout)localObject).setOrientation(1);
     ((LinearLayout)localObject).addView(localView);
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.addHeaderView((View)localObject);
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131563101, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, false);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368105));
-    if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView != null)
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131562927, this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView, false);
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367858));
+    localObject = this.jdField_a_of_type_ComTencentWidgetHorizontalListView;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(getResources().getDimensionPixelSize(2131297199));
+      ((HorizontalListView)localObject).setVisibility(0);
+      this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setDividerWidth(getResources().getDimensionPixelSize(2131297181));
     }
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.addHeaderView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131380584));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131366452));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379866));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewView.findViewById(2131366333));
     this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new GroupTeamWorkListActivity.4(this));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2131559765, null));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(this).inflate(2131559642, null));
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setOverScrollHeader(this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader);
-    this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131563093, null);
-    this.jdField_d_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131378978);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131378977));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_c_of_type_AndroidViewView.findViewById(2131378976));
+    this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2131562920, null);
+    this.jdField_d_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131378355);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_c_of_type_AndroidViewView.findViewById(2131378354));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_c_of_type_AndroidViewView.findViewById(2131378353));
     this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.addFooterView(this.jdField_c_of_type_AndroidViewView);
     b();
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131377159));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131376636));
     localObject = new ArrayList();
     ((List)localObject).add(GridOptPopBar.a);
     ((List)localObject).add(GridOptPopBar.b);
@@ -164,9 +169,9 @@ public class GroupTeamWorkListActivity
     {
       new GroupTeamWorkListActivity.5(this);
       localView.setVisibility(0);
-      localObject = (TextView)localView.findViewById(2131364851);
-      FixSizeImageView localFixSizeImageView = (FixSizeImageView)localView.findViewById(2131364850);
-      ((TextView)localObject).setText(getString(2131690951));
+      localObject = (TextView)localView.findViewById(2131364737);
+      FixSizeImageView localFixSizeImageView = (FixSizeImageView)localView.findViewById(2131364736);
+      ((TextView)localObject).setText(getString(2131690879));
       ((TextView)localObject).setMovementMethod(LinkMovementMethod.getInstance());
       localFixSizeImageView.setOnClickListener(new GroupTeamWorkListActivity.6(this, localView));
       return;
@@ -176,10 +181,11 @@ public class GroupTeamWorkListActivity
   
   private void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkHandler != null)
+    IGroupTeamWorkHandler localIGroupTeamWorkHandler = this.jdField_a_of_type_ComTencentMobileqqTeamworkApiIGroupTeamWorkHandler;
+    if (localIGroupTeamWorkHandler != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkHandler.a(paramLong, paramInt1, paramInt2, paramInt3);
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkHandler.a(paramLong);
+      localIGroupTeamWorkHandler.getGroupTeamWorkList(paramLong, paramInt1, paramInt2, paramInt3);
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkApiIGroupTeamWorkHandler.getGroupPadTemplateList(paramLong);
     }
   }
   
@@ -197,24 +203,24 @@ public class GroupTeamWorkListActivity
     if (paramBoolean)
     {
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719837);
+      this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719562);
       this.jdField_d_of_type_AndroidViewView.setVisibility(0);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719838);
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131719563);
     this.jdField_d_of_type_AndroidViewView.setVisibility(0);
   }
   
   private void b()
   {
-    this.leftView.setText(getResources().getString(2131693124));
-    this.leftView.setBackgroundResource(2130851150);
+    this.leftView.setText(getResources().getString(2131693084));
+    this.leftView.setBackgroundResource(2130851066);
     this.rightViewImg.setVisibility(0);
-    this.rightViewImg.setImageResource(2130840465);
+    this.rightViewImg.setImageResource(2130840334);
     this.rightViewImg.setOnClickListener(this);
     this.centerView.setMaxEms(13);
-    this.centerView.setText(getResources().getString(2131693122));
+    this.centerView.setText(getResources().getString(2131693082));
     this.centerView.setOnClickListener(this);
   }
   
@@ -234,19 +240,23 @@ public class GroupTeamWorkListActivity
   
   private void c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) || (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
+    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localQQCustomDialog != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("GroupTeamWorkListActivity", 1, " dismiss exception: " + localException.toString());
+      if (localQQCustomDialog.isShowing()) {
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+        }
+        catch (Exception localException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" dismiss exception: ");
+          localStringBuilder.append(localException.toString());
+          QLog.e("GroupTeamWorkListActivity", 1, localStringBuilder.toString());
+        }
       }
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
   }
   
@@ -261,43 +271,53 @@ public class GroupTeamWorkListActivity
     if (paramPadInfo == null) {
       return;
     }
-    String str1 = "";
-    String str2 = getString(2131694615);
-    if ((this.jdField_a_of_type_Int == 1) || ((paramPadInfo.creatorUin > 0L) && (this.app.getCurrentAccountUin().equalsIgnoreCase(String.valueOf(paramPadInfo.creatorUin))))) {
-      if (paramPadInfo.type == 1)
-      {
-        str1 = getString(2131691569);
-        str2 = getString(2131691555);
-        if ((paramPadInfo.creatorUin <= 0L) || (!this.app.getCurrentAccountUin().equalsIgnoreCase(String.valueOf(paramPadInfo.creatorUin)))) {
-          break label258;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, null, str1, getString(2131691573), getString(2131690800), str2, new GroupTeamWorkListActivity.11(this), new GroupTeamWorkListActivity.12(this, paramPadInfo), new GroupTeamWorkListActivity.13(this));
-      }
-    }
-    for (;;)
+    String str1 = getString(2131694583);
+    if ((this.jdField_a_of_type_Int != 1) && ((paramPadInfo.creatorUin <= 0L) || (!this.app.getCurrentAccountUin().equalsIgnoreCase(String.valueOf(paramPadInfo.creatorUin)))))
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-      return;
-      str1 = getString(2131691571);
-      str2 = getString(2131691555);
-      break;
-      if (!TroopUtils.a(this.app, this.jdField_a_of_type_Long, this.app.getCurrentAccountUin())) {
-        break;
-      }
-      if (paramPadInfo.type == 1)
+      if (TroopUtils.a(this.app, this.jdField_a_of_type_Long, this.app.getCurrentAccountUin()))
       {
-        str1 = getString(2131691568);
-        str2 = getString(2131691555);
-        break;
+        if (paramPadInfo.type == 1)
+        {
+          str1 = getString(2131691489);
+          str2 = getString(2131691476);
+        }
+        else
+        {
+          str1 = getString(2131691491);
+          str2 = getString(2131691476);
+        }
       }
-      str1 = getString(2131691570);
-      str2 = getString(2131691555);
-      break;
-      label258:
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setMessage(str1);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(str2, new GroupTeamWorkListActivity.14(this, paramPadInfo));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(getString(2131690800), new GroupTeamWorkListActivity.15(this));
+      else
+      {
+        str2 = "";
+        str3 = str1;
+        break label182;
+      }
     }
+    else if (paramPadInfo.type == 1)
+    {
+      str1 = getString(2131691490);
+      str2 = getString(2131691476);
+    }
+    else
+    {
+      str1 = getString(2131691492);
+      str2 = getString(2131691476);
+    }
+    String str3 = str2;
+    String str2 = str1;
+    label182:
+    if ((paramPadInfo.creatorUin > 0L) && (this.app.getCurrentAccountUin().equalsIgnoreCase(String.valueOf(paramPadInfo.creatorUin))))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, null, str2, getString(2131691494), getString(2131690728), str3, new GroupTeamWorkListActivity.11(this), new GroupTeamWorkListActivity.12(this, paramPadInfo), new GroupTeamWorkListActivity.13(this));
+    }
+    else
+    {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230).setMessage(str2);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(str3, new GroupTeamWorkListActivity.14(this, paramPadInfo));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(getString(2131690728), new GroupTeamWorkListActivity.15(this));
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
   public void a(int paramInt)
@@ -306,12 +326,13 @@ public class GroupTeamWorkListActivity
     {
       this.jdField_a_of_type_Boolean = true;
       startTitleProgress();
-    }
-    while (paramInt != 2) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
-    stopTitleProgress();
+    if (paramInt == 2)
+    {
+      this.jdField_a_of_type_Boolean = false;
+      stopTitleProgress();
+    }
   }
   
   public void a(PadInfo paramPadInfo)
@@ -357,10 +378,16 @@ public class GroupTeamWorkListActivity
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupTeamWorkListActivity", 2, " onActivityResult,requestCode=" + paramInt1 + ",resultCode=" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" onActivityResult,requestCode=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(",resultCode=");
+      localStringBuilder.append(paramInt2);
+      QLog.d("GroupTeamWorkListActivity", 2, localStringBuilder.toString());
     }
     if (paramInt1 == 14001)
     {
@@ -370,16 +397,16 @@ public class GroupTeamWorkListActivity
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131559338);
+    setContentView(2131559215);
     this.jdField_a_of_type_Long = getIntent().getLongExtra(TeamWorkConstants.e, 0L);
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkHandler = ((GroupTeamWorkHandler)this.app.getBusinessHandler(BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER));
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkApiIGroupTeamWorkHandler = ((IGroupTeamWorkHandler)this.app.getBusinessHandler(BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER));
     this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkManager = ((GroupTeamWorkManager)this.app.getManager(QQManagerFactory.GROUP_TEAM_WORK_MANAGER));
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkHandler = ((TeamWorkHandler)this.app.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER));
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkApiITeamWorkHandler = ((ITeamWorkHandler)this.app.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER));
     this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkManager = ((TeamWorkManager)this.app.getManager(QQManagerFactory.TEAMWORK_MANAGER));
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter = new GroupTeamWorkAdapter(this.app, this, this, null);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkIGroupTeamWorkAdapter = ((IGroupTeamWorkAdapterCreator)QRoute.api(IGroupTeamWorkAdapterCreator.class)).getGroupTeamWorkAdapter(this.app, this, this, null);
     a();
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkObserver);
     this.app.addObserver(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkObserver);
@@ -393,11 +420,11 @@ public class GroupTeamWorkListActivity
     }
     b(1);
     ((TroopInfoManager)this.app.getManager(QQManagerFactory.TROOPINFO_MANAGER)).a(this.app.getApp(), String.valueOf(this.jdField_a_of_type_Long), "TIM_GROUP_TM_REDDOT", false);
-    ((GroupTeamWorkHandler)this.app.getBusinessHandler(BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER)).b(this.jdField_a_of_type_Long);
+    ((IGroupTeamWorkHandler)this.app.getBusinessHandler(BusinessHandlerFactory.GROUP_TEAM_WORK_HANDLER)).getGroupTeamWorkListLastAddTime(this.jdField_a_of_type_Long);
     this.jdField_e_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.a(new GroupTeamWorkListActivity.1(this));
-    this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.b(this.jdField_a_of_type_JavaUtilList);
+    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTeamworkIGroupTeamWorkAdapter);
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkIGroupTeamWorkAdapter.a(new GroupTeamWorkListActivity.1(this));
+    this.jdField_a_of_type_ComTencentMobileqqTeamworkIGroupTeamWorkAdapter.a(this.jdField_a_of_type_JavaUtilList);
     this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateAdapter = new GroupPadTemplateAdapter(this, this);
     c(1);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateAdapter);
@@ -407,18 +434,20 @@ public class GroupTeamWorkListActivity
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentGridOptPopBar != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentGridOptPopBar.a();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRecentGridOptPopBar;
+    if (localObject != null) {
+      ((GridOptPopBar)localObject).a();
     }
-    if (this.jdField_a_of_type_MqqOsMqqHandler != null)
+    localObject = this.jdField_a_of_type_MqqOsMqqHandler;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(114);
+      ((MqqHandler)localObject).removeMessages(114);
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(111);
       this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(112);
     }
-    DBUtils.a(this.app.getCurrentAccountUin(), "group_file_inner_reddot_tim", String.valueOf(this.jdField_a_of_type_Long), false);
+    ((ITroopSPUtilApi)QRoute.api(ITroopSPUtilApi.class)).setGroupTIMFileNewsInfo(this.app.getCurrentAccountUin(), "group_file_inner_reddot_tim", String.valueOf(this.jdField_a_of_type_Long), false);
     this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkObserver);
     this.app.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkObserver);
     c();
@@ -428,15 +457,16 @@ public class GroupTeamWorkListActivity
     super.doOnDestroy();
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentGridOptPopBar != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentGridOptPopBar.a();
+    GridOptPopBar localGridOptPopBar = this.jdField_a_of_type_ComTencentMobileqqActivityRecentGridOptPopBar;
+    if (localGridOptPopBar != null) {
+      localGridOptPopBar.a();
     }
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
     ThreadManager.getUIHandler().postDelayed(new GroupTeamWorkListActivity.3(this), 100L);
@@ -446,47 +476,43 @@ public class GroupTeamWorkListActivity
   {
     switch (???.what)
     {
-    }
-    for (;;)
-    {
+    default: 
       return true;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null)
-      {
-        if (???.arg1 != 1) {
-          break label93;
+    case 115: 
+      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateAdapter != null) {
+        synchronized (this.jdField_b_of_type_JavaUtilList)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateAdapter.a(this.jdField_b_of_type_JavaUtilList);
+          if (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateAdapter.getCount() > 0)
+          {
+            this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+            return true;
+          }
         }
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
       }
-      for (;;)
+      break;
+    case 114: 
+      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(114);
+      if (this.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() == 8)
       {
-        ??? = new Message();
-        ???.what = 112;
-        this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(???, 500L);
+        this.jdField_d_of_type_AndroidViewView.setVisibility(8);
         return true;
-        label93:
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView == null) {
-        continue;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.springBackOverScrollHeaderView();
-      return true;
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter == null) {
-        continue;
-      }
-      int i = ???.arg1;
-      i = ???.arg2;
-      if (i == 4) {
-        a(false);
-      }
-      for (;;)
+      break;
+    case 113: 
+      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkIGroupTeamWorkAdapter != null)
       {
+        int i = ???.arg1;
+        i = ???.arg2;
+        if (i == 4) {
+          a(false);
+        }
         synchronized (this.jdField_a_of_type_JavaUtilList)
         {
-          this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.b(this.jdField_a_of_type_JavaUtilList);
+          this.jdField_a_of_type_ComTencentMobileqqTeamworkIGroupTeamWorkAdapter.a(this.jdField_a_of_type_JavaUtilList);
           if (i == 1)
           {
-            if (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.getCount() > 0)
+            if (this.jdField_a_of_type_ComTencentMobileqqTeamworkIGroupTeamWorkAdapter.getCount() > 0)
             {
               if (this.jdField_e_of_type_AndroidViewView.getVisibility() == 0) {
                 this.jdField_e_of_type_AndroidViewView.setVisibility(8);
@@ -499,85 +525,93 @@ public class GroupTeamWorkListActivity
                 a(1);
               }
             }
-            if ((!this.jdField_a_of_type_Boolean) && (i != 5)) {
-              break;
+          }
+          else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkIGroupTeamWorkAdapter.getCount() > 0)
+          {
+            if (this.jdField_e_of_type_AndroidViewView.getVisibility() == 0) {
+              this.jdField_e_of_type_AndroidViewView.setVisibility(8);
             }
+            if (this.g.getVisibility() == 0) {
+              this.g.setVisibility(8);
+            }
+            this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setVisibility(0);
+            if (this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.getLastVisiblePosition() - this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.getFirstVisiblePosition() + 1 >= this.jdField_a_of_type_ComTencentMobileqqTeamworkIGroupTeamWorkAdapter.getCount()) {
+              this.jdField_d_of_type_AndroidViewView.setVisibility(8);
+            }
+          }
+          else
+          {
+            if (this.jdField_e_of_type_AndroidViewView.getVisibility() == 0) {
+              this.jdField_e_of_type_AndroidViewView.setVisibility(8);
+            }
+            if (this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.getVisibility() == 0) {
+              this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setVisibility(8);
+            }
+            this.g.setVisibility(0);
+          }
+          if ((this.jdField_a_of_type_Boolean) || (i == 5))
+          {
             a(2);
             return true;
           }
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.getCount() > 0)
-        {
-          if (this.jdField_e_of_type_AndroidViewView.getVisibility() == 0) {
-            this.jdField_e_of_type_AndroidViewView.setVisibility(8);
-          }
-          if (this.g.getVisibility() == 0) {
-            this.g.setVisibility(8);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setVisibility(0);
-          if (this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.getLastVisiblePosition() - this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.getFirstVisiblePosition() + 1 >= this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.getCount()) {
-            this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-          }
-        }
-        else
-        {
-          if (this.jdField_e_of_type_AndroidViewView.getVisibility() == 0) {
-            this.jdField_e_of_type_AndroidViewView.setVisibility(8);
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.getVisibility() == 0) {
-            this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView.setVisibility(8);
-          }
-          this.g.setVisibility(0);
-        }
       }
-      this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(114);
-      if (this.jdField_a_of_type_AndroidWidgetProgressBar.getVisibility() != 8) {
-        continue;
-      }
-      this.jdField_d_of_type_AndroidViewView.setVisibility(8);
-      return true;
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateAdapter == null) {
-        continue;
-      }
-      synchronized (this.jdField_b_of_type_JavaUtilList)
+      break;
+    case 112: 
+      ??? = this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView;
+      if (??? != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateAdapter.a(this.jdField_b_of_type_JavaUtilList);
-        if (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupPadTemplateAdapter.getCount() <= 0) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setVisibility(0);
+        ???.springBackOverScrollHeaderView();
         return true;
       }
+      break;
+    case 111: 
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader != null) {
+        if (???.arg1 == 1) {
+          this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0);
+        } else {
+          this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
+        }
+      }
+      ??? = new Message();
+      ???.what = 112;
+      this.jdField_a_of_type_MqqOsMqqHandler.sendMessageDelayed(???, 500L);
     }
+    return true;
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentGridOptPopBar != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentGridOptPopBar.a();
+    GridOptPopBar localGridOptPopBar = this.jdField_a_of_type_ComTencentMobileqqActivityRecentGridOptPopBar;
+    if (localGridOptPopBar != null) {
+      localGridOptPopBar.a();
     }
     return super.onBackEvent();
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131369216)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      TeamWorkUtils.a(this.app, "0X800993A");
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentGridOptPopBar != null)
+      if (i == 2131378351)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentGridOptPopBar.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getWidth() - getResources().getDimensionPixelSize(2131298898), getResources().getDimensionPixelSize(2131298895));
-        continue;
         a(this.jdField_a_of_type_Long, 0, 20, 1);
         this.f.setVisibility(8);
         this.jdField_e_of_type_AndroidViewView.setVisibility(0);
       }
     }
+    else
+    {
+      ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).report(this.app, "0X800993A");
+      GridOptPopBar localGridOptPopBar = this.jdField_a_of_type_ComTencentMobileqqActivityRecentGridOptPopBar;
+      if (localGridOptPopBar != null)
+      {
+        RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+        localGridOptPopBar.a(localRelativeLayout, localRelativeLayout.getWidth() - getResources().getDimensionPixelSize(2131298902), getResources().getDimensionPixelSize(2131298899));
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -610,21 +644,26 @@ public class GroupTeamWorkListActivity
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramInt == 0) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      if ((this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkforgroupGroupTeamWorkAdapter.getCount() > 0) && (this.jdField_c_of_type_Boolean) && (paramInt != 0))
-      {
-        if (this.jdField_b_of_type_Int == 0) {
-          break;
-        }
-        a(true);
-        a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, 20, 3);
-      }
-      return;
+    if (paramInt == 0) {
+      paramInt = 1;
+    } else {
+      paramInt = 0;
     }
-    a(false);
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(114, 1500L);
+    if (this.jdField_b_of_type_Boolean)
+    {
+      paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqTeamworkIGroupTeamWorkAdapter;
+      if ((paramAbsListView != null) && (paramAbsListView.getCount() > 0) && (this.jdField_c_of_type_Boolean) && (paramInt != 0))
+      {
+        if (this.jdField_b_of_type_Int != 0)
+        {
+          a(true);
+          a(this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, 20, 3);
+          return;
+        }
+        a(false);
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(114, 1500L);
+      }
+    }
   }
   
   public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
@@ -644,7 +683,7 @@ public class GroupTeamWorkListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamworkforgroup.GroupTeamWorkListActivity
  * JD-Core Version:    0.7.0.1
  */

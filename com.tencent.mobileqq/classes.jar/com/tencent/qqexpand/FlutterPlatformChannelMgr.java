@@ -16,15 +16,16 @@ public class FlutterPlatformChannelMgr
   
   public static FlutterPlatformChannelMgr getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new FlutterPlatformChannelMgr();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new FlutterPlatformChannelMgr();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private void registerChannel(String paramString, FlutterPlatformProtocolBase paramFlutterPlatformProtocolBase)
@@ -65,7 +66,8 @@ public class FlutterPlatformChannelMgr
     Log.d("Expand.PlatformChannelMgr", "init");
     paramBinaryMessenger = new FlutterPushModuleProtocol(paramBinaryMessenger);
     registerChannel("FlutterPushModuleProtocol", paramBinaryMessenger);
-    if ((this.mDelegateWrapper != null) && (this.mDelegateWrapper.mPushModuleDelegate != null)) {
+    ExpandChannelDelegates localExpandChannelDelegates = this.mDelegateWrapper;
+    if ((localExpandChannelDelegates != null) && (localExpandChannelDelegates.mPushModuleDelegate != null)) {
       paramBinaryMessenger.setPushModuleDelegate(this.mDelegateWrapper.mPushModuleDelegate);
     }
   }
@@ -74,22 +76,19 @@ public class FlutterPlatformChannelMgr
   {
     Log.d("Expand.PlatformChannelMgr", "setChannelDelegates");
     this.mDelegateWrapper = paramExpandChannelDelegates;
-    FlutterPushModuleProtocol localFlutterPushModuleProtocol;
     if (paramExpandChannelDelegates.mPushModuleDelegate != null)
     {
-      localFlutterPushModuleProtocol = (FlutterPushModuleProtocol)this.mProtocolWrapperSet.get("FlutterPushModuleProtocol");
-      if (localFlutterPushModuleProtocol != null) {}
+      FlutterPushModuleProtocol localFlutterPushModuleProtocol = (FlutterPushModuleProtocol)this.mProtocolWrapperSet.get("FlutterPushModuleProtocol");
+      if (localFlutterPushModuleProtocol == null) {
+        return;
+      }
+      localFlutterPushModuleProtocol.setPushModuleDelegate(paramExpandChannelDelegates.mPushModuleDelegate);
     }
-    else
-    {
-      return;
-    }
-    localFlutterPushModuleProtocol.setPushModuleDelegate(paramExpandChannelDelegates.mPushModuleDelegate);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqexpand.FlutterPlatformChannelMgr
  * JD-Core Version:    0.7.0.1
  */

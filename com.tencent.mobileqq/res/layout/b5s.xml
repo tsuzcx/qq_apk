@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="53.0dip" android:weightSum="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.panel.EditTextPanel android:id="@id/panelLayout" android:paddingRight="5.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0"
+    <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.EditTextPanel android:id="@id/panelLayout" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0"
       xmlns:android="http://schemas.android.com/apk/res/android" />
 </LinearLayout>

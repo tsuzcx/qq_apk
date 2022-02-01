@@ -32,39 +32,32 @@ class d$1
   
   public void b(c paramc)
   {
-    long l1;
-    long l2;
     if (!this.a.f())
     {
-      l1 = d.a(this.b).getContentLength();
-      l2 = paramc.a();
+      long l1 = d.a(this.b).getContentLength();
+      long l2 = paramc.a();
       if (l1 < 0L) {
-        break label77;
+        l1 = l2;
       }
-    }
-    for (;;)
-    {
       this.a.d(l1);
-      try
-      {
-        int i = d.a(this.b).getResponseCode();
-        this.a.c(i);
-        label61:
-        d.a(this.b, this.a);
-        return;
-      }
-      catch (IOException paramc)
-      {
-        break label61;
-      }
-      label77:
-      l1 = l2;
+    }
+    try
+    {
+      int i = d.a(this.b).getResponseCode();
+      this.a.c(i);
+      label67:
+      d.a(this.b, this.a);
+      return;
+    }
+    catch (IOException paramc)
+    {
+      break label67;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.d.1
  * JD-Core Version:    0.7.0.1
  */

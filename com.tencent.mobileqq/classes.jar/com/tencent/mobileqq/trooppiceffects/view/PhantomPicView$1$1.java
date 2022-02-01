@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.trooppiceffects.view;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class PhantomPicView$1$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   PhantomPicView$1$1(PhantomPicView.1 param1) {}
   
@@ -21,7 +21,7 @@ class PhantomPicView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.trooppiceffects.view.PhantomPicView.1.1
  * JD-Core Version:    0.7.0.1
  */

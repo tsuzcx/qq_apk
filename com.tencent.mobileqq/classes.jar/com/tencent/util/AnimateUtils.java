@@ -11,27 +11,31 @@ public final class AnimateUtils
   static
   {
     jdField_a_of_type_ArrayOfFloat = new float[101];
-    float f1 = 0.0F;
+    float f2 = 0.0F;
     int i = 0;
     if (i <= 100)
     {
       float f4 = i / 100.0F;
-      float f2 = 1.0F;
+      float f1 = 1.0F;
       for (;;)
       {
-        float f3 = (f2 - f1) / 2.0F + f1;
-        float f5 = 3.0F * f3 * (1.0F - f3);
-        float f6 = ((1.0F - f3) * jdField_a_of_type_Float + b * f3) * f5 + f3 * f3 * f3;
-        if (Math.abs(f6 - f4) < 1.E-005D)
+        float f3 = (f1 - f2) / 2.0F + f2;
+        float f7 = 1.0F - f3;
+        float f5 = 3.0F * f3 * f7;
+        float f8 = jdField_a_of_type_Float;
+        float f9 = b;
+        float f6 = f3 * f3 * f3;
+        f7 = (f7 * f8 + f9 * f3) * f5 + f6;
+        if (Math.abs(f7 - f4) < 1.E-005D)
         {
-          jdField_a_of_type_ArrayOfFloat[i] = (f3 * f3 * f3 + f5);
+          jdField_a_of_type_ArrayOfFloat[i] = (f5 + f6);
           i += 1;
           break;
         }
-        if (f6 > f4) {
-          f2 = f3;
-        } else {
+        if (f7 > f4) {
           f1 = f3;
+        } else {
+          f2 = f3;
         }
       }
     }
@@ -42,16 +46,18 @@ public final class AnimateUtils
   
   public static float a(float paramFloat)
   {
-    paramFloat = c * paramFloat;
-    if (paramFloat < 1.0F) {}
-    for (paramFloat -= 1.0F - (float)Math.exp(-paramFloat);; paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * (1.0F - 0.3678795F) + 0.3678795F) {
-      return paramFloat * d;
+    paramFloat *= c;
+    if (paramFloat < 1.0F) {
+      paramFloat -= 1.0F - (float)Math.exp(-paramFloat);
+    } else {
+      paramFloat = (1.0F - (float)Math.exp(1.0F - paramFloat)) * 0.6321206F + 0.3678795F;
     }
+    return paramFloat * d;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.AnimateUtils
  * JD-Core Version:    0.7.0.1
  */

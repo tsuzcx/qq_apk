@@ -13,22 +13,21 @@ class ArkNodeView$1
   
   public void onClick(View paramView)
   {
-    ArkViewModel localArkViewModel = null;
+    ArkViewModel localArkViewModel;
     if (ArkNodeView.a(this.a) != null) {
       localArkViewModel = ArkNodeView.a(this.a).mViewImpl.getViewModel();
+    } else {
+      localArkViewModel = null;
     }
-    if (localArkViewModel == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (localArkViewModel != null) {
       localArkViewModel.reinitArkContainer();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkNodeView.1
  * JD-Core Version:    0.7.0.1
  */

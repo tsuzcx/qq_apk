@@ -10,22 +10,23 @@ public class RoundEmptyRectRelativeLayout$ClipRoundRect
   
   public RoundEmptyRectRelativeLayout$ClipRoundRect(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramFloat1, paramFloat2, paramFloat1 + paramFloat3, paramFloat2 + paramFloat4);
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramFloat1, paramFloat2, paramFloat3 + paramFloat1, paramFloat4 + paramFloat2);
     this.jdField_a_of_type_ArrayOfFloat = new float[] { paramFloat5, paramFloat5, paramFloat5, paramFloat5, paramFloat5, paramFloat5, paramFloat5, paramFloat5 };
   }
   
   @NonNull
   public String toString()
   {
-    if (this.jdField_a_of_type_AndroidGraphicsRectF != null) {
-      return this.jdField_a_of_type_AndroidGraphicsRectF.toString();
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    if (localRectF != null) {
+      return localRectF.toString();
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.RoundEmptyRectRelativeLayout.ClipRoundRect
  * JD-Core Version:    0.7.0.1
  */

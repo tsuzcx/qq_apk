@@ -29,17 +29,12 @@ public class TroopStoryMainActivity
   extends QQStoryBaseActivity
   implements IMyStoryListView
 {
-  public static final String a;
+  public static final String a = "com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity";
   protected StoryInputBarView a;
   public FeedManager a;
   public TroopStoryListView a;
   public FullScreenEmptyView a;
   protected Runnable a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = TroopStoryMainActivity.class.getName();
-  }
   
   public TroopStoryMainActivity()
   {
@@ -93,20 +88,20 @@ public class TroopStoryMainActivity
     super.doOnBackPressed();
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mUseOptimizMode = true;
     super.doOnCreate(paramBundle);
-    super.setContentView(2131561945);
-    super.setTitle(HardCodeUtil.a(2131715649));
+    super.setContentView(2131561792);
+    super.setTitle(HardCodeUtil.a(2131715573));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager = ((FeedManager)SuperManager.a(11));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a.clear();
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = ((StoryInputBarView)super.findViewById(2131375025));
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView = ((TroopStoryListView)super.findViewById(2131370504));
+    this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = ((StoryInputBarView)super.findViewById(2131374556));
+    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView = ((TroopStoryListView)super.findViewById(2131370164));
     this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.a(this, this);
     this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.setDivider(null);
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.setContentBackground(2130839532);
-    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.getParent()).setBackgroundColor(getResources().getColor(2131167093));
+    this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.setContentBackground(2130839388);
+    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.getParent()).setBackgroundColor(getResources().getColor(2131167116));
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetFullScreenEmptyView = new FullScreenEmptyView(this);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetFullScreenEmptyView.setVisibility(8);
     ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.getParent()).addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetFullScreenEmptyView);
@@ -118,31 +113,34 @@ public class TroopStoryMainActivity
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.l();
+    TroopStoryListView localTroopStoryListView = this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView;
+    if (localTroopStoryListView != null) {
+      localTroopStoryListView.l();
     }
     this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.d();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a.clear();
     ThreadManager.getUIHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.k();
+    TroopStoryListView localTroopStoryListView = this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView;
+    if (localTroopStoryListView != null) {
+      localTroopStoryListView.k();
     }
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView != null)
+    TroopStoryListView localTroopStoryListView = this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView;
+    if (localTroopStoryListView != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.o();
+      localTroopStoryListView.o();
       this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.p();
     }
   }
@@ -151,20 +149,21 @@ public class TroopStoryMainActivity
   
   public void h() {}
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView.a(paramInt1, paramInt2, paramIntent);
+    TroopStoryListView localTroopStoryListView = this.jdField_a_of_type_ComTencentBizQqstoryTroopActivityTroopStoryListView;
+    if (localTroopStoryListView != null) {
+      localTroopStoryListView.a(paramInt1, paramInt2, paramIntent);
     }
-    if (paramInt2 == -1) {}
-    switch (paramInt1)
+    if (paramInt2 == -1)
     {
-    default: 
-      return;
+      if (paramInt1 != 30000) {
+        return;
+      }
+      AtVideoTextWatcher.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a, paramIntent);
+      ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
     }
-    AtVideoTextWatcher.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a, paramIntent);
-    ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
   }
   
   @Override
@@ -176,7 +175,7 @@ public class TroopStoryMainActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.activity.TroopStoryMainActivity
  * JD-Core Version:    0.7.0.1
  */

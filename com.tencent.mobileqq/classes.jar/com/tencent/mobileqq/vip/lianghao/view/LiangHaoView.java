@@ -42,7 +42,7 @@ public class LiangHaoView
   {
     setOrientation(0);
     this.jdField_a_of_type_AndroidViewView = new View(getContext());
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130847539);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130847407);
     int i = Utils.a(12.0F, getResources());
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i, i);
     localLayoutParams.rightMargin = Utils.a(5.0F, getResources());
@@ -59,44 +59,49 @@ public class LiangHaoView
   public void setEnabled(boolean paramBoolean)
   {
     super.setEnabled(paramBoolean);
-    if (!paramBoolean) {}
-    for (float f = 0.5F;; f = 1.0F)
-    {
-      setAlpha(f);
-      return;
+    float f;
+    if (!paramBoolean) {
+      f = 0.5F;
+    } else {
+      f = 1.0F;
     }
+    setAlpha(f);
   }
   
   public void setUin(LiangHaoUinData paramLiangHaoUinData)
   {
-    int j = 0;
-    if ((paramLiangHaoUinData == null) || (TextUtils.isEmpty(paramLiangHaoUinData.a))) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData = paramLiangHaoUinData;
-    SpannableString localSpannableString = new SpannableString(paramLiangHaoUinData.a);
-    int i;
-    if (TextUtils.isEmpty(paramLiangHaoUinData.b)) {
-      i = -1;
-    }
-    for (;;)
+    if (paramLiangHaoUinData != null)
     {
+      if (TextUtils.isEmpty(paramLiangHaoUinData.a)) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqVipLianghaoDataLiangHaoUinData = paramLiangHaoUinData;
+      Object localObject = new SpannableString(paramLiangHaoUinData.a);
+      int i = -1;
+      boolean bool = TextUtils.isEmpty(paramLiangHaoUinData.b);
+      int j = 0;
+      if (!bool)
+      {
+        i = paramLiangHaoUinData.a.indexOf(paramLiangHaoUinData.b);
+        if (i >= 0) {
+          j = 1;
+        }
+      }
       if (j != 0) {
-        localSpannableString.setSpan(new ForegroundColorSpan(-31676), i, paramLiangHaoUinData.b.length() + i, 18);
+        ((SpannableString)localObject).setSpan(new ForegroundColorSpan(-31676), i, paramLiangHaoUinData.b.length() + i, 18);
       }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localSpannableString);
-      setContentDescription(HardCodeUtil.a(2131693658) + " " + paramLiangHaoUinData.a);
-      return;
-      i = paramLiangHaoUinData.a.indexOf(paramLiangHaoUinData.b);
-      if (i >= 0) {
-        j = 1;
-      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131693611));
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramLiangHaoUinData.a);
+      setContentDescription(((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.view.LiangHaoView
  * JD-Core Version:    0.7.0.1
  */

@@ -32,31 +32,24 @@ public class VSwitch
   public VSwitch(ViolaInstance paramViolaInstance, DomObject paramDomObject, VComponentContainer paramVComponentContainer)
   {
     super(paramViolaInstance, paramDomObject, paramVComponentContainer);
-    paramViolaInstance = new int[] { 16842912 };
-    paramDomObject = new int[] { 0 };
+    paramViolaInstance = new int[] { 0 };
     int i = this.mActiveColor;
     int j = this.mInActiveColor;
-    this.mColorStateList = new ColorStateList(new int[][] { paramViolaInstance, paramDomObject }, new int[] { i, j });
+    this.mColorStateList = new ColorStateList(new int[][] { { 16842912 }, paramViolaInstance }, new int[] { i, j });
   }
   
   public void addEvent(String paramString)
   {
-    int i = -1;
-    switch (paramString.hashCode())
-    {
+    int i;
+    if ((paramString.hashCode() == -1361636432) && (paramString.equals("change"))) {
+      i = 0;
+    } else {
+      i = -1;
     }
-    for (;;)
+    if (i != 0)
     {
-      switch (i)
-      {
-      default: 
-        super.addEvent(paramString);
-        return;
-        if (paramString.equals("change")) {
-          i = 0;
-        }
-        break;
-      }
+      super.addEvent(paramString);
+      return;
     }
     this.mAppendEvents.add(paramString);
   }
@@ -97,49 +90,56 @@ public class VSwitch
     String str = ViolaUtils.getString(paramObject, null);
     if (str != null)
     {
-      i = -1;
-      switch (paramString.hashCode())
+      int i = -1;
+      int j = paramString.hashCode();
+      if (j != -1742453971)
       {
-      }
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return super.setProperty(paramString, paramObject);
-        if (paramString.equals("activeColor"))
+        if (j != -1077332995)
         {
-          i = 0;
-          continue;
-          if (paramString.equals("inactiveColor"))
-          {
+          if ((j == -505680456) && (paramString.equals("inactiveColor"))) {
             i = 1;
-            continue;
-            if (paramString.equals("thumbColor")) {
-              i = 2;
-            }
           }
         }
-        break;
+        else if (paramString.equals("activeColor")) {
+          i = 0;
+        }
+      }
+      else if (paramString.equals("thumbColor")) {
+        i = 2;
+      }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i == 2)
+          {
+            ((VSwitchView)getHostView()).setThumbResource(ColorParseUtils.parseColor(str));
+            return true;
+          }
+        }
+        else
+        {
+          this.mInActiveColor = ColorParseUtils.parseColor(str);
+          paramString = new int[] { 16842912 };
+          paramObject = new int[] { 0 };
+          i = this.mActiveColor;
+          j = this.mInActiveColor;
+          this.mColorStateList = new ColorStateList(new int[][] { paramString, paramObject }, new int[] { i, j });
+          ((VSwitchView)getHostView()).setTrackTintList(this.mColorStateList);
+          return true;
+        }
+      }
+      else
+      {
+        this.mActiveColor = ColorParseUtils.parseColor(str);
+        i = this.mActiveColor;
+        j = this.mInActiveColor;
+        this.mColorStateList = new ColorStateList(new int[][] { { 16842912 }, { 0 } }, new int[] { i, j });
+        ((VSwitchView)getHostView()).setTrackTintList(this.mColorStateList);
+        return true;
       }
     }
-    this.mActiveColor = ColorParseUtils.parseColor(str);
-    paramString = new int[] { 16842912 };
-    paramObject = new int[] { 0 };
-    int i = this.mActiveColor;
-    int j = this.mInActiveColor;
-    this.mColorStateList = new ColorStateList(new int[][] { paramString, paramObject }, new int[] { i, j });
-    ((VSwitchView)getHostView()).setTrackTintList(this.mColorStateList);
-    return true;
-    this.mInActiveColor = ColorParseUtils.parseColor(str);
-    i = this.mActiveColor;
-    j = this.mInActiveColor;
-    this.mColorStateList = new ColorStateList(new int[][] { { 16842912 }, { 0 } }, new int[] { i, j });
-    ((VSwitchView)getHostView()).setTrackTintList(this.mColorStateList);
-    return true;
-    ((VSwitchView)getHostView()).setThumbResource(ColorParseUtils.parseColor(str));
-    return true;
+    return super.setProperty(paramString, paramObject);
   }
   
   public void switchFireEvent(String paramString, boolean paramBoolean)
@@ -149,29 +149,33 @@ public class VSwitch
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("active", paramBoolean);
-      JSONArray localJSONArray = new JSONArray();
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("active", paramBoolean);
+      localObject2 = new JSONArray();
       if (((VSwitchView)getHostView()).getComponent().getDomObject() != null)
       {
         String str = ((VSwitchView)getHostView()).getComponent().getDomObject().getRef();
         if (str != null) {
-          localJSONArray.put(str);
+          ((JSONArray)localObject2).put(str);
         }
       }
-      localJSONArray.put(paramString);
-      fireEvent(paramString, localJSONArray, localJSONObject);
+      ((JSONArray)localObject2).put(paramString);
+      fireEvent(paramString, localObject2, localObject1);
       return;
     }
     catch (Exception paramString)
     {
-      ViolaLogUtils.e(TAG, "switchFireEvent error :" + paramString.getMessage());
+      Object localObject1 = TAG;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("switchFireEvent error :");
+      ((StringBuilder)localObject2).append(paramString.getMessage());
+      ViolaLogUtils.e((String)localObject1, ((StringBuilder)localObject2).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VSwitch
  * JD-Core Version:    0.7.0.1
  */

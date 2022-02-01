@@ -1,12 +1,14 @@
 package com.tencent.weseevideo.composition.image;
 
-import com.tencent.tav.asset.Asset;
+import android.opengl.EGLContext;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTime;
+import com.tencent.tav.decoder.RenderContext;
 import com.tencent.tavcut.util.DurationUtil;
 import com.tencent.tavkit.composition.TAVComposition;
 import com.tencent.tavkit.composition.TAVSource;
 import com.tencent.tavkit.composition.builder.TAVCompositionBuilder;
+import com.tencent.weseevideo.composition.TAVAutomaticTransRenderContext;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,45 +27,36 @@ public class WSImageRender
   
   public void release()
   {
-    if (this.imageGenerator != null)
+    AssetImageGenerator localAssetImageGenerator = this.imageGenerator;
+    if (localAssetImageGenerator != null)
     {
-      this.imageGenerator.release();
+      localAssetImageGenerator.release();
       this.imageGenerator = null;
     }
   }
   
-  public void render(WSImageRender.ImageRenderCallback paramImageRenderCallback)
+  public void render(WSImageRender.ImageRenderCallback paramImageRenderCallback, EGLContext paramEGLContext, AssetImageGenerator.ImageGeneratorThread paramImageGeneratorThread, RenderContext paramRenderContext)
   {
-    DurationUtil.start("image render");
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(CMTime.CMTimeZero);
-    this.imageGenerator.generateCGImagesAsynchronouslyForTimes(localArrayList, new WSImageRender.1(this, paramImageRenderCallback));
-  }
-  
-  public void setCurrent(int paramInt)
-  {
-    if (this.imageGenerator != null) {
-      this.imageGenerator.setCurrent(paramInt);
+    if (this.imageGenerator != null)
+    {
+      DurationUtil.start("image render");
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(CMTime.CMTimeZero);
+      this.imageGenerator.generateCGImagesAsynchronouslyForTimes(localArrayList, new WSImageRender.1(this, paramImageRenderCallback), paramEGLContext, paramImageGeneratorThread, paramRenderContext);
     }
   }
   
-  public void setMineIndex(int paramInt)
+  public void setTansRenderContext(TAVAutomaticTransRenderContext paramTAVAutomaticTransRenderContext)
   {
-    if (this.imageGenerator != null) {
-      this.imageGenerator.setIndex(paramInt);
-    }
-  }
-  
-  public void update(Asset paramAsset, CGSize paramCGSize)
-  {
-    if (this.imageGenerator != null) {
-      this.imageGenerator.updateAsset(paramAsset, paramCGSize);
+    AssetImageGenerator localAssetImageGenerator = this.imageGenerator;
+    if (localAssetImageGenerator != null) {
+      localAssetImageGenerator.setTansRenderContext(paramTAVAutomaticTransRenderContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.image.WSImageRender
  * JD-Core Version:    0.7.0.1
  */

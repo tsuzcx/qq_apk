@@ -55,26 +55,32 @@ public final class Logger
   
   public final void exception(@Nullable String paramString1, @Nullable String paramString2, @Nullable Throwable paramThrowable)
   {
-    if ((paramString1 == null) || (paramThrowable == null)) {}
-    while (logLevel.compareTo((Enum)LogState.ERROR) < 0) {
-      return;
-    }
-    if (paramString2 != null) {}
-    for (;;)
+    if (paramString1 != null)
     {
-      e(new String[] { paramString1, paramString2, getThrowableMessage(paramThrowable) });
-      return;
-      paramString2 = "";
+      if (paramThrowable == null) {
+        return;
+      }
+      if (logLevel.compareTo((Enum)LogState.ERROR) >= 0)
+      {
+        if (paramString2 == null) {
+          paramString2 = "";
+        }
+        e(new String[] { paramString1, paramString2, getThrowableMessage(paramThrowable) });
+      }
     }
   }
   
   public final void exception(@Nullable String paramString, @Nullable Throwable paramThrowable)
   {
-    if ((paramString == null) || (paramThrowable == null)) {}
-    while (logLevel.compareTo((Enum)LogState.ERROR) < 0) {
-      return;
+    if (paramString != null)
+    {
+      if (paramThrowable == null) {
+        return;
+      }
+      if (logLevel.compareTo((Enum)LogState.ERROR) >= 0) {
+        e(new String[] { paramString, getThrowableMessage(paramThrowable) });
+      }
     }
-    e(new String[] { paramString, getThrowableMessage(paramThrowable) });
   }
   
   public final int getIntLevel()
@@ -123,13 +129,10 @@ public final class Logger
   public final void resetLogLevel(int paramInt)
   {
     LogState localLogState = LogState.Companion.getByValue(paramInt);
-    if (localLogState != null) {}
-    for (;;)
-    {
-      setLogLevel(localLogState);
-      return;
+    if (localLogState == null) {
       localLogState = LogState.OFF;
     }
+    setLogLevel(localLogState);
   }
   
   public final void setIntLevel(int paramInt)
@@ -140,14 +143,15 @@ public final class Logger
   public final void setLogLevel(@NotNull LogState paramLogState)
   {
     Intrinsics.checkParameterIsNotNull(paramLogState, "level");
-    if (paramLogState == LogState.DEBUG) {}
-    for (boolean bool = true;; bool = false)
-    {
-      debug = bool;
-      logLevel = paramLogState;
-      intLevel = logLevel.getValue();
-      return;
+    boolean bool;
+    if (paramLogState == LogState.DEBUG) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    debug = bool;
+    logLevel = paramLogState;
+    intLevel = logLevel.getValue();
   }
   
   public final void setLogProxy(@Nullable ILogProxy paramILogProxy)
@@ -180,7 +184,7 @@ public final class Logger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.logger.Logger
  * JD-Core Version:    0.7.0.1
  */

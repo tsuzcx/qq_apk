@@ -11,6 +11,7 @@ import com.tencent.mobileqq.filemanager.api.IFMConfig;
 import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.recreate.IFModel;
 import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
 import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
@@ -45,56 +46,59 @@ public class OfflineFileMultiOperate
       QLog.w("OfflineFileMultiOperate", 1, "fileList == null");
       return;
     }
-    paramList = paramList.iterator();
     int i = 0;
-    if (paramList.hasNext())
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
       paramQFileMultiOperateCallback = (FileManagerEntity)paramList.next();
-      if (QfavBuilder.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, paramQFileMultiOperateCallback, null, true)) {
-        break label96;
+      if (!QfavBuilder.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidAppActivity, paramQFileMultiOperateCallback, null, true)) {
+        i = 1;
       }
-      i = 1;
     }
-    label96:
-    for (;;)
+    if (i != 0)
     {
-      break;
-      if (i != 0)
-      {
-        FileManagerUtil.c(this.jdField_a_of_type_AndroidAppActivity.getString(2131698158));
-        return;
-      }
-      FMToastUtil.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131719640));
+      FileManagerUtil.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131698195));
       return;
     }
+    FMToastUtil.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131719359));
   }
   
   public void a(List<FileManagerEntity> paramList, int paramInt, QFileMultiOperateCallback paramQFileMultiOperateCallback)
   {
-    if ((paramList == null) || (paramList.size() == 0))
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      QLog.e("OfflineFileMultiOperate", 1, "doFileMultiOperate no any file");
-      return;
-    }
-    switch (paramInt)
-    {
-    default: 
-      QLog.e("OfflineFileMultiOperate", 1, "doFileMultiOperate unkonw optype:" + paramInt);
-      return;
-    case 3: 
-      a(paramList, paramQFileMultiOperateCallback);
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4)
+            {
+              if (paramInt != 5)
+              {
+                paramList = new StringBuilder();
+                paramList.append("doFileMultiOperate unkonw optype:");
+                paramList.append(paramInt);
+                QLog.e("OfflineFileMultiOperate", 1, paramList.toString());
+                return;
+              }
+              e(paramList, paramQFileMultiOperateCallback);
+              return;
+            }
+            d(paramList, paramQFileMultiOperateCallback);
+            return;
+          }
+          a(paramList, paramQFileMultiOperateCallback);
+          return;
+        }
+        c(paramList, paramQFileMultiOperateCallback);
+        return;
+      }
       b(paramList, paramQFileMultiOperateCallback);
       return;
-    case 2: 
-      c(paramList, paramQFileMultiOperateCallback);
-      return;
-    case 4: 
-      d(paramList, paramQFileMultiOperateCallback);
-      return;
     }
-    e(paramList, paramQFileMultiOperateCallback);
+    QLog.e("OfflineFileMultiOperate", 1, "doFileMultiOperate no any file");
   }
   
   protected void a(List<FileManagerEntity> paramList, QFileMultiOperateCallback paramQFileMultiOperateCallback)
@@ -119,93 +123,81 @@ public class OfflineFileMultiOperate
   
   protected void b(List<FileManagerEntity> paramList, QFileMultiOperateCallback paramQFileMultiOperateCallback)
   {
-    if (!NetworkUtil.d(BaseApplication.getContext())) {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131694510, 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299166));
-    }
-    long l;
-    do
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131694475, 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299168));
       return;
-      l = 0L;
-      if ((paramList.size() != 1) || (!((FileManagerEntity)paramList.get(0)).sendCloudUnsuccessful())) {
-        break;
+    }
+    long l = 0L;
+    if ((paramList.size() == 1) && (((FileManagerEntity)paramList.get(0)).sendCloudUnsuccessful()))
+    {
+      FMToastUtil.a(2131692449);
+      if (paramQFileMultiOperateCallback != null) {
+        paramQFileMultiOperateCallback.a(1, 2);
       }
-      FMToastUtil.a(2131692511);
-    } while (paramQFileMultiOperateCallback == null);
-    paramQFileMultiOperateCallback.a(1, 2);
-    return;
+      return;
+    }
     Object localObject = paramList.iterator();
-    label90:
     FileManagerEntity localFileManagerEntity;
-    if (((Iterator)localObject).hasNext())
+    while (((Iterator)localObject).hasNext())
     {
       localFileManagerEntity = (FileManagerEntity)((Iterator)localObject).next();
-      if (!FileModel.a(localFileManagerEntity).a(true)) {
-        break label247;
+      if (FileModel.a(localFileManagerEntity).a(true)) {
+        l += localFileManagerEntity.fileSize;
       }
-      l = localFileManagerEntity.fileSize + l;
     }
-    label247:
-    for (;;)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine();
+    if ((FileManagerUtil.a()) && (l > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
     {
-      break label90;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine();
-      if ((FileManagerUtil.a()) && (l > ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize()))
-      {
-        FileManagerUtil.a(false, this.jdField_a_of_type_AndroidAppActivity, new OfflineFileMultiOperate.3(this, paramList, (FileManagerEngine)localObject, paramQFileMultiOperateCallback));
-        return;
-      }
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        localFileManagerEntity = (FileManagerEntity)paramList.next();
-        if (!localFileManagerEntity.sendCloudUnsuccessful()) {
-          ((FileManagerEngine)localObject).c(localFileManagerEntity);
-        }
-      }
-      if (paramQFileMultiOperateCallback == null) {
-        break;
-      }
-      paramQFileMultiOperateCallback.a(1, 0);
+      FileManagerUtil.a(false, this.jdField_a_of_type_AndroidAppActivity, new OfflineFileMultiOperate.3(this, paramList, (FileManagerEngine)localObject, paramQFileMultiOperateCallback));
       return;
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      localFileManagerEntity = (FileManagerEntity)paramList.next();
+      if (!localFileManagerEntity.sendCloudUnsuccessful()) {
+        ((FileManagerEngine)localObject).c(localFileManagerEntity);
+      }
+    }
+    if (paramQFileMultiOperateCallback != null) {
+      paramQFileMultiOperateCallback.a(1, 0);
     }
   }
   
   protected void c(List<FileManagerEntity> paramList, QFileMultiOperateCallback paramQFileMultiOperateCallback)
   {
-    if (!NetworkUtil.d(BaseApplication.getContext())) {
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131694510, 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299166));
+    boolean bool = NetworkUtil.isNetSupport(BaseApplication.getContext());
+    int i = 1;
+    if (!bool)
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2131694475, 1).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299168));
+      return;
     }
-    do
+    if ((paramList.size() == 1) && (((FileManagerEntity)paramList.get(0)).sendCloudUnsuccessful()))
     {
-      return;
-      if ((paramList.size() != 1) || (!((FileManagerEntity)paramList.get(0)).sendCloudUnsuccessful())) {
-        break;
+      FMToastUtil.a(2131692450);
+      if (paramQFileMultiOperateCallback != null) {
+        paramQFileMultiOperateCallback.a(2, 3);
       }
-      FMToastUtil.a(2131692512);
-    } while (paramQFileMultiOperateCallback == null);
-    paramQFileMultiOperateCallback.a(2, 3);
-    return;
+      return;
+    }
     Iterator localIterator = paramList.iterator();
-    do
+    while (localIterator.hasNext()) {
+      if (FileModel.a((FileManagerEntity)localIterator.next()).a(false)) {
+        break label132;
+      }
+    }
+    i = 0;
+    label132:
+    if (i != 0)
     {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-    } while (!FileModel.a((FileManagerEntity)localIterator.next()).a(false));
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        FMDialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 2131692609, 2131692614, new OfflineFileMultiOperate.4(this, paramList, paramQFileMultiOperateCallback));
-        return;
-      }
-      FileManagerUtil.a(paramList, this.jdField_a_of_type_AndroidAppActivity);
-      if (paramQFileMultiOperateCallback == null) {
-        break;
-      }
-      paramQFileMultiOperateCallback.a(2, 0);
+      FMDialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 2131692561, 2131692566, new OfflineFileMultiOperate.4(this, paramList, paramQFileMultiOperateCallback));
       return;
+    }
+    FileManagerUtil.a(paramList, this.jdField_a_of_type_AndroidAppActivity);
+    if (paramQFileMultiOperateCallback != null) {
+      paramQFileMultiOperateCallback.a(2, 0);
     }
   }
   
@@ -213,52 +205,51 @@ public class OfflineFileMultiOperate
   {
     Object localObject1 = (FileManagerEntity)paramList.get(0);
     localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine();
-    if ((paramList.size() == 1) && (((FileManagerEntity)paramList.get(0)).sendCloudUnsuccessful()))
+    int j = paramList.size();
+    int i = 1;
+    if ((j == 1) && (((FileManagerEntity)paramList.get(0)).sendCloudUnsuccessful()))
     {
-      FMToastUtil.a(2131692513);
+      FMToastUtil.a(2131692451);
       return;
     }
     Object localObject2 = paramList.iterator();
-    do
-    {
-      if (!((Iterator)localObject2).hasNext()) {
-        break;
+    while (((Iterator)localObject2).hasNext()) {
+      if (FileModel.a((FileManagerEntity)((Iterator)localObject2).next()).a(false)) {
+        break label105;
       }
-    } while (!FileModel.a((FileManagerEntity)((Iterator)localObject2).next()).a(false));
-    for (int i = 1;; i = 0)
+    }
+    i = 0;
+    label105:
+    if (i != 0)
     {
-      if (i != 0)
-      {
-        if (!FreeWifiHelper.a(this.jdField_a_of_type_AndroidAppActivity, 5, new OfflineFileMultiOperate.5(this, paramList, (FileManagerEngine)localObject1, paramQFileMultiOperateCallback))) {
-          break;
-        }
-        FMDialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 2131692609, 2131692612, new OfflineFileMultiOperate.6(this, paramList, (FileManagerEngine)localObject1, paramQFileMultiOperateCallback));
-        return;
+      if (FreeWifiHelper.a(this.jdField_a_of_type_AndroidAppActivity, 5, new OfflineFileMultiOperate.5(this, paramList, (FileManagerEngine)localObject1, paramQFileMultiOperateCallback))) {
+        FMDialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 2131692561, 2131692564, new OfflineFileMultiOperate.6(this, paramList, (FileManagerEngine)localObject1, paramQFileMultiOperateCallback));
       }
-      FMToastUtil.d(this.jdField_a_of_type_AndroidAppActivity.getString(2131692733));
+    }
+    else
+    {
+      FMToastUtil.d(this.jdField_a_of_type_AndroidAppActivity.getString(2131692690));
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         localObject2 = (FileManagerEntity)paramList.next();
         if (!((FileManagerEntity)localObject2).sendCloudUnsuccessful()) {
-          if (FileUtils.b(((FileManagerEntity)localObject2).getFilePath())) {
+          if (FileUtils.fileExistsAndNotEmpty(((FileManagerEntity)localObject2).getFilePath())) {
             ((FileManagerEngine)localObject1).a(((FileManagerEntity)localObject2).getFilePath(), "", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0, false);
           } else {
             ((FileManagerEngine)localObject1).a((FileManagerEntity)localObject2, String.valueOf(((FileManagerEntity)localObject2).peerUin));
           }
         }
       }
-      if (paramQFileMultiOperateCallback == null) {
-        break;
+      if (paramQFileMultiOperateCallback != null) {
+        paramQFileMultiOperateCallback.a(4, 0);
       }
-      paramQFileMultiOperateCallback.a(4, 0);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multioperate.OfflineFileMultiOperate
  * JD-Core Version:    0.7.0.1
  */

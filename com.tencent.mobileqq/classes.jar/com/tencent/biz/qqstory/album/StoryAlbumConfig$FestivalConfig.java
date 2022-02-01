@@ -1,25 +1,25 @@
 package com.tencent.biz.qqstory.album;
 
 public class StoryAlbumConfig$FestivalConfig
-  extends StoryAlbumConfig.RuleConfig
+  extends RuleConfig
 {
-  public int a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
   public String c;
   public int d;
+  public String d;
+  public int e;
+  public String e;
+  public int f;
+  public int g;
   
   public StoryAlbumConfig$FestivalConfig(int paramInt)
   {
     super(paramInt);
-    this.g = 6;
+    this.c = 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.StoryAlbumConfig.FestivalConfig
  * JD-Core Version:    0.7.0.1
  */

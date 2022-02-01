@@ -26,49 +26,56 @@ public class CreateUpdatableMsgServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    localBundle = new Bundle();
+    Bundle localBundle = new Bundle();
     for (;;)
     {
       try
       {
         localBundle.putInt("key_index", paramIntent.getIntExtra("key_index", -1));
-        if (paramFromServiceMsg == null) {
-          continue;
+        if (paramFromServiceMsg != null)
+        {
+          bool = paramFromServiceMsg.isSuccess();
+          if (bool)
+          {
+            Object localObject = new PROTOCAL.StQWebRsp();
+            ((PROTOCAL.StQWebRsp)localObject).mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
+            localBundle.putInt("key_index", (int)((PROTOCAL.StQWebRsp)localObject).Seq.get());
+            long l = ((PROTOCAL.StQWebRsp)localObject).retCode.get();
+            localObject = ((PROTOCAL.StQWebRsp)localObject).errMsg.get().toStringUtf8();
+            localBundle.putLong("retCode", l);
+            localBundle.putString("errMsg", (String)localObject);
+            if (l != 0L) {
+              break label272;
+            }
+            bool = true;
+            notifyObserver(paramIntent, 1076, bool, localBundle, MiniAppObserver.class);
+          }
+          else
+          {
+            localBundle.putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
+            localBundle.putString("errMsg", paramFromServiceMsg.getBusinessFailMsg());
+            QLog.e("[mini] CreateUpdatableMsgServlet", 2, "inform CreateUpdatableMsgServlet isSuccess false");
+            notifyObserver(paramIntent, 1076, false, localBundle, MiniAppObserver.class);
+          }
         }
-        if (!paramFromServiceMsg.isSuccess()) {
-          continue;
+        else
+        {
+          QLog.e("[mini] CreateUpdatableMsgServlet", 2, "inform CreateUpdatableMsgServlet resultcode fail.");
+          notifyObserver(paramIntent, 1076, false, localBundle, MiniAppObserver.class);
         }
-        Object localObject = new PROTOCAL.StQWebRsp();
-        ((PROTOCAL.StQWebRsp)localObject).mergeFrom(WupUtil.b(paramFromServiceMsg.getWupBuffer()));
-        localBundle.putInt("key_index", (int)((PROTOCAL.StQWebRsp)localObject).Seq.get());
-        long l = ((PROTOCAL.StQWebRsp)localObject).retCode.get();
-        localObject = ((PROTOCAL.StQWebRsp)localObject).errMsg.get().toStringUtf8();
-        localBundle.putLong("retCode", l);
-        localBundle.putString("errMsg", (String)localObject);
-        if (l != 0L) {
-          continue;
-        }
-        bool = true;
-        notifyObserver(paramIntent, 1076, bool, localBundle, MiniAppObserver.class);
       }
       catch (Throwable localThrowable)
       {
-        boolean bool;
-        QLog.e("[mini] CreateUpdatableMsgServlet", 1, "onReceive exception:" + localThrowable);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onReceive exception:");
+        localStringBuilder.append(localThrowable);
+        QLog.e("[mini] CreateUpdatableMsgServlet", 1, localStringBuilder.toString());
         notifyObserver(null, 1076, false, localBundle, MiniAppObserver.class);
-        continue;
-        QLog.e("[mini] CreateUpdatableMsgServlet", 2, "inform CreateUpdatableMsgServlet resultcode fail.");
-        notifyObserver(paramIntent, 1076, false, localBundle, MiniAppObserver.class);
-        continue;
       }
       doReport(paramIntent, paramFromServiceMsg);
       return;
-      bool = false;
-      continue;
-      localBundle.putLong("retCode", paramFromServiceMsg.getBusinessFailCode());
-      localBundle.putString("errMsg", paramFromServiceMsg.getBusinessFailMsg());
-      QLog.e("[mini] CreateUpdatableMsgServlet", 2, "inform CreateUpdatableMsgServlet isSuccess false");
-      notifyObserver(paramIntent, 1076, false, localBundle, MiniAppObserver.class);
+      label272:
+      boolean bool = false;
     }
   }
   
@@ -87,7 +94,7 @@ public class CreateUpdatableMsgServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.CreateUpdatableMsgServlet
  * JD-Core Version:    0.7.0.1
  */

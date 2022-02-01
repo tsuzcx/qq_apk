@@ -28,15 +28,15 @@ public class ForwardPreviewTextController
   protected int a()
   {
     if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = ((int)((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297133)) / ViewUtils.a));
+      this.jdField_a_of_type_Int = ((int)((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297115)) / ViewUtils.a));
     }
     return this.jdField_a_of_type_Int;
   }
   
   protected View a()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559066, null));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131379105));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558960, null));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView = ((AnimationTextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131378475));
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     this.jdField_a_of_type_AndroidViewViewGroup.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new ForwardPreviewTextController.1(this));
@@ -51,14 +51,18 @@ public class ForwardPreviewTextController
     if (paramString1 != null) {
       a(paramString1);
     }
-    if ((paramString2 != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView.setText(new QQText(paramString2, 5, 20));
+    if (paramString2 != null)
+    {
+      paramString1 = this.jdField_a_of_type_ComTencentMobileqqWidgetAnimationTextView;
+      if (paramString1 != null) {
+        paramString1.setText(new QQText(paramString2, 5, 20));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTextController
  * JD-Core Version:    0.7.0.1
  */

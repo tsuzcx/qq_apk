@@ -1,9 +1,9 @@
 package cooperation.qzone.zipanimate.life;
 
-import android.arch.lifecycle.Lifecycle.Event;
-import android.arch.lifecycle.LifecycleObserver;
-import android.arch.lifecycle.LifecycleOwner;
-import android.arch.lifecycle.OnLifecycleEvent;
+import androidx.lifecycle.Lifecycle.Event;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.OnLifecycleEvent;
 
 public abstract interface PageLifeCycle
   extends LifecycleObserver
@@ -31,7 +31,7 @@ public abstract interface PageLifeCycle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.zipanimate.life.PageLifeCycle
  * JD-Core Version:    0.7.0.1
  */

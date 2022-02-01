@@ -32,28 +32,43 @@ public class ReportObj
   private static final String REPORT_URL = "https://expeva.store.qq.com/";
   public String domain;
   public long downloadTime;
-  public long elapse = 0L;
+  public long elapse;
   public long endTime;
-  public StringBuilder errMsg = new StringBuilder();
-  public ExtendData extend = null;
-  public long fileSize = 0L;
+  public StringBuilder errMsg;
+  public ExtendData extend;
+  public long fileSize;
   public int flow;
   public boolean isFromQzoneAlbum;
   public boolean isHttp2;
-  public boolean isSucceed = false;
+  public boolean isSucceed;
   public int networkType = 0;
   public String refer = "unknown";
   public int retCode = 0;
-  public String serverIp = "";
+  public String serverIp;
   public long startTime;
   public int strategyId;
   public String terminal = "Android";
   public String version = "0.0.1";
   
-  public ReportObj() {}
+  public ReportObj()
+  {
+    this.serverIp = "";
+    this.fileSize = 0L;
+    this.elapse = 0L;
+    this.errMsg = new StringBuilder();
+    this.extend = null;
+    this.isSucceed = false;
+  }
   
   public ReportObj(int paramInt1, int paramInt2, String paramString1, long paramLong1, long paramLong2, long paramLong3, int paramInt3, String paramString2, ExtendData paramExtendData)
   {
+    String str = "";
+    this.serverIp = "";
+    this.fileSize = 0L;
+    this.elapse = 0L;
+    this.errMsg = new StringBuilder();
+    this.extend = null;
+    this.isSucceed = false;
     this.networkType = paramInt1;
     this.retCode = paramInt2;
     this.serverIp = paramString1;
@@ -62,61 +77,106 @@ public class ReportObj
     this.endTime = paramLong3;
     this.elapse = (paramLong3 - paramLong2);
     this.flow = paramInt3;
-    paramString1 = paramString2;
     if (paramString2 == null) {
-      paramString1 = "";
+      paramString2 = str;
     }
-    this.errMsg.append(paramString1);
+    this.errMsg.append(paramString2);
     this.extend = paramExtendData;
   }
   
   public static String getReportUrl(int paramInt1, int paramInt2)
   {
-    String str;
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    case 1: 
-    case 3: 
-    case 5: 
-    case 7: 
-    case 9: 
-    default: 
-      return "";
-    case 0: 
-      str = "https://expeva.store.qq.com/" + "photo";
-    }
-    for (;;)
-    {
-      str = str + "?";
-      if (paramInt2 != 0) {
-        break;
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 4)
+        {
+          if (paramInt1 != 6)
+          {
+            if (paramInt1 != 8)
+            {
+              if (paramInt1 != 10) {
+                return "";
+              }
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("https://expeva.store.qq.com/");
+              ((StringBuilder)localObject).append("groupphoto");
+              localObject = ((StringBuilder)localObject).toString();
+            }
+            else
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("https://expeva.store.qq.com/");
+              ((StringBuilder)localObject).append("upp");
+              localObject = ((StringBuilder)localObject).toString();
+            }
+          }
+          else
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("https://expeva.store.qq.com/");
+            ((StringBuilder)localObject).append("qzone_head");
+            localObject = ((StringBuilder)localObject).toString();
+          }
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("https://expeva.store.qq.com/");
+          ((StringBuilder)localObject).append("qzone_sound");
+          localObject = ((StringBuilder)localObject).toString();
+        }
       }
-      return str + "op=upload";
-      str = "https://expeva.store.qq.com/" + "qzone_video";
-      continue;
-      str = "https://expeva.store.qq.com/" + "qzone_sound";
-      continue;
-      str = "https://expeva.store.qq.com/" + "qzone_head";
-      continue;
-      str = "https://expeva.store.qq.com/" + "upp";
-      continue;
-      str = "https://expeva.store.qq.com/" + "groupphoto";
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("https://expeva.store.qq.com/");
+        ((StringBuilder)localObject).append("qzone_video");
+        localObject = ((StringBuilder)localObject).toString();
+      }
     }
-    if (paramInt2 == 1) {
-      return str + "op=down";
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("https://expeva.store.qq.com/");
+      ((StringBuilder)localObject).append("photo");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("?");
+    Object localObject = localStringBuilder.toString();
+    if (paramInt2 == 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("op=upload");
+      return localStringBuilder.toString();
+    }
+    if (paramInt2 == 1)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("op=down");
+      return localStringBuilder.toString();
     }
     return "";
   }
   
   private static String putAddress(int paramInt)
   {
-    StringBuffer localStringBuffer1 = new StringBuffer();
-    StringBuffer localStringBuffer2 = localStringBuffer1.append(paramInt & 0xFF).append('.');
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(paramInt & 0xFF);
+    localStringBuffer.append('.');
     paramInt >>>= 8;
-    localStringBuffer2 = localStringBuffer2.append(paramInt & 0xFF).append('.');
+    localStringBuffer.append(paramInt & 0xFF);
+    localStringBuffer.append('.');
     paramInt >>>= 8;
-    localStringBuffer2.append(paramInt & 0xFF).append('.').append(paramInt >>> 8 & 0xFF);
-    return localStringBuffer1.toString();
+    localStringBuffer.append(paramInt & 0xFF);
+    localStringBuffer.append('.');
+    localStringBuffer.append(paramInt >>> 8 & 0xFF);
+    return localStringBuffer.toString();
   }
   
   protected String getRefer()
@@ -134,7 +194,6 @@ public class ReportObj
   public JSONObject toJSON()
   {
     JSONObject localJSONObject = new JSONObject();
-    label377:
     for (;;)
     {
       try
@@ -156,45 +215,47 @@ public class ReportObj
           if (this.extend == null) {
             this.extend = new ExtendData();
           }
-          Object localObject = ((WifiManager)Global.getContext().getSystemService("wifi")).getDhcpInfo();
-          if (localObject == null) {
-            break label377;
-          }
-          localObject = putAddress(((DhcpInfo)localObject).dns1) + "," + putAddress(((DhcpInfo)localObject).dns2);
-          this.extend.put(0, Build.MODEL);
-          this.extend.put(1, Build.VERSION.RELEASE);
-          ExtendData localExtendData = this.extend;
-          if (SDCardUtil.isSDCardMounted())
+          Object localObject2 = ((WifiManager)Global.getContext().getSystemService("wifi")).getDhcpInfo();
+          Object localObject1 = "none";
+          if (localObject2 != null)
           {
-            i = 1;
-            localExtendData.put(2, String.valueOf(i));
-            this.extend.put(3, SDCardUtil.getSDCardCapabilityForDisplay());
-            this.extend.put(4, SDCardUtil.getSDCardRemainForDisplay());
-            this.extend.put(6, (String)localObject);
-            localObject = this.extend;
-            if (!IS_CONNECT_USB) {
-              continue;
-            }
-            i = 1;
-            ((ExtendData)localObject).put(7, String.valueOf(i));
-            localJSONObject.put("extend", this.extend.getExtendString());
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(putAddress(((DhcpInfo)localObject2).dns1));
+            ((StringBuilder)localObject1).append(",");
+            ((StringBuilder)localObject1).append(putAddress(((DhcpInfo)localObject2).dns2));
+            localObject1 = ((StringBuilder)localObject1).toString();
           }
-        }
-        else
-        {
+          localObject2 = this.extend;
+          String str = Build.MODEL;
+          int j = 0;
+          ((ExtendData)localObject2).put(0, str);
+          this.extend.put(1, Build.VERSION.RELEASE);
+          localObject2 = this.extend;
+          if (!SDCardUtil.isSDCardMounted()) {
+            break label413;
+          }
+          i = 1;
+          ((ExtendData)localObject2).put(2, String.valueOf(i));
+          this.extend.put(3, SDCardUtil.getSDCardCapabilityForDisplay());
+          this.extend.put(4, SDCardUtil.getSDCardRemainForDisplay());
+          this.extend.put(6, (String)localObject1);
+          localObject1 = this.extend;
+          i = j;
+          if (IS_CONNECT_USB) {
+            i = 1;
+          }
+          ((ExtendData)localObject1).put(7, String.valueOf(i));
+          localJSONObject.put("extend", this.extend.getExtendString());
           return localJSONObject;
         }
-        int i = 0;
-        continue;
-        i = 0;
-        continue;
-        String str = "none";
       }
       catch (Throwable localThrowable)
       {
         QDLog.e("BusinessReport", "to json error!", localThrowable);
-        return localJSONObject;
       }
+      return localJSONObject;
+      label413:
+      int i = 0;
     }
   }
   
@@ -202,33 +263,38 @@ public class ReportObj
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("networkType = ");
-    switch (this.networkType)
+    int i = this.networkType;
+    if (i != 1)
     {
-    default: 
-      localStringBuilder.append("未知");
+      if (i != 2)
+      {
+        if (i != 3) {
+          localStringBuilder.append("未知");
+        } else {
+          localStringBuilder.append("2G");
+        }
+      }
+      else {
+        localStringBuilder.append("3G");
+      }
     }
-    for (;;)
-    {
-      localStringBuilder.append(" retCode = ");
-      localStringBuilder.append(this.retCode);
-      localStringBuilder.append(" fileSize = ");
-      localStringBuilder.append(this.fileSize);
-      localStringBuilder.append(" elapse = ");
-      localStringBuilder.append(this.elapse);
-      localStringBuilder.append(" errMsg = ");
-      localStringBuilder.append(this.errMsg.toString());
-      return localStringBuilder.toString();
+    else {
       localStringBuilder.append("WIFI");
-      continue;
-      localStringBuilder.append("3G");
-      continue;
-      localStringBuilder.append("2G");
     }
+    localStringBuilder.append(" retCode = ");
+    localStringBuilder.append(this.retCode);
+    localStringBuilder.append(" fileSize = ");
+    localStringBuilder.append(this.fileSize);
+    localStringBuilder.append(" elapse = ");
+    localStringBuilder.append(this.elapse);
+    localStringBuilder.append(" errMsg = ");
+    localStringBuilder.append(this.errMsg.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.report.ReportObj
  * JD-Core Version:    0.7.0.1
  */

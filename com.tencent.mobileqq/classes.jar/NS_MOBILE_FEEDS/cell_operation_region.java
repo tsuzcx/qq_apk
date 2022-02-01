@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class cell_operation_region
   extends JceStruct
@@ -43,20 +44,22 @@ public final class cell_operation_region
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vcRegion != null) {
-      paramJceOutputStream.write(this.vcRegion, 0);
+    Object localObject = this.vcRegion;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.interactiveType, 1);
     paramJceOutputStream.write(this.gestureRadius, 2);
     paramJceOutputStream.write(this.gestureStartTime, 3);
-    if (this.gestureLineColor != null) {
-      paramJceOutputStream.write(this.gestureLineColor, 4);
+    localObject = this.gestureLineColor;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_operation_region
  * JD-Core Version:    0.7.0.1
  */

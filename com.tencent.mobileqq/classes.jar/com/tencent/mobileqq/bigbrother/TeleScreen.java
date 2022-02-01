@@ -25,6 +25,10 @@ public class TeleScreen
       int i = this.jdField_a_of_type_Int;
       return i;
     }
+    for (;;)
+    {
+      throw paramJumpCallback;
+    }
   }
   
   public void a(int paramInt)
@@ -50,7 +54,7 @@ public class TeleScreen
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.TeleScreen
  * JD-Core Version:    0.7.0.1
  */

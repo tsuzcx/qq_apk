@@ -24,13 +24,14 @@ public final class oidb_0xa8d$Cmd0xa8dJoinPublicGroupRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 74 }, new String[] { "uint64_GroupCode", "uint32_SpeakInterval", "uint32_GroupFlagEx", "uint32_StartSpeakInterval", "uint32_GroupClassEx", "uint32_GroupClass", "uint32_MaxMember", "uint32_SpecialClass", "bytes_GroupName" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, Cmd0xa8dJoinPublicGroupRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 56, 64, 74 }, new String[] { "uint64_GroupCode", "uint32_SpeakInterval", "uint32_GroupFlagEx", "uint32_StartSpeakInterval", "uint32_GroupClassEx", "uint32_GroupClass", "uint32_MaxMember", "uint32_SpecialClass", "bytes_GroupName" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro }, Cmd0xa8dJoinPublicGroupRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xa8d.oidb_0xa8d.Cmd0xa8dJoinPublicGroupRspBody
  * JD-Core Version:    0.7.0.1
  */

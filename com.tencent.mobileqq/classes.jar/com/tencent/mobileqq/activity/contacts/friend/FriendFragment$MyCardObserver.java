@@ -8,12 +8,16 @@ class FriendFragment$MyCardObserver
 {
   private FriendFragment$MyCardObserver(FriendFragment paramFriendFragment) {}
   
-  public void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
   {
     if (paramBoolean1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" contacts onGetCalReactiveDays isAllow= ");
+        localStringBuilder.append(paramBoolean2);
+        QLog.d("interactive", 2, localStringBuilder.toString());
       }
       FriendFragment.a(this.a, 1400L, false);
     }
@@ -21,7 +25,7 @@ class FriendFragment$MyCardObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.friend.FriendFragment.MyCardObserver
  * JD-Core Version:    0.7.0.1
  */

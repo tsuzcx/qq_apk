@@ -30,7 +30,15 @@ public class DogFood
   
   public String toString()
   {
-    return "DogFood{stage=(" + this.fE + "," + b.e(this.fE) + "), time=" + this.time + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DogFood{stage=(");
+    localStringBuilder.append(this.fE);
+    localStringBuilder.append(",");
+    localStringBuilder.append(b.e(this.fE));
+    localStringBuilder.append("), time=");
+    localStringBuilder.append(this.time);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -41,7 +49,7 @@ public class DogFood
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqpimsecure.wificore.api.recognize.monitor.DogFood
  * JD-Core Version:    0.7.0.1
  */

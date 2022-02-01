@@ -18,23 +18,28 @@ class SharedPreferencesProxy$EditorImpl
   
   private void monitor()
   {
-    Object localObject;
     if (SharedPreferencesProxyManager.getInstance().isMonitored())
     {
-      localObject = Utils.getMiniStackInfo();
-      localObject = ((Utils.StackInfo)localObject).clazz + '|' + ((Utils.StackInfo)localObject).method + '|' + ((Utils.StackInfo)localObject).stack;
-      if (Utils.sIsSameProcessAsCP) {
-        SharedPreferencesProxyManager.getInstance().onModifySp(SharedPreferencesProxy.access$400(this.this$0), Utils.sCurrentProcessName, localObject);
+      Object localObject1 = Utils.getMiniStackInfo();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(((Utils.StackInfo)localObject1).clazz);
+      ((StringBuilder)localObject2).append('|');
+      ((StringBuilder)localObject2).append(((Utils.StackInfo)localObject1).method);
+      ((StringBuilder)localObject2).append('|');
+      ((StringBuilder)localObject2).append(((Utils.StackInfo)localObject1).stack);
+      localObject1 = ((StringBuilder)localObject2).toString();
+      if (Utils.sIsSameProcessAsCP)
+      {
+        SharedPreferencesProxyManager.getInstance().onModifySp(SharedPreferencesProxy.access$400(this.this$0), Utils.sCurrentProcessName, localObject1);
+        return;
       }
+      if (SharedPreferencesProxy.access$500(this.this$0) == null)
+      {
+        localObject2 = this.this$0;
+        SharedPreferencesProxy.access$502((SharedPreferencesProxy)localObject2, new Monitor(SharedPreferencesProxy.access$600((SharedPreferencesProxy)localObject2), SharedPreferencesProxy.access$400(this.this$0)));
+      }
+      SharedPreferencesProxy.access$500(this.this$0).log((String)localObject1);
     }
-    else
-    {
-      return;
-    }
-    if (SharedPreferencesProxy.access$500(this.this$0) == null) {
-      SharedPreferencesProxy.access$502(this.this$0, new Monitor(SharedPreferencesProxy.access$600(this.this$0), SharedPreferencesProxy.access$400(this.this$0)));
-    }
-    SharedPreferencesProxy.access$500(this.this$0).log((String)localObject);
   }
   
   private void notifyListeners(String paramString)
@@ -44,10 +49,15 @@ class SharedPreferencesProxy$EditorImpl
       if (SharedPreferencesProxy.access$200(this.this$0) != null)
       {
         Iterator localIterator = SharedPreferencesProxy.access$200(this.this$0).iterator();
-        if (localIterator.hasNext()) {
+        while (localIterator.hasNext()) {
           ((SharedPreferences.OnSharedPreferenceChangeListener)localIterator.next()).onSharedPreferenceChanged(this.this$0, paramString);
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -77,17 +87,15 @@ class SharedPreferencesProxy$EditorImpl
         monitor();
       }
     }
-    for (;;)
+    else
     {
-      return;
-      if ((Looper.getMainLooper() != Looper.myLooper()) || (SharedPreferencesProxyManager.sIsCrashing)) {
+      if ((Looper.getMainLooper() == Looper.myLooper()) && (!SharedPreferencesProxyManager.sIsCrashing)) {
+        PrefEditQueueWork.getInstance().queue(this);
+      } else {
         SharedPreferencesProxy.access$100(this.this$0).commit();
       }
-      while (paramBoolean)
-      {
+      if (paramBoolean) {
         monitor();
-        return;
-        PrefEditQueueWork.getInstance().queue(this);
       }
     }
   }
@@ -100,66 +108,70 @@ class SharedPreferencesProxy$EditorImpl
   
   public SharedPreferences.Editor putBoolean(String paramString, boolean paramBoolean)
   {
-    if (SharedPreferencesProxy.access$000(this.this$0) != null) {
+    if (SharedPreferencesProxy.access$000(this.this$0) != null)
+    {
       SharedPreferencesProxy.access$000(this.this$0).write(paramString, Boolean.valueOf(paramBoolean), CommonConstants.VALUE_TYPE_BOOLEAN);
     }
-    for (;;)
+    else
     {
-      notifyListeners(paramString);
-      return this;
       if (paramString != null) {
         this.mModifiedCaches.put(paramString, Boolean.valueOf(paramBoolean));
       }
       SharedPreferencesProxy.access$100(this.this$0).putBoolean(paramString, paramBoolean);
     }
+    notifyListeners(paramString);
+    return this;
   }
   
   public SharedPreferences.Editor putFloat(String paramString, float paramFloat)
   {
-    if (SharedPreferencesProxy.access$000(this.this$0) != null) {
+    if (SharedPreferencesProxy.access$000(this.this$0) != null)
+    {
       SharedPreferencesProxy.access$000(this.this$0).write(paramString, Float.valueOf(paramFloat), CommonConstants.VALUE_TYPE_FLOAT);
     }
-    for (;;)
+    else
     {
-      notifyListeners(paramString);
-      return this;
       if (paramString != null) {
         this.mModifiedCaches.put(paramString, Float.valueOf(paramFloat));
       }
       SharedPreferencesProxy.access$100(this.this$0).putFloat(paramString, paramFloat);
     }
+    notifyListeners(paramString);
+    return this;
   }
   
   public SharedPreferences.Editor putInt(String paramString, int paramInt)
   {
-    if (SharedPreferencesProxy.access$000(this.this$0) != null) {
+    if (SharedPreferencesProxy.access$000(this.this$0) != null)
+    {
       SharedPreferencesProxy.access$000(this.this$0).write(paramString, Integer.valueOf(paramInt), CommonConstants.VALUE_TYPE_INT);
     }
-    for (;;)
+    else
     {
-      notifyListeners(paramString);
-      return this;
       if (paramString != null) {
         this.mModifiedCaches.put(paramString, Integer.valueOf(paramInt));
       }
       SharedPreferencesProxy.access$100(this.this$0).putInt(paramString, paramInt);
     }
+    notifyListeners(paramString);
+    return this;
   }
   
   public SharedPreferences.Editor putLong(String paramString, long paramLong)
   {
-    if (SharedPreferencesProxy.access$000(this.this$0) != null) {
+    if (SharedPreferencesProxy.access$000(this.this$0) != null)
+    {
       SharedPreferencesProxy.access$000(this.this$0).write(paramString, Long.valueOf(paramLong), CommonConstants.VALUE_TYPE_LONG);
     }
-    for (;;)
+    else
     {
-      notifyListeners(paramString);
-      return this;
       if (paramString != null) {
         this.mModifiedCaches.put(paramString, Long.valueOf(paramLong));
       }
       SharedPreferencesProxy.access$100(this.this$0).putLong(paramString, paramLong);
     }
+    notifyListeners(paramString);
+    return this;
   }
   
   public SharedPreferences.Editor putString(String paramString1, String paramString2)
@@ -167,23 +179,20 @@ class SharedPreferencesProxy$EditorImpl
     if (SharedPreferencesProxy.access$000(this.this$0) != null)
     {
       SharedPreferencesProxy.access$000(this.this$0).write(paramString1, paramString2, CommonConstants.VALUE_TYPE_STRING);
-      notifyListeners(paramString1);
-      return this;
     }
-    if (paramString1 != null)
+    else
     {
-      if (paramString2 != null) {
-        break label70;
+      if (paramString1 != null) {
+        if (paramString2 == null) {
+          this.mModifiedCaches.put(paramString1, this);
+        } else {
+          this.mModifiedCaches.put(paramString1, paramString2);
+        }
       }
-      this.mModifiedCaches.put(paramString1, this);
-    }
-    for (;;)
-    {
       SharedPreferencesProxy.access$100(this.this$0).putString(paramString1, paramString2);
-      break;
-      label70:
-      this.mModifiedCaches.put(paramString1, paramString2);
     }
+    notifyListeners(paramString1);
+    return this;
   }
   
   public SharedPreferences.Editor putStringSet(String paramString, Set<String> paramSet)
@@ -191,39 +200,37 @@ class SharedPreferencesProxy$EditorImpl
     if (SharedPreferencesProxy.access$000(this.this$0) != null)
     {
       SharedPreferencesProxy.access$000(this.this$0).write(paramString, paramSet, CommonConstants.VALUE_TYPE_STRSET);
-      notifyListeners(paramString);
-      return this;
     }
-    if (paramString != null)
+    else
     {
-      if (paramSet != null) {
-        break label70;
+      if (paramString != null) {
+        if (paramSet == null) {
+          this.mModifiedCaches.put(paramString, this);
+        } else {
+          this.mModifiedCaches.put(paramString, new HashSet(paramSet));
+        }
       }
-      this.mModifiedCaches.put(paramString, this);
-    }
-    for (;;)
-    {
       SharedPreferencesProxy.access$100(this.this$0).putStringSet(paramString, paramSet);
-      break;
-      label70:
-      this.mModifiedCaches.put(paramString, new HashSet(paramSet));
     }
+    notifyListeners(paramString);
+    return this;
   }
   
   public SharedPreferences.Editor remove(String paramString)
   {
-    if (SharedPreferencesProxy.access$000(this.this$0) != null) {
+    if (SharedPreferencesProxy.access$000(this.this$0) != null)
+    {
       SharedPreferencesProxy.access$000(this.this$0).delete(paramString);
     }
-    for (;;)
+    else
     {
-      notifyListeners(paramString);
-      return this;
       if (paramString != null) {
         this.mModifiedCaches.put(paramString, this);
       }
       SharedPreferencesProxy.access$100(this.this$0).remove(paramString);
     }
+    notifyListeners(paramString);
+    return this;
   }
   
   public void run()
@@ -234,7 +241,7 @@ class SharedPreferencesProxy$EditorImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqq.shared_file_accessor.SharedPreferencesProxy.EditorImpl
  * JD-Core Version:    0.7.0.1
  */

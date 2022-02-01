@@ -35,31 +35,39 @@ final class AIOGalleryUtils$3
     }
     catch (OutOfMemoryError paramVarArgs)
     {
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryUtils", 4, "savePhoto exception = " + paramVarArgs.getMessage());
+      IBrowserLog localIBrowserLog = BrowserLogHelper.getInstance().getGalleryLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("savePhoto exception = ");
+      localStringBuilder.append(paramVarArgs.getMessage());
+      localIBrowserLog.d("AIOGalleryUtils", 4, localStringBuilder.toString());
     }
     return Boolean.valueOf(false);
   }
   
   protected void a(Boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity)) {}
-    for (int i = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getTitleBarHeight();; i = 0)
-    {
-      if (paramBoolean.booleanValue()) {}
-      for (String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131694902);; str = this.jdField_a_of_type_AndroidAppActivity.getString(2131694921))
-      {
-        QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, str, 0).b(i);
-        if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserUtilsAIOGalleryUtils$OnSavePhoto != null) {
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserUtilsAIOGalleryUtils$OnSavePhoto.a(paramBoolean.booleanValue());
-        }
-        return;
-      }
+    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    int i;
+    if ((localObject instanceof BaseActivity)) {
+      i = ((BaseActivity)localObject).getTitleBarHeight();
+    } else {
+      i = 0;
+    }
+    if (paramBoolean.booleanValue()) {
+      localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131694891);
+    } else {
+      localObject = this.jdField_a_of_type_AndroidAppActivity.getString(2131694911);
+    }
+    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 2, (CharSequence)localObject, 0).b(i);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserUtilsAIOGalleryUtils$OnSavePhoto;
+    if (localObject != null) {
+      ((AIOGalleryUtils.OnSavePhoto)localObject).c(paramBoolean.booleanValue());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.utils.AIOGalleryUtils.3
  * JD-Core Version:    0.7.0.1
  */

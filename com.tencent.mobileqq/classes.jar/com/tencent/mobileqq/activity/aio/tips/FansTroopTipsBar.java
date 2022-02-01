@@ -39,7 +39,7 @@ public class FansTroopTipsBar
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560755, null);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131560643, null);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
     }
     return this.jdField_a_of_type_AndroidViewView;
@@ -58,25 +58,28 @@ public class FansTroopTipsBar
   
   public boolean a(TipsManager paramTipsManager, boolean paramBoolean)
   {
-    if (paramTipsManager == null) {}
-    boolean bool;
-    do
+    if (paramTipsManager == null) {
+      return false;
+    }
+    boolean bool = a(paramTipsManager);
+    if (QLog.isColorLevel()) {
+      QLog.d("FansTroopTipsBar", 2, new Object[] { "show() isShowing=", Boolean.valueOf(bool), ", show=", Boolean.valueOf(paramBoolean) });
+    }
+    if (paramBoolean)
     {
-      do
+      if (!bool)
       {
+        if (paramTipsManager.a(this, new Object[0]))
+        {
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B57A", "0X800B57A", 0, 0, "", "", "", "");
+          return true;
+        }
         return false;
-        bool = a(paramTipsManager);
-        if (QLog.isColorLevel()) {
-          QLog.d("FansTroopTipsBar", 2, new Object[] { "show() isShowing=", Boolean.valueOf(bool), ", show=", Boolean.valueOf(paramBoolean) });
-        }
-        if (!paramBoolean) {
-          break;
-        }
-      } while ((bool) || (!paramTipsManager.a(this, new Object[0])));
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B57A", "0X800B57A", 0, 0, "", "", "", "");
-      return true;
-    } while (!bool);
-    paramTipsManager.a();
+      }
+    }
+    else if (bool) {
+      paramTipsManager.a();
+    }
     return false;
   }
   
@@ -95,11 +98,13 @@ public class FansTroopTipsBar
     if (QLog.isColorLevel()) {
       QLog.d("FansTroopTipsBar", 2, "click tips, jump to web");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-      FansTroopUtils.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    if (localObject != null) {
+      FansTroopUtils.a(this.jdField_a_of_type_AndroidAppActivity, ((SessionInfo)localObject).a);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie.b().a();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreTroopChatPie;
+    if (localObject != null) {
+      ((TroopChatPie)localObject).b().a();
     }
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B57B", "0X800B57B", 0, 0, "", "", "", "");
     EventCollector.getInstance().onViewClicked(paramView);
@@ -107,7 +112,7 @@ public class FansTroopTipsBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.FansTroopTipsBar
  * JD-Core Version:    0.7.0.1
  */

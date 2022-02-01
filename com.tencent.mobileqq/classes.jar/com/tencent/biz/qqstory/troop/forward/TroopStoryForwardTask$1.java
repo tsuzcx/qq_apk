@@ -4,10 +4,10 @@ import android.os.Handler;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.data.MessageForTroopStory;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
 
 class TroopStoryForwardTask$1
   implements Runnable
@@ -32,8 +32,9 @@ class TroopStoryForwardTask$1
     localMessageForTroopStory.ctrVersion = this.this$0.jdField_c_of_type_Int;
     localMessageForTroopStory.msg = MessageForTroopStory.MSG_CONTENT;
     localMessageForTroopStory.serial();
-    this.this$0.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory = localMessageForTroopStory;
-    ((SVIPHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForTroopStory);
+    TroopStoryForwardTask localTroopStoryForwardTask = this.this$0;
+    localTroopStoryForwardTask.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory = localMessageForTroopStory;
+    ((ISVIPHandler)localTroopStoryForwardTask.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForTroopStory);
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache().a(localMessageForTroopStory, 0);
     this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessageForTroopStory, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     this.this$0.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
@@ -41,7 +42,7 @@ class TroopStoryForwardTask$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask.1
  * JD-Core Version:    0.7.0.1
  */

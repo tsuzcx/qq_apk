@@ -17,11 +17,13 @@ public final class ProfileBasePrivacySettingAdapter$ProfileOtherHolder
   public ProfileBasePrivacySettingAdapter$ProfileOtherHolder(@NotNull View paramView)
   {
     super(paramView);
-    paramView = paramView.findViewById(2131373533);
-    if (paramView == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
+    paramView = paramView.findViewById(2131373112);
+    if (paramView != null)
+    {
+      this.a = ((FormSwitchItem)paramView);
+      return;
     }
-    this.a = ((FormSwitchItem)paramView);
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.widget.FormSwitchItem");
   }
   
   @NotNull
@@ -32,7 +34,7 @@ public final class ProfileBasePrivacySettingAdapter$ProfileOtherHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileBasePrivacySettingAdapter.ProfileOtherHolder
  * JD-Core Version:    0.7.0.1
  */

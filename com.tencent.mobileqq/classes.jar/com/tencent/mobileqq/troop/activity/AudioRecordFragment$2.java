@@ -3,8 +3,8 @@ package com.tencent.mobileqq.troop.activity;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.troop.data.AudioInfo;
 import com.tencent.mobileqq.troop.utils.TroopBarUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -17,44 +17,52 @@ class AudioRecordFragment$2
   
   public void handleMessage(Message paramMessage)
   {
-    if ((this.a.getActivity() == null) || (this.a.isDetached())) {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAudioPanel", 2, "handleMessage,fragment is in a invalid state, return");
-      }
-    }
-    do
+    if ((this.a.getBaseActivity() != null) && (!this.a.isDetached()))
     {
-      do
+      int i = paramMessage.what;
+      if (i != 3)
       {
-        return;
-        switch (paramMessage.what)
+        if (i != 102)
         {
-        default: 
-          return;
+          if (i != 103) {
+            return;
+          }
+          if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals("publish")) && (this.a.b != null)) {
+            TroopBarUtils.a("pub_page", "preview_record", this.a.b, this.a.c, "", "");
+          }
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("AIOAudioPanel", 2, "RECORD_TO_START =============");
-      return;
-      paramMessage = paramMessage.obj.toString();
-      File localFile = new File(paramMessage);
-      if (localFile.exists()) {}
-      for (long l = localFile.length();; l = 0L)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
-        paramMessage = new Intent();
-        paramMessage.putExtra("audio_info", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
-        this.a.getActivity().setResult(-1, paramMessage);
-        this.a.getActivity().finish();
-        return;
+        else
+        {
+          paramMessage = paramMessage.obj.toString();
+          Object localObject = new File(paramMessage);
+          long l;
+          if (((File)localObject).exists()) {
+            l = ((File)localObject).length();
+          } else {
+            l = 0L;
+          }
+          localObject = this.a;
+          ((AudioRecordFragment)localObject).jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = new AudioInfo(paramMessage, (int)((AudioRecordFragment)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.a(), l);
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelCommonRecordSoundPanel.setVisibility(8);
+          paramMessage = new Intent();
+          paramMessage.putExtra("audio_info", this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo);
+          this.a.getBaseActivity().setResult(-1, paramMessage);
+          this.a.getBaseActivity().finish();
+        }
       }
-    } while ((this.a.jdField_a_of_type_JavaLangString == null) || (!this.a.jdField_a_of_type_JavaLangString.equals("publish")) || (this.a.b == null));
-    TroopBarUtils.a("pub_page", "preview_record", this.a.b, this.a.c, "", "");
+      else if (QLog.isColorLevel()) {
+        QLog.d("AIOAudioPanel", 2, "RECORD_TO_START =============");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("AIOAudioPanel", 2, "handleMessage,fragment is in a invalid state, return");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.AudioRecordFragment.2
  * JD-Core Version:    0.7.0.1
  */

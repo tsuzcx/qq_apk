@@ -46,12 +46,9 @@ public class BaseRoomCtrlModule
   {
     boolean bool = this.roomBizContext.getRoomState().isSwitchRoom;
     super.onDestroy();
-    if ((!this.isRoomEngineExit) && (!bool))
-    {
-      this.roomEngine.unint();
+    if ((!this.isRoomEngineExit) && (!bool)) {
       this.isRoomEngineExit = true;
     }
-    getEvent().clearObservers();
   }
   
   protected void onExitRoomEvent()
@@ -59,7 +56,6 @@ public class BaseRoomCtrlModule
     getEvent().post(new ExitRoomtEvent(true));
     ((NetworkStateInterface)this.roomEngine.getService(NetworkStateInterface.class)).clearEventOutput();
     ((ChannelInterface)this.roomEngine.getService(ChannelInterface.class)).clearEventOutput();
-    this.roomEngine.unint();
     this.isRoomEngineExit = true;
     long l = ((LoginServiceInterface)this.roomEngine.getService(LoginServiceInterface.class)).getLoginInfo().uid;
     ((LogSdkServiceInterface)this.roomEngine.getService(LogSdkServiceInterface.class)).upload(String.valueOf(l));
@@ -67,7 +63,7 @@ public class BaseRoomCtrlModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.commonpages.room.basemodule.BaseRoomCtrlModule
  * JD-Core Version:    0.7.0.1
  */

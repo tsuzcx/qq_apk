@@ -43,25 +43,35 @@ public class QQReaderJsPlugin
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQReaderJsPlugin", 2, "handleJsRequest, url=" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest, url=");
+      paramJsBridgeListener.append(paramString1);
+      QLog.d("QQReaderJsPlugin", 2, paramJsBridgeListener.toString());
     }
-    if ((!"qqreader".equals(paramString2)) || (paramString1 == null) || (paramString3 == null)) {}
-    while (!"addBookShelfReceiver".equals(paramString3)) {
-      return false;
+    if (("qqreader".equals(paramString2)) && (paramString1 != null))
+    {
+      if (paramString3 == null) {
+        return false;
+      }
+      if ("addBookShelfReceiver".equals(paramString3))
+      {
+        addBookShelfReceiver();
+        return true;
+      }
     }
-    addBookShelfReceiver();
-    return true;
+    return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     unregisterReceiver();
@@ -69,7 +79,7 @@ public class QQReaderJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QQReaderJsPlugin
  * JD-Core Version:    0.7.0.1
  */

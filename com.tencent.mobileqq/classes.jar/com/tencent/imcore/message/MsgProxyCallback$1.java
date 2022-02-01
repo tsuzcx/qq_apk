@@ -12,10 +12,11 @@ class MsgProxyCallback$1
   {
     try
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager != null) {
+      if (this.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager != null)
+      {
         this.jdField_a_of_type_ComTencentMobileqqPersistenceQslowtableQSlowTableManager.a(this.jdField_a_of_type_ComTencentImcoreMessageMsgProxy.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int), null, null);
+        return;
       }
-      return;
     }
     catch (RuntimeException localRuntimeException)
     {
@@ -25,7 +26,7 @@ class MsgProxyCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.MsgProxyCallback.1
  * JD-Core Version:    0.7.0.1
  */

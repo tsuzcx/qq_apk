@@ -30,15 +30,15 @@ public class RedPointListener
   
   public void a(int paramInt, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      a(paramObject);
+      if (paramInt != 2) {
+        return;
+      }
+      b(paramObject);
       return;
     }
-    b(paramObject);
+    a(paramObject);
   }
   
   protected void a(String paramString1, String paramString2, View paramView) {}
@@ -47,7 +47,7 @@ public class RedPointListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.redpoint.RedPointListener
  * JD-Core Version:    0.7.0.1
  */

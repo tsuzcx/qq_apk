@@ -32,45 +32,45 @@ public class TroopStoryUtil
   
   public static String a(Intent paramIntent, @NonNull String paramString1, String paramString2)
   {
-    int j = 78;
-    int i = 8;
+    boolean bool = TextUtils.isEmpty(paramString2);
     int k = 0;
-    if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1)))
-    {
+    if ((!bool) && (!TextUtils.isEmpty(paramString1))) {
       paramString1 = paramString1.replace("$GCODE$", paramString2);
-      if (paramIntent != null) {
-        break label121;
-      }
-      label36:
-      if (paramIntent != null) {
-        break label133;
-      }
-      label40:
-      if (paramIntent != null) {
-        break label146;
-      }
-    }
-    for (;;)
-    {
-      paramIntent = new StringBuilder(paramString1);
-      paramIntent.append("&troopStoryMemoriesFrom=").append(i).append("&playVideoFrom=").append(j).append("&lastOpenFrom=").append(k);
-      return paramIntent.toString();
+    } else {
       QLog.e("TroopStoryUtil", 1, new Object[] { "configTroopStoryProfileFromAIO empty. troopUin=", "", ", url=", paramString1 });
-      break;
-      label121:
+    }
+    int i = 8;
+    if (paramIntent != null) {
       i = paramIntent.getIntExtra("extra_share_group_from", 8);
-      break label36;
-      label133:
+    }
+    int j = 78;
+    if (paramIntent != null) {
       j = paramIntent.getIntExtra("extra_play_video_from", 78);
-      break label40;
-      label146:
+    }
+    if (paramIntent != null) {
       k = paramIntent.getIntExtra("extra_last_open_from", 0);
     }
+    paramIntent = new StringBuilder(paramString1);
+    paramIntent.append("&troopStoryMemoriesFrom=");
+    paramIntent.append(i);
+    paramIntent.append("&playVideoFrom=");
+    paramIntent.append(j);
+    paramIntent.append("&lastOpenFrom=");
+    paramIntent.append(k);
+    return paramIntent.toString();
   }
   
   public static String a(MessageForShortVideo paramMessageForShortVideo)
   {
-    return ("gs_" + paramMessageForShortVideo.frienduin + '_' + paramMessageForShortVideo.getMd5() + '_' + MD5Utils.toMD5(paramMessageForShortVideo.uuid) + "-700").toLowerCase();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gs_");
+    localStringBuilder.append(paramMessageForShortVideo.frienduin);
+    localStringBuilder.append('_');
+    localStringBuilder.append(paramMessageForShortVideo.getMd5());
+    localStringBuilder.append('_');
+    localStringBuilder.append(MD5Utils.toMD5(paramMessageForShortVideo.uuid));
+    localStringBuilder.append("-700");
+    return localStringBuilder.toString().toLowerCase();
   }
   
   public static String a(String paramString)
@@ -114,7 +114,7 @@ public class TroopStoryUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.TroopStoryUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ class EffectSettingBtn$5
   
   public void onClick(View paramView)
   {
-    this.a.a.a().a().ax = true;
+    this.a.a.a().a().al = true;
     UITools.a(this.a.a);
     EffectSettingBtn.b(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
@@ -22,7 +22,7 @@ class EffectSettingBtn$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.EffectSettingBtn.5
  * JD-Core Version:    0.7.0.1
  */

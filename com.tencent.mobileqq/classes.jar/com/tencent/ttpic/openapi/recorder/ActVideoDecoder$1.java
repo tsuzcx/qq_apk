@@ -9,7 +9,8 @@ class ActVideoDecoder$1
   
   public void run()
   {
-    ActVideoDecoder.access$002(this.this$0, new SurfaceTexture(ActVideoDecoder.access$100(this.this$0)));
+    ??? = this.this$0;
+    ActVideoDecoder.access$002((ActVideoDecoder)???, new SurfaceTexture(ActVideoDecoder.access$100((ActVideoDecoder)???)));
     ActVideoDecoder.access$000(this.this$0).setOnFrameAvailableListener(new ActVideoDecoder.1.1(this));
     synchronized (ActVideoDecoder.access$400(this.this$0))
     {
@@ -21,7 +22,7 @@ class ActVideoDecoder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.recorder.ActVideoDecoder.1
  * JD-Core Version:    0.7.0.1
  */

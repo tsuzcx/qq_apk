@@ -28,9 +28,9 @@ public class SelectTouchBarView
     super(paramContext);
     this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2131558677, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362528));
-    a((RelativeLayout)findViewById(2131362527));
+    LayoutInflater.from(paramContext).inflate(2131558575, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131362484));
+    a((RelativeLayout)findViewById(2131362483));
   }
   
   private void a(RelativeLayout paramRelativeLayout)
@@ -89,7 +89,7 @@ public class SelectTouchBarView
   
   public void a()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131362527);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131362483);
     localRelativeLayout.removeView(this.jdField_a_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine);
     localRelativeLayout.removeView(this.jdField_b_of_type_ComTencentMobileqqWidgetMutliSeletedBottomLine);
     a(localRelativeLayout);
@@ -98,18 +98,22 @@ public class SelectTouchBarView
   
   public void setCheckedNum(int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramInt == 0) {
-      localStringBuilder.append("选择到这里");
-    }
-    for (;;)
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    if (paramInt == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(localStringBuilder.toString());
-      this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(localStringBuilder.toString());
-      a();
-      return;
-      localStringBuilder.append("选择到这里(已选" + paramInt + "条)");
+      localStringBuilder1.append("选择到这里");
     }
+    else
+    {
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("选择到这里(已选");
+      localStringBuilder2.append(paramInt);
+      localStringBuilder2.append("条)");
+      localStringBuilder1.append(localStringBuilder2.toString());
+    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(localStringBuilder1.toString());
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(localStringBuilder1.toString());
+    a();
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
@@ -119,7 +123,7 @@ public class SelectTouchBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SelectTouchBarView
  * JD-Core Version:    0.7.0.1
  */

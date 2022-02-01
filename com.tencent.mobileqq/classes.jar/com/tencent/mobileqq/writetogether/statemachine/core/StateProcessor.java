@@ -29,22 +29,38 @@ public class StateProcessor<E>
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StateProcessor", 2, "[onExit] curState: " + this.jdField_a_of_type_JavaLangObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onExit] curState: ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangObject);
+      QLog.d("StateProcessor", 2, localStringBuilder.toString());
     }
   }
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StateProcessor", 2, "[handleEvent] state: " + this.jdField_a_of_type_JavaLangObject + ", event: " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[handleEvent] state: ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangObject);
+      localStringBuilder.append(", event: ");
+      localStringBuilder.append(paramInt);
+      QLog.d("StateProcessor", 2, localStringBuilder.toString());
     }
   }
   
   public void a(E paramE)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StateProcessor", 2, "[onEnter] enter: " + this.jdField_a_of_type_JavaLangObject + ", lastState: " + paramE);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onEnter] enter: ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangObject);
+      localStringBuilder.append(", lastState: ");
+      localStringBuilder.append(paramE);
+      QLog.d("StateProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -55,7 +71,7 @@ public class StateProcessor<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.core.StateProcessor
  * JD-Core Version:    0.7.0.1
  */

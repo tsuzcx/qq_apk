@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.leba.core;
 
+import android.content.SharedPreferences;
 import com.tencent.mobileqq.utils.SharedPreferencesHandler;
 import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -12,14 +13,12 @@ import mqq.app.MobileQQ;
 
 public class LebaWebPreloadHelper
 {
-  private static String a;
+  private static String a = "LebaWebPreloadHelper";
   protected static HashMap<String, String> a;
-  protected static boolean a;
+  protected static boolean a = false;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "LebaWebPreloadHelper";
-    jdField_a_of_type_Boolean = false;
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
   }
   
@@ -30,22 +29,24 @@ public class LebaWebPreloadHelper
   
   public void a(AppRuntime paramAppRuntime)
   {
-    if (paramAppRuntime == null) {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "updateBuffer");
-    }
-    for (;;)
+    if (paramAppRuntime == null)
     {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "updateBuffer");
       return;
-      jdField_a_of_type_JavaUtilHashMap.clear();
-      paramAppRuntime = SharedPreferencesHandler.a(MobileQQ.getContext().getSharedPreferences("web_process_preload_file", 4), "key_web_plugin_list" + paramAppRuntime.getCurrentAccountUin(), null);
-      if ((paramAppRuntime != null) && (!paramAppRuntime.isEmpty()))
+    }
+    jdField_a_of_type_JavaUtilHashMap.clear();
+    Object localObject = MobileQQ.getContext().getSharedPreferences("web_process_preload_file", 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("key_web_plugin_list");
+    localStringBuilder.append(paramAppRuntime.getCurrentAccountUin());
+    paramAppRuntime = SharedPreferencesHandler.a((SharedPreferences)localObject, localStringBuilder.toString(), null);
+    if ((paramAppRuntime != null) && (!paramAppRuntime.isEmpty()))
+    {
+      paramAppRuntime = paramAppRuntime.iterator();
+      while (paramAppRuntime.hasNext())
       {
-        paramAppRuntime = paramAppRuntime.iterator();
-        while (paramAppRuntime.hasNext())
-        {
-          String str = (String)paramAppRuntime.next();
-          jdField_a_of_type_JavaUtilHashMap.put(str, str);
-        }
+        localObject = (String)paramAppRuntime.next();
+        jdField_a_of_type_JavaUtilHashMap.put(localObject, localObject);
       }
     }
   }
@@ -60,20 +61,20 @@ public class LebaWebPreloadHelper
   
   public void b(AppRuntime paramAppRuntime)
   {
-    if (paramAppRuntime == null) {
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "notifyRefreshWebProcess");
-    }
-    do
+    if (paramAppRuntime == null)
     {
+      QLog.i(jdField_a_of_type_JavaLangString, 1, "notifyRefreshWebProcess");
       return;
-      paramAppRuntime = (IWebProcessManagerService)paramAppRuntime.getRuntimeService(IWebProcessManagerService.class, "");
-    } while ((!jdField_a_of_type_Boolean) || (!paramAppRuntime.isNeedPreloadWebProcess()));
-    paramAppRuntime.startWebProcess(-1, null);
+    }
+    paramAppRuntime = (IWebProcessManagerService)paramAppRuntime.getRuntimeService(IWebProcessManagerService.class, "");
+    if ((jdField_a_of_type_Boolean) && (paramAppRuntime.isNeedPreloadWebProcess())) {
+      paramAppRuntime.startWebProcess(-1, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.core.LebaWebPreloadHelper
  * JD-Core Version:    0.7.0.1
  */

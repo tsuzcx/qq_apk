@@ -1,12 +1,13 @@
 package com.tencent.imcore.message.ext.codec;
 
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.core.GetUnreadMsgNumCallback;
 import com.tencent.mobileqq.data.ConversationInfo;
 
 public class UinType4UnreadMsgNumCallback
   implements GetUnreadMsgNumCallback
 {
-  public int a(String paramString, StringBuilder paramStringBuilder)
+  public int a(String paramString, StringBuilder paramStringBuilder, AppInterface paramAppInterface)
   {
     return 0;
   }
@@ -16,7 +17,7 @@ public class UinType4UnreadMsgNumCallback
     return false;
   }
   
-  public boolean a(ConversationInfo paramConversationInfo, boolean[] paramArrayOfBoolean)
+  public boolean a(ConversationInfo paramConversationInfo, boolean[] paramArrayOfBoolean, AppInterface paramAppInterface)
   {
     if (paramConversationInfo.type == 4)
     {
@@ -28,7 +29,7 @@ public class UinType4UnreadMsgNumCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.UinType4UnreadMsgNumCallback
  * JD-Core Version:    0.7.0.1
  */

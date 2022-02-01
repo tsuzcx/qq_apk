@@ -25,18 +25,19 @@ class QQstoryAction$1
       QQstoryAction.a(this.a);
       return;
     }
-    if (!NetworkUtil.g(BaseApplicationImpl.getContext()))
+    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694460, 1).a();
+      QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131694425, 1).a();
       return;
     }
-    this.a.c = "open";
-    QQstoryAction.a(this.a);
+    paramStoryShareTranslateTokenResponse = this.a;
+    paramStoryShareTranslateTokenResponse.c = "open";
+    QQstoryAction.a(paramStoryShareTranslateTokenResponse);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QQstoryAction.1
  * JD-Core Version:    0.7.0.1
  */

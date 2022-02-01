@@ -45,25 +45,23 @@ public class AddPhoneNumberRequest
     try
     {
       localStAddPhoneNumberRsp.mergeFrom(paramArrayOfByte);
-      if (localStAddPhoneNumberRsp != null)
-      {
-        paramJSONObject.put("encryptedData", localStAddPhoneNumberRsp.encryptedData.get());
-        paramJSONObject.put("iv", localStAddPhoneNumberRsp.iv.get());
-        return paramJSONObject;
-      }
+      paramJSONObject.put("encryptedData", localStAddPhoneNumberRsp.encryptedData.get());
+      paramJSONObject.put("iv", localStAddPhoneNumberRsp.iv.get());
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("AddPhoneNumberRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("AddPhoneNumberRequest", paramJSONObject.toString());
     }
-    QMLog.d("AddPhoneNumberRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.AddPhoneNumberRequest
  * JD-Core Version:    0.7.0.1
  */

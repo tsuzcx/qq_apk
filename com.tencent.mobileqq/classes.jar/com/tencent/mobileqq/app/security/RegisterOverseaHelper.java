@@ -23,42 +23,48 @@ public class RegisterOverseaHelper
   
   public static RegisterOverseaHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqAppSecurityRegisterOverseaHelper == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqAppSecurityRegisterOverseaHelper == null) {
-        jdField_a_of_type_ComTencentMobileqqAppSecurityRegisterOverseaHelper = new RegisterOverseaHelper();
+    if (jdField_a_of_type_ComTencentMobileqqAppSecurityRegisterOverseaHelper == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqAppSecurityRegisterOverseaHelper == null) {
+          jdField_a_of_type_ComTencentMobileqqAppSecurityRegisterOverseaHelper = new RegisterOverseaHelper();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqAppSecurityRegisterOverseaHelper;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqAppSecurityRegisterOverseaHelper;
   }
   
   private void a(String paramString, RegisterNewBaseActivity paramRegisterNewBaseActivity)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramRegisterNewBaseActivity == null))
+    Object localObject = paramString;
+    if ((!TextUtils.isEmpty(paramString)) && (paramRegisterNewBaseActivity != null))
     {
-      QLog.e("RegisterOverseaHelper", 1, "jumpWithCaptchaUrl error: params wrong");
+      paramString = (String)localObject;
+      if (!((String)localObject).startsWith("http://"))
+      {
+        paramString = (String)localObject;
+        if (!((String)localObject).startsWith("https://"))
+        {
+          paramString = new StringBuilder();
+          paramString.append("https://");
+          paramString.append((String)localObject);
+          paramString = paramString.toString();
+        }
+      }
+      ReportController.a(null, "dc00898", "", "", "0X800B8B1", "0X800B8B1", 0, 0, "", "", "", "");
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("is_register_uin", true);
+      ((Intent)localObject).putExtra("isShowAd", false);
+      ((Intent)localObject).putExtra("hide_more_button", true);
+      ((Intent)localObject).putExtra("hide_operation_bar", true);
+      ((Intent)localObject).putExtra("register_uin_msg", 111);
+      ((Intent)localObject).putExtra("keyFrom", paramRegisterNewBaseActivity.getClass().getName());
+      ((Intent)localObject).putExtra("url", paramString);
+      LoginUtils.a(paramRegisterNewBaseActivity, (Intent)localObject, "/base/browser");
       return;
     }
-    String str = paramString;
-    if (!paramString.startsWith("http://"))
-    {
-      str = paramString;
-      if (!paramString.startsWith("https://")) {
-        str = "https://" + paramString;
-      }
-    }
-    ReportController.a(null, "dc00898", "", "", "0X800B8B1", "0X800B8B1", 0, 0, "", "", "", "");
-    paramString = new Intent();
-    paramString.putExtra("is_register_uin", true);
-    paramString.putExtra("isShowAd", false);
-    paramString.putExtra("hide_more_button", true);
-    paramString.putExtra("hide_operation_bar", true);
-    paramString.putExtra("register_uin_msg", 111);
-    paramString.putExtra("keyFrom", paramRegisterNewBaseActivity.getClass().getName());
-    paramString.putExtra("url", str);
-    LoginUtils.a(paramRegisterNewBaseActivity, paramString, "/base/browser");
+    QLog.e("RegisterOverseaHelper", 1, "jumpWithCaptchaUrl error: params wrong");
   }
   
   private boolean a(AppRuntime paramAppRuntime, RegisterNewBaseActivity paramRegisterNewBaseActivity, byte[] paramArrayOfByte)
@@ -109,18 +115,21 @@ public class RegisterOverseaHelper
         QLog.e("RegisterOverseaHelper", 1, "handleIframe error: captcha url is empty");
         return;
       }
+      paramRegisterNewBaseActivity.handler.post(new RegisterOverseaHelper.1(this, paramAppRuntime, paramRegisterNewBaseActivity));
+      return;
     }
     catch (UnsupportedEncodingException paramAppRuntime)
     {
-      QLog.e("RegisterOverseaHelper", 1, "handleIframe error: captchaURL encode exception " + paramAppRuntime);
-      return;
+      paramRegisterNewBaseActivity = new StringBuilder();
+      paramRegisterNewBaseActivity.append("handleIframe error: captchaURL encode exception ");
+      paramRegisterNewBaseActivity.append(paramAppRuntime);
+      QLog.e("RegisterOverseaHelper", 1, paramRegisterNewBaseActivity.toString());
     }
-    paramRegisterNewBaseActivity.handler.post(new RegisterOverseaHelper.1(this, paramAppRuntime, paramRegisterNewBaseActivity));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.security.RegisterOverseaHelper
  * JD-Core Version:    0.7.0.1
  */

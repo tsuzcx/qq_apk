@@ -29,19 +29,26 @@ public class VText
   
   private void tryDetectRichTextClick(String paramString, MotionEvent paramMotionEvent)
   {
-    if ((this.mDomObj.getAttributes().containsKey("detectRichText")) && (ViolaUtils.getBoolean(this.mDomObj.getAttributes().get("detectRichText")))) {}
-    do
+    if ((this.mDomObj.getAttributes().containsKey("detectRichText")) && (ViolaUtils.getBoolean(this.mDomObj.getAttributes().get("detectRichText")))) {
+      return;
+    }
+    if ((this.mDomObj instanceof DomObjectText))
     {
-      do
-      {
+      if (!((DomObjectText)this.mDomObj).isRichText()) {
         return;
-      } while ((!(this.mDomObj instanceof DomObjectText)) || (!((DomObjectText)this.mDomObj).isRichText()) || (!"click".equals(paramString)));
+      }
+      if (!"click".equals(paramString)) {
+        return;
+      }
       paramString = (VTextView)getHostView();
-    } while (paramString == null);
-    paramString.onTouchEvent(paramMotionEvent);
+      if (paramString == null) {
+        return;
+      }
+      paramString.onTouchEvent(paramMotionEvent);
+    }
   }
   
-  public void fireClickAction(String paramString, MotionEvent paramMotionEvent)
+  protected void fireClickAction(String paramString, MotionEvent paramMotionEvent)
   {
     tryDetectRichTextClick(paramString, paramMotionEvent);
     super.fireClickAction(paramString, paramMotionEvent);
@@ -61,37 +68,30 @@ public class VText
     }
   }
   
-  public boolean resetStyle(String paramString)
+  protected boolean resetStyle(String paramString)
   {
-    int i;
     if (!super.resetStyle(paramString))
     {
-      i = -1;
-      switch (paramString.hashCode())
+      int i = -1;
+      int j = paramString.hashCode();
+      if (j != -823812830)
       {
-      }
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return false;
-        if (paramString.equals("value"))
-        {
+        if ((j == 111972721) && (paramString.equals("value"))) {
           i = 0;
-          continue;
-          if (paramString.equals("values")) {
-            i = 1;
-          }
         }
-        break;
       }
+      else if (paramString.equals("values")) {
+        i = 1;
+      }
+      if ((i != 0) && (i != 1)) {
+        return false;
+      }
+      if (this.mHost != null) {
+        ((VTextView)this.mHost).setText("");
+      }
+      return true;
     }
-    if (this.mHost != null) {
-      ((VTextView)this.mHost).setText("");
-    }
-    return true;
+    return false;
   }
   
   public void updateExtra(Object paramObject)
@@ -111,7 +111,7 @@ public class VText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VText
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,12 @@ class AddAccountActivity$11
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    AddAccountActivity.c(this.a, false);
+    AddAccountActivity.access$702(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddAccountActivity.11
  * JD-Core Version:    0.7.0.1
  */

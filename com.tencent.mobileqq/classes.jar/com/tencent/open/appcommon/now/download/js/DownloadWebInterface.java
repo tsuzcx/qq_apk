@@ -43,31 +43,24 @@ public class DownloadWebInterface
     this.mActivity = paramActivity;
     this.webview = paramWebView;
     this.mHandler = new Handler(Looper.getMainLooper());
-    if ((paramActivity instanceof PublicFragmentActivityForTool)) {
+    boolean bool = paramActivity instanceof PublicFragmentActivityForTool;
+    paramWebView = null;
+    if (bool) {
       paramWebView = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
+    } else if ((paramActivity instanceof BaseActivity)) {
+      paramWebView = (AppInterface)((BaseActivity)paramActivity).getAppRuntime();
     }
-    for (;;)
-    {
-      DownloadManager.a().a(paramWebView);
-      H5JSCallbackManager.a().a(this);
-      LogUtility.c(this.TAG, "init out");
-      return;
-      paramWebView = localObject;
-      if ((paramActivity instanceof BaseActivity)) {
-        paramWebView = (AppInterface)((BaseActivity)paramActivity).getAppRuntime();
-      }
-    }
+    DownloadManager.a().a(paramWebView);
+    H5JSCallbackManager.a().a(this);
+    LogUtility.c(this.TAG, "init out");
   }
   
   public static boolean changeIntToBoolean(int paramInt)
   {
-    boolean bool = true;
     if (paramInt == 0) {
-      bool = false;
+      return false;
     }
-    while (paramInt != 1) {
-      return bool;
-    }
+    if (paramInt == 1) {}
     return true;
   }
   
@@ -88,148 +81,162 @@ public class DownloadWebInterface
       return -1;
     }
     Bundle localBundle = new Bundle();
-    try
-    {
-      localJSONObject = new JSONObject(paramString);
-      localBundle.putString(DownloadConstants.b, localJSONObject.optString("appid"));
-      localBundle.putString(DownloadConstants.j, localJSONObject.optString("url"));
-      localBundle.putString(DownloadConstants.f, localJSONObject.optString("packageName"));
-      localBundle.putInt(DownloadConstants.k, localJSONObject.optInt("actionCode"));
-      localBundle.putString(DownloadConstants.i, localJSONObject.optString("via"));
-      localBundle.putString(DownloadConstants.l, localJSONObject.optString("appName"));
-      localBundle.putBoolean(DownloadConstants.r, changeIntToBoolean(localJSONObject.optInt("showNetworkDialog")));
-      localBundle.putString(DownloadConstants.E, localJSONObject.optString("iconUrl"));
-      localBundle.putInt(DownloadConstants.I, localJSONObject.optInt("showNotification"));
-      localBundle.putBoolean(DownloadConstants.K, changeIntToBoolean(localJSONObject.optInt("isAutoInstallBySdk")));
-      localBundle.putString(DownloadConstants.J, localJSONObject.optString("extraData"));
-      localBundle.putString(DownloadConstants.G, localJSONObject.optString("downloadStyle"));
-      localBundle.putString(DownloadConstants.H, localJSONObject.optString("downloadSize"));
-      localBundle.putString(DownloadConstants.p, localJSONObject.optString("wording"));
-      if (localJSONObject.has("bolckNotify")) {
-        localBundle.putBoolean(DownloadConstants.x, localJSONObject.optBoolean("bolckNotify"));
-      }
-      paramString = localJSONObject.optString(DownloadConstants.C);
-      LogUtility.d(this.TAG, " feedChannel:" + paramString);
-      if (TextUtils.isEmpty(paramString)) {
-        break label886;
-      }
-      if (!paramString.startsWith("0;")) {
-        break label775;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      JSONObject localJSONObject;
-      int i;
-      Object localObject;
-      boolean bool;
-      LogUtility.c(this.TAG, "JSONException", paramString);
-      return -1;
-    }
-    catch (NumberFormatException paramString)
-    {
-      for (;;)
-      {
-        LogUtility.c(this.TAG, "Exception", paramString);
-        continue;
-        paramString = null;
-        continue;
-        paramString = "";
-        continue;
-        paramString = "";
-      }
-    }
-    LogUtility.d(this.TAG, " finalFeedChannel:" + paramString);
-    localBundle.putString(DownloadConstants.C, paramString);
-    localJSONObject.optString("via");
-    localJSONObject.optString("appid");
-    i = localJSONObject.optInt("actionCode");
-    localObject = null;
-    paramString = (String)localObject;
-    if (i == 12)
-    {
-      bool = changeIntToBoolean(localJSONObject.optInt("updateType"));
-      localBundle.putBoolean(DownloadConstants.o, bool);
-      bool = localJSONObject.has("updateData");
-      paramString = (String)localObject;
-      if (!bool) {}
-    }
     for (;;)
     {
       try
       {
-        localObject = localJSONObject.optString("updateData");
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          continue;
+        localJSONObject = new JSONObject(paramString);
+        localBundle.putString(DownloadConstants.b, localJSONObject.optString("appid"));
+        localBundle.putString(DownloadConstants.j, localJSONObject.optString("url"));
+        localBundle.putString(DownloadConstants.f, localJSONObject.optString("packageName"));
+        localBundle.putInt(DownloadConstants.k, localJSONObject.optInt("actionCode"));
+        localBundle.putString(DownloadConstants.i, localJSONObject.optString("via"));
+        localBundle.putString(DownloadConstants.l, localJSONObject.optString("appName"));
+        localBundle.putBoolean(DownloadConstants.s, changeIntToBoolean(localJSONObject.optInt("showNetworkDialog")));
+        localBundle.putString(DownloadConstants.F, localJSONObject.optString("iconUrl"));
+        localBundle.putInt(DownloadConstants.J, localJSONObject.optInt("showNotification"));
+        localBundle.putBoolean(DownloadConstants.L, changeIntToBoolean(localJSONObject.optInt("isAutoInstallBySdk")));
+        localBundle.putString(DownloadConstants.K, localJSONObject.optString("extraData"));
+        localBundle.putString(DownloadConstants.H, localJSONObject.optString("downloadStyle"));
+        localBundle.putString(DownloadConstants.I, localJSONObject.optString("downloadSize"));
+        localBundle.putString(DownloadConstants.p, localJSONObject.optString("wording"));
+        if (localJSONObject.has("bolckNotify")) {
+          localBundle.putBoolean(DownloadConstants.y, localJSONObject.optBoolean("bolckNotify"));
         }
-        paramString = new ApkUpdateDetail();
+        localObject2 = localJSONObject.optString(DownloadConstants.D);
+        paramString = this.TAG;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" feedChannel:");
+        ((StringBuilder)localObject1).append((String)localObject2);
+        LogUtility.d(paramString, ((StringBuilder)localObject1).toString());
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
+        localObject1 = "";
+        paramString = (String)localObject1;
+        if (!bool) {
+          if (((String)localObject2).startsWith("0;"))
+          {
+            paramString = (String)localObject1;
+          }
+          else
+          {
+            paramString = ((String)localObject2).split(";");
+            if (paramString == null)
+            {
+              paramString = (String)localObject1;
+            }
+            else if (paramString.length <= 0)
+            {
+              paramString = (String)localObject1;
+            }
+            else
+            {
+              localObject2 = paramString[0];
+              paramString = (String)localObject1;
+              if (!TextUtils.isEmpty((CharSequence)localObject2))
+              {
+                if (!((String)localObject2).equals("0")) {
+                  break label953;
+                }
+                paramString = (String)localObject1;
+              }
+            }
+          }
+        }
+        localObject1 = this.TAG;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(" finalFeedChannel:");
+        ((StringBuilder)localObject2).append(paramString);
+        LogUtility.d((String)localObject1, ((StringBuilder)localObject2).toString());
+        localBundle.putString(DownloadConstants.D, paramString);
+        localJSONObject.optString("via");
+        localJSONObject.optString("appid");
+        i = localJSONObject.optInt("actionCode");
+        localObject2 = null;
+        localObject1 = null;
+        paramString = (String)localObject2;
+        if (i == 12)
+        {
+          bool = changeIntToBoolean(localJSONObject.optInt("updateType"));
+          localBundle.putBoolean(DownloadConstants.o, bool);
+          bool = localJSONObject.has("updateData");
+          paramString = (String)localObject2;
+          if (!bool) {}
+        }
+      }
+      catch (NumberFormatException paramString)
+      {
+        JSONObject localJSONObject;
+        int i;
+        Object localObject3;
+        LogUtility.c(this.TAG, "Exception", paramString);
+        return -1;
+      }
+      catch (JSONException paramString)
+      {
+        LogUtility.c(this.TAG, "JSONException", paramString);
+        return -1;
+      }
+      try
+      {
+        localObject3 = localJSONObject.optString("updateData");
+        paramString = (String)localObject2;
+        if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+          paramString = new ApkUpdateDetail();
+        }
       }
       catch (Exception paramString)
       {
-        String str;
-        label775:
-        paramString = null;
+        paramString = (String)localObject1;
         continue;
       }
       try
       {
-        localObject = new JSONObject((String)localObject);
-        paramString.packageName = ((JSONObject)localObject).optString("packageName");
-        paramString.newapksize = ((JSONObject)localObject).optInt("newapksize");
-        paramString.patchsize = ((JSONObject)localObject).optInt("patchsize");
-        paramString.updatemethod = ((JSONObject)localObject).optInt("updatemethod");
-        paramString.versioncode = ((JSONObject)localObject).optInt("versioncode");
-        paramString.versionname = ((JSONObject)localObject).optString("versionname");
-        paramString.fileMd5 = ((JSONObject)localObject).optString("fileMd5");
-        paramString.sigMd5 = ((JSONObject)localObject).optString("sigMd5");
-        paramString.url = ((JSONObject)localObject).optString("url");
-        i = localJSONObject.optInt("myAppConfig");
-        localBundle.putString(DownloadConstants.c, localJSONObject.optString("myAppId"));
-        localBundle.putString(DownloadConstants.d, localJSONObject.optString("apkId"));
-        localBundle.putInt(DownloadConstants.e, localJSONObject.optInt("versionCode"));
-        localBundle.putInt(DownloadConstants.n, localJSONObject.optInt("toPageType"));
-        localBundle.putBoolean(DownloadConstants.g, changeIntToBoolean(localJSONObject.optInt("isAutoDownload")));
-        localBundle.putBoolean(DownloadConstants.h, changeIntToBoolean(localJSONObject.optInt("isAutoInstall")));
-        str = localJSONObject.optString("sourceType");
-        localObject = str;
-        if (TextUtils.isEmpty(str)) {
-          localObject = DownloadInterface.getSourceInfoFromActivity(this.mActivity);
-        }
-        LogUtility.c(this.TAG, "doDownloadAction object " + localJSONObject.toString());
-        DownloadJSApi.a(this.mActivity, localBundle, (String)localObject, paramString, i);
-        return 0;
+        localObject1 = new JSONObject((String)localObject3);
+        paramString.packageName = ((JSONObject)localObject1).optString("packageName");
+        paramString.newapksize = ((JSONObject)localObject1).optInt("newapksize");
+        paramString.patchsize = ((JSONObject)localObject1).optInt("patchsize");
+        paramString.updatemethod = ((JSONObject)localObject1).optInt("updatemethod");
+        paramString.versioncode = ((JSONObject)localObject1).optInt("versioncode");
+        paramString.versionname = ((JSONObject)localObject1).optString("versionname");
+        paramString.fileMd5 = ((JSONObject)localObject1).optString("fileMd5");
+        paramString.sigMd5 = ((JSONObject)localObject1).optString("sigMd5");
+        paramString.url = ((JSONObject)localObject1).optString("url");
       }
       catch (Exception localException)
       {
         continue;
       }
-      paramString = paramString.split(";");
-      if (paramString == null)
-      {
-        paramString = "";
-        break;
-      }
-      if (paramString.length <= 0)
-      {
-        paramString = "";
-        break;
-      }
-      localObject = paramString[0];
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        continue;
-      }
-      paramString = (String)localObject;
-      if (!((String)localObject).equals("0")) {
-        break;
-      }
-      continue;
       LogUtility.c(this.TAG, "enter doDownloadAction updateData json");
+      i = localJSONObject.optInt("myAppConfig");
+      localBundle.putString(DownloadConstants.c, localJSONObject.optString("myAppId"));
+      localBundle.putString(DownloadConstants.d, localJSONObject.optString("apkId"));
+      localBundle.putInt(DownloadConstants.e, localJSONObject.optInt("versionCode"));
+      localBundle.putInt(DownloadConstants.n, localJSONObject.optInt("toPageType"));
+      localBundle.putBoolean(DownloadConstants.g, changeIntToBoolean(localJSONObject.optInt("isAutoDownload")));
+      localBundle.putBoolean(DownloadConstants.h, changeIntToBoolean(localJSONObject.optInt("isAutoInstall")));
+      Object localObject2 = localJSONObject.optString("sourceType");
+      Object localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = DownloadInterface.getSourceInfoFromActivity(this.mActivity);
+      }
+      localObject2 = this.TAG;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("doDownloadAction object ");
+      ((StringBuilder)localObject3).append(localJSONObject.toString());
+      LogUtility.c((String)localObject2, ((StringBuilder)localObject3).toString());
+      DownloadJSApi.a(this.mActivity, localBundle, (String)localObject1, paramString, i);
+      return 0;
+      label953:
+      paramString = (String)localObject2;
     }
   }
   
   public String getDownloadVersion()
   {
-    return DownloadApi.a() + "";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(DownloadApi.a());
+    localStringBuilder.append("");
+    return localStringBuilder.toString();
   }
   
   public String getInterfaceName()
@@ -261,7 +268,7 @@ public class DownloadWebInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.js.DownloadWebInterface
  * JD-Core Version:    0.7.0.1
  */

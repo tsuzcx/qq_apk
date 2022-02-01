@@ -3,9 +3,11 @@ package com.tencent.biz.pubaccount.util.api.impl;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient;
+import com.tencent.aelight.camera.util.api.ICaptureUtil;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
+import com.tencent.mobileqq.kandian.biz.video.api.IVideoFeedsIPCClient;
+import com.tencent.mobileqq.kandian.biz.video.api.IVideoFeedsIPCClient.Observer;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -22,84 +24,86 @@ class PublicAccountH5AbilityPluginImpl$7
   
   public void run()
   {
-    if (!CaptureUtil.a()) {
-      DialogUtil.a(this.this$0.activity, 230, null, HardCodeUtil.a(2131708774), null, this.this$0.activity.getString(2131694615), new PublicAccountH5AbilityPluginImpl.7.1(this), null).show();
+    if (!((ICaptureUtil)QRoute.api(ICaptureUtil.class)).supportCapture())
+    {
+      DialogUtil.a(this.this$0.activity, 230, null, HardCodeUtil.a(2131708780), null, this.this$0.activity.getString(2131694583), new PublicAccountH5AbilityPluginImpl.7.1(this), null).show();
+      return;
     }
     Object localObject2;
-    String str2;
-    int i;
-    int j;
-    String str3;
-    String str4;
-    String str5;
-    String str6;
-    String str7;
-    label199:
-    boolean bool;
-    do
+    try
     {
-      return;
-      Object localObject1;
-      try
+      Object localObject3 = new JSONObject(this.a[0]);
+      if (QLog.isColorLevel())
       {
-        localObject2 = new JSONObject(this.a[0]);
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage param json:" + ((JSONObject)localObject2).toString());
-        }
-        str2 = ((JSONObject)localObject2).optString("topicId");
-        i = ((JSONObject)localObject2).optInt("adtag");
-        j = ((JSONObject)localObject2).optInt("mode");
-        str3 = ((JSONObject)localObject2).optString("vid");
-        str4 = ((JSONObject)localObject2).optString("videourl");
-        str5 = ((JSONObject)localObject2).optString("coverurl");
-        str6 = ((JSONObject)localObject2).optString("md5");
-        localObject1 = ((JSONObject)localObject2).optString("topicName");
-        str7 = ((JSONObject)localObject2).optString("cookie");
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("showUGCVideoRecordPage param json:");
+        ((StringBuilder)localObject1).append(((JSONObject)localObject3).toString());
+        QLog.i("Q.pubaccount.video.cameracapture", 2, ((StringBuilder)localObject1).toString());
       }
-      catch (Exception localException1) {}
+      String str2 = ((JSONObject)localObject3).optString("topicId");
+      int i = ((JSONObject)localObject3).optInt("adtag");
+      int j = ((JSONObject)localObject3).optInt("mode");
+      String str3 = ((JSONObject)localObject3).optString("vid");
+      String str4 = ((JSONObject)localObject3).optString("videourl");
+      String str5 = ((JSONObject)localObject3).optString("coverurl");
+      String str6 = ((JSONObject)localObject3).optString("md5");
+      Object localObject1 = ((JSONObject)localObject3).optString("topicName");
+      String str7 = ((JSONObject)localObject3).optString("cookie");
       try
       {
-        str1 = new String(Base64Util.decode((String)localObject1, 0));
+        String str1 = new String(Base64Util.decode((String)localObject1, 0));
         localObject1 = str1;
       }
-      catch (Exception localException2)
+      catch (Exception localException3)
       {
-        localException2.printStackTrace();
-        break label199;
-        if (!QLog.isColorLevel()) {
-          break label342;
-        }
-        QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage isSoReady=" + bool);
-        if (bool) {
-          break label467;
-        }
-        localObject2 = new QQProgressDialog(this.this$0.mRuntime.a(), this.this$0.mRuntime.a().getResources().getDimensionPixelSize(2131299166));
-        ((QQProgressDialog)localObject2).c(2131718421);
-        PublicAccountH5AbilityPluginImpl.7.2 local2 = new PublicAccountH5AbilityPluginImpl.7.2(this, (QQProgressDialog)localObject2, str2, localException1, i, j, localException2, str3, str4, str5, str6, str7);
-        this.this$0.mVideoIPCClient.a(local2);
-        this.this$0.mVideoIPCClient.a("CMD_CAMERA_CAPTURE_SO_DOWNLOAD", null);
-        ((QQProgressDialog)localObject2).a(new PublicAccountH5AbilityPluginImpl.7.3(this, local2));
-        ((QQProgressDialog)localObject2).show();
+        localException3.printStackTrace();
+      }
+      localObject2 = ((JSONObject)localObject3).optString("callback");
+      localObject3 = this.this$0.mVideoIPCClient.callServer("CMD_CAMERA_CAPTURE_CHECK_SO_READY", null);
+      boolean bool = ((Bundle)localObject3).getBoolean("VALUE_CAMERA_CAPTURE_IS_SO_READY");
+      if (((Bundle)localObject3).getBoolean("VALUE_CAMERA_IS_VIDEO_CHATTING"))
+      {
+        QQToast.a(this.this$0.mRuntime.a(), 0, 2131719097, 0).a();
         return;
-        PublicAccountH5AbilityPluginImpl.access$000(this.this$0, str2, local2, i, j, localException2, str3, str4, str5, str6, str7);
       }
-      String str1 = ((JSONObject)localObject2).optString("callback");
-      localObject2 = this.this$0.mVideoIPCClient.a("CMD_CAMERA_CAPTURE_CHECK_SO_READY", null);
-      bool = ((Bundle)localObject2).getBoolean("VALUE_CAMERA_CAPTURE_IS_SO_READY");
-      if (!((Bundle)localObject2).getBoolean("VALUE_CAMERA_IS_VIDEO_CHATTING")) {
-        break;
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("showUGCVideoRecordPage isSoReady=");
+        ((StringBuilder)localObject3).append(bool);
+        QLog.i("Q.pubaccount.video.cameracapture", 2, ((StringBuilder)localObject3).toString());
       }
-      QQToast.a(this.this$0.mRuntime.a(), 0, 2131719379, 0).a();
+      if (!bool)
+      {
+        localObject3 = new QQProgressDialog(this.this$0.mRuntime.a(), this.this$0.mRuntime.a().getResources().getDimensionPixelSize(2131299168));
+        ((QQProgressDialog)localObject3).c(2131718086);
+      }
+      try
+      {
+        localObject1 = new PublicAccountH5AbilityPluginImpl.7.2(this, (QQProgressDialog)localObject3, str2, (String)localObject1, i, j, (String)localObject2, str3, str4, str5, str6, str7);
+        this.this$0.mVideoIPCClient.addObserver((IVideoFeedsIPCClient.Observer)localObject1);
+        this.this$0.mVideoIPCClient.callServer("CMD_CAMERA_CAPTURE_SO_DOWNLOAD", null);
+        ((QQProgressDialog)localObject3).a(new PublicAccountH5AbilityPluginImpl.7.3(this, (IVideoFeedsIPCClient.Observer)localObject1));
+        ((QQProgressDialog)localObject3).show();
+        return;
+      }
+      catch (Exception localException1) {}
+      PublicAccountH5AbilityPluginImpl.access$000(this.this$0, str2, (String)localObject1, i, j, (String)localObject2, str3, str4, str5, str6, str7);
       return;
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.pubaccount.video.cameracapture", 2, "showUGCVideoRecordPage() Exception=" + localException1.getMessage());
-    return;
-    label342:
+    }
+    catch (Exception localException2) {}
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("showUGCVideoRecordPage() Exception=");
+      ((StringBuilder)localObject2).append(localException2.getMessage());
+      QLog.i("Q.pubaccount.video.cameracapture", 2, ((StringBuilder)localObject2).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.7
  * JD-Core Version:    0.7.0.1
  */

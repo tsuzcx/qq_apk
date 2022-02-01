@@ -1,19 +1,10 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
-import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.Util;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.JumpForwardPkgManager;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 public class MiniAppWebviewFragment
   extends WebViewFragment
@@ -24,82 +15,31 @@ public class MiniAppWebviewFragment
   
   private boolean isBlackPrefixUrl(String paramString, ArrayList<String> paramArrayList)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return false;
-    }
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if ((!TextUtils.isEmpty(paramString)) && (paramArrayList != null))
     {
-      String str = (String)paramArrayList.next();
-      if (paramString.toLowerCase().startsWith(str.toLowerCase())) {
-        return true;
+      if (paramArrayList.size() == 0) {
+        return false;
+      }
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        String str = (String)paramArrayList.next();
+        if (paramString.toLowerCase().startsWith(str.toLowerCase())) {
+          return true;
+        }
       }
     }
     return false;
   }
   
-  public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
+  public WebViewKernelCallBack getWebViewKernelCallBack()
   {
-    if ((this.isDestroyed) || (this.webView == null)) {
-      return true;
-    }
-    if (isBlackPrefixUrl(paramString, getIntent().getStringArrayListExtra("key_url_black_list")))
-    {
-      this.webView.loadUrl("file:///android_asset/error.html");
-      QLog.d("MiniAppWebviewFragment", 1, new Object[] { "url:", this.mUrl, "in black" });
-      return true;
-    }
-    return super.shouldOverrideUrlLoading(this.webView, paramString);
-  }
-  
-  public void startLoadUrl()
-  {
-    Util.a("Web_readyToLoadUrl");
-    if (this.webView == null) {
-      return;
-    }
-    initFinish();
-    if ((this.mStatistics.i) && (this.mStatistics.k > 0L))
-    {
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.k) / 1000000L), "", "", "", "" + this.mStatistics.c);
-      this.mStatistics.k = 0L;
-    }
-    this.mStatistics.r = System.currentTimeMillis();
-    long l = this.mStatistics.r;
-    l = this.mStatistics.b;
-    Object localObject = getIntent().getStringArrayListExtra("key_url_black_list");
-    if ((JumpForwardPkgManager.a().a(this.mUrl)) || (isBlackPrefixUrl(this.mUrl, (ArrayList)localObject)))
-    {
-      this.webView.loadUrl("file:///android_asset/error.html");
-      QLog.d("MiniAppWebviewFragment", 1, new Object[] { "url:", this.mUrl, "in black" });
-    }
-    for (;;)
-    {
-      Util.b("Web_readyToLoadUrl");
-      this.mStatistics.a(this.webView, this.mUrl, 0, 0, 0, 0, 0, new String[0]);
-      return;
-      if (getIntent().hasExtra("key_header")) {}
-      for (localObject = (HashMap)getIntent().getSerializableExtra("key_header");; localObject = null)
-      {
-        if (TextUtils.isEmpty(this.mUrl)) {
-          break label301;
-        }
-        if ((localObject == null) || (((HashMap)localObject).size() <= 0)) {
-          break label303;
-        }
-        this.webView.loadUrl(this.mUrl, (Map)localObject);
-        break;
-      }
-      label301:
-      continue;
-      label303:
-      this.webView.loadUrl(this.mUrl);
-    }
+    return new MiniAppWebviewFragment.1(this, this.webViewSurface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.MiniAppWebviewFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -42,47 +42,53 @@ public class QuickPinyinEditText
   
   private void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickPinyinEditText", 2, "updateInputtingStatus : " + paramString);
-    }
-    if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(paramString.trim())))
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_Boolean = false;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateInputtingStatus : ");
+      localStringBuilder.append(paramString);
+      QLog.d("QuickPinyinEditText", 2, localStringBuilder.toString());
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(paramString.trim())))
+    {
+      this.jdField_a_of_type_Boolean = true;
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
   }
   
   private void b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QuickPinyinEditText", 2, "updateInputtingText : " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateInputtingText : ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("QuickPinyinEditText", 2, ((StringBuilder)localObject).toString());
     }
     a(paramString);
-    if (paramString == null) {}
-    int i;
-    int j;
-    Editable localEditable;
-    do
+    if (paramString == null) {
+      return;
+    }
+    int i = getSelectionStart();
+    int j = getSelectionEnd();
+    Object localObject = getText();
+    if (((Editable)localObject).length() + paramString.length() > this.jdField_a_of_type_Int) {
+      return;
+    }
+    if (j > i)
     {
-      do
-      {
-        return;
-        i = getSelectionStart();
-        j = getSelectionEnd();
-        localEditable = getText();
-      } while (localEditable.length() + paramString.length() > this.jdField_a_of_type_Int);
-      if (j > i)
-      {
-        localEditable.replace(i, j, paramString);
-        setSelection(i, paramString.length() + i);
-        jdField_a_of_type_JavaLangString = paramString;
-        return;
-      }
-    } while ((j != i) || (j == -1));
-    localEditable.insert(i, paramString);
-    setSelection(i, paramString.length() + i);
-    jdField_a_of_type_JavaLangString = paramString;
+      ((Editable)localObject).replace(i, j, paramString);
+      setSelection(i, paramString.length() + i);
+      jdField_a_of_type_JavaLangString = paramString;
+      return;
+    }
+    if ((j == i) && (j != -1))
+    {
+      ((Editable)localObject).insert(i, paramString);
+      setSelection(i, paramString.length() + i);
+      jdField_a_of_type_JavaLangString = paramString;
+    }
   }
   
   public void a()
@@ -99,26 +105,26 @@ public class QuickPinyinEditText
   
   public boolean a()
   {
-    boolean bool2 = false;
     String str = getText().toString();
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("isInputtingPinYin :  currentText= ").append(str).append("  isInputting=");
-      if ((!str.startsWith(this.b)) || (str.equals(this.b))) {
-        break label94;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isInputtingPinYin :  currentText= ");
+      localStringBuilder.append(str);
+      localStringBuilder.append("  isInputting=");
+      boolean bool;
+      if ((str.startsWith(this.b)) && (!str.equals(this.b))) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      localStringBuilder.append(bool);
+      QLog.d("QuickPinyinEditText", 2, localStringBuilder.toString());
     }
-    label94:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      QLog.d("QuickPinyinEditText", 2, bool1);
-      bool1 = bool2;
-      if (b()) {
-        bool1 = this.jdField_a_of_type_Boolean;
-      }
-      return bool1;
+    if (b()) {
+      return this.jdField_a_of_type_Boolean;
     }
+    return false;
   }
   
   public boolean b()
@@ -137,21 +143,16 @@ public class QuickPinyinEditText
   
   public boolean onPrivateIMECommand(String paramString, Bundle paramBundle)
   {
-    String str;
     if (paramBundle != null)
     {
-      str = paramBundle.getString("req");
-      if ((!"com.sohu.inputmethod.sogou.send.input".equals(paramString)) || (!b())) {
-        break label39;
+      String str = paramBundle.getString("req");
+      if (("com.sohu.inputmethod.sogou.send.input".equals(paramString)) && (b())) {
+        b(str);
+      } else {
+        a(str);
       }
-      b(str);
     }
-    for (;;)
-    {
-      return super.onPrivateIMECommand(paramString, paramBundle);
-      label39:
-      a(str);
-    }
+    return super.onPrivateIMECommand(paramString, paramBundle);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -165,7 +166,7 @@ public class QuickPinyinEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.QuickPinyinEditText
  * JD-Core Version:    0.7.0.1
  */

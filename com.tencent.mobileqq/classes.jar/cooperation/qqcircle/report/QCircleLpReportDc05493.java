@@ -48,68 +48,89 @@ public class QCircleLpReportDc05493
   
   public static void report(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt, String paramString4, String paramString5)
   {
-    i = 0;
-    j = 0;
-    l2 = 0L;
+    int i = 0;
     try
     {
-      k = Integer.parseInt(paramString2);
-      j = k;
+      j = Integer.parseInt(paramString2);
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      try
-      {
-        int k;
-        l1 = Long.parseLong(paramString3);
-        switch (j)
-        {
-        default: 
-          RFLog.e("QCircleReportHelper_QCircleLpReportDc05493", RFLog.USR, "QCircle launch report invalid input fromStr:!" + paramString2);
-          k = i;
-          if (j != 6) {
-            break label190;
-          }
-          if ((l1 == 1L) || (l1 == 2L)) {
-            break label187;
-          }
-          k = i;
-          if (l1 != 3L) {
-            break label190;
-          }
-          k = 3;
-          report(paramString1, k, j, l1, paramLong, "", "", paramString4, paramString5, "", "", paramInt);
-          return;
-          localNumberFormatException = localNumberFormatException;
-          RFLog.e("QCircleReportHelper_QCircleLpReportDc05493", RFLog.USR, "QCircle launch report invalid input fromStr:" + paramString2);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          RFLog.e("QCircleReportHelper_QCircleLpReportDc05493", RFLog.USR, "QCircle launch report invalid input pushId:" + paramString3);
-          long l1 = l2;
-          continue;
-          i = 1;
-          continue;
-          i = 2;
-          continue;
-          i = 3;
-        }
-      }
+      int j;
+      label12:
+      StringBuilder localStringBuilder;
+      break label12;
     }
-    l1 = l2;
-    if (!TextUtils.isEmpty(paramString3))
+    j = RFLog.USR;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QCircle launch report invalid input fromStr:");
+    localStringBuilder.append(paramString2);
+    RFLog.e("QCircleReportHelper_QCircleLpReportDc05493", j, localStringBuilder.toString());
+    j = 0;
+    if ((!TextUtils.isEmpty(paramString3)) && (TextUtils.isDigitsOnly(paramString3))) {}
+    try
     {
-      l1 = l2;
-      if (!TextUtils.isDigitsOnly(paramString3)) {}
+      l = Long.parseLong(paramString3);
     }
+    catch (Exception localException)
+    {
+      long l;
+      label79:
+      int k;
+      break label79;
+    }
+    k = RFLog.USR;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QCircle launch report invalid input pushId:");
+    localStringBuilder.append(paramString3);
+    RFLog.e("QCircleReportHelper_QCircleLpReportDc05493", k, localStringBuilder.toString());
+    l = 0L;
+    switch (j)
+    {
+    default: 
+      k = RFLog.USR;
+      paramString3 = new StringBuilder();
+      paramString3.append("QCircle launch report invalid input fromStr:!");
+      paramString3.append(paramString2);
+      RFLog.e("QCircleReportHelper_QCircleLpReportDc05493", k, paramString3.toString());
+      break;
+    case 8: 
+      i = 3;
+      break;
+    case 3: 
+    case 4: 
+    case 5: 
+    case 6: 
+    case 7: 
+    case 9: 
+    case 11: 
+    case 12: 
+    case 13: 
+    case 14: 
+      i = 2;
+      break;
+    case 1: 
+    case 2: 
+    case 10: 
+      i = 1;
+    }
+    k = i;
+    if (j == 6) {
+      if ((l != 1L) && (l != 2L))
+      {
+        k = i;
+        if (l != 3L) {}
+      }
+      else
+      {
+        k = 3;
+      }
+    }
+    report(paramString1, k, j, l, paramLong, "", "", paramString4, paramString5, "", "", paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.QCircleLpReportDc05493
  * JD-Core Version:    0.7.0.1
  */

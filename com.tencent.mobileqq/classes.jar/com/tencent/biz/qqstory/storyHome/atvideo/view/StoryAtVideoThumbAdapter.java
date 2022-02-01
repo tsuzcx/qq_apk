@@ -25,44 +25,41 @@ public class StoryAtVideoThumbAdapter
   public static void a(Activity paramActivity, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem)
   {
     StringBuilder localStringBuilder1 = null;
-    StringBuilder localStringBuilder2;
     if ((paramVideoListFeedItem != null) && (paramStoryVideoItem != null))
     {
-      localStringBuilder2 = new StringBuilder();
-      if (paramStoryVideoItem.mTimeZoneOffsetMillis != 2147483647L)
-      {
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      if (paramStoryVideoItem.mTimeZoneOffsetMillis != 2147483647L) {
         localStringBuilder2.append(UIUtils.a(paramStoryVideoItem.mCreateTime, paramStoryVideoItem.mTimeZoneOffsetMillis));
+      } else {
+        localStringBuilder2.append(UIUtils.b(paramStoryVideoItem.mCreateTime));
+      }
+      paramVideoListFeedItem = localStringBuilder1;
+      paramStoryVideoItem = localStringBuilder2;
+      if (localStringBuilder2.length() > 0)
+      {
+        paramVideoListFeedItem = new Intent();
+        paramVideoListFeedItem.putExtra("at_video_text", localStringBuilder2.toString());
         paramStoryVideoItem = localStringBuilder2;
-        paramVideoListFeedItem = localStringBuilder1;
-        if (localStringBuilder2.length() > 0)
-        {
-          paramVideoListFeedItem = new Intent();
-          paramVideoListFeedItem.putExtra("at_video_text", localStringBuilder2.toString());
-          paramStoryVideoItem = localStringBuilder2;
-        }
       }
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel())
-      {
-        localStringBuilder1 = new StringBuilder().append("set result ok. At video text is:");
-        if (paramStoryVideoItem != null) {
-          break label146;
-        }
-      }
-      label146:
-      for (paramStoryVideoItem = "";; paramStoryVideoItem = paramStoryVideoItem.toString())
-      {
-        QLog.d("Q.qqstory.detail.FeedItemThumbAdapter", 2, paramStoryVideoItem);
-        paramActivity.setResult(-1, paramVideoListFeedItem);
-        return;
-        localStringBuilder2.append(UIUtils.b(paramStoryVideoItem.mCreateTime));
-        break;
-      }
       paramStoryVideoItem = null;
       paramVideoListFeedItem = localStringBuilder1;
     }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("set result ok. At video text is:");
+      if (paramStoryVideoItem == null) {
+        paramStoryVideoItem = "";
+      } else {
+        paramStoryVideoItem = paramStoryVideoItem.toString();
+      }
+      localStringBuilder1.append(paramStoryVideoItem);
+      QLog.d("Q.qqstory.detail.FeedItemThumbAdapter", 2, localStringBuilder1.toString());
+    }
+    paramActivity.setResult(-1, paramVideoListFeedItem);
   }
   
   public void a(View paramView, VideoListFeedItem paramVideoListFeedItem, StoryVideoItem paramStoryVideoItem, int paramInt)
@@ -79,7 +76,7 @@ public class StoryAtVideoThumbAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.atvideo.view.StoryAtVideoThumbAdapter
  * JD-Core Version:    0.7.0.1
  */

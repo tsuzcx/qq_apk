@@ -30,7 +30,9 @@ public class AndroidOUIWrapperUtil
   
   public static boolean isTranslucentOrFloating(Activity paramActivity)
   {
-    if (Build.VERSION.SDK_INT != 26) {
+    int i = Build.VERSION.SDK_INT;
+    boolean bool1 = false;
+    if (i != 26) {
       return false;
     }
     try
@@ -41,31 +43,28 @@ public class AndroidOUIWrapperUtil
       localObject = paramActivity.invoke(null, new Object[] { localObject });
       if ((localObject instanceof Boolean))
       {
-        bool = ((Boolean)localObject).booleanValue();
-        try
-        {
-          paramActivity.setAccessible(false);
-          return bool;
-        }
-        catch (Exception paramActivity) {}
-        paramActivity.printStackTrace();
-        return bool;
+        boolean bool2 = ((Boolean)localObject).booleanValue();
+        bool1 = bool2;
       }
-    }
-    catch (Exception paramActivity)
-    {
-      for (;;)
+      else
       {
-        boolean bool = false;
-        continue;
-        bool = false;
+        bool1 = false;
       }
+      try
+      {
+        paramActivity.setAccessible(false);
+        return bool1;
+      }
+      catch (Exception paramActivity) {}
+      paramActivity.printStackTrace();
     }
+    catch (Exception paramActivity) {}
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.utils.AndroidOUIWrapperUtil
  * JD-Core Version:    0.7.0.1
  */

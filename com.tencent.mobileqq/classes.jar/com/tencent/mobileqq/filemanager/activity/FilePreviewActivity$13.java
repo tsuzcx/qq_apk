@@ -16,22 +16,24 @@ class FilePreviewActivity$13
       return;
     }
     TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0 - this.this$0.jdField_a_of_type_AndroidViewViewGroup.getHeight(), 0.0F);
-    if (this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null) {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(this.this$0.jdField_a_of_type_AndroidViewViewGroup);
+    if (this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null)
+    {
+      localObject = this.this$0;
+      ((FilePreviewActivity)localObject).jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(((FilePreviewActivity)localObject).jdField_a_of_type_AndroidViewViewGroup);
     }
-    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = true;
-    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.b;
-    localFilePreviewAnim.b = 250;
-    this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a(localFilePreviewAnim);
+    Object localObject = new FilePreviewAnimQueue.FilePreviewAnim();
+    ((FilePreviewAnimQueue.FilePreviewAnim)localObject).jdField_a_of_type_JavaLangObject = localTranslateAnimation;
+    ((FilePreviewAnimQueue.FilePreviewAnim)localObject).jdField_a_of_type_Boolean = true;
+    ((FilePreviewAnimQueue.FilePreviewAnim)localObject).jdField_a_of_type_Int = FilePreviewAnimQueue.b;
+    ((FilePreviewAnimQueue.FilePreviewAnim)localObject).b = 250;
+    this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a((FilePreviewAnimQueue.FilePreviewAnim)localObject);
     this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
     this.this$0.e = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.13
  * JD-Core Version:    0.7.0.1
  */

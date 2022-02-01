@@ -15,27 +15,24 @@ public final class StudyModeConfigProcessor$StudyModeConfigBean
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       int i = 0;
-      for (;;)
+      while (i < paramArrayOfQConfItem.length)
       {
-        if (i < paramArrayOfQConfItem.length)
+        Object localObject = paramArrayOfQConfItem[i].a;
+        try
         {
-          String str = paramArrayOfQConfItem[i].a;
-          try
-          {
-            localStudyModeConfigBean.jdField_a_of_type_Int = new JSONObject(str).optInt("ConfigEnableStudyMode");
-            localStudyModeConfigBean.jdField_a_of_type_Boolean = true;
-            StudyModeManager.c(a(localStudyModeConfigBean));
-            QLog.i("StudyModeConfigProcessor", 1, "[study mode config], mGraySwitch:" + localStudyModeConfigBean.jdField_a_of_type_Int);
-            i += 1;
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              QLog.e("StudyModeConfigProcessor", 1, localThrowable, new Object[0]);
-            }
-          }
+          localStudyModeConfigBean.jdField_a_of_type_Int = new JSONObject((String)localObject).optInt("ConfigEnableStudyMode");
+          localStudyModeConfigBean.jdField_a_of_type_Boolean = true;
+          StudyModeManager.c(a(localStudyModeConfigBean));
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[study mode config], mGraySwitch:");
+          ((StringBuilder)localObject).append(localStudyModeConfigBean.jdField_a_of_type_Int);
+          QLog.i("StudyModeConfigProcessor", 1, ((StringBuilder)localObject).toString());
         }
+        catch (Throwable localThrowable)
+        {
+          QLog.e("StudyModeConfigProcessor", 1, localThrowable, new Object[0]);
+        }
+        i += 1;
       }
     }
     return localStudyModeConfigBean;
@@ -48,7 +45,7 @@ public final class StudyModeConfigProcessor$StudyModeConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.StudyModeConfigProcessor.StudyModeConfigBean
  * JD-Core Version:    0.7.0.1
  */

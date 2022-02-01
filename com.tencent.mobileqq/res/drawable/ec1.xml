@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_selected="true" android:drawable="@drawable/h9t" />
-    <item android:state_pressed="true" android:drawable="@drawable/h9t" />
-    <item android:drawable="@drawable/qfav_category_file" />
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <solid android:color="#ffb2effe" />
+            <corners android:radius="30.0dip" />
+            <padding android:left="12.0dip" android:right="12.0dip" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#ff00cafc" />
+            <corners android:radius="30.0dip" />
+            <padding android:left="12.0dip" android:right="12.0dip" />
+        </shape>
+    </item>
 </selector>

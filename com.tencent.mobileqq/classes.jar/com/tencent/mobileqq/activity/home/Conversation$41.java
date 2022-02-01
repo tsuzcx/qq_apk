@@ -1,47 +1,103 @@
 package com.tencent.mobileqq.activity.home;
 
+import android.os.Handler;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.StrangerObserver;
-import com.tencent.mobileqq.app.proxy.RecentUserProxy;
-import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
 
 class Conversation$41
-  extends StrangerObserver
+  extends CardObserver
 {
   Conversation$41(Conversation paramConversation) {}
   
-  public void a(List<String> paramList)
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
   {
-    RecentUserProxy localRecentUserProxy;
-    if ((paramList != null) && (!paramList.isEmpty()))
+    if (paramBoolean1)
     {
-      localRecentUserProxy = this.a.a().getRecentUserProxy();
-      if (localRecentUserProxy != null) {
-        break label37;
-      }
-      QLog.d("Q.recent", 1, "onBatchDelete, proxy == null");
-    }
-    for (;;)
-    {
-      return;
-      label37:
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      if (QLog.isColorLevel())
       {
-        RecentUser localRecentUser = localRecentUserProxy.a((String)paramList.next(), 0);
-        if (localRecentUser != null) {
-          localRecentUserProxy.a(localRecentUser);
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" conversation onGetCalReactiveDays isAllow= ");
+        localStringBuilder.append(paramBoolean2);
+        QLog.d("interactive", 2, localStringBuilder.toString());
       }
+      this.a.a(0L);
+    }
+  }
+  
+  public void onGetNotDisturb(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    super.onGetNotDisturb(paramBoolean, paramString1, paramString2);
+    Conversation.a(this.a.jdField_a_of_type_MqqOsMqqHandler, this.a.a());
+  }
+  
+  protected void onGreetingRecv(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (paramString != null) && (this.a.a().getCurrentAccountUin().equals(paramString)))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.recent", 2, "refresh recent, from_onGreetingRecv");
+      }
+      this.a.a(8, AppConstants.LBS_HELLO_UIN, 1001);
+    }
+  }
+  
+  protected void onSetNick(boolean paramBoolean, String paramString)
+  {
+    if (paramBoolean) {
+      Conversation.a(this.a, "onSetNick", paramString);
+    }
+  }
+  
+  protected void onSetNotDisturb(boolean paramBoolean, String paramString1, String paramString2)
+  {
+    super.onSetNotDisturb(paramBoolean, paramString1, paramString2);
+    if (!"not_disturb_from_conversation".equals(paramString2))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("onSetNotDisturb NOT FROM THIS");
+        paramString1.append(paramString2);
+        QLog.d("Q.recent", 4, paramString1.toString());
+      }
+      return;
+    }
+    if (!paramBoolean)
+    {
+      ThreadManagerV2.getUIHandlerV2().post(new Conversation.41.1(this));
+      return;
+    }
+    Conversation.a(this.a.jdField_a_of_type_MqqOsMqqHandler, this.a.a());
+    if (!FriendsStatusUtil.a(this.a.a())) {
+      ThreadManagerV2.getUIHandlerV2().post(new Conversation.41.2(this));
+    }
+  }
+  
+  protected void onUpdateAvatar(boolean paramBoolean, String paramString, int paramInt)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Conversation.onUpdateAvatar: uin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", success :");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("Q.recent", 2, localStringBuilder.toString());
+    }
+    if ((paramBoolean) && (this.a.jdField_a_of_type_MqqAppAppRuntime != null) && (Utils.a(paramString, this.a.a().getCurrentAccountUin()))) {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.sendEmptyMessage(3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.41
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,13 @@ class SearchTypeFragment$1
   
   public void run()
   {
-    this.this$0.a(this.this$0.jdField_a_of_type_JavaUtilList, this.this$0.jdField_a_of_type_Int);
+    SearchTypeFragment localSearchTypeFragment = this.this$0;
+    localSearchTypeFragment.a(localSearchTypeFragment.jdField_a_of_type_JavaUtilList, this.this$0.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.SearchTypeFragment.1
  * JD-Core Version:    0.7.0.1
  */

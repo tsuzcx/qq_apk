@@ -17,10 +17,11 @@ public class ReportData
   @Nullable
   public Map<String, Object> getParams()
   {
-    if (this.mParams == null) {
+    Map localMap = this.mParams;
+    if (localMap == null) {
       return null;
     }
-    return Collections.unmodifiableMap(this.mParams);
+    return Collections.unmodifiableMap(localMap);
   }
   
   public void setId(String paramString)
@@ -35,7 +36,7 @@ public class ReportData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.data.ReportData
  * JD-Core Version:    0.7.0.1
  */

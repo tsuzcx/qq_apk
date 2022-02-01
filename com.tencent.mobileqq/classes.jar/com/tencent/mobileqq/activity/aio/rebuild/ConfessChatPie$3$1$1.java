@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.View;
 import android.widget.ImageView;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class ConfessChatPie$3$1$1
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   ConfessChatPie$3$1$1(ConfessChatPie.3.1 param1) {}
   
@@ -28,7 +28,7 @@ class ConfessChatPie$3$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3.1.1
  * JD-Core Version:    0.7.0.1
  */

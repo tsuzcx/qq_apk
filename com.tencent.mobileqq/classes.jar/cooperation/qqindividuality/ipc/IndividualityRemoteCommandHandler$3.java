@@ -8,7 +8,7 @@ class IndividualityRemoteCommandHandler$3
 {
   IndividualityRemoteCommandHandler$3(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
   
-  public void c(boolean paramBoolean, Object paramObject)
+  protected void c(boolean paramBoolean, Object paramObject)
   {
     if (paramBoolean)
     {
@@ -18,7 +18,7 @@ class IndividualityRemoteCommandHandler$3
     }
   }
   
-  public void d(boolean paramBoolean, Object paramObject)
+  protected void d(boolean paramBoolean, Object paramObject)
   {
     if (paramBoolean)
     {
@@ -30,7 +30,7 @@ class IndividualityRemoteCommandHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler.3
  * JD-Core Version:    0.7.0.1
  */

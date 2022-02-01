@@ -32,30 +32,24 @@ public class ETEngine
   public static final int STYLE_CROCHET = 8;
   public static final int STYLE_REGULAR = 0;
   public static final int STYLE_SHADOW = 128;
+  private static final int S_MEM_POOL_SIZE = 1048576;
   public static final String TAG = "ETEngine";
   public static AtomicBoolean isSOLoaded = new AtomicBoolean(false);
-  private static ETEngine sInstance = null;
+  private static ETEngine sInstance;
   private static ETEngine sInstanceAnimation;
   private static ETEngine sInstanceDiyAddon;
-  private static ETEngine sInstanceRP = null;
-  private static ETEngine sInstanceSpace = null;
-  private static final int sMemPoolSize = 1048576;
-  public HashMap<Long, WeakReference<IETDecoration>> DescriptorMap = new HashMap();
+  private static ETEngine sInstanceRP;
+  private static ETEngine sInstanceSpace;
   public AtomicBoolean isEngineInited = new AtomicBoolean(false);
   public AtomicBoolean isEngineReady = new AtomicBoolean(false);
   private Paint mBitmapPaint = null;
   private Bitmap[] mBitmaps = null;
   private Canvas mCanvas = null;
+  public HashMap<Long, WeakReference<IETDecoration>> mDescriptorMap = new HashMap();
   private final boolean mEnableCallbackDrawing = true;
   private boolean mInitialized = false;
   private long mNativeFontManagerHandle = 0L;
   private Paint mPaint = null;
-  
-  static
-  {
-    sInstanceAnimation = null;
-    sInstanceDiyAddon = null;
-  }
   
   public static ETEngine getInstance()
   {
@@ -126,7 +120,7 @@ public class ETEngine
     if (this.mBitmapPaint == null) {
       this.mBitmapPaint = new Paint(1);
     }
-    this.mBitmapPaint.setAlpha((int)(255.0F * paramFloat3));
+    this.mBitmapPaint.setAlpha((int)(paramFloat3 * 255.0F));
     this.mCanvas.setBitmap(paramBitmap1);
     this.mCanvas.translate(paramFloat1, paramFloat2);
     this.mCanvas.drawBitmap(paramBitmap2, paramMatrix, this.mBitmapPaint);
@@ -134,62 +128,68 @@ public class ETEngine
   
   public Bitmap createBitmap(int paramInt1, int paramInt2, int paramInt3)
   {
+    Object localObject;
     if (this.mBitmaps == null)
     {
       this.mBitmaps = new Bitmap[2];
       localObject = this.mBitmaps;
-      this.mBitmaps[1] = null;
+      localObject[1] = null;
       localObject[0] = null;
     }
     if (paramInt3 > 1) {
       return null;
     }
-    Object localObject = this.mBitmaps[paramInt3];
-    if (localObject == null) {
+    Bitmap localBitmap = this.mBitmaps[paramInt3];
+    if (localBitmap == null)
+    {
       localObject = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     }
-    for (;;)
+    else
     {
-      this.mBitmaps[paramInt3] = localObject;
-      return localObject;
-      int j = ((Bitmap)localObject).getWidth();
-      int i = ((Bitmap)localObject).getHeight();
-      if ((j < paramInt1) || (i < paramInt2))
+      int j = localBitmap.getWidth();
+      int i = localBitmap.getHeight();
+      if (j >= paramInt1)
       {
-        if (j < paramInt1) {}
-        for (;;)
-        {
-          if (i < paramInt2) {}
-          for (;;)
-          {
-            ((Bitmap)localObject).recycle();
-            localObject = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-            break;
-            paramInt2 = i;
-          }
+        localObject = localBitmap;
+        if (i >= paramInt2) {}
+      }
+      else
+      {
+        if (j >= paramInt1) {
           paramInt1 = j;
         }
+        if (i >= paramInt2) {
+          paramInt2 = i;
+        }
+        localBitmap.recycle();
+        localObject = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
       }
     }
+    this.mBitmaps[paramInt3] = localObject;
+    return localObject;
   }
   
   public byte[] getPicture(String paramString)
   {
-    String str = ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).getDIYFontImage(paramString);
-    if (!TextUtils.isEmpty(str)) {
-      return Base64.decode(str, 0);
+    Object localObject = ((IETFontAdapter)QRoute.api(IETFontAdapter.class)).getDIYFontImage(paramString);
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      return Base64.decode((String)localObject, 0);
     }
-    return ETDIYConfig.a(new File("/data/data/com.tencent.mobileqq/files/diy_fonts" + File.separator + paramString + ".png"));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("/data/data/com.tencent.mobileqq/files/diy_fonts");
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(".png");
+    return ETDIYConfig.a(new File(((StringBuilder)localObject).toString()));
   }
   
   public boolean initEngine(int paramInt1, int paramInt2)
   {
-    boolean bool = true;
     if (!isSOLoaded.get()) {
-      bool = false;
+      return false;
     }
-    while (native_initEngine(paramInt1, paramInt2, true)) {
-      return bool;
+    if (native_initEngine(paramInt1, paramInt2, true)) {
+      return true;
     }
     throw new Exception("init engine fail");
   }
@@ -840,14 +840,15 @@ public class ETEngine
   public void onAIODestroy()
   {
     this.mCanvas = null;
-    if (this.mBitmaps != null)
+    Object localObject = this.mBitmaps;
+    if (localObject != null)
     {
-      int i = this.mBitmaps.length - 1;
+      int i = localObject.length - 1;
       while (i >= 0)
       {
-        Bitmap localBitmap = this.mBitmaps[i];
-        if (localBitmap != null) {
-          localBitmap.recycle();
+        localObject = this.mBitmaps[i];
+        if (localObject != null) {
+          ((Bitmap)localObject).recycle();
         }
         i -= 1;
       }
@@ -866,7 +867,8 @@ public class ETEngine
     paramPaint.setColor(paramInt5);
     paramPaint.setAntiAlias(true);
     paramPaint.setDither(true);
-    paramPaint.setTextSize(paramInt4);
+    float f1 = paramInt4;
+    paramPaint.setTextSize(f1);
     if ((paramInt6 & 0x80) > 0) {
       paramPaint.setShadowLayer(paramInt10, paramInt8, paramInt9, paramInt7);
     }
@@ -874,15 +876,17 @@ public class ETEngine
       paramPaint.setFakeBoldText(true);
     }
     paramInt3 = Math.abs(paramInt3);
-    paramCanvas.drawText(paramString, paramInt1, paramInt2 + paramInt3, paramPaint);
+    float f2 = paramInt1;
+    float f3 = paramInt3 + paramInt2;
+    paramCanvas.drawText(paramString, f2, f3, paramPaint);
     if ((paramInt6 & 0x8) > 0)
     {
       paramPaint = new Paint(1);
       paramPaint.setStyle(Paint.Style.STROKE);
       paramPaint.setColor(paramInt11);
       paramPaint.setStrokeWidth(paramInt12 / 2.0F);
-      paramPaint.setTextSize(paramInt4);
-      paramCanvas.drawText(paramString, paramInt1, paramInt3 + paramInt2, paramPaint);
+      paramPaint.setTextSize(f1);
+      paramCanvas.drawText(paramString, f2, f3, paramPaint);
     }
   }
   
@@ -934,44 +938,49 @@ public class ETEngine
     this.mPaint.setColor(paramInt2);
     this.mPaint.setAntiAlias(true);
     this.mPaint.setDither(true);
-    this.mPaint.setTextSize(paramInt1);
-    if (((paramInt3 & 0x80) > 0) && ((paramInt3 & 0x8) > 0)) {
-      if (paramInt10 == 0)
-      {
-        f = 0.01F;
-        this.mPaint.setShadowLayer(f, paramInt8, paramInt9, paramInt7);
-        this.mCanvas.drawText(paramString, paramInt4, paramInt5 + paramInt6, this.mPaint);
-        paramBitmap = new Paint(1);
-        paramBitmap.setStyle(Paint.Style.STROKE);
-        paramBitmap.setColor(paramInt11);
-        paramBitmap.setStrokeWidth(paramInt12 / 2.0F);
-        paramBitmap.setTextSize(paramInt1);
-        this.mCanvas.drawText(paramString, paramInt4, paramInt5 + paramInt6, paramBitmap);
-        this.mPaint.clearShadowLayer();
-      }
-    }
-    do
+    paramBitmap = this.mPaint;
+    float f2 = paramInt1;
+    paramBitmap.setTextSize(f2);
+    paramInt1 = paramInt3 & 0x80;
+    float f1 = 0.01F;
+    if ((paramInt1 > 0) && ((paramInt3 & 0x8) > 0))
     {
-      this.mCanvas.drawText(paramString, paramInt4, paramInt6 + paramInt5, this.mPaint);
-      return;
-      f = paramInt10;
-      break;
+      if (paramInt10 != 0) {
+        f1 = paramInt10;
+      }
+      this.mPaint.setShadowLayer(f1, paramInt8, paramInt9, paramInt7);
+      paramBitmap = this.mCanvas;
+      f1 = paramInt4;
+      float f3 = paramInt5 + paramInt6;
+      paramBitmap.drawText(paramString, f1, f3, this.mPaint);
+      paramBitmap = new Paint(1);
+      paramBitmap.setStyle(Paint.Style.STROKE);
+      paramBitmap.setColor(paramInt11);
+      paramBitmap.setStrokeWidth(paramInt12 / 2.0F);
+      paramBitmap.setTextSize(f2);
+      this.mCanvas.drawText(paramString, f1, f3, paramBitmap);
+      this.mPaint.clearShadowLayer();
+    }
+    else
+    {
       if ((paramInt3 & 0x8) > 0)
       {
         paramBitmap = new Paint(1);
         paramBitmap.setStyle(Paint.Style.STROKE);
         paramBitmap.setColor(paramInt11);
         paramBitmap.setStrokeWidth(paramInt12 / 2.0F);
-        paramBitmap.setTextSize(paramInt1);
+        paramBitmap.setTextSize(f2);
         this.mCanvas.drawText(paramString, paramInt4, paramInt5 + paramInt6, paramBitmap);
       }
-    } while ((paramInt3 & 0x80) <= 0);
-    if (paramInt10 == 0) {}
-    for (float f = 0.01F;; f = paramInt10)
-    {
-      this.mPaint.setShadowLayer(f, paramInt8, paramInt9, paramInt7);
-      break;
+      if (paramInt1 > 0)
+      {
+        if (paramInt10 != 0) {
+          f1 = paramInt10;
+        }
+        this.mPaint.setShadowLayer(f1, paramInt8, paramInt9, paramInt7);
+      }
     }
+    this.mCanvas.drawText(paramString, paramInt4, paramInt5 + paramInt6, this.mPaint);
   }
   
   public int sysFontHeight(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
@@ -979,7 +988,9 @@ public class ETEngine
     if (this.mPaint == null) {
       this.mPaint = new Paint();
     }
-    this.mPaint.setTextSize(paramInt1);
+    paramString = this.mPaint;
+    float f3 = paramInt1;
+    paramString.setTextSize(f3);
     if ((paramInt2 & 0x80) > 0) {
       this.mPaint.setShadowLayer(paramInt6, paramInt4, paramInt5, paramInt3);
     }
@@ -992,19 +1003,14 @@ public class ETEngine
       paramString.setStyle(Paint.Style.STROKE);
       paramString.setColor(paramInt7);
       paramString.setStrokeWidth(paramInt8);
-      paramString.setTextSize(paramInt1);
+      paramString.setTextSize(f3);
       paramString = paramString.getFontMetrics();
       f1 = paramString.bottom - paramString.top;
-      if (f2 <= f1) {
-        break label150;
+      if (f2 > f1) {
+        f1 = f2;
       }
-      f1 = f2;
     }
-    label150:
-    for (;;)
-    {
-      return (int)f1;
-    }
+    return (int)f1;
   }
   
   public int sysMeasureText(String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
@@ -1012,7 +1018,9 @@ public class ETEngine
     if (this.mPaint == null) {
       this.mPaint = new Paint();
     }
-    this.mPaint.setTextSize(paramInt1);
+    Paint localPaint = this.mPaint;
+    float f3 = paramInt1;
+    localPaint.setTextSize(f3);
     if ((paramInt2 & 0x80) > 0) {
       this.mPaint.setShadowLayer(paramInt6, paramInt4, paramInt5, paramInt3);
     }
@@ -1020,27 +1028,22 @@ public class ETEngine
     float f1 = f2;
     if ((paramInt2 & 0x8) > 0)
     {
-      Paint localPaint = new Paint(1);
+      localPaint = new Paint(1);
       localPaint.setStyle(Paint.Style.STROKE);
       localPaint.setColor(paramInt7);
       localPaint.setStrokeWidth(paramInt8);
-      localPaint.setTextSize(paramInt1);
+      localPaint.setTextSize(f3);
       f1 = localPaint.measureText(paramString);
-      if (f2 <= f1) {
-        break label138;
+      if (f2 > f1) {
+        f1 = f2;
       }
-      f1 = f2;
     }
-    label138:
-    for (;;)
-    {
-      return (int)f1;
-    }
+    return (int)f1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.ETEngine
  * JD-Core Version:    0.7.0.1
  */

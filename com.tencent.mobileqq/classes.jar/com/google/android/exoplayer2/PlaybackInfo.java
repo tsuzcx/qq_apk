@@ -82,17 +82,15 @@ final class PlaybackInfo
   {
     Timeline localTimeline = this.timeline;
     Object localObject = this.manifest;
-    if (paramMediaPeriodId.isAd()) {}
-    for (;;)
-    {
-      return new PlaybackInfo(localTimeline, localObject, paramMediaPeriodId, paramLong1, paramLong2, this.playbackState, this.isLoading, this.trackSelectorResult);
+    if (!paramMediaPeriodId.isAd()) {
       paramLong2 = -9223372036854775807L;
     }
+    return new PlaybackInfo(localTimeline, localObject, paramMediaPeriodId, paramLong1, paramLong2, this.playbackState, this.isLoading, this.trackSelectorResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.PlaybackInfo
  * JD-Core Version:    0.7.0.1
  */

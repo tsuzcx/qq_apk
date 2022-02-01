@@ -7,6 +7,7 @@ import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.TMG.utils.QLog;
+import com.tencent.mobileqq.MsgRevokeListener;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.data.MessageForFile;
 import com.tencent.mobileqq.data.MessageForMarketFace;
@@ -26,36 +27,45 @@ import java.util.Iterator;
 public class AIOGalleryMsgRevokeMgr
 {
   private static AIOGalleryMsgRevokeMgr jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryMsgRevokeMgr;
-  private final ArrayList<AIOGalleryMsgRevokeMgr.MsgRevokeListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final ArrayList<MsgRevokeListener> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
   public static AIOGalleryMsgRevokeMgr a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryMsgRevokeMgr == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryMsgRevokeMgr == null) {
-        jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryMsgRevokeMgr = new AIOGalleryMsgRevokeMgr();
+    if (jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryMsgRevokeMgr == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryMsgRevokeMgr == null) {
+          jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryMsgRevokeMgr = new AIOGalleryMsgRevokeMgr();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryMsgRevokeMgr;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryMsgRevokeMgr;
   }
   
   public static void a(Activity paramActivity)
   {
-    if (paramActivity != null) {}
-    try
-    {
-      QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230).setMessage(HardCodeUtil.a(2131700125)).setPositiveButton(paramActivity.getString(2131693935), new AIOGalleryMsgRevokeMgr.1(paramActivity));
-      if ((localQQCustomDialog != null) && (!paramActivity.isFinishing())) {
-        localQQCustomDialog.show();
+    if (paramActivity != null) {
+      try
+      {
+        localObject = DialogUtil.a(paramActivity, 230).setMessage(HardCodeUtil.a(2131700266)).setPositiveButton(paramActivity.getString(2131693890), new AIOGalleryMsgRevokeMgr.1(paramActivity));
+        if ((localObject != null) && (!paramActivity.isFinishing()))
+        {
+          ((QQCustomDialog)localObject).show();
+          return;
+        }
       }
-      return;
-    }
-    catch (Throwable paramActivity)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("AIOGalleryMsgRevokeMgr", 0, "showDialog exception: " + paramActivity.getMessage());
+      catch (Throwable paramActivity)
+      {
+        Object localObject;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("showDialog exception: ");
+          ((StringBuilder)localObject).append(paramActivity.getMessage());
+          QLog.d("AIOGalleryMsgRevokeMgr", 0, ((StringBuilder)localObject).toString());
+        }
+      }
     }
   }
   
@@ -65,7 +75,7 @@ public class AIOGalleryMsgRevokeMgr
     {
       ImageView localImageView = new ImageView(paramActivity);
       RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-      localImageView.setImageResource(2130845374);
+      localImageView.setImageResource(2130845247);
       localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
       paramRelativeLayout.addView(localImageView, localLayoutParams);
       a(paramActivity);
@@ -77,16 +87,20 @@ public class AIOGalleryMsgRevokeMgr
   {
     if (((paramMessageRecord instanceof MessageForPic)) || ((paramMessageRecord instanceof MessageForShortVideo)) || ((paramMessageRecord instanceof MessageForMarketFace)) || ((paramMessageRecord instanceof MessageForFile)) || ((paramMessageRecord instanceof MessageForTroopFile)) || ((paramMessageRecord instanceof MessageForMixedMsg)) || ((paramMessageRecord instanceof MessageForStructing)))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOGalleryMsgRevokeMgr", 0, "sendMsgRevokeRequest:" + paramMessageRecord);
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("sendMsgRevokeRequest:");
+        ((StringBuilder)???).append(paramMessageRecord);
+        QLog.i("AIOGalleryMsgRevokeMgr", 0, ((StringBuilder)???).toString());
       }
       Object localObject2 = a();
       if (localObject2 != null) {
         synchronized (((AIOGalleryMsgRevokeMgr)localObject2).jdField_a_of_type_JavaUtilArrayList)
         {
           localObject2 = ((AIOGalleryMsgRevokeMgr)localObject2).jdField_a_of_type_JavaUtilArrayList.iterator();
-          if (((Iterator)localObject2).hasNext()) {
-            ((AIOGalleryMsgRevokeMgr.MsgRevokeListener)((Iterator)localObject2).next()).a(paramMessageRecord.uniseq);
+          while (((Iterator)localObject2).hasNext()) {
+            ((MsgRevokeListener)((Iterator)localObject2).next()).a(paramMessageRecord.uniseq);
           }
         }
       }
@@ -96,8 +110,12 @@ public class AIOGalleryMsgRevokeMgr
         localObject2 = new Bundle();
         ((Bundle)localObject2).putLong("msg_revoke_uniseq", paramMessageRecord.uniseq);
         boolean bool = ((RichmediaService)???).a(300, -1, (Bundle)localObject2);
-        if (QLog.isColorLevel()) {
-          QLog.i("AIOGalleryMsgRevokeMgr", 0, "sendMsgRevokeRequest result:" + bool);
+        if (QLog.isColorLevel())
+        {
+          paramMessageRecord = new StringBuilder();
+          paramMessageRecord.append("sendMsgRevokeRequest result:");
+          paramMessageRecord.append(bool);
+          QLog.i("AIOGalleryMsgRevokeMgr", 0, paramMessageRecord.toString());
         }
       }
     }
@@ -105,34 +123,38 @@ public class AIOGalleryMsgRevokeMgr
   
   public void a(Bundle arg1)
   {
-    StringBuilder localStringBuilder;
+    Object localObject1;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("notifyMsgRevoke, mScene:");
-      if (??? == null) {
-        break label51;
-      }
-    }
-    label51:
-    for (Object localObject1 = ???.toString();; localObject1 = "")
-    {
-      QLog.i("AIOGalleryMsgRevokeMgr", 0, (String)localObject1);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyMsgRevoke, mScene:");
       if (??? != null) {
-        break;
+        localObject1 = ???.toString();
+      } else {
+        localObject1 = "";
       }
+      localStringBuilder.append((String)localObject1);
+      QLog.i("AIOGalleryMsgRevokeMgr", 0, localStringBuilder.toString());
+    }
+    if (??? == null) {
       return;
     }
     long l = ???.getLong("msg_revoke_uniseq", 0L);
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
       localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      if (((Iterator)localObject1).hasNext()) {
-        ((AIOGalleryMsgRevokeMgr.MsgRevokeListener)((Iterator)localObject1).next()).a(l);
+      while (((Iterator)localObject1).hasNext()) {
+        ((MsgRevokeListener)((Iterator)localObject1).next()).a(l);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
-  public void a(AIOGalleryMsgRevokeMgr.MsgRevokeListener paramMsgRevokeListener)
+  public void a(MsgRevokeListener paramMsgRevokeListener)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
@@ -143,7 +165,7 @@ public class AIOGalleryMsgRevokeMgr
     }
   }
   
-  public void b(AIOGalleryMsgRevokeMgr.MsgRevokeListener paramMsgRevokeListener)
+  public void b(MsgRevokeListener paramMsgRevokeListener)
   {
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
@@ -154,7 +176,7 @@ public class AIOGalleryMsgRevokeMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryMsgRevokeMgr
  * JD-Core Version:    0.7.0.1
  */

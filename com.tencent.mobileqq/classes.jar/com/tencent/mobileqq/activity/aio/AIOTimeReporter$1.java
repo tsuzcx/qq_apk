@@ -23,95 +23,93 @@ class AIOTimeReporter$1
       return;
     }
     String str = "";
-    switch (AIOTimeReporter.a(this.this$0))
+    int i = AIOTimeReporter.a(this.this$0);
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      switch (((AIOReporterGetDeviceInfo)localObject).a)
+      if (i != 2)
       {
-      default: 
-        if (HardCoderManager.a().a())
-        {
-          localObject = new HashMap();
-          ((HashMap)localObject).put("hcState", String.valueOf(HardCoderManager.a().a()));
-          ((HashMap)localObject).put("model", Build.MODEL);
+        if (i != 3) {
+          return;
         }
-        break;
-      }
-      break;
-    }
-    for (;;)
-    {
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, true, StartupTracker.a, 0L, (HashMap)localObject, "");
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.aio.AIOTimeReporter", 4, "reportAIOTime: " + str + " cost : " + StartupTracker.a);
-      }
-      AIOTimeReporter.a(this.this$0);
-      return;
-      if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0"))
-      {
-        str = AIOTimeReporter.a();
-        break;
-      }
-      str = AIOTimeReporter.b();
-      break;
-      if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0"))
-      {
-        str = AIOTimeReporter.c();
-        break;
-      }
-      str = AIOTimeReporter.d();
-      break;
-      switch (((AIOReporterGetDeviceInfo)localObject).a)
-      {
-      }
-      for (;;)
-      {
-        break;
-        if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0"))
+        i = ((AIOReporterGetDeviceInfo)localObject).a;
+        if (i != 0)
         {
-          str = AIOTimeReporter.e();
-        }
-        else
-        {
-          str = AIOTimeReporter.f();
-          continue;
-          if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
-            str = AIOTimeReporter.g();
-          } else {
-            str = AIOTimeReporter.h();
+          if (i == 1) {
+            if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
+              str = AIOTimeReporter.k();
+            } else {
+              str = AIOTimeReporter.l();
+            }
           }
         }
-      }
-      switch (((AIOReporterGetDeviceInfo)localObject).a)
-      {
-      }
-      for (;;)
-      {
-        break;
-        if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0"))
-        {
+        else if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
           str = AIOTimeReporter.i();
-        }
-        else
-        {
+        } else {
           str = AIOTimeReporter.j();
-          continue;
+        }
+      }
+      else
+      {
+        i = ((AIOReporterGetDeviceInfo)localObject).a;
+        if (i != 0)
+        {
+          if (i == 1) {
+            if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
+              str = AIOTimeReporter.g();
+            } else {
+              str = AIOTimeReporter.h();
+            }
+          }
+        }
+        else if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
+          str = AIOTimeReporter.e();
+        } else {
+          str = AIOTimeReporter.f();
+        }
+      }
+    }
+    else
+    {
+      i = ((AIOReporterGetDeviceInfo)localObject).a;
+      if (i != 0)
+      {
+        if (i == 1) {
           if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
-            str = AIOTimeReporter.k();
+            str = AIOTimeReporter.c();
           } else {
-            str = AIOTimeReporter.l();
+            str = AIOTimeReporter.d();
           }
         }
       }
-      localObject = null;
+      else if (!AIOTimeReporter.a(this.this$0).equalsIgnoreCase("0")) {
+        str = AIOTimeReporter.a();
+      } else {
+        str = AIOTimeReporter.b();
+      }
     }
+    localObject = null;
+    if (HardCoderManager.a().a())
+    {
+      localObject = new HashMap();
+      ((HashMap)localObject).put("hcState", String.valueOf(HardCoderManager.a().a()));
+      ((HashMap)localObject).put("model", Build.MODEL);
+    }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, str, true, StartupTracker.a, 0L, (HashMap)localObject, "");
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportAIOTime: ");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(" cost : ");
+      ((StringBuilder)localObject).append(StartupTracker.a);
+      QLog.d("Q.aio.AIOTimeReporter", 4, ((StringBuilder)localObject).toString());
+    }
+    AIOTimeReporter.a(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.AIOTimeReporter.1
  * JD-Core Version:    0.7.0.1
  */

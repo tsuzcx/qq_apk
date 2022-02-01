@@ -30,26 +30,17 @@ public class Utils
   @Nullable
   public static <E> List<E> a(List<E> paramList1, int paramInt1, int paramInt2, List<E> paramList2)
   {
-    Object localObject3 = null;
+    Object localObject2 = null;
     Object localObject1 = null;
-    Object localObject2 = localObject1;
     if (paramList1 != null)
     {
-      if (paramInt1 < paramList1.size()) {
-        break label31;
+      if (paramInt1 >= paramList1.size()) {
+        return null;
       }
-      localObject2 = localObject1;
-    }
-    label31:
-    int i;
-    do
-    {
-      return localObject2;
-      i = paramInt1;
+      int i = paramInt1;
       if (paramInt1 < 0) {
         i = paramInt1 + paramList1.size();
       }
-      localObject1 = localObject3;
       if (paramInt2 > 0)
       {
         localObject2 = new ArrayList();
@@ -70,9 +61,13 @@ public class Utils
         }
       }
       localObject2 = localObject1;
-    } while (paramList2 == null);
-    paramList1.addAll(i, paramList2);
-    return localObject1;
+      if (paramList2 != null)
+      {
+        paramList1.addAll(i, paramList2);
+        localObject2 = localObject1;
+      }
+    }
+    return localObject2;
   }
   
   public static boolean a(String paramString)
@@ -87,7 +82,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

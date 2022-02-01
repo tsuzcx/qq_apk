@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.rebuild.msglist;
 
 import androidx.annotation.NonNull;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.msglist.BaseMsgLoader;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -16,13 +16,13 @@ public class ConfessMsgLoader
   extends BaseMsgLoader
 {
   @NonNull
-  private List<ChatMessage> a(List<ChatMessage> paramList, SessionInfo paramSessionInfo)
+  private List<ChatMessage> a(List<ChatMessage> paramList, BaseSessionInfo paramBaseSessionInfo)
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramList.size())
     {
-      if (((ChatMessage)paramList.get(i)).getConfessTopicId() == paramSessionInfo.e)
+      if (((ChatMessage)paramList.get(i)).getConfessTopicId() == paramBaseSessionInfo.e)
       {
         localArrayList.add(paramList.get(i));
         if ((((ChatMessage)paramList.get(i)).msgtype == 1032) && (QLog.isColorLevel())) {
@@ -36,13 +36,13 @@ public class ConfessMsgLoader
   
   public List<ChatMessage> a(@NonNull AIOContext paramAIOContext)
   {
-    return a(a(paramAIOContext, false), paramAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    return a(a(paramAIOContext, false), paramAIOContext.a());
   }
   
   public List<ChatMessage> a(@NonNull AIOContext paramAIOContext, boolean paramBoolean)
   {
-    SessionInfo localSessionInfo = paramAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    return a(paramAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localSessionInfo.jdField_a_of_type_JavaLangString, localSessionInfo.jdField_a_of_type_Int, -1L, localSessionInfo.e, paramBoolean), localSessionInfo);
+    BaseSessionInfo localBaseSessionInfo = paramAIOContext.a();
+    return a(paramAIOContext.a().getMessageFacade().a(localBaseSessionInfo.jdField_a_of_type_JavaLangString, localBaseSessionInfo.jdField_a_of_type_Int, -1L, localBaseSessionInfo.e, paramBoolean), localBaseSessionInfo);
   }
   
   public void a(@NonNull AIOContext paramAIOContext)
@@ -52,7 +52,7 @@ public class ConfessMsgLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.ConfessMsgLoader
  * JD-Core Version:    0.7.0.1
  */

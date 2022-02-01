@@ -11,7 +11,7 @@ public class ArkTextureViewImpl
   extends TextureView
   implements TextureView.SurfaceTextureListener, ArkTextureView.ArkTextureViewInterface
 {
-  protected static final ArkEnvironmentManager ENV = ArkEnvironmentManager.getInstance();
+  protected static final ArkEnvironmentManager ENV = ;
   protected static String TAG = "ArkApp.ArkTextureViewImpl";
   private Object mLock = new Object();
   private SurfaceTexture mSurface;
@@ -28,56 +28,54 @@ public class ArkTextureViewImpl
     setSurfaceTextureListener(this);
     setOpaque(false);
     if ((isAvailable()) && (ENV.mIsDebug)) {
-      ENV.logD(TAG, String.format("surface.available.this.%h", new Object[] { this }));
+      Logger.logD(TAG, String.format("surface.available.this.%h", new Object[] { this }));
     }
   }
   
   private void createContext(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    if ((paramSurfaceTexture == null) || (paramInt1 == 0) || (paramInt2 == 0))
+    ArkViewModel localArkViewModel;
+    if ((paramSurfaceTexture != null) && (paramInt1 != 0) && (paramInt2 != 0))
     {
-      ENV.logE(TAG, String.format("createContext.surface.not.ready.this.%h", new Object[] { this }));
-      return;
+      Logger.logD(TAG, String.format("createContext.this.%h.viewContext.%h", new Object[] { this, this.mViewContext }));
+      localArkViewModel = this.mViewImpl.getViewModel();
     }
-    ENV.logD(TAG, String.format("createContext.this.%h.viewContext.%h", new Object[] { this, this.mViewContext }));
-    ArkViewModel localArkViewModel = this.mViewImpl.getViewModel();
     for (;;)
     {
-      int i;
       try
       {
-        if (this.mViewContext == null)
-        {
-          i = 1;
-          if (localArkViewModel != null) {
-            break label191;
-          }
-          ENV.logI(TAG, String.format("createContext.current.view.model.is.null.this.%h.surface.%h", new Object[] { this, paramSurfaceTexture }));
-          return;
+        if (this.mViewContext == null) {
+          break label284;
         }
+        if (this.mViewContext.viewModel == localArkViewModel) {
+          break label290;
+        }
+        this.mViewContext = null;
+        Logger.logE(TAG, String.format("createContext.model.changed.this.%h.viewContext.%h.model.%h.new.model.%h.", new Object[] { this, this.mViewContext, this.mViewContext.viewModel, localArkViewModel }));
       }
       finally {}
-      if (this.mViewContext.viewModel != localArkViewModel)
+      if (localArkViewModel == null)
       {
-        this.mViewContext = null;
-        ENV.logE(TAG, String.format("createContext.model.changed.this.%h.viewContext.%h.model.%h.new.model.%h.", new Object[] { this, this.mViewContext, this.mViewContext.viewModel, localArkViewModel }));
-        i = 1;
-        continue;
-        label191:
-        if (i != 0)
-        {
-          this.mViewContext = new ArkTextureViewImpl.ViewContext(null);
-          this.mViewContext.viewModel = localArkViewModel;
-        }
-        this.mViewContext.surfaceTexture = paramSurfaceTexture;
-        ArkTextureViewImpl.ViewContext localViewContext = this.mViewContext;
-        ENV.logI(TAG, String.format("createContext.1.this.%h.size.(%d, %d).model.%h.surface.%h", new Object[] { this, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), localArkViewModel, paramSurfaceTexture }));
-        ArkDispatchQueue.asyncRun(localArkViewModel.getQueueKey(), new ArkTextureViewImpl.2(this, paramInt1, paramInt2, localArkViewModel, localViewContext, paramSurfaceTexture));
+        Logger.logI(TAG, String.format("createContext.current.view.model.is.null.this.%h.surface.%h", new Object[] { this, paramSurfaceTexture }));
+        return;
       }
-      else
+      if (i != 0)
       {
-        i = 0;
+        this.mViewContext = new ArkTextureViewImpl.ViewContext(null);
+        this.mViewContext.viewModel = localArkViewModel;
       }
+      this.mViewContext.surfaceTexture = paramSurfaceTexture;
+      ArkTextureViewImpl.ViewContext localViewContext = this.mViewContext;
+      Logger.logI(TAG, String.format("createContext.1.this.%h.size.(%d, %d).model.%h.surface.%h", new Object[] { this, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), localArkViewModel, paramSurfaceTexture }));
+      localArkViewModel.SafeAsyncRun(new ArkTextureViewImpl.2(this, paramInt1, paramInt2, localArkViewModel, localViewContext, paramSurfaceTexture));
+      return;
+      Logger.logE(TAG, String.format("createContext.surface.not.ready.this.%h", new Object[] { this }));
+      return;
+      label284:
+      int i = 1;
+      continue;
+      label290:
+      i = 0;
     }
   }
   
@@ -85,7 +83,7 @@ public class ArkTextureViewImpl
   {
     if ((paramViewContext != null) && (paramViewContext.viewModel != null))
     {
-      ENV.logD(TAG, String.format("releaseContext.begin.model.%h.context.%h.queue.%s", new Object[] { paramViewContext.viewModel, paramViewContext.contextHolder, paramViewContext.viewModel.getQueueKey() }));
+      Logger.logD(TAG, String.format("releaseContext.begin.model.%h.context.%h.queue.%s", new Object[] { paramViewContext.viewModel, paramViewContext.contextHolder, paramViewContext.viewModel.getQueueKey() }));
       ArkDispatchQueue.asyncRun(paramViewContext.viewModel.getQueueKey(), new ArkTextureViewImpl.1(paramViewContext));
     }
   }
@@ -97,11 +95,11 @@ public class ArkTextureViewImpl
     }
     if (isAvailable())
     {
-      ENV.logE(TAG, String.format("checkSurfaceAvailable.become.available.this.%h", new Object[] { this }));
+      Logger.logE(TAG, String.format("checkSurfaceAvailable.become.available.this.%h", new Object[] { this }));
       onSurfaceTextureAvailable(getSurfaceTexture(), getWidth(), getHeight());
       return;
     }
-    ENV.logE(TAG, String.format("checkSurfaceAvailable.not.available.this.%h", new Object[] { this }));
+    Logger.logE(TAG, String.format("checkSurfaceAvailable.not.available.this.%h", new Object[] { this }));
   }
   
   public void createContext()
@@ -125,7 +123,7 @@ public class ArkTextureViewImpl
         EGLContextHolder localEGLContextHolder = this.mViewContext.contextHolder;
         return localEGLContextHolder;
       }
-      ENV.logE(TAG, String.format("getContextHolder.context.is.null.this.%h", new Object[] { this }));
+      Logger.logE(TAG, String.format("getContextHolder.context.is.null.this.%h", new Object[] { this }));
       return null;
     }
     finally {}
@@ -144,21 +142,21 @@ public class ArkTextureViewImpl
     if (!localRect.isEmpty())
     {
       if ((localRect.width() < 400) || (localRect.height() < 400)) {
-        ENV.logE(TAG, String.format("ark view onMeasure, view rect too small: %d, %d", new Object[] { Integer.valueOf(localRect.width()), Integer.valueOf(localRect.height()) }));
+        Logger.logE(TAG, String.format("ark view onMeasure, view rect too small: %d, %d", new Object[] { Integer.valueOf(localRect.width()), Integer.valueOf(localRect.height()) }));
       }
       setMeasuredDimension(localRect.width(), localRect.height());
       return;
     }
-    ENV.logE(TAG, String.format("ark view onMeasure, view rect is empty, this=%h", new Object[] { this }));
+    Logger.logE(TAG, String.format("ark view onMeasure, view rect is empty, this=%h", new Object[] { this }));
     super.onMeasure(paramInt1, paramInt2);
   }
   
   public void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    ENV.logI(TAG, String.format("onSurfaceTextureAvailable.this.%h.surface.%h.size.(%d, %d)", new Object[] { this, paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    Logger.logI(TAG, String.format("onSurfaceTextureAvailable.this.%h.surface.%h.size.(%d, %d)", new Object[] { this, paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     if ((this.mSurface == paramSurfaceTexture) && (this.mSurfaceWidth == paramInt1) && (this.mSurfaceHeight == paramInt2))
     {
-      ENV.logI(TAG, String.format("onSurfaceTextureAvailable.already.called.this.%h.surface.%h.size.(%d, %d)", new Object[] { this, paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      Logger.logI(TAG, String.format("onSurfaceTextureAvailable.already.called.this.%h.surface.%h.size.(%d, %d)", new Object[] { this, paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
       return;
     }
     onSurfaceTextureSizeChanged(paramSurfaceTexture, paramInt1, paramInt2);
@@ -166,7 +164,7 @@ public class ArkTextureViewImpl
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture arg1)
   {
-    ENV.logI(TAG, String.format("onSurfaceTextureDestroyed.this.%h.viewContext.%h.surface.%h", new Object[] { this, this.mViewContext, ??? }));
+    Logger.logI(TAG, String.format("onSurfaceTextureDestroyed.this.%h.viewContext.%h.surface.%h", new Object[] { this, this.mViewContext, ??? }));
     releaseContext();
     synchronized (this.mLock)
     {
@@ -177,7 +175,7 @@ public class ArkTextureViewImpl
   
   public void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    ENV.logI(TAG, String.format("onSurfaceTextureSizeChanged.this.%h.surface.%h.width.%d.height.%d.viewContext.%h", new Object[] { this, paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this.mViewContext }));
+    Logger.logI(TAG, String.format("onSurfaceTextureSizeChanged.this.%h.surface.%h.width.%d.height.%d.viewContext.%h", new Object[] { this, paramSurfaceTexture, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this.mViewContext }));
     synchronized (this.mLock)
     {
       this.mSurfaceAvailable = true;
@@ -192,7 +190,7 @@ public class ArkTextureViewImpl
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
   {
     if (ENV.mShowVsyncLog) {
-      ENV.logD(TAG, String.format("onSurfaceTextureUpdated.this.%h", new Object[] { this }));
+      Logger.logD(TAG, String.format("onSurfaceTextureUpdated.this.%h", new Object[] { this }));
     }
   }
   
@@ -203,14 +201,15 @@ public class ArkTextureViewImpl
   
   public void releaseContext()
   {
-    Object localObject1 = null;
-    ArkEnvironmentManager localArkEnvironmentManager = ENV;
     String str = TAG;
     ArkTextureViewImpl.ViewContext localViewContext = this.mViewContext;
-    if (this.mViewContext != null) {
-      localObject1 = this.mViewContext.viewModel;
+    Object localObject1;
+    if (localViewContext != null) {
+      localObject1 = localViewContext.viewModel;
+    } else {
+      localObject1 = null;
     }
-    localArkEnvironmentManager.logD(str, String.format("releaseContext.this.%h.viewContext.%h.model.%h", new Object[] { this, localViewContext, localObject1 }));
+    Logger.logD(str, String.format("releaseContext.this.%h.viewContext.%h.model.%h", new Object[] { this, localViewContext, localObject1 }));
     try
     {
       localObject1 = this.mViewContext;

@@ -24,88 +24,79 @@ public class TencentDocFormKeyWordsBean
   
   public static TencentDocFormKeyWordsBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    int i = 0;
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-      return null;
-    }
-    localTencentDocFormKeyWordsBean = new TencentDocFormKeyWordsBean();
-    try
+    TencentDocFormKeyWordsBean localTencentDocFormKeyWordsBean;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
-      Object localObject1;
-      Object localObject2;
-      if (paramArrayOfQConfItem.has("collection"))
+      localTencentDocFormKeyWordsBean = new TencentDocFormKeyWordsBean();
+      int i = 0;
+      try
       {
-        localObject1 = paramArrayOfQConfItem.getJSONArray("collection");
-        while (i < ((JSONArray)localObject1).length())
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
+        Object localObject1;
+        Object localObject2;
+        if (paramArrayOfQConfItem.has("collection"))
         {
-          localObject2 = new TencentDocFormKeyWordsBean.KeyWordsInfo(((JSONArray)localObject1).getJSONObject(i));
-          localTencentDocFormKeyWordsBean.jdField_a_of_type_JavaUtilList.add(localObject2);
-          i += 1;
+          localObject1 = paramArrayOfQConfItem.getJSONArray("collection");
+          while (i < ((JSONArray)localObject1).length())
+          {
+            localObject2 = new TencentDocFormKeyWordsBean.KeyWordsInfo(((JSONArray)localObject1).getJSONObject(i));
+            localTencentDocFormKeyWordsBean.jdField_a_of_type_JavaUtilList.add(localObject2);
+            i += 1;
+          }
         }
+        if (paramArrayOfQConfItem.has("collectionTypeAndSize"))
+        {
+          paramArrayOfQConfItem = paramArrayOfQConfItem.getJSONObject("collectionTypeAndSize");
+          localObject1 = paramArrayOfQConfItem.keys();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (String)((Iterator)localObject1).next();
+            localTencentDocFormKeyWordsBean.jdField_a_of_type_JavaUtilMap.put(localObject2, Long.valueOf(paramArrayOfQConfItem.getLong((String)localObject2)));
+          }
+        }
+        return localTencentDocFormKeyWordsBean;
       }
-      if (paramArrayOfQConfItem.has("collectionTypeAndSize"))
+      catch (JSONException paramArrayOfQConfItem)
       {
-        paramArrayOfQConfItem = paramArrayOfQConfItem.getJSONObject("collectionTypeAndSize");
-        localObject1 = paramArrayOfQConfItem.keys();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (String)((Iterator)localObject1).next();
-          localTencentDocFormKeyWordsBean.jdField_a_of_type_JavaUtilMap.put(localObject2, Long.valueOf(paramArrayOfQConfItem.getLong((String)localObject2)));
-        }
+        QLog.e("TencentDocFormKeyWordsBean", 1, paramArrayOfQConfItem.getLocalizedMessage(), paramArrayOfQConfItem);
       }
-      return localTencentDocFormKeyWordsBean;
     }
-    catch (JSONException paramArrayOfQConfItem)
-    {
-      QLog.e("TencentDocFormKeyWordsBean", 1, paramArrayOfQConfItem.getLocalizedMessage(), paramArrayOfQConfItem);
-    }
+    return null;
   }
   
   public boolean a(String paramString)
   {
-    boolean bool2 = false;
     int i = 0;
-    boolean bool1 = bool2;
-    TencentDocFormKeyWordsBean.KeyWordsInfo localKeyWordsInfo;
-    String str;
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localKeyWordsInfo = (TencentDocFormKeyWordsBean.KeyWordsInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-      if (localKeyWordsInfo.a == null) {
-        break label156;
+      TencentDocFormKeyWordsBean.KeyWordsInfo localKeyWordsInfo = (TencentDocFormKeyWordsBean.KeyWordsInfo)this.jdField_a_of_type_JavaUtilList.get(i);
+      String str;
+      if (localKeyWordsInfo.a != null)
+      {
+        j = 0;
+        while (j < localKeyWordsInfo.a.length)
+        {
+          str = localKeyWordsInfo.a[j];
+          if ((paramString != null) && (paramString.indexOf(str) >= 0))
+          {
+            j = 1;
+            break label86;
+          }
+          j += 1;
+        }
       }
-      j = 0;
-      if (j >= localKeyWordsInfo.a.length) {
-        break label156;
-      }
-      str = localKeyWordsInfo.a[j];
-      if ((paramString == null) || (paramString.indexOf(str) < 0)) {
-        break label133;
-      }
-    }
-    label133:
-    label149:
-    label156:
-    for (int j = 1;; j = 0)
-    {
+      int j = 0;
+      label86:
       if (j != 0)
       {
         if (localKeyWordsInfo.b != null)
         {
           j = 0;
-          for (;;)
+          while (j < localKeyWordsInfo.b.length)
           {
-            if (j >= localKeyWordsInfo.b.length) {
-              break label149;
-            }
             str = localKeyWordsInfo.b[j];
-            if ((paramString != null) && (paramString.indexOf(str) >= 0))
-            {
-              bool1 = true;
-              return bool1;
-              j += 1;
-              break;
+            if ((paramString != null) && (paramString.indexOf(str) >= 0)) {
+              return true;
             }
             j += 1;
           }
@@ -113,13 +104,13 @@ public class TencentDocFormKeyWordsBean
         return true;
       }
       i += 1;
-      break;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocFormKeyWordsBean
  * JD-Core Version:    0.7.0.1
  */

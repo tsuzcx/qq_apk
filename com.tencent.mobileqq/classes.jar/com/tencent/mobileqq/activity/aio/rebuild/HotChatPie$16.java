@@ -1,34 +1,63 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.HotChatHandler;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.hotchat.api.IHotChatApi;
+import com.tencent.mobileqq.hotchat.api.IHotChatHandler;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class HotChatPie$16
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  HotChatPie$16(HotChatPie paramHotChatPie, HotChatInfo paramHotChatInfo) {}
+  HotChatPie$16(HotChatPie paramHotChatPie, ActionSheet paramActionSheet, ChatMessage paramChatMessage, String paramString) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (HotChatPie.e(this.this$0) == null) {
-      HotChatPie.b(this.this$0, new TroopFeedsCenterLogic(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, HotChatPie.b(this.this$0), HotChatPie.b(this.this$0), this.this$0.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips, HotChatPie.b(this.this$0), null));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (paramInt != 0)
+    {
+      if (paramInt != 1) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.b;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("del hot chat member onClick, uin=");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin);
+        QLog.i(paramView, 2, localStringBuilder.toString());
+      }
+      if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
+      {
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a().getString(2131694424), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a().getTitleBarHeight());
+        return;
+      }
+      if ((IHotChatHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName()) != null)
+      {
+        paramView = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a(), 230).setMessage(2131693178).setNegativeButton(2131690707, new HotChatPie.16.2(this)).setPositiveButton(2131690709, new HotChatPie.16.1(this));
+        paramView.setTitle(2131693179);
+        paramView.show();
+      }
     }
-    HotChatHandler localHotChatHandler = (HotChatHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.HOT_CHAT_HANDLER);
-    if (this.a.userCreate == 1) {
-      localHotChatHandler.a(this.a.troopUin);
+    else
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, this.jdField_a_of_type_JavaLangString, false, 1);
     }
-    while (this.a.uuid == null) {
-      return;
-    }
-    localHotChatHandler.a(this.a.uuid.getBytes(), this.a.troopUin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.16
  * JD-Core Version:    0.7.0.1
  */

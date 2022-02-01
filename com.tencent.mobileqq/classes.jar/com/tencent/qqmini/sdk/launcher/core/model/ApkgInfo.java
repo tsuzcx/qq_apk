@@ -57,12 +57,7 @@ public class ApkgInfo
   {
     super(paramString, paramMiniAppInfo);
     this.mMiniAppInfo = paramMiniAppInfo;
-    if (!paramMiniAppInfo.launchParam.isFlutterMode) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.isReadApkg = bool;
-      return;
-    }
+    this.isReadApkg = (paramMiniAppInfo.launchParam.isFlutterMode ^ true);
   }
   
   public static boolean initNetwork(ApkgInfo paramApkgInfo)
@@ -70,37 +65,42 @@ public class ApkgInfo
     if (paramApkgInfo != null) {}
     try
     {
-      if ((paramApkgInfo.mAppConfigInfo == null) || (paramApkgInfo.mAppConfigInfo.networkTimeoutInfo == null))
+      if ((paramApkgInfo.mAppConfigInfo != null) && (paramApkgInfo.mAppConfigInfo.networkTimeoutInfo != null))
       {
-        QMLog.e("ApkgInfo", "initNetwork param is wrong");
-        return false;
-      }
-      SpecialProxy localSpecialProxy = (SpecialProxy)AppLoaderFactory.g().getProxyManager().get(SpecialProxy.class);
-      if (localSpecialProxy != null)
-      {
+        SpecialProxy localSpecialProxy = (SpecialProxy)AppLoaderFactory.g().getProxyManager().get(SpecialProxy.class);
+        if (localSpecialProxy == null) {
+          break label98;
+        }
         Bundle localBundle = new Bundle();
         localBundle.putParcelable("NetworkTimeOutInfo", paramApkgInfo.mAppConfigInfo.networkTimeoutInfo);
         localSpecialProxy.sendEventToHost(2, localBundle, null);
+        break label98;
       }
-      return true;
+      QMLog.e("ApkgInfo", "initNetwork param is wrong");
+      return false;
     }
     catch (Throwable paramApkgInfo)
     {
-      QMLog.e("ApkgInfo", "initNetwork failed", paramApkgInfo);
+      label88:
+      break label88;
     }
+    QMLog.e("ApkgInfo", "initNetwork failed", paramApkgInfo);
     return false;
+    label98:
+    return true;
   }
   
   public static ApkgInfo loadApkgInfoFromFolderPath(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (!new File(paramString1).exists())) {
-      return null;
+    if ((!TextUtils.isEmpty(paramString1)) && (new File(paramString1).exists()))
+    {
+      paramString1 = new ApkgInfo(paramString1, paramMiniAppInfo);
+      paramString1.init(paramString2);
+      QMLog.e("ApkgInfo", "loadApkgInfoFromFolderPath initNetwork");
+      initNetwork(paramString1);
+      return paramString1;
     }
-    paramString1 = new ApkgInfo(paramString1, paramMiniAppInfo);
-    paramString1.init(paramString2);
-    QMLog.e("ApkgInfo", "loadApkgInfoFromFolderPath initNetwork");
-    initNetwork(paramString1);
-    return paramString1;
+    return null;
   }
   
   public static String normalize(String paramString)
@@ -125,7 +125,11 @@ public class ApkgInfo
       return new File(getApkgFolderPath(), "mini.qapkg");
     }
     paramString = paramString.replaceAll("/", "");
-    return new File(getApkgFolderPath(), paramString + ".qapkg");
+    String str = getApkgFolderPath();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".qapkg");
+    return new File(str, localStringBuilder.toString());
   }
   
   public AppConfigInfo getAppConfigInfo()
@@ -157,31 +161,49 @@ public class ApkgInfo
       if (TextUtils.isEmpty(paramString)) {
         return readApkgToString("mini.qapkg");
       }
-      if (paramString.endsWith("/")) {
-        return readApkgToString(paramString + "app-service.js");
+      if (paramString.endsWith("/"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("app-service.js");
+        return readApkgToString(localStringBuilder.toString());
       }
-      return readApkgToString(paramString + File.separator + "app-service.js");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("app-service.js");
+      return readApkgToString(localStringBuilder.toString());
     }
     return FileUtils.readFileToStr(new File(getAppServiceJsPath(paramString)));
   }
   
   public String getAppServiceJsPath()
   {
-    return getApkgFolderPath() + "/" + "app-service.js";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getApkgFolderPath());
+    localStringBuilder.append("/");
+    localStringBuilder.append("app-service.js");
+    return localStringBuilder.toString();
   }
   
   public String getAppServiceJsPath(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      return getApkgFolderPath() + "/" + "app-service.js";
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramString = new StringBuilder();
+      paramString.append(getApkgFolderPath());
+      paramString.append("/");
+      paramString.append("app-service.js");
+      return paramString.toString();
     }
     return new File(new File(getApkgFolderPath(), paramString), "app-service.js").getAbsolutePath();
   }
   
   public boolean getDebug()
   {
-    if (this.mAppConfigInfo != null) {
-      return this.mAppConfigInfo.debug;
+    AppConfigInfo localAppConfigInfo = this.mAppConfigInfo;
+    if (localAppConfigInfo != null) {
+      return localAppConfigInfo.debug;
     }
     return false;
   }
@@ -199,10 +221,18 @@ public class ApkgInfo
     }
     if (this.isReadApkg)
     {
-      if (paramString.endsWith("/")) {
-        return readApkgToString(paramString + "page-frame.js");
+      if (paramString.endsWith("/"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("page-frame.js");
+        return readApkgToString(localStringBuilder.toString());
       }
-      return readApkgToString(paramString + File.separator + "page-frame.js");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append("page-frame.js");
+      return readApkgToString(localStringBuilder.toString());
     }
     paramString = new File(new File(getApkgFolderPath(), paramString), "page-frame.js");
     if (paramString.exists()) {
@@ -235,7 +265,7 @@ public class ApkgInfo
       }
       localObject = FileUtils.readFileToStr((File)localObject);
     }
-    paramString = ((String)localObject).substring(((String)localObject).indexOf("<script>") + "<script>".length(), ((String)localObject).indexOf("</script>"));
+    paramString = ((String)localObject).substring(((String)localObject).indexOf("<script>") + 8, ((String)localObject).indexOf("</script>"));
     localPageHtmlContent.htmlStr = ((String)localObject);
     localPageHtmlContent.jsStr = paramString;
     return localPageHtmlContent;
@@ -244,46 +274,46 @@ public class ApkgInfo
   public String getPageJsStr(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      str1 = "";
+      return "";
     }
-    String str3;
-    do
+    String str3 = normalize(paramString);
+    String str1 = (String)this.mPageJsMap.get(str3);
+    paramString = str1;
+    if (TextUtils.isEmpty(str1))
     {
-      return str1;
-      str3 = normalize(paramString);
-      paramString = (String)this.mPageJsMap.get(str3);
-      str1 = paramString;
-    } while (!TextUtils.isEmpty(paramString));
-    String str1 = paramString;
-    for (;;)
-    {
+      paramString = str1;
       try
       {
+        String str2;
         if (this.isReadApkg)
         {
-          str1 = paramString;
+          paramString = str1;
           str2 = readApkgToString(str3);
-          str1 = paramString;
-          paramString = str2.substring(str2.indexOf("<script>") + "<script>".length(), str2.indexOf("</script>"));
-          str1 = paramString;
-          this.mPageJsMap.put(str3, paramString);
-          return paramString;
         }
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
+        else
+        {
+          paramString = str1;
+          str2 = FileUtils.readFileToString(new File(getApkgFolderPath(), str3));
+        }
+        paramString = str1;
+        str1 = str2.substring(str2.indexOf("<script>") + 8, str2.indexOf("</script>"));
+        paramString = str1;
+        this.mPageJsMap.put(str3, str1);
         return str1;
       }
-      str1 = paramString;
-      String str2 = FileUtils.readFileToString(new File(getApkgFolderPath(), str3));
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
     }
+    return paramString;
   }
   
   public String getRootPath(String paramString)
   {
-    if (this.mAppConfigInfo != null) {
-      return this.mAppConfigInfo.getRootPath(paramString);
+    AppConfigInfo localAppConfigInfo = this.mAppConfigInfo;
+    if (localAppConfigInfo != null) {
+      return localAppConfigInfo.getRootPath(paramString);
     }
     return null;
   }
@@ -307,25 +337,50 @@ public class ApkgInfo
       if (TextUtils.isEmpty(paramString1)) {
         return readApkgToString(paramString2);
       }
-      if (paramString1.endsWith("/")) {
-        return readApkgToString(paramString1 + paramString2);
+      if (paramString1.endsWith("/"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(paramString2);
+        return readApkgToString(localStringBuilder.toString());
       }
-      return readApkgToString(paramString1 + File.separator + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(paramString2);
+      return readApkgToString(localStringBuilder.toString());
     }
     return FileUtils.readFileToStr(new File(getWorkerPath(paramString1, paramString2)));
   }
   
   public String getWorkerPath(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {
-      return getApkgFolderPath() + File.separator + paramString2;
+    if (TextUtils.isEmpty(paramString1))
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append(getApkgFolderPath());
+      paramString1.append(File.separator);
+      paramString1.append(paramString2);
+      return paramString1.toString();
     }
     if (this.isReadApkg)
     {
-      if (paramString1.endsWith("/")) {
-        return getApkgFolderPath() + File.separator + paramString1 + paramString2;
+      if (paramString1.endsWith("/"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(getApkgFolderPath());
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(paramString2);
+        return localStringBuilder.toString();
       }
-      return getApkgFolderPath() + File.separator + paramString1 + File.separator + paramString2;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getApkgFolderPath());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(paramString2);
+      return localStringBuilder.toString();
     }
     return new File(new File(getApkgFolderPath(), paramString1), paramString2).getAbsolutePath();
   }
@@ -334,119 +389,131 @@ public class ApkgInfo
   {
     if (paramString != null)
     {
-      Object localObject = getApkgFolderPath() + "/" + paramString;
-      if (this.isReadApkg) {}
-      for (paramString = readApkgToString(paramString + File.separator + "app-config.json");; paramString = FileUtils.readFileToString(new File((String)localObject, "app-config.json")))
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(getApkgFolderPath());
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
+      if (this.isReadApkg)
       {
-        this.mConfigStr = paramString;
-        JSONObject localJSONObject = new JSONObject(this.mConfigStr);
-        paramString = new JSONObject();
-        paramString.put("USER_DATA_PATH", "wxfile://usr");
-        localJSONObject.put("env", paramString);
-        String str = localJSONObject.optString("entryPagePath");
-        paramString = null;
-        if (this.mMiniAppInfo != null) {
-          paramString = this.mMiniAppInfo.launchParam.entryPath;
-        }
-        localObject = paramString;
-        if (TextUtils.isEmpty(paramString)) {
-          localObject = str;
-        }
-        paramString = AppBrandUtil.getAppLaunchInfo((String)localObject, this.mMiniAppInfo);
-        QMLog.d("ApkgInfo", "appLaunchInfo : " + paramString.toString());
-        localJSONObject.put("appLaunchInfo", paramString);
-        this.mConfigStr = localJSONObject.toString();
-        this.mAppConfigInfo = AppConfigInfo.parseAppConfig(localJSONObject);
-        return;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(File.separator);
+        ((StringBuilder)localObject).append("app-config.json");
+        paramString = readApkgToString(((StringBuilder)localObject).toString());
       }
-    }
-    if (this.isReadApkg) {}
-    for (paramString = readApkgToString("app-config.json");; paramString = FileUtils.readFileToString(new File(getApkgFolderPath(), "app-config.json")))
-    {
+      else
+      {
+        paramString = FileUtils.readFileToString(new File((String)localObject, "app-config.json"));
+      }
       this.mConfigStr = paramString;
-      break;
     }
+    else
+    {
+      if (this.isReadApkg) {
+        paramString = readApkgToString("app-config.json");
+      } else {
+        paramString = FileUtils.readFileToString(new File(getApkgFolderPath(), "app-config.json"));
+      }
+      this.mConfigStr = paramString;
+    }
+    JSONObject localJSONObject = new JSONObject(this.mConfigStr);
+    paramString = new JSONObject();
+    paramString.put("USER_DATA_PATH", "wxfile://usr");
+    localJSONObject.put("env", paramString);
+    Object localObject = localJSONObject.optString("entryPagePath");
+    paramString = null;
+    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+    if (localMiniAppInfo != null) {
+      paramString = localMiniAppInfo.launchParam.entryPath;
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      paramString = (String)localObject;
+    }
+    paramString = AppBrandUtil.getAppLaunchInfo(paramString, this.mMiniAppInfo);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("appLaunchInfo : ");
+    ((StringBuilder)localObject).append(paramString.toString());
+    QMLog.d("ApkgInfo", ((StringBuilder)localObject).toString());
+    localJSONObject.put("appLaunchInfo", paramString);
+    this.mConfigStr = localJSONObject.toString();
+    this.mAppConfigInfo = AppConfigInfo.parseAppConfig(localJSONObject);
   }
   
   public boolean isHomePage(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      paramString = AppBrandUtil.getUrlWithoutParams(paramString);
-    } while ((!isTabBarPage(paramString)) && (!paramString.equals(this.mAppConfigInfo.entryPagePath)));
-    return true;
+    }
+    paramString = AppBrandUtil.getUrlWithoutParams(paramString);
+    return (isTabBarPage(paramString)) || (paramString.equals(this.mAppConfigInfo.entryPagePath));
   }
   
   public boolean isTabBarPage(String paramString)
   {
     String str = AppBrandUtil.getUrlWithoutParams(paramString);
-    if (this.mAppConfigInfo != null) {}
-    for (paramString = this.mAppConfigInfo.tabBarInfo; paramString != null; paramString = null)
+    paramString = this.mAppConfigInfo;
+    if (paramString != null) {
+      paramString = paramString.tabBarInfo;
+    } else {
+      paramString = null;
+    }
+    if (paramString != null)
     {
       paramString = paramString.list.iterator();
-      do
-      {
-        if (!paramString.hasNext()) {
-          break;
+      while (paramString.hasNext()) {
+        if (((TabBarInfo.ButtonInfo)paramString.next()).pagePath.equals(str)) {
+          return true;
         }
-      } while (!((TabBarInfo.ButtonInfo)paramString.next()).pagePath.equals(str));
-      return true;
+      }
     }
     return false;
   }
   
   public boolean isUrlFileExist(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      String str;
-      Object localObject;
-      if (!this.isReadApkg)
-      {
-        if (new File(getChildFileAbsolutePath(paramString)).exists()) {
-          return true;
+    }
+    if (!this.isReadApkg) {
+      return new File(getChildFileAbsolutePath(paramString)).exists();
+    }
+    String str = paramString;
+    if (paramString.startsWith("/")) {
+      str = paramString.substring(1);
+    }
+    Object localObject = getApkgFile(str);
+    paramString = ((File)localObject).getName();
+    str = AppBrandUtil.getUrlWithoutParams(str);
+    if (isUrlResReady(str, this.mMiniAppInfo))
+    {
+      if (!this.fileMap.containsKey(paramString)) {
+        try
+        {
+          localObject = ApkgFileUtils.getFileMapFromApkg((File)localObject);
+          if (localObject != null) {
+            this.fileMap.put(paramString, localObject);
+          } else {
+            return false;
+          }
         }
-      }
-      else
-      {
-        str = paramString;
-        if (paramString.startsWith("/")) {
-          str = paramString.substring(1);
-        }
-        localObject = getApkgFile(str);
-        paramString = ((File)localObject).getName();
-        str = AppBrandUtil.getUrlWithoutParams(str);
-        if (isUrlResReady(str, this.mMiniAppInfo)) {
-          if (this.fileMap.containsKey(paramString)) {}
-        }
-      }
-      try
-      {
-        localObject = ApkgFileUtils.getFileMapFromApkg((File)localObject);
-        if (localObject != null) {
-          this.fileMap.put(paramString, localObject);
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
+        catch (Throwable localThrowable)
         {
           localThrowable.printStackTrace();
-          QMLog.e("ApkgInfo", "getFileMapFromApkg err | url is " + str, localThrowable);
-          continue;
-          paramString = null;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getFileMapFromApkg err | url is ");
+          localStringBuilder.append(str);
+          QMLog.e("ApkgInfo", localStringBuilder.toString(), localThrowable);
         }
       }
-    }
-    if (paramString != null)
-    {
-      paramString = Boolean.valueOf(((HashMap)this.fileMap.get(paramString)).containsKey(str));
+      if (paramString != null) {
+        paramString = Boolean.valueOf(((HashMap)this.fileMap.get(paramString)).containsKey(str));
+      } else {
+        paramString = null;
+      }
       return paramString.booleanValue();
     }
+    return false;
   }
   
   public boolean isUrlResReady(String paramString, MiniAppInfo paramMiniAppInfo)
@@ -457,29 +524,68 @@ public class ApkgInfo
     }
     paramMiniAppInfo = new File(ApkgManager.getApkgFolderPath(paramMiniAppInfo), paramString).getAbsolutePath();
     paramString = paramString.replaceAll("/", "");
-    if (this.isReadApkg) {}
-    for (boolean bool = new File(getApkgFolderPath(), paramString + ".qapkg").exists();; bool = new File(paramMiniAppInfo).exists())
+    boolean bool;
+    if (this.isReadApkg)
     {
-      QMLog.d("ApkgInfo", "isUrlResReady | subApkgPath :" + paramString + "isExist:" + bool);
-      if (!bool) {
-        break;
-      }
-      return true;
+      paramMiniAppInfo = getApkgFolderPath();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(".qapkg");
+      bool = new File(paramMiniAppInfo, localStringBuilder.toString()).exists();
     }
-    return false;
+    else
+    {
+      bool = new File(paramMiniAppInfo).exists();
+    }
+    paramMiniAppInfo = new StringBuilder();
+    paramMiniAppInfo.append("isUrlResReady | subApkgPath :");
+    paramMiniAppInfo.append(paramString);
+    paramMiniAppInfo.append("isExist:");
+    paramMiniAppInfo.append(bool);
+    QMLog.d("ApkgInfo", paramMiniAppInfo.toString());
+    return bool;
   }
   
   public boolean isValidPrefix(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      if ((TextUtils.isEmpty(paramString)) || ((!paramString.startsWith("https://")) && (!paramString.startsWith("wss://")) && (!paramString.startsWith("ws://")) && (!paramString.startsWith("http://")))) {}
-    }
-    while ((!TextUtils.isEmpty(paramString)) && ((paramString.startsWith("https://")) || (paramString.startsWith("wss://"))))
+    boolean bool2 = true;
+    boolean bool1 = true;
+    if (paramBoolean)
     {
-      return true;
-      return false;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramBoolean = bool1;
+        if (paramString.startsWith("https://")) {
+          break label66;
+        }
+        paramBoolean = bool1;
+        if (paramString.startsWith("wss://")) {
+          break label66;
+        }
+        paramBoolean = bool1;
+        if (paramString.startsWith("ws://")) {
+          break label66;
+        }
+        if (paramString.startsWith("http://")) {
+          return true;
+        }
+      }
+      paramBoolean = false;
+      label66:
+      return paramBoolean;
     }
-    return false;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramBoolean = bool2;
+      if (paramString.startsWith("https://")) {
+        return paramBoolean;
+      }
+      if (paramString.startsWith("wss://")) {
+        return true;
+      }
+    }
+    paramBoolean = false;
+    return paramBoolean;
   }
   
   public ByteArrayInputStream readApkgToStream(String paramString)
@@ -535,7 +641,7 @@ public class ApkgInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.model.ApkgInfo
  * JD-Core Version:    0.7.0.1
  */

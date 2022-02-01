@@ -1,64 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import android.os.Handler;
-import android.os.Message;
-import com.etrump.mixlayout.FontManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 class TextPreviewActivity$9
-  extends DownloadListener
+  implements Runnable
 {
-  TextPreviewActivity$9(TextPreviewActivity paramTextPreviewActivity, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  TextPreviewActivity$9(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onCancel| task:" + paramDownloadTask);
-    }
-    super.onCancel(paramDownloadTask);
-  }
-  
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    super.onDone(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onDone| task:" + paramDownloadTask);
-    }
-    if (paramDownloadTask.b()) {}
-    do
-    {
-      return;
-      if (paramDownloadTask.a() == -1)
-      {
-        paramDownloadTask = new Message();
-        paramDownloadTask.what = 17;
-        this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramDownloadTask);
-        return;
-      }
-      paramDownloadTask = this.a.jdField_a_of_type_ComEtrumpMixlayoutFontManager.a(this.a.e);
-    } while (paramDownloadTask == null);
-    Message localMessage = new Message();
-    localMessage.what = 18;
-    localMessage.obj = paramDownloadTask;
-    this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TextPreviewActivity", 2, "fontNameDownloadListener.onStart| task:" + paramDownloadTask);
-    }
-    return super.onStart(paramDownloadTask);
+    TextPreviewActivity.a(this.this$0);
+    QQToast.a(this.this$0, HardCodeUtil.a(2131714684), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.9
  * JD-Core Version:    0.7.0.1
  */

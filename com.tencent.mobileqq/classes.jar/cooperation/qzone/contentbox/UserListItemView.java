@@ -39,47 +39,37 @@ public class UserListItemView
   {
     this.mContext = paramContext;
     this.mUiHandler = new Handler(Looper.getMainLooper());
-    ViewGroup.LayoutParams localLayoutParams;
-    if (paramInt == 0)
+    if (paramInt == 0) {
+      LayoutInflater.from(paramContext).inflate(2080636948, this);
+    } else if (paramInt == 1) {
+      LayoutInflater.from(paramContext).inflate(2080636949, this);
+    } else {
+      LayoutInflater.from(paramContext).inflate(2080636950, this);
+    }
+    this.mAvatarView = ((ImageView)findViewById(2080571400));
+    this.mAvatarCover = ((RelativeLayout)findViewById(2080571399));
+    if (this.isNewStyle)
     {
-      LayoutInflater.from(paramContext).inflate(2131562573, this);
-      this.mAvatarView = ((ImageView)findViewById(2131363215));
-      this.mAvatarCover = ((RelativeLayout)findViewById(2131363213));
-      if (this.isNewStyle)
+      paramContext = (ImageView)findViewById(2080571398);
+      ViewGroup.LayoutParams localLayoutParams = paramContext.getLayoutParams();
+      if (paramInt == 0)
       {
-        paramContext = (ImageView)findViewById(2131363211);
-        localLayoutParams = paramContext.getLayoutParams();
-        if (paramInt != 0) {
-          break label202;
-        }
         localLayoutParams.height = ViewUtils.b(42.0F);
         localLayoutParams.width = ViewUtils.b(42.0F);
       }
-    }
-    for (;;)
-    {
-      paramContext.setLayoutParams(localLayoutParams);
-      if (paramBoolean)
-      {
-        if (this.isNewStyle) {
-          ((GradientDrawable)getResources().getDrawable(2130848849)).setColor(Color.parseColor("#B2FFFFFF"));
-        }
-        ((ImageView)findViewById(2131363211)).setImageDrawable(getResources().getDrawable(2130848849));
-      }
-      return;
-      if (paramInt == 1)
-      {
-        LayoutInflater.from(paramContext).inflate(2131562574, this);
-        break;
-      }
-      LayoutInflater.from(paramContext).inflate(2131562575, this);
-      break;
-      label202:
-      if (paramInt == 1)
+      else if (paramInt == 1)
       {
         localLayoutParams.height = ViewUtils.b(34.0F);
         localLayoutParams.width = ViewUtils.b(34.0F);
       }
+      paramContext.setLayoutParams(localLayoutParams);
+    }
+    if (paramBoolean)
+    {
+      if (this.isNewStyle) {
+        ((GradientDrawable)getResources().getDrawable(2130848729)).setColor(Color.parseColor("#B2FFFFFF"));
+      }
+      ((ImageView)findViewById(2080571398)).setImageDrawable(getResources().getDrawable(2130848729));
     }
   }
   
@@ -94,7 +84,7 @@ public class UserListItemView
     {
       if (this.isNewStyle)
       {
-        GradientDrawable localGradientDrawable = (GradientDrawable)getResources().getDrawable(2130848850);
+        GradientDrawable localGradientDrawable = (GradientDrawable)getResources().getDrawable(2130848730);
         localGradientDrawable.setColor(Color.parseColor("#B2FFFFFF"));
         this.mAvatarCover.setBackgroundDrawable(localGradientDrawable);
       }
@@ -106,7 +96,7 @@ public class UserListItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.UserListItemView
  * JD-Core Version:    0.7.0.1
  */

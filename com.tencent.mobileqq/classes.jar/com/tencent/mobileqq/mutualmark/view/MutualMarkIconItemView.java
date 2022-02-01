@@ -31,31 +31,35 @@ public class MutualMarkIconItemView
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable.getIntrinsicWidth();
+    MutualMarkIconProxyDrawable localMutualMarkIconProxyDrawable = this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable;
+    if (localMutualMarkIconProxyDrawable != null) {
+      return localMutualMarkIconProxyDrawable.getIntrinsicWidth();
     }
     return getMeasuredWidth();
   }
   
   public long a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo.a;
+    MutualMarkForDisplayInfo localMutualMarkForDisplayInfo = this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo;
+    if (localMutualMarkForDisplayInfo != null) {
+      return localMutualMarkForDisplayInfo.a;
     }
     return 0L;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable.b();
+    MutualMarkIconProxyDrawable localMutualMarkIconProxyDrawable = this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable;
+    if (localMutualMarkIconProxyDrawable != null) {
+      localMutualMarkIconProxyDrawable.b();
     }
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable != null) {
-      this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable.a(paramString);
+    MutualMarkIconProxyDrawable localMutualMarkIconProxyDrawable = this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable;
+    if (localMutualMarkIconProxyDrawable != null) {
+      localMutualMarkIconProxyDrawable.a(paramString);
     }
   }
   
@@ -67,25 +71,26 @@ public class MutualMarkIconItemView
   
   public void setIconResource(MutualMarkForDisplayInfo paramMutualMarkForDisplayInfo)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo == paramMutualMarkForDisplayInfo) {}
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo == paramMutualMarkForDisplayInfo) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo = paramMutualMarkForDisplayInfo;
-      if (!TextUtils.isEmpty(paramMutualMarkForDisplayInfo.jdField_c_of_type_JavaLangString))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(getContext(), paramMutualMarkForDisplayInfo.jdField_c_of_type_JavaLangString);
-        setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable);
-        return;
-      }
-    } while (paramMutualMarkForDisplayInfo.jdField_c_of_type_Int == 0);
-    this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(getContext(), paramMutualMarkForDisplayInfo.jdField_c_of_type_Int);
-    setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqMutualmarkInfoMutualMarkForDisplayInfo = paramMutualMarkForDisplayInfo;
+    if (!TextUtils.isEmpty(paramMutualMarkForDisplayInfo.jdField_c_of_type_JavaLangString))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(getContext(), paramMutualMarkForDisplayInfo.jdField_c_of_type_JavaLangString);
+      setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable);
+      return;
+    }
+    if (paramMutualMarkForDisplayInfo.jdField_c_of_type_Int != 0)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable = new MutualMarkIconProxyDrawable(getContext(), paramMutualMarkForDisplayInfo.jdField_c_of_type_Int);
+      setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqMutualmarkMutualMarkIconProxyDrawable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.view.MutualMarkIconItemView
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,7 @@ class RecyclerView$LayoutManager$2
   public int getChildEnd(View paramView)
   {
     RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramView.getLayoutParams();
-    int i = this.this$0.getDecoratedBottom(paramView);
-    return localLayoutParams.bottomMargin + i;
+    return this.this$0.getDecoratedBottom(paramView) + localLayoutParams.bottomMargin;
   }
   
   public int getChildStart(View paramView)
@@ -37,7 +36,7 @@ class RecyclerView$LayoutManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.RecyclerView.LayoutManager.2
  * JD-Core Version:    0.7.0.1
  */

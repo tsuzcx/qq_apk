@@ -20,16 +20,13 @@ public class QzoneContactsFeedRequest
   public static newest_feeds_rsp a(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+      return null;
     }
-    newest_feeds_rsp localnewest_feeds_rsp;
-    do
-    {
-      return paramArrayOfByte;
-      localnewest_feeds_rsp = (newest_feeds_rsp)decode(paramArrayOfByte, "getAIONewestFeeds");
-      paramArrayOfByte = localnewest_feeds_rsp;
-    } while (localnewest_feeds_rsp != null);
-    return null;
+    paramArrayOfByte = (newest_feeds_rsp)decode(paramArrayOfByte, "getAIONewestFeeds");
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return paramArrayOfByte;
   }
   
   public String getCmdString()
@@ -49,7 +46,7 @@ public class QzoneContactsFeedRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzonestatus.QzoneContactsFeedRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -28,18 +28,16 @@ public class Util
   
   public static final String a(int paramInt)
   {
-    String str = "";
     if (paramInt == 0) {
-      str = "contact";
+      return "contact";
     }
-    do
-    {
-      return str;
-      if (paramInt == 1) {
-        return "group";
-      }
-    } while (paramInt != 3000);
-    return "discussions";
+    if (paramInt == 1) {
+      return "group";
+    }
+    if (paramInt == 3000) {
+      return "discussions";
+    }
+    return "";
   }
   
   public static String a(InputStream paramInputStream)
@@ -57,13 +55,13 @@ public class Util
         localStringBuilder.append(str);
       }
       paramInputStream = localStringBuilder.toString();
+      return paramInputStream;
     }
     catch (Exception paramInputStream)
     {
       paramInputStream.printStackTrace();
-      return null;
     }
-    return paramInputStream;
+    return null;
   }
   
   public static String a(String paramString)
@@ -75,35 +73,46 @@ public class Util
     localStringBuilder.append("\"");
     int j = paramString.length();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       char c = paramString.charAt(i);
-      switch (c)
+      if (c != '\f')
       {
-      default: 
-        if (c <= '\037') {
-          localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+        if (c != '\r')
+        {
+          if ((c != '"') && (c != '/') && (c != '\\')) {}
+          switch (c)
+          {
+          default: 
+            if (c <= '\037') {
+              localStringBuilder.append(String.format("\\u%04x", new Object[] { Integer.valueOf(c) }));
+            } else {
+              localStringBuilder.append(c);
+            }
+            break;
+          case '\n': 
+            localStringBuilder.append("\\n");
+            break;
+          case '\t': 
+            localStringBuilder.append("\\t");
+            break;
+          case '\b': 
+            localStringBuilder.append("\\b");
+            break;
+            localStringBuilder.append('\\');
+            localStringBuilder.append(c);
+            break;
+          }
         }
-        break;
+        else
+        {
+          localStringBuilder.append("\\r");
+        }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append('\\').append(c);
-        continue;
-        localStringBuilder.append("\\t");
-        continue;
-        localStringBuilder.append("\\b");
-        continue;
-        localStringBuilder.append("\\n");
-        continue;
-        localStringBuilder.append("\\r");
-        continue;
+      else {
         localStringBuilder.append("\\f");
-        continue;
-        localStringBuilder.append(c);
       }
+      i += 1;
     }
     localStringBuilder.append("\"");
     return localStringBuilder.toString();
@@ -111,75 +120,85 @@ public class Util
   
   public static String a(String paramString, int paramInt)
   {
-    str2 = "";
-    Object localObject1 = str2;
-    if (!TextUtils.isEmpty(paramString))
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject3 = "";
+    Object localObject1 = localObject3;
+    if (!bool)
     {
-      localObject1 = str2;
+      localObject1 = localObject3;
       if (paramInt <= 0) {}
     }
-    try
+    for (;;)
     {
-      Object localObject2 = Uri.parse(paramString);
-      localObject1 = str2;
-      if (((Uri)localObject2).isHierarchical())
+      int i;
+      try
       {
-        localObject2 = ((Uri)localObject2).getHost();
-        localObject1 = str2;
-        if (localObject2 != null)
-        {
-          localObject2 = ((String)localObject2).split("\\.");
-          localObject1 = str2;
-          if (localObject2.length > 0)
-          {
-            int i = Math.max(0, localObject2.length - (paramInt + 1));
-            localObject1 = new StringBuilder(256);
-            ((StringBuilder)localObject1).append(localObject2[i]);
-            i += 1;
-            while (i < localObject2.length)
-            {
-              ((StringBuilder)localObject1).append('.').append(localObject2[i]);
-              i += 1;
-            }
-            localObject1 = ((StringBuilder)localObject1).toString();
-          }
+        localObject4 = Uri.parse(paramString);
+        localObject1 = localObject3;
+        if (!((Uri)localObject4).isHierarchical()) {
+          break label164;
         }
+        localObject4 = ((Uri)localObject4).getHost();
+        localObject1 = localObject3;
+        if (localObject4 == null) {
+          break label164;
+        }
+        localObject4 = ((String)localObject4).split("\\.");
+        localObject1 = localObject3;
+        if (localObject4.length <= 0) {
+          break label164;
+        }
+        i = Math.max(0, localObject4.length - (paramInt + 1));
+        localObject1 = new StringBuilder(256);
+        ((StringBuilder)localObject1).append(localObject4[i]);
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
+        Object localObject4;
         localException.printStackTrace();
-        String str1 = str2;
+        localObject2 = localObject3;
       }
+      if (i < localObject4.length)
+      {
+        ((StringBuilder)localObject1).append('.');
+        ((StringBuilder)localObject1).append(localObject4[i]);
+      }
+      else
+      {
+        localObject1 = ((StringBuilder)localObject1).toString();
+        Object localObject2;
+        label164:
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("Get ");
+          ((StringBuilder)localObject3).append(paramInt);
+          ((StringBuilder)localObject3).append(" level domain= ");
+          ((StringBuilder)localObject3).append(localObject2);
+          ((StringBuilder)localObject3).append(" from ");
+          ((StringBuilder)localObject3).append(paramString);
+          QLog.d("QLog", 2, ((StringBuilder)localObject3).toString());
+        }
+        return localObject2;
+      }
+      i += 1;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QLog", 2, "Get " + paramInt + " level domain= " + (String)localObject1 + " from " + paramString);
-    }
-    return localObject1;
   }
   
   public static String a(String paramString, String... paramVarArgs)
   {
-    String str;
-    if (TextUtils.isEmpty(paramString))
-    {
-      str = paramString;
-      return str;
+    if (TextUtils.isEmpty(paramString)) {
+      return paramString;
     }
     paramString = paramString.replaceAll("(?<=\\?|#|&)((?i)sid|3g_sid|uin|sec_sig|MOBINFO|originuin)=[^&#]*&", "").replaceAll("[\\?#&]((?i)sid|3g_sid|uin|sec_sig|MOBINFO|originuin)=[^&#]*(?=#|$)", "").replaceAll("(?<=\\?|#|&)((?i)from)=androidqq&", "").replaceAll("[\\?#&]((?i)from)=androidqq(?=#|$)", "");
     int j = paramVarArgs.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      str = paramString;
-      if (i >= j) {
-        break;
-      }
       paramString = paramString.replace(paramVarArgs[i], "");
       i += 1;
     }
+    return paramString;
   }
   
   public static void a(Context paramContext, int paramInt, String paramString1, String paramString2)
@@ -199,14 +218,20 @@ public class Util
       ((IUtil)((Class)a.get(0)).newInstance()).a(paramString);
       return;
     }
-    catch (IllegalAccessException paramString)
-    {
-      QLog.e("Util", 1, "beginTimeTrack error:" + paramString);
-      return;
-    }
     catch (InstantiationException paramString)
     {
-      QLog.e("Util", 1, "beginTimeTrack error:" + paramString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("beginTimeTrack error:");
+      localStringBuilder.append(paramString);
+      QLog.e("Util", 1, localStringBuilder.toString());
+      return;
+    }
+    catch (IllegalAccessException paramString)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("beginTimeTrack error:");
+      localStringBuilder.append(paramString);
+      QLog.e("Util", 1, localStringBuilder.toString());
     }
   }
   
@@ -217,68 +242,67 @@ public class Util
   
   public static final void a(AppRuntime paramAppRuntime, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, String paramString4)
   {
+    String str2 = "";
     if (paramString4 == null) {
       paramString4 = "";
     }
-    for (;;)
-    {
-      if (paramString1 == null) {
-        paramString1 = "";
-      }
-      for (;;)
-      {
-        String str1 = "";
-        if (paramLong2 > 0L) {
-          str1 = String.valueOf(paramLong2);
-        }
-        String str2 = "";
-        if (paramLong1 > 0L) {
-          str2 = String.valueOf(paramLong1);
-        }
-        ReportController.b(paramAppRuntime, "P_CliOper", "qqconnect", paramString1, paramString2, paramString3, 0, 0, str2, str1, paramString4, "");
-        return;
-      }
+    if (paramString1 == null) {
+      paramString1 = "";
     }
+    String str1;
+    if (paramLong2 > 0L) {
+      str1 = String.valueOf(paramLong2);
+    } else {
+      str1 = "";
+    }
+    if (paramLong1 > 0L) {
+      str2 = String.valueOf(paramLong1);
+    }
+    ReportController.b(paramAppRuntime, "P_CliOper", "qqconnect", paramString1, paramString2, paramString3, 0, 0, str2, str1, paramString4, "");
   }
   
   public static boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str;
-    File[] arrayOfFile;
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    Object localObject = paramString;
+    if (!paramString.endsWith(File.separator))
     {
-      do
-      {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(File.separator);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    paramString = new File((String)localObject);
+    if (paramString.exists())
+    {
+      if (!paramString.isDirectory()) {
         return false;
-        str = paramString;
-        if (!paramString.endsWith(File.separator)) {
-          str = paramString + File.separator;
-        }
-        paramString = new File(str);
-      } while ((paramString == null) || (!paramString.exists()) || (!paramString.isDirectory()));
-      arrayOfFile = paramString.listFiles();
-    } while (arrayOfFile == null);
-    int i = 0;
-    if (i < arrayOfFile.length)
-    {
-      if (arrayOfFile[i] == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (arrayOfFile[i].isFile()) {
-          b(arrayOfFile[i].getAbsolutePath());
-        } else {
-          a(arrayOfFile[i].getAbsolutePath());
-        }
       }
+      File[] arrayOfFile = paramString.listFiles();
+      if (arrayOfFile == null) {
+        return false;
+      }
+      int i = 0;
+      while (i < arrayOfFile.length)
+      {
+        if (arrayOfFile[i] != null) {
+          if (arrayOfFile[i].isFile()) {
+            b(arrayOfFile[i].getAbsolutePath());
+          } else {
+            a(arrayOfFile[i].getAbsolutePath());
+          }
+        }
+        i += 1;
+      }
+      paramString.delete();
+      if (QLog.isColorLevel()) {
+        QLog.d("Util", 2, new Object[] { "deleteDirectory dirPath:", localObject });
+      }
+      return true;
     }
-    paramString.delete();
-    if (QLog.isColorLevel()) {
-      QLog.d("Util", 2, new Object[] { "deleteDirectory dirPath:", str });
-    }
-    return true;
+    return false;
   }
   
   public static String b(String paramString)
@@ -301,36 +325,36 @@ public class Util
       ((IUtil)((Class)a.get(0)).newInstance()).b(paramString);
       return;
     }
-    catch (IllegalAccessException paramString)
-    {
-      QLog.e("Util", 1, "endTimeTrack error:" + paramString);
-      return;
-    }
     catch (InstantiationException paramString)
     {
-      QLog.e("Util", 1, "endTimeTrack error:" + paramString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("endTimeTrack error:");
+      localStringBuilder.append(paramString);
+      QLog.e("Util", 1, localStringBuilder.toString());
+      return;
+    }
+    catch (IllegalAccessException paramString)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("endTimeTrack error:");
+      localStringBuilder.append(paramString);
+      QLog.e("Util", 1, localStringBuilder.toString());
     }
   }
   
   public static boolean b(String paramString)
   {
-    boolean bool2 = false;
     paramString = new File(paramString);
-    boolean bool1 = bool2;
-    if (paramString.isFile())
-    {
-      bool1 = bool2;
-      if (!paramString.exists()) {}
-    }
-    try
-    {
-      paramString.delete();
-      bool1 = true;
-      return bool1;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    if ((paramString.isFile()) && (paramString.exists())) {
+      try
+      {
+        paramString.delete();
+        return true;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return false;
   }
@@ -339,19 +363,14 @@ public class Util
   {
     paramString = paramString.toCharArray();
     int i = 0;
-    if (i < paramString.length)
+    while (i < paramString.length)
     {
       if (paramString[i] == '　') {
         paramString[i] = 32;
+      } else if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
+        paramString[i] = ((char)(paramString[i] - 65248));
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if ((paramString[i] > 65280) && (paramString[i] < 65375)) {
-          paramString[i] = ((char)(paramString[i] - 65248));
-        }
-      }
+      i += 1;
     }
     return new String(paramString);
   }
@@ -359,33 +378,37 @@ public class Util
   public static String c(String paramString, String... paramVarArgs)
   {
     Object localObject = paramString;
-    if (!TextUtils.isEmpty(paramString)) {
-      if ((paramVarArgs != null) && (paramVarArgs.length != 0)) {
-        break label39;
-      }
-    }
-    for (paramVarArgs = "(?<=(a1|a2|key|token|uin|sid|sig|stwxweb)=\\S)[^; ]+(?=[^;$])";; paramVarArgs = String.format("(?<=(a1|a2|key|token|uin|sid|sig|stwxweb%s)=\\S)[^; ]+(?=[^;$])", new Object[] { ((StringBuilder)localObject).toString() }))
+    if (!TextUtils.isEmpty(paramString))
     {
-      localObject = paramString.toLowerCase().replaceAll(paramVarArgs, "*");
-      return localObject;
-      label39:
-      localObject = new StringBuilder("");
-      int j = paramVarArgs.length;
-      int i = 0;
-      while (i < j)
+      if ((paramVarArgs != null) && (paramVarArgs.length != 0))
       {
-        String str = paramVarArgs[i];
-        if (!TextUtils.isEmpty(str)) {
-          ((StringBuilder)localObject).append("|").append(str);
+        localObject = new StringBuilder("");
+        int j = paramVarArgs.length;
+        int i = 0;
+        while (i < j)
+        {
+          String str = paramVarArgs[i];
+          if (!TextUtils.isEmpty(str))
+          {
+            ((StringBuilder)localObject).append("|");
+            ((StringBuilder)localObject).append(str);
+          }
+          i += 1;
         }
-        i += 1;
+        paramVarArgs = String.format("(?<=(a1|a2|key|token|uin|sid|sig|stwxweb%s)=\\S)[^; ]+(?=[^;$])", new Object[] { ((StringBuilder)localObject).toString() });
       }
+      else
+      {
+        paramVarArgs = "(?<=(a1|a2|key|token|uin|sid|sig|stwxweb)=\\S)[^; ]+(?=[^;$])";
+      }
+      localObject = paramString.toLowerCase().replaceAll(paramVarArgs, "*");
     }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.util.Util
  * JD-Core Version:    0.7.0.1
  */

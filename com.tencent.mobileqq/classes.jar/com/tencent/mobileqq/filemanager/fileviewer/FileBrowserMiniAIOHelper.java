@@ -26,8 +26,9 @@ public class FileBrowserMiniAIOHelper
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != null) {
+      localView.setVisibility(8);
     }
   }
   
@@ -59,25 +60,31 @@ public class FileBrowserMiniAIOHelper
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    if (paramObject == null) {}
-    do
+    if (paramObject == null) {
+      return;
+    }
+    if (((paramObject instanceof MessageRecord)) && ((paramObject instanceof ChatMessage)))
     {
-      do
+      paramObservable = (MessageRecord)paramObject;
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          return;
-        } while ((!(paramObject instanceof MessageRecord)) || (!(paramObject instanceof ChatMessage)));
-        paramObservable = (MessageRecord)paramObject;
-      } while (!QLog.isColorLevel());
-      QLog.d("FileBrowserMiniAIOHelper<QFile>", 2, "recv: msgseq[" + paramObservable.msgseq + "] uin[" + paramObservable.frienduin + "]");
-    } while (!paramObservable.frienduin.equals(this.jdField_a_of_type_JavaLangString));
-    ThreadManagerV2.getUIHandlerV2().post(new FileBrowserMiniAIOHelper.1(this));
+        paramObject = new StringBuilder();
+        paramObject.append("recv: msgseq[");
+        paramObject.append(paramObservable.msgseq);
+        paramObject.append("] uin[");
+        paramObject.append(paramObservable.frienduin);
+        paramObject.append("]");
+        QLog.d("FileBrowserMiniAIOHelper<QFile>", 2, paramObject.toString());
+        if (paramObservable.frienduin.equals(this.jdField_a_of_type_JavaLangString)) {
+          ThreadManagerV2.getUIHandlerV2().post(new FileBrowserMiniAIOHelper.1(this));
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.FileBrowserMiniAIOHelper
  * JD-Core Version:    0.7.0.1
  */

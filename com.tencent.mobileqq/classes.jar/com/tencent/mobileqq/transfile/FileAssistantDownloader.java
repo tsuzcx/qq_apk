@@ -10,21 +10,27 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.RoundRectBitmap;
 import com.tencent.image.SafeBitmapFactory;
+import com.tencent.image.SliceBitmap;
 import com.tencent.image.URLDrawableHandler;
 import com.tencent.mobileqq.activity.photo.AlbumThumbManager;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import com.tencent.mobileqq.filemanager.api.IQQFileSelectorUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
-import com.tencent.mobileqq.transfile.bitmapcreator.ExifBitmapCreator;
+import com.tencent.mobileqq.pic.api.IPicUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.widget.FilePicConstants;
+import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.OutputStream;
 import java.net.URL;
+import org.jetbrains.annotations.Nullable;
 
 public class FileAssistantDownloader
   extends AbsDownloader
@@ -55,550 +61,546 @@ public class FileAssistantDownloader
   private Object internalDecodeFile(DownloadParams paramDownloadParams, FileAssistantDownloader.PhotoInfo paramPhotoInfo)
   {
     // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aconst_null
-    //   3: astore 8
-    //   5: aconst_null
-    //   6: astore 7
-    //   8: aload_2
-    //   9: getfield 82	com/tencent/mobileqq/transfile/FileAssistantDownloader$PhotoInfo:path	Ljava/lang/String;
-    //   12: astore 10
-    //   14: aload 10
-    //   16: ifnonnull +8 -> 24
-    //   19: aload 7
-    //   21: astore_2
-    //   22: aload_2
-    //   23: areturn
-    //   24: new 84	java/io/File
-    //   27: dup
-    //   28: aload 10
-    //   30: invokespecial 87	java/io/File:<init>	(Ljava/lang/String;)V
-    //   33: astore 11
-    //   35: aload 11
-    //   37: invokestatic 93	com/tencent/image/GifDrawable:isGifFile	(Ljava/io/File;)Z
-    //   40: ifeq +63 -> 103
-    //   43: aload_2
-    //   44: getfield 97	com/tencent/mobileqq/transfile/FileAssistantDownloader$PhotoInfo:isRaw	Z
-    //   47: ifeq +56 -> 103
-    //   50: aload 7
-    //   52: astore_2
-    //   53: invokestatic 103	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   56: ifeq -34 -> 22
-    //   59: ldc 13
-    //   61: iconst_2
-    //   62: new 105	java/lang/StringBuilder
-    //   65: dup
-    //   66: invokespecial 106	java/lang/StringBuilder:<init>	()V
-    //   69: ldc 108
-    //   71: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   74: aload 11
-    //   76: invokevirtual 116	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   79: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   82: ldc 118
-    //   84: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   87: aload 10
-    //   89: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   95: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   0: aload_2
+    //   1: getfield 80	com/tencent/mobileqq/transfile/FileAssistantDownloader$PhotoInfo:path	Ljava/lang/String;
+    //   4: astore 7
+    //   6: aload 7
+    //   8: ifnonnull +5 -> 13
+    //   11: aconst_null
+    //   12: areturn
+    //   13: new 82	java/io/File
+    //   16: dup
+    //   17: aload 7
+    //   19: invokespecial 85	java/io/File:<init>	(Ljava/lang/String;)V
+    //   22: astore 8
+    //   24: aload 8
+    //   26: invokestatic 91	com/tencent/image/GifDrawable:isGifFile	(Ljava/io/File;)Z
+    //   29: istore 5
+    //   31: iload 5
+    //   33: ifeq +67 -> 100
+    //   36: aload_2
+    //   37: getfield 95	com/tencent/mobileqq/transfile/FileAssistantDownloader$PhotoInfo:isRaw	Z
+    //   40: ifeq +60 -> 100
+    //   43: invokestatic 101	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   46: ifeq +526 -> 572
+    //   49: new 103	java/lang/StringBuilder
+    //   52: dup
+    //   53: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   56: astore_1
+    //   57: aload_1
+    //   58: ldc 106
+    //   60: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   63: pop
+    //   64: aload_1
+    //   65: aload 8
+    //   67: invokevirtual 114	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   70: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: pop
+    //   74: aload_1
+    //   75: ldc 116
+    //   77: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   80: pop
+    //   81: aload_1
+    //   82: aload 7
+    //   84: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   87: pop
+    //   88: ldc 13
+    //   90: iconst_2
+    //   91: aload_1
+    //   92: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   95: invokestatic 123	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   98: aconst_null
     //   99: areturn
-    //   100: astore_1
-    //   101: aload_1
-    //   102: athrow
-    //   103: new 127	android/graphics/BitmapFactory$Options
-    //   106: dup
-    //   107: invokespecial 128	android/graphics/BitmapFactory$Options:<init>	()V
-    //   110: astore 12
-    //   112: aload 12
-    //   114: getstatic 133	com/tencent/mobileqq/transfile/URLDrawableHelper:mConfig	Landroid/graphics/Bitmap$Config;
-    //   117: putfield 136	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
-    //   120: aload 12
-    //   122: sipush 160
-    //   125: putfield 139	android/graphics/BitmapFactory$Options:inDensity	I
-    //   128: aload 12
-    //   130: sipush 160
-    //   133: putfield 142	android/graphics/BitmapFactory$Options:inTargetDensity	I
-    //   136: aload 12
-    //   138: sipush 160
-    //   141: putfield 145	android/graphics/BitmapFactory$Options:inScreenDensity	I
-    //   144: aload_1
-    //   145: aload 10
-    //   147: invokestatic 151	com/tencent/image/JpegExifReader:readOrientation	(Ljava/lang/String;)I
-    //   150: putfield 156	com/tencent/image/DownloadParams:outOrientation	I
-    //   153: aload 12
-    //   155: iconst_1
-    //   156: putfield 159	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   159: new 161	java/io/FileInputStream
-    //   162: dup
-    //   163: aload 11
-    //   165: invokevirtual 116	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   168: invokespecial 162	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   171: astore 7
-    //   173: new 164	java/io/BufferedInputStream
-    //   176: dup
-    //   177: aload 7
-    //   179: invokespecial 167	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   182: astore_2
-    //   183: iconst_2
-    //   184: newarray byte
-    //   186: astore 9
-    //   188: aload_2
-    //   189: aload 9
-    //   191: invokevirtual 171	java/io/BufferedInputStream:read	([B)I
-    //   194: pop
-    //   195: aload 9
-    //   197: iconst_0
-    //   198: baload
-    //   199: bipush 66
-    //   201: if_icmpeq +77 -> 278
-    //   204: aload 9
-    //   206: iconst_1
-    //   207: baload
-    //   208: istore 4
-    //   210: iload 4
-    //   212: bipush 77
-    //   214: if_icmpeq +64 -> 278
-    //   217: aload_2
-    //   218: ifnull +7 -> 225
-    //   221: aload_2
-    //   222: invokevirtual 174	java/io/BufferedInputStream:close	()V
-    //   225: aload 7
-    //   227: ifnull +8 -> 235
-    //   230: aload 7
-    //   232: invokevirtual 175	java/io/FileInputStream:close	()V
-    //   235: aload 12
-    //   237: iconst_1
-    //   238: putfield 159	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   241: aload 11
-    //   243: invokevirtual 116	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   246: aload 12
-    //   248: invokestatic 181	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   251: pop
-    //   252: aload 12
-    //   254: getfield 184	android/graphics/BitmapFactory$Options:outHeight	I
-    //   257: ifeq +11 -> 268
-    //   260: aload 12
-    //   262: getfield 187	android/graphics/BitmapFactory$Options:outWidth	I
-    //   265: ifne +169 -> 434
-    //   268: new 189	java/io/IOException
-    //   271: dup
-    //   272: ldc 191
-    //   274: invokespecial 192	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   277: athrow
-    //   278: aload_2
-    //   279: iconst_4
-    //   280: newarray byte
-    //   282: invokevirtual 171	java/io/BufferedInputStream:read	([B)I
-    //   285: pop
-    //   286: aload_2
-    //   287: ldc2_w 193
-    //   290: invokevirtual 198	java/io/BufferedInputStream:skip	(J)J
-    //   293: pop2
-    //   294: iconst_4
-    //   295: newarray byte
-    //   297: astore 9
-    //   299: aload_2
-    //   300: aload 9
-    //   302: invokevirtual 171	java/io/BufferedInputStream:read	([B)I
-    //   305: pop
-    //   306: aload_0
-    //   307: aload 9
-    //   309: invokevirtual 201	com/tencent/mobileqq/transfile/FileAssistantDownloader:byte2Int	([B)I
-    //   312: istore 4
-    //   314: iconst_4
-    //   315: newarray byte
-    //   317: astore 9
-    //   319: aload_2
-    //   320: aload 9
-    //   322: invokevirtual 171	java/io/BufferedInputStream:read	([B)I
-    //   325: pop
-    //   326: aload_0
-    //   327: aload 9
-    //   329: invokevirtual 201	com/tencent/mobileqq/transfile/FileAssistantDownloader:byte2Int	([B)I
-    //   332: invokestatic 207	java/lang/Math:abs	(I)I
-    //   335: istore 5
-    //   337: iload 4
-    //   339: iflt +13 -> 352
-    //   342: iload 4
-    //   344: iload 5
-    //   346: imul
-    //   347: ldc 208
-    //   349: if_icmple -132 -> 217
-    //   352: invokestatic 214	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   355: invokevirtual 220	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   358: ldc 221
-    //   360: invokevirtual 227	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   363: invokestatic 229	com/tencent/mobileqq/transfile/FileAssistantDownloader:drawableToBitmap	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
-    //   366: astore 9
-    //   368: aload 9
-    //   370: astore_1
-    //   371: aload_2
-    //   372: ifnull +7 -> 379
-    //   375: aload_2
-    //   376: invokevirtual 174	java/io/BufferedInputStream:close	()V
-    //   379: aload_1
-    //   380: astore_2
-    //   381: aload 7
-    //   383: ifnull -361 -> 22
-    //   386: aload 7
-    //   388: invokevirtual 175	java/io/FileInputStream:close	()V
-    //   391: aload_1
-    //   392: areturn
-    //   393: aload_2
-    //   394: ifnull +7 -> 401
-    //   397: aload_2
-    //   398: invokevirtual 174	java/io/BufferedInputStream:close	()V
-    //   401: aload 7
-    //   403: ifnull -168 -> 235
-    //   406: aload 7
-    //   408: invokevirtual 175	java/io/FileInputStream:close	()V
-    //   411: goto -176 -> 235
-    //   414: aload_2
-    //   415: ifnull +7 -> 422
-    //   418: aload_2
-    //   419: invokevirtual 174	java/io/BufferedInputStream:close	()V
-    //   422: aload 7
-    //   424: ifnull +8 -> 432
-    //   427: aload 7
-    //   429: invokevirtual 175	java/io/FileInputStream:close	()V
-    //   432: aload_1
-    //   433: athrow
-    //   434: aload 12
-    //   436: aload 12
-    //   438: aload_1
-    //   439: getfield 232	com/tencent/image/DownloadParams:reqWidth	I
-    //   442: aload_1
-    //   443: getfield 235	com/tencent/image/DownloadParams:reqHeight	I
-    //   446: invokestatic 241	com/tencent/mobileqq/transfile/AbstractImageDownloader:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
-    //   449: putfield 244	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   452: aload 12
-    //   454: getfield 184	android/graphics/BitmapFactory$Options:outHeight	I
-    //   457: aload 12
-    //   459: getfield 187	android/graphics/BitmapFactory$Options:outWidth	I
-    //   462: imul
-    //   463: ldc 245
-    //   465: if_icmple +52 -> 517
-    //   468: ldc 13
-    //   470: iconst_1
-    //   471: new 105	java/lang/StringBuilder
-    //   474: dup
-    //   475: invokespecial 106	java/lang/StringBuilder:<init>	()V
-    //   478: ldc 247
-    //   480: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   483: aload 12
-    //   485: getfield 184	android/graphics/BitmapFactory$Options:outHeight	I
-    //   488: invokevirtual 250	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   491: ldc 252
-    //   493: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   496: aload 12
-    //   498: getfield 187	android/graphics/BitmapFactory$Options:outWidth	I
-    //   501: invokevirtual 250	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   504: ldc 254
-    //   506: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   509: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   512: invokestatic 257	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   515: aconst_null
-    //   516: areturn
-    //   517: aload 12
-    //   519: getfield 187	android/graphics/BitmapFactory$Options:outWidth	I
-    //   522: istore 4
-    //   524: aload 12
-    //   526: getfield 184	android/graphics/BitmapFactory$Options:outHeight	I
-    //   529: istore 4
-    //   531: aload 12
-    //   533: iconst_0
-    //   534: putfield 159	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   537: aconst_null
-    //   538: astore_2
-    //   539: aload 8
-    //   541: astore_1
-    //   542: iload_3
-    //   543: iconst_3
-    //   544: if_icmpgt +219 -> 763
-    //   547: aload_2
-    //   548: astore_1
-    //   549: aload 11
-    //   551: invokevirtual 116	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   554: aload 12
-    //   556: invokestatic 181	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   559: astore_2
-    //   560: aload_2
-    //   561: ifnonnull +177 -> 738
-    //   564: aload_2
-    //   565: astore_1
-    //   566: new 77	java/lang/OutOfMemoryError
-    //   569: dup
-    //   570: new 105	java/lang/StringBuilder
-    //   573: dup
-    //   574: invokespecial 106	java/lang/StringBuilder:<init>	()V
-    //   577: ldc_w 259
-    //   580: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   583: aload 10
-    //   585: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   588: ldc_w 261
-    //   591: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   594: iload_3
-    //   595: invokevirtual 250	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   598: ldc_w 263
-    //   601: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   604: aload 11
-    //   606: invokevirtual 116	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   609: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   612: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   615: invokespecial 264	java/lang/OutOfMemoryError:<init>	(Ljava/lang/String;)V
-    //   618: athrow
-    //   619: astore_2
-    //   620: aload_1
-    //   621: ifnull +7 -> 628
-    //   624: aload_1
-    //   625: invokevirtual 267	android/graphics/Bitmap:recycle	()V
+    //   100: new 125	android/graphics/BitmapFactory$Options
+    //   103: dup
+    //   104: invokespecial 126	android/graphics/BitmapFactory$Options:<init>	()V
+    //   107: astore 9
+    //   109: aload 9
+    //   111: getstatic 131	com/tencent/mobileqq/transfile/URLDrawableHelper:mConfig	Landroid/graphics/Bitmap$Config;
+    //   114: putfield 134	android/graphics/BitmapFactory$Options:inPreferredConfig	Landroid/graphics/Bitmap$Config;
+    //   117: aload 9
+    //   119: sipush 160
+    //   122: putfield 137	android/graphics/BitmapFactory$Options:inDensity	I
+    //   125: aload 9
+    //   127: sipush 160
+    //   130: putfield 140	android/graphics/BitmapFactory$Options:inTargetDensity	I
+    //   133: aload 9
+    //   135: sipush 160
+    //   138: putfield 143	android/graphics/BitmapFactory$Options:inScreenDensity	I
+    //   141: aload_1
+    //   142: aload 7
+    //   144: invokestatic 149	com/tencent/image/JpegExifReader:readOrientation	(Ljava/lang/String;)I
+    //   147: putfield 154	com/tencent/image/DownloadParams:outOrientation	I
+    //   150: aload 9
+    //   152: iconst_1
+    //   153: putfield 157	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   156: new 159	java/io/FileInputStream
+    //   159: dup
+    //   160: aload 8
+    //   162: invokevirtual 114	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   165: invokespecial 160	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   168: astore_2
+    //   169: new 162	java/io/BufferedInputStream
+    //   172: dup
+    //   173: aload_2
+    //   174: invokespecial 165	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   177: astore 6
+    //   179: iconst_2
+    //   180: newarray byte
+    //   182: astore 10
+    //   184: aload 6
+    //   186: aload 10
+    //   188: invokevirtual 169	java/io/BufferedInputStream:read	([B)I
+    //   191: pop
+    //   192: aload 10
+    //   194: iconst_0
+    //   195: baload
+    //   196: bipush 66
+    //   198: if_icmpeq +15 -> 213
+    //   201: aload 10
+    //   203: iconst_1
+    //   204: baload
+    //   205: bipush 77
+    //   207: if_icmpeq +6 -> 213
+    //   210: goto +81 -> 291
+    //   213: aload 6
+    //   215: iconst_4
+    //   216: newarray byte
+    //   218: invokevirtual 169	java/io/BufferedInputStream:read	([B)I
+    //   221: pop
+    //   222: aload 6
+    //   224: ldc2_w 170
+    //   227: invokevirtual 175	java/io/BufferedInputStream:skip	(J)J
+    //   230: pop2
+    //   231: iconst_4
+    //   232: newarray byte
+    //   234: astore 10
+    //   236: aload 6
+    //   238: aload 10
+    //   240: invokevirtual 169	java/io/BufferedInputStream:read	([B)I
+    //   243: pop
+    //   244: aload_0
+    //   245: aload 10
+    //   247: invokevirtual 178	com/tencent/mobileqq/transfile/FileAssistantDownloader:byte2Int	([B)I
+    //   250: istore_3
+    //   251: iconst_4
+    //   252: newarray byte
+    //   254: astore 10
+    //   256: aload 6
+    //   258: aload 10
+    //   260: invokevirtual 169	java/io/BufferedInputStream:read	([B)I
+    //   263: pop
+    //   264: aload_0
+    //   265: aload 10
+    //   267: invokevirtual 178	com/tencent/mobileqq/transfile/FileAssistantDownloader:byte2Int	([B)I
+    //   270: invokestatic 184	java/lang/Math:abs	(I)I
+    //   273: istore 4
+    //   275: iload_3
+    //   276: iflt +27 -> 303
+    //   279: iload_3
+    //   280: iload 4
+    //   282: imul
+    //   283: ldc 185
+    //   285: if_icmple +6 -> 291
+    //   288: goto +15 -> 303
+    //   291: aload 6
+    //   293: invokevirtual 188	java/io/BufferedInputStream:close	()V
+    //   296: aload_2
+    //   297: invokevirtual 189	java/io/FileInputStream:close	()V
+    //   300: goto +64 -> 364
+    //   303: invokestatic 195	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   306: invokevirtual 201	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   309: ldc 202
+    //   311: invokevirtual 208	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   314: invokestatic 210	com/tencent/mobileqq/transfile/FileAssistantDownloader:drawableToBitmap	(Landroid/graphics/drawable/Drawable;)Landroid/graphics/Bitmap;
+    //   317: astore 10
+    //   319: aload 6
+    //   321: invokevirtual 188	java/io/BufferedInputStream:close	()V
+    //   324: aload_2
+    //   325: invokevirtual 189	java/io/FileInputStream:close	()V
+    //   328: aload 10
+    //   330: areturn
+    //   331: aload_1
+    //   332: ifnull +7 -> 339
+    //   335: aload_1
+    //   336: invokevirtual 188	java/io/BufferedInputStream:close	()V
+    //   339: aload 6
+    //   341: ifnull +8 -> 349
+    //   344: aload 6
+    //   346: invokevirtual 189	java/io/FileInputStream:close	()V
+    //   349: aload_2
+    //   350: athrow
+    //   351: aload 6
+    //   353: ifnull +275 -> 628
+    //   356: aload 6
+    //   358: invokevirtual 188	java/io/BufferedInputStream:close	()V
+    //   361: goto +267 -> 628
+    //   364: aload 9
+    //   366: iconst_1
+    //   367: putfield 157	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   370: aload 8
+    //   372: invokevirtual 114	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   375: aload 9
+    //   377: invokestatic 216	com/tencent/image/SafeBitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   380: pop
+    //   381: aload 9
+    //   383: getfield 219	android/graphics/BitmapFactory$Options:outHeight	I
+    //   386: ifeq +152 -> 538
+    //   389: aload 9
+    //   391: getfield 222	android/graphics/BitmapFactory$Options:outWidth	I
+    //   394: ifeq +144 -> 538
+    //   397: aload 9
+    //   399: aload 9
+    //   401: aload_1
+    //   402: getfield 225	com/tencent/image/DownloadParams:reqWidth	I
+    //   405: aload_1
+    //   406: getfield 228	com/tencent/image/DownloadParams:reqHeight	I
+    //   409: invokestatic 234	com/tencent/mobileqq/transfile/AbstractImageDownloader:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   412: putfield 237	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   415: aload 9
+    //   417: getfield 219	android/graphics/BitmapFactory$Options:outHeight	I
+    //   420: aload 9
+    //   422: getfield 222	android/graphics/BitmapFactory$Options:outWidth	I
+    //   425: imul
+    //   426: ldc 238
+    //   428: if_icmple +64 -> 492
+    //   431: new 103	java/lang/StringBuilder
+    //   434: dup
+    //   435: invokespecial 104	java/lang/StringBuilder:<init>	()V
+    //   438: astore_1
+    //   439: aload_1
+    //   440: ldc 240
+    //   442: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   445: pop
+    //   446: aload_1
+    //   447: aload 9
+    //   449: getfield 219	android/graphics/BitmapFactory$Options:outHeight	I
+    //   452: invokevirtual 243	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   455: pop
+    //   456: aload_1
+    //   457: ldc 245
+    //   459: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   462: pop
+    //   463: aload_1
+    //   464: aload 9
+    //   466: getfield 222	android/graphics/BitmapFactory$Options:outWidth	I
+    //   469: invokevirtual 243	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   472: pop
+    //   473: aload_1
+    //   474: ldc 247
+    //   476: invokevirtual 110	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   479: pop
+    //   480: ldc 13
+    //   482: iconst_1
+    //   483: aload_1
+    //   484: invokevirtual 119	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   487: invokestatic 250	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   490: aconst_null
+    //   491: areturn
+    //   492: aload 9
+    //   494: getfield 222	android/graphics/BitmapFactory$Options:outWidth	I
+    //   497: istore_3
+    //   498: aload 9
+    //   500: getfield 219	android/graphics/BitmapFactory$Options:outHeight	I
+    //   503: istore_3
+    //   504: aload 9
+    //   506: iconst_0
+    //   507: putfield 157	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   510: aload_0
+    //   511: aload 7
+    //   513: aload 8
+    //   515: aload 9
+    //   517: invokespecial 254	com/tencent/mobileqq/transfile/FileAssistantDownloader:internalDecodeFile_decodeImage	(Ljava/lang/String;Ljava/io/File;Landroid/graphics/BitmapFactory$Options;)Ljava/lang/Object;
+    //   520: astore_1
+    //   521: aload_1
+    //   522: ifnull +5 -> 527
+    //   525: aload_1
+    //   526: areturn
+    //   527: new 256	java/io/IOException
+    //   530: dup
+    //   531: ldc_w 258
+    //   534: invokespecial 259	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   537: athrow
+    //   538: new 256	java/io/IOException
+    //   541: dup
+    //   542: ldc_w 261
+    //   545: invokespecial 259	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   548: athrow
+    //   549: astore_1
+    //   550: goto +5 -> 555
+    //   553: aload_1
+    //   554: athrow
+    //   555: goto -2 -> 553
+    //   558: astore_2
+    //   559: goto +60 -> 619
+    //   562: astore 6
+    //   564: goto +40 -> 604
+    //   567: astore 10
+    //   569: goto +19 -> 588
+    //   572: aconst_null
+    //   573: areturn
+    //   574: astore 7
+    //   576: aload 6
+    //   578: astore_1
+    //   579: aload_2
+    //   580: astore 6
+    //   582: aload 7
+    //   584: astore_2
+    //   585: goto -254 -> 331
+    //   588: goto -237 -> 351
+    //   591: astore 7
+    //   593: aconst_null
+    //   594: astore_1
+    //   595: aload_2
+    //   596: astore 6
+    //   598: aload 7
+    //   600: astore_2
+    //   601: goto -270 -> 331
+    //   604: aconst_null
+    //   605: astore 6
+    //   607: goto -256 -> 351
+    //   610: astore_2
+    //   611: aconst_null
+    //   612: astore_1
+    //   613: aload_1
+    //   614: astore 6
+    //   616: goto -285 -> 331
+    //   619: aconst_null
+    //   620: astore 6
+    //   622: aload 6
+    //   624: astore_2
+    //   625: goto -274 -> 351
     //   628: aload_2
-    //   629: ifnull +151 -> 780
-    //   632: aload_2
-    //   633: invokevirtual 270	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   636: astore_2
-    //   637: invokestatic 103	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   640: ifeq +77 -> 717
-    //   643: ldc 13
-    //   645: iconst_2
-    //   646: new 105	java/lang/StringBuilder
-    //   649: dup
-    //   650: invokespecial 106	java/lang/StringBuilder:<init>	()V
-    //   653: ldc_w 272
-    //   656: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   659: iload_3
-    //   660: invokevirtual 250	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   663: ldc_w 274
-    //   666: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   669: aload 12
-    //   671: getfield 244	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   674: invokevirtual 250	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   677: ldc_w 276
-    //   680: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   683: aload 11
-    //   685: invokevirtual 116	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   688: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   691: ldc 118
-    //   693: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   696: aload 10
-    //   698: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   701: ldc_w 278
-    //   704: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   707: aload_2
-    //   708: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   711: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   714: invokestatic 125	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   717: aload 12
-    //   719: aload 12
-    //   721: getfield 244	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   724: iconst_2
-    //   725: imul
-    //   726: putfield 244	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   729: iload_3
-    //   730: iconst_1
-    //   731: iadd
-    //   732: istore_3
-    //   733: aload_1
-    //   734: astore_2
-    //   735: goto -196 -> 539
-    //   738: aload_2
-    //   739: astore_1
-    //   740: getstatic 283	android/os/Build$VERSION:SDK_INT	I
-    //   743: bipush 11
-    //   745: if_icmplt +16 -> 761
-    //   748: aload_2
-    //   749: astore_1
-    //   750: aload_2
-    //   751: invokestatic 289	com/tencent/image/SliceBitmap:needSlice	(Landroid/graphics/Bitmap;)Z
-    //   754: istore 6
-    //   756: iload 6
-    //   758: ifeq +3 -> 761
-    //   761: aload_2
-    //   762: astore_1
-    //   763: aload_1
-    //   764: astore_2
-    //   765: aload_1
-    //   766: ifnonnull -744 -> 22
-    //   769: new 189	java/io/IOException
-    //   772: dup
-    //   773: ldc_w 291
-    //   776: invokespecial 192	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   779: athrow
-    //   780: aconst_null
-    //   781: astore_2
-    //   782: goto -145 -> 637
-    //   785: astore_1
-    //   786: aconst_null
-    //   787: astore_2
-    //   788: goto -374 -> 414
-    //   791: astore_1
-    //   792: goto -378 -> 414
-    //   795: astore_2
-    //   796: aconst_null
-    //   797: astore_2
-    //   798: goto -405 -> 393
-    //   801: astore 9
-    //   803: goto -410 -> 393
-    //   806: astore_2
-    //   807: aconst_null
-    //   808: astore_2
-    //   809: aconst_null
-    //   810: astore 7
-    //   812: goto -419 -> 393
-    //   815: astore_1
-    //   816: aconst_null
-    //   817: astore 7
-    //   819: aconst_null
-    //   820: astore_2
-    //   821: goto -407 -> 414
+    //   629: ifnull -265 -> 364
+    //   632: goto -336 -> 296
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	824	0	this	FileAssistantDownloader
-    //   0	824	1	paramDownloadParams	DownloadParams
-    //   0	824	2	paramPhotoInfo	FileAssistantDownloader.PhotoInfo
-    //   1	732	3	i	int
-    //   208	322	4	j	int
-    //   335	12	5	k	int
-    //   754	3	6	bool	boolean
-    //   6	812	7	localFileInputStream	java.io.FileInputStream
-    //   3	537	8	localObject1	Object
-    //   186	183	9	localObject2	Object
-    //   801	1	9	localException	Exception
-    //   12	685	10	str	String
-    //   33	651	11	localFile	File
-    //   110	610	12	localOptions	BitmapFactory.Options
+    //   0	635	0	this	FileAssistantDownloader
+    //   0	635	1	paramDownloadParams	DownloadParams
+    //   0	635	2	paramPhotoInfo	FileAssistantDownloader.PhotoInfo
+    //   250	254	3	i	int
+    //   273	10	4	j	int
+    //   29	3	5	bool	boolean
+    //   177	180	6	localBufferedInputStream	java.io.BufferedInputStream
+    //   562	15	6	localException1	Exception
+    //   580	43	6	localObject1	Object
+    //   4	508	7	str	String
+    //   574	9	7	localObject2	Object
+    //   591	8	7	localObject3	Object
+    //   22	492	8	localFile	File
+    //   107	409	9	localOptions	BitmapFactory.Options
+    //   182	147	10	localObject4	Object
+    //   567	1	10	localException2	Exception
     // Exception table:
     //   from	to	target	type
-    //   35	50	100	java/lang/Exception
-    //   53	98	100	java/lang/Exception
-    //   103	159	100	java/lang/Exception
-    //   221	225	100	java/lang/Exception
-    //   230	235	100	java/lang/Exception
-    //   235	268	100	java/lang/Exception
-    //   268	278	100	java/lang/Exception
-    //   375	379	100	java/lang/Exception
-    //   386	391	100	java/lang/Exception
-    //   397	401	100	java/lang/Exception
-    //   406	411	100	java/lang/Exception
-    //   418	422	100	java/lang/Exception
-    //   427	432	100	java/lang/Exception
-    //   432	434	100	java/lang/Exception
-    //   434	515	100	java/lang/Exception
-    //   517	537	100	java/lang/Exception
-    //   549	560	100	java/lang/Exception
-    //   566	619	100	java/lang/Exception
-    //   624	628	100	java/lang/Exception
-    //   632	637	100	java/lang/Exception
-    //   637	717	100	java/lang/Exception
-    //   717	729	100	java/lang/Exception
-    //   740	748	100	java/lang/Exception
-    //   750	756	100	java/lang/Exception
-    //   769	780	100	java/lang/Exception
-    //   549	560	619	java/lang/OutOfMemoryError
-    //   566	619	619	java/lang/OutOfMemoryError
-    //   740	748	619	java/lang/OutOfMemoryError
-    //   750	756	619	java/lang/OutOfMemoryError
-    //   173	183	785	finally
-    //   183	195	791	finally
-    //   278	337	791	finally
-    //   352	368	791	finally
-    //   173	183	795	java/lang/Exception
-    //   183	195	801	java/lang/Exception
-    //   278	337	801	java/lang/Exception
-    //   352	368	801	java/lang/Exception
-    //   159	173	806	java/lang/Exception
-    //   159	173	815	finally
+    //   24	31	549	java/lang/Exception
+    //   36	98	549	java/lang/Exception
+    //   100	156	549	java/lang/Exception
+    //   291	296	549	java/lang/Exception
+    //   296	300	549	java/lang/Exception
+    //   319	328	549	java/lang/Exception
+    //   335	339	549	java/lang/Exception
+    //   344	349	549	java/lang/Exception
+    //   349	351	549	java/lang/Exception
+    //   356	361	549	java/lang/Exception
+    //   364	490	549	java/lang/Exception
+    //   492	521	549	java/lang/Exception
+    //   527	538	549	java/lang/Exception
+    //   538	549	549	java/lang/Exception
+    //   156	169	558	java/lang/Exception
+    //   169	179	562	java/lang/Exception
+    //   179	192	567	java/lang/Exception
+    //   213	275	567	java/lang/Exception
+    //   303	319	567	java/lang/Exception
+    //   179	192	574	finally
+    //   213	275	574	finally
+    //   303	319	574	finally
+    //   169	179	591	finally
+    //   156	169	610	finally
+  }
+  
+  @Nullable
+  private Object internalDecodeFile_decodeImage(String paramString, File paramFile, BitmapFactory.Options paramOptions)
+  {
+    int i = 1;
+    Object localObject = null;
+    String str;
+    while (i <= 3) {
+      try
+      {
+        Bitmap localBitmap = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath(), paramOptions);
+        if (localBitmap != null)
+        {
+          localObject = localBitmap;
+          if (Build.VERSION.SDK_INT < 11) {
+            break label311;
+          }
+          localObject = localBitmap;
+          SliceBitmap.needSlice(localBitmap);
+          break label311;
+        }
+        localObject = localBitmap;
+        localStringBuilder = new StringBuilder();
+        localObject = localBitmap;
+        localStringBuilder.append("DecodeFile Failed,bitmap == null, url:");
+        localObject = localBitmap;
+        localStringBuilder.append(paramString);
+        localObject = localBitmap;
+        localStringBuilder.append(" ,retry count: ");
+        localObject = localBitmap;
+        localStringBuilder.append(i);
+        localObject = localBitmap;
+        localStringBuilder.append(",path:");
+        localObject = localBitmap;
+        localStringBuilder.append(paramFile.getAbsolutePath());
+        localObject = localBitmap;
+        throw new OutOfMemoryError(localStringBuilder.toString());
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        StringBuilder localStringBuilder;
+        if (localObject != null) {
+          localObject.recycle();
+        }
+        str = localOutOfMemoryError.getMessage();
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("DecodeFile ERROR,oom retryCount=");
+          localStringBuilder.append(i);
+          localStringBuilder.append(",options.inSampleSize=");
+          localStringBuilder.append(paramOptions.inSampleSize);
+          localStringBuilder.append(",cacheFile=");
+          localStringBuilder.append(paramFile.getAbsolutePath());
+          localStringBuilder.append(",url=");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(",oom.msg:");
+          localStringBuilder.append(str);
+          QLog.d("FileAssistantDownloader", 2, localStringBuilder.toString());
+        }
+        i += 1;
+        paramOptions.inSampleSize *= 2;
+      }
+    }
+    return null;
+    label311:
+    return str;
   }
   
   private RoundRectBitmap resizeAndClipBitmap(Bitmap paramBitmap)
   {
-    for (;;)
+    try
     {
-      float f3;
-      int j;
-      int n;
-      int k;
-      int i1;
-      try
-      {
-        f3 = this.application.getResources().getDisplayMetrics().density;
-        int m = this.application.getResources().getDisplayMetrics().densityDpi;
-        j = FilePicURLDrawlableHelper.c;
-        i = FilePicURLDrawlableHelper.a;
-        n = paramBitmap.getWidth();
-        k = paramBitmap.getHeight();
-        Paint localPaint = new Paint(1);
-        localPaint.setColor(-16777216);
-        i1 = FilePicURLDrawlableHelper.e;
-        int i2 = FilePicURLDrawlableHelper.f;
-        if ((n >= i2) && (k >= i2)) {
-          break label346;
-        }
-        if (n < k)
-        {
-          k = (int)(j / n * k + 0.5F);
-          if (k <= i) {
-            break label317;
-          }
-          Bitmap localBitmap = Bitmap.createBitmap(j, i, URLDrawableHelper.mThumbConfig);
-          localBitmap.setDensity(m);
-          new Canvas(localBitmap).drawBitmap(paramBitmap, null, new Rect(0, 0, j, i), localPaint);
-          return new RoundRectBitmap(localBitmap, 14.0F * f3);
-        }
-        k = (int)(j / k * n + 0.5F);
-        if (k <= i) {
-          break label339;
-        }
+      f3 = this.application.getResources().getDisplayMetrics().density;
+      i1 = this.application.getResources().getDisplayMetrics().densityDpi;
+      k = FilePicConstants.b;
+      m = FilePicConstants.c;
+      j = paramBitmap.getWidth();
+      i = paramBitmap.getHeight();
+      localObject3 = new Paint(1);
+      ((Paint)localObject3).setColor(-16777216);
+      n = FilePicURLDrawlableHelper.a;
+      int i2 = FilePicURLDrawlableHelper.b;
+      if (j < i2) {
+        break label134;
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
+      if (i >= i2) {
+        break label310;
+      }
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label134:
+      label394:
+      for (;;)
       {
+        float f3;
+        int i1;
+        int k;
+        int m;
+        int j;
+        int i;
+        Object localObject3;
+        int n;
+        Object localObject1;
+        Object localObject2;
+        float f4;
         float f1;
         float f2;
-        return new RoundRectBitmap(paramBitmap, 8.0F);
-      }
-      if (n > k)
-      {
-        f1 = i / n;
-        if (n > k)
+        Bitmap localBitmap;
+        continue;
+        label310:
+        if ((j < n) && (i < n))
         {
-          f2 = j / k;
-          f1 = Math.max(f1, f2);
-          j = (int)(n * f1 + 0.5F);
-          i = (int)(f1 * k + 0.5F);
+          f1 = f3;
+          label327:
+          j = (int)(j * f1 + 0.5F);
+          i = (int)(i * f1 + 0.5F);
+        }
+        else if (j > i)
+        {
+          f1 = m;
+          f2 = j;
+        }
+        else
+        {
+          f1 = m;
+          f2 = i;
+          continue;
+          f1 = k;
+          f2 = j;
+          continue;
+          j = i;
+          i = k;
+        }
+      }
+    }
+    f4 = localObject1 / localObject2;
+    if (j > i)
+    {
+      f1 = k;
+      f2 = i;
+      f1 /= f2;
+      f1 = Math.max(f4, f1);
+      break label327;
+      if (j < i)
+      {
+        f1 = k / j;
+        n = (int)(i * f1 + 0.5F);
+        i = n;
+        j = k;
+        if (n > m)
+        {
+          i = m;
+          j = k;
         }
       }
       else
       {
-        f1 = i / k;
-        continue;
-      }
-      f2 = j / n;
-      continue;
-      label317:
-      int i = k;
-      continue;
-      for (;;)
-      {
-        k = i;
+        f1 = k / i;
+        j = (int)(j * f1 + 0.5F);
         i = j;
-        j = k;
-        break;
-        label339:
-        i = k;
+        if (j <= m) {
+          break label394;
+        }
+        i = m;
+        break label394;
       }
-      label346:
-      if ((n < i1) && (k < i1))
-      {
-        j = (int)(n * f3 + 0.5F);
-        i = (int)(k * f3 + 0.5F);
-      }
+      localBitmap = Bitmap.createBitmap(j, i, URLDrawableHelper.mThumbConfig);
+      localBitmap.setDensity(i1);
+      new Canvas(localBitmap).drawBitmap(paramBitmap, null, new Rect(0, 0, j, i), (Paint)localObject3);
+      localObject3 = new RoundRectBitmap(localBitmap, 14.0F * f3);
+      return localObject3;
+      return new RoundRectBitmap(paramBitmap, 8.0F);
     }
   }
   
   int byte2Int(byte[] paramArrayOfByte)
   {
-    return (paramArrayOfByte[3] & 0xFF) << 24 | (paramArrayOfByte[2] & 0xFF) << 16 | (paramArrayOfByte[1] & 0xFF) << 8 | paramArrayOfByte[0] & 0xFF;
+    int i = paramArrayOfByte[3];
+    int j = paramArrayOfByte[2];
+    int k = paramArrayOfByte[1];
+    return paramArrayOfByte[0] & 0xFF | (i & 0xFF) << 24 | (j & 0xFF) << 16 | (k & 0xFF) << 8;
   }
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
@@ -606,173 +608,169 @@ public class FileAssistantDownloader
     paramFile = AlbumThumbManager.getInstance(BaseApplicationImpl.getContext());
     paramURLDrawableHandler = parseUrl(paramDownloadParams.url);
     if (paramURLDrawableHandler == null) {
-      paramFile = null;
+      return null;
     }
-    label107:
-    do
+    int i;
+    if (FileManagerUtil.a(paramURLDrawableHandler.path) == 2) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((paramURLDrawableHandler.isRaw) && (!paramURLDrawableHandler.isApkIcon) && (i == 0))
     {
-      int i;
-      do
-      {
-        return paramFile;
-        if (FileManagerUtil.a(paramURLDrawableHandler.path) == 2) {}
-        for (i = 1;; i = 0)
-        {
-          if ((!paramURLDrawableHandler.isRaw) || (paramURLDrawableHandler.isApkIcon) || (i != 0)) {
-            break label107;
-          }
-          if (!paramURLDrawableHandler.isAIOFilePic) {
-            break;
-          }
-          return internalDecodeAIOFilePic(paramDownloadParams, paramURLDrawableHandler);
-        }
-        paramDownloadParams = (Bitmap)internalDecodeFile(paramDownloadParams, paramURLDrawableHandler);
-        paramFile = paramDownloadParams;
-      } while (!paramURLDrawableHandler.isRound);
-      return FileManagerUtil.a(this.application, paramDownloadParams, 16);
-      if (paramURLDrawableHandler.isApkIcon)
-      {
-        paramFile = FileCategoryUtil.a(this.application, paramURLDrawableHandler.path);
-        if (paramFile != null) {
-          paramFile = drawableToBitmap(paramFile);
-        }
+      if (paramURLDrawableHandler.isAIOFilePic) {
+        return internalDecodeAIOFilePic(paramDownloadParams, paramURLDrawableHandler);
       }
-      for (;;)
-      {
-        paramDownloadParams = paramFile;
-        if (paramFile == null)
-        {
-          paramFile = BaseApplicationImpl.getContext();
-          i = FileManagerUtil.a(paramURLDrawableHandler.path);
-          paramDownloadParams = drawableToBitmap(paramFile.getResources().getDrawable(FileManagerUtil.a(i)));
-        }
-        if (paramDownloadParams != null) {
-          break;
-        }
-        return null;
-        paramFile = drawableToBitmap(BaseApplicationImpl.getContext().getResources().getDrawable(2130844419));
-        continue;
-        paramFile = paramFile.getThumb(paramDownloadParams.url, new FileAssistantDownloader.VideoBitmapCreator(this));
-      }
+      paramDownloadParams = (Bitmap)internalDecodeFile(paramDownloadParams, paramURLDrawableHandler);
       paramFile = paramDownloadParams;
-    } while (!paramURLDrawableHandler.isRound);
-    return FileManagerUtil.a(this.application, paramDownloadParams, 16);
+      if (paramURLDrawableHandler.isRound) {
+        paramFile = FileManagerUtil.a(this.application, paramDownloadParams, 16);
+      }
+      return paramFile;
+    }
+    if (paramURLDrawableHandler.isApkIcon)
+    {
+      paramFile = ((IQQFileSelectorUtil)QRoute.api(IQQFileSelectorUtil.class)).getApkIcon(this.application, paramURLDrawableHandler.path);
+      if (paramFile != null) {
+        paramFile = drawableToBitmap(paramFile);
+      } else {
+        paramFile = drawableToBitmap(BaseApplicationImpl.getContext().getResources().getDrawable(2130844325));
+      }
+    }
+    else
+    {
+      paramFile = paramFile.getThumb(paramDownloadParams.url, new FileAssistantDownloader.VideoBitmapCreator(this));
+    }
+    paramDownloadParams = paramFile;
+    if (paramFile == null)
+    {
+      paramFile = BaseApplicationImpl.getContext();
+      i = FileManagerUtil.a(paramURLDrawableHandler.path);
+      paramDownloadParams = drawableToBitmap(paramFile.getResources().getDrawable(FileManagerUtil.a(i)));
+    }
+    if (paramDownloadParams == null) {
+      return null;
+    }
+    paramFile = paramDownloadParams;
+    if (paramURLDrawableHandler.isRound) {
+      paramFile = FileManagerUtil.a(this.application, paramDownloadParams, 16);
+    }
+    return paramFile;
   }
   
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
     paramOutputStream = parseUrl(paramDownloadParams.url);
-    if ((paramOutputStream == null) || (paramOutputStream.path == null)) {
-      return new File(AppConstants.SDCARD_ROOT);
+    if ((paramOutputStream != null) && (paramOutputStream.path != null)) {
+      return new File(paramOutputStream.path);
     }
-    return new File(paramOutputStream.path);
+    return new File(AppConstants.SDCARD_ROOT);
   }
   
   public Object internalDecodeAIOFilePic(DownloadParams paramDownloadParams, FileAssistantDownloader.PhotoInfo paramPhotoInfo)
   {
     paramDownloadParams = paramPhotoInfo.path;
     if (paramDownloadParams == null) {
-      paramDownloadParams = null;
+      return null;
     }
-    for (;;)
+    File localFile = new File(paramDownloadParams);
+    try
     {
-      return paramDownloadParams;
-      File localFile = new File(paramDownloadParams);
-      try
+      paramDownloadParams = new BitmapFactory.Options();
+      paramDownloadParams.inPreferredConfig = URLDrawableHelper.mThumbConfig;
+      paramDownloadParams.inDensity = 160;
+      paramDownloadParams.inTargetDensity = 160;
+      paramDownloadParams.inScreenDensity = 160;
+      paramDownloadParams.inJustDecodeBounds = false;
+      paramPhotoInfo = SafeBitmapFactory.decodeFile(localFile.getAbsolutePath(), paramDownloadParams);
+      paramDownloadParams = paramPhotoInfo;
+      if (paramPhotoInfo != null)
       {
-        paramDownloadParams = new BitmapFactory.Options();
-        paramDownloadParams.inPreferredConfig = URLDrawableHelper.mThumbConfig;
-        paramDownloadParams.inDensity = 160;
-        paramDownloadParams.inTargetDensity = 160;
-        paramDownloadParams.inScreenDensity = 160;
-        paramDownloadParams.inJustDecodeBounds = false;
-        paramPhotoInfo = SafeBitmapFactory.decodeFile(localFile.getAbsolutePath(), paramDownloadParams);
-        paramDownloadParams = paramPhotoInfo;
-        if (paramPhotoInfo == null) {
-          continue;
-        }
         paramDownloadParams = resizeAndClipBitmap(paramPhotoInfo);
         if (!paramPhotoInfo.equals(paramDownloadParams.mBitmap)) {
           paramPhotoInfo.recycle();
         }
-        paramPhotoInfo = new RoundRectBitmap(new ExifBitmapCreator(localFile.getAbsolutePath()).creatBitmap(paramDownloadParams.mBitmap), paramDownloadParams.mCornerRadius, paramDownloadParams.mBoardColor, paramDownloadParams.mBorderWidth);
-        paramDownloadParams = paramPhotoInfo;
-        if (this.application == null) {
-          continue;
+        paramDownloadParams = new RoundRectBitmap(((IPicUtil)QRoute.api(IPicUtil.class)).getExifBitmap(localFile.getAbsolutePath(), paramDownloadParams.mBitmap), paramDownloadParams.mCornerRadius, paramDownloadParams.mBoardColor, paramDownloadParams.mBorderWidth);
+        if (this.application != null)
+        {
+          paramDownloadParams.mDisplayWidth = this.application.getResources().getDisplayMetrics().widthPixels;
+          paramDownloadParams.mDisplayHeight = this.application.getResources().getDisplayMetrics().heightPixels;
         }
-        paramPhotoInfo.mDisplayWidth = this.application.getResources().getDisplayMetrics().widthPixels;
-        paramPhotoInfo.mDisplayHeight = this.application.getResources().getDisplayMetrics().heightPixels;
-        return paramPhotoInfo;
       }
-      catch (Exception paramDownloadParams)
-      {
-        throw paramDownloadParams;
-      }
+      return paramDownloadParams;
+    }
+    catch (Exception paramDownloadParams)
+    {
+      throw paramDownloadParams;
     }
   }
   
   public FileAssistantDownloader.PhotoInfo parseUrl(URL paramURL)
   {
-    boolean bool2 = true;
     try
     {
       paramURL = paramURL.getFile().split("\\|");
-      FileAssistantDownloader.PhotoInfo localPhotoInfo = new FileAssistantDownloader.PhotoInfo(this);
+      localPhotoInfo = new FileAssistantDownloader.PhotoInfo(this);
+      bool2 = false;
       localPhotoInfo.path = paramURL[0];
       localPhotoInfo.thumbWidth = Integer.parseInt(paramURL[1]);
       localPhotoInfo.thumbHeight = Integer.parseInt(paramURL[2]);
       localPhotoInfo.modifiedDate = Long.parseLong(paramURL[3]);
-      if (paramURL.length > 4)
-      {
-        if (Integer.parseInt(paramURL[4]) == 1)
-        {
-          bool1 = true;
-          localPhotoInfo.isRaw = bool1;
-        }
+      if (paramURL.length <= 4) {
+        break label91;
       }
-      else
-      {
-        if (paramURL.length > 5)
-        {
-          if (Integer.parseInt(paramURL[5]) != 1) {
-            break label172;
-          }
-          bool1 = true;
-          label106:
-          localPhotoInfo.isRound = bool1;
-        }
-        if (paramURL.length > 6)
-        {
-          if (Integer.parseInt(paramURL[6]) != 1) {
-            break label177;
-          }
-          bool1 = true;
-          label132:
-          localPhotoInfo.isApkIcon = bool1;
-        }
-        if (paramURL.length > 7) {
-          if (Integer.parseInt(paramURL[7]) != 1) {
-            break label182;
-          }
-        }
+      if (Integer.parseInt(paramURL[4]) != 1) {
+        break label184;
       }
-      label172:
-      label177:
-      label182:
-      for (boolean bool1 = bool2;; bool1 = false)
+      bool1 = true;
+    }
+    catch (Exception paramURL)
+    {
+      for (;;)
       {
+        FileAssistantDownloader.PhotoInfo localPhotoInfo;
+        boolean bool2;
+        label91:
+        continue;
+        label184:
+        boolean bool1 = false;
+        continue;
+        bool1 = false;
+        continue;
+        label194:
+        bool1 = false;
+      }
+    }
+    localPhotoInfo.isRaw = bool1;
+    if (paramURL.length > 5)
+    {
+      if (Integer.parseInt(paramURL[5]) == 1)
+      {
+        bool1 = true;
+        localPhotoInfo.isRound = bool1;
+      }
+    }
+    else
+    {
+      if (paramURL.length > 6)
+      {
+        if (Integer.parseInt(paramURL[6]) != 1) {
+          break label194;
+        }
+        bool1 = true;
+        localPhotoInfo.isApkIcon = bool1;
+      }
+      if (paramURL.length > 7)
+      {
+        bool1 = bool2;
+        if (Integer.parseInt(paramURL[7]) == 1) {
+          bool1 = true;
+        }
         localPhotoInfo.isAIOFilePic = bool1;
-        return localPhotoInfo;
-        bool1 = false;
-        break;
-        bool1 = false;
-        break label106;
-        bool1 = false;
-        break label132;
       }
+      return localPhotoInfo;
       return null;
     }
-    catch (Exception paramURL) {}
   }
   
   public boolean useDiskCache()
@@ -782,7 +780,7 @@ public class FileAssistantDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.FileAssistantDownloader
  * JD-Core Version:    0.7.0.1
  */

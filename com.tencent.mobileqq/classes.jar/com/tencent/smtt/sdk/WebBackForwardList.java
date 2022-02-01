@@ -29,39 +29,43 @@ public class WebBackForwardList
   
   public int getCurrentIndex()
   {
-    if (this.a != null) {
-      return this.a.getCurrentIndex();
+    IX5WebBackForwardList localIX5WebBackForwardList = this.a;
+    if (localIX5WebBackForwardList != null) {
+      return localIX5WebBackForwardList.getCurrentIndex();
     }
     return this.b.getCurrentIndex();
   }
   
   public WebHistoryItem getCurrentItem()
   {
-    if (this.a != null) {
-      return WebHistoryItem.a(this.a.getCurrentItem());
+    IX5WebBackForwardList localIX5WebBackForwardList = this.a;
+    if (localIX5WebBackForwardList != null) {
+      return WebHistoryItem.a(localIX5WebBackForwardList.getCurrentItem());
     }
     return WebHistoryItem.a(this.b.getCurrentItem());
   }
   
   public WebHistoryItem getItemAtIndex(int paramInt)
   {
-    if (this.a != null) {
-      return WebHistoryItem.a(this.a.getItemAtIndex(paramInt));
+    IX5WebBackForwardList localIX5WebBackForwardList = this.a;
+    if (localIX5WebBackForwardList != null) {
+      return WebHistoryItem.a(localIX5WebBackForwardList.getItemAtIndex(paramInt));
     }
     return WebHistoryItem.a(this.b.getItemAtIndex(paramInt));
   }
   
   public int getSize()
   {
-    if (this.a != null) {
-      return this.a.getSize();
+    IX5WebBackForwardList localIX5WebBackForwardList = this.a;
+    if (localIX5WebBackForwardList != null) {
+      return localIX5WebBackForwardList.getSize();
     }
     return this.b.getSize();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebBackForwardList
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.xaction.api.util;
 
 import android.text.TextUtils;
-import com.tencent.xaction.api.IRuleManager;
-import com.tencent.xaction.impl.XAEngine;
+import com.tencent.xaction.openapi.api.IPublicRuleManager;
+import com.tencent.xaction.openapi.api.IXAEngine;
 import kotlin.Metadata;
 import kotlin.jvm.JvmStatic;
 import kotlin.jvm.internal.Intrinsics;
@@ -10,58 +10,65 @@ import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/util/FilePathUtil$Companion;", "", "()V", "getAbsPath", "", "viewData", "Lcom/tencent/xaction/api/data/ViewData;", "engine", "Lcom/tencent/xaction/impl/XAEngine;", "path", "rootPath", "getAbsPathWithParent", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/util/FilePathUtil$Companion;", "", "()V", "getAbsPath", "", "viewData", "Lcom/tencent/xaction/api/data/ViewData;", "engine", "Lcom/tencent/xaction/openapi/api/IXAEngine;", "path", "rootPath", "getAbsPathWithParent", "XActionCore_release"}, k=1, mv={1, 1, 16})
 public final class FilePathUtil$Companion
 {
   @JvmStatic
-  @Nullable
-  public final String a(@NotNull String paramString, @NotNull XAEngine paramXAEngine)
+  private final String a(String paramString, IXAEngine paramIXAEngine)
   {
-    Intrinsics.checkParameterIsNotNull(paramString, "path");
-    Intrinsics.checkParameterIsNotNull(paramXAEngine, "engine");
-    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"$PARENT_ROOT", false, 2, null)) {}
-    do
-    {
+    if (!StringsKt.contains$default((CharSequence)paramString, (CharSequence)"$PARENT_ROOT", false, 2, null)) {
       return paramString;
-      paramXAEngine = String.valueOf(paramXAEngine.getRuleManager().a("$PARENT_ROOT"));
-    } while (TextUtils.isEmpty((CharSequence)paramXAEngine));
-    return StringsKt.replace$default(paramString, "$PARENT_ROOT", paramXAEngine, false, 4, null);
+    }
+    if (paramIXAEngine == null) {
+      return paramString;
+    }
+    paramIXAEngine = String.valueOf(paramIXAEngine.getRuleManager().getRuleValue("$PARENT_ROOT"));
+    if (TextUtils.isEmpty((CharSequence)paramIXAEngine)) {
+      return paramString;
+    }
+    return StringsKt.replace$default(paramString, "$PARENT_ROOT", paramIXAEngine, false, 4, null);
   }
   
   @JvmStatic
   @NotNull
-  public final String a(@NotNull String paramString1, @Nullable String paramString2, @Nullable XAEngine paramXAEngine)
+  public final String a(@NotNull String paramString1, @Nullable String paramString2, @Nullable IXAEngine paramIXAEngine)
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "path");
-    String str = paramString1;
-    if (StringsKt.indexOf$default((CharSequence)paramString1, "./", 0, false, 6, null) == 0)
+    Object localObject = (CharSequence)paramString1;
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!StringsKt.contains$default((CharSequence)localObject, (CharSequence)"../", false, 2, null)))
     {
-      str = paramString1;
-      if (!TextUtils.isEmpty((CharSequence)paramString2))
+      String str = paramString1;
+      if (StringsKt.indexOf$default((CharSequence)localObject, "./", 0, false, 6, null) == 0)
       {
-        if (paramString2 == null) {
-          Intrinsics.throwNpe();
+        CharSequence localCharSequence = (CharSequence)paramString2;
+        str = paramString1;
+        if (!TextUtils.isEmpty(localCharSequence))
+        {
+          if (paramString2 == null) {
+            Intrinsics.throwNpe();
+          }
+          localObject = paramString2;
+          if (StringsKt.indexOf$default(localCharSequence, "$", 0, false, 6, null) > -1)
+          {
+            localObject = paramString2;
+            if (paramIXAEngine != null) {
+              localObject = String.valueOf(paramIXAEngine.getRuleManager().getRuleValue(paramString2));
+            }
+          }
+          str = paramString1;
+          if (!TextUtils.isEmpty((CharSequence)localObject)) {
+            str = Intrinsics.stringPlus((String)localObject, StringsKt.replace$default(paramString1, "./", "/", false, 4, null));
+          }
         }
-        if ((StringsKt.indexOf$default((CharSequence)paramString2, "$", 0, false, 6, null) <= -1) || (paramXAEngine == null)) {
-          break label115;
-        }
-        paramString2 = String.valueOf(paramXAEngine.getRuleManager().a(paramString2));
       }
+      return ((Companion)this).a(str, paramIXAEngine);
     }
-    label115:
-    for (;;)
-    {
-      str = paramString1;
-      if (!TextUtils.isEmpty((CharSequence)paramString2)) {
-        str = Intrinsics.stringPlus(paramString2, StringsKt.replace$default(paramString1, "./", "/", false, 4, null));
-      }
-      return str;
-    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.api.util.FilePathUtil.Companion
  * JD-Core Version:    0.7.0.1
  */

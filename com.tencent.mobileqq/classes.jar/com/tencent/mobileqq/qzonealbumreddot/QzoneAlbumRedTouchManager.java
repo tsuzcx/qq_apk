@@ -6,10 +6,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -33,29 +32,35 @@ public class QzoneAlbumRedTouchManager
   
   private SharedPreferences a()
   {
-    String str2 = "";
-    String str1 = str2;
-    if (this.a != null)
-    {
-      str1 = str2;
-      if (this.a.getCurrentAccountUin() != null) {
-        str1 = this.a.getCurrentAccountUin();
-      }
+    Object localObject = this.a;
+    if ((localObject != null) && (((QQAppInterface)localObject).getCurrentAccountUin() != null)) {
+      localObject = this.a.getCurrentAccountUin();
+    } else {
+      localObject = "";
     }
-    str1 = str1 + "_QZoneAlbumRedTouch";
-    return BaseApplication.getContext().getSharedPreferences(str1, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("_QZoneAlbumRedTouch");
+    localObject = localStringBuilder.toString();
+    return BaseApplication.getContext().getSharedPreferences((String)localObject, 0);
   }
   
   public static boolean c()
   {
-    long l = 0L;
+    long l;
     if (QLog.isColorLevel()) {
       l = System.currentTimeMillis();
+    } else {
+      l = 0L;
     }
     if (PhotoUtils.get().checkNewImages())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAlbumRedTouchManager", 2, "checkNewImages cost:" + (System.currentTimeMillis() - l));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkNewImages cost:");
+        localStringBuilder.append(System.currentTimeMillis() - l);
+        QLog.d("QzoneAlbumRedTouchManager", 2, localStringBuilder.toString());
       }
       return true;
     }
@@ -83,36 +88,40 @@ public class QzoneAlbumRedTouchManager
   @TargetApi(9)
   public void a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    if ((paramAppInfo == null) || (paramAppInfo.iNewFlag.get() == 0) || (this.a == null)) {
-      return;
+    if ((paramAppInfo != null) && (paramAppInfo.iNewFlag.get() != 0))
+    {
+      paramAppInfo = this.a;
+      if (paramAppInfo == null) {
+        return;
+      }
+      QZoneClickReport.startReportImediately(paramAppInfo.getCurrentAccountUin(), "443", "1");
+      ThreadManager.getSubThreadHandler().post(new QzoneAlbumRedTouchManager.2(this));
     }
-    QZoneClickReport.startReportImediately(this.a.getCurrentAccountUin(), "443", "1");
-    ThreadManager.getSubThreadHandler().post(new QzoneAlbumRedTouchManager.2(this));
   }
   
   public boolean a()
   {
     long l2 = a();
-    if (l2 <= 0L) {
+    if (l2 <= 0L)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday false");
       }
-    }
-    do
-    {
       return false;
-      long l1 = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoUploadRedPointTimeInterval", 24) * 60 * 60 * 1000;
-      l2 = System.currentTimeMillis() - l2;
-      if ((l2 <= l1) && (l2 >= 0L)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday false");
-    return false;
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday true");
     }
-    return true;
+    long l1 = QzoneConfig.getInstance().getConfig("PhotoUpload", "PhotoUploadRedPointTimeInterval", 24) * 60 * 60 * 1000;
+    l2 = System.currentTimeMillis() - l2;
+    if ((l2 <= l1) && (l2 >= 0L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday true");
+      }
+      return true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneAlbumRedTouchManager", 2, "isShowedRedTouchToday false");
+    }
+    return false;
   }
   
   public void b()
@@ -128,14 +137,15 @@ public class QzoneAlbumRedTouchManager
   
   public boolean b()
   {
-    if (this.a == null) {
-      return false;
-    }
-    Object localObject = (RedTouchManager)this.a.getManager(QQManagerFactory.MGR_RED_TOUCH);
+    Object localObject = this.a;
     if (localObject == null) {
       return false;
     }
-    localObject = ((RedTouchManager)localObject).a(String.valueOf(100180));
+    localObject = (IRedTouchManager)((QQAppInterface)localObject).getRuntimeService(IRedTouchManager.class, "");
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((IRedTouchManager)localObject).getAppInfoByPath(String.valueOf(100180));
     return (localObject != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() == 1);
   }
   
@@ -144,42 +154,46 @@ public class QzoneAlbumRedTouchManager
     if ((!PhotoUtils.isCurrentDayInQzone()) && (PhotoUtils.isOverLastCheck()) && (PhotoUtils.isInCheckTimeQuantum()))
     {
       LocalMultiProcConfig.putLong("key_photo_guide_last_check", System.currentTimeMillis());
-      if (b()) {
-        break label65;
+      if (!b())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QzoneAlbumRedTouchManager", 2, "not red");
+        }
+        if ((!a()) && (c())) {
+          d();
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAlbumRedTouchManager", 2, "not red");
-      }
-      if ((!a()) && (c())) {
-        d();
+      else if (!c())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QzoneAlbumRedTouchManager", 2, "has Red but clear Red Touch");
+        }
+        b();
       }
     }
-    label65:
-    while (c()) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneAlbumRedTouchManager", 2, "has Red but clear Red Touch");
-    }
-    b();
   }
   
   @TargetApi(9)
   public void d()
   {
     int i = QzoneConfig.getInstance().getConfig("PhotoUpload", "GuideSelectPhotoSendRedJumpToQzone", 0);
-    SharedPreferences.Editor localEditor = a().edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
+    Object localObject = a().edit().putLong("key_photo_guide_has_red_date", System.currentTimeMillis());
     if (Build.VERSION.SDK_INT < 9) {
-      localEditor.commit();
+      ((SharedPreferences.Editor)localObject).commit();
+    } else {
+      ((SharedPreferences.Editor)localObject).apply();
     }
-    while ((i == 1) && (this.a != null) && (this.a.getApp() != null) && (QzonePhotoGuideNotifyService.a(this.a.getApp(), 84)))
+    if (i == 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneAlbumRedTouchManager", 2, "GetQZonePhotoGuideCheck supportJumpToQzone");
+      localObject = this.a;
+      if ((localObject != null) && (((QQAppInterface)localObject).getApp() != null) && (QzonePhotoGuideNotifyService.a(this.a.getApp(), 84)))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QzoneAlbumRedTouchManager", 2, "GetQZonePhotoGuideCheck supportJumpToQzone");
+        }
+        new QzonePhotoGuideNotifyService(this.a, this).a();
+        return;
       }
-      new QzonePhotoGuideNotifyService(this.a, this).a();
-      return;
-      localEditor.apply();
     }
     a();
   }
@@ -191,7 +205,7 @@ public class QzoneAlbumRedTouchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager
  * JD-Core Version:    0.7.0.1
  */

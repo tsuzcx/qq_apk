@@ -24,20 +24,35 @@ public final class UserInfoModule$LoginInfo
     }
     catch (JSONException localJSONException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(UserInfoModule.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+      if (QLog.isColorLevel()) {
+        QLog.e(UserInfoModule.jdField_a_of_type_JavaLangString, 2, localJSONException.getMessage(), localJSONException);
+      }
     }
     return localJSONObject;
   }
   
   public String toString()
   {
-    return "LoginInfo{, openid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", access_token='" + this.jdField_b_of_type_JavaLangString + '\'' + ", expireIn='" + this.jdField_a_of_type_Long + '\'' + ", expireTime='" + this.jdField_b_of_type_Long + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LoginInfo{, openid='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", access_token='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", expireIn='");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", expireTime='");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule.LoginInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -12,16 +12,19 @@ class LiteLuxuryGiftModule$3
   
   public void onChanged(PreloadLuxuryAnimationEvent paramPreloadLuxuryAnimationEvent)
   {
-    if ((paramPreloadLuxuryAnimationEvent == null) || (paramPreloadLuxuryAnimationEvent.effectIds == null) || (paramPreloadLuxuryAnimationEvent.effectIds.size() == 0)) {
-      return;
+    if ((paramPreloadLuxuryAnimationEvent != null) && (paramPreloadLuxuryAnimationEvent.effectIds != null))
+    {
+      if (paramPreloadLuxuryAnimationEvent.effectIds.size() == 0) {
+        return;
+      }
+      LiteLuxuryGiftModule.access$800(this.this$0).d("LiteLuxuryGiftModule", "PreloadLuxuryAnimationEvent preloadLuxuryGift", new Object[0]);
+      LiteLuxuryGiftModule.access$1700(this.this$0, paramPreloadLuxuryAnimationEvent);
     }
-    LiteLuxuryGiftModule.access$900(this.this$0).d("LiteLuxuryGiftModule", "PreloadLuxuryAnimationEvent preloadLuxuryGift", new Object[0]);
-    LiteLuxuryGiftModule.access$1800(this.this$0, paramPreloadLuxuryAnimationEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteLuxuryGiftModule.3
  * JD-Core Version:    0.7.0.1
  */

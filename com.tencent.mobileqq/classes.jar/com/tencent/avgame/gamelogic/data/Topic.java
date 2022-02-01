@@ -1,9 +1,9 @@
 package com.tencent.avgame.gamelogic.data;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import com.tencent.avgame.gamelogic.ITopic;
 import java.util.List;
-import javax.annotation.Nullable;
 
 public abstract class Topic
   implements ITopic
@@ -77,20 +77,44 @@ public abstract class Topic
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("id").append("=").append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append("isTopicBank").append("=").append(this.jdField_a_of_type_Boolean).append("|");
-    localStringBuilder.append("gameType").append("=").append(b()).append("|");
-    localStringBuilder.append("content").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append("answer").append("=").append(this.b).append("|");
-    localStringBuilder.append("buff type").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[0]).append("|");
-    localStringBuilder.append("buff point").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[1]).append("|");
-    localStringBuilder.append("buff color").append("=").append(this.jdField_a_of_type_ArrayOfJavaLangString[2]).append("|");
+    localStringBuilder.append("id");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append("isTopicBank");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("|");
+    localStringBuilder.append("gameType");
+    localStringBuilder.append("=");
+    localStringBuilder.append(b());
+    localStringBuilder.append("|");
+    localStringBuilder.append("content");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append("answer");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("|");
+    localStringBuilder.append("buff type");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfJavaLangString[0]);
+    localStringBuilder.append("|");
+    localStringBuilder.append("buff point");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfJavaLangString[1]);
+    localStringBuilder.append("|");
+    localStringBuilder.append("buff color");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_ArrayOfJavaLangString[2]);
+    localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.Topic
  * JD-Core Version:    0.7.0.1
  */

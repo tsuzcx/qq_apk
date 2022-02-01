@@ -20,7 +20,7 @@ public class PipeLinearLayout
   private Runnable jdField_a_of_type_JavaLangRunnable = new PipeLinearLayout.1(this);
   private final ArrayList<Long> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private volatile boolean jdField_a_of_type_Boolean = false;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131373943, 2131373944, 2131373945 };
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131373515, 2131373516, 2131373517 };
   private Handler jdField_b_of_type_AndroidOsHandler;
   private final ArrayList<Long> jdField_b_of_type_JavaUtilArrayList = new ArrayList();
   
@@ -52,7 +52,7 @@ public class PipeLinearLayout
   
   private void a()
   {
-    LayoutInflater.from(getContext()).inflate(2131559848, this);
+    LayoutInflater.from(getContext()).inflate(2131559724, this);
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
@@ -113,7 +113,7 @@ public class PipeLinearLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.PipeLinearLayout
  * JD-Core Version:    0.7.0.1
  */

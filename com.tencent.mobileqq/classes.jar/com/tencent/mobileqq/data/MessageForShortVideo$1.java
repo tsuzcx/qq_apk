@@ -8,7 +8,6 @@ final class MessageForShortVideo$1
 {
   public MessageForShortVideo a(Parcel paramParcel)
   {
-    boolean bool2 = true;
     MessageForShortVideo localMessageForShortVideo = new MessageForShortVideo();
     localMessageForShortVideo.uniseq = paramParcel.readLong();
     localMessageForShortVideo.istroop = paramParcel.readInt();
@@ -35,58 +34,52 @@ final class MessageForShortVideo$1
     localMessageForShortVideo.toChatType = paramParcel.readInt();
     localMessageForShortVideo.uiOperatorFlag = paramParcel.readInt();
     localMessageForShortVideo.mVideoFileSourceDir = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
+    int i = paramParcel.readByte();
+    boolean bool2 = true;
+    boolean bool1;
+    if (i != 0) {
       bool1 = true;
-      localMessageForShortVideo.supportProgressive = bool1;
-      localMessageForShortVideo.fileWidth = paramParcel.readInt();
-      localMessageForShortVideo.fileHeight = paramParcel.readInt();
-      localMessageForShortVideo.transferedSize = paramParcel.readInt();
-      localMessageForShortVideo.subBusiType = paramParcel.readInt();
-      localMessageForShortVideo.videoAttr = paramParcel.readInt();
-      localMessageForShortVideo.binarySet = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label466;
-      }
-      bool1 = true;
-      label314:
-      localMessageForShortVideo.mediacodecEncode = bool1;
-      localMessageForShortVideo.hotVideoIconUrl = paramParcel.readString();
-      localMessageForShortVideo.hotVideoSubIconUrl = paramParcel.readString();
-      localMessageForShortVideo.hotVideoTitle = paramParcel.readString();
-      localMessageForShortVideo.hotVideoUrl = paramParcel.readString();
-      localMessageForShortVideo.specialVideoType = paramParcel.readInt();
-      localMessageForShortVideo.msgTailType = paramParcel.readInt();
-      localMessageForShortVideo.redBagType = paramParcel.readInt();
-      localMessageForShortVideo.shortVideoId = paramParcel.readString();
-      localMessageForShortVideo.redBagStat = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label471;
-      }
-      bool1 = true;
-      label410:
-      localMessageForShortVideo.syncToStory = bool1;
-      localMessageForShortVideo.videoKandianType = paramParcel.readInt();
-      if (paramParcel.readByte() == 0) {
-        break label476;
-      }
+    } else {
+      bool1 = false;
     }
-    label466:
-    label471:
-    label476:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localMessageForShortVideo.sendRawVideo = bool1;
-      localMessageForShortVideo.templateId = paramParcel.readString();
-      localMessageForShortVideo.templateName = paramParcel.readString();
-      return localMessageForShortVideo;
+    localMessageForShortVideo.supportProgressive = bool1;
+    localMessageForShortVideo.fileWidth = paramParcel.readInt();
+    localMessageForShortVideo.fileHeight = paramParcel.readInt();
+    localMessageForShortVideo.transferedSize = paramParcel.readInt();
+    localMessageForShortVideo.subBusiType = paramParcel.readInt();
+    localMessageForShortVideo.videoAttr = paramParcel.readInt();
+    localMessageForShortVideo.binarySet = paramParcel.readInt();
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    } else {
       bool1 = false;
-      break;
-      bool1 = false;
-      break label314;
-      bool1 = false;
-      break label410;
     }
+    localMessageForShortVideo.mediacodecEncode = bool1;
+    localMessageForShortVideo.hotVideoIconUrl = paramParcel.readString();
+    localMessageForShortVideo.hotVideoSubIconUrl = paramParcel.readString();
+    localMessageForShortVideo.hotVideoTitle = paramParcel.readString();
+    localMessageForShortVideo.hotVideoUrl = paramParcel.readString();
+    localMessageForShortVideo.specialVideoType = paramParcel.readInt();
+    localMessageForShortVideo.msgTailType = paramParcel.readInt();
+    localMessageForShortVideo.redBagType = paramParcel.readInt();
+    localMessageForShortVideo.shortVideoId = paramParcel.readString();
+    localMessageForShortVideo.redBagStat = paramParcel.readInt();
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    localMessageForShortVideo.syncToStory = bool1;
+    localMessageForShortVideo.videoKandianType = paramParcel.readInt();
+    if (paramParcel.readByte() != 0) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    localMessageForShortVideo.sendRawVideo = bool1;
+    localMessageForShortVideo.templateId = paramParcel.readString();
+    localMessageForShortVideo.templateName = paramParcel.readString();
+    return localMessageForShortVideo;
   }
   
   public MessageForShortVideo[] a(int paramInt)
@@ -96,7 +89,7 @@ final class MessageForShortVideo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForShortVideo.1
  * JD-Core Version:    0.7.0.1
  */

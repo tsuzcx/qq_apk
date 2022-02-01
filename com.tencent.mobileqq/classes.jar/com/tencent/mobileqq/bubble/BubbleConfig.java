@@ -49,10 +49,11 @@ public class BubbleConfig
   
   private boolean a(File paramFile, String paramString)
   {
-    boolean bool2 = false;
     paramFile = new File(paramFile, paramString);
+    boolean bool3 = paramFile.exists();
+    boolean bool2 = false;
     boolean bool1 = bool2;
-    if (paramFile.exists())
+    if (bool3)
     {
       bool1 = bool2;
       if (paramFile.isDirectory())
@@ -84,22 +85,30 @@ public class BubbleConfig
     if (a())
     {
       this.e = ((this.e + 1) % this.jdField_b_of_type_JavaUtilArrayList.size());
-      if (QLog.isColorLevel()) {
-        QLog.i("BubbleConfig", 2, "now change bubble sub id: " + this.jdField_b_of_type_JavaUtilArrayList.get(this.e));
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("now change bubble sub id: ");
+        localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList.get(this.e));
+        QLog.i("BubbleConfig", 2, localStringBuilder.toString());
       }
-      return;
     }
-    this.e = 0;
+    else
+    {
+      this.e = 0;
+    }
   }
   
   public boolean a()
   {
-    return (this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_JavaUtilArrayList.size() > 0);
+    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+    return (localArrayList != null) && (localArrayList.size() > 0);
   }
   
   public boolean a(int paramInt)
   {
-    return (this.jdField_b_of_type_JavaUtilArrayList != null) && (this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)));
+    ArrayList localArrayList = this.jdField_b_of_type_JavaUtilArrayList;
+    return (localArrayList != null) && (localArrayList.contains(Integer.valueOf(paramInt)));
   }
   
   public boolean a(File paramFile)
@@ -130,14 +139,22 @@ public class BubbleConfig
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    localStringBuffer.append("[ bubbleId=" + this.jdField_a_of_type_Int).append(",");
-    localStringBuffer.append("name=" + this.jdField_a_of_type_JavaLangString).append(" ]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[ bubbleId=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuffer.append(",");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("name=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(localStringBuilder.toString());
+    localStringBuffer.append(" ]");
     return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleConfig
  * JD-Core Version:    0.7.0.1
  */

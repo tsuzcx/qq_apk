@@ -17,26 +17,25 @@ final class b$1
   public void run()
   {
     AdHttp.send(this.val$params);
-    Object localObject1;
+    msg_content localmsg_content;
     if (this.val$params.isSuccess())
     {
-      localObject1 = new String(this.val$params.responseData);
-      AdLog.i("AdAppPreOrderManagerForPreDownload", String.format("fetchAdInfo url:%s %s", new Object[] { this.val$url, localObject1 }));
-    }
-    for (;;)
-    {
+      Object localObject = new String(this.val$params.responseData);
+      AdLog.i("AdAppPreOrderManagerForPreDownload", String.format("fetchAdInfo url:%s %s", new Object[] { this.val$url, localObject }));
       try
       {
-        localObject1 = (msg_content)msg_content.class.cast(AdJSON.toObject(new JSONObject((String)localObject1).optJSONObject("msg_content"), msg_content.class));
-        AdThreadManager.INSTANCE.post(new b.1.1(this, (msg_content)localObject1), 5);
-        return;
+        localObject = (msg_content)msg_content.class.cast(AdJSON.toObject(new JSONObject((String)localObject).optJSONObject("msg_content"), msg_content.class));
       }
       catch (Throwable localThrowable)
       {
         AdLog.e("AdAppPreOrderManagerForPreDownload", "fetchAdInfo error:", localThrowable);
       }
-      Object localObject2 = null;
     }
+    else
+    {
+      localmsg_content = null;
+    }
+    AdThreadManager.INSTANCE.post(new b.1.1(this, localmsg_content), 5);
   }
 }
 

@@ -20,13 +20,14 @@ public final class Doutu$GetImgInfoRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32 }, new String[] { "int32_result", "bytes_fail_msg", "rpt_msg_img_info", "uint32_rsp_type" }, new Object[] { Integer.valueOf(0), localByteStringMicro, null, Integer.valueOf(0) }, GetImgInfoRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32 }, new String[] { "int32_result", "bytes_fail_msg", "rpt_msg_img_info", "uint32_rsp_type" }, new Object[] { localInteger, localByteStringMicro, null, localInteger }, GetImgInfoRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.doutu.Doutu.GetImgInfoRsp
  * JD-Core Version:    0.7.0.1
  */

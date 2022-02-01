@@ -6,8 +6,9 @@ import com.tencent.mobileqq.activity.framebusiness.LebaInjectImpl;
 import com.tencent.mobileqq.activity.framebusiness.NowInjectImpl;
 import com.tencent.mobileqq.activity.framebusiness.QCircleInjectImpl;
 import com.tencent.mobileqq.activity.framebusiness.QzoneFrameInjectImpl;
-import com.tencent.mobileqq.activity.framebusiness.RIJInjectImpl;
+import com.tencent.mobileqq.activity.framebusiness.StateMachineInjectImpl;
 import com.tencent.mobileqq.activity.framebusiness.controllerinject.FrameControllerInjectImpl;
+import com.tencent.mobileqq.kandian.biz.tab.RIJInjectImpl;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
 import java.util.ArrayList;
 
@@ -29,11 +30,12 @@ public class FrameControllerInjectUtil
     b.add(QCircleInjectImpl.class);
     b.add(QzoneFrameInjectImpl.class);
     b.add(RIJInjectImpl.class);
+    b.add(StateMachineInjectImpl.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.FrameControllerInjectUtil
  * JD-Core Version:    0.7.0.1
  */

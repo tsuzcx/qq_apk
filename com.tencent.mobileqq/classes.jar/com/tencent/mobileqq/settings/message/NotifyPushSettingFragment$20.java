@@ -1,159 +1,16 @@
 package com.tencent.mobileqq.settings.message;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Set;
-import mqq.app.AppRuntime;
-
 final class NotifyPushSettingFragment$20
   implements Runnable
 {
   public void run()
   {
-    int j = 1;
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ReportController", 4, "reportSettingStatusDaily run");
-    }
-    HashMap localHashMap = new HashMap();
-    int i;
-    label44:
-    label69:
-    label75:
-    label100:
-    label106:
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getALLGeneralSettingVibrate() == 1)
-    {
-      i = 1;
-      if (i == 0) {
-        break label437;
-      }
-      i = 1;
-      localHashMap.put("Clk_notice_shake", Integer.valueOf(i));
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopGeneralSettingVibrate() != 1) {
-        break label442;
-      }
-      i = 1;
-      if (i == 0) {
-        break label447;
-      }
-      i = 1;
-      localHashMap.put("Clk_notice_grpshake", Integer.valueOf(i));
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getALLGeneralSettingRing() != 1) {
-        break label452;
-      }
-      i = 1;
-      if (i == 0) {
-        break label457;
-      }
-      i = 1;
-      localHashMap.put("Clk_notice_sound", Integer.valueOf(i));
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopGeneralSettingRing() != 1) {
-        break label462;
-      }
-      i = 1;
-      label131:
-      if (i == 0) {
-        break label467;
-      }
-      i = 1;
-      label137:
-      localHashMap.put("Clk_notice_gupsound", Integer.valueOf(i));
-      if (!FriendsStatusUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) {
-        break label472;
-      }
-      i = 1;
-      label164:
-      localHashMap.put("Clk_night_mode", Integer.valueOf(i));
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isShowMsgContent()) {
-        break label477;
-      }
-      i = 1;
-      label188:
-      localHashMap.put("Clk_hide_text", Integer.valueOf(i));
-      if (!SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718680), "qqsetting_notify_blncontrol_key", true)) {
-        break label482;
-      }
-      i = 1;
-      label234:
-      localHashMap.put("Led_blinking", Integer.valueOf(i));
-      if (!SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131718678), "qqsetting_notify_myfeedpush_key", true)) {
-        break label487;
-      }
-      i = j;
-      label280:
-      localHashMap.put("Clk_about_me", Integer.valueOf(i));
-      localObject = localHashMap.keySet();
-      try
-      {
-        localObject = ((Set)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str2 = (String)((Iterator)localObject).next();
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliStatus", "", "", "Setting_tab", str2, 0, 0, String.valueOf(localHashMap.get(str2)), "", "", "");
-        }
-        boolean bool;
-        str1 = "1";
-      }
-      catch (Exception localException)
-      {
-        bool = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null, "qqsetting_pcactive_key", false);
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-        if (!bool) {}
-      }
-    }
-    for (;;)
-    {
-      ReportController.b((AppRuntime)localObject, "CliStatus", "", "", "0X8004971", "0X8004971", 0, 0, str1, "", "", "");
-      return;
-      i = 0;
-      break;
-      label437:
-      i = 0;
-      break label44;
-      label442:
-      i = 0;
-      break label69;
-      label447:
-      i = 0;
-      break label75;
-      label452:
-      i = 0;
-      break label100;
-      label457:
-      i = 0;
-      break label106;
-      label462:
-      i = 0;
-      break label131;
-      label467:
-      i = 0;
-      break label137;
-      label472:
-      i = 0;
-      break label164;
-      label477:
-      i = 0;
-      break label188;
-      label482:
-      i = 0;
-      break label234;
-      label487:
-      i = 0;
-      break label280;
-      String str1 = "0";
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.20
  * JD-Core Version:    0.7.0.1
  */

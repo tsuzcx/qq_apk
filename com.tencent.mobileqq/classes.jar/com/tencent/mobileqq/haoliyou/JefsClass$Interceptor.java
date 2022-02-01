@@ -9,7 +9,7 @@ public abstract interface JefsClass$Interceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass.Interceptor
  * JD-Core Version:    0.7.0.1
  */

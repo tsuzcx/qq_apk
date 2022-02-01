@@ -10,12 +10,12 @@ class AIOFileVideoModel$2
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.i();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserViewAIOFileVideoView.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOFileVideoModel.2
  * JD-Core Version:    0.7.0.1
  */

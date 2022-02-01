@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -58,31 +59,37 @@ public final class stFollowFeedsRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.feeds != null) {
-      paramJceOutputStream.write(this.feeds, 0);
+    Object localObject = this.feeds;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.attatch_info != null) {
-      paramJceOutputStream.write(this.attatch_info, 1);
+    localObject = this.attatch_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.is_finished, 2);
     paramJceOutputStream.write(this.cache_size, 3);
-    if (this.feeds_source != null) {
-      paramJceOutputStream.write(this.feeds_source, 4);
+    localObject = this.feeds_source;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.trace_id != null) {
-      paramJceOutputStream.write(this.trace_id, 5);
+    localObject = this.trace_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.map_ext != null) {
-      paramJceOutputStream.write(this.map_ext, 6);
+    localObject = this.map_ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
-    if (this.config != null) {
-      paramJceOutputStream.write(this.config, 7);
+    localObject = this.config;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stFollowFeedsRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ public class MessageRecordInfo
 {
   public static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 32768)
     {
-    case 32769: 
-    case 32771: 
-    default: 
-      return "Default";
-    case 32772: 
-      return "Sending";
-    case 32770: 
+      if (paramInt != 32770)
+      {
+        if (paramInt != 32772) {
+          return "Default";
+        }
+        return "Sending";
+      }
       return "Success";
     }
     return "Fail";
@@ -20,7 +20,10 @@ public class MessageRecordInfo
   
   public static boolean a(int paramInt)
   {
-    return (1 == paramInt) || (2 == paramInt);
+    if (1 != paramInt) {
+      return 2 == paramInt;
+    }
+    return true;
   }
   
   public static boolean b(int paramInt)
@@ -35,7 +38,7 @@ public class MessageRecordInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.remote.MessageRecordInfo
  * JD-Core Version:    0.7.0.1
  */

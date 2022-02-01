@@ -9,21 +9,20 @@ public class URLChecker
 {
   public static URL a(URL paramURL)
   {
-    String str = paramURL.getHost();
-    int k = str.indexOf(':');
-    Object localObject = paramURL;
+    String str1 = paramURL.getHost();
+    int k = str1.indexOf(':');
     if (k != -1)
     {
-      localObject = str.substring(0, k);
+      String str2 = str1.substring(0, k);
       int j = paramURL.getPort();
       int i = j;
       if (j == -1) {
-        i = Integer.valueOf(str.substring(k + 1)).intValue();
+        i = Integer.valueOf(str1.substring(k + 1)).intValue();
       }
       SLog.b("URLChecker", "url is not initilized correctly, so re-create it");
-      localObject = new URL(paramURL.getProtocol(), (String)localObject, i, paramURL.getFile());
+      return new URL(paramURL.getProtocol(), str2, i, paramURL.getFile());
     }
-    return localObject;
+    return paramURL;
   }
   
   public static boolean a(URL paramURL)
@@ -33,7 +32,7 @@ public class URLChecker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.download.URLChecker
  * JD-Core Version:    0.7.0.1
  */

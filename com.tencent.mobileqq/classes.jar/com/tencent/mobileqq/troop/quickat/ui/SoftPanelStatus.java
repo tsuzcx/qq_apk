@@ -13,20 +13,14 @@ import com.tencent.qphone.base.util.QLog;
 public class SoftPanelStatus
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public static int a;
-  public static boolean a;
+  public static int a = 0;
+  public static boolean a = false;
   private Activity jdField_a_of_type_AndroidAppActivity;
   private View jdField_a_of_type_AndroidViewView;
   private SoftPanelStatus.AtPanelStatusListener jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus$AtPanelStatusListener;
   private int b = 1;
   private int c = 0;
   private int d = 0;
-  
-  static
-  {
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_Boolean = false;
-  }
   
   public SoftPanelStatus(Activity paramActivity)
   {
@@ -60,8 +54,14 @@ public class SoftPanelStatus
   {
     Rect localRect = new Rect();
     paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-    if (QLog.isColorLevel()) {
-      QLog.d("AtPanelStatus", 2, "onGlobalLayout, top=" + localRect.top + " bottom=" + localRect.bottom);
+    if (QLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("onGlobalLayout, top=");
+      paramActivity.append(localRect.top);
+      paramActivity.append(" bottom=");
+      paramActivity.append(localRect.bottom);
+      QLog.d("AtPanelStatus", 2, paramActivity.toString());
     }
     return localRect.top == 0;
   }
@@ -71,15 +71,12 @@ public class SoftPanelStatus
   {
     if (Build.VERSION.SDK_INT < 16) {
       this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    }
-    for (;;)
-    {
-      this.b = 1;
-      this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus$AtPanelStatusListener = null;
-      this.c = 0;
-      return;
+    } else {
       this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getViewTreeObserver().removeOnGlobalLayoutListener(this);
     }
+    this.b = 1;
+    this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus$AtPanelStatusListener = null;
+    this.c = 0;
   }
   
   public void a(View paramView)
@@ -99,53 +96,65 @@ public class SoftPanelStatus
   
   public void onGlobalLayout()
   {
-    View localView = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
-    if (localView == null) {}
-    int i;
-    int j;
-    int k;
-    do
-    {
+    Object localObject = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView();
+    if (localObject == null) {
       return;
-      i = localView.getHeight();
-      j = a(localView);
-      k = i - j;
-      if (this.jdField_a_of_type_AndroidViewView != null)
+    }
+    int i = ((View)localObject).getHeight();
+    int j = a((View)localObject);
+    int k = i - j;
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null)
+    {
+      int m = ((View)localObject).getHeight();
+      int n = this.c;
+      if (m != n)
       {
-        int m = this.jdField_a_of_type_AndroidViewView.getHeight();
-        if ((m != this.c) && (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus$AtPanelStatusListener != null)) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus$AtPanelStatusListener.b(this.b, j, this.c);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus$AtPanelStatusListener;
+        if (localObject != null) {
+          ((SoftPanelStatus.AtPanelStatusListener)localObject).b(this.b, j, n);
         }
-        this.c = m;
       }
-    } while (j == this.c);
+      this.c = m;
+    }
+    if (j == this.c) {
+      return;
+    }
     if (k > i / 4)
     {
       this.b = 1;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus$AtPanelStatusListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus$AtPanelStatusListener.a(this.b, j, k);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus$AtPanelStatusListener;
+      if (localObject != null) {
+        ((SoftPanelStatus.AtPanelStatusListener)localObject).a(this.b, j, k);
       }
     }
-    for (;;)
+    else if (k < i * 3 / 4)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AtPanelStatus", 2, "onGlobalLayout, screenHeight=" + i + " visibleHeight=" + j + " differHeight=" + k + " mode=" + this.b);
-      }
-      this.c = j;
-      return;
-      if (k < i * 3 / 4)
-      {
-        this.b = 2;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus$AtPanelStatusListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus$AtPanelStatusListener.a(this.b, j, k);
-        }
+      this.b = 2;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopQuickatUiSoftPanelStatus$AtPanelStatusListener;
+      if (localObject != null) {
+        ((SoftPanelStatus.AtPanelStatusListener)localObject).a(this.b, j, k);
       }
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGlobalLayout, screenHeight=");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" visibleHeight=");
+      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append(" differHeight=");
+      ((StringBuilder)localObject).append(k);
+      ((StringBuilder)localObject).append(" mode=");
+      ((StringBuilder)localObject).append(this.b);
+      QLog.d("AtPanelStatus", 2, ((StringBuilder)localObject).toString());
+    }
+    this.c = j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.SoftPanelStatus
  * JD-Core Version:    0.7.0.1
  */

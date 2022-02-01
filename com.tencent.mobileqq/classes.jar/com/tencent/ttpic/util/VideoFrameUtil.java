@@ -3,61 +3,46 @@ package com.tencent.ttpic.util;
 import com.tencent.aekit.openrender.internal.Frame;
 import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.filter.BaseFilter;
-import com.tencent.ttpic.filter.EffectTriggerFilter;
 import com.tencent.ttpic.openapi.filter.ComicEffectFilter;
 
 public class VideoFrameUtil
 {
   public static Frame renderProcessByCopy(int paramInt1, int paramInt2, int paramInt3, VideoFilterBase paramVideoFilterBase, BaseFilter paramBaseFilter, Frame paramFrame1, Frame paramFrame2)
   {
-    if (paramFrame1.getTextureId() == paramInt1) {}
-    for (;;)
-    {
-      paramBaseFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, paramFrame2);
-      paramVideoFilterBase.OnDrawFrameGLSL();
-      paramVideoFilterBase.renderTexture(paramInt1, paramInt2, paramInt3);
-      return paramFrame2;
-      paramFrame2 = paramFrame1;
+    Frame localFrame = paramFrame1;
+    if (paramFrame1.getTextureId() == paramInt1) {
+      localFrame = paramFrame2;
     }
+    paramBaseFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, localFrame);
+    paramVideoFilterBase.OnDrawFrameGLSL();
+    paramVideoFilterBase.renderTexture(paramInt1, paramInt2, paramInt3);
+    return localFrame;
   }
   
   public static Frame renderProcessByForAnimationEffectFilter(int paramInt1, int paramInt2, int paramInt3, ComicEffectFilter paramComicEffectFilter, Frame paramFrame1, Frame paramFrame2)
   {
-    if (paramFrame1.getTextureId() == paramInt1) {}
-    for (;;)
-    {
-      FrameUtil.clearFrame(paramFrame2, 0.0F, 0.0F, 0.0F, 0.0F, paramInt2, paramInt3);
-      paramComicEffectFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, paramFrame2);
-      return paramFrame2;
-      paramFrame2 = paramFrame1;
+    Frame localFrame = paramFrame1;
+    if (paramFrame1.getTextureId() == paramInt1) {
+      localFrame = paramFrame2;
     }
-  }
-  
-  public static Frame renderProcessByForEffectTriggerFilter(int paramInt1, int paramInt2, int paramInt3, EffectTriggerFilter paramEffectTriggerFilter, Frame paramFrame1, Frame paramFrame2)
-  {
-    if (paramFrame1.getTextureId() == paramInt1) {}
-    for (;;)
-    {
-      paramEffectTriggerFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, paramFrame2);
-      return paramFrame2;
-      paramFrame2 = paramFrame1;
-    }
+    FrameUtil.clearFrame(localFrame, 0.0F, 0.0F, 0.0F, 0.0F, paramInt2, paramInt3);
+    paramComicEffectFilter.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, localFrame);
+    return localFrame;
   }
   
   public static Frame renderProcessBySwitchFbo(int paramInt1, int paramInt2, int paramInt3, VideoFilterBase paramVideoFilterBase, Frame paramFrame1, Frame paramFrame2)
   {
-    if (paramFrame1.getTextureId() == paramInt1) {}
-    for (;;)
-    {
-      paramVideoFilterBase.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, paramFrame2);
-      return paramFrame2;
-      paramFrame2 = paramFrame1;
+    Frame localFrame = paramFrame1;
+    if (paramFrame1.getTextureId() == paramInt1) {
+      localFrame = paramFrame2;
     }
+    paramVideoFilterBase.RenderProcess(paramInt1, paramInt2, paramInt3, -1, 0.0D, localFrame);
+    return localFrame;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.util.VideoFrameUtil
  * JD-Core Version:    0.7.0.1
  */

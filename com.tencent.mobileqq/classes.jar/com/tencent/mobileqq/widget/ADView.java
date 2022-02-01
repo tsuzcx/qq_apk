@@ -28,7 +28,7 @@ public class ADView
   protected LinearLayout b;
   protected boolean e = true;
   protected boolean f = true;
-  protected int g = 2130837595;
+  protected int g = 2130837682;
   protected int h = this.g;
   protected int i = 2;
   protected int j = 0;
@@ -62,59 +62,81 @@ public class ADView
   
   public void a(int paramInt1, int paramInt2)
   {
-    try
+    int k = 0;
+    for (;;)
     {
-      QZLog.i("removeFromWorkSpace", "@newcard TABINDEX " + paramInt1 + "page" + paramInt2);
-      Object localObject = (ViewGroup)this.b.getChildAt(paramInt1);
-      WorkSpaceView localWorkSpaceView = (WorkSpaceView)((ViewGroup)localObject).getChildAt(0);
-      localWorkSpaceView.removeViewAt(paramInt2);
-      localObject = (LinearLayout)((ViewGroup)localObject).getChildAt(1);
-      ((LinearLayout)localObject).removeViewAt(paramInt2);
-      if (((LinearLayout)localObject).getChildCount() > 1) {}
-      for (paramInt1 = 0;; paramInt1 = 4)
+      try
       {
-        ((LinearLayout)localObject).setVisibility(paramInt1);
-        if (paramInt2 > 0) {
-          localWorkSpaceView.a(paramInt2 - 1);
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("@newcard TABINDEX ");
+        ((StringBuilder)localObject1).append(paramInt1);
+        ((StringBuilder)localObject1).append("page");
+        ((StringBuilder)localObject1).append(paramInt2);
+        QZLog.i("removeFromWorkSpace", ((StringBuilder)localObject1).toString());
+        localObject2 = (ViewGroup)this.b.getChildAt(paramInt1);
+        localObject1 = (WorkSpaceView)((ViewGroup)localObject2).getChildAt(0);
+        ((WorkSpaceView)localObject1).removeViewAt(paramInt2);
+        localObject2 = (LinearLayout)((ViewGroup)localObject2).getChildAt(1);
+        ((LinearLayout)localObject2).removeViewAt(paramInt2);
+        if (((LinearLayout)localObject2).getChildCount() <= 1) {
+          break label210;
         }
-        return;
+        paramInt1 = 0;
+        ((LinearLayout)localObject2).setVisibility(paramInt1);
+        if (paramInt2 > 0)
+        {
+          ((WorkSpaceView)localObject1).a(paramInt2 - 1);
+          return;
+        }
+      }
+      catch (Exception localException)
+      {
+        Object localObject2;
+        paramInt1 = k;
+        if (paramInt1 < this.b.getChildCount() - 1)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("@newcard ");
+          ((StringBuilder)localObject2).append(this.b.getChildAt(paramInt1).getClass());
+          QZLog.i("ADView", ((StringBuilder)localObject2).toString());
+          paramInt1 += 1;
+          continue;
+        }
+        QZLog.i("ADView", 2, "@newcard  ", localException);
       }
       return;
-    }
-    catch (Exception localException)
-    {
-      paramInt1 = 0;
-      while (paramInt1 < this.b.getChildCount() - 1)
-      {
-        QZLog.i("ADView", "@newcard " + this.b.getChildAt(paramInt1).getClass());
-        paramInt1 += 1;
-      }
-      QZLog.i("ADView", 2, "@newcard  ", localException);
+      label210:
+      paramInt1 = 4;
     }
   }
   
   public void a(int paramInt1, int paramInt2, View paramView)
   {
-    int k = 0;
-    try
+    for (;;)
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)this.b.getChildAt(paramInt1);
-      WorkSpaceView localWorkSpaceView = (WorkSpaceView)localRelativeLayout.getChildAt(0);
-      localWorkSpaceView.removeView(paramView);
-      paramView = (LinearLayout)localRelativeLayout.getChildAt(1);
-      paramView.removeViewAt(paramInt2);
-      if (paramView.getChildCount() > 1) {}
-      for (paramInt1 = k;; paramInt1 = 4)
+      try
       {
-        paramView.setVisibility(paramInt1);
-        if (paramInt2 > 0) {
-          localWorkSpaceView.a(paramInt2 - 1);
+        RelativeLayout localRelativeLayout = (RelativeLayout)this.b.getChildAt(paramInt1);
+        paramInt1 = 0;
+        WorkSpaceView localWorkSpaceView = (WorkSpaceView)localRelativeLayout.getChildAt(0);
+        localWorkSpaceView.removeView(paramView);
+        paramView = (LinearLayout)localRelativeLayout.getChildAt(1);
+        paramView.removeViewAt(paramInt2);
+        if (paramView.getChildCount() > 1)
+        {
+          paramView.setVisibility(paramInt1);
+          if (paramInt2 > 0) {
+            localWorkSpaceView.a(paramInt2 - 1);
+          }
+          return;
         }
+      }
+      catch (Exception paramView)
+      {
         return;
       }
-      return;
+      paramInt1 = 4;
     }
-    catch (Exception paramView) {}
   }
   
   protected void a(Context paramContext)
@@ -127,8 +149,10 @@ public class ADView
   
   public void a(View paramView, int paramInt)
   {
+    paramInt = this.b.getChildCount();
+    boolean bool = true;
     Object localObject;
-    if (this.b.getChildCount() == 0)
+    if (paramInt == 0)
     {
       this.b.setPadding(0, 0, 0, 0);
       RelativeLayout localRelativeLayout = new RelativeLayout(getContext());
@@ -145,22 +169,23 @@ public class ADView
       localRelativeLayout.addView((View)localObject);
       this.b.addView(localRelativeLayout, new LinearLayout.LayoutParams(-1, -1));
     }
-    for (boolean bool = true;; bool = false)
+    else
     {
-      try
-      {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.addView(paramView, this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.getChildCount());
-        a((LinearLayout)localObject, bool);
-        if (QLog.isDevelopLevel()) {
-          QLog.i("Q.recent.banner", 4, "addViewToWorkspace");
-        }
-        return;
-      }
-      catch (Exception paramView) {}
       localObject = (ViewGroup)this.b.getChildAt(0);
       this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView = ((WorkSpaceView)((ViewGroup)localObject).getChildAt(0));
       localObject = (LinearLayout)((ViewGroup)localObject).getChildAt(1);
+      bool = false;
     }
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.addView(paramView, this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.getChildCount());
+      a((LinearLayout)localObject, bool);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("Q.recent.banner", 4, "addViewToWorkspace");
+      }
+      return;
+    }
+    catch (Exception paramView) {}
   }
   
   protected void a(LinearLayout paramLinearLayout)
@@ -168,51 +193,53 @@ public class ADView
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(8, 100000);
     localLayoutParams.addRule(14, 100000);
-    localLayoutParams.setMargins(0, 0, 0, (int)(6.0F * this.jdField_a_of_type_Float));
+    localLayoutParams.setMargins(0, 0, 0, (int)(this.jdField_a_of_type_Float * 6.0F));
     paramLinearLayout.setGravity(16);
-    paramLinearLayout.setBackgroundResource(2130840714);
-    paramLinearLayout.setPadding((int)(4.0F * this.jdField_a_of_type_Float), 0, (int)(2.0F * this.jdField_a_of_type_Float), 0);
+    paramLinearLayout.setBackgroundResource(2130840589);
+    float f1 = this.jdField_a_of_type_Float;
+    paramLinearLayout.setPadding((int)(4.0F * f1), 0, (int)(f1 * 2.0F), 0);
     paramLinearLayout.setLayoutParams(localLayoutParams);
   }
   
   protected void a(LinearLayout paramLinearLayout, boolean paramBoolean)
   {
-    localImageView = new ImageView(getContext());
+    ImageView localImageView = new ImageView(getContext());
+    int k = this.j;
     LinearLayout.LayoutParams localLayoutParams;
-    if (this.j > 0)
+    if (k > 0)
     {
-      localLayoutParams = new LinearLayout.LayoutParams((int)(this.j * this.jdField_a_of_type_Float), (int)(this.j * this.jdField_a_of_type_Float));
-      localLayoutParams.setMargins(0, 0, (int)(this.i * this.jdField_a_of_type_Float), 0);
-      localImageView.setLayoutParams(localLayoutParams);
+      float f1 = k;
+      float f2 = this.jdField_a_of_type_Float;
+      localLayoutParams = new LinearLayout.LayoutParams((int)(f1 * f2), (int)(k * f2));
     }
-    for (;;)
+    else
     {
-      try
-      {
-        localImageView.setImageDrawable(getContext().getResources().getDrawable(this.h));
-        if (!paramBoolean) {
-          continue;
-        }
-        localImageView.setEnabled(true);
-      }
-      catch (Exception localException)
-      {
-        localImageView.setImageResource(this.g);
-        continue;
-        int k = 4;
-        continue;
-      }
-      paramLinearLayout.addView(localImageView);
-      if (paramLinearLayout.getChildCount() <= 1) {
-        continue;
-      }
-      k = 0;
-      paramLinearLayout.setVisibility(k);
-      return;
       localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-      break;
-      localImageView.setEnabled(false);
     }
+    int m = (int)(this.i * this.jdField_a_of_type_Float);
+    k = 0;
+    localLayoutParams.setMargins(0, 0, m, 0);
+    localImageView.setLayoutParams(localLayoutParams);
+    try
+    {
+      localImageView.setImageDrawable(getContext().getResources().getDrawable(this.h));
+      if (paramBoolean) {
+        localImageView.setEnabled(true);
+      } else {
+        localImageView.setEnabled(false);
+      }
+    }
+    catch (Exception localException)
+    {
+      label145:
+      break label145;
+    }
+    localImageView.setImageResource(this.g);
+    paramLinearLayout.addView(localImageView);
+    if (paramLinearLayout.getChildCount() <= 1) {
+      k = 4;
+    }
+    paramLinearLayout.setVisibility(k);
   }
   
   public boolean c()
@@ -236,17 +263,16 @@ public class ADView
     try
     {
       PushBanner localPushBanner = (PushBanner)this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.getChildAt(this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.a()).getTag();
-      k = localPushBanner.a;
+      k = localPushBanner.a * 1000;
       setContentDescription(localPushBanner.n);
-      k *= 1000;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        int k = 5000;
-      }
+      int k;
+      label49:
+      break label49;
     }
+    k = 5000;
     this.jdField_a_of_type_ComTencentMobileqqWidgetADView$WeakHandler.sendEmptyMessageDelayed(0, k);
   }
   
@@ -257,29 +283,23 @@ public class ADView
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int k;
     if (this.e)
     {
-      k = paramMotionEvent.getAction();
-      if (k != 0) {
-        break label32;
-      }
-      getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    for (;;)
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      label32:
-      if ((k == 1) || (k == 3)) {
+      int k = paramMotionEvent.getAction();
+      if (k == 0) {
+        getParent().requestDisallowInterceptTouchEvent(true);
+      } else if ((k == 1) || (k == 3)) {
         getParent().requestDisallowInterceptTouchEvent(false);
       }
     }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
   
   public void setCircle(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView.setCircle(paramBoolean);
+    WorkSpaceView localWorkSpaceView = this.jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView;
+    if (localWorkSpaceView != null) {
+      localWorkSpaceView.setCircle(paramBoolean);
     }
     this.f = paramBoolean;
   }
@@ -291,7 +311,7 @@ public class ADView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ADView
  * JD-Core Version:    0.7.0.1
  */

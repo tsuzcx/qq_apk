@@ -3,7 +3,7 @@ package android.support.v4.os;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 
-final class ResultReceiver$1
+class ResultReceiver$1
   implements Parcelable.Creator<ResultReceiver>
 {
   public ResultReceiver createFromParcel(Parcel paramParcel)
@@ -18,7 +18,7 @@ final class ResultReceiver$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v4.os.ResultReceiver.1
  * JD-Core Version:    0.7.0.1
  */

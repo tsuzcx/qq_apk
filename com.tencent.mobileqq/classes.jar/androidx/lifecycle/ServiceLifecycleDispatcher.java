@@ -17,8 +17,9 @@ public class ServiceLifecycleDispatcher
   
   private void postDispatchRunnable(Lifecycle.Event paramEvent)
   {
-    if (this.mLastDispatchRunnable != null) {
-      this.mLastDispatchRunnable.run();
+    ServiceLifecycleDispatcher.DispatchRunnable localDispatchRunnable = this.mLastDispatchRunnable;
+    if (localDispatchRunnable != null) {
+      localDispatchRunnable.run();
     }
     this.mLastDispatchRunnable = new ServiceLifecycleDispatcher.DispatchRunnable(this.mRegistry, paramEvent);
     this.mHandler.postAtFrontOfQueue(this.mLastDispatchRunnable);
@@ -53,7 +54,7 @@ public class ServiceLifecycleDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.ServiceLifecycleDispatcher
  * JD-Core Version:    0.7.0.1
  */

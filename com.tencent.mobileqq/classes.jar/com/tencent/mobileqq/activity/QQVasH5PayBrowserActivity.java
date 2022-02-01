@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
+import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.vip.manager.MonitorManager;
 
+@RoutePage(desc="QQVasH5PayBrowserActivity", path="/vas/h5pay")
 public class QQVasH5PayBrowserActivity
   extends QQBrowserActivity
 {
@@ -26,7 +28,7 @@ public class QQVasH5PayBrowserActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_QQBrowserActivity", 2, "QQVasH5PayBrowserActivity doOnCreate: ");
@@ -59,14 +61,14 @@ public class QQVasH5PayBrowserActivity
   public boolean showPreview()
   {
     boolean bool = super.showPreview();
-    getWindow().setBackgroundDrawableResource(2131167305);
-    findViewById(2131363879).setBackgroundResource(2131167305);
+    getWindow().setBackgroundDrawableResource(2131167333);
+    findViewById(2131363807).setBackgroundResource(2131167333);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

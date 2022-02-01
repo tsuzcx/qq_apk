@@ -1,39 +1,55 @@
 package com.tencent.mobileqq.utils;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.troop.troopmanager.api.TroopManagerBizObserver;
 import com.tencent.qphone.base.util.QLog;
 
 final class QAVGroupConfig$1
-  extends TroopBusinessObserver
+  extends TroopManagerBizObserver
 {
   QAVGroupConfig$1(long paramLong, String paramString1, QQAppInterface paramQQAppInterface, String paramString2) {}
   
-  public void onOIDB0X88D_0_Ret(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString, Object[] paramArrayOfObject)
+  protected void onGetTroopInfoForSetJoinTypeRet(boolean paramBoolean, long paramLong, int paramInt, TroopInfo paramTroopInfo, Object[] paramArrayOfObject)
   {
     if (this.jdField_a_of_type_Long != paramLong) {
       return;
     }
-    paramTroopInfo = new StringBuilder().append("onOIDB0X88D_0_Ret[").append(this.jdField_a_of_type_JavaLangString).append("], troopuin[").append(paramLong).append("], nFlag[").append(paramInt1).append("], isMyFlag[");
-    if ((paramInt1 & 0x1) != 0) {}
-    for (boolean bool = true;; bool = false)
+    paramTroopInfo = new StringBuilder();
+    paramTroopInfo.append("onGetTroopInfoForSetJoinTypeRet[");
+    paramTroopInfo.append(this.jdField_a_of_type_JavaLangString);
+    paramTroopInfo.append("], troopuin[");
+    paramTroopInfo.append(paramLong);
+    paramTroopInfo.append("], nFlag[");
+    paramTroopInfo.append(paramInt);
+    paramTroopInfo.append("], isMyFlag[");
+    boolean bool;
+    if ((paramInt & 0x1) != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    paramTroopInfo.append(bool);
+    paramTroopInfo.append("], isSuccess[");
+    paramTroopInfo.append(paramBoolean);
+    paramTroopInfo.append("]");
+    QLog.w("QAVGroupConfig", 1, paramTroopInfo.toString());
+    if (paramInt == 480)
     {
-      QLog.w("QAVGroupConfig", 1, bool + "], isSuccess[" + paramBoolean + "], result[" + paramInt2 + "], strErrorMsg[" + paramString + "]");
-      if (paramInt1 != 480) {
-        break;
-      }
-      if (paramBoolean) {
-        QAVGroupConfig.GroupInviteFlag.a(this.jdField_a_of_type_JavaLangString + ".onOIDB0X88D_0_Ret", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
+      if (paramBoolean)
+      {
+        paramTroopInfo = new StringBuilder();
+        paramTroopInfo.append(this.jdField_a_of_type_JavaLangString);
+        paramTroopInfo.append(".onGetTroopInfoForSetJoinTypeRet");
+        QAVGroupConfig.GroupInviteFlag.a(paramTroopInfo.toString(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.b);
       }
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QAVGroupConfig.1
  * JD-Core Version:    0.7.0.1
  */

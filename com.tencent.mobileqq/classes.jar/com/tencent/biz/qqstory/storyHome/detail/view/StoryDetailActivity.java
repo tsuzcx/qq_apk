@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.widget.TextView;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -61,10 +61,15 @@ public class StoryDetailActivity
     localIntent.putExtra("focus_video_id", paramString2);
     localIntent.putExtra("play_source", paramInt3);
     localIntent.putExtra("commentLike_category", paramInt4);
-    if (TextUtils.isEmpty(paramString1)) {
-      throw new IllegalArgumentException("start detail activity failed because argument feedId is null. source is " + paramInt1);
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      paramActivity.startActivity(localIntent);
+      return;
     }
-    paramActivity.startActivity(localIntent);
+    paramActivity = new StringBuilder();
+    paramActivity.append("start detail activity failed because argument feedId is null. source is ");
+    paramActivity.append(paramInt1);
+    throw new IllegalArgumentException(paramActivity.toString());
   }
   
   public static void a(Activity paramActivity, String paramString1, int paramInt1, boolean paramBoolean, String paramString2, int paramInt2)
@@ -72,13 +77,13 @@ public class StoryDetailActivity
     a(paramActivity, paramString1, paramInt1, paramBoolean, -1, paramString2, paramInt2, 0);
   }
   
-  private void d()
+  private void b()
   {
-    setContentView(2131561774);
-    this.leftView.setText(2131690778);
+    setContentView(2131561636);
+    this.leftView.setText(2131690706);
     FragmentTransaction localFragmentTransaction = getSupportFragmentManager().beginTransaction();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment = StoryDetailFragment.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Int, this.jdField_b_of_type_JavaLangString, this.d, this.c);
-    localFragmentTransaction.replace(2131365255, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment);
+    localFragmentTransaction.replace(2131365132, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment);
     localFragmentTransaction.commitAllowingStateLoss();
   }
   
@@ -91,20 +96,20 @@ public class StoryDetailActivity
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewStoryDetailFragment.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     a();
-    d();
+    b();
     return true;
   }
   
-  public void doOnSaveInstanceState(Bundle paramBundle) {}
+  protected void doOnSaveInstanceState(Bundle paramBundle) {}
   
   public void finish()
   {
@@ -120,7 +125,7 @@ public class StoryDetailActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailActivity
  * JD-Core Version:    0.7.0.1
  */

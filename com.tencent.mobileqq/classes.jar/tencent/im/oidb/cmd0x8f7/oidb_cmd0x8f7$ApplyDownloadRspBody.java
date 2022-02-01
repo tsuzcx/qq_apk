@@ -20,16 +20,17 @@ public final class oidb_cmd0x8f7$ApplyDownloadRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48 }, new String[] { "bytes_server_name", "bytes_url", "uint32_download_port", "bytes_cookie_name", "bytes_cookie_val", "uint32_version" }, new Object[] { localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4, Integer.valueOf(0) }, ApplyDownloadRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48 }, new String[] { "bytes_server_name", "bytes_url", "uint32_download_port", "bytes_cookie_name", "bytes_cookie_val", "uint32_version" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localInteger, localByteStringMicro3, localByteStringMicro4, localInteger }, ApplyDownloadRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8f7.oidb_cmd0x8f7.ApplyDownloadRspBody
  * JD-Core Version:    0.7.0.1
  */

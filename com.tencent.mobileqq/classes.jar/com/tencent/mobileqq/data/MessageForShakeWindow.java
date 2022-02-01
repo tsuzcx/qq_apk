@@ -40,29 +40,32 @@ public class MessageForShakeWindow
     return false;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    if (this.mShakeWindowMsg != null) {}
-    try
-    {
-      this.msgData = this.mShakeWindowMsg.getBytes();
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.msg.shakemsg", 2, "convert ShakeWindowMsg to byte array failed", localException);
+    ShakeWindowMsg localShakeWindowMsg = this.mShakeWindowMsg;
+    if (localShakeWindowMsg != null) {
+      try
+      {
+        this.msgData = localShakeWindowMsg.getBytes();
+        return;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.msg.shakemsg", 2, "convert ShakeWindowMsg to byte array failed", localException);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForShakeWindow
  * JD-Core Version:    0.7.0.1
  */

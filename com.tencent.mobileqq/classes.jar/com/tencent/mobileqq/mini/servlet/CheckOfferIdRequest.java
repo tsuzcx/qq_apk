@@ -24,16 +24,20 @@ public class CheckOfferIdRequest
   
   public static MiniAppMidasPay.StMiniCheckOfferIdRsp onResponse(byte[] paramArrayOfByte)
   {
-    MiniAppMidasPay.StMiniCheckOfferIdRsp localStMiniCheckOfferIdRsp = new MiniAppMidasPay.StMiniCheckOfferIdRsp();
+    Object localObject = new MiniAppMidasPay.StMiniCheckOfferIdRsp();
     try
     {
-      localStMiniCheckOfferIdRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStMiniCheckOfferIdRsp;
+      ((MiniAppMidasPay.StMiniCheckOfferIdRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CheckOfferIdRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("CheckOfferIdRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -46,7 +50,7 @@ public class CheckOfferIdRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.CheckOfferIdRequest
  * JD-Core Version:    0.7.0.1
  */

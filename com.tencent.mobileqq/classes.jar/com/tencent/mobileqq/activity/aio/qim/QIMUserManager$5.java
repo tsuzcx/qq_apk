@@ -21,50 +21,51 @@ class QIMUserManager$5
       try
       {
         Iterator localIterator = this.a.iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        QIMUserManager.QIMUserIcon localQIMUserIcon = (QIMUserManager.QIMUserIcon)localIterator.next();
-        if ((this.b == null) || (this.b.size() <= localQIMUserIcon.jdField_a_of_type_Int)) {
-          continue;
-        }
-        if (((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int)).length >= 7)
+        if (localIterator.hasNext())
         {
-          i = 5;
-          if (((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int)).length < 7) {
-            break label264;
+          QIMUserManager.QIMUserIcon localQIMUserIcon = (QIMUserManager.QIMUserIcon)localIterator.next();
+          if ((this.b == null) || (this.b.size() <= localQIMUserIcon.jdField_a_of_type_Int)) {
+            continue;
           }
-          j = 6;
-          StateListDrawable localStateListDrawable = new StateListDrawable();
-          Drawable localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[j]);
-          localStateListDrawable.addState(new int[] { 16842913, 16842910 }, localDrawable);
-          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[j]);
-          localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable);
-          localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[i]);
-          localStateListDrawable.addState(new int[] { 16842910 }, localDrawable);
-          localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
-          continue;
+          i = ((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int)).length;
+          int j = 5;
+          if (i >= 7)
+          {
+            i = 5;
+            if (((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int)).length >= 7) {
+              j = 6;
+            }
+            StateListDrawable localStateListDrawable = new StateListDrawable();
+            Drawable localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[j]);
+            localStateListDrawable.addState(new int[] { 16842913, 16842910 }, localDrawable);
+            localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[j]);
+            localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable);
+            localDrawable = SkinEngine.getInstances().getDefaultThemeDrawable(((int[])this.b.get(localQIMUserIcon.jdField_a_of_type_Int))[i]);
+            localStateListDrawable.addState(new int[] { 16842910 }, localDrawable);
+            localQIMUserIcon.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localStateListDrawable;
+          }
         }
-        int i = 4;
+        else
+        {
+          if (this.b != null) {
+            this.b.clear();
+          }
+          ThreadManager.getUIHandler().post(new QIMUserManager.5.1(this));
+          return;
+        }
       }
       catch (Throwable localThrowable)
       {
         QLog.e("QIMUserManager", 1, localThrowable, new Object[0]);
         return;
       }
-      continue;
-      label264:
-      int j = 5;
+      int i = 4;
     }
-    if (this.b != null) {
-      this.b.clear();
-    }
-    ThreadManager.getUIHandler().post(new QIMUserManager.5.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.qim.QIMUserManager.5
  * JD-Core Version:    0.7.0.1
  */

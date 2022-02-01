@@ -15,40 +15,40 @@ final class p
   
   public void run()
   {
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("msfCoreCost", "" + (this.a - MsfService.serviceInitStart));
-    j localj;
+    Object localObject1 = new HashMap();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(this.a - MsfService.serviceInitStart);
+    ((HashMap)localObject1).put("msfCoreCost", ((StringBuilder)localObject2).toString());
     if (MsfService.core.statReporter != null)
     {
-      localj = MsfService.core.statReporter;
-      if (this.b <= 2000L) {
-        break label159;
+      localObject2 = MsfService.core.statReporter;
+      boolean bool;
+      if (this.b > 2000L) {
+        bool = false;
+      } else {
+        bool = true;
       }
+      ((j)localObject2).a("msfInitCost", bool, this.b, 0L, (Map)localObject1, false, false);
     }
+    com.tencent.mobileqq.msf.core.k.c();
+    localObject1 = BaseApplication.getContext().getSharedPreferences("crashcontrol", 4);
+    int j = ((SharedPreferences)localObject1).getInt("countRecvKillMsf", 0);
     int i;
-    label159:
-    for (boolean bool = false;; bool = true)
+    if (j > 0)
     {
-      localj.a("msfInitCost", bool, this.b, 0L, (Map)localObject, false, false);
-      com.tencent.mobileqq.msf.core.k.c();
-      localObject = BaseApplication.getContext().getSharedPreferences("crashcontrol", 4);
-      j = ((SharedPreferences)localObject).getInt("countRecvKillMsf", 0);
-      if (j <= 0) {
-        break label185;
-      }
-      if (MsfService.core.statReporter == null) {
-        break;
-      }
-      i = 0;
-      while (i < j)
+      if (MsfService.core.statReporter != null)
       {
-        MsfService.core.statReporter.a("countRecvKillMsf", true, 0L, 0L, null, false, false);
-        i += 1;
+        i = 0;
+        while (i < j)
+        {
+          MsfService.core.statReporter.a("countRecvKillMsf", true, 0L, 0L, null, false, false);
+          i += 1;
+        }
       }
+      ((SharedPreferences)localObject1).edit().putInt("countRecvKillMsf", 0).commit();
     }
-    ((SharedPreferences)localObject).edit().putInt("countRecvKillMsf", 0).commit();
-    label185:
-    int j = ((SharedPreferences)localObject).getInt("countMsfRealExit", 0);
+    j = ((SharedPreferences)localObject1).getInt("countMsfRealExit", 0);
     if (j > 0)
     {
       if (MsfService.core.statReporter != null)
@@ -60,27 +60,23 @@ final class p
           i += 1;
         }
       }
-      ((SharedPreferences)localObject).edit().putInt("countMsfRealExit", 0).commit();
+      ((SharedPreferences)localObject1).edit().putInt("countMsfRealExit", 0).commit();
     }
     try
     {
       Thread.sleep(5000L);
-      k.b();
-      k.a();
-      return;
     }
     catch (InterruptedException localInterruptedException)
     {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
+      localInterruptedException.printStackTrace();
     }
+    k.b();
+    k.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.p
  * JD-Core Version:    0.7.0.1
  */

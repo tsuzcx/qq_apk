@@ -59,8 +59,12 @@ public class WatchTogetherSession
   
   public String a(QQAppInterface paramQQAppInterface)
   {
-    if (this.j == 1) {
-      return paramQQAppInterface.getApp().getString(2131699339) + this.b;
+    if (this.j == 1)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramQQAppInterface.getApp().getString(2131699444));
+      localStringBuilder.append(this.b);
+      return localStringBuilder.toString();
     }
     return this.b;
   }
@@ -68,19 +72,19 @@ public class WatchTogetherSession
   public String a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
   {
     if (paramBoolean) {
-      return paramQQAppInterface.getApp().getString(2131699331);
+      return paramQQAppInterface.getApp().getString(2131699436);
     }
-    return a(paramQQAppInterface, 2131699343, 2131699341, 2131699338);
+    return a(paramQQAppInterface, 2131699448, 2131699446, 2131699443);
   }
   
   public int b()
   {
-    return 2130844964;
+    return 2130844840;
   }
   
   public String b(QQAppInterface paramQQAppInterface)
   {
-    return a(paramQQAppInterface, 2131699342, 2131699340);
+    return a(paramQQAppInterface, 2131699447, 2131699445);
   }
   
   protected Object clone()
@@ -113,7 +117,49 @@ public class WatchTogetherSession
   
   public String toString()
   {
-    return "WatchTogetherSession{roomType=" + this.jdField_a_of_type_Int + ", jumpurl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", roomId=" + this.jdField_a_of_type_Long + ", roomName='" + this.b + '\'' + ", roomCover='" + this.jdField_c_of_type_JavaLangString + '\'' + ", serviceType=" + this.jdField_e_of_type_Int + ", type=" + this.jdField_f_of_type_Int + ", uin='" + this.jdField_e_of_type_JavaLangString + '\'' + ", joinNum=" + this.g + ", status=" + this.jdField_h_of_type_Int + ", userState=" + this.i + ", creator='" + this.jdField_f_of_type_JavaLangString + '\'' + ", timeStamp=" + this.jdField_c_of_type_Long + ", videoType=" + this.j + ", videoJumpType=" + this.k + ", videoJumpURL='" + this.jdField_h_of_type_JavaLangString + '\'' + ", identifyId=" + this.d + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WatchTogetherSession{roomType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", jumpurl='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", roomId=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", roomName='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", roomCover='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", serviceType=");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(", uin='");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", joinNum=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(this.jdField_h_of_type_Int);
+    localStringBuilder.append(", userState=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", creator='");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", timeStamp=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", videoType=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", videoJumpType=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(", videoJumpURL='");
+    localStringBuilder.append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", identifyId=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -139,7 +185,7 @@ public class WatchTogetherSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherSession
  * JD-Core Version:    0.7.0.1
  */

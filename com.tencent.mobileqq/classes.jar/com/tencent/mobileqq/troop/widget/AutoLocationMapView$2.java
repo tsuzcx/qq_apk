@@ -13,27 +13,30 @@ class AutoLocationMapView$2
 {
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AutoLocationMapView", 2, "onLocationFinish() errCode=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onLocationFinish() errCode=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AutoLocationMapView", 2, ((StringBuilder)localObject).toString());
     }
-    Message localMessage = this.a.a.obtainMessage(1);
+    Object localObject = this.a.a.obtainMessage(1);
     if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
       paramSosoLbsInfo = new GeoPoint((int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D), (int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
-      localMessage.arg1 = 0;
-      localMessage.obj = paramSosoLbsInfo;
+      ((Message)localObject).arg1 = 0;
+      ((Message)localObject).obj = paramSosoLbsInfo;
     }
-    for (;;)
+    else
     {
-      localMessage.sendToTarget();
-      return;
-      localMessage.arg2 = -1;
+      ((Message)localObject).arg2 = -1;
     }
+    ((Message)localObject).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AutoLocationMapView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -15,10 +15,11 @@ public class ListenerMap<E>
   {
     try
     {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.get(paramString);
-      paramString = localCopyOnWriteArrayList;
-      if (localCopyOnWriteArrayList == null) {
+      paramString = (CopyOnWriteArrayList)this.a.get(paramString);
+      if (paramString == null)
+      {
         paramString = Collections.emptyList();
+        return paramString;
       }
       return paramString;
     }
@@ -63,18 +64,24 @@ public class ListenerMap<E>
         }
         paramString.remove(paramObject);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public List<E> b(String paramString)
   {
     try
     {
-      CopyOnWriteArrayList localCopyOnWriteArrayList = (CopyOnWriteArrayList)this.a.remove(paramString);
-      paramString = localCopyOnWriteArrayList;
-      if (localCopyOnWriteArrayList == null) {
+      paramString = (CopyOnWriteArrayList)this.a.remove(paramString);
+      if (paramString == null)
+      {
         paramString = Collections.emptyList();
+        return paramString;
       }
       return paramString;
     }
@@ -83,7 +90,7 @@ public class ListenerMap<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.quickupdate.ListenerMap
  * JD-Core Version:    0.7.0.1
  */

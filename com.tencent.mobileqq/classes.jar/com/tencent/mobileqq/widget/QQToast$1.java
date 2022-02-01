@@ -13,7 +13,6 @@ class QQToast$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
     if (paramMotionEvent.getAction() == 0)
     {
       if (QLog.isColorLevel()) {
@@ -21,17 +20,18 @@ class QQToast$1
       }
       this.jdField_a_of_type_AndroidWidgetToast.cancel();
       QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast, true);
-      if (this.jdField_a_of_type_AndroidViewView$OnTouchListener != null) {
-        bool = this.jdField_a_of_type_AndroidViewView$OnTouchListener.onTouch(paramView, paramMotionEvent);
+      View.OnTouchListener localOnTouchListener = this.jdField_a_of_type_AndroidViewView$OnTouchListener;
+      if (localOnTouchListener != null) {
+        return localOnTouchListener.onTouch(paramView, paramMotionEvent);
       }
-      return bool;
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToast.1
  * JD-Core Version:    0.7.0.1
  */

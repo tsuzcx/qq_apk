@@ -6,7 +6,7 @@ import com.tencent.mobileqq.app.automator.AsyncStep;
 public class CheckMsgCount
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
     ThreadManager.post(new CheckMsgCount.1(this), 5, null, false);
     return 7;
@@ -14,7 +14,7 @@ public class CheckMsgCount
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.CheckMsgCount
  * JD-Core Version:    0.7.0.1
  */

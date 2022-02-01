@@ -17,11 +17,11 @@ class VasProfileTagView$12
     this.val$child.setScaleX(paramValueAnimator.floatValue());
     this.val$child.setScaleY(paramValueAnimator.floatValue());
     float f1 = this.val$pos.x;
-    float f2 = VasProfileTagView.access$2200(this.this$0).x;
-    float f3 = VasProfileTagView.access$700(this.this$0).getWidth();
+    float f2 = VasProfileTagView.access$2100(this.this$0).x;
+    float f3 = VasProfileTagView.access$500(this.this$0).getWidth();
     float f4 = this.val$pos.y;
-    float f5 = VasProfileTagView.access$2200(this.this$0).y;
-    float f6 = VasProfileTagView.access$700(this.this$0).getHeight();
+    float f5 = VasProfileTagView.access$2100(this.this$0).y;
+    float f6 = VasProfileTagView.access$500(this.this$0).getHeight();
     this.val$child.setTranslationX((f1 - f2) * f3 * paramValueAnimator.floatValue());
     this.val$child.setTranslationY((f4 - f5) * f6 * paramValueAnimator.floatValue());
     this.val$child.setRotation(paramValueAnimator.floatValue() * 120.0F - 120.0F);
@@ -29,7 +29,7 @@ class VasProfileTagView$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileTagView.12
  * JD-Core Version:    0.7.0.1
  */

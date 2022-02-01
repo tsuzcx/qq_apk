@@ -44,11 +44,10 @@ public class TAVStickerExKt
   
   public static int getStickerInteractive(TAVSticker paramTAVSticker)
   {
-    int i = 0;
     if (paramTAVSticker != null) {
-      i = paramTAVSticker.getExtraBundle().getInt("key_sticker_interactive", 0);
+      return paramTAVSticker.getExtraBundle().getInt("key_sticker_interactive", 0);
     }
-    return i;
+    return 0;
   }
   
   public static float getStickerScaleMaxX(TAVSticker paramTAVSticker)
@@ -104,11 +103,7 @@ public class TAVStickerExKt
   
   public static boolean isStickerCarryTextFromOther(TAVSticker paramTAVSticker)
   {
-    Bundle localBundle = paramTAVSticker.getExtraBundle();
-    if (!"blur".equals(getExtraStickerType(paramTAVSticker))) {}
-    for (boolean bool = true;; bool = false) {
-      return localBundle.getBoolean("key_sticker_carry_text_from_others", bool);
-    }
+    return paramTAVSticker.getExtraBundle().getBoolean("key_sticker_carry_text_from_others", "blur".equals(getExtraStickerType(paramTAVSticker)) ^ true);
   }
   
   public static void markLastStickerTextData(TAVSticker paramTAVSticker, String paramString1, String paramString2, int paramInt)
@@ -190,7 +185,7 @@ public class TAVStickerExKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.model.TAVStickerExKt
  * JD-Core Version:    0.7.0.1
  */

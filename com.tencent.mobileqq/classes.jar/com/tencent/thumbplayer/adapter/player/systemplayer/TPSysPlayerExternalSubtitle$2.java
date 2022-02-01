@@ -7,12 +7,12 @@ class TPSysPlayerExternalSubtitle$2
   
   public void run()
   {
-    TPSysPlayerExternalSubtitle.access$000(this.this$0, 0);
+    TPSysPlayerExternalSubtitle.access$400(this.this$0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.systemplayer.TPSysPlayerExternalSubtitle.2
  * JD-Core Version:    0.7.0.1
  */

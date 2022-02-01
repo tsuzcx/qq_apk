@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.utils.ProfileUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class TroopAdminList$6
@@ -25,61 +25,58 @@ class TroopAdminList$6
     if (localObject1 != null)
     {
       localObject1 = ((TroopAdminList.ViewHolder)localObject1).a;
-      if (!this.a.app.getCurrentAccountUin().equals(localObject1)) {
-        break label60;
-      }
-      localObject1 = new ProfileActivity.AllInOne((String)localObject1, 0);
-    }
-    for (;;)
-    {
-      ProfileActivity.b(this.a, (ProfileActivity.AllInOne)localObject1);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label60:
-      int i = this.a.getIntent().getIntExtra("t_s_f", -1);
-      Object localObject2 = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e((String)localObject1);
-      TroopInfo localTroopInfo = ((TroopManager)this.a.app.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.a.c);
-      if ((localObject2 != null) && (((Friends)localObject2).isFriend()))
+      if (this.a.app.getCurrentAccountUin().equals(localObject1))
       {
-        if (localTroopInfo != null)
-        {
-          localObject1 = new ProfileActivity.AllInOne((String)localObject1, 20);
-          ((ProfileActivity.AllInOne)localObject1).d = this.a.d;
-          ((ProfileActivity.AllInOne)localObject1).c = this.a.c;
-        }
-        for (;;)
-        {
-          ((ProfileActivity.AllInOne)localObject1).h = ((Friends)localObject2).name;
-          ((ProfileActivity.AllInOne)localObject1).i = ((Friends)localObject2).remark;
-          break;
-          localObject1 = new ProfileActivity.AllInOne((String)localObject1, 1);
-        }
-      }
-      if (i == 1002)
-      {
-        localObject1 = new ProfileActivity.AllInOne((String)localObject1, 97);
-      }
-      else if (localTroopInfo != null)
-      {
-        localObject1 = new ProfileActivity.AllInOne((String)localObject1, 21);
-        ((ProfileActivity.AllInOne)localObject1).d = this.a.d;
-        ((ProfileActivity.AllInOne)localObject1).c = this.a.c;
-        ((ProfileActivity.AllInOne)localObject1).l = 12;
+        localObject1 = new AllInOne((String)localObject1, 0);
       }
       else
       {
-        localObject1 = new ProfileActivity.AllInOne((String)localObject1, 23);
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putString("troop_code", this.a.d);
-        ((Bundle)localObject2).putString("troop_uin", this.a.c);
-        ((ProfileActivity.AllInOne)localObject1).b.putBundle("flc_extra_param", (Bundle)localObject2);
+        int i = this.a.getIntent().getIntExtra("t_s_f", -1);
+        Object localObject2 = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e((String)localObject1);
+        TroopInfo localTroopInfo = ((TroopManager)this.a.app.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.a.c);
+        if ((localObject2 != null) && (((Friends)localObject2).isFriend()))
+        {
+          if (localTroopInfo != null)
+          {
+            localObject1 = new AllInOne((String)localObject1, 20);
+            ((AllInOne)localObject1).troopUin = this.a.d;
+            ((AllInOne)localObject1).troopCode = this.a.c;
+          }
+          else
+          {
+            localObject1 = new AllInOne((String)localObject1, 1);
+          }
+          ((AllInOne)localObject1).nickname = ((Friends)localObject2).name;
+          ((AllInOne)localObject1).remark = ((Friends)localObject2).remark;
+        }
+        else if (i == 1002)
+        {
+          localObject1 = new AllInOne((String)localObject1, 97);
+        }
+        else if (localTroopInfo != null)
+        {
+          localObject1 = new AllInOne((String)localObject1, 21);
+          ((AllInOne)localObject1).troopUin = this.a.d;
+          ((AllInOne)localObject1).troopCode = this.a.c;
+          ((AllInOne)localObject1).subSourceId = 12;
+        }
+        else
+        {
+          localObject1 = new AllInOne((String)localObject1, 23);
+          localObject2 = new Bundle();
+          ((Bundle)localObject2).putString("troop_code", this.a.d);
+          ((Bundle)localObject2).putString("troop_uin", this.a.c);
+          ((AllInOne)localObject1).extras.putBundle("flc_extra_param", (Bundle)localObject2);
+        }
       }
+      ProfileUtils.openProfileCard(this.a, (AllInOne)localObject1);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAdminList.6
  * JD-Core Version:    0.7.0.1
  */

@@ -16,8 +16,14 @@ class QfavHelper$3$1
   
   public void onInstallError(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "install plugin " + paramString + " error! " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("install plugin ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" error! ");
+      localStringBuilder.append(paramInt);
+      QLog.i("qqfav", 2, localStringBuilder.toString());
     }
     try
     {
@@ -29,8 +35,13 @@ class QfavHelper$3$1
   
   public void onInstallFinish(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 2, "install plugin " + paramString + " OK.");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("install plugin ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" OK.");
+      QLog.i("qqfav", 2, localStringBuilder.toString());
     }
     QfavHelper.a().set(true);
     try
@@ -43,7 +54,7 @@ class QfavHelper$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.QfavHelper.3.1
  * JD-Core Version:    0.7.0.1
  */

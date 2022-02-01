@@ -7,13 +7,14 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdGradeUtil;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.qroute.QRoute;
 import kotlin.Metadata;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/view/ReadInJoyAdStarBar;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mContext", "mRootView", "Landroid/view/View;", "star01", "Lcom/tencent/image/URLImageView;", "star02", "star03", "star04", "star05", "initView", "", "setGrade", "grade", "", "(Ljava/lang/Float;)V", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/view/ReadInJoyAdStarBar;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "mContext", "mRootView", "Landroid/view/View;", "star01", "Lcom/tencent/image/URLImageView;", "star02", "star03", "star04", "star05", "initView", "", "setGrade", "grade", "", "(Ljava/lang/Float;)V", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 public final class ReadInJoyAdStarBar
   extends FrameLayout
 {
@@ -34,102 +35,85 @@ public final class ReadInJoyAdStarBar
   
   private final void a()
   {
-    this.jdField_a_of_type_AndroidViewView = View.inflate(getContext(), 2131560183, (ViewGroup)this);
+    this.jdField_a_of_type_AndroidViewView = View.inflate(getContext(), 2131560070, (ViewGroup)this);
     Object localObject = (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1);
-    View localView = this.jdField_a_of_type_AndroidViewView;
-    if (localView != null) {
-      localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    View localView1 = this.jdField_a_of_type_AndroidViewView;
+    if (localView1 != null) {
+      localView1.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
     localObject = this.jdField_a_of_type_AndroidViewView;
-    if (localObject != null)
-    {
-      localObject = (URLImageView)((View)localObject).findViewById(2131378398);
-      this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject);
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      if (localObject == null) {
-        break label170;
-      }
-      localObject = (URLImageView)((View)localObject).findViewById(2131378399);
-      label87:
-      this.b = ((URLImageView)localObject);
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      if (localObject == null) {
-        break label175;
-      }
-      localObject = (URLImageView)((View)localObject).findViewById(2131378400);
-      label111:
-      this.c = ((URLImageView)localObject);
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      if (localObject == null) {
-        break label180;
-      }
-      localObject = (URLImageView)((View)localObject).findViewById(2131378401);
-      label135:
-      this.d = ((URLImageView)localObject);
-      localObject = this.jdField_a_of_type_AndroidViewView;
-      if (localObject == null) {
-        break label185;
-      }
+    localView1 = null;
+    if (localObject != null) {
+      localObject = (URLImageView)((View)localObject).findViewById(2131377812);
+    } else {
+      localObject = null;
     }
-    label170:
-    label175:
-    label180:
-    label185:
-    for (localObject = (URLImageView)((View)localObject).findViewById(2131378402);; localObject = null)
-    {
-      this.e = ((URLImageView)localObject);
-      return;
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localObject);
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null) {
+      localObject = (URLImageView)((View)localObject).findViewById(2131377813);
+    } else {
       localObject = null;
-      break;
-      localObject = null;
-      break label87;
-      localObject = null;
-      break label111;
-      localObject = null;
-      break label135;
     }
+    this.b = ((URLImageView)localObject);
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null) {
+      localObject = (URLImageView)((View)localObject).findViewById(2131377814);
+    } else {
+      localObject = null;
+    }
+    this.c = ((URLImageView)localObject);
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null) {
+      localObject = (URLImageView)((View)localObject).findViewById(2131377815);
+    } else {
+      localObject = null;
+    }
+    this.d = ((URLImageView)localObject);
+    View localView2 = this.jdField_a_of_type_AndroidViewView;
+    localObject = localView1;
+    if (localView2 != null) {
+      localObject = (URLImageView)localView2.findViewById(2131377816);
+    }
+    this.e = ((URLImageView)localObject);
   }
   
   public final void setGrade(@Nullable Float paramFloat)
   {
     float f;
-    if (paramFloat != null)
-    {
+    if (paramFloat != null) {
       f = paramFloat.floatValue();
-      if (f > 0) {
-        break label22;
-      }
-    }
-    label22:
-    do
-    {
-      return;
+    } else {
       f = 0.0F;
-      break;
-      paramFloat = this.jdField_a_of_type_ComTencentImageURLImageView;
-      if (paramFloat != null) {
-        paramFloat.setBackgroundURL(ReadInJoyAdGradeUtil.a(f, 0));
-      }
-      paramFloat = this.b;
-      if (paramFloat != null) {
-        paramFloat.setBackgroundURL(ReadInJoyAdGradeUtil.a(f, 1));
-      }
-      paramFloat = this.c;
-      if (paramFloat != null) {
-        paramFloat.setBackgroundURL(ReadInJoyAdGradeUtil.a(f, 2));
-      }
-      paramFloat = this.d;
-      if (paramFloat != null) {
-        paramFloat.setBackgroundURL(ReadInJoyAdGradeUtil.a(f, 3));
-      }
-      paramFloat = this.e;
-    } while (paramFloat == null);
-    paramFloat.setBackgroundURL(ReadInJoyAdGradeUtil.a(f, 4));
+    }
+    if (f <= 0) {
+      return;
+    }
+    paramFloat = this.jdField_a_of_type_ComTencentImageURLImageView;
+    if (paramFloat != null) {
+      paramFloat.setBackgroundURL(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getStarUrl(f, 0));
+    }
+    paramFloat = this.b;
+    if (paramFloat != null) {
+      paramFloat.setBackgroundURL(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getStarUrl(f, 1));
+    }
+    paramFloat = this.c;
+    if (paramFloat != null) {
+      paramFloat.setBackgroundURL(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getStarUrl(f, 2));
+    }
+    paramFloat = this.d;
+    if (paramFloat != null) {
+      paramFloat.setBackgroundURL(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getStarUrl(f, 3));
+    }
+    paramFloat = this.e;
+    if (paramFloat != null) {
+      paramFloat.setBackgroundURL(((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getStarUrl(f, 4));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdStarBar
  * JD-Core Version:    0.7.0.1
  */

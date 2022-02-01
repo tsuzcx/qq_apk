@@ -9,26 +9,35 @@ final class GdtArkUtil
   
   public static int a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -8)
     {
-    case -5: 
-    case -4: 
-    case -3: 
-    case -1: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    default: 
-      return 1;
-    case 0: 
-      return 0;
-    case -2: 
-      return 3;
-    case -6: 
-      return 6;
-    case -7: 
+      if (paramInt != -7)
+      {
+        if (paramInt != -6)
+        {
+          if ((paramInt != -4) && (paramInt != -3))
+          {
+            if (paramInt != -2)
+            {
+              if (paramInt != -1) {
+                if (paramInt != 0)
+                {
+                  if (paramInt != 5) {
+                    return 1;
+                  }
+                }
+                else {
+                  return 0;
+                }
+              }
+              return 1;
+            }
+            return 3;
+          }
+          return 1;
+        }
+        return 6;
+      }
       return 13;
     }
     return 207;
@@ -45,16 +54,17 @@ final class GdtArkUtil
       if (a) {
         return;
       }
+      a = true;
+      ArkMultiProcUtil.a(true);
+      ArkMultiProcUtil.a();
+      return;
     }
     finally {}
-    a = true;
-    ArkMultiProcUtil.a(true);
-    ArkMultiProcUtil.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtArkUtil
  * JD-Core Version:    0.7.0.1
  */

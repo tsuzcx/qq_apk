@@ -17,8 +17,9 @@ public class GetExtConfigDetailRequest
   
   public GetExtConfigDetailRequest(COMM.StCommonExt paramStCommonExt, List<INTERFACE.StExtConfigInfo> paramList)
   {
-    this.req.extInfo = paramStCommonExt;
-    this.req.configs.set(paramList);
+    INTERFACE.StGetExtConfigDetailReq localStGetExtConfigDetailReq = this.req;
+    localStGetExtConfigDetailReq.extInfo = paramStCommonExt;
+    localStGetExtConfigDetailReq.configs.set(paramList);
   }
   
   public static INTERFACE.StGetExtConfigDetailRsp onResponse(byte[] paramArrayOfByte)
@@ -43,7 +44,7 @@ public class GetExtConfigDetailRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetExtConfigDetailRequest
  * JD-Core Version:    0.7.0.1
  */

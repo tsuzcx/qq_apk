@@ -26,14 +26,13 @@ public final class ag
   
   public final byte[] b(byte[] paramArrayOfByte)
   {
-    ByteArrayOutputStream localByteArrayOutputStream = null;
     ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(paramArrayOfByte);
     ZipInputStream localZipInputStream = new ZipInputStream(localByteArrayInputStream);
-    paramArrayOfByte = localByteArrayOutputStream;
+    paramArrayOfByte = null;
     while (localZipInputStream.getNextEntry() != null)
     {
       paramArrayOfByte = new byte[1024];
-      localByteArrayOutputStream = new ByteArrayOutputStream();
+      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
       for (;;)
       {
         int i = localZipInputStream.read(paramArrayOfByte, 0, paramArrayOfByte.length);
@@ -53,7 +52,7 @@ public final class ag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.proguard.ag
  * JD-Core Version:    0.7.0.1
  */

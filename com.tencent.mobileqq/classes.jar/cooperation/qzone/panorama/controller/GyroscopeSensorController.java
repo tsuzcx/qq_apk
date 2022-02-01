@@ -34,22 +34,24 @@ public class GyroscopeSensorController
       if (this.timestamp != 0L)
       {
         float f1 = (float)(paramSensorEvent.timestamp - this.timestamp) * 1.0E-009F;
-        float[] arrayOfFloat = this.angle;
-        arrayOfFloat[0] += paramSensorEvent.values[0] * f1;
-        arrayOfFloat = this.angle;
-        arrayOfFloat[1] += paramSensorEvent.values[1] * f1;
-        arrayOfFloat = this.angle;
-        float f2 = arrayOfFloat[2];
-        arrayOfFloat[2] = (f1 * paramSensorEvent.values[2] + f2);
+        Object localObject = this.angle;
+        localObject[0] += paramSensorEvent.values[0] * f1;
+        localObject = this.angle;
+        localObject[1] += paramSensorEvent.values[1] * f1;
+        localObject = this.angle;
+        localObject[2] += paramSensorEvent.values[2] * f1;
         f1 = (float)Math.toDegrees(this.angle[0] - this.preAngle[0]);
-        f2 = (float)Math.toDegrees(this.angle[1] - this.preAngle[1]);
+        float f2 = (float)Math.toDegrees(this.angle[1] - this.preAngle[1]);
         float f3 = (float)Math.toDegrees(this.angle[2] - this.preAngle[2]);
-        if (this.sensorChangeListener != null) {
-          this.sensorChangeListener.onSensorChange(f1 * 1.0F, f2 * 1.0F, f3 * 1.0F);
+        localObject = this.sensorChangeListener;
+        if (localObject != null) {
+          ((GyroscopeSensorController.SensorChangeListener)localObject).onSensorChange(f1 * 1.0F, f2 * 1.0F, f3 * 1.0F);
         }
-        this.preAngle[0] = this.angle[0];
-        this.preAngle[1] = this.angle[1];
-        this.preAngle[2] = this.angle[2];
+        localObject = this.preAngle;
+        float[] arrayOfFloat = this.angle;
+        localObject[0] = arrayOfFloat[0];
+        localObject[1] = arrayOfFloat[1];
+        localObject[2] = arrayOfFloat[2];
       }
       this.timestamp = paramSensorEvent.timestamp;
     }
@@ -67,7 +69,7 @@ public class GyroscopeSensorController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.panorama.controller.GyroscopeSensorController
  * JD-Core Version:    0.7.0.1
  */

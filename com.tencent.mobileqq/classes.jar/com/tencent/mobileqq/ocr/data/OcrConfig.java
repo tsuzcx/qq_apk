@@ -5,9 +5,7 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import android.util.Xml;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -16,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import mqq.app.MobileQQ;
 import org.xmlpull.v1.XmlPullParser;
 
 public class OcrConfig
@@ -48,70 +47,70 @@ public class OcrConfig
   
   static
   {
-    a.put("zh", HardCodeUtil.a(2131707673));
-    a.put("en", HardCodeUtil.a(2131707685));
-    a.put("af", HardCodeUtil.a(2131707714));
-    a.put("ar", HardCodeUtil.a(2131707730));
-    a.put("eu", HardCodeUtil.a(2131707695));
-    a.put("be", HardCodeUtil.a(2131707709));
-    a.put("hr", HardCodeUtil.a(2131707683));
-    a.put("da", HardCodeUtil.a(2131707728));
-    a.put("nl", HardCodeUtil.a(2131707690));
-    a.put("fo", HardCodeUtil.a(2131707679));
-    a.put("fi", HardCodeUtil.a(2131707694));
-    a.put("fr", HardCodeUtil.a(2131707699));
-    a.put("gd", HardCodeUtil.a(2131707707));
-    a.put("de", HardCodeUtil.a(2131707686));
-    a.put("he", HardCodeUtil.a(2131707717));
-    a.put("hu", HardCodeUtil.a(2131707722));
-    a.put("id", HardCodeUtil.a(2131707705));
-    a.put("it", HardCodeUtil.a(2131707693));
-    a.put("kr", HardCodeUtil.a(2131707720));
-    a.put("ko", HardCodeUtil.a(2131707703));
-    a.put("lv", HardCodeUtil.a(2131707732));
-    a.put("mk", HardCodeUtil.a(2131707708));
-    a.put("mt", HardCodeUtil.a(2131707697));
-    a.put("no", HardCodeUtil.a(2131707721));
-    a.put("pt", HardCodeUtil.a(2131707718));
-    a.put("rm", HardCodeUtil.a(2131707716));
-    a.put("ro", HardCodeUtil.a(2131707700));
-    a.put("sr", HardCodeUtil.a(2131707731));
-    a.put("sk", HardCodeUtil.a(2131707712));
-    a.put("sb", HardCodeUtil.a(2131707698));
-    a.put("es", HardCodeUtil.a(2131707704));
-    a.put("sx", HardCodeUtil.a(2131707713));
-    a.put("sv", HardCodeUtil.a(2131707710));
-    a.put("ts", HardCodeUtil.a(2131707687));
-    a.put("tr", HardCodeUtil.a(2131707677));
-    a.put("ur", HardCodeUtil.a(2131707672));
-    a.put("vi", HardCodeUtil.a(2131707724));
-    a.put("ji", HardCodeUtil.a(2131707681));
-    a.put("sq", HardCodeUtil.a(2131707696));
-    a.put("bg", HardCodeUtil.a(2131707701));
-    a.put("ca", HardCodeUtil.a(2131707680));
-    a.put("cs", HardCodeUtil.a(2131707725));
-    a.put("et", HardCodeUtil.a(2131707726));
-    a.put("fa", HardCodeUtil.a(2131707682));
-    a.put("ga", HardCodeUtil.a(2131707719));
-    a.put("el", HardCodeUtil.a(2131707678));
-    a.put("hi", HardCodeUtil.a(2131707692));
-    a.put("is", HardCodeUtil.a(2131707676));
-    a.put("jp", HardCodeUtil.a(2131707727));
-    a.put("ja", HardCodeUtil.a(2131707729));
-    a.put("lt", HardCodeUtil.a(2131707715));
-    a.put("ms", HardCodeUtil.a(2131707691));
-    a.put("pl", HardCodeUtil.a(2131707706));
-    a.put("ru", HardCodeUtil.a(2131707711));
-    a.put("sz", HardCodeUtil.a(2131707723));
-    a.put("sl", HardCodeUtil.a(2131707702));
-    a.put("th", HardCodeUtil.a(2131707671));
-    a.put("tn", HardCodeUtil.a(2131707674));
-    a.put("uk", HardCodeUtil.a(2131707684));
-    a.put("ve", HardCodeUtil.a(2131707733));
-    a.put("xh", HardCodeUtil.a(2131707689));
-    a.put("zu", HardCodeUtil.a(2131707688));
-    a.put("jap", HardCodeUtil.a(2131707727));
-    a.put("unk", HardCodeUtil.a(2131707675));
+    a.put("zh", HardCodeUtil.a(2131707697));
+    a.put("en", HardCodeUtil.a(2131707709));
+    a.put("af", HardCodeUtil.a(2131707738));
+    a.put("ar", HardCodeUtil.a(2131707754));
+    a.put("eu", HardCodeUtil.a(2131707719));
+    a.put("be", HardCodeUtil.a(2131707733));
+    a.put("hr", HardCodeUtil.a(2131707707));
+    a.put("da", HardCodeUtil.a(2131707752));
+    a.put("nl", HardCodeUtil.a(2131707714));
+    a.put("fo", HardCodeUtil.a(2131707703));
+    a.put("fi", HardCodeUtil.a(2131707718));
+    a.put("fr", HardCodeUtil.a(2131707723));
+    a.put("gd", HardCodeUtil.a(2131707731));
+    a.put("de", HardCodeUtil.a(2131707710));
+    a.put("he", HardCodeUtil.a(2131707741));
+    a.put("hu", HardCodeUtil.a(2131707746));
+    a.put("id", HardCodeUtil.a(2131707729));
+    a.put("it", HardCodeUtil.a(2131707717));
+    a.put("kr", HardCodeUtil.a(2131707744));
+    a.put("ko", HardCodeUtil.a(2131707727));
+    a.put("lv", HardCodeUtil.a(2131707756));
+    a.put("mk", HardCodeUtil.a(2131707732));
+    a.put("mt", HardCodeUtil.a(2131707721));
+    a.put("no", HardCodeUtil.a(2131707745));
+    a.put("pt", HardCodeUtil.a(2131707742));
+    a.put("rm", HardCodeUtil.a(2131707740));
+    a.put("ro", HardCodeUtil.a(2131707724));
+    a.put("sr", HardCodeUtil.a(2131707755));
+    a.put("sk", HardCodeUtil.a(2131707736));
+    a.put("sb", HardCodeUtil.a(2131707722));
+    a.put("es", HardCodeUtil.a(2131707728));
+    a.put("sx", HardCodeUtil.a(2131707737));
+    a.put("sv", HardCodeUtil.a(2131707734));
+    a.put("ts", HardCodeUtil.a(2131707711));
+    a.put("tr", HardCodeUtil.a(2131707701));
+    a.put("ur", HardCodeUtil.a(2131707696));
+    a.put("vi", HardCodeUtil.a(2131707748));
+    a.put("ji", HardCodeUtil.a(2131707705));
+    a.put("sq", HardCodeUtil.a(2131707720));
+    a.put("bg", HardCodeUtil.a(2131707725));
+    a.put("ca", HardCodeUtil.a(2131707704));
+    a.put("cs", HardCodeUtil.a(2131707749));
+    a.put("et", HardCodeUtil.a(2131707750));
+    a.put("fa", HardCodeUtil.a(2131707706));
+    a.put("ga", HardCodeUtil.a(2131707743));
+    a.put("el", HardCodeUtil.a(2131707702));
+    a.put("hi", HardCodeUtil.a(2131707716));
+    a.put("is", HardCodeUtil.a(2131707700));
+    a.put("jp", HardCodeUtil.a(2131707751));
+    a.put("ja", HardCodeUtil.a(2131707753));
+    a.put("lt", HardCodeUtil.a(2131707739));
+    a.put("ms", HardCodeUtil.a(2131707715));
+    a.put("pl", HardCodeUtil.a(2131707730));
+    a.put("ru", HardCodeUtil.a(2131707735));
+    a.put("sz", HardCodeUtil.a(2131707747));
+    a.put("sl", HardCodeUtil.a(2131707726));
+    a.put("th", HardCodeUtil.a(2131707695));
+    a.put("tn", HardCodeUtil.a(2131707698));
+    a.put("uk", HardCodeUtil.a(2131707708));
+    a.put("ve", HardCodeUtil.a(2131707757));
+    a.put("xh", HardCodeUtil.a(2131707713));
+    a.put("zu", HardCodeUtil.a(2131707712));
+    a.put("jap", HardCodeUtil.a(2131707751));
+    a.put("unk", HardCodeUtil.a(2131707699));
   }
   
   public OcrConfig() {}
@@ -136,42 +135,43 @@ public class OcrConfig
   
   public static void deleteLocalConfig(String paramString)
   {
-    paramString = BaseApplicationImpl.getContext().getFileStreamPath("ocr_config_" + paramString);
+    Object localObject = MobileQQ.sMobileQQ;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ocr_config_");
+    localStringBuilder.append(paramString);
+    paramString = ((MobileQQ)localObject).getFileStreamPath(localStringBuilder.toString());
     if (paramString.exists()) {
       paramString.delete();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("OcrConfig", 2, "deleteLocalConfig path:" + paramString.getAbsolutePath());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("deleteLocalConfig path:");
+      ((StringBuilder)localObject).append(paramString.getAbsolutePath());
+      QLog.d("OcrConfig", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public static String getDefaultLanguageName(String paramString)
   {
-    Object localObject2;
     if (TextUtils.isEmpty(paramString)) {
-      localObject2 = HardCodeUtil.a(2131707675);
+      return HardCodeUtil.a(2131707699);
     }
-    Object localObject1;
-    do
-    {
-      return localObject2;
-      localObject2 = (String)a.get(paramString);
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = HardCodeUtil.a(2131707675);
-      }
-      localObject2 = localObject1;
-    } while (!QLog.isColorLevel());
-    QLog.d("OcrConfig", 2, String.format("getDefaultLanguageName, code:%s, name:%s", new Object[] { paramString, localObject1 }));
-    return localObject1;
+    String str2 = (String)a.get(paramString);
+    String str1 = str2;
+    if (TextUtils.isEmpty(str2)) {
+      str1 = HardCodeUtil.a(2131707699);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("OcrConfig", 2, String.format("getDefaultLanguageName, code:%s, name:%s", new Object[] { paramString, str1 }));
+    }
+    return str1;
   }
   
   public static List<String> getDefaultSupportLanguages(String paramString)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramString = null;
-      return paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
     ArrayList localArrayList = new ArrayList();
     if (paramString.equalsIgnoreCase("zh"))
@@ -181,353 +181,397 @@ public class OcrConfig
         Collections.addAll(localArrayList, paramString);
       }
     }
-    for (;;)
+    else
     {
-      paramString = localArrayList;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("OcrConfig", 2, "getDefaultSupportLanguages, list = " + localArrayList);
-      return localArrayList;
       localArrayList.add("zh");
     }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("getDefaultSupportLanguages, list = ");
+      paramString.append(localArrayList);
+      QLog.d("OcrConfig", 2, paramString.toString());
+    }
+    return localArrayList;
   }
   
   public static OcrConfig parse(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("OcrConfig", 2, "OcrConfig.parse, xmlContent:" + paramString);
+    Object localObject2 = "QuestionCfg";
+    Object localObject1 = "QzoneCfg";
+    if (QLog.isColorLevel())
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("OcrConfig.parse, xmlContent:");
+      ((StringBuilder)localObject3).append(paramString);
+      QLog.d("OcrConfig", 2, ((StringBuilder)localObject3).toString());
     }
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
     XmlPullParser localXmlPullParser = Xml.newPullParser();
     OcrConfig localOcrConfig = new OcrConfig();
-    for (;;)
+    int i;
+    try
     {
-      try
-      {
-        localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = localXmlPullParser.getEventType();
+      localXmlPullParser.setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+      i = localXmlPullParser.getEventType();
+      paramString = (String)localObject2;
+    }
+    catch (Exception paramString)
+    {
+      boolean bool;
+      if (!QLog.isColorLevel()) {
+        break label1664;
       }
-      catch (Exception paramString) {}
-      int i = localXmlPullParser.next();
-      break label1414;
-      paramString = localXmlPullParser.getName();
-      if (paramString.equalsIgnoreCase("ScanCfg"))
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("parse exception:");
+      ((StringBuilder)localObject1).append(paramString.toString());
+      QLog.d("OcrConfig", 2, ((StringBuilder)localObject1).toString());
+      return null;
+    }
+    String str = localXmlPullParser.getName();
+    if (str.equalsIgnoreCase("ScanCfg")) {
+      for (i = localXmlPullParser.next();; i = localXmlPullParser.next())
       {
-        i = localXmlPullParser.next();
-        if (i != 1)
+        localObject3 = paramString;
+        localObject2 = localObject1;
+        if (i == 1) {
+          break;
+        }
+        if (i == 2)
         {
-          if (i != 2) {
-            break label366;
-          }
-          paramString = localXmlPullParser.getName();
-          if (paramString.equalsIgnoreCase("ScanOcrOpen"))
-          {
+          localObject2 = localXmlPullParser.getName();
+          if (((String)localObject2).equalsIgnoreCase("ScanOcrOpen")) {
             localOcrConfig.scanOcrOpen = Integer.parseInt(localXmlPullParser.nextText());
-            i = localXmlPullParser.next();
+          } else if (((String)localObject2).equalsIgnoreCase("ScanIconImg")) {
+            localOcrConfig.iconUrl = localXmlPullParser.nextText();
+          } else if (((String)localObject2).equalsIgnoreCase("ScanIconMd5")) {
+            localOcrConfig.iconMd5 = localXmlPullParser.nextText();
+          } else if (((String)localObject2).equalsIgnoreCase("ScanIconPressed")) {
+            localOcrConfig.iconPressUrl = localXmlPullParser.nextText();
+          } else if (((String)localObject2).equalsIgnoreCase("ScanIconPressedMd5")) {
+            localOcrConfig.iconPressMD5 = localXmlPullParser.nextText();
+          } else if (((String)localObject2).equalsIgnoreCase("ScanIconText")) {
+            localOcrConfig.iconText = localXmlPullParser.nextText();
+          } else if (((String)localObject2).equalsIgnoreCase("Scan_Line1")) {
+            localOcrConfig.tips = localXmlPullParser.nextText();
           }
         }
-        else
+        else if ((i == 3) && (localXmlPullParser.getName().equalsIgnoreCase("ScanCfg")))
         {
-          continue;
-        }
-        if (paramString.equalsIgnoreCase("ScanIconImg"))
-        {
-          localOcrConfig.iconUrl = localXmlPullParser.nextText();
-          continue;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("OcrConfig", 2, "parse exception:" + paramString.toString());
-          return null;
-        }
-        if (paramString.equalsIgnoreCase("ScanIconMd5"))
-        {
-          localOcrConfig.iconMd5 = localXmlPullParser.nextText();
-          continue;
-        }
-        if (paramString.equalsIgnoreCase("ScanIconPressed"))
-        {
-          localOcrConfig.iconPressUrl = localXmlPullParser.nextText();
-          continue;
-        }
-        if (paramString.equalsIgnoreCase("ScanIconPressedMd5"))
-        {
-          localOcrConfig.iconPressMD5 = localXmlPullParser.nextText();
-          continue;
-        }
-        if (paramString.equalsIgnoreCase("ScanIconText"))
-        {
-          localOcrConfig.iconText = localXmlPullParser.nextText();
-          continue;
-        }
-        if (!paramString.equalsIgnoreCase("Scan_Line1")) {
-          continue;
-        }
-        localOcrConfig.tips = localXmlPullParser.nextText();
-        continue;
-        label366:
-        if ((i != 3) || (!localXmlPullParser.getName().equalsIgnoreCase("ScanCfg"))) {
-          continue;
-        }
-        continue;
-      }
-      if (paramString.equalsIgnoreCase("AioCfg"))
-      {
-        i = localXmlPullParser.next();
-        label408:
-        if (i != 1)
-        {
-          if (i != 2) {
-            break label487;
-          }
-          paramString = localXmlPullParser.getName();
-          if (!paramString.equalsIgnoreCase("AioOcrOpen")) {
-            break label462;
-          }
-          localOcrConfig.aioOcrOpen = Integer.parseInt(localXmlPullParser.nextText());
-        }
-        label462:
-        label487:
-        while ((i != 3) || (!localXmlPullParser.getName().equalsIgnoreCase("AioCfg"))) {
-          for (;;)
-          {
-            i = localXmlPullParser.next();
-            break label408;
-            break;
-            if (paramString.equalsIgnoreCase("AioText")) {
-              localOcrConfig.aioText = localXmlPullParser.nextText();
-            }
-          }
+          localObject3 = paramString;
+          localObject2 = localObject1;
+          break;
         }
       }
-      else if (paramString.equalsIgnoreCase("ChatFileCfg"))
+    }
+    if (str.equalsIgnoreCase("AioCfg")) {
+      for (i = localXmlPullParser.next();; i = localXmlPullParser.next())
       {
-        i = localXmlPullParser.next();
-        label529:
-        if (i != 1)
+        localObject3 = paramString;
+        localObject2 = localObject1;
+        if (i == 1) {
+          break;
+        }
+        if (i == 2)
         {
-          if (i != 2) {
-            break label581;
+          localObject2 = localXmlPullParser.getName();
+          if (((String)localObject2).equalsIgnoreCase("AioOcrOpen")) {
+            localOcrConfig.aioOcrOpen = Integer.parseInt(localXmlPullParser.nextText());
+          } else if (((String)localObject2).equalsIgnoreCase("AioText")) {
+            localOcrConfig.aioText = localXmlPullParser.nextText();
           }
+        }
+        else if ((i == 3) && (localXmlPullParser.getName().equalsIgnoreCase("AioCfg")))
+        {
+          localObject3 = paramString;
+          localObject2 = localObject1;
+          break;
+        }
+      }
+    }
+    if (str.equalsIgnoreCase("ChatFileCfg")) {
+      for (i = localXmlPullParser.next();; i = localXmlPullParser.next())
+      {
+        localObject3 = paramString;
+        localObject2 = localObject1;
+        if (i == 1) {
+          break;
+        }
+        if (i == 2)
+        {
           if (localXmlPullParser.getName().equalsIgnoreCase("ChatFileOcrOpen")) {
             localOcrConfig.chatFileOcrOpen = Integer.parseInt(localXmlPullParser.nextText());
           }
         }
-        label581:
-        while ((i != 3) || (!localXmlPullParser.getName().equalsIgnoreCase("ChatFileCfg")))
+        else if ((i == 3) && (localXmlPullParser.getName().equalsIgnoreCase("ChatFileCfg")))
         {
-          i = localXmlPullParser.next();
-          break label529;
+          localObject3 = paramString;
+          localObject2 = localObject1;
           break;
         }
       }
-      else if (paramString.equalsIgnoreCase("QzoneCfg"))
+    }
+    if (str.equalsIgnoreCase((String)localObject1)) {
+      for (i = localXmlPullParser.next();; i = localXmlPullParser.next())
       {
-        i = localXmlPullParser.next();
-        label623:
-        if (i != 1)
+        localObject3 = paramString;
+        localObject2 = localObject1;
+        if (i == 1) {
+          break;
+        }
+        if (i == 2)
         {
-          if (i != 2) {
-            break label675;
-          }
           if (localXmlPullParser.getName().equalsIgnoreCase("QzoneOcrOpen")) {
             localOcrConfig.qzoneOcrOpen = Integer.parseInt(localXmlPullParser.nextText());
           }
         }
-        label675:
-        while ((i != 3) || (!localXmlPullParser.getName().equalsIgnoreCase("QzoneCfg")))
+        else if ((i == 3) && (localXmlPullParser.getName().equalsIgnoreCase((String)localObject1)))
         {
-          i = localXmlPullParser.next();
-          break label623;
+          localObject3 = paramString;
+          localObject2 = localObject1;
           break;
         }
       }
-      else if (paramString.equalsIgnoreCase("QuestionCfg"))
+    }
+    if (str.equalsIgnoreCase(paramString)) {
+      for (i = localXmlPullParser.next();; i = localXmlPullParser.next())
       {
-        i = localXmlPullParser.next();
-        label717:
-        if (i != 1)
-        {
-          if (i != 2) {
-            break label799;
-          }
-          paramString = localXmlPullParser.getName();
-          if (!paramString.equalsIgnoreCase("ScanEnter")) {
-            break label771;
-          }
-          localOcrConfig.questionScanOpen = Integer.parseInt(localXmlPullParser.nextText());
+        localObject3 = paramString;
+        localObject2 = localObject1;
+        if (i == 1) {
+          break;
         }
-        label771:
-        label799:
-        while ((i != 3) || (!localXmlPullParser.getName().equalsIgnoreCase("QuestionCfg"))) {
-          for (;;)
-          {
-            i = localXmlPullParser.next();
-            break label717;
-            break;
-            if (paramString.equalsIgnoreCase("ResultPageEnter")) {
-              localOcrConfig.questionResultOpen = Integer.parseInt(localXmlPullParser.nextText());
-            }
+        if (i == 2)
+        {
+          localObject2 = localXmlPullParser.getName();
+          if (((String)localObject2).equalsIgnoreCase("ScanEnter")) {
+            localOcrConfig.questionScanOpen = Integer.parseInt(localXmlPullParser.nextText());
+          } else if (((String)localObject2).equalsIgnoreCase("ResultPageEnter")) {
+            localOcrConfig.questionResultOpen = Integer.parseInt(localXmlPullParser.nextText());
           }
+        }
+        else if ((i == 3) && (localXmlPullParser.getName().equalsIgnoreCase(paramString)))
+        {
+          localObject3 = paramString;
+          localObject2 = localObject1;
+          break;
         }
       }
-      else if (paramString.equalsIgnoreCase("translate"))
+    }
+    Object localObject3 = paramString;
+    localObject2 = localObject1;
+    if (str.equalsIgnoreCase("translate"))
+    {
+      i = localXmlPullParser.next();
+      label925:
+      localObject3 = paramString;
+      localObject2 = localObject1;
+      if (i != 1)
       {
-        i = localXmlPullParser.next();
-        label841:
-        if (i != 1)
+        if (i == 2)
         {
-          if (i != 2) {
-            break label1352;
-          }
-          paramString = localXmlPullParser.getName();
-          if (!paramString.equalsIgnoreCase("languages")) {
-            break label1179;
-          }
-          if (i != 1)
-          {
-            if (i == 2) {
-              if (localXmlPullParser.getName().equalsIgnoreCase("item"))
+          localObject2 = localXmlPullParser.getName();
+          bool = ((String)localObject2).equalsIgnoreCase("languages");
+          if (bool) {
+            for (;;)
+            {
+              if (i == 1) {
+                break label1717;
+              }
+              if (i == 2)
               {
-                paramString = null;
-                localObject1 = null;
-                if (i != 1)
+                str = paramString;
+                localObject3 = localObject1;
+                if (!localXmlPullParser.getName().equalsIgnoreCase("item")) {
+                  break label1710;
+                }
+                localObject4 = null;
+                localObject2 = null;
+                for (;;)
                 {
+                  str = paramString;
+                  localObject3 = localObject1;
+                  if (i == 1) {
+                    break label1710;
+                  }
                   if (i == 2)
                   {
-                    str2 = localXmlPullParser.getName();
-                    if (str2.equalsIgnoreCase("src"))
+                    localObject3 = localXmlPullParser.getName();
+                    if (((String)localObject3).equalsIgnoreCase("src"))
                     {
-                      str1 = localXmlPullParser.nextText();
-                      localObject2 = localObject1;
+                      localObject4 = localXmlPullParser.nextText();
+                    }
+                    else
+                    {
+                      if (!((String)localObject3).equalsIgnoreCase("dst")) {
+                        break label1707;
+                      }
+                      localObject2 = localXmlPullParser.nextText();
                     }
                   }
-                  do
+                  else
                   {
-                    do
-                    {
-                      for (;;)
-                      {
-                        i = localXmlPullParser.next();
-                        localObject1 = localObject2;
-                        paramString = str1;
-                        break;
-                        localObject2 = localObject1;
-                        str1 = paramString;
-                        if (str2.equalsIgnoreCase("dst"))
-                        {
-                          localObject2 = localXmlPullParser.nextText();
-                          str1 = paramString;
-                        }
-                      }
-                      localObject2 = localObject1;
-                      str1 = paramString;
-                    } while (i != 3);
-                    localObject2 = localObject1;
-                    str1 = paramString;
-                  } while (!localXmlPullParser.getName().equalsIgnoreCase("item"));
-                  if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
-                  {
+                    if ((i != 3) || (!localXmlPullParser.getName().equalsIgnoreCase("item"))) {
+                      break label1707;
+                    }
+                    str = paramString;
+                    localObject3 = localObject1;
+                    if (TextUtils.isEmpty((CharSequence)localObject4)) {
+                      break label1710;
+                    }
+                    str = paramString;
+                    localObject3 = localObject1;
+                    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+                      break label1710;
+                    }
                     if (localOcrConfig.translateSupportLanguages == null) {
                       localOcrConfig.translateSupportLanguages = new HashMap();
                     }
-                    localObject1 = ((String)localObject1).split("/");
-                    if ((localObject1 != null) && (localObject1.length > 0))
-                    {
-                      localObject2 = new ArrayList();
-                      j = localObject1.length;
-                      i = 0;
-                      while (i < j)
-                      {
-                        ((List)localObject2).add(localObject1[i]);
-                        i += 1;
-                      }
-                      localOcrConfig.translateSupportLanguages.put(paramString, localObject2);
+                    localObject2 = ((String)localObject2).split("/");
+                    str = paramString;
+                    localObject3 = localObject1;
+                    if (localObject2 == null) {
+                      break label1710;
                     }
+                    str = paramString;
+                    localObject3 = localObject1;
+                    if (localObject2.length <= 0) {
+                      break label1710;
+                    }
+                    localObject3 = new ArrayList();
+                    int j = localObject2.length;
+                    i = 0;
+                    while (i < j)
+                    {
+                      ((List)localObject3).add(localObject2[i]);
+                      i += 1;
+                    }
+                    localOcrConfig.translateSupportLanguages.put(localObject4, localObject3);
+                    localObject2 = paramString;
+                    localObject3 = localObject1;
+                    break;
                   }
+                  label1243:
+                  i = localXmlPullParser.next();
                 }
               }
-            }
-            while ((i != 3) || (!localXmlPullParser.getName().equalsIgnoreCase("languages")))
-            {
+              str = paramString;
+              Object localObject4 = localObject1;
+              localObject2 = str;
+              localObject3 = localObject4;
+              if (i == 3)
+              {
+                localObject2 = str;
+                localObject3 = localObject4;
+                if (localXmlPullParser.getName().equalsIgnoreCase("languages")) {
+                  break label1717;
+                }
+              }
+              label1301:
               i = localXmlPullParser.next();
-              break;
+              paramString = (String)localObject2;
+              localObject1 = localObject3;
+            }
+          }
+          if (!((String)localObject2).equalsIgnoreCase("name")) {
+            break label1723;
+          }
+          label1491:
+          for (i = localXmlPullParser.next();; i = localXmlPullParser.next())
+          {
+            if (i == 1) {
+              break label1723;
+            }
+            if (i == 2)
+            {
+              if (!localXmlPullParser.getName().equalsIgnoreCase("item")) {
+                break;
+              }
+              localObject2 = localXmlPullParser.nextText();
+              if (TextUtils.isEmpty((CharSequence)localObject2)) {
+                break;
+              }
+              localObject3 = ((String)localObject2).split("-");
+              if ((localObject3 == null) || (localObject3.length != 2)) {
+                break;
+              }
+              if (localOcrConfig.translateLanguageNames == null) {
+                localOcrConfig.translateLanguageNames = new HashMap();
+              }
+              localObject2 = localObject3[0];
+              localObject3 = localObject3[1];
+              if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject3))) {
+                localOcrConfig.translateLanguageNames.put(localObject2, localObject3);
+              }
+            }
+            else
+            {
+              if ((i == 3) && (localXmlPullParser.getName().equalsIgnoreCase("name"))) {
+                break label1723;
+              }
             }
           }
         }
-        label1179:
-        label1197:
-        label1328:
-        label1352:
-        do
+        localObject2 = paramString;
+        localObject3 = localObject1;
+        paramString = (String)localObject2;
+        localObject1 = localObject3;
+        if (i == 3)
         {
-          do
-          {
-            for (;;)
-            {
-              i = localXmlPullParser.next();
-              break label841;
-              break;
-              if (paramString.equalsIgnoreCase("name"))
-              {
-                i = localXmlPullParser.next();
-                if (i != 1)
-                {
-                  if (i != 2) {
-                    break label1328;
-                  }
-                  if (localXmlPullParser.getName().equalsIgnoreCase("item"))
-                  {
-                    paramString = localXmlPullParser.nextText();
-                    if (!TextUtils.isEmpty(paramString))
-                    {
-                      localObject1 = paramString.split("-");
-                      if ((localObject1 != null) && (localObject1.length == 2))
-                      {
-                        if (localOcrConfig.translateLanguageNames == null) {
-                          localOcrConfig.translateLanguageNames = new HashMap();
-                        }
-                        paramString = localObject1[0];
-                        localObject1 = localObject1[1];
-                        if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-                          localOcrConfig.translateLanguageNames.put(paramString, localObject1);
-                        }
-                      }
-                    }
-                  }
-                }
-                while ((i != 3) || (!localXmlPullParser.getName().equalsIgnoreCase("name")))
-                {
-                  i = localXmlPullParser.next();
-                  break label1197;
-                  break;
-                }
-              }
-            }
-          } while (i != 3);
-          bool = localXmlPullParser.getName().equalsIgnoreCase("translate");
-        } while (!bool);
-        label1414:
+          paramString = (String)localObject2;
+          localObject1 = localObject3;
+          if (localXmlPullParser.getName().equalsIgnoreCase("translate")) {
+            break label1558;
+          }
+        }
+      }
+    }
+    label1558:
+    label1707:
+    label1710:
+    label1717:
+    label1723:
+    for (;;)
+    {
+      i = localXmlPullParser.next();
+      break label925;
+      for (;;)
+      {
+        i = localXmlPullParser.next();
+        paramString = (String)localObject2;
+        localObject1 = localObject3;
         while (i == 1)
         {
-          Object localObject1;
-          String str2;
-          String str1;
-          Object localObject2;
-          int j;
-          boolean bool;
-          if (QLog.isColorLevel()) {
-            QLog.d("OcrConfig", 2, "parse:" + localOcrConfig);
+          if (QLog.isColorLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("parse:");
+            paramString.append(localOcrConfig);
+            QLog.d("OcrConfig", 2, paramString.toString());
           }
           return localOcrConfig;
         }
-        switch (i)
+        localObject3 = paramString;
+        localObject2 = localObject1;
+        if (i != 0)
         {
+          if (i == 2) {
+            break;
+          }
+          localObject2 = localObject1;
+          localObject3 = paramString;
         }
+        paramString = (String)localObject2;
+        localObject2 = localObject3;
+        localObject3 = paramString;
       }
+      break label1243;
+      localObject2 = str;
+      break label1301;
+      continue;
+      break label1491;
     }
   }
   
@@ -535,228 +579,253 @@ public class OcrConfig
   public static OcrConfig readFromFile(String paramString)
   {
     // Byte code:
-    //   0: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   0: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   3: ifeq +12 -> 15
     //   6: ldc 24
     //   8: iconst_2
-    //   9: ldc_w 514
-    //   12: invokestatic 348	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   9: ldc_w 512
+    //   12: invokestatic 346	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   15: aload_0
-    //   16: invokestatic 356	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   16: invokestatic 354	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   19: ifeq +20 -> 39
-    //   22: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   22: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   25: ifeq +12 -> 37
     //   28: ldc 24
     //   30: iconst_2
-    //   31: ldc_w 516
-    //   34: invokestatic 348	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   31: ldc_w 514
+    //   34: invokestatic 346	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   37: aconst_null
     //   38: areturn
-    //   39: invokestatic 307	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   42: new 309	java/lang/StringBuilder
-    //   45: dup
-    //   46: invokespecial 310	java/lang/StringBuilder:<init>	()V
-    //   49: ldc_w 312
-    //   52: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   55: aload_0
-    //   56: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: invokevirtual 325	com/tencent/qphone/base/util/BaseApplication:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   65: astore_0
-    //   66: aload_0
-    //   67: invokevirtual 331	java/io/File:exists	()Z
-    //   70: ifne +20 -> 90
-    //   73: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   76: ifeq -39 -> 37
-    //   79: ldc 24
-    //   81: iconst_2
-    //   82: ldc_w 518
-    //   85: invokestatic 348	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   88: aconst_null
-    //   89: areturn
-    //   90: new 520	java/io/FileInputStream
-    //   93: dup
-    //   94: aload_0
-    //   95: invokespecial 523	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   98: astore_1
-    //   99: new 525	java/io/ObjectInputStream
-    //   102: dup
-    //   103: new 527	java/io/BufferedInputStream
-    //   106: dup
-    //   107: aload_1
-    //   108: invokespecial 530	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   111: invokespecial 531	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   114: astore 5
-    //   116: aload 5
-    //   118: astore_3
-    //   119: aload_1
-    //   120: astore_2
-    //   121: aload 5
-    //   123: invokevirtual 535	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   126: checkcast 2	com/tencent/mobileqq/ocr/data/OcrConfig
-    //   129: astore 4
-    //   131: aload_1
-    //   132: ifnull +7 -> 139
-    //   135: aload_1
-    //   136: invokevirtual 538	java/io/FileInputStream:close	()V
-    //   139: aload 4
-    //   141: astore_0
-    //   142: aload 5
-    //   144: ifnull +11 -> 155
-    //   147: aload 5
-    //   149: invokevirtual 539	java/io/ObjectInputStream:close	()V
-    //   152: aload 4
-    //   154: astore_0
-    //   155: aload_0
-    //   156: areturn
-    //   157: astore_0
-    //   158: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   161: ifeq -22 -> 139
-    //   164: aload_0
-    //   165: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   168: goto -29 -> 139
-    //   171: astore_1
-    //   172: aload 4
-    //   174: astore_0
-    //   175: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   178: ifeq -23 -> 155
-    //   181: aload_1
-    //   182: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   185: aload 4
-    //   187: astore_0
-    //   188: goto -33 -> 155
-    //   191: astore 4
-    //   193: aconst_null
-    //   194: astore_0
-    //   195: aconst_null
-    //   196: astore_1
-    //   197: aload_0
-    //   198: astore_3
-    //   199: aload_1
-    //   200: astore_2
-    //   201: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   204: ifeq +37 -> 241
-    //   207: aload_0
-    //   208: astore_3
-    //   209: aload_1
-    //   210: astore_2
-    //   211: ldc 24
-    //   213: iconst_2
-    //   214: new 309	java/lang/StringBuilder
-    //   217: dup
-    //   218: invokespecial 310	java/lang/StringBuilder:<init>	()V
-    //   221: ldc_w 544
-    //   224: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: aload 4
-    //   229: invokevirtual 459	java/lang/Exception:toString	()Ljava/lang/String;
-    //   232: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   235: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   238: invokestatic 348	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   241: aload_1
-    //   242: ifnull +7 -> 249
-    //   245: aload_1
-    //   246: invokevirtual 538	java/io/FileInputStream:close	()V
-    //   249: aload_0
-    //   250: ifnull +120 -> 370
-    //   253: aload_0
-    //   254: invokevirtual 539	java/io/ObjectInputStream:close	()V
-    //   257: aconst_null
-    //   258: astore_0
-    //   259: goto -104 -> 155
-    //   262: astore_1
-    //   263: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   266: ifeq -17 -> 249
-    //   269: aload_1
-    //   270: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   273: goto -24 -> 249
-    //   276: astore_0
-    //   277: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   280: ifeq +7 -> 287
-    //   283: aload_0
-    //   284: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   287: aconst_null
-    //   288: astore_0
-    //   289: goto -134 -> 155
-    //   292: astore_0
-    //   293: aconst_null
-    //   294: astore_3
-    //   295: aconst_null
-    //   296: astore_1
-    //   297: aload_1
-    //   298: ifnull +7 -> 305
-    //   301: aload_1
-    //   302: invokevirtual 538	java/io/FileInputStream:close	()V
-    //   305: aload_3
-    //   306: ifnull +7 -> 313
-    //   309: aload_3
-    //   310: invokevirtual 539	java/io/ObjectInputStream:close	()V
+    //   39: getstatic 307	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
+    //   42: astore_1
+    //   43: new 309	java/lang/StringBuilder
+    //   46: dup
+    //   47: invokespecial 310	java/lang/StringBuilder:<init>	()V
+    //   50: astore_2
+    //   51: aload_2
+    //   52: ldc_w 312
+    //   55: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: pop
+    //   59: aload_2
+    //   60: aload_0
+    //   61: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: pop
+    //   65: aload_1
+    //   66: aload_2
+    //   67: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   70: invokevirtual 323	mqq/app/MobileQQ:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   73: astore_0
+    //   74: aload_0
+    //   75: invokevirtual 329	java/io/File:exists	()Z
+    //   78: ifne +20 -> 98
+    //   81: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   84: ifeq +12 -> 96
+    //   87: ldc 24
+    //   89: iconst_2
+    //   90: ldc_w 516
+    //   93: invokestatic 346	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   96: aconst_null
+    //   97: areturn
+    //   98: new 518	java/io/FileInputStream
+    //   101: dup
+    //   102: aload_0
+    //   103: invokespecial 521	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   106: astore_0
+    //   107: new 523	java/io/ObjectInputStream
+    //   110: dup
+    //   111: new 525	java/io/BufferedInputStream
+    //   114: dup
+    //   115: aload_0
+    //   116: invokespecial 528	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   119: invokespecial 529	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   122: astore 4
+    //   124: aload_0
+    //   125: astore_1
+    //   126: aload 4
+    //   128: astore_2
+    //   129: aload 4
+    //   131: invokevirtual 533	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   134: checkcast 2	com/tencent/mobileqq/ocr/data/OcrConfig
+    //   137: astore_3
+    //   138: aload_0
+    //   139: invokevirtual 536	java/io/FileInputStream:close	()V
+    //   142: goto +14 -> 156
+    //   145: astore_0
+    //   146: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   149: ifeq +7 -> 156
+    //   152: aload_0
+    //   153: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   156: aload 4
+    //   158: invokevirtual 540	java/io/ObjectInputStream:close	()V
+    //   161: aload_3
+    //   162: areturn
+    //   163: astore_1
+    //   164: aload_3
+    //   165: astore_0
+    //   166: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   169: ifeq +164 -> 333
+    //   172: aload_1
+    //   173: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   176: aload_3
+    //   177: areturn
+    //   178: astore_1
+    //   179: aload_0
+    //   180: astore_3
+    //   181: aload 4
+    //   183: astore_0
+    //   184: aload_1
+    //   185: astore 4
+    //   187: goto +34 -> 221
+    //   190: astore_3
+    //   191: aconst_null
+    //   192: astore_2
+    //   193: goto +145 -> 338
+    //   196: astore 4
+    //   198: aconst_null
+    //   199: astore_1
+    //   200: aload_0
+    //   201: astore_3
+    //   202: aload_1
+    //   203: astore_0
+    //   204: goto +17 -> 221
+    //   207: astore_3
+    //   208: aconst_null
+    //   209: astore_0
+    //   210: aload_0
+    //   211: astore_2
+    //   212: goto +126 -> 338
+    //   215: astore 4
+    //   217: aconst_null
+    //   218: astore_3
+    //   219: aload_3
+    //   220: astore_0
+    //   221: aload_3
+    //   222: astore_1
+    //   223: aload_0
+    //   224: astore_2
+    //   225: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   228: ifeq +59 -> 287
+    //   231: aload_3
+    //   232: astore_1
+    //   233: aload_0
+    //   234: astore_2
+    //   235: new 309	java/lang/StringBuilder
+    //   238: dup
+    //   239: invokespecial 310	java/lang/StringBuilder:<init>	()V
+    //   242: astore 5
+    //   244: aload_3
+    //   245: astore_1
+    //   246: aload_0
+    //   247: astore_2
+    //   248: aload 5
+    //   250: ldc_w 542
+    //   253: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   256: pop
+    //   257: aload_3
+    //   258: astore_1
+    //   259: aload_0
+    //   260: astore_2
+    //   261: aload 5
+    //   263: aload 4
+    //   265: invokevirtual 507	java/lang/Exception:toString	()Ljava/lang/String;
+    //   268: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   271: pop
+    //   272: aload_3
+    //   273: astore_1
+    //   274: aload_0
+    //   275: astore_2
+    //   276: ldc 24
+    //   278: iconst_2
+    //   279: aload 5
+    //   281: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   284: invokestatic 346	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   287: aload_3
+    //   288: ifnull +21 -> 309
+    //   291: aload_3
+    //   292: invokevirtual 536	java/io/FileInputStream:close	()V
+    //   295: goto +14 -> 309
+    //   298: astore_1
+    //   299: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   302: ifeq +7 -> 309
+    //   305: aload_1
+    //   306: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   309: aload_0
+    //   310: ifnull +21 -> 331
     //   313: aload_0
-    //   314: athrow
-    //   315: astore_1
-    //   316: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   319: ifeq -14 -> 305
-    //   322: aload_1
-    //   323: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   326: goto -21 -> 305
-    //   329: astore_1
-    //   330: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   333: ifeq -20 -> 313
+    //   314: invokevirtual 540	java/io/ObjectInputStream:close	()V
+    //   317: goto +14 -> 331
+    //   320: astore_0
+    //   321: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   324: ifeq +7 -> 331
+    //   327: aload_0
+    //   328: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   331: aconst_null
+    //   332: astore_0
+    //   333: aload_0
+    //   334: areturn
+    //   335: astore_3
     //   336: aload_1
-    //   337: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   340: goto -27 -> 313
-    //   343: astore_0
-    //   344: aconst_null
-    //   345: astore_3
-    //   346: goto -49 -> 297
+    //   337: astore_0
+    //   338: aload_0
+    //   339: ifnull +21 -> 360
+    //   342: aload_0
+    //   343: invokevirtual 536	java/io/FileInputStream:close	()V
+    //   346: goto +14 -> 360
     //   349: astore_0
-    //   350: aload_2
-    //   351: astore_1
-    //   352: goto -55 -> 297
-    //   355: astore 4
-    //   357: aconst_null
-    //   358: astore_0
-    //   359: goto -162 -> 197
-    //   362: astore 4
-    //   364: aload 5
-    //   366: astore_0
-    //   367: goto -170 -> 197
-    //   370: aconst_null
+    //   350: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   353: ifeq +7 -> 360
+    //   356: aload_0
+    //   357: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   360: aload_2
+    //   361: ifnull +21 -> 382
+    //   364: aload_2
+    //   365: invokevirtual 540	java/io/ObjectInputStream:close	()V
+    //   368: goto +14 -> 382
     //   371: astore_0
-    //   372: goto -217 -> 155
+    //   372: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   375: ifeq +7 -> 382
+    //   378: aload_0
+    //   379: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   382: aload_3
+    //   383: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	375	0	paramString	String
-    //   98	38	1	localFileInputStream	java.io.FileInputStream
-    //   171	11	1	localIOException1	java.io.IOException
-    //   196	50	1	localObject1	Object
-    //   262	8	1	localIOException2	java.io.IOException
-    //   296	6	1	localObject2	Object
-    //   315	8	1	localIOException3	java.io.IOException
-    //   329	8	1	localIOException4	java.io.IOException
-    //   351	1	1	localObject3	Object
-    //   120	231	2	localObject4	Object
-    //   118	228	3	localObject5	Object
-    //   129	57	4	localOcrConfig	OcrConfig
-    //   191	37	4	localException1	Exception
-    //   355	1	4	localException2	Exception
-    //   362	1	4	localException3	Exception
-    //   114	251	5	localObjectInputStream	java.io.ObjectInputStream
+    //   0	384	0	paramString	String
+    //   42	84	1	localObject1	Object
+    //   163	10	1	localIOException1	java.io.IOException
+    //   178	7	1	localException1	Exception
+    //   199	75	1	localObject2	Object
+    //   298	39	1	localIOException2	java.io.IOException
+    //   50	315	2	localObject3	Object
+    //   137	44	3	localObject4	Object
+    //   190	1	3	localObject5	Object
+    //   201	1	3	str	String
+    //   207	1	3	localObject6	Object
+    //   218	74	3	localObject7	Object
+    //   335	48	3	localObject8	Object
+    //   122	64	4	localObject9	Object
+    //   196	1	4	localException2	Exception
+    //   215	49	4	localException3	Exception
+    //   242	38	5	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   135	139	157	java/io/IOException
-    //   147	152	171	java/io/IOException
-    //   90	99	191	java/lang/Exception
-    //   245	249	262	java/io/IOException
-    //   253	257	276	java/io/IOException
-    //   90	99	292	finally
-    //   301	305	315	java/io/IOException
-    //   309	313	329	java/io/IOException
-    //   99	116	343	finally
-    //   121	131	349	finally
-    //   201	207	349	finally
-    //   211	241	349	finally
-    //   99	116	355	java/lang/Exception
-    //   121	131	362	java/lang/Exception
+    //   138	142	145	java/io/IOException
+    //   156	161	163	java/io/IOException
+    //   129	138	178	java/lang/Exception
+    //   107	124	190	finally
+    //   107	124	196	java/lang/Exception
+    //   98	107	207	finally
+    //   98	107	215	java/lang/Exception
+    //   291	295	298	java/io/IOException
+    //   313	317	320	java/io/IOException
+    //   129	138	335	finally
+    //   225	231	335	finally
+    //   235	244	335	finally
+    //   248	257	335	finally
+    //   261	272	335	finally
+    //   276	287	335	finally
+    //   342	346	349	java/io/IOException
+    //   364	368	371	java/io/IOException
   }
   
   public int describeContents()
@@ -766,62 +835,55 @@ public class OcrConfig
   
   public String getTranslateLanguageName(String paramString)
   {
-    Object localObject;
-    if (TextUtils.isEmpty(paramString))
-    {
-      localObject = "";
-      return localObject;
+    if (TextUtils.isEmpty(paramString)) {
+      return "";
     }
     String str = null;
-    if (this.translateLanguageNames != null) {
-      str = (String)this.translateLanguageNames.get(paramString);
+    HashMap localHashMap = this.translateLanguageNames;
+    if (localHashMap != null) {
+      str = (String)localHashMap.get(paramString);
     }
     if (TextUtils.isEmpty(str)) {
       str = getDefaultLanguageName(paramString);
-    }
-    for (;;)
-    {
-      localObject = str;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("OcrConfig", 2, String.format("getTranslateLanguageName, code:%s, name:%s", new Object[] { paramString, str }));
-      return str;
+    } else {
       QLog.d("OcrConfig", 1, "translateLanguageNames == null");
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("OcrConfig", 2, String.format("getTranslateLanguageName, code:%s, name:%s", new Object[] { paramString, str }));
+    }
+    return str;
   }
   
   public List<String> getTranslateSupportLanguages(String paramString)
   {
-    List localList2 = null;
-    List localList1 = null;
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramString = localList1;
-      return paramString;
+    boolean bool = TextUtils.isEmpty(paramString);
+    List localList = null;
+    if (bool) {
+      return null;
     }
-    if (this.translateSupportLanguages != null) {
-      localList2 = (List)this.translateSupportLanguages.get(paramString);
-    }
-    for (;;)
-    {
-      if (localList2 != null)
-      {
-        localList1 = localList2;
-        if (localList2.size() != 0) {}
-      }
-      else
-      {
-        localList1 = getDefaultSupportLanguages(paramString);
-      }
-      paramString = localList1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("OcrConfig", 2, "getTranslateSupportLanguages, list = " + localList1);
-      return localList1;
+    Object localObject = this.translateSupportLanguages;
+    if (localObject != null) {
+      localList = (List)((HashMap)localObject).get(paramString);
+    } else {
       QLog.d("OcrConfig", 1, "translateSupportLanguages == null");
     }
+    if (localList != null)
+    {
+      localObject = localList;
+      if (localList.size() != 0) {}
+    }
+    else
+    {
+      localObject = getDefaultSupportLanguages(paramString);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("getTranslateSupportLanguages, list = ");
+      paramString.append(localObject);
+      QLog.d("OcrConfig", 2, paramString.toString());
+    }
+    return localObject;
   }
   
   public boolean isEntryOpen()
@@ -833,509 +895,534 @@ public class OcrConfig
   public void saveToFile(String paramString)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aload_1
-    //   3: invokestatic 356	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: ifeq +19 -> 25
-    //   9: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   12: ifeq +12 -> 24
-    //   15: ldc 24
-    //   17: iconst_2
-    //   18: ldc_w 570
-    //   21: invokestatic 348	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   24: return
-    //   25: invokestatic 307	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   28: new 309	java/lang/StringBuilder
-    //   31: dup
-    //   32: invokespecial 310	java/lang/StringBuilder:<init>	()V
-    //   35: ldc_w 312
-    //   38: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: aload_1
-    //   42: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   45: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   48: invokevirtual 325	com/tencent/qphone/base/util/BaseApplication:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   51: astore 8
-    //   53: invokestatic 307	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   56: new 309	java/lang/StringBuilder
-    //   59: dup
-    //   60: invokespecial 310	java/lang/StringBuilder:<init>	()V
-    //   63: ldc_w 312
-    //   66: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   69: aload_1
-    //   70: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: ldc_w 572
-    //   76: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokevirtual 325	com/tencent/qphone/base/util/BaseApplication:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
-    //   85: astore 9
-    //   87: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   90: ifeq +33 -> 123
-    //   93: ldc 24
-    //   95: iconst_2
-    //   96: new 309	java/lang/StringBuilder
-    //   99: dup
-    //   100: invokespecial 310	java/lang/StringBuilder:<init>	()V
-    //   103: ldc_w 574
-    //   106: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   109: aload 8
-    //   111: invokevirtual 344	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   114: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   120: invokestatic 348	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   123: aload 9
-    //   125: invokevirtual 331	java/io/File:exists	()Z
-    //   128: ifeq +9 -> 137
-    //   131: aload 9
-    //   133: invokevirtual 334	java/io/File:delete	()Z
-    //   136: pop
-    //   137: aload 9
-    //   139: invokevirtual 577	java/io/File:createNewFile	()Z
-    //   142: pop
-    //   143: new 579	java/io/FileOutputStream
-    //   146: dup
-    //   147: aload 9
-    //   149: invokespecial 580	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   152: astore_3
-    //   153: new 582	java/io/BufferedOutputStream
-    //   156: dup
-    //   157: aload_3
-    //   158: invokespecial 585	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   161: astore_1
-    //   162: new 587	java/io/ObjectOutputStream
-    //   165: dup
-    //   166: aload_1
-    //   167: invokespecial 588	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   170: astore 4
-    //   172: aload_3
-    //   173: astore 7
-    //   175: aload_1
-    //   176: astore 6
-    //   178: aload 4
-    //   180: astore 5
-    //   182: aload 4
-    //   184: aload_0
-    //   185: invokevirtual 592	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   188: aload_3
-    //   189: astore 7
-    //   191: aload_1
-    //   192: astore 6
-    //   194: aload 4
-    //   196: astore 5
-    //   198: aload 4
-    //   200: invokevirtual 595	java/io/ObjectOutputStream:flush	()V
-    //   203: aload_3
-    //   204: astore 7
-    //   206: aload_1
-    //   207: astore 6
-    //   209: aload 4
-    //   211: astore 5
-    //   213: aload 8
-    //   215: invokevirtual 331	java/io/File:exists	()Z
-    //   218: ifeq +19 -> 237
-    //   221: aload_3
-    //   222: astore 7
-    //   224: aload_1
-    //   225: astore 6
-    //   227: aload 4
-    //   229: astore 5
-    //   231: aload 8
-    //   233: invokevirtual 334	java/io/File:delete	()Z
-    //   236: pop
-    //   237: aload_3
-    //   238: astore 7
-    //   240: aload_1
-    //   241: astore 6
-    //   243: aload 4
-    //   245: astore 5
-    //   247: aload 9
-    //   249: aload 8
-    //   251: invokevirtual 599	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   254: pop
-    //   255: aload_3
-    //   256: astore 7
-    //   258: aload_1
-    //   259: astore 6
-    //   261: aload 4
-    //   263: astore 5
-    //   265: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   268: ifeq +22 -> 290
-    //   271: aload_3
-    //   272: astore 7
-    //   274: aload_1
-    //   275: astore 6
-    //   277: aload 4
-    //   279: astore 5
-    //   281: ldc 24
-    //   283: iconst_2
-    //   284: ldc_w 601
-    //   287: invokestatic 348	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   290: aload_3
-    //   291: ifnull +7 -> 298
-    //   294: aload_3
-    //   295: invokevirtual 602	java/io/FileOutputStream:close	()V
-    //   298: aload_1
-    //   299: ifnull +7 -> 306
-    //   302: aload_1
-    //   303: invokevirtual 603	java/io/BufferedOutputStream:close	()V
-    //   306: aload 4
-    //   308: ifnull -284 -> 24
-    //   311: aload 4
-    //   313: invokevirtual 604	java/io/ObjectOutputStream:close	()V
-    //   316: return
-    //   317: astore_1
-    //   318: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   321: ifeq -297 -> 24
-    //   324: aload_1
-    //   325: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   328: return
-    //   329: astore_2
-    //   330: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   333: ifeq -35 -> 298
-    //   336: aload_2
-    //   337: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   340: goto -42 -> 298
-    //   343: astore_1
-    //   344: aload_1
-    //   345: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   348: goto -42 -> 306
-    //   351: astore 4
-    //   353: aconst_null
-    //   354: astore_3
-    //   355: aconst_null
-    //   356: astore_1
-    //   357: aload 4
-    //   359: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   362: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   365: ifeq +33 -> 398
-    //   368: ldc 24
-    //   370: iconst_2
-    //   371: new 309	java/lang/StringBuilder
-    //   374: dup
-    //   375: invokespecial 310	java/lang/StringBuilder:<init>	()V
-    //   378: ldc_w 606
-    //   381: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   0: aload_1
+    //   1: invokestatic 354	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: ifeq +19 -> 23
+    //   7: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   10: ifeq +12 -> 22
+    //   13: ldc 24
+    //   15: iconst_2
+    //   16: ldc_w 568
+    //   19: invokestatic 346	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   22: return
+    //   23: getstatic 307	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
+    //   26: astore_2
+    //   27: new 309	java/lang/StringBuilder
+    //   30: dup
+    //   31: invokespecial 310	java/lang/StringBuilder:<init>	()V
+    //   34: astore_3
+    //   35: aload_3
+    //   36: ldc_w 312
+    //   39: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: pop
+    //   43: aload_3
+    //   44: aload_1
+    //   45: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   48: pop
+    //   49: aload_2
+    //   50: aload_3
+    //   51: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   54: invokevirtual 323	mqq/app/MobileQQ:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   57: astore 7
+    //   59: getstatic 307	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
+    //   62: astore_2
+    //   63: new 309	java/lang/StringBuilder
+    //   66: dup
+    //   67: invokespecial 310	java/lang/StringBuilder:<init>	()V
+    //   70: astore_3
+    //   71: aload_3
+    //   72: ldc_w 312
+    //   75: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   78: pop
+    //   79: aload_3
+    //   80: aload_1
+    //   81: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: pop
+    //   85: aload_3
+    //   86: ldc_w 570
+    //   89: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   92: pop
+    //   93: aload_2
+    //   94: aload_3
+    //   95: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   98: invokevirtual 323	mqq/app/MobileQQ:getFileStreamPath	(Ljava/lang/String;)Ljava/io/File;
+    //   101: astore 9
+    //   103: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   106: ifeq +39 -> 145
+    //   109: new 309	java/lang/StringBuilder
+    //   112: dup
+    //   113: invokespecial 310	java/lang/StringBuilder:<init>	()V
+    //   116: astore_1
+    //   117: aload_1
+    //   118: ldc_w 572
+    //   121: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: pop
+    //   125: aload_1
+    //   126: aload 7
+    //   128: invokevirtual 342	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   131: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: pop
+    //   135: ldc 24
+    //   137: iconst_2
+    //   138: aload_1
+    //   139: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   142: invokestatic 346	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   145: aload 9
+    //   147: invokevirtual 329	java/io/File:exists	()Z
+    //   150: ifeq +9 -> 159
+    //   153: aload 9
+    //   155: invokevirtual 332	java/io/File:delete	()Z
+    //   158: pop
+    //   159: aconst_null
+    //   160: astore 8
+    //   162: aconst_null
+    //   163: astore_3
+    //   164: aconst_null
+    //   165: astore 4
+    //   167: aconst_null
+    //   168: astore 5
+    //   170: aload 9
+    //   172: invokevirtual 575	java/io/File:createNewFile	()Z
+    //   175: pop
+    //   176: new 577	java/io/FileOutputStream
+    //   179: dup
+    //   180: aload 9
+    //   182: invokespecial 578	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   185: astore_1
+    //   186: new 580	java/io/BufferedOutputStream
+    //   189: dup
+    //   190: aload_1
+    //   191: invokespecial 583	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   194: astore_2
+    //   195: aload_3
+    //   196: astore 4
+    //   198: aload_1
+    //   199: astore 5
+    //   201: aload_2
+    //   202: astore 6
+    //   204: new 585	java/io/ObjectOutputStream
+    //   207: dup
+    //   208: aload_2
+    //   209: invokespecial 586	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   212: astore_3
+    //   213: aload_3
+    //   214: aload_0
+    //   215: invokevirtual 590	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   218: aload_3
+    //   219: invokevirtual 593	java/io/ObjectOutputStream:flush	()V
+    //   222: aload 7
+    //   224: invokevirtual 329	java/io/File:exists	()Z
+    //   227: ifeq +9 -> 236
+    //   230: aload 7
+    //   232: invokevirtual 332	java/io/File:delete	()Z
+    //   235: pop
+    //   236: aload 9
+    //   238: aload 7
+    //   240: invokevirtual 597	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   243: pop
+    //   244: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   247: ifeq +12 -> 259
+    //   250: ldc 24
+    //   252: iconst_2
+    //   253: ldc_w 599
+    //   256: invokestatic 346	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   259: aload_1
+    //   260: invokevirtual 600	java/io/FileOutputStream:close	()V
+    //   263: goto +14 -> 277
+    //   266: astore_1
+    //   267: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   270: ifeq +7 -> 277
+    //   273: aload_1
+    //   274: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   277: aload_2
+    //   278: invokevirtual 601	java/io/BufferedOutputStream:close	()V
+    //   281: goto +8 -> 289
+    //   284: astore_1
+    //   285: aload_1
+    //   286: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   289: aload_3
+    //   290: invokevirtual 602	java/io/ObjectOutputStream:close	()V
+    //   293: return
+    //   294: astore_1
+    //   295: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   298: ifeq +409 -> 707
+    //   301: aload_1
+    //   302: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   305: return
+    //   306: astore 5
+    //   308: aload_3
+    //   309: astore 4
+    //   311: aload 5
+    //   313: astore_3
+    //   314: goto +212 -> 526
+    //   317: astore 5
+    //   319: aload_2
+    //   320: astore 4
+    //   322: aload_3
+    //   323: astore_2
+    //   324: aload 5
+    //   326: astore_3
+    //   327: goto +54 -> 381
+    //   330: astore 4
+    //   332: aload_1
+    //   333: astore 7
+    //   335: aload 4
+    //   337: astore_1
+    //   338: goto +201 -> 539
+    //   341: astore_3
+    //   342: aconst_null
+    //   343: astore 5
+    //   345: aload_2
+    //   346: astore 4
+    //   348: aload 5
+    //   350: astore_2
+    //   351: goto +30 -> 381
+    //   354: astore 4
+    //   356: aload 8
+    //   358: astore_3
+    //   359: aload_1
+    //   360: astore 7
+    //   362: aload 4
+    //   364: astore_1
+    //   365: goto +174 -> 539
+    //   368: astore_3
+    //   369: aconst_null
+    //   370: astore_2
+    //   371: goto +344 -> 715
+    //   374: astore_3
+    //   375: aconst_null
+    //   376: astore 4
+    //   378: aload 4
+    //   380: astore_2
+    //   381: aload_1
+    //   382: astore 5
     //   384: aload 4
-    //   386: invokevirtual 607	java/io/IOException:toString	()Ljava/lang/String;
-    //   389: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   392: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   395: invokestatic 348	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   398: aload_3
-    //   399: ifnull +7 -> 406
-    //   402: aload_3
-    //   403: invokevirtual 602	java/io/FileOutputStream:close	()V
-    //   406: aload_2
-    //   407: ifnull +7 -> 414
-    //   410: aload_2
-    //   411: invokevirtual 603	java/io/BufferedOutputStream:close	()V
-    //   414: aload_1
-    //   415: ifnull -391 -> 24
-    //   418: aload_1
-    //   419: invokevirtual 604	java/io/ObjectOutputStream:close	()V
-    //   422: return
-    //   423: astore_1
-    //   424: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   427: ifeq -403 -> 24
-    //   430: aload_1
-    //   431: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   434: return
-    //   435: astore_3
-    //   436: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   439: ifeq -33 -> 406
-    //   442: aload_3
-    //   443: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   446: goto -40 -> 406
-    //   449: astore_2
-    //   450: aload_2
-    //   451: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   454: goto -40 -> 414
-    //   457: astore_2
-    //   458: aconst_null
-    //   459: astore 8
-    //   461: aconst_null
-    //   462: astore_3
-    //   463: aconst_null
-    //   464: astore_1
-    //   465: aload 8
-    //   467: astore 7
-    //   469: aload_3
-    //   470: astore 6
-    //   472: aload_1
-    //   473: astore 5
-    //   475: ldc 24
-    //   477: iconst_2
-    //   478: new 309	java/lang/StringBuilder
-    //   481: dup
-    //   482: invokespecial 310	java/lang/StringBuilder:<init>	()V
-    //   485: ldc_w 609
-    //   488: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   491: aload_2
-    //   492: invokevirtual 612	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   495: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   498: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   501: invokestatic 348	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   504: aload 8
-    //   506: ifnull +8 -> 514
-    //   509: aload 8
-    //   511: invokevirtual 602	java/io/FileOutputStream:close	()V
-    //   514: aload_3
-    //   515: ifnull +7 -> 522
-    //   518: aload_3
-    //   519: invokevirtual 603	java/io/BufferedOutputStream:close	()V
-    //   522: aload_1
-    //   523: ifnull -499 -> 24
-    //   526: aload_1
-    //   527: invokevirtual 604	java/io/ObjectOutputStream:close	()V
-    //   530: return
-    //   531: astore_1
-    //   532: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   535: ifeq -511 -> 24
-    //   538: aload_1
-    //   539: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   542: return
-    //   543: astore_2
-    //   544: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   547: ifeq -33 -> 514
-    //   550: aload_2
-    //   551: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   554: goto -40 -> 514
-    //   557: astore_2
-    //   558: aload_2
-    //   559: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   562: goto -40 -> 522
-    //   565: astore_2
-    //   566: aconst_null
-    //   567: astore 4
-    //   569: aconst_null
-    //   570: astore_1
-    //   571: aconst_null
-    //   572: astore_3
-    //   573: aload 4
-    //   575: ifnull +8 -> 583
-    //   578: aload 4
-    //   580: invokevirtual 602	java/io/FileOutputStream:close	()V
-    //   583: aload_1
-    //   584: ifnull +7 -> 591
-    //   587: aload_1
-    //   588: invokevirtual 603	java/io/BufferedOutputStream:close	()V
-    //   591: aload_3
-    //   592: ifnull +7 -> 599
-    //   595: aload_3
-    //   596: invokevirtual 604	java/io/ObjectOutputStream:close	()V
-    //   599: aload_2
-    //   600: athrow
-    //   601: astore 4
-    //   603: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   606: ifeq -23 -> 583
-    //   609: aload 4
-    //   611: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   614: goto -31 -> 583
-    //   617: astore_1
-    //   618: aload_1
-    //   619: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   622: goto -31 -> 591
-    //   625: astore_1
-    //   626: invokestatic 339	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   629: ifeq -30 -> 599
-    //   632: aload_1
-    //   633: invokevirtual 542	java/io/IOException:printStackTrace	()V
-    //   636: goto -37 -> 599
-    //   639: astore_2
-    //   640: aconst_null
-    //   641: astore_1
-    //   642: aconst_null
-    //   643: astore 5
-    //   645: aload_3
-    //   646: astore 4
-    //   648: aload 5
-    //   650: astore_3
-    //   651: goto -78 -> 573
-    //   654: astore_2
-    //   655: aconst_null
-    //   656: astore 5
-    //   658: aload_3
-    //   659: astore 4
-    //   661: aload 5
-    //   663: astore_3
-    //   664: goto -91 -> 573
-    //   667: astore_2
-    //   668: aload 7
-    //   670: astore 4
-    //   672: aload 6
-    //   674: astore_1
-    //   675: aload 5
-    //   677: astore_3
-    //   678: goto -105 -> 573
-    //   681: astore 4
-    //   683: aload_1
-    //   684: astore 5
-    //   686: aload_2
-    //   687: astore_1
-    //   688: aload 4
-    //   690: astore_2
-    //   691: aload_3
-    //   692: astore 4
-    //   694: aload 5
-    //   696: astore_3
-    //   697: goto -124 -> 573
-    //   700: astore_2
-    //   701: aconst_null
-    //   702: astore 4
-    //   704: aconst_null
-    //   705: astore_1
-    //   706: aload_3
-    //   707: astore 8
-    //   709: aload 4
-    //   711: astore_3
-    //   712: goto -247 -> 465
-    //   715: astore_2
-    //   716: aconst_null
-    //   717: astore 4
-    //   719: aload_3
-    //   720: astore 8
-    //   722: aload_1
-    //   723: astore_3
-    //   724: aload 4
+    //   386: astore_1
+    //   387: goto +32 -> 419
+    //   390: astore 4
+    //   392: aconst_null
+    //   393: astore_2
+    //   394: aload 8
+    //   396: astore_3
+    //   397: aload_1
+    //   398: astore 7
+    //   400: aload 4
+    //   402: astore_1
+    //   403: goto +136 -> 539
+    //   406: astore_3
+    //   407: aconst_null
+    //   408: astore_1
+    //   409: aload_1
+    //   410: astore_2
+    //   411: goto +304 -> 715
+    //   414: astore_3
+    //   415: aconst_null
+    //   416: astore_1
+    //   417: aload_1
+    //   418: astore_2
+    //   419: new 309	java/lang/StringBuilder
+    //   422: dup
+    //   423: invokespecial 310	java/lang/StringBuilder:<init>	()V
+    //   426: astore 4
+    //   428: aload 4
+    //   430: ldc_w 604
+    //   433: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   436: pop
+    //   437: aload 4
+    //   439: aload_3
+    //   440: invokevirtual 607	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   443: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   446: pop
+    //   447: ldc 24
+    //   449: iconst_2
+    //   450: aload 4
+    //   452: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   455: invokestatic 346	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   458: aload 5
+    //   460: ifnull +22 -> 482
+    //   463: aload 5
+    //   465: invokevirtual 600	java/io/FileOutputStream:close	()V
+    //   468: goto +14 -> 482
+    //   471: astore_3
+    //   472: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   475: ifeq +7 -> 482
+    //   478: aload_3
+    //   479: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   482: aload_1
+    //   483: ifnull +15 -> 498
+    //   486: aload_1
+    //   487: invokevirtual 601	java/io/BufferedOutputStream:close	()V
+    //   490: goto +8 -> 498
+    //   493: astore_1
+    //   494: aload_1
+    //   495: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   498: aload_2
+    //   499: ifnull +208 -> 707
+    //   502: aload_2
+    //   503: invokevirtual 602	java/io/ObjectOutputStream:close	()V
+    //   506: return
+    //   507: astore_1
+    //   508: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   511: ifeq +196 -> 707
+    //   514: goto -213 -> 301
+    //   517: astore_3
+    //   518: aload_2
+    //   519: astore 4
+    //   521: aload_1
+    //   522: astore_2
+    //   523: aload 5
+    //   525: astore_1
+    //   526: goto +189 -> 715
+    //   529: astore_1
+    //   530: aconst_null
+    //   531: astore 7
+    //   533: aload 7
+    //   535: astore_2
+    //   536: aload 8
+    //   538: astore_3
+    //   539: aload_3
+    //   540: astore 4
+    //   542: aload 7
+    //   544: astore 5
+    //   546: aload_2
+    //   547: astore 6
+    //   549: aload_1
+    //   550: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   553: aload_3
+    //   554: astore 4
+    //   556: aload 7
+    //   558: astore 5
+    //   560: aload_2
+    //   561: astore 6
+    //   563: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   566: ifeq +82 -> 648
+    //   569: aload_3
+    //   570: astore 4
+    //   572: aload 7
+    //   574: astore 5
+    //   576: aload_2
+    //   577: astore 6
+    //   579: new 309	java/lang/StringBuilder
+    //   582: dup
+    //   583: invokespecial 310	java/lang/StringBuilder:<init>	()V
+    //   586: astore 8
+    //   588: aload_3
+    //   589: astore 4
+    //   591: aload 7
+    //   593: astore 5
+    //   595: aload_2
+    //   596: astore 6
+    //   598: aload 8
+    //   600: ldc_w 609
+    //   603: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   606: pop
+    //   607: aload_3
+    //   608: astore 4
+    //   610: aload 7
+    //   612: astore 5
+    //   614: aload_2
+    //   615: astore 6
+    //   617: aload 8
+    //   619: aload_1
+    //   620: invokevirtual 610	java/io/IOException:toString	()Ljava/lang/String;
+    //   623: invokevirtual 316	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   626: pop
+    //   627: aload_3
+    //   628: astore 4
+    //   630: aload 7
+    //   632: astore 5
+    //   634: aload_2
+    //   635: astore 6
+    //   637: ldc 24
+    //   639: iconst_2
+    //   640: aload 8
+    //   642: invokevirtual 319	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   645: invokestatic 346	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   648: aload 7
+    //   650: ifnull +22 -> 672
+    //   653: aload 7
+    //   655: invokevirtual 600	java/io/FileOutputStream:close	()V
+    //   658: goto +14 -> 672
+    //   661: astore_1
+    //   662: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   665: ifeq +7 -> 672
+    //   668: aload_1
+    //   669: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   672: aload_2
+    //   673: ifnull +15 -> 688
+    //   676: aload_2
+    //   677: invokevirtual 601	java/io/BufferedOutputStream:close	()V
+    //   680: goto +8 -> 688
+    //   683: astore_1
+    //   684: aload_1
+    //   685: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   688: aload_3
+    //   689: ifnull +18 -> 707
+    //   692: aload_3
+    //   693: invokevirtual 602	java/io/ObjectOutputStream:close	()V
+    //   696: return
+    //   697: astore_1
+    //   698: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   701: ifeq +6 -> 707
+    //   704: goto -403 -> 301
+    //   707: return
+    //   708: astore_3
+    //   709: aload 6
+    //   711: astore_2
+    //   712: aload 5
+    //   714: astore_1
+    //   715: aload_1
+    //   716: ifnull +21 -> 737
+    //   719: aload_1
+    //   720: invokevirtual 600	java/io/FileOutputStream:close	()V
+    //   723: goto +14 -> 737
     //   726: astore_1
-    //   727: goto -262 -> 465
-    //   730: astore_2
-    //   731: aload_3
-    //   732: astore 8
-    //   734: aload_1
-    //   735: astore_3
-    //   736: aload 4
-    //   738: astore_1
-    //   739: goto -274 -> 465
-    //   742: astore 4
-    //   744: aconst_null
-    //   745: astore_1
-    //   746: goto -389 -> 357
-    //   749: astore 4
-    //   751: aconst_null
-    //   752: astore 5
-    //   754: aload_1
-    //   755: astore_2
-    //   756: aload 5
-    //   758: astore_1
-    //   759: goto -402 -> 357
-    //   762: astore_2
-    //   763: aload 4
-    //   765: astore 5
-    //   767: aload_2
-    //   768: astore 4
-    //   770: aload_1
-    //   771: astore_2
-    //   772: aload 5
-    //   774: astore_1
-    //   775: goto -418 -> 357
+    //   727: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   730: ifeq +7 -> 737
+    //   733: aload_1
+    //   734: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   737: aload_2
+    //   738: ifnull +15 -> 753
+    //   741: aload_2
+    //   742: invokevirtual 601	java/io/BufferedOutputStream:close	()V
+    //   745: goto +8 -> 753
+    //   748: astore_1
+    //   749: aload_1
+    //   750: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   753: aload 4
+    //   755: ifnull +22 -> 777
+    //   758: aload 4
+    //   760: invokevirtual 602	java/io/ObjectOutputStream:close	()V
+    //   763: goto +14 -> 777
+    //   766: astore_1
+    //   767: invokestatic 337	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   770: ifeq +7 -> 777
+    //   773: aload_1
+    //   774: invokevirtual 539	java/io/IOException:printStackTrace	()V
+    //   777: goto +5 -> 782
+    //   780: aload_3
+    //   781: athrow
+    //   782: goto -2 -> 780
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	778	0	this	OcrConfig
-    //   0	778	1	paramString	String
-    //   1	1	2	localObject1	Object
-    //   329	82	2	localIOException1	java.io.IOException
-    //   449	2	2	localIOException2	java.io.IOException
-    //   457	35	2	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   543	8	2	localIOException3	java.io.IOException
-    //   557	2	2	localIOException4	java.io.IOException
-    //   565	35	2	localObject2	Object
-    //   639	1	2	localObject3	Object
-    //   654	1	2	localObject4	Object
-    //   667	20	2	localObject5	Object
-    //   690	1	2	localObject6	Object
-    //   700	1	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   715	1	2	localOutOfMemoryError3	java.lang.OutOfMemoryError
-    //   730	1	2	localOutOfMemoryError4	java.lang.OutOfMemoryError
-    //   755	1	2	str1	String
-    //   762	6	2	localIOException5	java.io.IOException
-    //   771	1	2	str2	String
-    //   152	251	3	localFileOutputStream	java.io.FileOutputStream
-    //   435	8	3	localIOException6	java.io.IOException
-    //   462	274	3	localObject7	Object
-    //   170	142	4	localObjectOutputStream	java.io.ObjectOutputStream
-    //   351	34	4	localIOException7	java.io.IOException
-    //   567	12	4	localObject8	Object
-    //   601	9	4	localIOException8	java.io.IOException
-    //   646	25	4	localObject9	Object
-    //   681	8	4	localObject10	Object
-    //   692	45	4	localObject11	Object
-    //   742	1	4	localIOException9	java.io.IOException
-    //   749	15	4	localIOException10	java.io.IOException
-    //   768	1	4	localIOException11	java.io.IOException
-    //   180	593	5	localObject12	Object
-    //   176	497	6	localObject13	Object
-    //   173	496	7	localObject14	Object
-    //   51	682	8	localObject15	Object
-    //   85	163	9	localFile	File
+    //   0	785	0	this	OcrConfig
+    //   0	785	1	paramString	String
+    //   26	716	2	localObject1	Object
+    //   34	293	3	localObject2	Object
+    //   341	1	3	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   358	1	3	localObject3	Object
+    //   368	1	3	localObject4	Object
+    //   374	1	3	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   396	1	3	localObject5	Object
+    //   406	1	3	localObject6	Object
+    //   414	26	3	localOutOfMemoryError3	java.lang.OutOfMemoryError
+    //   471	8	3	localIOException1	java.io.IOException
+    //   517	1	3	localObject7	Object
+    //   538	155	3	localObject8	Object
+    //   708	73	3	localObject9	Object
+    //   165	156	4	localObject10	Object
+    //   330	6	4	localIOException2	java.io.IOException
+    //   346	1	4	localObject11	Object
+    //   354	9	4	localIOException3	java.io.IOException
+    //   376	9	4	localObject12	Object
+    //   390	11	4	localIOException4	java.io.IOException
+    //   426	333	4	localObject13	Object
+    //   168	32	5	str	String
+    //   306	6	5	localObject14	Object
+    //   317	8	5	localOutOfMemoryError4	java.lang.OutOfMemoryError
+    //   343	370	5	localObject15	Object
+    //   202	508	6	localObject16	Object
+    //   57	597	7	localObject17	Object
+    //   160	481	8	localStringBuilder	StringBuilder
+    //   101	136	9	localFile	File
     // Exception table:
     //   from	to	target	type
-    //   311	316	317	java/io/IOException
-    //   294	298	329	java/io/IOException
-    //   302	306	343	java/io/IOException
-    //   137	153	351	java/io/IOException
-    //   418	422	423	java/io/IOException
-    //   402	406	435	java/io/IOException
-    //   410	414	449	java/io/IOException
-    //   137	153	457	java/lang/OutOfMemoryError
-    //   526	530	531	java/io/IOException
-    //   509	514	543	java/io/IOException
-    //   518	522	557	java/io/IOException
-    //   137	153	565	finally
-    //   578	583	601	java/io/IOException
-    //   587	591	617	java/io/IOException
-    //   595	599	625	java/io/IOException
-    //   153	162	639	finally
-    //   162	172	654	finally
-    //   182	188	667	finally
-    //   198	203	667	finally
-    //   213	221	667	finally
-    //   231	237	667	finally
-    //   247	255	667	finally
-    //   265	271	667	finally
-    //   281	290	667	finally
-    //   475	504	667	finally
-    //   357	398	681	finally
-    //   153	162	700	java/lang/OutOfMemoryError
-    //   162	172	715	java/lang/OutOfMemoryError
-    //   182	188	730	java/lang/OutOfMemoryError
-    //   198	203	730	java/lang/OutOfMemoryError
-    //   213	221	730	java/lang/OutOfMemoryError
-    //   231	237	730	java/lang/OutOfMemoryError
-    //   247	255	730	java/lang/OutOfMemoryError
-    //   265	271	730	java/lang/OutOfMemoryError
-    //   281	290	730	java/lang/OutOfMemoryError
-    //   153	162	742	java/io/IOException
-    //   162	172	749	java/io/IOException
-    //   182	188	762	java/io/IOException
-    //   198	203	762	java/io/IOException
-    //   213	221	762	java/io/IOException
-    //   231	237	762	java/io/IOException
-    //   247	255	762	java/io/IOException
-    //   265	271	762	java/io/IOException
-    //   281	290	762	java/io/IOException
+    //   259	263	266	java/io/IOException
+    //   277	281	284	java/io/IOException
+    //   289	293	294	java/io/IOException
+    //   213	236	306	finally
+    //   236	259	306	finally
+    //   213	236	317	java/lang/OutOfMemoryError
+    //   236	259	317	java/lang/OutOfMemoryError
+    //   213	236	330	java/io/IOException
+    //   236	259	330	java/io/IOException
+    //   204	213	341	java/lang/OutOfMemoryError
+    //   204	213	354	java/io/IOException
+    //   186	195	368	finally
+    //   186	195	374	java/lang/OutOfMemoryError
+    //   186	195	390	java/io/IOException
+    //   170	186	406	finally
+    //   170	186	414	java/lang/OutOfMemoryError
+    //   463	468	471	java/io/IOException
+    //   486	490	493	java/io/IOException
+    //   502	506	507	java/io/IOException
+    //   419	458	517	finally
+    //   170	186	529	java/io/IOException
+    //   653	658	661	java/io/IOException
+    //   676	680	683	java/io/IOException
+    //   692	696	697	java/io/IOException
+    //   204	213	708	finally
+    //   549	553	708	finally
+    //   563	569	708	finally
+    //   579	588	708	finally
+    //   598	607	708	finally
+    //   617	627	708	finally
+    //   637	648	708	finally
+    //   719	723	726	java/io/IOException
+    //   741	745	748	java/io/IOException
+    //   758	763	766	java/io/IOException
   }
   
   public String toString()
   {
+    StringBuilder localStringBuilder = new StringBuilder("OcrConfig{");
+    localStringBuilder.append("version:");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append(",scanOcrOpen,:");
+    localStringBuilder.append(this.scanOcrOpen);
+    localStringBuilder.append(",iconUrl:");
+    localStringBuilder.append(this.iconUrl);
+    localStringBuilder.append(",iconMd5:");
+    localStringBuilder.append(this.iconMd5);
+    localStringBuilder.append(",iconPressUrl:");
+    localStringBuilder.append(this.iconPressUrl);
+    localStringBuilder.append(",iconPressMD5:");
+    localStringBuilder.append(this.iconPressMD5);
+    localStringBuilder.append(",iconText:");
+    localStringBuilder.append(this.iconText);
+    localStringBuilder.append(",tips:");
+    localStringBuilder.append(this.tips);
+    localStringBuilder.append(",aioOcrOpen,:");
+    localStringBuilder.append(this.aioOcrOpen);
+    localStringBuilder.append(",aioText:");
+    localStringBuilder.append(this.aioText);
+    localStringBuilder.append(",chatFileOcrOpen:");
+    localStringBuilder.append(this.chatFileOcrOpen);
+    localStringBuilder.append(",qzoneOcrOpen:");
+    localStringBuilder.append(this.qzoneOcrOpen);
+    localStringBuilder.append(",questionScanOpen:");
+    localStringBuilder.append(this.questionScanOpen);
+    localStringBuilder.append(",questionResultOpen:");
+    localStringBuilder.append(this.questionResultOpen);
+    localStringBuilder.append(",translateLanguageNames:");
+    HashMap localHashMap = this.translateLanguageNames;
     int j = 0;
-    StringBuilder localStringBuilder1 = new StringBuilder("OcrConfig{");
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("version:").append(this.version).append(",scanOcrOpen,:").append(this.scanOcrOpen).append(",iconUrl:").append(this.iconUrl).append(",iconMd5:").append(this.iconMd5).append(",iconPressUrl:").append(this.iconPressUrl).append(",iconPressMD5:").append(this.iconPressMD5).append(",iconText:").append(this.iconText).append(",tips:").append(this.tips).append(",aioOcrOpen,:").append(this.aioOcrOpen).append(",aioText:").append(this.aioText).append(",chatFileOcrOpen:").append(this.chatFileOcrOpen).append(",qzoneOcrOpen:").append(this.qzoneOcrOpen).append(",questionScanOpen:").append(this.questionScanOpen).append(",questionResultOpen:").append(this.questionResultOpen).append(",translateLanguageNames:");
-    if (this.translateLanguageNames == null)
-    {
+    int i;
+    if (localHashMap == null) {
       i = 0;
-      localStringBuilder2 = localStringBuilder2.append(i).append(",translateSupportLanguages:");
-      if (this.translateSupportLanguages != null) {
-        break label259;
-      }
+    } else {
+      i = localHashMap.size();
     }
-    label259:
-    for (int i = j;; i = this.translateSupportLanguages.size())
-    {
-      localStringBuilder2.append(i);
-      return localStringBuilder1.toString();
-      i = this.translateLanguageNames.size();
-      break;
+    localStringBuilder.append(i);
+    localStringBuilder.append(",translateSupportLanguages:");
+    localHashMap = this.translateSupportLanguages;
+    if (localHashMap == null) {
+      i = j;
+    } else {
+      i = localHashMap.size();
     }
+    localStringBuilder.append(i);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -1358,7 +1445,7 @@ public class OcrConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.data.OcrConfig
  * JD-Core Version:    0.7.0.1
  */

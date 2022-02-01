@@ -5,6 +5,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.open.base.ToastUtil;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import common.config.service.QzoneAlphaConfig;
 import cooperation.qzone.PlatformInfor;
@@ -18,22 +19,27 @@ import mqq.app.AppRuntime;
 public class LpReportUtilsImpl
   implements ILpReportUtils
 {
+  protected static final String TAG = "LpReportUtilsImpl";
+  
   public int convertNetworkTypeToFitInDc00518(int paramInt)
   {
-    switch (paramInt)
+    int i = 1;
+    if (paramInt != 1)
     {
-    case 4: 
-    case 5: 
-    default: 
-      return 9;
-    case 1: 
-      return 1;
-    case 3: 
-      return 2;
-    case 2: 
-      return 3;
+      i = 3;
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 6) {
+            return 9;
+          }
+          return 4;
+        }
+        return 2;
+      }
     }
-    return 4;
+    return i;
   }
   
   public String getAPN()
@@ -69,6 +75,11 @@ public class LpReportUtilsImpl
     return PlatformInfor.g().getIMEI();
   }
   
+  public String getIMSI()
+  {
+    return PlatformInfor.g().getIMSI();
+  }
+  
   public String getInternalCacheDir()
   {
     return CacheManager.getInternalCacheDir();
@@ -76,7 +87,11 @@ public class LpReportUtilsImpl
   
   public long getLongAccountUin()
   {
-    return BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+    if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null)) {
+      return BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
+    }
+    QLog.e("LpReportUtilsImpl", 1, "getLongAccountUin runtime null");
+    return 0L;
   }
   
   public String getModuleFilePath(String paramString)
@@ -101,10 +116,12 @@ public class LpReportUtilsImpl
       SharedPreferences localSharedPreferences = paramBaseQQAppInterface.getPreferences();
       if (localSharedPreferences != null)
       {
-        if (localSharedPreferences.getInt("love_state_for_current_uin" + paramBaseQQAppInterface.getCurrentUin(), 0) == 1) {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("love_state_for_current_uin");
+        localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+        if (localSharedPreferences.getInt(localStringBuilder.toString(), 0) == 1) {
           return "1";
         }
-        return "2";
       }
     }
     return "2";
@@ -157,12 +174,17 @@ public class LpReportUtilsImpl
   
   public void startServlet(LpReportNewIntent paramLpReportNewIntent)
   {
-    BaseApplicationImpl.getApplication().getRuntime().startServlet(paramLpReportNewIntent);
+    if ((BaseApplicationImpl.getApplication() != null) && (BaseApplicationImpl.getApplication().getRuntime() != null))
+    {
+      BaseApplicationImpl.getApplication().getRuntime().startServlet(paramLpReportNewIntent);
+      return;
+    }
+    QLog.e("LpReportUtilsImpl", 1, "startServlet runtime null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qzonehub.api.report.lp.impl.LpReportUtilsImpl
  * JD-Core Version:    0.7.0.1
  */

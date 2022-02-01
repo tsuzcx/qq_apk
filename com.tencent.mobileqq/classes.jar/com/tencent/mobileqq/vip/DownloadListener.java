@@ -27,8 +27,16 @@ public abstract class DownloadListener
     }
     if (paramDownloadTask.a() != 3)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("DownloadListener", 2, "-->report MM:command=" + paramDownloadTask.c + ",error code=" + paramDownloadTask.jdField_a_of_type_Int + ",uin=" + paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("-->report MM:command=");
+        localStringBuilder.append(paramDownloadTask.c);
+        localStringBuilder.append(",error code=");
+        localStringBuilder.append(paramDownloadTask.jdField_a_of_type_Int);
+        localStringBuilder.append(",uin=");
+        localStringBuilder.append(paramDownloadTask.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo.a);
+        QLog.e("DownloadListener", 2, localStringBuilder.toString());
       }
       vipReportCgi(paramDownloadTask);
     }
@@ -86,37 +94,42 @@ public abstract class DownloadListener
   {
     if ((this.wifiFlow != null) && (this.xgFlow != null) && (paramAppInterface != null))
     {
-      Object localObject = null;
-      int i = NetworkUtil.a(paramAppInterface.getApplication().getApplicationContext());
-      paramAppInterface = localObject;
+      int i = NetworkUtil.getSystemNetwork(paramAppInterface.getApplication().getApplicationContext());
       if (i > 0)
       {
-        if (i != 1) {
-          break label120;
+        if (i == 1)
+        {
+          paramAppInterface = new String[3];
+          paramAppInterface[0] = this.wifiFlow;
+          paramAppInterface[1] = "param_WIFIFlow";
+          paramAppInterface[2] = "param_Flow";
         }
-        paramAppInterface = new String[3];
-        paramAppInterface[0] = this.wifiFlow;
-        paramAppInterface[1] = "param_WIFIFlow";
-        paramAppInterface[2] = "param_Flow";
+        else
+        {
+          paramAppInterface = new String[3];
+          paramAppInterface[0] = this.xgFlow;
+          paramAppInterface[1] = "param_XGFlow";
+          paramAppInterface[2] = "param_Flow";
+        }
       }
-    }
-    for (;;)
-    {
-      if ((paramAppInterface != null) && (paramLong > 0L) && (QLog.isColorLevel())) {
-        QLog.d("com.tencent.mobileqq.vip.DownloadListener", 2, "report | tags=" + paramAppInterface + ",len=" + paramLong);
+      else {
+        paramAppInterface = null;
       }
-      return;
-      label120:
-      paramAppInterface = new String[3];
-      paramAppInterface[0] = this.xgFlow;
-      paramAppInterface[1] = "param_XGFlow";
-      paramAppInterface[2] = "param_Flow";
+      if ((paramAppInterface != null) && (paramLong > 0L) && (QLog.isColorLevel()))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("report | tags=");
+        localStringBuilder.append(paramAppInterface);
+        localStringBuilder.append(",len=");
+        localStringBuilder.append(paramLong);
+        QLog.d("com.tencent.mobileqq.vip.DownloadListener", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.DownloadListener
  * JD-Core Version:    0.7.0.1
  */

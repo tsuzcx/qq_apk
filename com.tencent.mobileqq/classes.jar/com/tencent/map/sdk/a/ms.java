@@ -108,89 +108,100 @@ public class ms
     if (paramGeoPoint == null) {
       return;
     }
-    if (this.u == null) {
+    GeoPoint localGeoPoint = this.u;
+    if (localGeoPoint == null)
+    {
       this.u = new GeoPoint(paramGeoPoint.getLatitudeE6(), paramGeoPoint.getLongitudeE6());
     }
-    for (;;)
+    else
     {
-      if (this.H != null) {
-        this.H.a(this.u);
-      }
-      if (this.J == null) {
-        break;
-      }
-      this.J.a(fz.a(this.u));
-      return;
-      this.u.setLatitudeE6(paramGeoPoint.getLatitudeE6());
+      localGeoPoint.setLatitudeE6(paramGeoPoint.getLatitudeE6());
       this.u.setLongitudeE6(paramGeoPoint.getLongitudeE6());
+    }
+    paramGeoPoint = this.H;
+    if (paramGeoPoint != null) {
+      paramGeoPoint.a(this.u);
+    }
+    paramGeoPoint = this.J;
+    if (paramGeoPoint != null) {
+      paramGeoPoint.a(fz.a(this.u));
     }
   }
   
   public final void a(BitmapDescriptor paramBitmapDescriptor)
   {
-    if ((this.F == null) || (paramBitmapDescriptor == null)) {}
-    do
+    if (this.F != null)
     {
-      return;
-      paramBitmapDescriptor = paramBitmapDescriptor.getFormater();
-      if ((paramBitmapDescriptor != null) && (this.F != null))
-      {
-        Bitmap localBitmap = paramBitmapDescriptor.a(this.F.ay);
-        a(paramBitmapDescriptor.g);
-        b(localBitmap);
+      if (paramBitmapDescriptor == null) {
+        return;
       }
-    } while (this.J == null);
-    this.J.f();
+      paramBitmapDescriptor = paramBitmapDescriptor.getFormater();
+      if (paramBitmapDescriptor != null)
+      {
+        Object localObject = this.F;
+        if (localObject != null)
+        {
+          localObject = paramBitmapDescriptor.a(((pt)localObject).ay);
+          a(paramBitmapDescriptor.g);
+          b((Bitmap)localObject);
+        }
+      }
+      paramBitmapDescriptor = this.J;
+      if (paramBitmapDescriptor != null) {
+        paramBitmapDescriptor.f();
+      }
+    }
   }
   
   public final void a(MarkerOptions paramMarkerOptions)
   {
-    if (paramMarkerOptions == null) {}
-    do
-    {
+    if (paramMarkerOptions == null) {
       return;
-      this.s = paramMarkerOptions;
-      a(fz.a(paramMarkerOptions.getPosition()));
-      b(paramMarkerOptions.getAnchorU(), paramMarkerOptions.getAnchorV());
-      c(paramMarkerOptions.isVisible());
-      c(paramMarkerOptions.getRotation());
-      a(paramMarkerOptions.getIcon());
-      d(paramMarkerOptions.getAlpha());
-      b(paramMarkerOptions.getZIndex());
-      d(paramMarkerOptions.getLevel());
-      this.N = paramMarkerOptions.getIndoorInfo();
-      this.h = paramMarkerOptions.getTag();
-    } while ((this.F == null) || (paramMarkerOptions == null) || (this.H != null));
-    is localis = new is();
-    localis.a = fz.a(paramMarkerOptions.getPosition());
-    localis.e = paramMarkerOptions.getAlpha();
-    localis.a(paramMarkerOptions.getAnchorU(), paramMarkerOptions.getAnchorV());
-    Object localObject1 = new SecureRandom();
-    Object localObject2 = new byte[20];
-    ((SecureRandom)localObject1).nextBytes((byte[])localObject2);
-    localObject1 = new String((byte[])localObject2);
-    try
-    {
-      localObject2 = paramMarkerOptions.getIcon().getFormater().g;
-      localObject1 = localObject2;
     }
-    catch (NullPointerException localNullPointerException)
+    this.s = paramMarkerOptions;
+    a(fz.a(paramMarkerOptions.getPosition()));
+    b(paramMarkerOptions.getAnchorU(), paramMarkerOptions.getAnchorV());
+    c(paramMarkerOptions.isVisible());
+    c(paramMarkerOptions.getRotation());
+    a(paramMarkerOptions.getIcon());
+    d(paramMarkerOptions.getAlpha());
+    b(paramMarkerOptions.getZIndex());
+    d(paramMarkerOptions.getLevel());
+    this.N = paramMarkerOptions.getIndoorInfo();
+    this.h = paramMarkerOptions.getTag();
+    if ((this.F != null) && (paramMarkerOptions != null))
     {
-      for (;;)
+      if (this.H != null) {
+        return;
+      }
+      is localis = new is();
+      localis.a = fz.a(paramMarkerOptions.getPosition());
+      localis.e = paramMarkerOptions.getAlpha();
+      localis.a(paramMarkerOptions.getAnchorU(), paramMarkerOptions.getAnchorV());
+      Object localObject1 = new SecureRandom();
+      Object localObject2 = new byte[20];
+      ((SecureRandom)localObject1).nextBytes((byte[])localObject2);
+      localObject1 = new String((byte[])localObject2);
+      try
+      {
+        localObject2 = paramMarkerOptions.getIcon().getFormater().g;
+        localObject1 = localObject2;
+      }
+      catch (NullPointerException localNullPointerException)
       {
         localNullPointerException.printStackTrace();
       }
+      localObject1 = localis.a((String)localObject1, new Bitmap[] { paramMarkerOptions.getIcon().getBitmap(this.F.ay) });
+      ((is)localObject1).g = ((int)paramMarkerOptions.getRotation());
+      ((is)localObject1).f = paramMarkerOptions.isFlat();
+      ((is)localObject1).j = ((int)paramMarkerOptions.getZIndex());
+      ((is)localObject1).l = this.C;
+      ((is)localObject1).o = paramMarkerOptions.isAvoidAnnocation();
+      ((is)localObject1).p = paramMarkerOptions.isClockwise();
+      ((is)localObject1).m = paramMarkerOptions.isFastLoad();
+      ((is)localObject1).k = paramMarkerOptions.getLevel();
+      this.H = new ir(this.F.az.b.f, localis);
     }
-    localObject1 = localis.a((String)localObject1, new Bitmap[] { paramMarkerOptions.getIcon().getBitmap(this.F.ay) });
-    ((is)localObject1).g = ((int)paramMarkerOptions.getRotation());
-    ((is)localObject1).f = paramMarkerOptions.isFlat();
-    ((is)localObject1).j = ((int)paramMarkerOptions.getZIndex());
-    ((is)localObject1).l = this.C;
-    ((is)localObject1).o = paramMarkerOptions.isAvoidAnnocation();
-    ((is)localObject1).p = paramMarkerOptions.isClockwise();
-    ((is)localObject1).m = paramMarkerOptions.isFastLoad();
-    ((is)localObject1).k = paramMarkerOptions.getLevel();
-    this.H = new ir(this.F.az.b.f, localis);
   }
   
   public final void a(GL10 paramGL10)
@@ -203,48 +214,55 @@ public class ms
       c();
       return;
     }
-    if ((this.F == null) || (!this.A)) {}
-    for (;;)
+    Object localObject = this.F;
+    if ((localObject != null) && (this.A)) {
+      a(((pn)localObject).n());
+    }
+    if (this.F != null)
     {
-      if ((this.F != null) && (this.I != null))
+      localObject = this.I;
+      if (localObject != null)
       {
-        this.I.drawAnimation();
+        ((GlAnimation)localObject).drawAnimation();
         this.O = this.I.isRunning();
         if ((this.O) && (this.F.az != null)) {
           this.F.az.b.k();
         }
       }
-      if (this.F.az == null) {
-        break;
+    }
+    if (this.F.az != null)
+    {
+      if (this.F.az.b.f != null)
+      {
+        localObject = this.H;
+        if (localObject != null) {
+          ((ir)localObject).a(paramGL10);
+        }
       }
-      if ((this.F.az.b.f != null) && (this.H != null)) {
-        this.H.a(paramGL10);
+      localObject = this.J;
+      if ((localObject != null) && (((gj)localObject).e())) {
+        this.J.a(paramGL10);
       }
-      if ((this.J == null) || (!this.J.e())) {
-        break;
-      }
-      this.J.a(paramGL10);
-      return;
-      a(this.F.n());
     }
   }
   
   public final void a(boolean paramBoolean)
   {
     this.C = paramBoolean;
-    if (this.H != null) {
-      this.H.a(paramBoolean);
+    Object localObject = this.H;
+    if (localObject != null) {
+      ((ir)localObject).a(paramBoolean);
     }
-    if (this.J != null)
+    localObject = this.J;
+    if (localObject != null)
     {
-      if (paramBoolean) {
-        this.J.a(this.D, this.E);
+      if (paramBoolean)
+      {
+        ((gj)localObject).a(this.D, this.E);
+        return;
       }
+      ((gj)localObject).b(false);
     }
-    else {
-      return;
-    }
-    this.J.b(false);
   }
   
   public final boolean a()
@@ -257,32 +275,26 @@ public class ms
   
   public final boolean a(float paramFloat1, float paramFloat2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (this.F != null)
     {
-      if (this.B) {
-        break label25;
+      if (!this.B) {
+        return false;
       }
-      bool1 = bool2;
-    }
-    label25:
-    do
-    {
-      do
+      Object localObject = this.H;
+      if (localObject != null)
       {
-        do
+        boolean bool = ((ir)localObject).a(paramFloat1, paramFloat2);
+        if (bool)
         {
-          return bool1;
-          bool1 = bool2;
-        } while (this.H == null);
-        bool2 = this.H.a(paramFloat1, paramFloat2);
-        bool1 = bool2;
-      } while (!bool2);
-      bool1 = bool2;
-    } while (this.S == null);
-    this.S.onMarkerClick(this.G);
-    return bool2;
+          localObject = this.S;
+          if (localObject != null) {
+            ((TencentMap.OnMarkerClickListener)localObject).onMarkerClick(this.G);
+          }
+        }
+        return bool;
+      }
+    }
+    return false;
   }
   
   public final void b()
@@ -290,19 +302,22 @@ public class ms
     this.u = null;
     this.F = null;
     this.Q = null;
-    if (this.H != null) {
-      this.H.b();
+    Object localObject = this.H;
+    if (localObject != null) {
+      ((ir)localObject).b();
     }
-    if (this.J != null) {
-      this.J.b();
+    localObject = this.J;
+    if (localObject != null) {
+      ((gj)localObject).b();
     }
   }
   
   public final void b(float paramFloat)
   {
     this.d = paramFloat;
-    if (this.H != null) {
-      this.H.c((int)paramFloat);
+    ir localir = this.H;
+    if (localir != null) {
+      localir.c((int)paramFloat);
     }
   }
   
@@ -312,63 +327,69 @@ public class ms
     if (paramFloat1 > 1.0F)
     {
       f = 1.0F;
-      if (paramFloat2 <= 1.0F) {
-        break label78;
+    }
+    else
+    {
+      f = paramFloat1;
+      if (paramFloat1 < 0.0F) {
+        f = 0.0F;
       }
+    }
+    if (paramFloat2 > 1.0F)
+    {
       paramFloat1 = 1.0F;
     }
-    for (;;)
+    else
     {
-      this.l = f;
-      this.m = paramFloat1;
-      if (this.H != null) {
-        this.H.b(this.l, this.m);
-      }
-      if (this.J != null) {
-        this.J.a_();
-      }
-      return;
-      f = paramFloat1;
-      if (paramFloat1 >= 0.0F) {
-        break;
-      }
-      f = 0.0F;
-      break;
-      label78:
       paramFloat1 = paramFloat2;
       if (paramFloat2 < 0.0F) {
         paramFloat1 = 0.0F;
       }
     }
+    this.l = f;
+    this.m = paramFloat1;
+    Object localObject = this.H;
+    if (localObject != null) {
+      ((ir)localObject).b(this.l, this.m);
+    }
+    localObject = this.J;
+    if (localObject != null) {
+      ((gj)localObject).a_();
+    }
   }
   
   public final void c()
   {
-    if (this.J != null)
+    Object localObject = this.J;
+    if (localObject != null)
     {
-      this.J.b();
+      ((gj)localObject).b();
       this.J = null;
     }
-    if (this.H != null) {
-      this.H.b();
+    localObject = this.H;
+    if (localObject != null) {
+      ((ir)localObject).b();
     }
   }
   
   public final void c(float paramFloat)
   {
     this.n = paramFloat;
-    if (this.H != null) {
-      this.H.b((int)this.n);
+    ir localir = this.H;
+    if (localir != null) {
+      localir.b((int)this.n);
     }
   }
   
   public final void c(boolean paramBoolean)
   {
     this.e = paramBoolean;
-    if (this.H != null) {
-      this.H.d = paramBoolean;
+    Object localObject = this.H;
+    if (localObject != null) {
+      ((ir)localObject).d = paramBoolean;
     }
-    if ((this.F != null) && (this.F.az != null)) {
+    localObject = this.F;
+    if ((localObject != null) && (((pt)localObject).az != null)) {
       this.F.az.b.k();
     }
   }
@@ -378,16 +399,18 @@ public class ms
   public final void d(float paramFloat)
   {
     this.x = paramFloat;
-    if (this.H != null) {
-      this.H.a(paramFloat);
+    ir localir = this.H;
+    if (localir != null) {
+      localir.a(paramFloat);
     }
   }
   
   public final void d(int paramInt)
   {
     super.d(paramInt);
-    if (this.H != null) {
-      this.H.a(paramInt);
+    ir localir = this.H;
+    if (localir != null) {
+      localir.a(paramInt);
     }
   }
   
@@ -398,27 +421,33 @@ public class ms
   
   public final boolean f()
   {
-    if ((this.F == null) || (this.I == null)) {
-      return false;
-    }
-    GeoPoint localGeoPoint2 = this.u;
-    GeoPoint localGeoPoint1 = localGeoPoint2;
-    if (this.C)
+    pn localpn = this.F;
+    if ((localpn != null) && (this.I != null))
     {
-      localGeoPoint1 = localGeoPoint2;
-      if (this.F.az != null)
+      GeoPoint localGeoPoint2 = this.u;
+      GeoPoint localGeoPoint1 = localGeoPoint2;
+      if (this.C)
       {
-        localGeoPoint1 = this.F.az.b.h.a(new DoublePoint(this.D, this.E));
-        this.P = new GeoPoint(localGeoPoint1);
+        localGeoPoint1 = localGeoPoint2;
+        if (localpn.az != null)
+        {
+          localGeoPoint1 = this.F.az.b.h.a(new DoublePoint(this.D, this.E));
+          this.P = new GeoPoint(localGeoPoint1);
+        }
       }
+      return this.I.startAnimation(localGeoPoint1, this.w);
     }
-    return this.I.startAnimation(localGeoPoint1, this.w);
+    return false;
   }
   
   public final Rect g()
   {
-    if ((this.H != null) && (this.F != null) && (this.F.az != null)) {
-      return this.H.a(this.F.az.b.h);
+    if (this.H != null)
+    {
+      pn localpn = this.F;
+      if ((localpn != null) && (localpn.az != null)) {
+        return this.H.a(this.F.az.b.h);
+      }
     }
     return new Rect();
   }
@@ -449,57 +478,61 @@ public class ms
   
   public final void n()
   {
-    if (this.F == null) {
+    ??? = this.F;
+    if (??? == null) {
       return;
     }
-    this.F.a("");
+    ((pn)???).a("");
     this.F.az.b.k();
     synchronized (this.F.a)
     {
       if (this.J == null) {
         return;
       }
+      this.J.a(false);
+      return;
     }
-    this.J.a(false);
   }
   
   public final void o()
   {
-    if ((this.F == null) || (this.s == null)) {
-      return;
-    }
-    for (;;)
+    ??? = this.F;
+    if (??? != null)
     {
-      synchronized (this.F.a)
-      {
-        if (this.J != null) {
-          break label125;
-        }
-        if (this.s.isViewInfowindow())
-        {
-          this.J = new mx(this.Q, this.G);
-          if (this.C) {
-            this.J.a(this.D, this.E);
-          }
-          this.J.a(true);
-          return;
-        }
+      if (this.s == null) {
+        return;
       }
-      this.J = new mr(this.Q, this.G);
-      continue;
-      label125:
-      this.J.f();
+      synchronized (((pn)???).a)
+      {
+        if (this.J == null)
+        {
+          if (this.s.isViewInfowindow()) {
+            this.J = new mx(this.Q, this.G);
+          } else {
+            this.J = new mr(this.Q, this.G);
+          }
+        }
+        else {
+          this.J.f();
+        }
+        if (this.C) {
+          this.J.a(this.D, this.E);
+        }
+        this.J.a(true);
+        return;
+      }
     }
   }
   
   public final boolean p()
   {
-    return (this.h != null) && ("AUTH_MARKER".equals(this.h.toString()));
+    Object localObject = this.h;
+    return (localObject != null) && ("AUTH_MARKER".equals(localObject.toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ms
  * JD-Core Version:    0.7.0.1
  */

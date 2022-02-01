@@ -27,78 +27,105 @@ public class HWVideoEncoder
   
   private void a(boolean paramBoolean)
   {
-    TLog.b("HWVideoEncoder", "drainEncoder(" + paramBoolean + ")");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("drainEncoder(");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(")");
+    TLog.b("HWVideoEncoder", ((StringBuilder)localObject).toString());
     if (paramBoolean)
     {
       TLog.b("HWVideoEncoder", "sending EOS to encoder");
       this.jdField_a_of_type_AndroidMediaMediaCodec.signalEndOfInputStream();
     }
-    ByteBuffer[] arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-    int i = 0;
-    for (;;)
+    localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+    int j;
+    do
     {
-      int j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
-      if (j == -1) {
-        if (!paramBoolean) {
-          TLog.b("HWVideoEncoder", "no output available yet");
-        }
-      }
+      int i = 0;
       for (;;)
       {
-        if ((paramBoolean) && (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener != null)) {
-          this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener.a();
-        }
-        return;
-        TLog.b("HWVideoEncoder", "no output available, spinning to await EOS");
-        j = i + 1;
-        i = j;
-        if (j <= 100) {
-          break;
-        }
-        throw new RuntimeException("Encoder is not stopped after dequeue 100 times.");
-        if (j == -3)
+        j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
+        if (j == -1)
         {
-          arrayOfByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-          break;
+          if (!paramBoolean)
+          {
+            TLog.b("HWVideoEncoder", "no output available yet");
+            break label424;
+          }
+          TLog.b("HWVideoEncoder", "no output available, spinning to await EOS");
+          i += 1;
+          if (i > 100) {
+            throw new RuntimeException("Encoder is not stopped after dequeue 100 times.");
+          }
         }
-        if (j == -2)
+        else if (j == -3)
+        {
+          localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+        }
+        else if (j == -2)
         {
           this.jdField_a_of_type_AndroidMediaMediaFormat = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
           a(this.jdField_a_of_type_AndroidMediaMediaFormat);
-          TLog.b("HWVideoEncoder", "encoder output format changed: " + this.jdField_a_of_type_AndroidMediaMediaFormat);
-          break;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("encoder output format changed: ");
+          localStringBuilder.append(this.jdField_a_of_type_AndroidMediaMediaFormat);
+          TLog.b("HWVideoEncoder", localStringBuilder.toString());
         }
-        if (j < 0)
+        else
         {
-          TLog.c("HWVideoEncoder", "unexpected result from encoder.dequeueOutputBuffer: " + j);
-          break;
-        }
-        ByteBuffer localByteBuffer = arrayOfByteBuffer[j];
-        if (localByteBuffer == null) {
-          throw new RuntimeException("encoderOutputBuffer " + j + " was null");
-        }
-        if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x2) != 0)
-        {
-          TLog.b("HWVideoEncoder", "ignoring BUFFER_FLAG_CODEC_CONFIG");
-          this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = 0;
-        }
-        if (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0)
-        {
-          a(localByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-          TLog.b("HWVideoEncoder", "sent " + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size + " bytes to muxer, ts=" + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs * 1000L);
-        }
-        this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(j, false);
-        if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) == 0) {
-          break label427;
-        }
-        if (!paramBoolean) {
-          TLog.c("HWVideoEncoder", "reached end of stream unexpectedly");
-        } else {
-          TLog.b("HWVideoEncoder", "end of stream reached");
+          if (j >= 0) {
+            break;
+          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("unexpected result from encoder.dequeueOutputBuffer: ");
+          localStringBuilder.append(j);
+          TLog.c("HWVideoEncoder", localStringBuilder.toString());
         }
       }
-      label427:
-      i = 0;
+      StringBuilder localStringBuilder = localObject[j];
+      if (localStringBuilder == null) {
+        break label447;
+      }
+      if ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x2) != 0)
+      {
+        TLog.b("HWVideoEncoder", "ignoring BUFFER_FLAG_CODEC_CONFIG");
+        this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size = 0;
+      }
+      if (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0)
+      {
+        a(localStringBuilder, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("sent ");
+        localStringBuilder.append(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
+        localStringBuilder.append(" bytes to muxer, ts=");
+        localStringBuilder.append(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs * 1000L);
+        TLog.b("HWVideoEncoder", localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_AndroidMediaMediaCodec.releaseOutputBuffer(j, false);
+    } while ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) == 0);
+    if (!paramBoolean) {
+      TLog.c("HWVideoEncoder", "reached end of stream unexpectedly");
+    } else {
+      TLog.b("HWVideoEncoder", "end of stream reached");
+    }
+    label424:
+    if (paramBoolean)
+    {
+      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener;
+      if (localObject != null) {
+        ((MuxerDataListener)localObject).a();
+      }
+    }
+    return;
+    label447:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("encoderOutputBuffer ");
+    ((StringBuilder)localObject).append(j);
+    ((StringBuilder)localObject).append(" was null");
+    localObject = new RuntimeException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject);
     }
   }
   
@@ -114,27 +141,37 @@ public class HWVideoEncoder
   
   public void a(MediaFormat paramMediaFormat)
   {
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper == null) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper == null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setOutputFormat, ");
+    ((StringBuilder)localObject).append(bool);
+    TLog.b("HWVideoEncoder", ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper;
+    if (localObject == null)
     {
-      TLog.b("HWVideoEncoder", "setOutputFormat, " + bool);
-      if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper != null) {
-        break label110;
+      if (!this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(this.jdField_a_of_type_AndroidMediaMediaFormat);
+        this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
+        this.jdField_a_of_type_Boolean = true;
+        paramMediaFormat = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener;
+        if (paramMediaFormat != null) {
+          paramMediaFormat.a(this.jdField_a_of_type_AndroidMediaMediaFormat);
+        }
       }
-      if (!this.jdField_a_of_type_Boolean) {
-        break;
+      else
+      {
+        throw new RuntimeException("format changed twice");
       }
-      throw new RuntimeException("format changed twice");
     }
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(this.jdField_a_of_type_AndroidMediaMediaFormat);
-    this.jdField_a_of_type_AndroidMediaMediaMuxer.start();
-    this.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener != null) {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener.a(this.jdField_a_of_type_AndroidMediaMediaFormat);
+    else {
+      ((MediaMuxerWrapper)localObject).a(0, paramMediaFormat);
     }
-    return;
-    label110:
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper.a(0, paramMediaFormat);
   }
   
   public void a(EncodeConfig paramEncodeConfig)
@@ -157,7 +194,12 @@ public class HWVideoEncoder
       ((MediaFormat)localObject).setInteger("profile", 1);
       ((MediaFormat)localObject).setInteger("level", 512);
     }
-    TLog.b("HWVideoEncoder", "start : encodeConfig = + " + paramEncodeConfig.toString() + " ; format: " + localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start : encodeConfig = + ");
+    localStringBuilder.append(paramEncodeConfig.toString());
+    localStringBuilder.append(" ; format: ");
+    localStringBuilder.append(localObject);
+    TLog.b("HWVideoEncoder", localStringBuilder.toString());
     this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createEncoderByType("video/avc");
     this.jdField_a_of_type_AndroidMediaMediaCodec.configure((MediaFormat)localObject, null, null, 1);
     this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_AndroidMediaMediaCodec.createInputSurface();
@@ -168,51 +210,50 @@ public class HWVideoEncoder
     }
     if (paramEncodeConfig.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper == null) {
       this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramEncodeConfig.jdField_a_of_type_JavaLangString, 0);
-    }
-    for (;;)
-    {
-      if (paramEncodeConfig.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener != null) {
-        this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener = paramEncodeConfig.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener;
-      }
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_Boolean = false;
-      return;
+    } else {
       this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper = paramEncodeConfig.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper;
     }
+    if (paramEncodeConfig.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener != null) {
+      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener = paramEncodeConfig.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener;
+    }
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public void a(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper == null)
+    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper;
+    if (localObject == null)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        throw new RuntimeException("muxer hasn't started");
-      }
-      paramByteBuffer.position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
-      paramByteBuffer.limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
-      if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener != null)
+      if (this.jdField_a_of_type_Boolean)
       {
-        paramBufferInfo = new HWVideoEncoder.MuxerData(this);
-        paramBufferInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-        Object localObject = ByteBuffer.allocate(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
-        ((ByteBuffer)localObject).put(paramByteBuffer);
-        ((ByteBuffer)localObject).flip();
-        paramBufferInfo.jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)localObject);
-        localObject = new MediaCodec.BufferInfo();
-        ((MediaCodec.BufferInfo)localObject).flags = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags;
-        ((MediaCodec.BufferInfo)localObject).offset = 0;
-        ((MediaCodec.BufferInfo)localObject).presentationTimeUs = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
-        ((MediaCodec.BufferInfo)localObject).size = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size;
-        paramBufferInfo.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = ((MediaCodec.BufferInfo)localObject);
-        this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener.a(paramBufferInfo);
-        paramByteBuffer.rewind();
         paramByteBuffer.position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
         paramByteBuffer.limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
+        if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener != null)
+        {
+          paramBufferInfo = new HWVideoEncoder.MuxerData(this);
+          paramBufferInfo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+          localObject = ByteBuffer.allocate(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
+          ((ByteBuffer)localObject).put(paramByteBuffer);
+          ((ByteBuffer)localObject).flip();
+          paramBufferInfo.jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)localObject);
+          localObject = new MediaCodec.BufferInfo();
+          ((MediaCodec.BufferInfo)localObject).flags = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags;
+          ((MediaCodec.BufferInfo)localObject).offset = 0;
+          ((MediaCodec.BufferInfo)localObject).presentationTimeUs = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
+          ((MediaCodec.BufferInfo)localObject).size = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size;
+          paramBufferInfo.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = ((MediaCodec.BufferInfo)localObject);
+          this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecEncoderMuxerDataListener.a(paramBufferInfo);
+          paramByteBuffer.rewind();
+          paramByteBuffer.position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
+          paramByteBuffer.limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
+        }
+        this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Int, paramByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
+        return;
       }
-      this.jdField_a_of_type_AndroidMediaMediaMuxer.writeSampleData(this.jdField_a_of_type_Int, paramByteBuffer, this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo);
-      return;
+      throw new RuntimeException("muxer hasn't started");
     }
-    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper.a(0, paramByteBuffer, paramBufferInfo);
+    ((MediaMuxerWrapper)localObject).a(0, paramByteBuffer, paramBufferInfo);
   }
   
   public void b()
@@ -225,67 +266,73 @@ public class HWVideoEncoder
   public void c()
   {
     TLog.b("HWVideoEncoder", "HWVideoEncoder release.");
-    if (this.jdField_a_of_type_AndroidMediaMediaCodec != null) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.stop();
-      TLog.b("HWVideoEncoder", "MediaCodec stop.");
-    }
-    catch (Exception localException1)
+    MediaCodec localMediaCodec = this.jdField_a_of_type_AndroidMediaMediaCodec;
+    StringBuilder localStringBuilder;
+    if (localMediaCodec != null)
     {
       try
       {
-        for (;;)
-        {
-          this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-          TLog.b("HWVideoEncoder", "MediaCodec release.");
-          this.jdField_a_of_type_AndroidMediaMediaCodec = null;
-          if ((this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper != null) || (this.jdField_a_of_type_AndroidMediaMediaMuxer == null)) {
-            break label199;
-          }
-          try
-          {
-            if (this.jdField_a_of_type_Boolean)
-            {
-              this.jdField_a_of_type_Boolean = false;
-              this.jdField_a_of_type_AndroidMediaMediaMuxer.stop();
-              TLog.b("HWVideoEncoder", "MediaMuxer stop.");
-            }
-            this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
-            TLog.b("HWVideoEncoder", "MediaMuxer release.");
-          }
-          catch (Exception localException3)
-          {
-            for (;;)
-            {
-              TLog.c("HWVideoEncoder", "Muxer stop exception:" + localException3);
-            }
-          }
-          this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
-          return;
-          localException1 = localException1;
-          TLog.c("HWVideoEncoder", "mEncoder stop exception:" + localException1);
-        }
+        localMediaCodec.stop();
+        TLog.b("HWVideoEncoder", "MediaCodec stop.");
+      }
+      catch (Exception localException1)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mEncoder stop exception:");
+        localStringBuilder.append(localException1);
+        TLog.c("HWVideoEncoder", localStringBuilder.toString());
+      }
+      try
+      {
+        this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+        TLog.b("HWVideoEncoder", "MediaCodec release.");
       }
       catch (Exception localException2)
       {
-        label199:
-        do
-        {
-          for (;;)
-          {
-            TLog.c("HWVideoEncoder", "mEncoder release exception:" + localException2);
-          }
-        } while (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper == null);
-        TLog.b("HWVideoEncoder", "HWVideoEncoder release");
-        this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper.a();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mEncoder release exception:");
+        localStringBuilder.append(localException2);
+        TLog.c("HWVideoEncoder", localStringBuilder.toString());
       }
+      this.jdField_a_of_type_AndroidMediaMediaCodec = null;
+    }
+    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper == null)
+    {
+      MediaMuxer localMediaMuxer = this.jdField_a_of_type_AndroidMediaMediaMuxer;
+      if (localMediaMuxer != null)
+      {
+        try
+        {
+          if (this.jdField_a_of_type_Boolean)
+          {
+            this.jdField_a_of_type_Boolean = false;
+            localMediaMuxer.stop();
+            TLog.b("HWVideoEncoder", "MediaMuxer stop.");
+          }
+          this.jdField_a_of_type_AndroidMediaMediaMuxer.release();
+          TLog.b("HWVideoEncoder", "MediaMuxer release.");
+        }
+        catch (Exception localException3)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Muxer stop exception:");
+          localStringBuilder.append(localException3);
+          TLog.c("HWVideoEncoder", localStringBuilder.toString());
+        }
+        this.jdField_a_of_type_AndroidMediaMediaMuxer = null;
+        return;
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper != null)
+    {
+      TLog.b("HWVideoEncoder", "HWVideoEncoder release");
+      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecRecorderMediaMuxerWrapper.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.encoder.HWVideoEncoder
  * JD-Core Version:    0.7.0.1
  */

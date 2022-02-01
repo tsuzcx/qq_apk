@@ -29,41 +29,51 @@ public class LinkRichObject
   
   private ErrorMessage a()
   {
-    Object localObject = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { QQStoryContext.a().a(), URLEncoder.encode(this.jdField_a_of_type_JavaLangString) });
+    Object localObject1 = String.format("https://cgi.connect.qq.com/qqconnectopen/get_urlinfoForQQV2?url=%2$s&uin=%1$s", new Object[] { QQStoryContext.a().a(), URLEncoder.encode(this.jdField_a_of_type_JavaLangString) });
     long l = System.currentTimeMillis();
-    localObject = HttpUtil.openRequest(QQStoryContext.a().a(), (String)localObject, null, "GET", null, null, 5000, 5000);
-    if ((localObject != null) && (((HttpResponse)localObject).getStatusLine().getStatusCode() == 200))
+    localObject1 = HttpUtil.openRequest(QQStoryContext.a().a(), (String)localObject1, null, "GET", null, null, 5000, 5000);
+    Object localObject2;
+    if ((localObject1 != null) && (((HttpResponse)localObject1).getStatusLine().getStatusCode() == 200))
     {
-      localObject = HttpUtil.readHttpResponse((HttpResponse)localObject);
-      SLog.a("Q.qqstory.publish.upload.LinkRichObject", "http resp %s", localObject);
-      localObject = new JSONObject((String)localObject);
-      this.jdField_a_of_type_Int = Integer.parseInt(((JSONObject)localObject).getString("ret"));
-      if (this.jdField_a_of_type_Int != 0) {
-        return new ErrorMessage(96000002, "server error code:" + this.jdField_a_of_type_Int);
+      localObject1 = HttpUtil.readHttpResponse((HttpResponse)localObject1);
+      SLog.a("Q.qqstory.publish.upload.LinkRichObject", "http resp %s", localObject1);
+      localObject1 = new JSONObject((String)localObject1);
+      this.jdField_a_of_type_Int = Integer.parseInt(((JSONObject)localObject1).getString("ret"));
+      if (this.jdField_a_of_type_Int != 0)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("server error code:");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+        return new ErrorMessage(96000002, ((StringBuilder)localObject1).toString());
       }
+      localObject2 = ((JSONObject)localObject1).getString("title");
+      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (TextUtils.isEmpty(this.b))) {
+        this.b = ((String)localObject2);
+      }
+      localObject2 = ((JSONObject)localObject1).getString("abstract");
+      if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (TextUtils.isEmpty(this.c))) {
+        this.c = ((String)localObject2);
+      }
+      localObject1 = ((JSONObject)localObject1).getString("thumbUrl");
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (TextUtils.isEmpty(this.d))) {
+        this.d = ((String)localObject1);
+      }
+      SLog.d("Q.qqstory.publish.upload.LinkRichObject", "request take time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      return new ErrorMessage();
+    }
+    SLog.d("Q.qqstory.publish.upload.LinkRichObject", "");
+    if (localObject1 != null)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("http code:");
+      ((StringBuilder)localObject2).append(((HttpResponse)localObject1).getStatusLine());
+      localObject1 = ((StringBuilder)localObject2).toString();
     }
     else
     {
-      SLog.d("Q.qqstory.publish.upload.LinkRichObject", "");
-      if (localObject != null) {}
-      for (localObject = "http code:" + ((HttpResponse)localObject).getStatusLine();; localObject = "response is null") {
-        return new ErrorMessage(96000003, (String)localObject);
-      }
+      localObject1 = "response is null";
     }
-    String str = ((JSONObject)localObject).getString("title");
-    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.b))) {
-      this.b = str;
-    }
-    str = ((JSONObject)localObject).getString("abstract");
-    if ((!TextUtils.isEmpty(str)) && (TextUtils.isEmpty(this.c))) {
-      this.c = str;
-    }
-    localObject = ((JSONObject)localObject).getString("thumbUrl");
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (TextUtils.isEmpty(this.d))) {
-      this.d = ((String)localObject);
-    }
-    SLog.d("Q.qqstory.publish.upload.LinkRichObject", "request take time %dms", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
-    return new ErrorMessage();
+    return new ErrorMessage(96000003, (String)localObject1);
   }
   
   protected void a()
@@ -77,27 +87,23 @@ public class LinkRichObject
         return;
       }
     }
+    catch (IOException localIOException)
+    {
+      SLog.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localIOException);
+      new ErrorMessage(96000000, localIOException.getMessage());
+    }
     catch (JSONException localJSONException)
     {
       SLog.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localJSONException);
       new ErrorMessage(96000001, localJSONException.getMessage());
-      b();
-      notifyResult(new ErrorMessage());
-      return;
     }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        SLog.c("Q.qqstory.publish.upload.LinkRichObject", "parse url ", localIOException);
-        new ErrorMessage(96000000, localIOException.getMessage());
-      }
-    }
+    b();
+    notifyResult(new ErrorMessage());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.meta.LinkRichObject
  * JD-Core Version:    0.7.0.1
  */

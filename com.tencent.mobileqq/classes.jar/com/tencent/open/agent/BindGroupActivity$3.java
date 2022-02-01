@@ -16,14 +16,15 @@ class BindGroupActivity$3
     if (this.this$0.isFinishing()) {
       return;
     }
-    this.this$0.c = true;
-    this.this$0.b.hide();
+    BindGroupActivity localBindGroupActivity = this.this$0;
+    localBindGroupActivity.c = true;
+    localBindGroupActivity.b.hide();
     this.this$0.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupActivity.3
  * JD-Core Version:    0.7.0.1
  */

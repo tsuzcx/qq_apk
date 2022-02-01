@@ -32,12 +32,12 @@ public class BaseBubbleBuilderMenuEssenceAddProcessor
   
   public boolean a(int paramInt)
   {
-    return paramInt == 2131366427;
+    return paramInt == 2131366308;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuEssenceAddProcessor
  * JD-Core Version:    0.7.0.1
  */

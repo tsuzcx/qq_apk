@@ -14,13 +14,16 @@ public final class DataBufferUtils
   public static final String NEXT_PAGE = "next_page";
   public static final String PREV_PAGE = "prev_page";
   
-  private static boolean a(Bundle paramBundle, String paramString)
+  private static boolean containKey(Bundle paramBundle, String paramString)
   {
-    if (paramBundle == null) {}
-    while (paramBundle.getString(paramString) == null) {
+    boolean bool = false;
+    if (paramBundle == null) {
       return false;
     }
-    return true;
+    if (paramBundle.getString(paramString) != null) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static <T, E extends Freezable<T>> ArrayList<T> freezeAndClose(DataBuffer<E> paramDataBuffer)
@@ -36,26 +39,29 @@ public final class DataBufferUtils
   
   public static boolean hasData(DataBuffer<?> paramDataBuffer)
   {
-    if (paramDataBuffer == null) {}
-    while (paramDataBuffer.getCount() <= 0) {
+    boolean bool = false;
+    if (paramDataBuffer == null) {
       return false;
     }
-    return true;
+    if (paramDataBuffer.getCount() > 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static boolean hasNextPage(DataBuffer<?> paramDataBuffer)
   {
-    return a(paramDataBuffer.getMetadata(), "next_page");
+    return containKey(paramDataBuffer.getMetadata(), "next_page");
   }
   
   public static boolean hasPrevPage(DataBuffer<?> paramDataBuffer)
   {
-    return a(paramDataBuffer.getMetadata(), "prev_page");
+    return containKey(paramDataBuffer.getMetadata(), "prev_page");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.data.DataBufferUtils
  * JD-Core Version:    0.7.0.1
  */

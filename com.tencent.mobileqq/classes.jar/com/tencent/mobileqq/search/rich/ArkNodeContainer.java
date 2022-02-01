@@ -16,9 +16,10 @@ import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
 import com.tencent.ark.open.ArkAppMgr.IGetAppPathByNameCallback;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAiAppCenter;
 import com.tencent.mobileqq.ark.ArkAppCenterUtil;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
-import com.tencent.mobileqq.ark.ArkMediaPlayer;
+import com.tencent.mobileqq.ark.component.ArkMediaPlayer;
+import com.tencent.mobileqq.ark.multiproc.ArkMultiProcUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import org.json.JSONObject;
@@ -30,7 +31,12 @@ public class ArkNodeContainer
   public ArkAppInfo.TimeRecord a;
   private ArkNodeConfig a;
   
-  public ArkNodeContainer(ArkAppCallBackHandler paramArkAppCallBackHandler) {}
+  public ArkNodeContainer(ArkAppCallBackHandler paramArkAppCallBackHandler)
+  {
+    super(paramArkAppCallBackHandler, ArkAiAppCenter.b ^ true);
+    this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord = new ArkAppInfo.TimeRecord(this.mTimeRecord);
+    ArkMultiProcUtil.a();
+  }
   
   private void b(String paramString)
   {
@@ -61,43 +67,40 @@ public class ArkNodeContainer
   
   protected void a(String paramString1, int paramInt, String paramString2)
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkNodeContainer", 2, String.format("loadArkApp, apppath:" + paramString1 + " retcode:" + paramInt + " msg:" + paramString2, new Object[0]));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("loadArkApp, apppath:");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" retcode:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" msg:");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("ArkNodeContainer", 2, String.format(((StringBuilder)localObject).toString(), new Object[0]));
     }
     boolean bool1;
-    label72:
-    String str1;
-    String str2;
-    String str3;
-    if (paramInt != 0)
-    {
+    if (paramInt != 0) {
       bool1 = true;
-      if (paramInt != -2) {
-        break label152;
-      }
-      str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
-      str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
-      str3 = ArkEnvironmentManager.getInstance().getAppResPath(this.mAppInfo.name);
-      b(str1);
-      b(str2);
-      b(str3);
-      if (paramString2 != null) {
-        break label158;
-      }
-      paramString2 = "";
-    }
-    label152:
-    label158:
-    for (;;)
-    {
-      doLoadArkApp(paramString1, str1, str2, str3, bool1, bool2, paramInt, paramString2);
-      return;
+    } else {
       bool1 = false;
-      break;
-      bool2 = false;
-      break label72;
     }
+    boolean bool2;
+    if (paramInt == -2) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    String str1 = ArkEnvironmentManager.getInstance().getCacheDirectory();
+    String str2 = ArkEnvironmentManager.getInstance().getStorageDirectory();
+    String str3 = ArkEnvironmentManager.getInstance().getAppResPath(this.mAppInfo.name);
+    b(str1);
+    b(str2);
+    b(str3);
+    Object localObject = paramString2;
+    if (paramString2 == null) {
+      localObject = "";
+    }
+    doLoadArkApp(paramString1, str1, str2, str3, bool1, bool2, paramInt, (String)localObject);
   }
   
   public boolean a(ArkNodeConfig paramArkNodeConfig, String paramString, float paramFloat)
@@ -112,26 +115,27 @@ public class ArkNodeContainer
     return super.init(this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.b(), this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.d(), this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.c(), paramString, ArkAppCenterUtil.a(), paramFloat);
   }
   
-  public void initLibrary()
+  protected void initLibrary()
   {
     ark.MediaSetStub(ArkMediaPlayer.a);
   }
   
-  public void onFirstDrawEnd()
+  protected void onFirstDrawEnd()
   {
     super.onFirstDrawEnd();
   }
   
-  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo, Object paramObject)
+  public void onGetAppPathByName(int paramInt, String paramString, ArkAppMgr.AppPathInfo paramAppPathInfo)
   {
-    if (paramAppPathInfo != null) {}
-    for (paramAppPathInfo = paramAppPathInfo.path;; paramAppPathInfo = null)
-    {
-      this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.getAppFromLocal = false;
-      this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord.endOfGetApp = System.currentTimeMillis();
-      a(paramAppPathInfo, paramInt, paramString);
-      return;
+    if (paramAppPathInfo != null) {
+      paramAppPathInfo = paramAppPathInfo.path;
+    } else {
+      paramAppPathInfo = null;
     }
+    ArkAppInfo.TimeRecord localTimeRecord = this.jdField_a_of_type_ComTencentArkOpenArkAppInfo$TimeRecord;
+    localTimeRecord.getAppFromLocal = false;
+    localTimeRecord.endOfGetApp = System.currentTimeMillis();
+    a(paramAppPathInfo, paramInt, paramString);
   }
   
   public boolean onLoadApp(ArkViewModelBase.AppInfo paramAppInfo)
@@ -150,7 +154,7 @@ public class ArkNodeContainer
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.a();
     Object localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
-      localObject1 = ArkAppMgr.getInstance().getAppPathByNameFromLocal(this.mAppInfo.name, this.mAppInfo.view, this.mAppInfo.appMinVersion, true);
+      localObject1 = ArkAppMgr.getInstance().getAppPathFromCache(this.mAppInfo.name, this.mAppInfo.appMinVersion);
     }
     if (QLog.isColorLevel()) {
       QLog.i("ArkNodeContainer", 2, String.format("onLoadApp,mAppInfo.name=%s,appPath=%s", new Object[] { this.mAppInfo.name, localObject1 }));
@@ -167,18 +171,11 @@ public class ArkNodeContainer
     if (QLog.isColorLevel()) {
       QLog.i("ArkNodeContainer", 2, String.format("onLoadApp,mAppInfo.name=%s,appPath=%s,viewImplement=%h", new Object[] { this.mAppInfo.name, localObject1, localObject2 }));
     }
-    ArkAppMgr.getInstance().getAppPathByName(paramAppInfo.name, paramAppInfo.view, paramAppInfo.appMinVersion, null, new ArkNodeContainer.AppPathCallback(this));
+    ArkAppMgr.getInstance().getAppPathByName(paramAppInfo.name, paramAppInfo.appMinVersion, new ArkNodeContainer.AppPathCallback(this));
     return false;
   }
   
-  public void onLoadReport(int paramInt)
-  {
-    if (this.mAppInfo != null) {
-      ArkAppDataReport.a((QQAppInterface)BaseApplicationImpl.sApplication.getRuntime(), this.mAppInfo.name, "ArkAppLoadState", paramInt, 0, 0L, 0L, 0L, this.mAppInfo.view, "");
-    }
-  }
-  
-  public void onRunAppFailed()
+  protected void onRunAppFailed()
   {
     if (QLog.isColorLevel()) {
       QLog.i("ArkNodeContainer", 2, String.format("onRunAppFailed", new Object[0]));
@@ -186,23 +183,23 @@ public class ArkNodeContainer
     Object localObject = this.mViewImpl;
     if (localObject != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig == null) {
-        break label90;
+      if (this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig != null)
+      {
+        localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131718619);
+        this.mErrorInfo.msg = String.format((String)localObject, new Object[] { this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.b() });
       }
-      localObject = ((ArkViewImplement)localObject).getView().getContext().getString(2131718903);
-    }
-    label90:
-    for (this.mErrorInfo.msg = String.format((String)localObject, new Object[] { this.jdField_a_of_type_ComTencentMobileqqSearchRichArkNodeConfig.b() });; this.mErrorInfo.msg = "")
-    {
+      else
+      {
+        this.mErrorInfo.msg = "";
+      }
       this.mErrorInfo.canRetry = false;
-      super.onRunAppFailed();
-      return;
     }
+    super.onRunAppFailed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.ArkNodeContainer
  * JD-Core Version:    0.7.0.1
  */

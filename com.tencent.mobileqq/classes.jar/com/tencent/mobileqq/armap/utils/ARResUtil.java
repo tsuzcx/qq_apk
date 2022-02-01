@@ -9,30 +9,29 @@ public class ARResUtil
 {
   public static String a = "";
   public static String b = "";
-  public static String c = "";
+  public static String c = new File(b, "preload_map").getAbsolutePath();
   
   static
   {
-    int i = 0;
     try
     {
-      boolean bool = "mounted".equals(Environment.getExternalStorageState());
-      i = bool;
+      bool = "mounted".equals(Environment.getExternalStorageState());
     }
     catch (Throwable localThrowable)
     {
-      label28:
+      boolean bool;
+      label12:
       File localFile;
-      break label28;
+      break label12;
     }
-    if (i != 0) {}
-    for (localFile = new File(AppConstants.SDCARD_PATH);; localFile = BaseApplicationImpl.getApplication().getCacheDir())
-    {
-      b = new File(localFile, "AR_MAP").getAbsolutePath();
-      a = new File(localFile, "res_precover").getAbsolutePath();
-      c = new File(b, "preload_map").getAbsolutePath();
-      return;
+    bool = false;
+    if (bool) {
+      localFile = new File(AppConstants.SDCARD_PATH);
+    } else {
+      localFile = BaseApplicationImpl.getApplication().getCacheDir();
     }
+    b = new File(localFile, "AR_MAP").getAbsolutePath();
+    a = new File(localFile, "res_precover").getAbsolutePath();
   }
   
   public static String a()
@@ -42,7 +41,7 @@ public class ARResUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.utils.ARResUtil
  * JD-Core Version:    0.7.0.1
  */

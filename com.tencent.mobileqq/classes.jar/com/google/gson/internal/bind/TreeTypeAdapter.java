@@ -49,10 +49,13 @@ public final class TreeTypeAdapter<T>
   
   public static TypeAdapterFactory newFactoryWithMatchRawType(TypeToken<?> paramTypeToken, Object paramObject)
   {
-    if (paramTypeToken.getType() == paramTypeToken.getRawType()) {}
-    for (boolean bool = true;; bool = false) {
-      return new TreeTypeAdapter.SingleTypeFactory(paramObject, paramTypeToken, bool, null);
+    boolean bool;
+    if (paramTypeToken.getType() == paramTypeToken.getRawType()) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    return new TreeTypeAdapter.SingleTypeFactory(paramObject, paramTypeToken, bool, null);
   }
   
   public static TypeAdapterFactory newTypeHierarchyFactory(Class<?> paramClass, Object paramObject)
@@ -74,7 +77,8 @@ public final class TreeTypeAdapter<T>
   
   public void write(JsonWriter paramJsonWriter, T paramT)
   {
-    if (this.serializer == null)
+    JsonSerializer localJsonSerializer = this.serializer;
+    if (localJsonSerializer == null)
     {
       delegate().write(paramJsonWriter, paramT);
       return;
@@ -84,12 +88,12 @@ public final class TreeTypeAdapter<T>
       paramJsonWriter.nullValue();
       return;
     }
-    Streams.write(this.serializer.serialize(paramT, this.typeToken.getType(), this.context), paramJsonWriter);
+    Streams.write(localJsonSerializer.serialize(paramT, this.typeToken.getType(), this.context), paramJsonWriter);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.TreeTypeAdapter
  * JD-Core Version:    0.7.0.1
  */

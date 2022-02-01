@@ -13,20 +13,28 @@ final class TypeAdapters$34
   public <T> TypeAdapter<T> create(Gson paramGson, TypeToken<T> paramTypeToken)
   {
     paramGson = paramTypeToken.getRawType();
-    if ((paramGson == this.val$base) || (paramGson == this.val$sub)) {
-      return this.val$typeAdapter;
+    if ((paramGson != this.val$base) && (paramGson != this.val$sub)) {
+      return null;
     }
-    return null;
+    return this.val$typeAdapter;
   }
   
   public String toString()
   {
-    return "Factory[type=" + this.val$base.getName() + "+" + this.val$sub.getName() + ",adapter=" + this.val$typeAdapter + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Factory[type=");
+    localStringBuilder.append(this.val$base.getName());
+    localStringBuilder.append("+");
+    localStringBuilder.append(this.val$sub.getName());
+    localStringBuilder.append(",adapter=");
+    localStringBuilder.append(this.val$typeAdapter);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.TypeAdapters.34
  * JD-Core Version:    0.7.0.1
  */

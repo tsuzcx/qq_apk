@@ -13,35 +13,42 @@ public abstract class PayProxy
   
   public static String getPayStateMsg(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -1)
     {
-    default: 
-      return "";
-    case -1: 
-      return "支付状态未知";
-    case 0: 
+      if (paramInt != 0)
+      {
+        if (paramInt != 1)
+        {
+          if (paramInt != 2) {
+            return "";
+          }
+          return "支付出错";
+        }
+        return "用户取消";
+      }
       return "支付成功";
-    case 1: 
-      return "用户取消";
     }
-    return "支付出错";
+    return "支付状态未知";
   }
   
   public static String getResultCodeMsg(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -1)
     {
-    case 1: 
-    default: 
-      return "";
-    case -1: 
-      return "支付流程失败";
-    case 0: 
+      if (paramInt != 0)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return "";
+          }
+          return "参数错误";
+        }
+        return "用户取消";
+      }
       return "支付流程成功";
-    case 2: 
-      return "用户取消";
     }
-    return "参数错误";
+    return "支付流程失败";
   }
   
   public void callJs(String paramString, View paramView) {}
@@ -55,7 +62,7 @@ public abstract class PayProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.PayProxy
  * JD-Core Version:    0.7.0.1
  */

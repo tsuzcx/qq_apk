@@ -142,18 +142,18 @@ public final class VideoResourceModel
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof VideoResourceModel))
       {
         paramObject = (VideoResourceModel)paramObject;
-        if ((!Intrinsics.areEqual(this.path, paramObject.path)) || (this.scaleDuration != paramObject.scaleDuration) || (this.type != paramObject.type) || (this.sourceTimeStartUs != paramObject.sourceTimeStartUs) || (this.sourceTimeDurationUs != paramObject.sourceTimeDurationUs) || (this.selectTimeStartUs != paramObject.selectTimeStartUs) || (this.selectTimeDurationUs != paramObject.selectTimeDurationUs) || (this.cutTimeStart != paramObject.cutTimeStart) || (this.cutTimeDuration != paramObject.cutTimeDuration) || (this.width != paramObject.width) || (this.height != paramObject.height) || (this.rotate != paramObject.rotate) || (!Intrinsics.areEqual(this.extraParams, paramObject.extraParams))) {}
+        if ((Intrinsics.areEqual(this.path, paramObject.path)) && (this.scaleDuration == paramObject.scaleDuration) && (this.type == paramObject.type) && (this.sourceTimeStartUs == paramObject.sourceTimeStartUs) && (this.sourceTimeDurationUs == paramObject.sourceTimeDurationUs) && (this.selectTimeStartUs == paramObject.selectTimeStartUs) && (this.selectTimeDurationUs == paramObject.selectTimeDurationUs) && (this.cutTimeStart == paramObject.cutTimeStart) && (this.cutTimeDuration == paramObject.cutTimeDuration) && (this.width == paramObject.width) && (this.height == paramObject.height) && (this.rotate == paramObject.rotate) && (Intrinsics.areEqual(this.extraParams, paramObject.extraParams))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final long getCutTimeDuration()
@@ -190,10 +190,12 @@ public final class VideoResourceModel
   
   public final long getScaleDuration()
   {
-    if (this.scaleDuration == 0L) {
-      return getSelectTimeDuration();
+    long l2 = this.scaleDuration;
+    long l1 = l2;
+    if (l2 == 0L) {
+      l1 = getSelectTimeDuration();
     }
-    return this.scaleDuration;
+    return l1;
   }
   
   public final long getSelectTimeDuration()
@@ -256,35 +258,37 @@ public final class VideoResourceModel
   
   public int hashCode()
   {
-    int j = 0;
     Object localObject = this.path;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      long l = this.scaleDuration;
-      int k = (int)(l ^ l >>> 32);
-      int m = this.type;
-      l = this.sourceTimeStartUs;
-      int n = (int)(l ^ l >>> 32);
-      l = this.sourceTimeDurationUs;
-      int i1 = (int)(l ^ l >>> 32);
-      l = this.selectTimeStartUs;
-      int i2 = (int)(l ^ l >>> 32);
-      l = this.selectTimeDurationUs;
-      int i3 = (int)(l ^ l >>> 32);
-      l = this.cutTimeStart;
-      int i4 = (int)(l ^ l >>> 32);
-      l = this.cutTimeDuration;
-      int i5 = (int)(l ^ l >>> 32);
-      int i6 = this.width;
-      int i7 = this.height;
-      int i8 = this.rotate;
-      localObject = this.extraParams;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      return (((((((((((i * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31 + i8) * 31 + j;
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = localObject.hashCode();
+    } else {
+      i = 0;
     }
+    long l = this.scaleDuration;
+    int k = (int)(l ^ l >>> 32);
+    int m = this.type;
+    l = this.sourceTimeStartUs;
+    int n = (int)(l ^ l >>> 32);
+    l = this.sourceTimeDurationUs;
+    int i1 = (int)(l ^ l >>> 32);
+    l = this.selectTimeStartUs;
+    int i2 = (int)(l ^ l >>> 32);
+    l = this.selectTimeDurationUs;
+    int i3 = (int)(l ^ l >>> 32);
+    l = this.cutTimeStart;
+    int i4 = (int)(l ^ l >>> 32);
+    l = this.cutTimeDuration;
+    int i5 = (int)(l ^ l >>> 32);
+    int i6 = this.width;
+    int i7 = this.height;
+    int i8 = this.rotate;
+    localObject = this.extraParams;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    }
+    return (((((((((((i * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7) * 31 + i8) * 31 + j;
   }
   
   public final void setCutTimeDuration(long paramLong)
@@ -355,12 +359,40 @@ public final class VideoResourceModel
   @NotNull
   public String toString()
   {
-    return "VideoResourceModel(path=" + this.path + ", scaleDuration=" + this.scaleDuration + ", type=" + this.type + ", sourceTimeStartUs=" + this.sourceTimeStartUs + ", sourceTimeDurationUs=" + this.sourceTimeDurationUs + ", selectTimeStartUs=" + this.selectTimeStartUs + ", selectTimeDurationUs=" + this.selectTimeDurationUs + ", cutTimeStart=" + this.cutTimeStart + ", cutTimeDuration=" + this.cutTimeDuration + ", width=" + this.width + ", height=" + this.height + ", rotate=" + this.rotate + ", extraParams=" + this.extraParams + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoResourceModel(path=");
+    localStringBuilder.append(this.path);
+    localStringBuilder.append(", scaleDuration=");
+    localStringBuilder.append(this.scaleDuration);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", sourceTimeStartUs=");
+    localStringBuilder.append(this.sourceTimeStartUs);
+    localStringBuilder.append(", sourceTimeDurationUs=");
+    localStringBuilder.append(this.sourceTimeDurationUs);
+    localStringBuilder.append(", selectTimeStartUs=");
+    localStringBuilder.append(this.selectTimeStartUs);
+    localStringBuilder.append(", selectTimeDurationUs=");
+    localStringBuilder.append(this.selectTimeDurationUs);
+    localStringBuilder.append(", cutTimeStart=");
+    localStringBuilder.append(this.cutTimeStart);
+    localStringBuilder.append(", cutTimeDuration=");
+    localStringBuilder.append(this.cutTimeDuration);
+    localStringBuilder.append(", width=");
+    localStringBuilder.append(this.width);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.height);
+    localStringBuilder.append(", rotate=");
+    localStringBuilder.append(this.rotate);
+    localStringBuilder.append(", extraParams=");
+    localStringBuilder.append(this.extraParams);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.resource.VideoResourceModel
  * JD-Core Version:    0.7.0.1
  */

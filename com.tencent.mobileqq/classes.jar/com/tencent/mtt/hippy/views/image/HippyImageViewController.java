@@ -7,6 +7,8 @@ import com.tencent.mtt.hippy.annotation.HippyController;
 import com.tencent.mtt.hippy.annotation.HippyControllerProps;
 import com.tencent.mtt.hippy.bridge.bundleloader.HippyBundleLoader;
 import com.tencent.mtt.hippy.common.HippyMap;
+import com.tencent.mtt.hippy.dom.node.ImageNode;
+import com.tencent.mtt.hippy.dom.node.StyleNode;
 import com.tencent.mtt.hippy.uimanager.HippyViewController;
 import com.tencent.mtt.supportui.views.asyncimage.AsyncImageView.ScaleType;
 import java.io.File;
@@ -19,41 +21,45 @@ public class HippyImageViewController
   
   private static String getInnerPath(HippyInstanceContext paramHippyInstanceContext, String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = paramString;
+    Object localObject = paramString;
     if (paramString != null)
     {
-      localObject1 = paramString;
+      localObject = paramString;
       if (paramString.startsWith("hpfile://"))
       {
         paramString = paramString.replace("hpfile://./", "");
-        if (paramHippyInstanceContext.getBundleLoader() == null) {
-          break label90;
+        if (paramHippyInstanceContext.getBundleLoader() != null) {
+          paramHippyInstanceContext = paramHippyInstanceContext.getBundleLoader().getPath();
+        } else {
+          paramHippyInstanceContext = null;
         }
+        if (paramHippyInstanceContext == null) {
+          return null;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramHippyInstanceContext.subSequence(0, paramHippyInstanceContext.lastIndexOf(File.separator) + 1));
+        ((StringBuilder)localObject).append(paramString);
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
-    label90:
-    for (paramHippyInstanceContext = paramHippyInstanceContext.getBundleLoader().getPath();; paramHippyInstanceContext = null)
-    {
-      if (paramHippyInstanceContext == null) {}
-      for (paramHippyInstanceContext = localObject2;; paramHippyInstanceContext = paramHippyInstanceContext.subSequence(0, paramHippyInstanceContext.lastIndexOf(File.separator) + 1) + paramString)
-      {
-        localObject1 = paramHippyInstanceContext;
-        return localObject1;
-      }
-    }
+    return localObject;
   }
   
-  public View createViewImpl(Context paramContext)
+  protected StyleNode createNode(boolean paramBoolean)
+  {
+    return new ImageNode(paramBoolean);
+  }
+  
+  protected View createViewImpl(Context paramContext)
   {
     return new HippyImageView(paramContext);
   }
   
-  public View createViewImpl(Context paramContext, HippyMap paramHippyMap)
+  protected View createViewImpl(Context paramContext, HippyMap paramHippyMap)
   {
     paramContext = new HippyImageView(paramContext);
     if (paramHippyMap != null) {
-      paramContext.setIniProps(paramHippyMap);
+      paramContext.setInitProps(paramHippyMap);
     }
     return paramContext;
   }
@@ -123,32 +129,25 @@ public class HippyImageViewController
   @HippyControllerProps(defaultString="fitXY", defaultType="string", name="resizeMode")
   public void setResizeMode(HippyImageView paramHippyImageView, String paramString)
   {
-    if ("contain".equals(paramString))
-    {
-      paramHippyImageView.setScaleType(AsyncImageView.ScaleType.CENTER_INSIDE);
-      return;
+    if ("contain".equals(paramString)) {
+      paramString = AsyncImageView.ScaleType.CENTER_INSIDE;
     }
-    if ("cover".equals(paramString))
+    for (;;)
     {
-      paramHippyImageView.setScaleType(AsyncImageView.ScaleType.CENTER_CROP);
+      paramHippyImageView.setScaleType(paramString);
       return;
+      if ("cover".equals(paramString)) {
+        paramString = AsyncImageView.ScaleType.CENTER_CROP;
+      } else if ("center".equals(paramString)) {
+        paramString = AsyncImageView.ScaleType.CENTER;
+      } else if ("origin".equals(paramString)) {
+        paramString = AsyncImageView.ScaleType.ORIGIN;
+      } else if ("repeat".equals(paramString)) {
+        paramString = AsyncImageView.ScaleType.REPEAT;
+      } else {
+        paramString = AsyncImageView.ScaleType.FIT_XY;
+      }
     }
-    if ("center".equals(paramString))
-    {
-      paramHippyImageView.setScaleType(AsyncImageView.ScaleType.CENTER);
-      return;
-    }
-    if ("origin".equals(paramString))
-    {
-      paramHippyImageView.setScaleType(AsyncImageView.ScaleType.ORIGIN);
-      return;
-    }
-    if ("repeat".equals(paramString))
-    {
-      paramHippyImageView.setScaleType(AsyncImageView.ScaleType.REPEAT);
-      return;
-    }
-    paramHippyImageView.setScaleType(AsyncImageView.ScaleType.FIT_XY);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="tintColor")
@@ -165,7 +164,7 @@ public class HippyImageViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.image.HippyImageViewController
  * JD-Core Version:    0.7.0.1
  */

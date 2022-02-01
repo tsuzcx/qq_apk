@@ -32,7 +32,7 @@ public class LpReportServlet
     localStatistic.setValue(WnsKeys.ResultCode_i, Integer.valueOf(paramInt));
     localStatistic.setValue(WnsKeys.ToUIN, Long.valueOf(((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getLongAccountUin()));
     localStatistic.setValue(WnsKeys.Qua, ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-    localStatistic.setValue(WnsKeys.Build, "5105");
+    localStatistic.setValue(WnsKeys.Build, "5295");
     if ((paramInt != 0) && (!TextUtils.isEmpty(paramString)))
     {
       localStatistic.setValue(WnsKeys.Detail, paramString);
@@ -55,7 +55,7 @@ public class LpReportServlet
         arrayOfInt = new int[1];
         arrayOfString = new String[1];
         if (paramFromServiceMsg == null) {
-          break label158;
+          break label170;
         }
         if (paramFromServiceMsg.getResultCode() == 1000)
         {
@@ -63,30 +63,35 @@ public class LpReportServlet
             QLog.i("LpReport.LpReportServlet", 4, "LpReportServlet onReceive success.");
           }
           ProtocolUtils.decode(paramFromServiceMsg.getWupBuffer(), "ClientReport", arrayOfInt, arrayOfString);
-          if (arrayOfInt[0] == 1000006) {
-            break;
+        }
+        else
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("LpReportServlet onReceive fail. resultCode:");
+          if (paramFromServiceMsg == null) {
+            break label164;
           }
+          paramIntent = Integer.valueOf(paramFromServiceMsg.getResultCode());
+          localStringBuilder.append(paramIntent);
+          QZLog.e("LpReport.LpReportServlet", 1, new Object[] { localStringBuilder.toString() });
+          arrayOfInt[0] = (paramFromServiceMsg.getResultCode() + 300000);
+          arrayOfString[0] = paramFromServiceMsg.getBusinessFailMsg();
+        }
+        if (arrayOfInt[0] != 1000006)
+        {
           prepareReport(arrayOfInt[0], arrayOfString[0]);
           return;
         }
-        StringBuilder localStringBuilder = new StringBuilder().append("LpReportServlet onReceive fail. resultCode:");
-        if (paramFromServiceMsg != null)
-        {
-          paramIntent = Integer.valueOf(paramFromServiceMsg.getResultCode());
-          QZLog.e("LpReport.LpReportServlet", 1, new Object[] { paramIntent });
-          arrayOfInt[0] = (paramFromServiceMsg.getResultCode() + 300000);
-          arrayOfString[0] = paramFromServiceMsg.getBusinessFailMsg();
-          continue;
-        }
-        paramIntent = "";
       }
       catch (Exception paramIntent)
       {
         QZLog.e("LpReport.LpReportServlet", 1, paramIntent, new Object[0]);
-        return;
       }
+      return;
+      label164:
+      paramIntent = "";
       continue;
-      label158:
+      label170:
       arrayOfInt[0] = -1111;
       arrayOfString[0] = "fromServiceMsg == null";
     }
@@ -94,38 +99,42 @@ public class LpReportServlet
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    LpReportNewIntent localLpReportNewIntent;
     if ((paramIntent instanceof LpReportNewIntent))
     {
-      localLpReportNewIntent = (LpReportNewIntent)paramIntent;
+      LpReportNewIntent localLpReportNewIntent = (LpReportNewIntent)paramIntent;
       LpReportRequest localLpReportRequest = new LpReportRequest(localLpReportNewIntent.type, localLpReportNewIntent.info, localLpReportNewIntent.extra_info, localLpReportNewIntent.multi_info);
-      byte[] arrayOfByte = localLpReportRequest.encode();
-      paramIntent = arrayOfByte;
-      if (arrayOfByte == null) {
+      Object localObject = localLpReportRequest.encode();
+      paramIntent = (Intent)localObject;
+      if (localObject == null) {
         paramIntent = new byte[4];
       }
       paramPacket.setTimeout(60000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + localLpReportRequest.uniKey());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SQQzoneSvc.");
+      ((StringBuilder)localObject).append(localLpReportRequest.uniKey());
+      paramPacket.setSSOCommand(((StringBuilder)localObject).toString());
       paramPacket.putSendData(paramIntent);
       if (QLog.isColorLevel())
       {
-        paramIntent = new StringBuilder().append("startReport, tabletype = ").append(localLpReportNewIntent.type).append(", size = ");
-        if (localLpReportNewIntent.multi_info == null) {
-          break label164;
+        paramIntent = new StringBuilder();
+        paramIntent.append("startReport, tabletype = ");
+        paramIntent.append(localLpReportNewIntent.type);
+        paramIntent.append(", size = ");
+        int i;
+        if (localLpReportNewIntent.multi_info != null) {
+          i = localLpReportNewIntent.multi_info.size();
+        } else {
+          i = 0;
         }
+        paramIntent.append(i);
+        QLog.i("LpReport.LpReportServlet", 2, paramIntent.toString());
       }
-    }
-    label164:
-    for (int i = localLpReportNewIntent.multi_info.size();; i = 0)
-    {
-      QLog.i("LpReport.LpReportServlet", 2, i);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportServlet
  * JD-Core Version:    0.7.0.1
  */

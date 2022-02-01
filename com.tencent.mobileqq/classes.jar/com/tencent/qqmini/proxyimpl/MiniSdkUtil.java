@@ -1,9 +1,14 @@
 package com.tencent.qqmini.proxyimpl;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.mini.apkg.MiniAppConfig;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 
 public class MiniSdkUtil
 {
@@ -454,131 +459,56 @@ public class MiniSdkUtil
     return localArrayList;
   }
   
-  /* Error */
   public static void a(boolean paramBoolean)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: ldc_w 552
-    //   6: iconst_1
-    //   7: new 554	java/lang/StringBuilder
-    //   10: dup
-    //   11: invokespecial 555	java/lang/StringBuilder:<init>	()V
-    //   14: ldc_w 557
-    //   17: invokevirtual 561	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   20: iload_0
-    //   21: invokevirtual 564	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   24: invokevirtual 568	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   27: invokestatic 574	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   30: iload_0
-    //   31: ifeq +62 -> 93
-    //   34: invokestatic 580	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   37: new 554	java/lang/StringBuilder
-    //   40: dup
-    //   41: invokespecial 555	java/lang/StringBuilder:<init>	()V
-    //   44: invokestatic 580	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   47: invokevirtual 584	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   50: invokevirtual 589	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   53: invokevirtual 561	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: ldc_w 591
-    //   59: invokevirtual 561	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: invokevirtual 568	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: iconst_4
-    //   66: invokevirtual 595	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   69: invokeinterface 601 1 0
-    //   74: ldc_w 603
-    //   77: iconst_1
-    //   78: invokeinterface 609 3 0
-    //   83: invokeinterface 612 1 0
-    //   88: pop
-    //   89: ldc 2
-    //   91: monitorexit
-    //   92: return
-    //   93: invokestatic 580	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   96: new 554	java/lang/StringBuilder
-    //   99: dup
-    //   100: invokespecial 555	java/lang/StringBuilder:<init>	()V
-    //   103: invokestatic 580	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   106: invokevirtual 584	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   109: invokevirtual 589	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   112: invokevirtual 561	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: ldc_w 591
-    //   118: invokevirtual 561	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   121: invokevirtual 568	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   124: iconst_4
-    //   125: invokevirtual 595	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   128: invokeinterface 601 1 0
-    //   133: ldc_w 603
-    //   136: iconst_0
-    //   137: invokeinterface 609 3 0
-    //   142: invokeinterface 612 1 0
-    //   147: pop
-    //   148: goto -59 -> 89
-    //   151: astore_1
-    //   152: ldc 2
-    //   154: monitorexit
-    //   155: aload_1
-    //   156: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	157	0	paramBoolean	boolean
-    //   151	5	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	30	151	finally
-    //   34	89	151	finally
-    //   93	148	151	finally
+    try
+    {
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("setMiniAppSdkDowngrade ");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      QLog.e("MiniSdkUtil", 1, ((StringBuilder)localObject1).toString());
+      StringBuilder localStringBuilder;
+      if (paramBoolean)
+      {
+        localObject1 = BaseApplicationImpl.getApplication();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+        localStringBuilder.append("_user_sdk_miniapp_");
+        ((BaseApplicationImpl)localObject1).getSharedPreferences(localStringBuilder.toString(), 4).edit().putInt("miniapp_sdk__downgrade", 1).commit();
+      }
+      else
+      {
+        localObject1 = BaseApplicationImpl.getApplication();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+        localStringBuilder.append("_user_sdk_miniapp_");
+        ((BaseApplicationImpl)localObject1).getSharedPreferences(localStringBuilder.toString(), 4).edit().putInt("miniapp_sdk__downgrade", 0).commit();
+      }
+      return;
+    }
+    finally {}
   }
   
-  /* Error */
   public static boolean a()
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_1
-    //   2: ldc 2
-    //   4: monitorenter
-    //   5: invokestatic 580	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   8: new 554	java/lang/StringBuilder
-    //   11: dup
-    //   12: invokespecial 555	java/lang/StringBuilder:<init>	()V
-    //   15: invokestatic 580	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   18: invokevirtual 584	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   21: invokevirtual 589	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   24: invokevirtual 561	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: ldc_w 591
-    //   30: invokevirtual 561	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: invokevirtual 568	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   36: iconst_4
-    //   37: invokevirtual 595	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   40: ldc_w 603
-    //   43: iconst_m1
-    //   44: invokeinterface 616 3 0
-    //   49: istore_0
-    //   50: iload_0
-    //   51: iconst_1
-    //   52: if_icmpne +8 -> 60
-    //   55: ldc 2
-    //   57: monitorexit
-    //   58: iload_1
-    //   59: ireturn
-    //   60: iconst_0
-    //   61: istore_1
-    //   62: goto -7 -> 55
-    //   65: astore_2
-    //   66: ldc 2
-    //   68: monitorexit
-    //   69: aload_2
-    //   70: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   49	4	0	i	int
-    //   1	61	1	bool	boolean
-    //   65	5	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   5	50	65	finally
+    try
+    {
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(BaseApplicationImpl.getApplication().getRuntime().getAccount());
+      localStringBuilder.append("_user_sdk_miniapp_");
+      int i = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 4).getInt("miniapp_sdk__downgrade", -1);
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
+      }
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public static boolean a(boolean paramBoolean)
@@ -588,7 +518,7 @@ public class MiniSdkUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniSdkUtil
  * JD-Core Version:    0.7.0.1
  */

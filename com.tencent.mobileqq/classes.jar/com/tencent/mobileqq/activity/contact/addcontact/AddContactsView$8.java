@@ -10,19 +10,27 @@ class AddContactsView$8
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactsView", 2, "onGetConfig | isSuccess = " + paramBoolean + ", resultCode = " + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGetConfig | isSuccess = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(", resultCode = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AddContactsView", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramInt == 2) && (paramBoolean))
     {
-      this.a.d = true;
-      this.a.f();
+      localObject = this.a;
+      ((AddContactsView)localObject).d = true;
+      ((AddContactsView)localObject).f();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactsView.8
  * JD-Core Version:    0.7.0.1
  */

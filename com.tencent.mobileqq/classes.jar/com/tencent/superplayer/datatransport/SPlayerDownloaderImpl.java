@@ -16,7 +16,7 @@ import com.tencent.thumbplayer.datatransport.TPProxyUtils;
 public class SPlayerDownloaderImpl
   implements ISPlayerDownloader
 {
-  private static final String TAG = SPlayerDownloaderImpl.class.getSimpleName();
+  private static final String TAG = "SPlayerDownloaderImpl";
   private ITPDownloadProxy mTPDownloadProxy;
   
   public SPlayerDownloaderImpl(Context paramContext, int paramInt)
@@ -30,62 +30,72 @@ public class SPlayerDownloaderImpl
   
   private int getDlTypeForDownloadParam(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 101)
     {
-    default: 
-      return 10;
-    case 101: 
-      return 1;
+      if (paramInt != 102) {
+        return 10;
+      }
+      return 3;
     }
-    return 3;
+    return 1;
   }
   
   public void pauseOfflineDownload(int paramInt)
   {
-    if (this.mTPDownloadProxy != null) {
-      this.mTPDownloadProxy.pauseDownload(paramInt);
+    ITPDownloadProxy localITPDownloadProxy = this.mTPDownloadProxy;
+    if (localITPDownloadProxy != null) {
+      localITPDownloadProxy.pauseDownload(paramInt);
     }
   }
   
   public void resumeOfflineDownload(int paramInt)
   {
-    if (this.mTPDownloadProxy != null) {
-      this.mTPDownloadProxy.resumeDownload(paramInt);
+    ITPDownloadProxy localITPDownloadProxy = this.mTPDownloadProxy;
+    if (localITPDownloadProxy != null) {
+      localITPDownloadProxy.resumeDownload(paramInt);
     }
   }
   
   public int startOfflineDownload(SuperPlayerVideoInfo paramSuperPlayerVideoInfo, ISPlayerDownloader.Listener paramListener)
   {
-    if ((this.mTPDownloadProxy == null) || (paramSuperPlayerVideoInfo == null))
+    if ((this.mTPDownloadProxy != null) && (paramSuperPlayerVideoInfo != null))
     {
-      LogUtil.e(TAG, "error, mTPDownloadProxy = " + this.mTPDownloadProxy + ", videoInfo = " + paramSuperPlayerVideoInfo + ", return");
-      return 0;
+      localObject = new TPDownloadParamData();
+      ((TPDownloadParamData)localObject).setUrl(paramSuperPlayerVideoInfo.getPlayUrl());
+      ((TPDownloadParamData)localObject).setSavePath(paramSuperPlayerVideoInfo.getLocalSavePath());
+      ((TPDownloadParamData)localObject).setDownloadFileID(CommonUtil.a(paramSuperPlayerVideoInfo));
+      ((TPDownloadParamData)localObject).setUrlHostList(paramSuperPlayerVideoInfo.getUrlHostList());
+      ((TPDownloadParamData)localObject).setDlType(getDlTypeForDownloadParam(paramSuperPlayerVideoInfo.getFormat()));
+      if (paramSuperPlayerVideoInfo.getCookie() != null) {
+        ((TPDownloadParamData)localObject).setUrlCookieList(paramSuperPlayerVideoInfo.getCookie());
+      }
+      int i = this.mTPDownloadProxy.startOfflineDownload(CommonUtil.a(paramSuperPlayerVideoInfo), TPProxyUtils.convertProxyDownloadParams(null, (TPDownloadParamData)localObject, null), null);
+      TPListenerManager.getInstance().setOfflineDownloadListener(i, new SPlayerDownloaderImpl.1(this, paramListener, i));
+      this.mTPDownloadProxy.startTask(i);
+      return i;
     }
-    TPDownloadParamData localTPDownloadParamData = new TPDownloadParamData();
-    localTPDownloadParamData.setUrl(paramSuperPlayerVideoInfo.getPlayUrl());
-    localTPDownloadParamData.setSavePath(paramSuperPlayerVideoInfo.getLocalSavePath());
-    localTPDownloadParamData.setDownloadFileID(CommonUtil.a(paramSuperPlayerVideoInfo));
-    localTPDownloadParamData.setUrlHostList(paramSuperPlayerVideoInfo.getUrlHostList());
-    localTPDownloadParamData.setDlType(getDlTypeForDownloadParam(paramSuperPlayerVideoInfo.getFormat()));
-    if (paramSuperPlayerVideoInfo.getCookie() != null) {
-      localTPDownloadParamData.setUrlCookieList(paramSuperPlayerVideoInfo.getCookie());
-    }
-    int i = this.mTPDownloadProxy.startOfflineDownload(CommonUtil.a(paramSuperPlayerVideoInfo), TPProxyUtils.convertProxyDownloadParams(null, localTPDownloadParamData), null);
-    TPListenerManager.getInstance().setOfflineDownloadListener(i, new SPlayerDownloaderImpl.1(this, paramListener, i));
-    this.mTPDownloadProxy.startTask(i);
-    return i;
+    paramListener = TAG;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("error, mTPDownloadProxy = ");
+    ((StringBuilder)localObject).append(this.mTPDownloadProxy);
+    ((StringBuilder)localObject).append(", videoInfo = ");
+    ((StringBuilder)localObject).append(paramSuperPlayerVideoInfo);
+    ((StringBuilder)localObject).append(", return");
+    LogUtil.e(paramListener, ((StringBuilder)localObject).toString());
+    return 0;
   }
   
   public void stopOfflineDownload(int paramInt)
   {
-    if (this.mTPDownloadProxy != null) {
-      this.mTPDownloadProxy.stopOfflineDownload(paramInt);
+    ITPDownloadProxy localITPDownloadProxy = this.mTPDownloadProxy;
+    if (localITPDownloadProxy != null) {
+      localITPDownloadProxy.stopOfflineDownload(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.datatransport.SPlayerDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

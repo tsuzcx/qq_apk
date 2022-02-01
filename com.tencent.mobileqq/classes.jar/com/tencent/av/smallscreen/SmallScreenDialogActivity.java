@@ -28,62 +28,66 @@ public class SmallScreenDialogActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     super.requestWindowFeature(1);
     int i = getIntent().getIntExtra("tag_model", 0);
     if (i == 0) {
       this.a = new FloatWindowPrivacyModel(this);
+    } else if (1 == i) {
+      this.a = new WTDialogModel(this);
+    } else {
+      this.a = null;
     }
-    while (this.a != null)
+    DialogModelBase localDialogModelBase = this.a;
+    if (localDialogModelBase != null)
     {
-      this.a.a(paramBundle);
+      localDialogModelBase.a(paramBundle);
       return;
-      if (1 == i) {
-        this.a = new WTDialogModel(this);
-      } else {
-        this.a = null;
-      }
     }
     finish();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    if (this.a != null) {
-      this.a.d();
+    DialogModelBase localDialogModelBase = this.a;
+    if (localDialogModelBase != null) {
+      localDialogModelBase.d();
     }
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
-    if (this.a != null) {
-      this.a.b();
+    DialogModelBase localDialogModelBase = this.a;
+    if (localDialogModelBase != null) {
+      localDialogModelBase.b();
     }
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
-    if (this.a != null) {
-      this.a.a();
+    DialogModelBase localDialogModelBase = this.a;
+    if (localDialogModelBase != null) {
+      localDialogModelBase.a();
     }
   }
   
-  public void onStop()
+  protected void onStop()
   {
     super.onStop();
-    if (this.a != null) {
-      this.a.c();
+    DialogModelBase localDialogModelBase = this.a;
+    if (localDialogModelBase != null) {
+      localDialogModelBase.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenDialogActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -13,59 +13,55 @@ public class PluginCrashReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            localObject = paramIntent.getAction();
-            if ((!"com.tencent.mobileqq.ACTION_PLUGIN_CRASH".equals(localObject)) || ("com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_FAILED".equals(localObject))) {
-              try
-              {
-                new PluginCrashReceiver.StartPluginFailedReported(paramIntent).execute(new String[] { "" });
-                return;
-              }
-              catch (Throwable paramContext)
-              {
-                return;
-              }
-            }
-            if ("com.tencent.mobileqq.ACTION_PLUGIN_DIR_INFO_LOG".equals(localObject)) {
-              try
-              {
-                new PluginCrashReceiver.PluginDirInfoLoger(paramContext).execute(new String[] { "" });
-                return;
-              }
-              catch (Throwable paramContext)
-              {
-                return;
-              }
-            }
-            if (!"com.tencent.mobileqq.ACTION_PLUGIN_INSTALL_FAILED".equals(localObject)) {
-              break;
-            }
-            localObject = BaseApplicationImpl.getApplication().getRuntime();
-          } while (!(localObject instanceof QQAppInterface));
-          paramContext = paramIntent.getStringExtra("plugin");
-          paramIntent = paramIntent.getStringExtra("process");
-          QLog.d("plugin_tag", 1, "receive installFailed " + paramContext + ", " + paramIntent);
-        } while ("com.tencent.mobileqq".equals(paramIntent));
-        paramIntent = (QQAppInterface)localObject;
-      } while (!paramIntent.isCreateManager(QQManagerFactory.MGR_PLUGIN));
-      ((IPluginManager)paramIntent.getManager(QQManagerFactory.MGR_PLUGIN)).cancelInstall(paramContext);
+    if (paramIntent == null) {
       return;
-    } while (!"com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_SPEED_INFO".equals(localObject));
+    }
+    Object localObject = paramIntent.getAction();
+    "com.tencent.mobileqq.ACTION_PLUGIN_CRASH".equals(localObject);
+    if ("com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_FAILED".equals(localObject)) {}
+    try
+    {
+      new PluginCrashReceiver.StartPluginFailedReported(paramIntent).execute(new String[] { "" });
+      return;
+    }
+    catch (Throwable paramContext) {}
+    if ("com.tencent.mobileqq.ACTION_PLUGIN_DIR_INFO_LOG".equals(localObject))
+    {
+      new PluginCrashReceiver.PluginDirInfoLoger(paramContext).execute(new String[] { "" });
+      return;
+    }
+    if ("com.tencent.mobileqq.ACTION_PLUGIN_INSTALL_FAILED".equals(localObject))
+    {
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        paramContext = paramIntent.getStringExtra("plugin");
+        paramIntent = paramIntent.getStringExtra("process");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("receive installFailed ");
+        localStringBuilder.append(paramContext);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(paramIntent);
+        QLog.d("plugin_tag", 1, localStringBuilder.toString());
+        if (!"com.tencent.mobileqq".equals(paramIntent))
+        {
+          paramIntent = (QQAppInterface)localObject;
+          if (paramIntent.isCreateManager(QQManagerFactory.MGR_PLUGIN)) {
+            ((IPluginManager)paramIntent.getManager(QQManagerFactory.MGR_PLUGIN)).cancelInstall(paramContext);
+          }
+        }
+      }
+    }
+    else
+    {
+      "com.tencent.mobileqq.ACTION_PLUGIN_STARTUP_SPEED_INFO".equals(localObject);
+    }
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.PluginCrashReceiver
  * JD-Core Version:    0.7.0.1
  */

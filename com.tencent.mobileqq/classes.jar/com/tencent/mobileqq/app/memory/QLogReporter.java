@@ -14,41 +14,39 @@ public class QLogReporter
   
   public static QLogReporter a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqAppMemoryQLogReporter == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqAppMemoryQLogReporter == null) {
-        jdField_a_of_type_ComTencentMobileqqAppMemoryQLogReporter = new QLogReporter();
+    if (jdField_a_of_type_ComTencentMobileqqAppMemoryQLogReporter == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqAppMemoryQLogReporter == null) {
+          jdField_a_of_type_ComTencentMobileqqAppMemoryQLogReporter = new QLogReporter();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqAppMemoryQLogReporter;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqAppMemoryQLogReporter;
   }
   
   public void a()
   {
-    if (new GregorianCalendar().get(11) < 2) {}
-    SharedPreferences localSharedPreferences;
-    long l1;
-    Calendar localCalendar;
-    String str;
-    do
-    {
+    if (new GregorianCalendar().get(11) < 2) {
       return;
-      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qlog_reporter", 0);
-      l1 = System.currentTimeMillis();
-      long l2 = localSharedPreferences.getLong("LastLogSizeReportTime", 0L);
-      localCalendar = Calendar.getInstance();
-      localCalendar.setTimeInMillis(l2);
-      str = jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime());
-      localCalendar.setTimeInMillis(l1);
-    } while (str.equals(jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime())));
+    }
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qlog_reporter", 0);
+    long l1 = System.currentTimeMillis();
+    long l2 = localSharedPreferences.getLong("LastLogSizeReportTime", 0L);
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.setTimeInMillis(l2);
+    String str = jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime());
+    localCalendar.setTimeInMillis(l1);
+    if (str.equals(jdField_a_of_type_JavaTextSimpleDateFormat.format(localCalendar.getTime()))) {
+      return;
+    }
     ThreadManager.executeOnSubThread(new QLogReporter.1(this, localSharedPreferences, l1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.memory.QLogReporter
  * JD-Core Version:    0.7.0.1
  */

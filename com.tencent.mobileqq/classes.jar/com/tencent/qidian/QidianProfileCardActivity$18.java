@@ -1,51 +1,21 @@
 package com.tencent.qidian;
 
 import android.view.View;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 class QidianProfileCardActivity$18
   implements ActionSheet.OnButtonClickListener
 {
-  QidianProfileCardActivity$18(QidianProfileCardActivity paramQidianProfileCardActivity, String paramString) {}
+  QidianProfileCardActivity$18(QidianProfileCardActivity paramQidianProfileCardActivity, boolean paramBoolean, String paramString) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c == 1) {
-      if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-      }
-    }
-    for (;;)
-    {
-      QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity).dismiss();
-      return;
-      if (paramInt == 1)
-      {
-        if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentQidianQidianManager.d(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.e();
-        } else {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
-        }
-      }
-      else if (paramInt == 2)
-      {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
-        continue;
-        if (paramInt == 0) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.f(this.jdField_a_of_type_JavaLangString);
-        } else if (paramInt == 1) {
-          this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.g(this.jdField_a_of_type_JavaLangString);
-        }
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.QidianProfileCardActivity.18
  * JD-Core Version:    0.7.0.1
  */

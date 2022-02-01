@@ -33,41 +33,43 @@ public class QQSVArtFilterNew
   
   private void initTexture()
   {
-    boolean bool2 = true;
-    if (this.mSoInFBO != null) {
-      this.mSoInFBO.destroy();
+    Object localObject = this.mSoInFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.mSoOutFBO != null) {
-      this.mSoOutFBO.destroy();
+    localObject = this.mSoOutFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.mFilterOutFBO != null) {
-      this.mFilterOutFBO.destroy();
+    localObject = this.mFilterOutFBO;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.textureRender != null) {
-      this.textureRender.release();
+    localObject = this.textureRender;
+    if (localObject != null) {
+      ((TextureRender)localObject).release();
     }
     int i = this.mProcessor.getInputWidth();
     int j = this.mProcessor.getInputHeight();
-    if (Build.VERSION.SDK_INT >= 21)
-    {
+    int k = Build.VERSION.SDK_INT;
+    boolean bool2 = true;
+    boolean bool1;
+    if (k >= 21) {
       bool1 = true;
-      this.mSoInFBO = new RenderBuffer(i, j, 33984, bool1);
-      i = this.mProcessor.getInputWidth();
-      j = this.mProcessor.getInputHeight();
-      if (Build.VERSION.SDK_INT < 21) {
-        break label188;
-      }
-    }
-    label188:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.mSoOutFBO = new RenderBuffer(i, j, 33984, bool1);
-      this.mFilterOutFBO = new RenderBuffer(getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight(), 33984);
-      this.textureRender = new TextureRender();
-      return;
+    } else {
       bool1 = false;
-      break;
     }
+    this.mSoInFBO = new RenderBuffer(i, j, 33984, bool1);
+    i = this.mProcessor.getInputWidth();
+    j = this.mProcessor.getInputHeight();
+    if (Build.VERSION.SDK_INT >= 21) {
+      bool1 = bool2;
+    } else {
+      bool1 = false;
+    }
+    this.mSoOutFBO = new RenderBuffer(i, j, 33984, bool1);
+    this.mFilterOutFBO = new RenderBuffer(getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight(), 33984);
+    this.textureRender = new TextureRender();
   }
   
   public boolean isFilterWork()
@@ -77,55 +79,53 @@ public class QQSVArtFilterNew
   
   public void onDrawFrame()
   {
-    if (QmcfManager.getInstance().getCurrQmcfMode() != 1) {
-      this.mOutputTextureID = this.mInputTextureID;
-    }
-    for (;;)
+    if (QmcfManager.getInstance().getCurrQmcfMode() != 1)
     {
+      this.mOutputTextureID = this.mInputTextureID;
       return;
-      try
+    }
+    try
+    {
+      this.mProcessor.doInit();
+      if (this.shouldInitTexture)
       {
-        this.mProcessor.doInit();
-        if (this.shouldInitTexture)
-        {
-          this.frameCount = 0;
-          initTexture();
-          this.shouldInitTexture = false;
-          this.mOutputTextureID = this.mInputTextureID;
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        QmcfManager.getInstance().setQmcfRunSupported(false, false, 1);
+        this.frameCount = 0;
+        initTexture();
+        this.shouldInitTexture = false;
         this.mOutputTextureID = this.mInputTextureID;
-        SLog.e("QQSVArtFilter", "process excep!", localException);
         return;
-        this.mSoInFBO.bind();
-        this.textureRender.drawTexture(3553, this.mInputTextureID, null, null);
-        this.mSoInFBO.unbind();
-        this.mSoInTexture = this.mSoInFBO.getTexId();
-        this.mSoOutTexture = this.mSoOutFBO.getTexId();
-        this.mProcessor.doProcess(this.mSoInTexture, this.mSoOutTexture);
-        this.mFilterOutFBO.bind();
-        this.textureRender.drawTexture(3553, this.mSoOutTexture, null, null);
-        this.mFilterOutFBO.unbind();
-        this.mOutputTextureID = this.mFilterOutFBO.getTexId();
-        QQFilterLogManager.setFilterStatus("QQSVArtFilter", true);
-        int i = this.frameCount + 1;
-        this.frameCount = i;
-        if (i < 3)
-        {
-          this.mOutputTextureID = this.mInputTextureID;
-          return;
-        }
       }
-      catch (Error localError)
+      this.mSoInFBO.bind();
+      this.textureRender.drawTexture(3553, this.mInputTextureID, null, null);
+      this.mSoInFBO.unbind();
+      this.mSoInTexture = this.mSoInFBO.getTexId();
+      this.mSoOutTexture = this.mSoOutFBO.getTexId();
+      this.mProcessor.doProcess(this.mSoInTexture, this.mSoOutTexture);
+      this.mFilterOutFBO.bind();
+      this.textureRender.drawTexture(3553, this.mSoOutTexture, null, null);
+      this.mFilterOutFBO.unbind();
+      this.mOutputTextureID = this.mFilterOutFBO.getTexId();
+      QQFilterLogManager.setFilterStatus("QQSVArtFilter", true);
+      int i = this.frameCount + 1;
+      this.frameCount = i;
+      if (i < 3)
       {
-        QmcfManager.getInstance().setQmcfRunSupported(false, false, 1);
         this.mOutputTextureID = this.mInputTextureID;
-        SLog.e("QQSVArtFilter", "process excep!", localError);
+        return;
       }
+    }
+    catch (Error localError)
+    {
+      QmcfManager.getInstance().setQmcfRunSupported(false, false, 1);
+      this.mOutputTextureID = this.mInputTextureID;
+      SLog.e("QQSVArtFilter", "process excep!", localError);
+      return;
+    }
+    catch (Exception localException)
+    {
+      QmcfManager.getInstance().setQmcfRunSupported(false, false, 1);
+      this.mOutputTextureID = this.mInputTextureID;
+      SLog.e("QQSVArtFilter", "process excep!", localException);
     }
   }
   
@@ -136,12 +136,13 @@ public class QQSVArtFilterNew
     }
     if ((paramInt1 > 0) && (paramInt2 > 0))
     {
-      paramInt1 = this.initHeight * paramInt1 / paramInt2;
+      int i = this.initHeight;
+      paramInt1 = paramInt1 * i / paramInt2;
       paramInt1 -= paramInt1 % 4;
       if (paramInt1 != this.initWidth)
       {
         this.initWidth = paramInt1;
-        this.mProcessor.setInputSize(this.initWidth, this.initHeight);
+        this.mProcessor.setInputSize(this.initWidth, i);
         if (SLog.isEnable()) {
           SLog.d("QQSVArtFilter", String.format("onSurfaceChange resize input width[%d], height[%d]", new Object[] { Integer.valueOf(this.initWidth), Integer.valueOf(this.initHeight) }));
         }
@@ -170,7 +171,7 @@ public class QQSVArtFilterNew
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQSVArtFilterNew
  * JD-Core Version:    0.7.0.1
  */

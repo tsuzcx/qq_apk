@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class SessionFlag
 {
+  private static volatile SessionFlag a;
   public int a;
   protected HashMap<String, Integer> a;
   
@@ -13,29 +14,49 @@ public class SessionFlag
     this.jdField_a_of_type_JavaUtilHashMap = null;
   }
   
-  public static int a(SessionFlag paramSessionFlag, String paramString)
+  public static SessionFlag a()
   {
-    if (paramSessionFlag == null) {}
-    while ((paramSessionFlag.jdField_a_of_type_JavaUtilHashMap == null) || (!paramSessionFlag.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString))) {
-      return 0;
+    if (jdField_a_of_type_ComTencentAvAppSessionFlag == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentAvAppSessionFlag == null) {
+          jdField_a_of_type_ComTencentAvAppSessionFlag = new SessionFlag();
+        }
+      }
+      finally {}
     }
-    return ((Integer)paramSessionFlag.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
+    return jdField_a_of_type_ComTencentAvAppSessionFlag;
   }
   
-  public static void a(SessionFlag paramSessionFlag, String paramString, int paramInt)
+  public int a(String paramString)
   {
-    if (paramSessionFlag == null) {
-      return;
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localHashMap == null) {
+      return 0;
     }
-    if (paramSessionFlag.jdField_a_of_type_JavaUtilHashMap == null) {
-      paramSessionFlag.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    if (!localHashMap.containsKey(paramString)) {
+      return 0;
     }
-    paramSessionFlag.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(paramInt));
+    return ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).intValue();
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_JavaUtilHashMap = null;
+    this.jdField_a_of_type_Int = 0;
+  }
+  
+  public void a(String paramString, int paramInt)
+  {
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.SessionFlag
  * JD-Core Version:    0.7.0.1
  */

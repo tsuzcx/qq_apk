@@ -157,61 +157,41 @@ public class StatConfig
         NetworkManager.getInstance(paramContext).updateIpList(b.b.getString("iplist"));
       }
       updateDontReportEventIdsSet(b.b.optString("__DONT_REPORT_EI_LIST__", null));
-    }
-    while (parame.a != a.a) {
       return;
     }
-    a = parame;
+    if (parame.a == a.a) {
+      a = parame;
+    }
   }
   
   static void a(Context paramContext, e parame, JSONObject paramJSONObject)
   {
     int i1 = 0;
-    label210:
-    for (;;)
+    try
     {
-      try
+      Iterator localIterator = paramJSONObject.keys();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = paramJSONObject.keys();
-        if (localIterator.hasNext())
+        String str = (String)localIterator.next();
+        if (str.equalsIgnoreCase("v"))
         {
-          str = (String)localIterator.next();
-          if (str.equalsIgnoreCase("v"))
-          {
-            int i2 = paramJSONObject.getInt(str);
-            if (parame.d == i2) {
-              break label210;
-            }
+          int i2 = paramJSONObject.getInt(str);
+          if (parame.d != i2) {
             i1 = 1;
-            parame.d = i2;
-            continue;
           }
-          if (str.equalsIgnoreCase("c"))
-          {
-            str = paramJSONObject.getString("c");
-            if (str.length() <= 0) {
-              continue;
-            }
+          parame.d = i2;
+        }
+        else if (str.equalsIgnoreCase("c"))
+        {
+          str = paramJSONObject.getString("c");
+          if (str.length() > 0) {
             parame.b = new JSONObject(str);
-            continue;
           }
         }
-      }
-      catch (JSONException paramContext)
-      {
-        String str;
-        p.e(paramContext);
-        return;
-        if (!str.equalsIgnoreCase("m")) {
-          continue;
+        else if (str.equalsIgnoreCase("m"))
+        {
+          parame.c = paramJSONObject.getString("m");
         }
-        parame.c = paramJSONObject.getString("m");
-        continue;
-      }
-      catch (Throwable paramContext)
-      {
-        p.e(paramContext);
-        return;
       }
       if (i1 == 1)
       {
@@ -228,6 +208,16 @@ public class StatConfig
       a(paramContext, parame);
       return;
     }
+    catch (Throwable paramContext)
+    {
+      p.e(paramContext);
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      label193:
+      break label193;
+    }
   }
   
   static void a(Context paramContext, String paramString)
@@ -239,46 +229,46 @@ public class StatConfig
   
   static void a(Context paramContext, JSONObject paramJSONObject)
   {
-    for (;;)
+    try
     {
-      try
+      Iterator localIterator = paramJSONObject.keys();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = paramJSONObject.keys();
-        if (localIterator.hasNext())
+        Object localObject1 = (String)localIterator.next();
+        if (((String)localObject1).equalsIgnoreCase(Integer.toString(b.a))) {
+          localObject1 = paramJSONObject.getJSONObject((String)localObject1);
+        }
+        for (Object localObject2 = b;; localObject2 = a)
         {
-          localObject = (String)localIterator.next();
-          if (((String)localObject).equalsIgnoreCase(Integer.toString(b.a)))
-          {
-            localObject = paramJSONObject.getJSONObject((String)localObject);
-            a(paramContext, b, (JSONObject)localObject);
+          a(paramContext, (e)localObject2, (JSONObject)localObject1);
+          break;
+          if (!((String)localObject1).equalsIgnoreCase(Integer.toString(a.a))) {
+            break label91;
           }
+          localObject1 = paramJSONObject.getJSONObject((String)localObject1);
         }
-        else
-        {
-          return;
-        }
-      }
-      catch (JSONException paramContext)
-      {
-        p.e(paramContext);
-      }
-      do
-      {
-        if (((String)localObject).equalsIgnoreCase(Integer.toString(a.a)))
-        {
-          localObject = paramJSONObject.getJSONObject((String)localObject);
-          a(paramContext, a, (JSONObject)localObject);
+        label91:
+        if (!((String)localObject1).equalsIgnoreCase("rs")) {
           break;
         }
-      } while (!((String)localObject).equalsIgnoreCase("rs"));
-      Object localObject = StatReportStrategy.getStatReportStrategy(paramJSONObject.getInt((String)localObject));
-      if (localObject != null)
-      {
-        q = (StatReportStrategy)localObject;
-        if (isDebugEnable()) {
-          p.d("Change to ReportStrategy:" + ((StatReportStrategy)localObject).name());
+        localObject1 = StatReportStrategy.getStatReportStrategy(paramJSONObject.getInt((String)localObject1));
+        if (localObject1 != null)
+        {
+          q = (StatReportStrategy)localObject1;
+          if (isDebugEnable())
+          {
+            localObject2 = p;
+            StringBuilder localStringBuilder = new StringBuilder("Change to ReportStrategy:");
+            localStringBuilder.append(((StatReportStrategy)localObject1).name());
+            ((StatLogger)localObject2).d(localStringBuilder.toString());
+          }
         }
       }
+      return;
+    }
+    catch (JSONException paramContext)
+    {
+      p.e(paramContext);
     }
   }
   
@@ -294,7 +284,10 @@ public class StatConfig
     }
     catch (JSONException paramJSONObject)
     {
-      while (!isDebugEnable()) {}
+      label20:
+      break label20;
+    }
+    if (isDebugEnable()) {
       p.i("rs not found.");
     }
   }
@@ -306,18 +299,25 @@ public class StatConfig
   
   private static boolean a(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return false;
-      if (B == null)
-      {
-        B = paramString;
-        return true;
-      }
-    } while (B.contains(paramString));
-    B = B + "|" + paramString;
-    return true;
+    }
+    Object localObject = B;
+    if (localObject == null)
+    {
+      B = paramString;
+      return true;
+    }
+    if (!((String)localObject).contains(paramString))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(B);
+      ((StringBuilder)localObject).append("|");
+      ((StringBuilder)localObject).append(paramString);
+      B = ((StringBuilder)localObject).toString();
+      return true;
+    }
+    return false;
   }
   
   static boolean a(JSONObject paramJSONObject, String paramString1, String paramString2)
@@ -347,83 +347,130 @@ public class StatConfig
   
   static void b(Context paramContext, JSONObject paramJSONObject)
   {
+    label675:
+    label680:
     for (;;)
     {
-      Object localObject;
-      int i1;
       try
       {
         paramJSONObject = paramJSONObject.optString(e);
-        if (!StatCommonHelper.isStringValid(paramJSONObject)) {
-          break;
-        }
-        paramJSONObject = new JSONObject(paramJSONObject);
-        if (paramJSONObject.length() == 0) {
-          return;
-        }
-        if (!paramJSONObject.isNull("sm"))
+        if (StatCommonHelper.isStringValid(paramJSONObject))
         {
-          localObject = paramJSONObject.get("sm");
-          if (!(localObject instanceof Integer)) {
-            break label531;
+          Object localObject = new JSONObject(paramJSONObject);
+          if (((JSONObject)localObject).length() == 0) {
+            return;
           }
-          i1 = ((Integer)localObject).intValue();
-          if (i1 > 0)
+          boolean bool = ((JSONObject)localObject).isNull("sm");
+          int i3 = 0;
+          StringBuilder localStringBuilder;
+          if (!bool)
           {
-            if (isDebugEnable()) {
-              p.i("match sleepTime:" + i1 + " minutes");
+            paramJSONObject = ((JSONObject)localObject).get("sm");
+            if ((paramJSONObject instanceof Integer))
+            {
+              paramJSONObject = (Integer)paramJSONObject;
+              i1 = paramJSONObject.intValue();
             }
-            long l1 = System.currentTimeMillis();
-            long l2 = i1 * 60 * 1000;
-            StatPreferences.putLong(paramContext, d, l1 + l2);
-            setEnableStatService(false);
-            p.warn("MTA is disable for current SDK version");
+            else
+            {
+              if (!(paramJSONObject instanceof String)) {
+                break label675;
+              }
+              paramJSONObject = Integer.valueOf((String)paramJSONObject);
+              continue;
+            }
+            if (i1 > 0)
+            {
+              if (isDebugEnable())
+              {
+                paramJSONObject = p;
+                localStringBuilder = new StringBuilder("match sleepTime:");
+                localStringBuilder.append(i1);
+                localStringBuilder.append(" minutes");
+                paramJSONObject.i(localStringBuilder.toString());
+              }
+              long l1 = System.currentTimeMillis();
+              long l2 = i1 * 60 * 1000;
+              StatPreferences.putLong(paramContext, d, l1 + l2);
+              setEnableStatService(false);
+              p.warn("MTA is disable for current SDK version");
+            }
+          }
+          bool = a((JSONObject)localObject, "sv", "2.4.2");
+          int i2 = 1;
+          i1 = i3;
+          if (bool)
+          {
+            p.i("match sdk version:2.4.2");
+            i1 = 1;
+          }
+          if (a((JSONObject)localObject, "md", Build.MODEL))
+          {
+            paramJSONObject = p;
+            localStringBuilder = new StringBuilder("match MODEL:");
+            localStringBuilder.append(Build.MODEL);
+            paramJSONObject.i(localStringBuilder.toString());
+            i1 = 1;
+          }
+          if (a((JSONObject)localObject, "av", StatCommonHelper.getCurAppVersion(paramContext)))
+          {
+            paramJSONObject = p;
+            localStringBuilder = new StringBuilder("match app version:");
+            localStringBuilder.append(StatCommonHelper.getCurAppVersion(paramContext));
+            paramJSONObject.i(localStringBuilder.toString());
+            i1 = 1;
+          }
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append(Build.MANUFACTURER);
+          if (a((JSONObject)localObject, "mf", paramJSONObject.toString()))
+          {
+            paramJSONObject = p;
+            localStringBuilder = new StringBuilder("match MANUFACTURER:");
+            localStringBuilder.append(Build.MANUFACTURER);
+            paramJSONObject.i(localStringBuilder.toString());
+            i1 = 1;
+          }
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append(Build.VERSION.SDK_INT);
+          bool = a((JSONObject)localObject, "osv", paramJSONObject.toString());
+          if (bool)
+          {
+            paramJSONObject = p;
+            localStringBuilder = new StringBuilder("match android SDK version:");
+            localStringBuilder.append(Build.VERSION.SDK_INT);
+            paramJSONObject.i(localStringBuilder.toString());
+            i1 = 1;
+          }
+          paramJSONObject = new StringBuilder();
+          paramJSONObject.append(Build.VERSION.SDK_INT);
+          if (a((JSONObject)localObject, "ov", paramJSONObject.toString()))
+          {
+            paramJSONObject = p;
+            localStringBuilder = new StringBuilder("match android SDK version:");
+            localStringBuilder.append(Build.VERSION.SDK_INT);
+            paramJSONObject.i(localStringBuilder.toString());
+            i1 = 1;
+          }
+          if (a((JSONObject)localObject, "ui", af.a(paramContext).b(paramContext).getImei()))
+          {
+            paramJSONObject = p;
+            localStringBuilder = new StringBuilder("match imei:");
+            localStringBuilder.append(af.a(paramContext).b(paramContext).getImei());
+            paramJSONObject.i(localStringBuilder.toString());
+            i1 = 1;
+          }
+          if (!a((JSONObject)localObject, "mid", getLocalMidOnly(paramContext))) {
+            break label680;
+          }
+          paramJSONObject = p;
+          localObject = new StringBuilder("match mid:");
+          ((StringBuilder)localObject).append(getLocalMidOnly(paramContext));
+          paramJSONObject.i(((StringBuilder)localObject).toString());
+          i1 = i2;
+          if (i1 != 0) {
+            a(StatCommonHelper.getSDKLongVersion("2.4.2"));
           }
         }
-        if (!a(paramJSONObject, "sv", "2.4.2")) {
-          break label554;
-        }
-        p.i("match sdk version:2.4.2");
-        i1 = 1;
-        if (a(paramJSONObject, "md", Build.MODEL))
-        {
-          p.i("match MODEL:" + Build.MODEL);
-          i1 = 1;
-        }
-        if (a(paramJSONObject, "av", StatCommonHelper.getCurAppVersion(paramContext)))
-        {
-          p.i("match app version:" + StatCommonHelper.getCurAppVersion(paramContext));
-          i1 = 1;
-        }
-        if (a(paramJSONObject, "mf", Build.MANUFACTURER))
-        {
-          p.i("match MANUFACTURER:" + Build.MANUFACTURER);
-          i1 = 1;
-        }
-        if (a(paramJSONObject, "osv", Build.VERSION.SDK_INT))
-        {
-          p.i("match android SDK version:" + Build.VERSION.SDK_INT);
-          i1 = 1;
-        }
-        if (a(paramJSONObject, "ov", Build.VERSION.SDK_INT))
-        {
-          p.i("match android SDK version:" + Build.VERSION.SDK_INT);
-          i1 = 1;
-        }
-        if (a(paramJSONObject, "ui", af.a(paramContext).b(paramContext).getImei()))
-        {
-          p.i("match imei:" + af.a(paramContext).b(paramContext).getImei());
-          i1 = 1;
-        }
-        if (a(paramJSONObject, "mid", getLocalMidOnly(paramContext)))
-        {
-          p.i("match mid:" + getLocalMidOnly(paramContext));
-          i1 = 1;
-        }
-        if (i1 == 0) {
-          break;
-        }
-        a(StatCommonHelper.getSDKLongVersion("2.4.2"));
         return;
       }
       catch (Exception paramContext)
@@ -431,46 +478,41 @@ public class StatConfig
         p.e(paramContext);
         return;
       }
-      label531:
-      if ((localObject instanceof String))
-      {
-        i1 = Integer.valueOf((String)localObject).intValue();
-        continue;
-        label554:
-        i1 = 0;
-      }
-      else
-      {
-        i1 = 0;
-      }
+      int i1 = 0;
     }
   }
   
   static void b(JSONObject paramJSONObject)
   {
-    if ((paramJSONObject == null) || (paramJSONObject.length() == 0)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        b(g.a(), paramJSONObject);
-        paramJSONObject = paramJSONObject.getString(c);
-        if (isDebugEnable()) {
-          p.d("hibernateVer:" + paramJSONObject + ", current version:2.4.2");
-        }
-        long l1 = StatCommonHelper.getSDKLongVersion(paramJSONObject);
-        if (StatCommonHelper.getSDKLongVersion("2.4.2") <= l1)
-        {
-          a(l1);
-          return;
-        }
-      }
-      catch (JSONException paramJSONObject)
-      {
-        p.d("__HIBERNATE__ not found.");
+    if (paramJSONObject != null) {
+      if (paramJSONObject.length() == 0) {
+        return;
       }
     }
+    try
+    {
+      b(g.a(), paramJSONObject);
+      paramJSONObject = paramJSONObject.getString(c);
+      if (isDebugEnable())
+      {
+        StatLogger localStatLogger = p;
+        StringBuilder localStringBuilder = new StringBuilder("hibernateVer:");
+        localStringBuilder.append(paramJSONObject);
+        localStringBuilder.append(", current version:2.4.2");
+        localStatLogger.d(localStringBuilder.toString());
+      }
+      long l1 = StatCommonHelper.getSDKLongVersion(paramJSONObject);
+      if (StatCommonHelper.getSDKLongVersion("2.4.2") <= l1) {
+        a(l1);
+      }
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      label95:
+      break label95;
+    }
+    p.d("__HIBERNATE__ not found.");
   }
   
   static int c()
@@ -478,54 +520,25 @@ public class StatConfig
     return N;
   }
   
-  /* Error */
   public static String getAppKey(Context paramContext)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 391	com/tencent/acstat/StatConfig:B	Ljava/lang/String;
-    //   6: ifnull +12 -> 18
-    //   9: getstatic 391	com/tencent/acstat/StatConfig:B	Ljava/lang/String;
-    //   12: astore_0
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: aload_0
-    //   17: areturn
-    //   18: aload_0
-    //   19: ifnull +16 -> 35
-    //   22: getstatic 391	com/tencent/acstat/StatConfig:B	Ljava/lang/String;
-    //   25: ifnonnull +10 -> 35
-    //   28: aload_0
-    //   29: invokestatic 511	com/tencent/acstat/common/StatCommonHelper:getAppKey	(Landroid/content/Context;)Ljava/lang/String;
-    //   32: putstatic 391	com/tencent/acstat/StatConfig:B	Ljava/lang/String;
-    //   35: getstatic 391	com/tencent/acstat/StatConfig:B	Ljava/lang/String;
-    //   38: ifnull +15 -> 53
-    //   41: getstatic 391	com/tencent/acstat/StatConfig:B	Ljava/lang/String;
-    //   44: invokevirtual 514	java/lang/String:trim	()Ljava/lang/String;
-    //   47: invokevirtual 314	java/lang/String:length	()I
-    //   50: ifne +12 -> 62
-    //   53: getstatic 74	com/tencent/acstat/StatConfig:p	Lcom/tencent/acstat/common/StatLogger;
-    //   56: ldc_w 516
-    //   59: invokevirtual 518	com/tencent/acstat/common/StatLogger:e	(Ljava/lang/Object;)V
-    //   62: getstatic 391	com/tencent/acstat/StatConfig:B	Ljava/lang/String;
-    //   65: astore_0
-    //   66: goto -53 -> 13
-    //   69: astore_0
-    //   70: ldc 2
-    //   72: monitorexit
-    //   73: aload_0
-    //   74: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	75	0	paramContext	Context
-    // Exception table:
-    //   from	to	target	type
-    //   3	13	69	finally
-    //   22	35	69	finally
-    //   35	53	69	finally
-    //   53	62	69	finally
-    //   62	66	69	finally
+    try
+    {
+      if (B != null)
+      {
+        paramContext = B;
+        return paramContext;
+      }
+      if ((paramContext != null) && (B == null)) {
+        B = StatCommonHelper.getAppKey(paramContext);
+      }
+      if ((B == null) || (B.trim().length() == 0)) {
+        p.e("AppKey can not be null or empty, please read Developer's Guide first!");
+      }
+      paramContext = B;
+      return paramContext;
+    }
+    finally {}
   }
   
   public static String getAppVersion()
@@ -535,21 +548,19 @@ public class StatConfig
   
   public static JSONObject getCommonAttr(Context paramContext)
   {
-    if (T == null) {
+    if (T == null)
+    {
       paramContext = StatPreferences.getString(paramContext, "mta.common.attr.tag", new JSONObject().toString());
-    }
-    try
-    {
-      T = new JSONObject(paramContext);
-      return T;
-    }
-    catch (JSONException paramContext)
-    {
-      for (;;)
+      try
+      {
+        T = new JSONObject(paramContext);
+      }
+      catch (JSONException paramContext)
       {
         paramContext.printStackTrace();
       }
     }
+    return T;
   }
   
   public static int getCurSessionStatReportCount()
@@ -582,9 +593,8 @@ public class StatConfig
     {
       paramString1 = a.b.getString(paramString1);
       if (paramString1 != null) {
-        paramString2 = paramString1;
+        return paramString1;
       }
-      return paramString2;
     }
     catch (Throwable paramString1)
     {
@@ -600,19 +610,17 @@ public class StatConfig
       p.error("Context for getCustomUid is null.");
       return null;
     }
-    if (R == null) {}
-    try
-    {
-      R = StatPreferences.getString(paramContext, "MTA_CUSTOM_UID", "");
-      return R;
-    }
-    catch (ClassCastException paramContext)
-    {
-      for (;;)
+    if (R == null) {
+      try
+      {
+        R = StatPreferences.getString(paramContext, "MTA_CUSTOM_UID", "");
+      }
+      catch (ClassCastException paramContext)
       {
         p.e(paramContext);
       }
     }
+    return R;
   }
   
   public static long getFlushDBSpaceMS()
@@ -633,66 +641,27 @@ public class StatConfig
     return IMEI;
   }
   
-  /* Error */
   public static String getInstallChannel(Context paramContext)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 550	com/tencent/acstat/StatConfig:C	Ljava/lang/String;
-    //   6: ifnull +12 -> 18
-    //   9: getstatic 550	com/tencent/acstat/StatConfig:C	Ljava/lang/String;
-    //   12: astore_0
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: aload_0
-    //   17: areturn
-    //   18: aload_0
-    //   19: getstatic 130	com/tencent/acstat/StatConfig:D	Ljava/lang/String;
-    //   22: ldc 132
-    //   24: invokestatic 214	com/tencent/acstat/common/StatPreferences:getString	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   27: astore_1
-    //   28: aload_1
-    //   29: putstatic 550	com/tencent/acstat/StatConfig:C	Ljava/lang/String;
-    //   32: aload_1
-    //   33: ifnull +15 -> 48
-    //   36: getstatic 550	com/tencent/acstat/StatConfig:C	Ljava/lang/String;
-    //   39: invokevirtual 514	java/lang/String:trim	()Ljava/lang/String;
-    //   42: invokevirtual 314	java/lang/String:length	()I
-    //   45: ifne +10 -> 55
-    //   48: aload_0
-    //   49: invokestatic 552	com/tencent/acstat/common/StatCommonHelper:getInstallChannel	(Landroid/content/Context;)Ljava/lang/String;
-    //   52: putstatic 550	com/tencent/acstat/StatConfig:C	Ljava/lang/String;
-    //   55: getstatic 550	com/tencent/acstat/StatConfig:C	Ljava/lang/String;
-    //   58: ifnull +15 -> 73
-    //   61: getstatic 550	com/tencent/acstat/StatConfig:C	Ljava/lang/String;
-    //   64: invokevirtual 514	java/lang/String:trim	()Ljava/lang/String;
-    //   67: invokevirtual 314	java/lang/String:length	()I
-    //   70: ifne +12 -> 82
-    //   73: getstatic 74	com/tencent/acstat/StatConfig:p	Lcom/tencent/acstat/common/StatLogger;
-    //   76: ldc_w 554
-    //   79: invokevirtual 556	com/tencent/acstat/common/StatLogger:w	(Ljava/lang/Object;)V
-    //   82: getstatic 550	com/tencent/acstat/StatConfig:C	Ljava/lang/String;
-    //   85: astore_0
-    //   86: goto -73 -> 13
-    //   89: astore_0
-    //   90: ldc 2
-    //   92: monitorexit
-    //   93: aload_0
-    //   94: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	95	0	paramContext	Context
-    //   27	6	1	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   3	13	89	finally
-    //   18	32	89	finally
-    //   36	48	89	finally
-    //   48	55	89	finally
-    //   55	73	89	finally
-    //   73	82	89	finally
-    //   82	86	89	finally
+    try
+    {
+      if (C != null)
+      {
+        paramContext = C;
+        return paramContext;
+      }
+      String str = StatPreferences.getString(paramContext, D, "");
+      C = str;
+      if ((str == null) || (C.trim().length() == 0)) {
+        C = StatCommonHelper.getInstallChannel(paramContext);
+      }
+      if ((C == null) || (C.trim().length() == 0)) {
+        p.w("installChannel can not be null or empty, please read Developer's Guide first!");
+      }
+      paramContext = C;
+      return paramContext;
+    }
+    finally {}
   }
   
   public static String getLocalMidOnly(Context paramContext)
@@ -837,10 +806,11 @@ public class StatConfig
   
   public static boolean isEventIdInDontReportEventIdsSet(String paramString)
   {
-    if ((W == null) || (W.size() == 0) || (!StatCommonHelper.isStringValid(paramString))) {
-      return false;
+    HashSet localHashSet = W;
+    if ((localHashSet != null) && (localHashSet.size() != 0) && (StatCommonHelper.isStringValid(paramString))) {
+      return W.contains(paramString.toLowerCase());
     }
-    return W.contains(paramString.toLowerCase());
+    return false;
   }
   
   public static boolean isReportEventsByOrder()
@@ -851,34 +821,40 @@ public class StatConfig
   public static void setAppKey(Context paramContext, String paramString)
   {
     if (paramContext == null) {
-      p.error("ctx in StatConfig.setAppKey() is null");
+      paramContext = p;
     }
-    do
+    for (paramString = "ctx in StatConfig.setAppKey() is null";; paramString = "appkey in StatConfig.setAppKey() is null or exceed 256 bytes")
     {
+      paramContext.error(paramString);
       return;
-      if ((paramString == null) || (paramString.length() > 256))
+      if ((paramString != null) && (paramString.length() <= 256))
       {
-        p.error("appkey in StatConfig.setAppKey() is null or exceed 256 bytes");
+        if (B == null) {
+          B = a(paramContext);
+        }
+        if ((a(paramString) | a(StatCommonHelper.getAppKey(paramContext)))) {
+          a(paramContext, B);
+        }
         return;
       }
-      if (B == null) {
-        B = a(paramContext);
-      }
-    } while (!(a(paramString) | a(StatCommonHelper.getAppKey(paramContext))));
-    a(paramContext, B);
+      paramContext = p;
+    }
   }
   
   public static void setAppKey(String paramString)
   {
-    if (paramString == null)
-    {
-      p.error("appkey in StatConfig.setAppKey() is null");
-      return;
+    StatLogger localStatLogger;
+    if (paramString == null) {
+      localStatLogger = p;
     }
-    if (paramString.length() > 256)
+    for (paramString = "appkey in StatConfig.setAppKey() is null";; paramString = "The length of appkey cann't exceed 256 bytes.")
     {
-      p.error("The length of appkey cann't exceed 256 bytes.");
+      localStatLogger.error(paramString);
       return;
+      if (paramString.length() <= 256) {
+        break;
+      }
+      localStatLogger = p;
     }
     B = paramString;
   }
@@ -896,12 +872,10 @@ public class StatConfig
   public static void setCommonAttr(Context paramContext, JSONObject paramJSONObject)
   {
     T = paramJSONObject;
-    if (paramJSONObject != null) {}
-    for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = new JSONObject().toString())
-    {
-      StatPreferences.putString(paramContext, "mta.common.attr.tag", paramJSONObject);
-      return;
+    if (paramJSONObject == null) {
+      paramJSONObject = new JSONObject();
     }
+    StatPreferences.putString(paramContext, "mta.common.attr.tag", paramJSONObject.toString());
   }
   
   public static void setCustomGlobalReportContent(JSONObject paramJSONObject)
@@ -953,26 +927,28 @@ public class StatConfig
   
   public static void setImei(Context paramContext, String paramString)
   {
-    if (paramContext == null) {
-      p.error("ctx in StatConfig.setAppKey() is null");
-    }
-    do
+    if (paramContext == null)
     {
+      p.error("ctx in StatConfig.setAppKey() is null");
       return;
-      if ((paramString == null) || (paramString.length() > 256))
-      {
-        p.error("appkey in StatConfig.setAppKey() is null or exceed 256 bytes");
-        return;
-      }
-      if (IMEI == null)
+    }
+    if ((paramString != null) && (paramString.length() <= 256))
+    {
+      String str = IMEI;
+      if (str == null)
       {
         IMEI = paramString;
         StatPreferences.putString(paramContext, "_mta_imei_tag_", paramString);
         return;
       }
-    } while (IMEI.equals(paramString));
-    IMEI = paramString;
-    StatPreferences.putString(paramContext, "_mta_imei_tag_", paramString);
+      if (!str.equals(paramString))
+      {
+        IMEI = paramString;
+        StatPreferences.putString(paramContext, "_mta_imei_tag_", paramString);
+      }
+      return;
+    }
+    p.error("appkey in StatConfig.setAppKey() is null or exceed 256 bytes");
   }
   
   public static void setInstallChannel(Context paramContext, String paramString)
@@ -1145,30 +1121,29 @@ public class StatConfig
   
   public static void setStatReportUrl(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      p.error("statReportUrl cannot be null or empty.");
-    }
-    for (;;)
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      return;
       J = paramString;
       try
       {
         k = new URI(J).getHost();
-        if (!isDebugEnable()) {
-          continue;
-        }
-        p.i("url:" + J + ", domain:" + k);
-        return;
       }
       catch (Exception paramString)
       {
-        for (;;)
-        {
-          p.w(paramString);
-        }
+        p.w(paramString);
       }
+      if (isDebugEnable())
+      {
+        paramString = p;
+        StringBuilder localStringBuilder = new StringBuilder("url:");
+        localStringBuilder.append(J);
+        localStringBuilder.append(", domain:");
+        localStringBuilder.append(k);
+        paramString.i(localStringBuilder.toString());
+      }
+      return;
     }
+    p.error("statReportUrl cannot be null or empty.");
   }
   
   public static void setStatSendStrategy(StatReportStrategy paramStatReportStrategy)
@@ -1177,8 +1152,12 @@ public class StatConfig
     if (paramStatReportStrategy != StatReportStrategy.PERIOD) {
       StatServiceImpl.c = 0L;
     }
-    if (isDebugEnable()) {
-      p.d("Change to statSendStrategy: " + paramStatReportStrategy);
+    if (isDebugEnable())
+    {
+      StatLogger localStatLogger = p;
+      StringBuilder localStringBuilder = new StringBuilder("Change to statSendStrategy: ");
+      localStringBuilder.append(paramStatReportStrategy);
+      localStatLogger.d(localStringBuilder.toString());
     }
   }
   

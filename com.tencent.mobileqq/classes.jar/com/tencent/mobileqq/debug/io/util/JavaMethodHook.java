@@ -9,8 +9,13 @@ import java.util.HashMap;
 
 public class JavaMethodHook
 {
-  private static final HashMap<String, Field> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private static final HashMap<String, Field> jdField_a_of_type_JavaUtilHashMap;
   private static boolean jdField_a_of_type_Boolean = false;
+  
+  static
+  {
+    a = new HashMap();
+  }
   
   public static int a(Object paramObject, String paramString)
   {
@@ -19,6 +24,10 @@ public class JavaMethodHook
       int i = a(paramObject.getClass(), paramString).getInt(paramObject);
       return i;
     }
+    catch (IllegalArgumentException paramObject)
+    {
+      throw paramObject;
+    }
     catch (IllegalAccessException paramObject)
     {
       if (QLog.isColorLevel()) {
@@ -26,30 +35,32 @@ public class JavaMethodHook
       }
       throw new IllegalAccessError(paramObject.getMessage());
     }
-    catch (IllegalArgumentException paramObject)
-    {
-      throw paramObject;
-    }
   }
   
   public static JavaMethodHook.AdditionalHookInfo a(Member paramMember, JavaMethodHook.Callback paramCallback)
   {
-    if ((!(paramMember instanceof Method)) && (!(paramMember instanceof Constructor))) {
+    boolean bool = paramMember instanceof Method;
+    if ((!bool) && (!(paramMember instanceof Constructor))) {
       throw new IllegalArgumentException("only methods and constructors can be hooked");
     }
-    Class localClass2 = paramMember.getDeclaringClass();
+    Class localClass = paramMember.getDeclaringClass();
     int i = a(paramMember, "slot");
+    Object localObject;
     Class[] arrayOfClass;
-    if ((paramMember instanceof Method)) {
-      arrayOfClass = ((Method)paramMember).getParameterTypes();
-    }
-    for (Class localClass1 = ((Method)paramMember).getReturnType();; localClass1 = null)
+    if (bool)
     {
-      paramCallback = new JavaMethodHook.AdditionalHookInfo(paramCallback, arrayOfClass, localClass1, null);
-      hookMethodNative(paramMember, localClass2, i, paramCallback);
-      return paramCallback;
-      arrayOfClass = ((Constructor)paramMember).getParameterTypes();
+      localObject = (Method)paramMember;
+      arrayOfClass = ((Method)localObject).getParameterTypes();
+      localObject = ((Method)localObject).getReturnType();
     }
+    else
+    {
+      arrayOfClass = ((Constructor)paramMember).getParameterTypes();
+      localObject = null;
+    }
+    paramCallback = new JavaMethodHook.AdditionalHookInfo(paramCallback, arrayOfClass, (Class)localObject, null);
+    hookMethodNative(paramMember, localClass, i, paramCallback);
+    return paramCallback;
   }
   
   public static Field a(Class<?> paramClass, String paramString)
@@ -58,12 +69,11 @@ public class JavaMethodHook
     ((StringBuilder)localObject).append('#');
     ((StringBuilder)localObject).append(paramString);
     localObject = ((StringBuilder)localObject).toString();
-    if (jdField_a_of_type_JavaUtilHashMap.containsKey(localObject))
+    if (a.containsKey(localObject))
     {
-      paramString = (Field)jdField_a_of_type_JavaUtilHashMap.get(localObject);
-      paramClass = paramString;
-      if (paramString != null) {
-        break label86;
+      paramClass = (Field)a.get(localObject);
+      if (paramClass != null) {
+        return paramClass;
       }
       throw new NoSuchFieldError((String)localObject);
     }
@@ -71,15 +81,16 @@ public class JavaMethodHook
     {
       paramClass = b(paramClass, paramString);
       paramClass.setAccessible(true);
-      jdField_a_of_type_JavaUtilHashMap.put(localObject, paramClass);
-      label86:
+      a.put(localObject, paramClass);
       return paramClass;
     }
     catch (NoSuchFieldException paramClass)
     {
-      jdField_a_of_type_JavaUtilHashMap.put(localObject, null);
-      throw new NoSuchFieldError((String)localObject);
+      label88:
+      break label88;
     }
+    a.put(localObject, null);
+    throw new NoSuchFieldError((String)localObject);
   }
   
   public static boolean a()
@@ -110,15 +121,14 @@ public class JavaMethodHook
     for (;;)
     {
       paramClass = paramClass.getSuperclass();
-      if ((paramClass == null) || (paramClass.equals(Object.class))) {
-        throw localNoSuchFieldException1;
-      }
+      if ((paramClass != null) && (!paramClass.equals(Object.class))) {}
       try
       {
         Field localField2 = paramClass.getDeclaredField(paramString);
         return localField2;
       }
       catch (NoSuchFieldException localNoSuchFieldException2) {}
+      throw localNoSuchFieldException1;
     }
   }
   
@@ -130,7 +140,7 @@ public class JavaMethodHook
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.debug.io.util.JavaMethodHook
  * JD-Core Version:    0.7.0.1
  */

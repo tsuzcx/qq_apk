@@ -33,49 +33,50 @@ class HttpCommunicator$HttpCommunicatorHandler
       }
       if ((???.obj != null) && ((???.obj instanceof HttpMsg)))
       {
-        localHttpMsg = (HttpMsg)???.obj;
-        if (localHttpMsg.mIsCancel.get()) {
-          break label273;
-        }
-        this.this$0.run(localHttpMsg, this);
-        if (localHttpMsg.lockForSyncSend != null) {
-          localHttpMsg.hasFinished.set(true);
-        }
-      }
-    }
-    label273:
-    while (???.what != 1)
-    {
-      synchronized (localHttpMsg.lockForSyncSend)
-      {
-        HttpMsg localHttpMsg;
-        localHttpMsg.lockForSyncSend.notify();
-        if (this.forceFinish.get())
+        HttpMsg localHttpMsg = (HttpMsg)???.obj;
+        if (!localHttpMsg.mIsCancel.get())
         {
-          getLooper().quit();
-          return;
-        }
-      }
-      this.isProcReq.set(false);
-      this.curReq = null;
-      for (???.obj = null;; ???.obj = null)
-      {
-        synchronized (HttpCommunicator.access$000(this.this$0))
-        {
-          HttpCommunicator.access$510(this.this$0);
-          this.this$0.disPatchMsg("handleMsgFin thread index:" + this.index);
-          if ((!HttpCommunicator.access$600(this.this$0, false)) || (HttpCommunicator.access$300(this.this$0) == null)) {
-            break;
+          this.this$0.run(localHttpMsg, this);
+          if (localHttpMsg.lockForSyncSend != null)
+          {
+            localHttpMsg.hasFinished.set(true);
+            synchronized (localHttpMsg.lockForSyncSend)
+            {
+              localHttpMsg.lockForSyncSend.notify();
+            }
           }
-          HttpCommunicator.access$402(this.this$0, new HttpCommunicator.HttpCommunicatorHandler.1(this));
-          HttpCommunicator.access$300(this.this$0).postDelayed(HttpCommunicator.access$400(this.this$0), 2000L);
-          return;
+          if (this.forceFinish.get())
+          {
+            getLooper().quit();
+            return;
+          }
+          this.isProcReq.set(false);
+          this.curReq = null;
+          ???.obj = null;
+          synchronized (HttpCommunicator.access$000(this.this$0))
+          {
+            HttpCommunicator.access$510(this.this$0);
+            ??? = this.this$0;
+            ??? = new StringBuilder();
+            ((StringBuilder)???).append("handleMsgFin thread index:");
+            ((StringBuilder)???).append(this.index);
+            ???.disPatchMsg(((StringBuilder)???).toString());
+          }
         }
         this.isProcReq.set(false);
         this.curReq = null;
+        ???.obj = null;
+      }
+      if ((HttpCommunicator.access$600(this.this$0, false)) && (HttpCommunicator.access$300(this.this$0) != null))
+      {
+        HttpCommunicator.access$402(this.this$0, new HttpCommunicator.HttpCommunicatorHandler.1(this));
+        HttpCommunicator.access$300(this.this$0).postDelayed(HttpCommunicator.access$400(this.this$0), 2000L);
       }
     }
-    getLooper().quit();
+    else if (???.what == 1)
+    {
+      getLooper().quit();
+    }
   }
   
   public void interruptCurrentMsg()
@@ -84,7 +85,14 @@ class HttpCommunicator$HttpCommunicatorHandler
     {
       if (this.curReq != null)
       {
-        this.this$0.logHttpCommunicator(this.curReq, "requeustInterupt", "msgId:" + this.curReq.msgId + " thread id:" + this.index);
+        HttpCommunicator localHttpCommunicator = this.this$0;
+        HttpMsg localHttpMsg = this.curReq;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("msgId:");
+        localStringBuilder.append(this.curReq.msgId);
+        localStringBuilder.append(" thread id:");
+        localStringBuilder.append(this.index);
+        localHttpCommunicator.logHttpCommunicator(localHttpMsg, "requeustInterupt", localStringBuilder.toString());
         this.curReq.mIsPreempted.set(true);
         if (this.curReq.mConn != null)
         {
@@ -95,8 +103,8 @@ class HttpCommunicator$HttpCommunicatorHandler
         this.curReq.setHttpErrorCode(9361, 0, "preempted by higher msg");
         this.curReq.getProcessor().handleError(this.curReq, this.curReq);
         this.curReq = null;
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -111,7 +119,7 @@ class HttpCommunicator$HttpCommunicatorHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.HttpCommunicator.HttpCommunicatorHandler
  * JD-Core Version:    0.7.0.1
  */

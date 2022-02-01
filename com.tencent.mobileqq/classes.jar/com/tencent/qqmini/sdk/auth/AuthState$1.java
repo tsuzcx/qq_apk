@@ -10,14 +10,15 @@ class AuthState$1
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (this.val$asyncResult != null) {
-      this.val$asyncResult.onReceiveResult(paramBoolean, paramJSONObject);
+    AsyncResult localAsyncResult = this.val$asyncResult;
+    if (localAsyncResult != null) {
+      localAsyncResult.onReceiveResult(paramBoolean, paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.auth.AuthState.1
  * JD-Core Version:    0.7.0.1
  */

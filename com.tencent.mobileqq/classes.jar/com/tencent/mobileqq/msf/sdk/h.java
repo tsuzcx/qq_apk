@@ -80,39 +80,43 @@ public class h
   
   public static boolean d(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return false;
-      if (paramString.equals(MsfServiceSdk.get().getMsfServiceName()))
-      {
-        MsfServiceSdk.get().unbindMsfService();
-        return true;
-      }
-    } while (!a.containsKey(paramString));
-    ((IMsfProxy)a.get(paramString)).unbindMsfService();
-    return true;
+    }
+    if (paramString.equals(MsfServiceSdk.get().getMsfServiceName()))
+    {
+      MsfServiceSdk.get().unbindMsfService();
+      return true;
+    }
+    if (a.containsKey(paramString))
+    {
+      ((IMsfProxy)a.get(paramString)).unbindMsfService();
+      return true;
+    }
+    return false;
   }
   
   public static boolean e(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return false;
-      if (paramString.equals(MsfServiceSdk.get().getMsfServiceName()))
-      {
-        MsfServiceSdk.get().stopMsfService();
-        return true;
-      }
-    } while (!a.containsKey(paramString));
-    ((IMsfProxy)a.get(paramString)).stopMsfService();
-    return true;
+    }
+    if (paramString.equals(MsfServiceSdk.get().getMsfServiceName()))
+    {
+      MsfServiceSdk.get().stopMsfService();
+      return true;
+    }
+    if (a.containsKey(paramString))
+    {
+      ((IMsfProxy)a.get(paramString)).stopMsfService();
+      return true;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.h
  * JD-Core Version:    0.7.0.1
  */

@@ -24,13 +24,14 @@ public final class oidb_cmd0x8c8$PGCFeedsInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 90, 98, 106, 112, 120 }, new String[] { "enum_pgc_feeds_card_type", "uint64_puin", "msg_pgc_pic_info_list", "msg_pgc_video_info_list", "bytes_pgc_comments", "uint32_myself_follow_status", "uint32_follow_counts" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), null, null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, PGCFeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 90, 98, 106, 112, 120 }, new String[] { "enum_pgc_feeds_card_type", "uint64_puin", "msg_pgc_pic_info_list", "msg_pgc_video_info_list", "bytes_pgc_comments", "uint32_myself_follow_status", "uint32_follow_counts" }, new Object[] { localInteger, Long.valueOf(0L), null, null, localByteStringMicro, localInteger, localInteger }, PGCFeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8c8.oidb_cmd0x8c8.PGCFeedsInfo
  * JD-Core Version:    0.7.0.1
  */

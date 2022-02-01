@@ -1,17 +1,22 @@
 package com.tencent.ark.open;
 
+import com.tencent.ark.open.internal.WeakReferenceHandler;
+
 class ArkAppMgr$GetAppPathByNameTask
 {
   public String appName;
   public ArkAppMgr.AppPathInfo appPathInfo;
-  public String appView;
-  public ArkAppMgr.IGetAppPathByNameCallback callback;
+  ArkAppMgr.IGetAppPathByNameCallback callback;
   public String errMsg;
-  public WeakReferenceHandler handler;
+  WeakReferenceHandler handler;
   public String minAppVersion;
   public int retCode = -1;
-  public long timeCreateTask = 0L;
-  public Object userdata;
+  
+  ArkAppMgr$GetAppPathByNameTask(String paramString1, String paramString2)
+  {
+    this.appName = paramString1;
+    this.minAppVersion = paramString2;
+  }
 }
 
 

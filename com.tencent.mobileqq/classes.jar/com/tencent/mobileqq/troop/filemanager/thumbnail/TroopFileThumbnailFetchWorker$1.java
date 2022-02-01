@@ -15,29 +15,55 @@ class TroopFileThumbnailFetchWorker$1
   
   public void run()
   {
+    int i;
     if (this.this$0.jdField_a_of_type_Boolean)
     {
-      TroopFileTransferUtil.Log.b("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] start. had stoped");
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("] start. had stoped");
+      TroopFileTransferUtil.Log.b("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
       return;
     }
     this.this$0.c();
-    this.this$0.e = this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_Int);
-    this.this$0.d = (this.this$0.e + ".ttmp");
-    if (FileUtils.b(this.this$0.e))
+    Object localObject = this.this$0;
+    ((TroopFileThumbnailFetchWorker)localObject).e = ((TroopFileThumbnailFetchWorker)localObject).jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_Int);
+    localObject = this.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.this$0.e);
+    localStringBuilder.append(".ttmp");
+    ((TroopFileThumbnailFetchWorker)localObject).d = localStringBuilder.toString();
+    if (FileUtils.fileExistsAndNotEmpty(this.this$0.e))
     {
-      TroopFileTransferUtil.Log.b("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] thumb had exsited");
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("] thumb had exsited");
+      TroopFileTransferUtil.Log.b("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
       this.this$0.a(true);
       return;
     }
-    if (!NetworkUtil.g(BaseApplication.getContext()))
+    if (!NetworkUtil.isNetworkAvailable(BaseApplication.getContext()))
     {
-      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] no network");
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("] no network");
+      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
       this.this$0.c(TroopTechReportUtils.TroopFileReportResultCode.k);
       return;
     }
     if (TextUtils.isEmpty(this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath))
     {
-      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] filepath is null");
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("] filepath is null");
+      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", i, ((StringBuilder)localObject).toString());
       this.this$0.c(TroopTechReportUtils.TroopFileReportResultCode.w);
       return;
     }
@@ -46,7 +72,7 @@ class TroopFileThumbnailFetchWorker$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailFetchWorker.1
  * JD-Core Version:    0.7.0.1
  */

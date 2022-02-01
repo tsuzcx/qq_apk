@@ -9,37 +9,53 @@ class GroupManagerActivity$13
 {
   GroupManagerActivity$13(GroupManagerActivity paramGroupManagerActivity) {}
   
-  public void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  protected void onAddGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onAddGroupResp isSuccess = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramGroupActionResp = new StringBuilder();
+      paramGroupActionResp.append("onAddGroupResp isSuccess = ");
+      paramGroupActionResp.append(paramBoolean);
+      QLog.d("GroupManagerActivity", 2, paramGroupActionResp.toString());
     }
     this.a.a(paramBoolean);
     GroupManagerActivity.c(this.a, true);
   }
   
-  public void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  protected void onDeleteGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onDeleteGroupResp isSuccess = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramGroupActionResp = new StringBuilder();
+      paramGroupActionResp.append("onDeleteGroupResp isSuccess = ");
+      paramGroupActionResp.append(paramBoolean);
+      QLog.d("GroupManagerActivity", 2, paramGroupActionResp.toString());
     }
     this.a.a(paramBoolean);
     GroupManagerActivity.c(this.a, true);
   }
   
-  public void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  protected void onRenameGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onRenameGroupResp isSuccess = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramGroupActionResp = new StringBuilder();
+      paramGroupActionResp.append("onRenameGroupResp isSuccess = ");
+      paramGroupActionResp.append(paramBoolean);
+      QLog.d("GroupManagerActivity", 2, paramGroupActionResp.toString());
     }
     this.a.a(paramBoolean);
     GroupManagerActivity.c(this.a, true);
   }
   
-  public void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
+  protected void onResortGroupResp(boolean paramBoolean, GroupActionResp paramGroupActionResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GroupManagerActivity", 2, "onResortGroupResp isSuccess = " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramGroupActionResp = new StringBuilder();
+      paramGroupActionResp.append("onResortGroupResp isSuccess = ");
+      paramGroupActionResp.append(paramBoolean);
+      QLog.d("GroupManagerActivity", 2, paramGroupActionResp.toString());
     }
     this.a.a(true);
     GroupManagerActivity.c(this.a, true);
@@ -47,7 +63,7 @@ class GroupManagerActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GroupManagerActivity.13
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.troop.quickat.ui;
 
-import com.tencent.mobileqq.app.TroopBusinessObserver;
+import com.tencent.mobileqq.troop.onlinepush.api.TroopOnlinePushObserver;
 import com.tencent.qphone.base.util.QLog;
 
 class AtPanel$1
-  extends TroopBusinessObserver
+  extends TroopOnlinePushObserver
 {
   AtPanel$1(AtPanel paramAtPanel) {}
   
-  public void onTroopMemberUpdate()
+  protected void onTroopMemberUpdate()
   {
     super.onTroopMemberUpdate();
     if (QLog.isColorLevel()) {
@@ -19,7 +19,7 @@ class AtPanel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.quickat.ui.AtPanel.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,8 @@ public class UKYOScore$ScoreStatus
   
   public void updateImageID(String paramString)
   {
-    if ((this.mImageID != null) && (paramString.equals(this.mImageID))) {
+    String str = this.mImageID;
+    if ((str != null) && (paramString.equals(str))) {
       return;
     }
     this.mImageID = paramString;
@@ -29,7 +30,7 @@ public class UKYOScore$ScoreStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.juyoujinggame.UKYOScore.ScoreStatus
  * JD-Core Version:    0.7.0.1
  */

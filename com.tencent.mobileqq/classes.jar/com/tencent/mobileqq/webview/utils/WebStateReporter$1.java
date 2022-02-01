@@ -16,114 +16,137 @@ class WebStateReporter$1
   public void run()
   {
     boolean bool3 = this.jdField_a_of_type_Boolean;
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      bool2 = bool3;
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
+      boolean bool2 = bool3;
+      boolean bool1;
       try
       {
-        localObject = Uri.parse(this.jdField_a_of_type_JavaLangString);
+        localObject2 = Uri.parse(this.jdField_a_of_type_JavaLangString);
         bool2 = bool3;
-        str1 = ((Uri)localObject).getQueryParameter("hasRedDot");
+        String str = ((Uri)localObject2).getQueryParameter("hasRedDot");
         bool1 = bool3;
         bool2 = bool3;
-        if (!TextUtils.isEmpty(str1))
+        if (!TextUtils.isEmpty(str))
         {
           bool2 = bool3;
-          bool1 = str1.equalsIgnoreCase("1");
+          bool1 = str.equalsIgnoreCase("1");
         }
         bool2 = bool1;
-        localObject = ((Uri)localObject).getQueryParameter("crashFrom");
+        localObject2 = ((Uri)localObject2).getQueryParameter("crashFrom");
         bool2 = bool1;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          continue;
-        }
-        bool2 = bool1;
-        i = Integer.parseInt((String)localObject);
-      }
-      catch (Exception localException1)
-      {
-        String str1;
-        int i = -1;
-        boolean bool1 = bool2;
-        if (QLog.isColorLevel()) {
-          QLog.e("WebStateReporter_report", 2, "parse url got some problem!", localException1);
-        }
-        continue;
-        Object localObject = (Integer)WebStateReporter.jdField_a_of_type_JavaUtilHashMap.get("sample_rate");
-        continue;
-        int j = 0;
-        continue;
-        if (i != -1)
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
         {
-          String str2 = localException1 + "?type=" + i;
-          if (QLog.isColorLevel()) {
-            QLog.d("WebStateReporter_report", 2, "try report web status,  step: " + this.this$0.jdField_b_of_type_Int + ", hasRedDot : " + bool1 + ", crashFrom : " + i + ", stepTime: " + (this.this$0.jdField_c_of_type_Long - this.this$0.jdField_b_of_type_Long) + ", totalTime: " + (System.currentTimeMillis() - this.this$0.jdField_b_of_type_Long) + "\n" + str2);
-          }
-          if (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_JavaLangString))
-          {
-            localObject = this.this$0.jdField_a_of_type_JavaLangString;
-            String str3 = this.b;
-            if (bool1)
-            {
-              i = 1;
-              ReportController.b(null, "P_CliOper", "WebStatusReport", "", (String)localObject, str3, i, 1, this.this$0.jdField_b_of_type_Int, str2, Build.VERSION.RELEASE, String.valueOf(this.this$0.jdField_c_of_type_Long - this.this$0.jdField_b_of_type_Long), String.valueOf(System.currentTimeMillis() - this.this$0.jdField_b_of_type_Long));
-            }
-          }
-          else
-          {
-            localObject = "unknown";
-            continue;
-          }
-          i = 0;
-          continue;
+          bool2 = bool1;
+          i = Integer.parseInt((String)localObject2);
         }
-        i = -1;
-        continue;
-      }
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("WebStateReporter_report", 2, "parse url, redDot : " + str1 + ", urlFromType : " + (String)localObject);
+        else
+        {
+          i = -1;
         }
-        j = this.jdField_a_of_type_JavaLangString.indexOf("?");
-        str1 = this.jdField_a_of_type_JavaLangString;
-        if (j == -1) {
-          continue;
+        bool2 = bool1;
+        j = i;
+        try
+        {
+          if (!QLog.isColorLevel()) {
+            break label215;
+          }
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("parse url, redDot : ");
+          ((StringBuilder)localObject3).append(str);
+          ((StringBuilder)localObject3).append(", urlFromType : ");
+          ((StringBuilder)localObject3).append((String)localObject2);
+          QLog.d("WebStateReporter_report", 2, ((StringBuilder)localObject3).toString());
+          bool2 = bool1;
+          j = i;
         }
-        str1 = str1.substring(0, j);
+        catch (Exception localException1) {}
+        bool2 = bool1;
       }
       catch (Exception localException2)
       {
-        continue;
-        continue;
+        i = -1;
+        bool1 = bool2;
       }
-    }
-    if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.isEmpty())
-    {
-      this.this$0.a(this.jdField_a_of_type_AndroidContentContext);
-      if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
-        WebStateReporter.jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(10));
+      int j = i;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("WebStateReporter_report", 2, "parse url got some problem!", localException2);
+        j = i;
+        bool2 = bool1;
       }
-    }
-    if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.containsKey(str1))
-    {
-      localObject = (Integer)WebStateReporter.jdField_a_of_type_JavaUtilHashMap.get(str1);
-      j = ((Integer)localObject).intValue();
-      if ((1 != j) && (this.jdField_a_of_type_Long % j != WebStateReporter.jdField_c_of_type_Int)) {
-        break label315;
+      label215:
+      int i = this.jdField_a_of_type_JavaLangString.indexOf("?");
+      Object localObject2 = this.jdField_a_of_type_JavaLangString;
+      Object localObject1 = localObject2;
+      if (i != -1) {
+        localObject1 = ((String)localObject2).substring(0, i);
       }
-      j = 1;
-      if (j != 0) {
-        break label320;
+      if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.isEmpty())
+      {
+        this.this$0.a(this.jdField_a_of_type_AndroidContentContext);
+        if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
+          WebStateReporter.jdField_a_of_type_JavaUtilHashMap.put("sample_rate", Integer.valueOf(10));
+        }
       }
+      if (WebStateReporter.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject1)) {
+        localObject2 = WebStateReporter.jdField_a_of_type_JavaUtilHashMap.get(localObject1);
+      } else {
+        localObject2 = WebStateReporter.jdField_a_of_type_JavaUtilHashMap.get("sample_rate");
+      }
+      i = ((Integer)localObject2).intValue();
+      if ((1 != i) && (this.jdField_a_of_type_Long % i != WebStateReporter.jdField_c_of_type_Int)) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      if (i == 0) {
+        return;
+      }
+      localObject2 = localObject1;
+      if (j != -1)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("?type=");
+        ((StringBuilder)localObject2).append(j);
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("try report web status,  step: ");
+        ((StringBuilder)localObject1).append(this.this$0.jdField_b_of_type_Int);
+        ((StringBuilder)localObject1).append(", hasRedDot : ");
+        ((StringBuilder)localObject1).append(bool2);
+        ((StringBuilder)localObject1).append(", crashFrom : ");
+        ((StringBuilder)localObject1).append(j);
+        ((StringBuilder)localObject1).append(", stepTime: ");
+        ((StringBuilder)localObject1).append(this.this$0.jdField_c_of_type_Long - this.this$0.jdField_b_of_type_Long);
+        ((StringBuilder)localObject1).append(", totalTime: ");
+        ((StringBuilder)localObject1).append(System.currentTimeMillis() - this.this$0.jdField_b_of_type_Long);
+        ((StringBuilder)localObject1).append("\n");
+        ((StringBuilder)localObject1).append((String)localObject2);
+        QLog.d("WebStateReporter_report", 2, ((StringBuilder)localObject1).toString());
+      }
+      if (!TextUtils.isEmpty(this.this$0.jdField_a_of_type_JavaLangString)) {
+        localObject1 = this.this$0.jdField_a_of_type_JavaLangString;
+      } else {
+        localObject1 = "unknown";
+      }
+      Object localObject3 = this.b;
+      if (bool2) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      ReportController.b(null, "P_CliOper", "WebStatusReport", "", (String)localObject1, (String)localObject3, i, 1, this.this$0.jdField_b_of_type_Int, (String)localObject2, Build.VERSION.RELEASE, String.valueOf(this.this$0.jdField_c_of_type_Long - this.this$0.jdField_b_of_type_Long), String.valueOf(System.currentTimeMillis() - this.this$0.jdField_b_of_type_Long));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.utils.WebStateReporter.1
  * JD-Core Version:    0.7.0.1
  */

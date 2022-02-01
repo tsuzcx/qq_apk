@@ -15,21 +15,20 @@ class BulkSendMessageFragment$3
   {
     boolean bool1 = this.a.a.canScrollVertically(-1);
     boolean bool2 = this.a.a.canScrollVertically(1);
-    if ((paramView.isFocused()) && ((bool1) || (bool2))) {
-      paramView.getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    switch (paramMotionEvent.getAction() & 0xFF)
+    if ((paramView.isFocused()) && ((bool1) || (bool2)))
     {
-    default: 
-      return false;
+      paramView.getParent().requestDisallowInterceptTouchEvent(true);
+      if ((paramMotionEvent.getAction() & 0xFF) != 1) {
+        return false;
+      }
+      paramView.getParent().requestDisallowInterceptTouchEvent(false);
     }
-    paramView.getParent().requestDisallowInterceptTouchEvent(false);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment.3
  * JD-Core Version:    0.7.0.1
  */

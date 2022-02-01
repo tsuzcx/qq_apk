@@ -8,47 +8,58 @@ public class TransserviceRoamRefreshCommenMsg
 {
   public void a(MessageObserver paramMessageObserver, int paramInt, boolean paramBoolean, Object paramObject, Object[] paramArrayOfObject, StatictisInfo paramStatictisInfo)
   {
-    switch (paramInt)
+    if (paramInt != 999)
     {
-    default: 
-      return;
-    case 999: 
-      paramMessageObserver.commenMsgContentChanged(paramBoolean, paramObject);
-      return;
-    case 1000: 
+      if (paramInt != 1000)
+      {
+        if (paramInt != 3011)
+        {
+          if (paramInt != 3012)
+          {
+            switch (paramInt)
+            {
+            default: 
+              switch (paramInt)
+              {
+              default: 
+                return;
+              case 2002: 
+                paramMessageObserver.recentListRefresh();
+                return;
+              case 2001: 
+                paramMessageObserver.troopListRefresh();
+                return;
+              }
+              paramMessageObserver.friendsListRefresh();
+              return;
+            case 1005: 
+              paramMessageObserver.setRoamChat(paramBoolean);
+              return;
+            case 1004: 
+              paramMessageObserver.getRoamChat(paramBoolean, paramObject);
+              return;
+            case 1003: 
+              paramMessageObserver.delRoamChatFriend(paramBoolean);
+              return;
+            }
+            paramMessageObserver.msgDelFriend(paramArrayOfObject);
+            return;
+          }
+          paramMessageObserver.transserviceTempChatDownloadPic(paramBoolean, paramArrayOfObject);
+          return;
+        }
+        paramMessageObserver.transserviceC2CUploadStreamPtt(paramBoolean, paramArrayOfObject);
+        return;
+      }
       paramMessageObserver.comenMsgReceived();
       return;
-    case 1003: 
-      paramMessageObserver.delRoamChatFriend(paramBoolean);
-      return;
-    case 1004: 
-      paramMessageObserver.getRoamChat(paramBoolean, paramObject);
-      return;
-    case 1005: 
-      paramMessageObserver.setRoamChat(paramBoolean);
-      return;
-    case 2000: 
-      paramMessageObserver.friendsListRefresh();
-      return;
-    case 2001: 
-      paramMessageObserver.troopListRefresh();
-      return;
-    case 2002: 
-      paramMessageObserver.recentListRefresh();
-      return;
-    case 1002: 
-      paramMessageObserver.msgDelFriend(paramArrayOfObject);
-      return;
-    case 3012: 
-      paramMessageObserver.transserviceTempChatDownloadPic(paramBoolean, paramArrayOfObject);
-      return;
     }
-    paramMessageObserver.transserviceC2CUploadStreamPtt(paramBoolean, paramArrayOfObject);
+    paramMessageObserver.commenMsgContentChanged(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.messageobserver.TransserviceRoamRefreshCommenMsg
  * JD-Core Version:    0.7.0.1
  */

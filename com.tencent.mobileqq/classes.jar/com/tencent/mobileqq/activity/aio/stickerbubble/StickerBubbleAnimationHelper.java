@@ -2,7 +2,6 @@ package com.tencent.mobileqq.activity.aio.stickerbubble;
 
 import android.content.Context;
 import android.graphics.Point;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -13,8 +12,9 @@ import android.view.animation.TranslateAnimation;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
+import com.tencent.mobileqq.activity.aio.stickerbubble.item.ItemStatus.Acceleration;
+import com.tencent.mobileqq.activity.aio.stickerbubble.item.ItemStatus.Velocity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.CommonImageCacheHelper;
 import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
@@ -30,7 +30,6 @@ public class StickerBubbleAnimationHelper
   private static Random jdField_a_of_type_JavaUtilRandom = new Random();
   private static Set<Object> jdField_a_of_type_JavaUtilSet = new HashSet();
   private static int[] jdField_a_of_type_ArrayOfInt;
-  private static int b;
   
   public static int a(@NonNull String paramString)
   {
@@ -64,7 +63,7 @@ public class StickerBubbleAnimationHelper
   
   private static Animation a(Context paramContext)
   {
-    int i = AIOUtils.a(8.0F, paramContext.getResources());
+    int i = AIOUtils.b(8.0F, paramContext.getResources());
     paramContext = new TranslateAnimation(-i, i, 0.0F, 0.0F);
     paramContext.setDuration(100L);
     paramContext.setInterpolator(new AccelerateInterpolator());
@@ -73,56 +72,46 @@ public class StickerBubbleAnimationHelper
     return paramContext;
   }
   
-  @Nullable
-  public static StickerBubbleAnimationHelper.CacheItem a(String paramString)
-  {
-    return (StickerBubbleAnimationHelper.CacheItem)CommonImageCacheHelper.a("StickerBubbleGifCache_" + paramString);
-  }
-  
-  public static StickerBubbleAnimationView.AddItemRequest a(int paramInt1, String paramString, int paramInt2, int[] paramArrayOfInt)
+  public static AddItemRequest a(int paramInt1, String paramString, int paramInt2, int[] paramArrayOfInt)
   {
     boolean bool = a(paramInt2, paramArrayOfInt);
-    paramArrayOfInt = new Point(paramInt1 / 2, 0);
-    double d1;
+    paramArrayOfInt = new AddItemRequest().a(new Point(paramInt1 / 2, 0)).a(paramString).a(bool);
+    paramInt2 = 2000;
+    if (bool) {
+      paramInt1 = -jdField_a_of_type_JavaUtilRandom.nextInt(2000) + 1000;
+    } else {
+      paramInt1 = -jdField_a_of_type_JavaUtilRandom.nextInt(8000) + 4000;
+    }
+    double d = paramInt1;
     if (bool)
     {
-      d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(2000) + 1000;
-      if (!bool) {
-        break label114;
-      }
+      paramString = jdField_a_of_type_JavaUtilRandom;
+      paramInt1 = 500;
     }
-    label114:
-    for (double d2 = jdField_a_of_type_JavaUtilRandom.nextInt(500);; d2 = jdField_a_of_type_JavaUtilRandom.nextInt(2000))
+    else
     {
-      return new StickerBubbleAnimationView.AddItemRequest(paramArrayOfInt, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 49);
-      d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(8000) + 4000;
-      break;
+      paramString = jdField_a_of_type_JavaUtilRandom;
+      paramInt1 = paramInt2;
     }
+    return paramArrayOfInt.a(new ItemStatus.Velocity(d, paramString.nextInt(paramInt1))).a(new ItemStatus.Acceleration(0.0D, 200.0D)).a(49);
   }
   
-  public static StickerBubbleAnimationView.AddItemRequest a(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
+  public static AddItemRequest a(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
   {
     boolean bool = a(paramInt);
-    double d1;
-    if (bool)
-    {
-      d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(1500) + 750;
-      if (!bool) {
-        break label102;
-      }
+    paramPoint = new AddItemRequest().a(paramPoint).a(paramString).a(bool);
+    if (bool) {
+      paramInt = -jdField_a_of_type_JavaUtilRandom.nextInt(1500) + 750;
+    } else {
+      paramInt = -jdField_a_of_type_JavaUtilRandom.nextInt(6000) + 3000;
     }
-    label102:
-    for (double d2 = -1000 - jdField_a_of_type_JavaUtilRandom.nextInt(500);; d2 = -2000 - jdField_a_of_type_JavaUtilRandom.nextInt(1000))
-    {
-      return new StickerBubbleAnimationView.AddItemRequest(paramPoint, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 85);
-      d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(6000) + 3000;
-      break;
+    double d = paramInt;
+    if (bool) {
+      paramInt = -1000 - jdField_a_of_type_JavaUtilRandom.nextInt(500);
+    } else {
+      paramInt = -2000 - jdField_a_of_type_JavaUtilRandom.nextInt(1000);
     }
-  }
-  
-  public static void a()
-  {
-    b += 1;
+    return paramPoint.a(new ItemStatus.Velocity(d, paramInt)).a(new ItemStatus.Acceleration(0.0D, 200.0D)).a(85);
   }
   
   public static void a(View paramView)
@@ -153,34 +142,19 @@ public class StickerBubbleAnimationHelper
   public static void a(Object paramObject, View paramView)
   {
     jdField_a_of_type_JavaUtilSet.remove(paramObject);
-    if ((jdField_a_of_type_JavaUtilSet.isEmpty()) && (jdField_a_of_type_AndroidViewAnimationAnimation != null) && (jdField_a_of_type_AndroidViewAnimationAnimation.hasStarted()))
+    if (jdField_a_of_type_JavaUtilSet.isEmpty())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleHelper", 2, "cancelShakeWindowAnim");
-      }
-      jdField_a_of_type_AndroidViewAnimationAnimation.cancel();
-      jdField_a_of_type_AndroidViewAnimationAnimation.reset();
-      paramView.clearAnimation();
-    }
-  }
-  
-  public static void a(String paramString, BitmapDrawable[] paramArrayOfBitmapDrawable, int paramInt)
-  {
-    if (a())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("StickerBubbleHelper", 2, "putFramesToCache: " + paramString + " / " + paramArrayOfBitmapDrawable);
-      }
-      String str = "StickerBubbleGifCache_" + paramString;
-      if (CommonImageCacheHelper.a(str) == null) {
-        CommonImageCacheHelper.a(str, new StickerBubbleAnimationHelper.CacheItem(paramString, paramArrayOfBitmapDrawable, paramInt));
+      paramObject = jdField_a_of_type_AndroidViewAnimationAnimation;
+      if ((paramObject != null) && (paramObject.hasStarted()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("StickerBubbleHelper", 2, "cancelShakeWindowAnim");
+        }
+        jdField_a_of_type_AndroidViewAnimationAnimation.cancel();
+        jdField_a_of_type_AndroidViewAnimationAnimation.reset();
+        paramView.clearAnimation();
       }
     }
-  }
-  
-  private static boolean a()
-  {
-    return b > 3;
   }
   
   private static boolean a(int paramInt)
@@ -200,23 +174,16 @@ public class StickerBubbleAnimationHelper
   
   private static boolean a(int paramInt, int[] paramArrayOfInt)
   {
-    boolean bool2 = false;
     int j = paramArrayOfInt.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        if (paramArrayOfInt[i] == paramInt) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (paramArrayOfInt[i] == paramInt) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public static int[] a(QQAppInterface paramQQAppInterface)
@@ -224,52 +191,58 @@ public class StickerBubbleAnimationHelper
     if (jdField_a_of_type_ArrayOfInt == null)
     {
       paramQQAppInterface = PokeItemHelper.a(paramQQAppInterface, 7);
-      if (paramQQAppInterface != null) {
+      if (paramQQAppInterface != null)
+      {
         paramQQAppInterface = paramQQAppInterface.split(",");
+        try
+        {
+          localObject = new int[paramQQAppInterface.length];
+          int i = 0;
+          while (i < localObject.length)
+          {
+            localObject[i] = Integer.parseInt(paramQQAppInterface[i]);
+            i += 1;
+          }
+          jdField_a_of_type_ArrayOfInt = (int[])localObject;
+        }
+        catch (NumberFormatException paramQQAppInterface)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("PE_SWITCH_TYPE_SURPRISE_INDEXS is illegal to parse, ");
+          ((StringBuilder)localObject).append(paramQQAppInterface);
+          QLog.e("StickerBubbleHelper", 1, ((StringBuilder)localObject).toString());
+        }
       }
     }
-    try
+    Object localObject = jdField_a_of_type_ArrayOfInt;
+    paramQQAppInterface = (QQAppInterface)localObject;
+    if (localObject == null)
     {
-      int[] arrayOfInt = new int[paramQQAppInterface.length];
-      int i = 0;
-      while (i < arrayOfInt.length)
-      {
-        arrayOfInt[i] = Integer.parseInt(paramQQAppInterface[i]);
-        i += 1;
-      }
-      jdField_a_of_type_ArrayOfInt = arrayOfInt;
+      paramQQAppInterface = new int[3];
+      paramQQAppInterface[0] = 10;
+      paramQQAppInterface[1] = 20;
+      paramQQAppInterface[2] = 30;
+      paramQQAppInterface;
     }
-    catch (NumberFormatException paramQQAppInterface)
-    {
-      for (;;)
-      {
-        QLog.e("StickerBubbleHelper", 1, "PE_SWITCH_TYPE_SURPRISE_INDEXS is illegal to parse, " + paramQQAppInterface);
-      }
-    }
-    if (jdField_a_of_type_ArrayOfInt == null) {
-      return new int[] { 10, 20, 30 };
-    }
-    return jdField_a_of_type_ArrayOfInt;
+    return paramQQAppInterface;
   }
   
-  public static StickerBubbleAnimationView.AddItemRequest b(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
+  public static AddItemRequest b(@NonNull Point paramPoint, @NonNull String paramString, int paramInt)
   {
     boolean bool = a(paramInt);
-    double d1;
-    if (bool)
-    {
-      d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(1500) + 750;
-      if (!bool) {
-        break label102;
-      }
+    paramPoint = new AddItemRequest().a(paramPoint).a(paramString).a(bool);
+    if (bool) {
+      paramInt = -jdField_a_of_type_JavaUtilRandom.nextInt(1500) + 750;
+    } else {
+      paramInt = -jdField_a_of_type_JavaUtilRandom.nextInt(6000) + 3000;
     }
-    label102:
-    for (double d2 = -1000 - jdField_a_of_type_JavaUtilRandom.nextInt(500);; d2 = -2000 - jdField_a_of_type_JavaUtilRandom.nextInt(1000))
-    {
-      return new StickerBubbleAnimationView.AddItemRequest(paramPoint, paramString, bool, new ItemStatus.Velocity(d1, d2), new ItemStatus.Acceleration(0.0D, 200.0D), 81);
-      d1 = -jdField_a_of_type_JavaUtilRandom.nextInt(6000) + 3000;
-      break;
+    double d = paramInt;
+    if (bool) {
+      paramInt = -1000 - jdField_a_of_type_JavaUtilRandom.nextInt(500);
+    } else {
+      paramInt = -2000 - jdField_a_of_type_JavaUtilRandom.nextInt(1000);
     }
+    return paramPoint.a(new ItemStatus.Velocity(d, paramInt)).a(new ItemStatus.Acceleration(0.0D, 200.0D)).a(81);
   }
   
   public static void b(Object paramObject, View paramView)
@@ -290,7 +263,7 @@ public class StickerBubbleAnimationHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationHelper
  * JD-Core Version:    0.7.0.1
  */

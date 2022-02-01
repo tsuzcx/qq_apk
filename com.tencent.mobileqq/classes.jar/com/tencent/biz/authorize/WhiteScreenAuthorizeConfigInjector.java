@@ -36,8 +36,14 @@ public class WhiteScreenAuthorizeConfigInjector
   {
     AuthorizeConfig.a().k();
     Object localObject = this.a;
-    if (QLog.isColorLevel()) {
-      QLog.d("WhiteListAuthorizeConfigInjector", 1, "isInWhiteScreenWhiteList is called of domain " + paramString + " config " + localObject);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isInWhiteScreenWhiteList is called of domain ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" config ");
+      localStringBuilder.append(localObject);
+      QLog.d("WhiteListAuthorizeConfigInjector", 1, localStringBuilder.toString());
     }
     if ((localObject != null) && (!TextUtils.isEmpty(paramString)))
     {
@@ -64,7 +70,7 @@ public class WhiteScreenAuthorizeConfigInjector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.authorize.WhiteScreenAuthorizeConfigInjector
  * JD-Core Version:    0.7.0.1
  */

@@ -13,6 +13,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.home.Conversation;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.WifiSdkHandler;
 import com.tencent.mobileqq.app.WifiSdkObserver;
@@ -39,7 +40,7 @@ public class FreeWifiHelper
   private static boolean d;
   private static boolean e;
   
-  private static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, FreeWifiDialogListener paramFreeWifiDialogListener, int paramInt)
+  private static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, FreeWifiHelper.FreeWifiDialogListener paramFreeWifiDialogListener, int paramInt)
   {
     paramActivity = new FreeWifiHelper.5(paramActivity, paramString1, paramString2, paramString3, paramString4, new FreeWifiHelper.2(paramInt, paramActivity, paramFreeWifiDialogListener), new FreeWifiHelper.3(paramFreeWifiDialogListener, paramInt), new FreeWifiHelper.4(paramFreeWifiDialogListener, paramInt), paramInt);
     paramString1 = Looper.getMainLooper();
@@ -84,48 +85,48 @@ public class FreeWifiHelper
   {
     try
     {
-      if (!a(paramContext.getApplicationContext())) {
-        return;
-      }
-      if (paramSCGet3rdCloudCheck.tipsType == 1)
+      if (a(paramContext.getApplicationContext()))
       {
-        c(paramContext, 3);
-        b(paramContext, 398679);
-        return;
+        if (paramSCGet3rdCloudCheck.tipsType == 1)
+        {
+          c(paramContext, 3);
+          b(paramContext, 398679);
+          return;
+        }
+        if (paramSCGet3rdCloudCheck.tipsType == 2)
+        {
+          if (WifiSDKUIApi.isWiFiManagerExist()) {
+            WifiSDKUIApi.gotoWifiAppSecurityPage(paramContext);
+          } else {
+            a(paramContext, 4, paramSCGet3rdCloudCheck.safeTypeList);
+          }
+          b(paramContext, 398681);
+          return;
+        }
+        if (paramSCGet3rdCloudCheck.tipsType == 3)
+        {
+          if (!TextUtils.isEmpty(paramSCGet3rdCloudCheck.h5))
+          {
+            a(paramContext, paramSCGet3rdCloudCheck.h5);
+            b(paramContext, 500147);
+            return;
+          }
+          c(paramContext, 3);
+          b(paramContext, 398679);
+          return;
+        }
       }
-      if (paramSCGet3rdCloudCheck.tipsType != 2) {
-        break label103;
-      }
-      if (!WifiSDKUIApi.isWiFiManagerExist()) {
-        break label91;
-      }
-      WifiSDKUIApi.gotoWifiAppSecurityPage(paramContext);
     }
     catch (Exception paramContext)
     {
-      while (QLog.isColorLevel())
+      if (QLog.isColorLevel())
       {
-        QLog.i("WifiSdk", 2, "onClickWifiSecurityBanner exception: " + paramContext.getMessage());
-        return;
-        label91:
-        a(paramContext, 4, paramSCGet3rdCloudCheck.safeTypeList);
+        paramSCGet3rdCloudCheck = new StringBuilder();
+        paramSCGet3rdCloudCheck.append("onClickWifiSecurityBanner exception: ");
+        paramSCGet3rdCloudCheck.append(paramContext.getMessage());
+        QLog.i("WifiSdk", 2, paramSCGet3rdCloudCheck.toString());
       }
-      label103:
-      if (paramSCGet3rdCloudCheck.tipsType != 3) {
-        return;
-      }
-      if (TextUtils.isEmpty(paramSCGet3rdCloudCheck.h5)) {
-        break label136;
-      }
-      a(paramContext, paramSCGet3rdCloudCheck.h5);
-      b(paramContext, 500147);
-      return;
-      label136:
-      c(paramContext, 3);
-      b(paramContext, 398679);
     }
-    b(paramContext, 398681);
-    return;
   }
   
   public static void a(Context paramContext, String paramString)
@@ -143,128 +144,178 @@ public class FreeWifiHelper
   
   public static void a(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "registGuidIfNeed app: " + paramQQAppInterface);
-    }
-    if (paramQQAppInterface == null) {}
-    String str;
-    BaseApplication localBaseApplication;
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-        str = paramQQAppInterface.getCurrentAccountUin();
-        localBaseApplication = paramQQAppInterface.getApp();
-        localObject = WifiSdkSharedPreUtils.a(localBaseApplication, str);
-        if (QLog.isColorLevel()) {
-          QLog.i("WifiSdk", 2, "registGuidIfNeed uin: " + str + " guid: " + (String)localObject);
-        }
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("WifiSdk", 2, "registGuidIfNeed uin: " + str + " guid is not null, do not regist");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("registGuidIfNeed app: ");
+      ((StringBuilder)localObject1).append(paramQQAppInterface);
+      QLog.i("WifiSdk", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (paramQQAppInterface == null) {
       return;
-      long l = WifiSdkSharedPreUtils.c(localBaseApplication, str);
-      if ((l == -1L) || (System.currentTimeMillis() - l >= 86400000L)) {
-        break;
+    }
+    Object localObject1 = paramQQAppInterface.getCurrentAccountUin();
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    Object localObject2 = WifiSdkSharedPreUtils.a(localBaseApplication, (String)localObject1);
+    if (QLog.isColorLevel())
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("registGuidIfNeed uin: ");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append(" guid: ");
+      ((StringBuilder)localObject3).append((String)localObject2);
+      QLog.i("WifiSdk", 2, ((StringBuilder)localObject3).toString());
+    }
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("registGuidIfNeed uin: ");
+        paramQQAppInterface.append((String)localObject1);
+        paramQQAppInterface.append(" guid is not null, do not regist");
+        QLog.i("WifiSdk", 2, paramQQAppInterface.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("WifiSdk", 2, "registGuidIfNeed, dont regit guid, time limit");
-    return;
+      return;
+    }
+    long l = WifiSdkSharedPreUtils.c(localBaseApplication, (String)localObject1);
+    if ((l != -1L) && (System.currentTimeMillis() - l < 86400000L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("WifiSdk", 2, "registGuidIfNeed, dont regit guid, time limit");
+      }
+      return;
+    }
     if (QLog.isColorLevel()) {
       QLog.i("WifiSdk", 2, "registGuidIfNeed, start regist guid");
     }
-    Object localObject = new WifiSdkHandler(paramQQAppInterface);
-    WifiSdkObserver localWifiSdkObserver = new WifiSdkObserver(paramQQAppInterface);
-    localWifiSdkObserver.a(new FreeWifiHelper.10(paramQQAppInterface, localWifiSdkObserver));
-    paramQQAppInterface.addObserver(localWifiSdkObserver);
-    ((WifiSdkHandler)localObject).a(2);
-    WifiSdkSharedPreUtils.c(localBaseApplication, str, System.currentTimeMillis());
+    localObject2 = new WifiSdkHandler(paramQQAppInterface);
+    Object localObject3 = new WifiSdkObserver(paramQQAppInterface);
+    ((WifiSdkObserver)localObject3).a(new FreeWifiHelper.10(paramQQAppInterface, (WifiSdkObserver)localObject3));
+    paramQQAppInterface.addObserver((BusinessObserver)localObject3);
+    ((WifiSdkHandler)localObject2).a(2);
+    WifiSdkSharedPreUtils.c(localBaseApplication, (String)localObject1, System.currentTimeMillis());
   }
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt, ConfigurationService.Config paramConfig)
   {
     int i = paramConfig.version.get();
-    String str = paramQQAppInterface.getCurrentUin();
-    int j = SharedPreUtils.a(paramQQAppInterface.getApp(), "wifi_connect_config_version", str);
+    Object localObject = paramQQAppInterface.getCurrentUin();
+    int j = SharedPreUtils.a(paramQQAppInterface.getApp(), "wifi_connect_config_version", (String)localObject);
     if (QLog.isColorLevel()) {
       QLog.d("FreeWifiHelper", 2, String.format(Locale.getDefault(), "received wifi Config remote version: %d, localVersion: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
     }
     if (i != j)
     {
-      SharedPreUtils.a(paramQQAppInterface.getApp(), "wifi_connect_config_version", str, i);
+      SharedPreUtils.a(paramQQAppInterface.getApp(), "wifi_connect_config_version", (String)localObject, i);
       paramConfig = ConfigServlet.b(paramConfig, j, paramInt);
       if (!TextUtils.isEmpty(paramConfig))
       {
-        QLog.d("WifiSdk", 2, "receiveAllConfigs|type: " + paramInt + ",content: " + paramConfig + ",version: " + i);
-        try
-        {
-          paramConfig = new JSONObject(paramConfig);
-          if (paramConfig.optInt("Wifi_file_and", 0) == 1)
-          {
-            bool = true;
-            c = bool;
-            if (paramConfig.optInt("Wifi_security_and", 0) != 1) {
-              break label250;
-            }
-            bool = true;
-            label193:
-            d = bool;
-            if (paramConfig.optInt("Wifi_PDV_and", 0) != 1) {
-              break label256;
-            }
-          }
-          label256:
-          for (boolean bool = true;; bool = false)
-          {
-            e = bool;
-            SharedPreUtils.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin(), c, d, e);
-            a(paramQQAppInterface, false);
-            return;
-            bool = false;
-            break;
-            label250:
-            bool = false;
-            break label193;
-          }
-          a(paramQQAppInterface, true);
-        }
-        catch (JSONException paramConfig)
-        {
-          QLog.e("WifiSdk", 2, paramConfig, new Object[0]);
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("receiveAllConfigs|type: ");
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append(",content: ");
+        ((StringBuilder)localObject).append(paramConfig);
+        ((StringBuilder)localObject).append(",version: ");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("WifiSdk", 2, ((StringBuilder)localObject).toString());
       }
+    }
+    for (;;)
+    {
+      try
+      {
+        paramConfig = new JSONObject(paramConfig);
+        if (paramConfig.optInt("Wifi_file_and", 0) != 1) {
+          break label293;
+        }
+        bool = true;
+        c = bool;
+        if (paramConfig.optInt("Wifi_security_and", 0) != 1) {
+          break label299;
+        }
+        bool = true;
+        d = bool;
+        if (paramConfig.optInt("Wifi_PDV_and", 0) != 1) {
+          break label305;
+        }
+        bool = true;
+        e = bool;
+        SharedPreUtils.a(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentUin(), c, d, e);
+        a(paramQQAppInterface, false);
+        return;
+      }
+      catch (JSONException paramConfig)
+      {
+        QLog.e("WifiSdk", 2, paramConfig, new Object[0]);
+      }
+      a(paramQQAppInterface, true);
+      return;
+      label293:
+      boolean bool = false;
+      continue;
+      label299:
+      bool = false;
+      continue;
+      label305:
+      bool = false;
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    Object localObject;
+    Object localObject1;
     String str;
+    Object localObject2;
     if (paramBoolean)
     {
-      localObject = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
+      localObject1 = PreferenceManager.getDefaultSharedPreferences(paramQQAppInterface.getApp());
       str = paramQQAppInterface.getCurrentAccountUin();
-      c = ((SharedPreferences)localObject).getBoolean("wifi_connect_switch_file_" + str, false);
-      d = ((SharedPreferences)localObject).getBoolean("wifi_connect_switch_security_" + str, false);
-      e = ((SharedPreferences)localObject).getBoolean("wifi_connect_switch_pdv_" + str, false);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("wifi_connect_switch_file_");
+      ((StringBuilder)localObject2).append(str);
+      c = ((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject2).toString(), false);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("wifi_connect_switch_security_");
+      ((StringBuilder)localObject2).append(str);
+      d = ((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject2).toString(), false);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("wifi_connect_switch_pdv_");
+      ((StringBuilder)localObject2).append(str);
+      e = ((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject2).toString(), false);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "startCheck start, Conversation.sConversationResumeFlag: " + Conversation.b + ", file switch: " + c + ", security switch: " + d + ", pdv switch: " + e);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("startCheck start, Conversation.sConversationResumeFlag: ");
+      ((StringBuilder)localObject1).append(Conversation.b);
+      ((StringBuilder)localObject1).append(", file switch: ");
+      ((StringBuilder)localObject1).append(c);
+      ((StringBuilder)localObject1).append(", security switch: ");
+      ((StringBuilder)localObject1).append(d);
+      ((StringBuilder)localObject1).append(", pdv switch: ");
+      ((StringBuilder)localObject1).append(e);
+      QLog.i("WifiSdk", 2, ((StringBuilder)localObject1).toString());
     }
     try
     {
       if (((d) || (e)) && (Conversation.b > 0L))
       {
-        localObject = paramQQAppInterface.getApp();
+        localObject1 = paramQQAppInterface.getApp();
         str = paramQQAppInterface.getCurrentAccountUin();
         long l1 = System.currentTimeMillis();
-        long l2 = WifiSdkSharedPreUtils.a((Context)localObject, str);
-        long l3 = WifiSdkSharedPreUtils.b((Context)localObject, str) * 60 * 60 * 1000L;
-        if (QLog.isColorLevel()) {
-          QLog.i("WifiSdk", 2, "startCheck, lastTime: " + l2 + " frequency: " + l3 + " nowTime: " + l1);
+        long l2 = WifiSdkSharedPreUtils.a((Context)localObject1, str);
+        long l3 = WifiSdkSharedPreUtils.b((Context)localObject1, str) * 60 * 60 * 1000L;
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("startCheck, lastTime: ");
+          ((StringBuilder)localObject2).append(l2);
+          ((StringBuilder)localObject2).append(" frequency: ");
+          ((StringBuilder)localObject2).append(l3);
+          ((StringBuilder)localObject2).append(" nowTime: ");
+          ((StringBuilder)localObject2).append(l1);
+          QLog.i("WifiSdk", 2, ((StringBuilder)localObject2).toString());
         }
         if ((l2 != -1L) && (l1 - l2 < l3))
         {
@@ -274,94 +325,123 @@ public class FreeWifiHelper
           QLog.i("WifiSdk", 2, "startCheck end, time limited");
           return;
         }
-        WifiSdkSharedPreUtils.a((Context)localObject, str, l1);
-        WifiSdkHandler localWifiSdkHandler = new WifiSdkHandler(paramQQAppInterface);
+        WifiSdkSharedPreUtils.a((Context)localObject1, str, l1);
+        localObject2 = new WifiSdkHandler(paramQQAppInterface);
         WifiSdkObserver localWifiSdkObserver = new WifiSdkObserver(paramQQAppInterface);
-        localWifiSdkObserver.a(new FreeWifiHelper.1((Context)localObject, str, paramQQAppInterface, localWifiSdkObserver));
+        localWifiSdkObserver.a(new FreeWifiHelper.1((Context)localObject1, str, paramQQAppInterface, localWifiSdkObserver));
         paramQQAppInterface.addObserver(localWifiSdkObserver);
-        localWifiSdkHandler.a(1);
+        ((WifiSdkHandler)localObject2).a(1);
+        return;
+      }
+      if (c)
+      {
+        b(paramQQAppInterface);
+        return;
       }
     }
     catch (Exception paramQQAppInterface)
     {
       if (QLog.isColorLevel())
       {
-        QLog.i("WifiSdk", 2, "startCheck exception: " + paramQQAppInterface.getMessage());
-        return;
-        if (c) {
-          b(paramQQAppInterface);
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("startCheck exception: ");
+        ((StringBuilder)localObject1).append(paramQQAppInterface.getMessage());
+        QLog.i("WifiSdk", 2, ((StringBuilder)localObject1).toString());
       }
     }
+    return;
   }
   
   public static void a(String paramString)
   {
-    QLog.d("WifiSdk", 2, "WL_DEBUG reportClickEvent actionName = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WL_DEBUG reportClickEvent actionName = ");
+    localStringBuilder.append(paramString);
+    QLog.d("WifiSdk", 2, localStringBuilder.toString());
     ReportController.b(null, "dc00898", "", "", paramString, paramString, 0, 0, "", "", "", "");
   }
   
-  public static boolean a(Activity paramActivity, int paramInt, FreeWifiDialogListener paramFreeWifiDialogListener)
+  public static boolean a(Activity paramActivity, int paramInt, FreeWifiHelper.FreeWifiDialogListener paramFreeWifiDialogListener)
   {
-    QLog.i("WifiSdk", 2, "shouldOverrideDialog scene: " + paramInt + ", file switch: " + c);
-    if ((!c) || (!a(paramActivity))) {}
-    for (;;)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("shouldOverrideDialog scene: ");
+    ((StringBuilder)localObject1).append(paramInt);
+    ((StringBuilder)localObject1).append(", file switch: ");
+    ((StringBuilder)localObject1).append(c);
+    QLog.i("WifiSdk", 2, ((StringBuilder)localObject1).toString());
+    if (c)
     {
-      return true;
-      String str1 = "";
-      String str2 = "";
-      int i;
+      if (!a(paramActivity)) {
+        return true;
+      }
+      Object localObject2;
       if (paramInt == 1)
       {
-        str1 = paramActivity.getString(2131692657);
-        str2 = paramActivity.getString(2131692660);
-        i = 1;
+        localObject1 = paramActivity.getString(2131692614);
+        localObject2 = paramActivity.getString(2131692617);
       }
-      while (i != 0)
+      int i;
+      for (;;)
       {
-        String str5 = paramActivity.getString(2131692663);
-        String str4 = WifiSdkSharedPreUtils.a(paramActivity);
-        String str3 = str4;
-        if (TextUtils.isEmpty(str4)) {
-          str3 = paramActivity.getString(2131692656);
-        }
-        QLog.i("WifiSdk", 2, "shouldOverrideDialog btn1Text: " + str3);
-        a(paramActivity, str5, str1, str3, str2, paramFreeWifiDialogListener, paramInt);
-        return false;
-        if ((paramInt == 2) || (paramInt == 4))
+        i = 1;
+        break;
+        if ((paramInt != 2) && (paramInt != 4))
         {
-          str1 = paramActivity.getString(2131692659);
-          str2 = paramActivity.getString(2131692662);
-          i = 1;
-        }
-        else if (paramInt == 3)
-        {
-          str1 = paramActivity.getString(2131692658);
-          str2 = paramActivity.getString(2131692661);
-          i = 1;
-        }
-        else if (paramInt == 5)
-        {
-          str1 = paramActivity.getString(2131692612);
-          str2 = paramActivity.getString(2131692662);
-          i = 1;
+          if (paramInt == 3)
+          {
+            localObject1 = paramActivity.getString(2131692615);
+            localObject2 = paramActivity.getString(2131692618);
+          }
+          else if (paramInt == 5)
+          {
+            localObject1 = paramActivity.getString(2131692564);
+            localObject2 = paramActivity.getString(2131692619);
+          }
+          else
+          {
+            localObject1 = "";
+            localObject2 = localObject1;
+            i = 0;
+            break;
+          }
         }
         else
         {
-          i = 0;
+          localObject1 = paramActivity.getString(2131692616);
+          localObject2 = paramActivity.getString(2131692619);
         }
       }
+      if (i != 0)
+      {
+        String str = paramActivity.getString(2131692620);
+        Object localObject4 = WifiSdkSharedPreUtils.a(paramActivity);
+        Object localObject3 = localObject4;
+        if (TextUtils.isEmpty((CharSequence)localObject4)) {
+          localObject3 = paramActivity.getString(2131692613);
+        }
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("shouldOverrideDialog btn1Text: ");
+        ((StringBuilder)localObject4).append((String)localObject3);
+        QLog.i("WifiSdk", 2, ((StringBuilder)localObject4).toString());
+        a(paramActivity, str, (String)localObject1, (String)localObject3, (String)localObject2, paramFreeWifiDialogListener, paramInt);
+        return false;
+      }
     }
+    return true;
   }
   
   public static boolean a(Context paramContext)
   {
-    boolean bool = false;
-    QLog.i("WifiSdk", 2, "init wifisdk. was: " + a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("init wifisdk. was: ");
+    localStringBuilder.append(a);
+    QLog.i("WifiSdk", 2, localStringBuilder.toString());
     if (a) {
       return true;
     }
-    if (b)
+    boolean bool2 = b;
+    boolean bool1 = false;
+    if (bool2)
     {
       QLog.e("WifiSdk", 2, "wifisdk last init failed");
       return false;
@@ -372,18 +452,18 @@ public class FreeWifiHelper
         TMSDKWifiManager.setEnableLog(true);
       }
       if (!TMSDKWifiManager.init(paramContext.getApplicationContext(), new TMSDKCustomConfig().setCustomToast(new FreeWifiHelper.9()).setCustomInstaller(new FreeWifiHelper.8()).setCustomThreadPool(new FreeWifiHelper.7()).setCustomReporter(new FreeWifiHelper.6()))) {
-        bool = true;
+        bool1 = true;
       }
-      b = bool;
+      b = bool1;
       WifiSDKUIApi.init(new QQRImpl(), new QWifiFragImplManager());
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        QLog.e("WifiSdk", 2, "wifisdk init failed: " + paramContext.getMessage());
-        b = true;
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("wifisdk init failed: ");
+      localStringBuilder.append(paramContext.getMessage());
+      QLog.e("WifiSdk", 2, localStringBuilder.toString());
+      b = true;
     }
     if (!b) {
       a = true;
@@ -400,24 +480,26 @@ public class FreeWifiHelper
   
   public static void b(QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "requestTargetJumpInfoIfNeed app: " + paramQQAppInterface);
-    }
-    if (paramQQAppInterface == null) {}
-    String str;
-    BaseApplication localBaseApplication;
-    do
+    if (QLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("requestTargetJumpInfoIfNeed app: ");
+      ((StringBuilder)localObject).append(paramQQAppInterface);
+      QLog.i("WifiSdk", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramQQAppInterface == null) {
       return;
-      str = paramQQAppInterface.getCurrentAccountUin();
-      localBaseApplication = paramQQAppInterface.getApp();
-      long l = WifiSdkSharedPreUtils.b(localBaseApplication, str);
-      if ((l == -1L) || (System.currentTimeMillis() - l >= 86400000L)) {
-        break;
+    }
+    Object localObject = paramQQAppInterface.getCurrentAccountUin();
+    BaseApplication localBaseApplication = paramQQAppInterface.getApp();
+    long l = WifiSdkSharedPreUtils.b(localBaseApplication, (String)localObject);
+    if ((l != -1L) && (System.currentTimeMillis() - l < 86400000L))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("WifiSdk", 2, "requestTargetJumpInfoIfNeed, dont request, time limit");
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("WifiSdk", 2, "requestTargetJumpInfoIfNeed, dont request, time limit");
-    return;
+      return;
+    }
     if (QLog.isColorLevel()) {
       QLog.i("WifiSdk", 2, "requestTargetJumpInfoIfNeed, start request");
     }
@@ -426,7 +508,7 @@ public class FreeWifiHelper
     localWifiSdkObserver.a(new FreeWifiHelper.11(paramQQAppInterface, localWifiSdkObserver));
     paramQQAppInterface.addObserver(localWifiSdkObserver);
     localWifiSdkHandler.a(3);
-    WifiSdkSharedPreUtils.b(localBaseApplication, str, System.currentTimeMillis());
+    WifiSdkSharedPreUtils.b(localBaseApplication, (String)localObject, System.currentTimeMillis());
   }
   
   public static void c(Context paramContext, int paramInt)
@@ -435,8 +517,14 @@ public class FreeWifiHelper
       return;
     }
     TargetJumpInfo localTargetJumpInfo = TargetJumpInfo.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
-    if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "dialog click, jumpType: " + localTargetJumpInfo.jdField_a_of_type_Int + " jumpUrl: " + localTargetJumpInfo.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dialog click, jumpType: ");
+      localStringBuilder.append(localTargetJumpInfo.jdField_a_of_type_Int);
+      localStringBuilder.append(" jumpUrl: ");
+      localStringBuilder.append(localTargetJumpInfo.jdField_a_of_type_JavaLangString);
+      QLog.i("WifiSdk", 2, localStringBuilder.toString());
     }
     if (WifiSDKUIApi.isWiFiManagerExist())
     {
@@ -450,36 +538,41 @@ public class FreeWifiHelper
       b(paramContext, 500101);
       return;
     }
-    switch (localTargetJumpInfo.jdField_a_of_type_Int)
+    int i = localTargetJumpInfo.jdField_a_of_type_Int;
+    if (i != 1)
     {
-    case 4: 
-    default: 
-      a(paramContext, paramInt);
-      b(paramContext, 500105);
-      return;
-    case 1: 
-      a(paramContext, localTargetJumpInfo.jdField_a_of_type_JavaLangString);
-      b(paramContext, 500102);
-      return;
-    case 3: 
-      a(paramContext, localTargetJumpInfo.jdField_a_of_type_JavaLangString);
-      b(paramContext, 500103);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 5)
+          {
+            a(paramContext, paramInt);
+            b(paramContext, 500105);
+            return;
+          }
+          QLog.i("WifiSdk", 2, "gotoWifiFloorPage");
+          if (a(paramContext)) {
+            PublicFragmentActivity.a(paramContext, new Intent(), QWifiFloorFragment.class);
+          }
+          b(paramContext, 500177);
+          return;
+        }
+        a(paramContext, localTargetJumpInfo.jdField_a_of_type_JavaLangString);
+        b(paramContext, 500103);
+        return;
+      }
       a(paramContext, paramInt);
       b(paramContext, 500104);
       return;
     }
-    QLog.i("WifiSdk", 2, "gotoWifiFloorPage");
-    if (a(paramContext)) {
-      PublicFragmentActivity.a(paramContext, new Intent(), QWifiFloorFragment.class);
-    }
-    b(paramContext, 500177);
+    a(paramContext, localTargetJumpInfo.jdField_a_of_type_JavaLangString);
+    b(paramContext, 500102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.FreeWifiHelper
  * JD-Core Version:    0.7.0.1
  */

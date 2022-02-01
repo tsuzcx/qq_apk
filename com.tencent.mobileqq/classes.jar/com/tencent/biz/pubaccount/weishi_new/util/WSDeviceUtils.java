@@ -1,5 +1,6 @@
 package com.tencent.biz.pubaccount.weishi_new.util;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -15,6 +16,7 @@ import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qzonehub.api.report.lp.ILpReportUtils;
 import com.tencent.ttpic.baseutils.device.DeviceInstance;
 import com.tencent.ttpic.baseutils.log.LogUtils;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -26,28 +28,38 @@ public class WSDeviceUtils
 {
   public static int a()
   {
-    int i = 0;
     StringBuilder localStringBuilder = new StringBuilder();
     Object localObject = a(BaseApplicationImpl.getContext());
-    if ((localObject == null) || (TextUtils.isEmpty((CharSequence)localObject))) {
-      return 0;
-    }
-    localObject = ((String)localObject).split("\\.");
-    int j = localObject.length;
-    if (i < j)
+    int i = 0;
+    if (localObject != null)
     {
-      int k = Integer.parseInt(localObject[i]);
-      if (k < 10) {
-        localStringBuilder.append("0").append(k);
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
+        return 0;
       }
-      for (;;)
+      localObject = ((String)localObject).split("\\.");
+      int j = localObject.length;
+      while (i < j)
       {
+        int k = Integer.parseInt(localObject[i]);
+        if (k < 10)
+        {
+          localStringBuilder.append("0");
+          localStringBuilder.append(k);
+        }
+        else
+        {
+          localStringBuilder.append(k);
+        }
         i += 1;
-        break;
-        localStringBuilder.append(k);
       }
+      return Integer.parseInt(localStringBuilder.toString());
     }
-    return Integer.parseInt(localStringBuilder.toString());
+    return 0;
+  }
+  
+  public static int a(Activity paramActivity)
+  {
+    return ImmersiveUtils.getStatusBarHeight(paramActivity);
   }
   
   public static int a(Context paramContext)
@@ -110,9 +122,12 @@ public class WSDeviceUtils
   public static String a(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramInt & 0xFF).append(".");
-    localStringBuilder.append(paramInt >> 8 & 0xFF).append(".");
-    localStringBuilder.append(paramInt >> 16 & 0xFF).append(".");
+    localStringBuilder.append(paramInt & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt >> 8 & 0xFF);
+    localStringBuilder.append(".");
+    localStringBuilder.append(paramInt >> 16 & 0xFF);
+    localStringBuilder.append(".");
     localStringBuilder.append(paramInt >> 24 & 0xFF);
     return localStringBuilder.toString();
   }
@@ -161,13 +176,34 @@ public class WSDeviceUtils
   
   public static String d()
   {
-    String str = "" + Build.MODEL;
-    str = str + "&";
-    str = str + Build.VERSION.RELEASE;
-    str = str + "&";
-    str = str + Build.VERSION.SDK_INT;
-    str = str + "&";
-    return str + b();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("&");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(Build.VERSION.RELEASE);
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("&");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(Build.VERSION.SDK_INT);
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("&");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(b());
+    return localStringBuilder.toString();
   }
   
   public static String e()
@@ -192,37 +228,47 @@ public class WSDeviceUtils
     }
     catch (Exception localException)
     {
-      WSLog.d("WSDeviceUtils", "getWifiBssid : " + localException.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getWifiBssid : ");
+      localStringBuilder.append(localException.toString());
+      WSLog.d("WSDeviceUtils", localStringBuilder.toString());
     }
     return "";
   }
   
   public static String g()
   {
+    boolean bool = AppNetConnInfo.isWifiConn();
     String str = "unknown";
-    if (AppNetConnInfo.isWifiConn()) {
-      str = "Wi-Fi";
+    if (bool) {
+      return "Wi-Fi";
     }
-    while (!AppNetConnInfo.isMobileConn()) {
-      return str;
-    }
-    switch (AppNetConnInfo.getMobileInfo())
+    if (AppNetConnInfo.isMobileConn())
     {
-    default: 
-      return "unknown";
-    case 1: 
-      return "2G";
-    case 2: 
-      return "3G";
-    case 3: 
-      return "4G";
+      int i = AppNetConnInfo.getMobileInfo();
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4) {
+              return "unknown";
+            }
+            return "5G";
+          }
+          return "4G";
+        }
+        return "3G";
+      }
+      str = "2G";
     }
-    return "5G";
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSDeviceUtils
  * JD-Core Version:    0.7.0.1
  */

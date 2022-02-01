@@ -23,7 +23,6 @@ class ReflectInjectConstructor<T>
   
   public T newInstance(Injector paramInjector)
   {
-    StringBuilder localStringBuilder;
     try
     {
       if (this.param == null) {
@@ -37,17 +36,31 @@ class ReflectInjectConstructor<T>
     }
     catch (Exception localException)
     {
-      localStringBuilder = new StringBuilder().append("failed to create ").append(this.constructor.getDeclaringClass().getName()).append(" instance by inject constructor ");
-      if (this.param != null) {}
-    }
-    for (paramInjector = "none param";; paramInjector = "param " + this.param.type.getName() + " name " + this.param.name) {
-      throw new InjectException(paramInjector, localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to create ");
+      localStringBuilder.append(this.constructor.getDeclaringClass().getName());
+      localStringBuilder.append(" instance by inject constructor ");
+      if (this.param == null)
+      {
+        paramInjector = "none param";
+      }
+      else
+      {
+        paramInjector = new StringBuilder();
+        paramInjector.append("param ");
+        paramInjector.append(this.param.type.getName());
+        paramInjector.append(" name ");
+        paramInjector.append(this.param.name);
+        paramInjector = paramInjector.toString();
+      }
+      localStringBuilder.append(paramInjector);
+      throw new InjectException(localStringBuilder.toString(), localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.luan.ioc.reflect.ReflectInjectConstructor
  * JD-Core Version:    0.7.0.1
  */

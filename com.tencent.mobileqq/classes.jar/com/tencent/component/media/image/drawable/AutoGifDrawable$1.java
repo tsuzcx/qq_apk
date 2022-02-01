@@ -14,14 +14,19 @@ class AutoGifDrawable$1
   {
     try
     {
-      if (this.this$0.autoGifCallback != null) {
+      if (this.this$0.autoGifCallback != null)
+      {
         this.this$0.autoGifCallback.invalidateGifView();
+        return;
       }
-      return;
     }
     catch (Throwable paramDrawable)
     {
-      ImageManagerLog.w(AutoGifDrawable.access$100(), "invalidateDrawable,catch an exception:" + Log.getStackTraceString(paramDrawable));
+      String str = AutoGifDrawable.access$100();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("invalidateDrawable,catch an exception:");
+      localStringBuilder.append(Log.getStackTraceString(paramDrawable));
+      ImageManagerLog.w(str, localStringBuilder.toString());
     }
   }
   
@@ -31,7 +36,7 @@ class AutoGifDrawable$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.AutoGifDrawable.1
  * JD-Core Version:    0.7.0.1
  */

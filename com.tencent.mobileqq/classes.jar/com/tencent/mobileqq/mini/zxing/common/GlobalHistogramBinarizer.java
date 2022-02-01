@@ -21,90 +21,74 @@ public class GlobalHistogramBinarizer
   
   private static int estimateBlackPoint(int[] paramArrayOfInt)
   {
-    int i2 = 0;
     int i3 = paramArrayOfInt.length;
-    int i = 0;
-    int m = 0;
+    int i2 = 0;
     int j = 0;
+    int n = 0;
+    int m = 0;
+    int i = 0;
     int i1;
-    for (int n = 0; i < i3; n = i1)
+    while (j < i3)
     {
-      k = m;
-      if (paramArrayOfInt[i] > m)
+      k = n;
+      if (paramArrayOfInt[j] > n)
       {
-        k = paramArrayOfInt[i];
-        j = i;
+        k = paramArrayOfInt[j];
+        i = j;
       }
-      i1 = n;
-      if (paramArrayOfInt[i] > n) {
-        i1 = paramArrayOfInt[i];
+      i1 = m;
+      if (paramArrayOfInt[j] > m) {
+        i1 = paramArrayOfInt[j];
       }
-      i += 1;
-      m = k;
+      j += 1;
+      n = k;
+      m = i1;
     }
-    m = 0;
-    i = 0;
+    j = 0;
+    n = 0;
     int k = i2;
-    if (k < i3)
+    while (k < i3)
     {
-      i1 = k - j;
-      i1 *= paramArrayOfInt[k] * i1;
-      if (i1 <= m) {
-        break label252;
+      i1 = k - i;
+      i2 = paramArrayOfInt[k] * i1 * i1;
+      i1 = n;
+      if (i2 > n)
+      {
+        j = k;
+        i1 = i2;
       }
-      m = k;
-      i = i1;
+      k += 1;
+      n = i1;
     }
+    n = j;
+    k = i;
+    if (i > j)
+    {
+      k = j;
+      n = i;
+    }
+    if (n - k > i3 / 16)
+    {
+      i = n - 1;
+      i2 = i;
+      for (j = -1; i > k; j = i1)
+      {
+        i1 = i - k;
+        i3 = i1 * i1 * (n - i) * (m - paramArrayOfInt[i]);
+        i1 = j;
+        if (i3 > j)
+        {
+          i2 = i;
+          i1 = i3;
+        }
+        i -= 1;
+      }
+      return i2 << 3;
+    }
+    paramArrayOfInt = NotFoundException.getNotFoundInstance();
     for (;;)
     {
-      k += 1;
-      i1 = m;
-      m = i;
-      i = i1;
-      break;
-      if (j > i)
-      {
-        i1 = i;
-        m = j;
-      }
-      for (;;)
-      {
-        if (m - i1 <= i3 / 16) {
-          throw NotFoundException.getNotFoundInstance();
-        }
-        j = m - 1;
-        k = -1;
-        i = m - 1;
-        if (i > i1)
-        {
-          i2 = i - i1;
-          i2 = i2 * i2 * (m - i) * (n - paramArrayOfInt[i]);
-          if (i2 <= k) {
-            break label232;
-          }
-          k = i;
-          j = i2;
-        }
-        for (;;)
-        {
-          i -= 1;
-          i2 = k;
-          k = j;
-          j = i2;
-          break;
-          return j << 3;
-          label232:
-          i2 = j;
-          j = k;
-          k = i2;
-        }
-        m = i;
-        i1 = j;
-      }
-      label252:
-      i1 = i;
-      i = m;
-      m = i1;
+      throw paramArrayOfInt;
     }
   }
   
@@ -169,50 +153,49 @@ public class GlobalHistogramBinarizer
   
   public BitArray getBlackRow(int paramInt, BitArray paramBitArray)
   {
-    int i = 1;
     Object localObject = getLuminanceSource();
-    int m = ((LuminanceSource)localObject).getWidth();
-    if ((paramBitArray == null) || (paramBitArray.getSize() < m)) {
-      paramBitArray = new BitArray(m);
-    }
-    int[] arrayOfInt;
-    for (;;)
-    {
-      initArrays(m);
-      localObject = ((LuminanceSource)localObject).getRow(paramInt, this.luminances);
-      arrayOfInt = this.buckets;
-      paramInt = 0;
-      while (paramInt < m)
-      {
-        j = (localObject[paramInt] & 0xFF) >> 3;
-        arrayOfInt[j] += 1;
-        paramInt += 1;
-      }
+    int n = ((LuminanceSource)localObject).getWidth();
+    if ((paramBitArray != null) && (paramBitArray.getSize() >= n)) {
       paramBitArray.clear();
+    } else {
+      paramBitArray = new BitArray(n);
     }
-    int n = estimateBlackPoint(arrayOfInt);
-    if (m < 3)
+    initArrays(n);
+    localObject = ((LuminanceSource)localObject).getRow(paramInt, this.luminances);
+    int[] arrayOfInt = this.buckets;
+    int i = 0;
+    paramInt = 0;
+    while (paramInt < n)
     {
-      paramInt = 0;
-      while (paramInt < m)
+      j = (localObject[paramInt] & 0xFF) >> 3;
+      arrayOfInt[j] += 1;
+      paramInt += 1;
+    }
+    int i1 = estimateBlackPoint(arrayOfInt);
+    if (n < 3)
+    {
+      paramInt = i;
+      while (paramInt < n)
       {
-        if ((localObject[paramInt] & 0xFF) < n) {
+        if ((localObject[paramInt] & 0xFF) < i1) {
           paramBitArray.set(paramInt);
         }
         paramInt += 1;
       }
     }
-    int j = localObject[0];
+    i = localObject[0];
     paramInt = localObject[1] & 0xFF;
-    j &= 0xFF;
-    while (i < m - 1)
+    int j = i & 0xFF;
+    i = 1;
+    while (i < n - 1)
     {
-      int k = localObject[(i + 1)] & 0xFF;
-      if ((paramInt * 4 - j - k) / 2 < n) {
+      int m = i + 1;
+      int k = localObject[m] & 0xFF;
+      if ((paramInt * 4 - j - k) / 2 < i1) {
         paramBitArray.set(i);
       }
-      i += 1;
       j = paramInt;
+      i = m;
       paramInt = k;
     }
     return paramBitArray;
@@ -220,7 +203,7 @@ public class GlobalHistogramBinarizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.common.GlobalHistogramBinarizer
  * JD-Core Version:    0.7.0.1
  */

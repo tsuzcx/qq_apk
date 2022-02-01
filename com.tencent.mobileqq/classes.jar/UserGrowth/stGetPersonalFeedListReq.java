@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class stGetPersonalFeedListReq
   extends JceStruct
@@ -42,14 +43,17 @@ public final class stGetPersonalFeedListReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.personId != null) {
-      paramJceOutputStream.write(this.personId, 0);
+    Object localObject = this.personId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.context_feedids != null) {
-      paramJceOutputStream.write(this.context_feedids, 1);
+    localObject = this.context_feedids;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 2);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.isFirst, 3);
     paramJceOutputStream.write(this.scene, 4);
@@ -57,7 +61,7 @@ public final class stGetPersonalFeedListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stGetPersonalFeedListReq
  * JD-Core Version:    0.7.0.1
  */

@@ -24,22 +24,26 @@ public class RichTemplateOneSearchResultView
     String str = a();
     if (!TextUtils.isEmpty(str))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("RichTemplateOneSearchResultView", 2, "data->" + str);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("data->");
+        localStringBuilder.append(str);
+        QLog.e("RichTemplateOneSearchResultView", 2, localStringBuilder.toString());
       }
       this.jdField_a_of_type_ComTencentMobileqqSearchViewRichTemplateOneSearchResultView$RichTemplateSearchResultHelper.a();
       this.jdField_a_of_type_ComTencentMobileqqSearchViewRichTemplateOneSearchResultView$RichTemplateSearchResultHelper.a(str);
       this.jdField_a_of_type_ComTencentMobileqqSearchViewRichTemplateOneSearchResultView$RichTemplateSearchResultHelper.b();
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.e("RichTemplateOneSearchResultView", 2, "empty data");
+    if (QLog.isColorLevel()) {
+      QLog.e("RichTemplateOneSearchResultView", 2, "empty data");
+    }
   }
   
   private void b(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559940, null, false);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramContext).inflate(2131559810, null, false);
     this.jdField_a_of_type_ComTencentMobileqqSearchViewRichTemplateOneSearchResultView$RichTemplateSearchResultHelper.a(this.jdField_a_of_type_AndroidViewView);
   }
   
@@ -58,7 +62,7 @@ public class RichTemplateOneSearchResultView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.RichTemplateOneSearchResultView
  * JD-Core Version:    0.7.0.1
  */

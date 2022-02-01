@@ -29,54 +29,54 @@ public class NativePatch
   private int a()
   {
     int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+    while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      NativeSubPatch localNativeSubPatch = (NativeSubPatch)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if ((localNativeSubPatch.jdField_b_of_type_JavaUtilArrayList.size() != this.jdField_a_of_type_Int) || (localNativeSubPatch.jdField_c_of_type_JavaUtilArrayList.size() != this.jdField_b_of_type_Int) || (localNativeSubPatch.jdField_d_of_type_JavaUtilArrayList.size() != this.jdField_a_of_type_Int)) {
-        Common.Log.a("KingKongNativePatch", "Skip fingerprint/hookpoint count mismatch subpatch " + i);
+      Object localObject1 = (NativeSubPatch)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      int j;
+      if ((((NativeSubPatch)localObject1).jdField_b_of_type_JavaUtilArrayList.size() == this.jdField_a_of_type_Int) && (((NativeSubPatch)localObject1).jdField_c_of_type_JavaUtilArrayList.size() == this.jdField_b_of_type_Int) && (((NativeSubPatch)localObject1).jdField_d_of_type_JavaUtilArrayList.size() == this.jdField_a_of_type_Int)) {
+        j = 0;
       }
-      label294:
-      for (;;)
+      while (j < this.jdField_a_of_type_Int)
       {
-        i += 1;
-        break;
-        int j = 0;
-        for (;;)
+        Object localObject3 = (NativePatch.FingerprintDef)this.jdField_b_of_type_JavaUtilArrayList.get(j);
+        String str = ((NativePatch.FingerprintDef)localObject3).jdField_a_of_type_JavaLangString;
+        Object localObject2 = ((NativePatch.FingerprintDef)localObject3).jdField_b_of_type_JavaLangString;
+        int k = ((NativePatch.FingerprintDef)localObject3).jdField_a_of_type_Int;
+        int m = ((Integer)((NativeSubPatch)localObject1).jdField_d_of_type_JavaUtilArrayList.get(j)).intValue();
+        localObject3 = (String)((NativeSubPatch)localObject1).jdField_b_of_type_JavaUtilArrayList.get(j);
+        if ((m != -1) && (!"null".equals(localObject3)))
         {
-          if (j >= this.jdField_a_of_type_Int) {
-            break label294;
+          str = a(str, (String)localObject2, m, k);
+          if ((str == null) || (!str.equals(localObject3))) {
+            break;
           }
-          Object localObject = (NativePatch.FingerprintDef)this.jdField_b_of_type_JavaUtilArrayList.get(j);
-          String str1 = ((NativePatch.FingerprintDef)localObject).jdField_a_of_type_JavaLangString;
-          String str2 = ((NativePatch.FingerprintDef)localObject).jdField_b_of_type_JavaLangString;
-          int k = ((NativePatch.FingerprintDef)localObject).jdField_a_of_type_Int;
-          int m = ((Integer)localNativeSubPatch.jdField_d_of_type_JavaUtilArrayList.get(j)).intValue();
-          localObject = (String)localNativeSubPatch.jdField_b_of_type_JavaUtilArrayList.get(j);
-          if ((m == -1) || ("null".equals(localObject)))
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("Matches fingerprint ");
+          ((StringBuilder)localObject2).append(str);
+          Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject2).toString());
+          if (j == this.jdField_a_of_type_Int - 1)
           {
-            Common.Log.a("KingKongNativePatch", "Skip null fingerprint ");
-            if (j == this.jdField_a_of_type_Int - 1)
-            {
-              Common.Log.a("KingKongNativePatch", "Well done, all fingerprints matched!");
-              return i;
-            }
+            Common.Log.a("KingKongNativePatch", "Well done, all fingerprints matched!");
+            return i;
           }
-          else
-          {
-            str1 = a(str1, str2, m, k);
-            if ((str1 == null) || (!str1.equals(localObject))) {
-              break;
-            }
-            Common.Log.a("KingKongNativePatch", "Matches fingerprint " + str1);
-            if (j == this.jdField_a_of_type_Int - 1)
-            {
-              Common.Log.a("KingKongNativePatch", "Well done, all fingerprints matched!");
-              return i;
-            }
-          }
-          j += 1;
         }
+        else
+        {
+          Common.Log.a("KingKongNativePatch", "Skip null fingerprint ");
+          if (j == this.jdField_a_of_type_Int - 1)
+          {
+            Common.Log.a("KingKongNativePatch", "Well done, all fingerprints matched!");
+            return i;
+          }
+        }
+        j += 1;
+        continue;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Skip fingerprint/hookpoint count mismatch subpatch ");
+        ((StringBuilder)localObject1).append(i);
+        Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject1).toString());
       }
+      i += 1;
     }
     Common.Log.a("KingKongNativePatch", "Unable to get valid subpatch by offset!");
     return -1;
@@ -84,11 +84,10 @@ public class NativePatch
   
   private int a(int paramInt)
   {
-    int i = 1;
     if (paramInt == 1) {
-      i = 2;
+      return 2;
     }
-    return i;
+    return 1;
   }
   
   public static Patch a(String paramString, PatchInfo paramPatchInfo)
@@ -132,101 +131,151 @@ public class NativePatch
         this.jdField_c_of_type_JavaLangString = paramString.getString("name");
         this.jdField_d_of_type_JavaLangString = paramString.getString("ver");
         this.e = paramString.getString("type");
-        JSONObject localJSONObject = paramString.getJSONObject("basic_group");
-        this.jdField_a_of_type_Int = localJSONObject.getInt("fingerprint_count");
-        this.jdField_c_of_type_Int = localJSONObject.getInt("param_count");
-        this.jdField_b_of_type_Int = localJSONObject.getInt("hookpoint_count");
-        Common.Log.a("KingKongNativePatch", "--> Fingerprint count : " + this.jdField_a_of_type_Int);
-        Common.Log.a("KingKongNativePatch", "--> Parameter count : " + this.jdField_c_of_type_Int);
-        Common.Log.a("KingKongNativePatch", "--> HookPoint count : " + this.jdField_b_of_type_Int);
+        localObject1 = paramString.getJSONObject("basic_group");
+        this.jdField_a_of_type_Int = ((JSONObject)localObject1).getInt("fingerprint_count");
+        this.jdField_c_of_type_Int = ((JSONObject)localObject1).getInt("param_count");
+        this.jdField_b_of_type_Int = ((JSONObject)localObject1).getInt("hookpoint_count");
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("--> Fingerprint count : ");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+        Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject1).toString());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("--> Parameter count : ");
+        ((StringBuilder)localObject1).append(this.jdField_c_of_type_Int);
+        Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject1).toString());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("--> HookPoint count : ");
+        ((StringBuilder)localObject1).append(this.jdField_b_of_type_Int);
+        Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject1).toString());
         i = 0;
-        if (i < this.jdField_b_of_type_Int)
+        if (i >= this.jdField_b_of_type_Int) {
+          break label615;
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("hookpoint_definition_");
+        i += 1;
+        ((StringBuilder)localObject1).append(String.valueOf(i));
+        Object localObject2 = paramString.getJSONObject(((StringBuilder)localObject1).toString());
+        localObject1 = new NativePatch.HookPointDef(this);
+        if (((NativePatch.HookPointDef)localObject1).a((JSONObject)localObject2))
         {
-          localJSONObject = paramString.getJSONObject("hookpoint_definition_" + String.valueOf(i + 1));
-          Object localObject = new NativePatch.HookPointDef(this);
-          if (!((NativePatch.HookPointDef)localObject).a(localJSONObject)) {
-            break;
-          }
-          Common.Log.a("KingKongNativePatch", "--> HookPoint : " + localObject);
-          this.jdField_c_of_type_JavaUtilArrayList.add(localObject);
-          i += 1;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("--> HookPoint : ");
+          ((StringBuilder)localObject2).append(localObject1);
+          Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject2).toString());
+          this.jdField_c_of_type_JavaUtilArrayList.add(localObject1);
           continue;
           if (i >= this.jdField_a_of_type_Int) {
-            break label510;
+            break label622;
           }
-          localJSONObject = paramString.getJSONObject("fingerprint_definition_" + String.valueOf(i + 1));
-          localObject = new NativePatch.FingerprintDef(this);
-          if (!((NativePatch.FingerprintDef)localObject).a(localJSONObject)) {
-            break;
-          }
-          this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
-          Common.Log.a("KingKongNativePatch", "--> Fingerprint " + localObject);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("fingerprint_definition_");
           i += 1;
+          ((StringBuilder)localObject1).append(String.valueOf(i));
+          localObject2 = paramString.getJSONObject(((StringBuilder)localObject1).toString());
+          localObject1 = new NativePatch.FingerprintDef(this);
+          if (!((NativePatch.FingerprintDef)localObject1).a((JSONObject)localObject2)) {
+            break label620;
+          }
+          this.jdField_b_of_type_JavaUtilArrayList.add(localObject1);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("--> Fingerprint ");
+          ((StringBuilder)localObject2).append(localObject1);
+          Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject2).toString());
           continue;
           if (i < this.jdField_c_of_type_Int)
           {
-            localJSONObject = paramString.getJSONObject("parameter_definition_" + String.valueOf(i + 1));
-            localObject = new NativePatch.ParameterDef(this);
-            if (!((NativePatch.ParameterDef)localObject).a(localJSONObject)) {
-              break;
-            }
-            if (((NativePatch.ParameterDef)localObject).jdField_a_of_type_Int != i)
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("parameter_definition_");
+            int j = i + 1;
+            ((StringBuilder)localObject1).append(String.valueOf(j));
+            localObject2 = paramString.getJSONObject(((StringBuilder)localObject1).toString());
+            localObject1 = new NativePatch.ParameterDef(this);
+            if (((NativePatch.ParameterDef)localObject1).a((JSONObject)localObject2))
             {
-              Common.Log.a("KingKongNativePatch", "Parameter index error!");
-              return false;
+              if (((NativePatch.ParameterDef)localObject1).jdField_a_of_type_Int != i)
+              {
+                Common.Log.a("KingKongNativePatch", "Parameter index error!");
+                return false;
+              }
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("--> Parameter definition : ");
+              ((StringBuilder)localObject2).append(localObject1);
+              Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject2).toString());
+              this.jdField_d_of_type_JavaUtilArrayList.add(localObject1);
+              i = j;
+              continue;
             }
-            Common.Log.a("KingKongNativePatch", "--> Parameter definition : " + localObject);
-            this.jdField_d_of_type_JavaUtilArrayList.add(localObject);
-            i += 1;
-            continue;
+            return false;
           }
           return true;
         }
       }
       catch (JSONException paramString)
       {
-        Common.Log.a("KingKongNativePatch", "Parse sub patches failed : " + paramString);
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Parse sub patches failed : ");
+        ((StringBuilder)localObject1).append(paramString);
+        Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject1).toString());
         return false;
       }
+      return false;
+      label615:
       int i = 0;
       continue;
-      label510:
+      label620:
+      return false;
+      label622:
       i = 0;
     }
-    return false;
   }
   
   private int[] a()
   {
-    int[] arrayOfInt1 = Common.a(this.jdField_c_of_type_JavaLangString);
-    if (arrayOfInt1 == null)
+    Object localObject1 = Common.a(this.jdField_c_of_type_JavaLangString);
+    if (localObject1 == null)
     {
       Common.Log.a("KingKongNativePatch", "No GOT Hookpoint found");
       return null;
     }
-    if (arrayOfInt1.length != this.jdField_b_of_type_Int)
+    int i = localObject1.length;
+    int j = this.jdField_b_of_type_Int;
+    if (i != j)
     {
-      Common.Log.a("KingKongNativePatch", "Got Hookpoint length mismatch " + this.jdField_b_of_type_Int + ", " + arrayOfInt1.length);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Got Hookpoint length mismatch ");
+      ((StringBuilder)localObject2).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject2).append(", ");
+      ((StringBuilder)localObject2).append(localObject1.length);
+      Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject2).toString());
       return null;
     }
-    int[] arrayOfInt2 = new int[this.jdField_b_of_type_Int];
-    int i = 0;
+    Object localObject2 = new int[j];
+    i = 0;
     while (i < this.jdField_b_of_type_Int)
     {
-      arrayOfInt2[i] = PatchManager.nativeCalcParameter(2, ((NativePatch.HookPointDef)this.jdField_c_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString, "", arrayOfInt1[i]);
-      if (arrayOfInt2[i] == -1)
+      localObject2[i] = PatchManager.nativeCalcParameter(2, ((NativePatch.HookPointDef)this.jdField_c_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString, "", localObject1[i]);
+      if (localObject2[i] == -1)
       {
-        Common.Log.a("KingKongNativePatch", "Calculate GOT Hookpoint failed " + i);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Calculate GOT Hookpoint failed ");
+        ((StringBuilder)localObject1).append(i);
+        Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject1).toString());
         return null;
       }
       i += 1;
     }
-    return arrayOfInt2;
+    return localObject2;
   }
   
   private String b()
   {
-    return this.jdField_b_of_type_JavaLangString + f + this.jdField_c_of_type_JavaLangString + ".subpatch";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(f);
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(".subpatch");
+    return localStringBuilder.toString();
   }
   
   private boolean b()
@@ -237,89 +286,118 @@ public class NativePatch
   
   private int[] b()
   {
-    int[] arrayOfInt1 = Common.b(this.jdField_c_of_type_JavaLangString);
-    if (arrayOfInt1 == null)
+    Object localObject1 = Common.b(this.jdField_c_of_type_JavaLangString);
+    if (localObject1 == null)
     {
       Common.Log.a("KingKongNativePatch", "No Jumper point found");
       return null;
     }
-    if (arrayOfInt1.length != this.jdField_b_of_type_Int)
+    int i = localObject1.length;
+    int j = this.jdField_b_of_type_Int;
+    if (i != j)
     {
-      Common.Log.a("KingKongNativePatch", "Jumper point length mismatch " + this.jdField_b_of_type_Int + ", " + arrayOfInt1.length);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Jumper point length mismatch ");
+      ((StringBuilder)localObject2).append(this.jdField_b_of_type_Int);
+      ((StringBuilder)localObject2).append(", ");
+      ((StringBuilder)localObject2).append(localObject1.length);
+      Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject2).toString());
       return null;
     }
-    int[] arrayOfInt2 = new int[this.jdField_b_of_type_Int];
-    int i = 0;
+    Object localObject2 = new int[j];
+    i = 0;
     while (i < this.jdField_b_of_type_Int)
     {
-      arrayOfInt2[i] = PatchManager.nativeCalcParameter(2, ((NativePatch.HookPointDef)this.jdField_c_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString, "", arrayOfInt1[i]);
-      if (arrayOfInt2[i] == -1)
+      localObject2[i] = PatchManager.nativeCalcParameter(2, ((NativePatch.HookPointDef)this.jdField_c_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString, "", localObject1[i]);
+      if (localObject2[i] == -1)
       {
-        Common.Log.a("KingKongNativePatch", "Calculate Jumper point failed " + i);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Calculate Jumper point failed ");
+        ((StringBuilder)localObject1).append(i);
+        Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject1).toString());
         return null;
       }
       i += 1;
     }
-    return arrayOfInt2;
+    return localObject2;
   }
   
   public int a(Context paramContext)
   {
-    Common.Log.a("KingKongNativePatch", "---> Patching " + this.jdField_c_of_type_JavaLangString + "  <-------");
+    paramContext = new StringBuilder();
+    paramContext.append("---> Patching ");
+    paramContext.append(this.jdField_c_of_type_JavaLangString);
+    paramContext.append("  <-------");
+    Common.Log.a("KingKongNativePatch", paramContext.toString());
     int i = Common.a(this.jdField_c_of_type_JavaLangString, a());
-    if ((i == -1) || (i >= this.jdField_a_of_type_JavaUtilArrayList.size()))
+    if ((i != -1) && (i < this.jdField_a_of_type_JavaUtilArrayList.size()))
     {
-      Common.Log.a("KingKongNativePatch", "Unable to find valid subpatch index " + i);
-      return 12;
-    }
-    paramContext = (NativeSubPatch)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-    if ((paramContext.jdField_c_of_type_JavaUtilArrayList.size() != this.jdField_b_of_type_Int) || (this.jdField_c_of_type_JavaUtilArrayList.size() != this.jdField_b_of_type_Int))
-    {
+      paramContext = (NativeSubPatch)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if ((paramContext.jdField_c_of_type_JavaUtilArrayList.size() == this.jdField_b_of_type_Int) && (this.jdField_c_of_type_JavaUtilArrayList.size() == this.jdField_b_of_type_Int))
+      {
+        int[] arrayOfInt1 = a();
+        int[] arrayOfInt2 = b();
+        if ((arrayOfInt1 != null) && (arrayOfInt2 != null))
+        {
+          int j = paramContext.jdField_a_of_type_Int;
+          i = 0;
+          while (i < this.jdField_b_of_type_Int)
+          {
+            Object localObject2 = (NativePatch.HookPointDef)this.jdField_c_of_type_JavaUtilArrayList.get(i);
+            Object localObject3 = paramContext.jdField_a_of_type_JavaUtilArrayList;
+            int n = ((Integer)paramContext.jdField_c_of_type_JavaUtilArrayList.get(i)).intValue();
+            int k = arrayOfInt2[i];
+            int m = arrayOfInt1[i];
+            int i1 = ((NativePatch.HookPointDef)localObject2).jdField_a_of_type_Int;
+            Object localObject1 = ((NativePatch.HookPointDef)localObject2).jdField_a_of_type_JavaLangString;
+            localObject2 = ((NativePatch.HookPointDef)localObject2).jdField_b_of_type_JavaLangString;
+            if (n == -1)
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("Skip empty hook point ");
+              ((StringBuilder)localObject1).append(i);
+              Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject1).toString());
+            }
+            else
+            {
+              n = PatchManager.nativeCalcParameter(a(i1), (String)localObject1, (String)localObject2, n);
+              if (n == -1)
+              {
+                Common.Log.a("KingKongNativePatch", "Calculate hookPoint failed");
+                return 7;
+              }
+              localObject3 = a(this.jdField_d_of_type_JavaUtilArrayList, (ArrayList)localObject3);
+              if (localObject3 == null) {
+                return 6;
+              }
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("lib");
+              localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+              localStringBuilder.append(".so");
+              if (!PatchManager.nativeDoPatch(Common.b(localStringBuilder.toString()), (String)localObject1, (String)localObject2, n, k, m, (int[])localObject3, this.jdField_c_of_type_Int, j)) {
+                break label397;
+              }
+            }
+            i += 1;
+            continue;
+            label397:
+            Common.Log.a("KingKongNativePatch", "Native do patch failed");
+            return 10;
+          }
+          Common.Log.a("KingKongNativePatch", "---> Do patch OK <----");
+          return 0;
+        }
+        Common.Log.a("KingKongNativePatch", "Unable to get GOT HookPoint or Jumper point");
+        return 8;
+      }
       Common.Log.a("KingKongNativePatch", "SubPatch Hookpoint count mismatch ");
       return 11;
     }
-    int[] arrayOfInt1 = a();
-    int[] arrayOfInt2 = b();
-    if ((arrayOfInt1 == null) || (arrayOfInt2 == null))
-    {
-      Common.Log.a("KingKongNativePatch", "Unable to get GOT HookPoint or Jumper point");
-      return 8;
-    }
-    int j = paramContext.jdField_a_of_type_Int;
-    i = 0;
-    if (i < this.jdField_b_of_type_Int)
-    {
-      Object localObject2 = (NativePatch.HookPointDef)this.jdField_c_of_type_JavaUtilArrayList.get(i);
-      Object localObject1 = paramContext.jdField_a_of_type_JavaUtilArrayList;
-      int n = ((Integer)paramContext.jdField_c_of_type_JavaUtilArrayList.get(i)).intValue();
-      int k = arrayOfInt2[i];
-      int m = arrayOfInt1[i];
-      int i1 = ((NativePatch.HookPointDef)localObject2).jdField_a_of_type_Int;
-      String str = ((NativePatch.HookPointDef)localObject2).jdField_a_of_type_JavaLangString;
-      localObject2 = ((NativePatch.HookPointDef)localObject2).jdField_b_of_type_JavaLangString;
-      if (n == -1) {
-        Common.Log.a("KingKongNativePatch", "Skip empty hook point " + i);
-      }
-      do
-      {
-        i += 1;
-        break;
-        n = PatchManager.nativeCalcParameter(a(i1), str, (String)localObject2, n);
-        if (n == -1)
-        {
-          Common.Log.a("KingKongNativePatch", "Calculate hookPoint failed");
-          return 7;
-        }
-        localObject1 = a(this.jdField_d_of_type_JavaUtilArrayList, (ArrayList)localObject1);
-        if (localObject1 == null) {
-          return 6;
-        }
-      } while (PatchManager.nativeDoPatch(Common.b("lib" + this.jdField_c_of_type_JavaLangString + ".so"), str, (String)localObject2, n, k, m, (int[])localObject1, this.jdField_c_of_type_Int, j));
-      Common.Log.a("KingKongNativePatch", "Native do patch failed");
-      return 10;
-    }
-    Common.Log.a("KingKongNativePatch", "---> Do patch OK <----");
-    return 0;
+    paramContext = new StringBuilder();
+    paramContext.append("Unable to find valid subpatch index ");
+    paramContext.append(i);
+    Common.Log.a("KingKongNativePatch", paramContext.toString());
+    return 12;
   }
   
   public boolean a()
@@ -328,26 +406,44 @@ public class NativePatch
     if (j == -1) {
       return false;
     }
-    Common.Log.a("KingKongNativePatch", "Valid subpatch index : " + this.jdField_c_of_type_JavaLangString + " : " + j);
-    int[] arrayOfInt1 = new int[this.jdField_b_of_type_Int];
-    int[] arrayOfInt2 = new int[this.jdField_b_of_type_Int];
-    int i = 0;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Valid subpatch index : ");
+    ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(" : ");
+    ((StringBuilder)localObject).append(j);
+    Common.Log.a("KingKongNativePatch", ((StringBuilder)localObject).toString());
+    int i = this.jdField_b_of_type_Int;
+    localObject = new int[i];
+    int[] arrayOfInt = new int[i];
+    i = 0;
     while (i < this.jdField_b_of_type_Int)
     {
       String str = ((NativePatch.HookPointDef)this.jdField_c_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_JavaLangString;
       int k = PatchManager.nativeCalcJumperPoint(str);
       int m = PatchManager.nativeCalcGotHookPoint(str);
-      if ((k == -1) || (m == -1))
+      if ((k != -1) && (m != -1))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Patch params ");
+        localStringBuilder.append(i);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(str);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(k);
+        localStringBuilder.append(", ");
+        localStringBuilder.append(m);
+        Common.Log.a("KingKongNativePatch", localStringBuilder.toString());
+        localObject[i] = k;
+        arrayOfInt[i] = m;
+        i += 1;
+      }
+      else
       {
         Common.Log.a("KingKongNativePatch", "Calculate jumper/got point failed");
         return false;
       }
-      Common.Log.a("KingKongNativePatch", "Patch params " + i + ", " + str + ", " + k + ", " + m);
-      arrayOfInt1[i] = k;
-      arrayOfInt2[i] = m;
-      i += 1;
     }
-    Common.a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, arrayOfInt1, arrayOfInt2);
+    Common.a(this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Int, (int[])localObject, arrayOfInt);
     Common.a(this.jdField_c_of_type_JavaLangString, j, a());
     return true;
   }
@@ -363,7 +459,10 @@ public class NativePatch
       arrayOfInt[i] = PatchManager.nativeCalcParameter(localParameterDef.jdField_b_of_type_Int, localParameterDef.jdField_a_of_type_JavaLangString, localParameterDef.jdField_b_of_type_JavaLangString, j);
       if (arrayOfInt[i] == -1)
       {
-        Common.Log.a("KingKongNativePatch", "Calculate parameter failed " + i);
+        paramArrayList = new StringBuilder();
+        paramArrayList.append("Calculate parameter failed ");
+        paramArrayList.append(i);
+        Common.Log.a("KingKongNativePatch", paramArrayList.toString());
         return null;
       }
       i += 1;
@@ -373,7 +472,7 @@ public class NativePatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kingkong.NativePatch
  * JD-Core Version:    0.7.0.1
  */

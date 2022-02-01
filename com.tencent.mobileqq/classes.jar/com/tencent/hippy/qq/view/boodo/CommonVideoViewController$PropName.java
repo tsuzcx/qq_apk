@@ -4,6 +4,8 @@ abstract interface CommonVideoViewController$PropName
 {
   public static final String AUTO_PLAY = "autoPlay";
   public static final String COVER_URL = "coverUrl";
+  public static final String FULL_LANDSCAPE = "fullLandscape";
+  public static final String LOADING_STYLES = "loadingStyles";
   public static final String LOOP = "loop";
   public static final String MUTED = "muted";
   public static final String ON_PROGRESS = "onProgress";
@@ -15,7 +17,7 @@ abstract interface CommonVideoViewController$PropName
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.boodo.CommonVideoViewController.PropName
  * JD-Core Version:    0.7.0.1
  */

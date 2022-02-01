@@ -22,16 +22,15 @@ public class ETFontAdapterImpl
     if ((paramObject instanceof EmoticonSpan))
     {
       paramObject = (EmoticonSpan)paramObject;
-      i = (int)paramFloat2 + paramObject.getDrawable().getBounds().height();
+      int i = (int)paramFloat2 + paramObject.getDrawable().getBounds().height();
       paramObject.draw(paramCanvas, null, 0, 0, paramFloat1, 0, i, i, null);
-    }
-    while (!(paramObject instanceof ETImageSpan))
-    {
-      int i;
       return;
     }
-    paramObject = (ETImageSpan)paramObject;
-    paramObject.draw(paramCanvas, null, 0, 0, paramFloat1, 0, 0, (int)(paramObject.getDrawable().getBounds().height() + paramFloat2), paramPaint);
+    if ((paramObject instanceof ETImageSpan))
+    {
+      paramObject = (ETImageSpan)paramObject;
+      paramObject.draw(paramCanvas, null, 0, 0, paramFloat1, 0, 0, (int)(paramFloat2 + paramObject.getDrawable().getBounds().height()), paramPaint);
+    }
   }
   
   public void drawSignatureSpan(ArrayList<CharacterStyle> paramArrayList, ETFont paramETFont, Paint paramPaint, int paramInt, Canvas paramCanvas)
@@ -52,26 +51,24 @@ public class ETFontAdapterImpl
   
   public int getSpanHeight(CharacterStyle paramCharacterStyle)
   {
-    int i = 0;
     if ((paramCharacterStyle instanceof EmoticonSpan)) {
-      i = ((EmoticonSpan)paramCharacterStyle).getDrawable().getBounds().height();
+      return ((EmoticonSpan)paramCharacterStyle).getDrawable().getBounds().height();
     }
-    while (!(paramCharacterStyle instanceof SignatureActionSpan)) {
-      return i;
+    if ((paramCharacterStyle instanceof SignatureActionSpan)) {
+      return ((SignatureActionSpan)paramCharacterStyle).b();
     }
-    return ((SignatureActionSpan)paramCharacterStyle).b();
+    return 0;
   }
   
   public int getSpanWidth(CharacterStyle paramCharacterStyle)
   {
-    int i = 0;
     if ((paramCharacterStyle instanceof EmoticonSpan)) {
-      i = ((EmoticonSpan)paramCharacterStyle).getDrawable().getBounds().width();
+      return ((EmoticonSpan)paramCharacterStyle).getDrawable().getBounds().width();
     }
-    while (!(paramCharacterStyle instanceof SignatureActionSpan)) {
-      return i;
+    if ((paramCharacterStyle instanceof SignatureActionSpan)) {
+      return ((SignatureActionSpan)paramCharacterStyle).a();
     }
-    return ((SignatureActionSpan)paramCharacterStyle).a();
+    return 0;
   }
   
   public char getSysEmotcationHead()
@@ -106,20 +103,21 @@ public class ETFontAdapterImpl
       paramCharacterStyle = (EmoticonSpan)paramCharacterStyle;
       paramInt2 += paramCharacterStyle.getDrawable().getBounds().height();
       paramCharacterStyle.draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2, paramPaint);
-    }
-    while (!(paramCharacterStyle instanceof SignatureActionSpan)) {
       return;
     }
-    paramPaint.setTextSize(paramInt3);
-    paramCharacterStyle = (SignatureActionSpan)paramCharacterStyle;
-    paramInt3 = paramCharacterStyle.b();
-    paramCharacterStyle.jdField_a_of_type_Boolean = false;
-    paramCharacterStyle.draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2 + paramInt3, paramPaint);
+    if ((paramCharacterStyle instanceof SignatureActionSpan))
+    {
+      paramPaint.setTextSize(paramInt3);
+      paramCharacterStyle = (SignatureActionSpan)paramCharacterStyle;
+      paramInt3 = paramCharacterStyle.b();
+      paramCharacterStyle.jdField_a_of_type_Boolean = false;
+      paramCharacterStyle.draw(paramCanvas, null, 0, 0, paramInt1, 0, paramInt2, paramInt2 + paramInt3, paramPaint);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.font.api.impl.ETFontAdapterImpl
  * JD-Core Version:    0.7.0.1
  */

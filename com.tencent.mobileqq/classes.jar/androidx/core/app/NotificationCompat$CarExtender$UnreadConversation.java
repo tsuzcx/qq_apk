@@ -2,6 +2,7 @@ package androidx.core.app;
 
 import android.app.PendingIntent;
 
+@Deprecated
 public class NotificationCompat$CarExtender$UnreadConversation
 {
   private final long mLatestTimestamp;
@@ -33,8 +34,9 @@ public class NotificationCompat$CarExtender$UnreadConversation
   
   public String getParticipant()
   {
-    if (this.mParticipants.length > 0) {
-      return this.mParticipants[0];
+    String[] arrayOfString = this.mParticipants;
+    if (arrayOfString.length > 0) {
+      return arrayOfString[0];
     }
     return null;
   }
@@ -61,7 +63,7 @@ public class NotificationCompat$CarExtender$UnreadConversation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.CarExtender.UnreadConversation
  * JD-Core Version:    0.7.0.1
  */

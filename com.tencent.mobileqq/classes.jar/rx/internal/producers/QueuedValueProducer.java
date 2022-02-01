@@ -18,7 +18,10 @@ public final class QueuedValueProducer<T>
   final Queue<Object> queue;
   final AtomicInteger wip;
   
-  public QueuedValueProducer(Subscriber<? super T> paramSubscriber) {}
+  public QueuedValueProducer(Subscriber<? super T> paramSubscriber)
+  {
+    this(paramSubscriber, (Queue)localObject);
+  }
   
   public QueuedValueProducer(Subscriber<? super T> paramSubscriber, Queue<Object> paramQueue)
   {
@@ -29,73 +32,62 @@ public final class QueuedValueProducer<T>
   
   private void drain()
   {
-    Subscriber localSubscriber;
-    Queue localQueue;
     if (this.wip.getAndIncrement() == 0)
     {
-      localSubscriber = this.child;
-      localQueue = this.queue;
-    }
-    label46:
-    do
-    {
-      if (localSubscriber.isUnsubscribed()) {}
-      long l1;
-      Object localObject;
-      for (;;)
+      Subscriber localSubscriber = this.child;
+      Queue localQueue = this.queue;
+      do
       {
-        return;
+        if (localSubscriber.isUnsubscribed()) {
+          return;
+        }
         this.wip.lazySet(1);
         long l2 = get();
-        l1 = 0L;
-        if (l2 == 0L) {
-          break label135;
-        }
-        localObject = localQueue.poll();
-        if (localObject == null) {
-          break label135;
-        }
-        try
+        long l1 = 0L;
+        while (l2 != 0L)
         {
-          if (localObject == NULL_SENTINEL) {
-            localSubscriber.onNext(null);
+          Object localObject = localQueue.poll();
+          if (localObject != null) {
+            try
+            {
+              if (localObject == NULL_SENTINEL) {
+                localSubscriber.onNext(null);
+              } else {
+                localSubscriber.onNext(localObject);
+              }
+              if (localSubscriber.isUnsubscribed()) {
+                return;
+              }
+              l2 -= 1L;
+              l1 += 1L;
+            }
+            catch (Throwable localThrowable)
+            {
+              if (localObject == NULL_SENTINEL) {
+                localObject = null;
+              }
+              Exceptions.throwOrReport(localThrowable, localSubscriber, localObject);
+              return;
+            }
           }
-          while (!localSubscriber.isUnsubscribed())
-          {
-            l2 -= 1L;
-            l1 += 1L;
-            break label46;
-            localSubscriber.onNext(localObject);
-          }
-          Exceptions.throwOrReport(localThrowable, localSubscriber, localObject);
         }
-        catch (Throwable localThrowable)
-        {
-          if (localObject == NULL_SENTINEL) {}
+        if ((l1 != 0L) && (get() != 9223372036854775807L)) {
+          addAndGet(-l1);
         }
-      }
-      for (;;)
-      {
-        return;
-        localObject = null;
-      }
-      if ((l1 != 0L) && (get() != 9223372036854775807L)) {
-        addAndGet(-l1);
-      }
-    } while (this.wip.decrementAndGet() != 0);
-    label135:
+      } while (this.wip.decrementAndGet() != 0);
+    }
   }
   
   public boolean offer(T paramT)
   {
     if (paramT == null)
     {
-      if (this.queue.offer(NULL_SENTINEL)) {}
-    }
-    else {
-      while (!this.queue.offer(paramT)) {
+      if (!this.queue.offer(NULL_SENTINEL)) {
         return false;
       }
+    }
+    else if (!this.queue.offer(paramT)) {
+      return false;
     }
     drain();
     return true;
@@ -103,19 +95,21 @@ public final class QueuedValueProducer<T>
   
   public void request(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= 0 required");
-    }
-    if (paramLong > 0L)
+    if (paramLong >= 0L)
     {
-      BackpressureUtils.getAndAddRequest(this, paramLong);
-      drain();
+      if (paramLong > 0L)
+      {
+        BackpressureUtils.getAndAddRequest(this, paramLong);
+        drain();
+      }
+      return;
     }
+    throw new IllegalArgumentException("n >= 0 required");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.producers.QueuedValueProducer
  * JD-Core Version:    0.7.0.1
  */

@@ -19,72 +19,70 @@ class StoryMessageListActivity$1
   
   public qqstory_struct.ErrorInfo a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    int j = -1;
     paramBundle = new qqstory_struct.ErrorInfo();
-    qqstory_710_del_message.RspDelAllMessage localRspDelAllMessage;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      localRspDelAllMessage = new qqstory_710_del_message.RspDelAllMessage();
-    }
-    for (;;)
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      int m;
-      int k;
+      qqstory_710_del_message.RspDelAllMessage localRspDelAllMessage = new qqstory_710_del_message.RspDelAllMessage();
+      int j;
+      int i;
       try
       {
         localRspDelAllMessage.mergeFrom(paramArrayOfByte);
         if (!localRspDelAllMessage.errinfo.error_code.has()) {
-          break label239;
+          break label165;
         }
-        i = localRspDelAllMessage.errinfo.error_code.get();
-        j = i;
+        j = localRspDelAllMessage.errinfo.error_code.get();
         if (j == 0) {
           i = 1;
+        } else {
+          i = 0;
         }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        m = 0;
-        k = j;
-      }
-      try
-      {
-        paramBundle.error_code.set(localRspDelAllMessage.errinfo.error_code.get());
-        paramBundle.error_desc.set(localRspDelAllMessage.errinfo.error_desc.get());
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqstory.msgList", 2, "receive delete all msg, code=" + paramInt + " bizCode=" + j);
-        }
-        if (i == 0) {
-          QQToast.a(this.a.getApplicationContext(), 1, HardCodeUtil.a(2131714390), 0).a();
-        }
-        return paramBundle;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
+        try
         {
-          k = j;
-          m = i;
+          paramBundle.error_code.set(localRspDelAllMessage.errinfo.error_code.get());
+          paramBundle.error_desc.set(localRspDelAllMessage.errinfo.error_desc.get());
+          k = i;
+          m = j;
         }
+        catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+        k = i;
       }
-      int i = 0;
-      continue;
-      j = k;
-      i = m;
-      if (QLog.isColorLevel())
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        QLog.i("Q.qqstory.msgList", 2, "error parse RspDelAllMessage", paramArrayOfByte);
-        j = k;
-        i = m;
-        continue;
-        label239:
+        j = -1;
         i = 0;
       }
+      m = j;
+      if (!QLog.isColorLevel()) {
+        break label171;
+      }
+      QLog.i("Q.qqstory.msgList", 2, "error parse RspDelAllMessage", paramArrayOfByte);
+      k = i;
+      m = j;
+      break label171;
     }
+    label165:
+    int m = -1;
+    int k = 0;
+    label171:
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("receive delete all msg, code=");
+      paramArrayOfByte.append(paramInt);
+      paramArrayOfByte.append(" bizCode=");
+      paramArrayOfByte.append(m);
+      QLog.i("Q.qqstory.msgList", 2, paramArrayOfByte.toString());
+    }
+    if (k == 0) {
+      QQToast.a(this.a.getApplicationContext(), 1, HardCodeUtil.a(2131714311), 0).a();
+    }
+    return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity.1
  * JD-Core Version:    0.7.0.1
  */

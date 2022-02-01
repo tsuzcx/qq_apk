@@ -16,44 +16,49 @@ public class AKOfflineDownloader
 {
   public static String a(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString2)) {
-      return OfflineEnvHelper.a(paramString1) + paramString1;
+    if (TextUtils.isEmpty(paramString2))
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(OfflineEnvHelper.a(paramString1));
+      paramString2.append(paramString1);
+      return paramString2.toString();
     }
-    return OfflineEnvHelper.a(paramString1) + paramString1 + File.separator + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(OfflineEnvHelper.a(paramString1));
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
   private static void b(boolean paramBoolean, String paramString1, String paramString2, int paramInt, String paramString3, Object paramObject)
   {
     MiniAppEvent localMiniAppEvent = new MiniAppEvent();
     int i;
-    if ("MiniAppLauncher".equals(paramString2))
-    {
+    if ("MiniAppLauncher".equals(paramString2)) {
       i = 1;
-      localMiniAppEvent.jdField_a_of_type_Int = i;
-      localMiniAppEvent.jdField_a_of_type_Boolean = paramBoolean;
-      localMiniAppEvent.jdField_a_of_type_JavaLangString = paramString2;
-      if (!paramBoolean) {
-        break label107;
-      }
+    } else {
+      i = 5;
     }
-    label107:
-    for (localMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { paramString1, paramObject, Integer.valueOf(paramInt), a(paramString3, "") };; localMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { paramString1, paramObject, Integer.valueOf(paramInt) })
+    localMiniAppEvent.jdField_a_of_type_Int = i;
+    localMiniAppEvent.jdField_a_of_type_Boolean = paramBoolean;
+    localMiniAppEvent.jdField_a_of_type_JavaLangString = paramString2;
+    if (paramBoolean) {
+      localMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { paramString1, paramObject, Integer.valueOf(paramInt), a(paramString3, "") };
+    } else {
+      localMiniAppEvent.jdField_a_of_type_ArrayOfJavaLangObject = new Object[] { paramString1, paramObject, Integer.valueOf(paramInt) };
+    }
+    if (localMiniAppEvent.jdField_a_of_type_Int == 1)
     {
-      if (localMiniAppEvent.jdField_a_of_type_Int != 1) {
-        break label135;
-      }
       StoryDispatcher.a().dispatch("MiniAppManager", localMiniAppEvent);
       return;
-      i = 5;
-      break;
     }
-    label135:
     StoryDispatcher.a().dispatch(localMiniAppEvent);
   }
   
   public void a(String paramString1, String paramString2, Object paramObject)
   {
-    String str = paramString1.substring("ak:".length());
+    String str = paramString1.substring(3);
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (localAppRuntime == null)
     {
@@ -65,20 +70,26 @@ public class AKOfflineDownloader
   
   protected boolean a(Bundle paramBundle)
   {
-    if (paramBundle == null) {}
-    String str;
-    do
-    {
+    boolean bool2 = false;
+    if (paramBundle == null) {
       return false;
-      str = paramBundle.getString("bid");
-      paramBundle = paramBundle.getString("path");
-    } while ((!HtmlOffline.c(str)) || (!OfflineSecurity.a(paramBundle, str)));
-    return true;
+    }
+    String str = paramBundle.getString("bid");
+    paramBundle = paramBundle.getString("path");
+    boolean bool1 = bool2;
+    if (HtmlOffline.c(str))
+    {
+      bool1 = bool2;
+      if (OfflineSecurity.a(paramBundle, str)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.miniapp.AKOfflineDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_gravity="center" android:id="@id/fie" android:background="@drawable/b8k" android:layout_width="296.0dip" android:layout_height="219.0dip"
+<FrameLayout android:layout_width="37.0dip" android:layout_height="37.0dip" android:layout_marginLeft="7.5dip" android:layout_marginRight="7.5dip" android:foregroundGravity="center"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dx0" android:layout_width="94.0dip" android:layout_height="94.0dip" android:layout_marginTop="22.0dip" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="18.0dip" android:textColor="#99ffffff" android:id="@id/ocq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/cuy" android:layout_below="@id/dx0" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/al3" android:gravity="center" android:id="@id/afr" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="53.0dip" android:text="@string/tag" android:layout_alignParentBottom="true" />
-    <View android:background="#40f0f1f8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignTop="@id/afr" />
-</RelativeLayout>
+    <ImageView android:layout_gravity="center" android:id="@id/ncd" android:background="@drawable/bip" android:layout_width="30.0dip" android:layout_height="30.0dip" />
+    <ImageView android:id="@id/nd1" android:background="@drawable/bio" android:layout_width="37.0dip" android:layout_height="37.0dip" />
+</FrameLayout>

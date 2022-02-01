@@ -16,44 +16,61 @@ public class ExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$IntimateP
   
   public static IntimatePushInfo a(byte[] paramArrayOfByte)
   {
-    intimate_relation.IntimateInfo localIntimateInfo = null;
-    intimate_relation.SnsRelationInfo localSnsRelationInfo = new intimate_relation.SnsRelationInfo();
-    for (;;)
+    Object localObject2 = new intimate_relation.SnsRelationInfo();
+    Object localObject1 = null;
+    try
     {
-      try
+      ((intimate_relation.SnsRelationInfo)localObject2).mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (byte[])localObject1;
+      if (((intimate_relation.SnsRelationInfo)localObject2).intimate_list.has())
       {
-        localSnsRelationInfo.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = localIntimateInfo;
-        if (localSnsRelationInfo.intimate_list.has())
+        paramArrayOfByte = (byte[])localObject1;
+        if (((intimate_relation.SnsRelationInfo)localObject2).intimate_list.size() > 0)
         {
-          paramArrayOfByte = localIntimateInfo;
-          if (localSnsRelationInfo.intimate_list.size() > 0)
+          localObject1 = new IntimatePushInfo();
+          localObject2 = (intimate_relation.IntimateInfo)((intimate_relation.SnsRelationInfo)localObject2).intimate_list.get(0);
+          if ((((intimate_relation.IntimateInfo)localObject2).lover.has()) && (((intimate_relation.IntimateLover)((intimate_relation.IntimateInfo)localObject2).lover.get()).level.has()))
           {
-            paramArrayOfByte = new IntimatePushInfo();
-            localIntimateInfo = (intimate_relation.IntimateInfo)localSnsRelationInfo.intimate_list.get(0);
-            if ((!localIntimateInfo.lover.has()) || (!((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.has())) {
-              break label173;
+            ((IntimatePushInfo)localObject1).a = ((intimate_relation.IntimateLover)((intimate_relation.IntimateInfo)localObject2).lover.get()).level.get();
+            paramArrayOfByte = (byte[])localObject1;
+          }
+          else if ((((intimate_relation.IntimateInfo)localObject2).buddy.has()) && (((intimate_relation.IntimateBuddy)((intimate_relation.IntimateInfo)localObject2).buddy.get()).level.has()))
+          {
+            ((IntimatePushInfo)localObject1).a = ((intimate_relation.IntimateBuddy)((intimate_relation.IntimateInfo)localObject2).buddy.get()).level.get();
+            paramArrayOfByte = (byte[])localObject1;
+          }
+          else
+          {
+            paramArrayOfByte = (byte[])localObject1;
+            if (((intimate_relation.IntimateInfo)localObject2).ladybro.has())
+            {
+              paramArrayOfByte = (byte[])localObject1;
+              if (((intimate_relation.IntimateLadybro)((intimate_relation.IntimateInfo)localObject2).ladybro.get()).level.has())
+              {
+                ((IntimatePushInfo)localObject1).a = ((intimate_relation.IntimateLadybro)((intimate_relation.IntimateInfo)localObject2).ladybro.get()).level.get();
+                paramArrayOfByte = (byte[])localObject1;
+              }
             }
-            paramArrayOfByte.a = ((intimate_relation.IntimateLover)localIntimateInfo.lover.get()).level.get();
           }
         }
-        if (QLog.isColorLevel()) {
-          QLog.i("ExtSnsIntimateInfo", 1, "parseFrom retInfo:" + paramArrayOfByte);
-        }
-        return paramArrayOfByte;
       }
-      catch (Throwable paramArrayOfByte)
+      if (QLog.isColorLevel())
       {
-        QLog.i("ExtSnsIntimateInfo", 1, "parseFrom error:" + paramArrayOfByte.getMessage());
-        return null;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("parseFrom retInfo:");
+        ((StringBuilder)localObject1).append(paramArrayOfByte);
+        QLog.i("ExtSnsIntimateInfo", 1, ((StringBuilder)localObject1).toString());
       }
-      label173:
-      if ((localIntimateInfo.buddy.has()) && (((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.has())) {
-        paramArrayOfByte.a = ((intimate_relation.IntimateBuddy)localIntimateInfo.buddy.get()).level.get();
-      } else if ((localIntimateInfo.ladybro.has()) && (((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.has())) {
-        paramArrayOfByte.a = ((intimate_relation.IntimateLadybro)localIntimateInfo.ladybro.get()).level.get();
-      }
+      return paramArrayOfByte;
     }
+    catch (Throwable paramArrayOfByte)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("parseFrom error:");
+      ((StringBuilder)localObject1).append(paramArrayOfByte.getMessage());
+      QLog.i("ExtSnsIntimateInfo", 1, ((StringBuilder)localObject1).toString());
+    }
+    return null;
   }
   
   @NonNull
@@ -61,14 +78,16 @@ public class ExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$IntimateP
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ExtSnsIntimatePushInfo{");
-    localStringBuilder.append("intimate_level:").append(this.a).append(", ");
+    localStringBuilder.append("intimate_level:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", ");
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.IntimatePushInfo
  * JD-Core Version:    0.7.0.1
  */

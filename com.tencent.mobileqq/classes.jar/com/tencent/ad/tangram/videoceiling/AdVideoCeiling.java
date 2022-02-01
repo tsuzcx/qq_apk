@@ -20,8 +20,9 @@ public enum AdVideoCeiling
   
   public static AdVideoCeilingAdapter getAdapter()
   {
-    if (INSTANCE.adapter != null) {
-      return (AdVideoCeilingAdapter)INSTANCE.adapter.get();
+    WeakReference localWeakReference = INSTANCE.adapter;
+    if (localWeakReference != null) {
+      return (AdVideoCeilingAdapter)localWeakReference.get();
     }
     return null;
   }

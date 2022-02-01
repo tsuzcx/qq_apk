@@ -7,7 +7,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/impl/MemoryLruCacheImpl;", "Lcom/tencent/xaction/api/IMemoryLruCache;", "cacheSize", "", "(J)V", "cache", "com/tencent/xaction/impl/MemoryLruCacheImpl$cache$1", "Lcom/tencent/xaction/impl/MemoryLruCacheImpl$cache$1;", "defaultCacheSize", "", "maxMemory", "evictAll", "", "get", "Landroid/graphics/Bitmap;", "key", "", "put", "obj", "remove", "Companion", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/impl/MemoryLruCacheImpl;", "Lcom/tencent/xaction/api/IMemoryLruCache;", "cacheSize", "", "(J)V", "cache", "com/tencent/xaction/impl/MemoryLruCacheImpl$cache$1", "Lcom/tencent/xaction/impl/MemoryLruCacheImpl$cache$1;", "defaultCacheSize", "", "maxMemory", "evictAll", "", "get", "Landroid/graphics/Bitmap;", "key", "", "put", "obj", "remove", "Companion", "XActionCore_release"}, k=1, mv={1, 1, 16})
 public final class MemoryLruCacheImpl
   implements IMemoryLruCache
 {
@@ -17,7 +17,7 @@ public final class MemoryLruCacheImpl
   private static long c;
   private int jdField_a_of_type_Int = (int)Runtime.getRuntime().maxMemory();
   private MemoryLruCacheImpl.cache.1 jdField_a_of_type_ComTencentXactionImplMemoryLruCacheImpl$cache$1;
-  private final int jdField_b_of_type_Int = this.jdField_a_of_type_Int / 6;
+  private final int jdField_b_of_type_Int;
   
   static
   {
@@ -26,12 +26,14 @@ public final class MemoryLruCacheImpl
   
   public MemoryLruCacheImpl(long paramLong)
   {
-    if (paramLong == 0L) {}
-    for (int i = this.jdField_a_of_type_Int / this.jdField_b_of_type_Int;; i = (int)paramLong)
-    {
-      this.jdField_a_of_type_ComTencentXactionImplMemoryLruCacheImpl$cache$1 = new MemoryLruCacheImpl.cache.1(this, paramLong, i);
-      return;
+    int i = this.jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = (i / 6);
+    if (paramLong == 0L) {
+      i /= this.jdField_b_of_type_Int;
+    } else {
+      i = (int)paramLong;
     }
+    this.jdField_a_of_type_ComTencentXactionImplMemoryLruCacheImpl$cache$1 = new MemoryLruCacheImpl.cache.1(this, paramLong, i);
   }
   
   @Nullable
@@ -50,7 +52,7 @@ public final class MemoryLruCacheImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.impl.MemoryLruCacheImpl
  * JD-Core Version:    0.7.0.1
  */

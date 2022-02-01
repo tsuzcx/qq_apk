@@ -31,15 +31,12 @@ public class GetStoryFeedIdListRequest
     try
     {
       localRspStoryFeedIdList.mergeFrom(paramArrayOfByte);
-      return new GetStoryFeedIdListRequest.GetStoryFeedIdListResponse(localRspStoryFeedIdList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetStoryFeedIdListRequest.GetStoryFeedIdListResponse(localRspStoryFeedIdList);
   }
   
   public String a()
@@ -47,7 +44,7 @@ public class GetStoryFeedIdListRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqStoryFeedIdList localReqStoryFeedIdList = new qqstory_service.ReqStoryFeedIdList();
     localReqStoryFeedIdList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.b));
@@ -64,7 +61,7 @@ public class GetStoryFeedIdListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetStoryFeedIdListRequest
  * JD-Core Version:    0.7.0.1
  */

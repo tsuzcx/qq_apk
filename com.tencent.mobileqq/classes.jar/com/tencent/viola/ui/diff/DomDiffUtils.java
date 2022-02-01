@@ -42,50 +42,60 @@ public class DomDiffUtils
   
   private static void dfsWalk(VComponent paramVComponent, DomObject paramDomObject1, DomObject paramDomObject2, List<Patch> paramList, DOMActionContext paramDOMActionContext, boolean paramBoolean)
   {
-    if ((paramVComponent == null) || (paramDomObject1 == null) || (paramDomObject2 == null)) {
-      ViolaLogUtils.d("DomDiffUtils", "dfsWalk: invalid param");
-    }
-    label427:
-    do
+    if ((paramVComponent != null) && (paramDomObject1 != null) && (paramDomObject2 != null))
     {
-      for (;;)
+      if ((paramDomObject1.getType().equals(paramDomObject2.getType())) && (!isIgnoreChildren(paramDomObject2)) && (paramVComponent.isReuse()))
       {
-        return;
-        if ((!paramDomObject1.getType().equals(paramDomObject2.getType())) || (isIgnoreChildren(paramDomObject2)) || (!paramVComponent.isReuse())) {
-          break;
-        }
         if ((paramVComponent instanceof VComponentContainer))
         {
           VComponentContainer localVComponentContainer = (VComponentContainer)paramVComponent;
-          if (localVComponentContainer.getChildCount() != paramDomObject1.getDomChildCount()) {
-            ViolaLogUtils.d("DomDiffUtils", "componentSize != domSize, cSize: " + localVComponentContainer.getChildCount() + ", dSize: " + paramDomObject1.getDomChildCount() + "newDomSize:" + paramDomObject2.getDomChildCount());
+          Object localObject;
+          if (localVComponentContainer.getChildCount() != paramDomObject1.getDomChildCount())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("componentSize != domSize, cSize: ");
+            ((StringBuilder)localObject).append(localVComponentContainer.getChildCount());
+            ((StringBuilder)localObject).append(", dSize: ");
+            ((StringBuilder)localObject).append(paramDomObject1.getDomChildCount());
+            ((StringBuilder)localObject).append("newDomSize:");
+            ((StringBuilder)localObject).append(paramDomObject2.getDomChildCount());
+            ViolaLogUtils.d("DomDiffUtils", ((StringBuilder)localObject).toString());
           }
           if ((!(localVComponentContainer instanceof VRecyclerList)) && (!(localVComponentContainer instanceof VPageSlider)))
           {
-            int i = 0;
             int j = 0;
-            int k = i;
-            if (j < localVComponentContainer.getChildCount())
+            int k;
+            for (int i = 0;; i = k)
             {
-              VComponent localVComponent = localVComponentContainer.getChild(j);
-              if (localVComponent == null) {
-                continue;
+              k = i;
+              if (j >= localVComponentContainer.getChildCount()) {
+                break;
+              }
+              localObject = localVComponentContainer.getChild(j);
+              if (localObject == null) {
+                return;
               }
               if (i < paramDomObject2.getDomChildCount())
               {
                 DomObject localDomObject = paramDomObject2.getChild(i);
-                dfsWalk(localVComponent, localVComponent.mDomObj, localDomObject, paramList, paramDOMActionContext, paramBoolean);
-                i += 1;
+                dfsWalk((VComponent)localObject, ((VComponent)localObject).mDomObj, localDomObject, paramList, paramDOMActionContext, paramBoolean);
+                k = i + 1;
               }
-              for (;;)
+              else
               {
-                j += 1;
-                break;
-                paramList.add(new PatchDelete(localVComponentContainer, localVComponent));
-                if ((!(paramVComponent instanceof VRecyclerList)) && (!paramBoolean)) {
-                  unregisterComponent(localVComponent, paramDOMActionContext);
+                paramList.add(new PatchDelete(localVComponentContainer, (VComponent)localObject));
+                k = i;
+                if (!(paramVComponent instanceof VRecyclerList))
+                {
+                  k = i;
+                  if (!paramBoolean)
+                  {
+                    unregisterComponent((VComponent)localObject, paramDOMActionContext);
+                    k = i;
+                  }
                 }
               }
+              j += 1;
             }
             while (k < paramDomObject2.getDomChildCount())
             {
@@ -105,28 +115,30 @@ public class DomDiffUtils
           reusePagerSlider(paramDomObject2, (VPageSlider)paramVComponent, paramDOMActionContext);
           ViolaLogUtils.d("DomDiffUtils", "reuse VPageSlider");
         }
-        for (;;)
+        else if ((paramVComponent instanceof VRecyclerList))
         {
-          if (paramDOMActionContext == null) {
-            break label427;
-          }
+          ((VRecyclerList)paramVComponent).setNeedNotify(true);
+          ViolaLogUtils.d("DomDiffUtils", "reuse recyclerList");
+        }
+        if (paramDOMActionContext != null)
+        {
           paramDOMActionContext.registerComponent(paramDomObject2.getRef(), paramVComponent);
           paramDOMActionContext.registerDOMObject(paramDomObject2.getRef(), paramDomObject2);
-          if (paramBoolean) {
-            break;
-          }
-          paramDOMActionContext.unregisterComponent(paramDomObject1.getRef());
-          return;
-          if ((paramVComponent instanceof VRecyclerList))
-          {
-            ((VRecyclerList)paramVComponent).setNeedNotify(true);
-            ViolaLogUtils.d("DomDiffUtils", "reuse recyclerList");
+          if (!paramBoolean) {
+            paramDOMActionContext.unregisterComponent(paramDomObject1.getRef());
           }
         }
       }
-      paramList.add(new PatchReplace(paramDomObject2, paramVComponent));
-    } while (((paramVComponent instanceof VRecyclerList)) || (paramBoolean));
-    unregisterComponent(paramVComponent, paramDOMActionContext);
+      else
+      {
+        paramList.add(new PatchReplace(paramDomObject2, paramVComponent));
+        if ((!(paramVComponent instanceof VRecyclerList)) && (!paramBoolean)) {
+          unregisterComponent(paramVComponent, paramDOMActionContext);
+        }
+      }
+      return;
+    }
+    ViolaLogUtils.d("DomDiffUtils", "dfsWalk: invalid param");
   }
   
   public static void diff(VComponent paramVComponent, DomObject paramDomObject1, DomObject paramDomObject2, DOMActionContext paramDOMActionContext, DomDiffUtils.OnComponentDiffListener paramOnComponentDiffListener, boolean paramBoolean)
@@ -141,23 +153,26 @@ public class DomDiffUtils
   
   private static void diffAttr(VComponent paramVComponent, DomObject paramDomObject)
   {
-    if ((paramVComponent == null) || (paramDomObject == null) || (paramVComponent.mDomObj == null)) {}
-    do
+    if ((paramVComponent != null) && (paramDomObject != null))
     {
-      return;
+      if (paramVComponent.mDomObj == null) {
+        return;
+      }
       paramDomObject = diffRemove(paramVComponent.mDomObj.getAttributes(), paramDomObject.getAttributes());
-    } while (paramDomObject.isEmpty());
-    paramVComponent.resetAttrs(paramDomObject);
+      if (!paramDomObject.isEmpty()) {
+        paramVComponent.resetAttrs(paramDomObject);
+      }
+    }
   }
   
   public static void diffComponent(VComponent paramVComponent, DomObject paramDomObject, DOMActionContext paramDOMActionContext, DomDiffUtils.OnComponentDiffListener paramOnComponentDiffListener, boolean paramBoolean)
   {
-    if ((paramVComponent == null) || (paramVComponent.mDomObj == null))
+    if ((paramVComponent != null) && (paramVComponent.mDomObj != null))
     {
-      ViolaLogUtils.d("DomDiffUtils", "component or its dom is null");
+      diffComponent(paramVComponent, paramVComponent.mDomObj, paramDomObject, paramDOMActionContext, paramOnComponentDiffListener, paramBoolean);
       return;
     }
-    diffComponent(paramVComponent, paramVComponent.mDomObj, paramDomObject, paramDOMActionContext, paramOnComponentDiffListener, paramBoolean);
+    ViolaLogUtils.d("DomDiffUtils", "component or its dom is null");
   }
   
   public static void diffComponent(VComponent paramVComponent, DomObject paramDomObject1, DomObject paramDomObject2, DOMActionContext paramDOMActionContext, DomDiffUtils.OnComponentDiffListener paramOnComponentDiffListener, boolean paramBoolean)
@@ -167,14 +182,14 @@ public class DomDiffUtils
   
   private static void diffEvent(VComponent paramVComponent, DomObject paramDomObject)
   {
-    if ((paramVComponent == null) || (paramVComponent.mDomObj == null) || (paramDomObject == null)) {}
-    ArrayList localArrayList;
-    do
+    if ((paramVComponent != null) && (paramVComponent.mDomObj != null))
     {
-      return;
+      if (paramDomObject == null) {
+        return;
+      }
       Object localObject = paramVComponent.mDomObj.getEvents();
       paramDomObject = paramDomObject.getEvents();
-      localArrayList = new ArrayList();
+      ArrayList localArrayList = new ArrayList();
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
@@ -183,36 +198,42 @@ public class DomDiffUtils
           localArrayList.add(str);
         }
       }
-    } while (localArrayList.isEmpty());
-    paramVComponent.resetEvents(localArrayList);
+      if (!localArrayList.isEmpty()) {
+        paramVComponent.resetEvents(localArrayList);
+      }
+    }
   }
   
   private static List<String> diffRemove(Map<String, Object> paramMap1, Map<String, Object> paramMap2)
   {
-    if ((paramMap1 == null) || (paramMap2 == null)) {
-      return new ArrayList();
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramMap1 = paramMap1.entrySet().iterator();
-    while (paramMap1.hasNext())
+    if ((paramMap1 != null) && (paramMap2 != null))
     {
-      Map.Entry localEntry = (Map.Entry)paramMap1.next();
-      if (!paramMap2.containsKey(localEntry.getKey())) {
-        localArrayList.add(localEntry.getKey());
+      ArrayList localArrayList = new ArrayList();
+      paramMap1 = paramMap1.entrySet().iterator();
+      while (paramMap1.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMap1.next();
+        if (!paramMap2.containsKey(localEntry.getKey())) {
+          localArrayList.add(localEntry.getKey());
+        }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return new ArrayList();
   }
   
   private static void diffStyles(VComponent paramVComponent, DomObject paramDomObject)
   {
-    if ((paramVComponent == null) || (paramDomObject == null) || (paramVComponent.mDomObj == null)) {}
-    do
+    if ((paramVComponent != null) && (paramDomObject != null))
     {
-      return;
+      if (paramVComponent.mDomObj == null) {
+        return;
+      }
       paramDomObject = diffRemove(paramVComponent.mDomObj.getStyle(), paramDomObject.getStyle());
-    } while (paramDomObject.isEmpty());
-    paramVComponent.resetStyles(paramDomObject);
+      if (!paramDomObject.isEmpty()) {
+        paramVComponent.resetStyles(paramDomObject);
+      }
+    }
   }
   
   private static boolean isIgnoreChildren(DomObject paramDomObject)
@@ -222,37 +243,42 @@ public class DomDiffUtils
   
   private static void reusePagerSlider(DomObject paramDomObject, VPageSlider paramVPageSlider, DOMActionContext paramDOMActionContext)
   {
-    if ((paramVPageSlider == null) || (paramDomObject == null)) {}
-    int i;
-    do
+    if (paramVPageSlider != null)
     {
-      do
-      {
+      if (paramDomObject == null) {
         return;
-        unregisterComponent(paramVPageSlider, paramDOMActionContext);
-        paramVPageSlider.mDomObj = paramDomObject;
-        paramDomObject = createComponentAndView(paramVPageSlider.mDomObj.mDomChildren, paramDOMActionContext, paramVPageSlider);
-      } while (paramDomObject == null);
-      paramVPageSlider.mChildren.clear();
-      paramVPageSlider.mChildren.addAll(paramDomObject);
-      paramVPageSlider.notifyChange();
-      paramDomObject = paramVPageSlider.mDomObj.getState("index");
-      if (!(paramDomObject instanceof Integer)) {
-        break;
       }
-      i = ((Integer)paramDomObject).intValue();
-    } while (i > paramVPageSlider.mDomObj.mDomChildren.size() - 1);
-    paramVPageSlider.setStartIndex(Boolean.valueOf(false), i);
-    return;
-    paramVPageSlider.setStartIndex(Boolean.valueOf(false), 0);
+      unregisterComponent(paramVPageSlider, paramDOMActionContext);
+      paramVPageSlider.mDomObj = paramDomObject;
+      paramDomObject = createComponentAndView(paramVPageSlider.mDomObj.mDomChildren, paramDOMActionContext, paramVPageSlider);
+      if (paramDomObject != null)
+      {
+        paramVPageSlider.mChildren.clear();
+        paramVPageSlider.mChildren.addAll(paramDomObject);
+        paramVPageSlider.notifyChange();
+        paramDomObject = paramVPageSlider.mDomObj.getState("index");
+        if ((paramDomObject instanceof Integer))
+        {
+          int i = ((Integer)paramDomObject).intValue();
+          if (i <= paramVPageSlider.mDomObj.mDomChildren.size() - 1) {
+            paramVPageSlider.setStartIndex(Boolean.valueOf(false), i);
+          }
+        }
+        else
+        {
+          paramVPageSlider.setStartIndex(Boolean.valueOf(false), 0);
+        }
+      }
+    }
   }
   
   public static void unregisterComponent(VComponent paramVComponent, DOMActionContext paramDOMActionContext)
   {
-    if ((paramVComponent == null) || (paramDOMActionContext == null)) {}
-    for (;;)
+    if (paramVComponent != null)
     {
-      return;
+      if (paramDOMActionContext == null) {
+        return;
+      }
       paramDOMActionContext.unregisterComponent(paramVComponent.getRef());
       if ((paramVComponent instanceof VComponentContainer))
       {
@@ -270,7 +296,7 @@ public class DomDiffUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.diff.DomDiffUtils
  * JD-Core Version:    0.7.0.1
  */

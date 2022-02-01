@@ -27,29 +27,35 @@ public class WatchTogetherSurfaceTextureHolder
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_Int != paramInt) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if (this.jdField_a_of_type_Int != paramInt) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((this.jdField_a_of_type_JavaLangThread == null) || ((this.jdField_a_of_type_JavaLangThread == Thread.currentThread()) && (i != 0)))
     {
-      if ((this.jdField_a_of_type_JavaLangThread == null) || ((this.jdField_a_of_type_JavaLangThread == Thread.currentThread()) && (i != 0)))
+      if ((i != 0) && (Build.VERSION.SDK_INT >= 16))
       {
-        if ((i != 0) && (Build.VERSION.SDK_INT >= 16))
+        if ((this.jdField_a_of_type_Int != 0) && (!this.jdField_a_of_type_Boolean))
         {
-          if ((this.jdField_a_of_type_Int != 0) && (!this.jdField_a_of_type_Boolean))
-          {
-            this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
-            QLog.d("WatchTogetherSurfaceTextureHolder", 1, "attachToGLContext detach");
-          }
-          this.jdField_a_of_type_Int = paramInt;
+          this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
+          QLog.d("WatchTogetherSurfaceTextureHolder", 1, "attachToGLContext detach");
         }
-        if ((Build.VERSION.SDK_INT >= 16) && (!this.jdField_a_of_type_Boolean))
-        {
-          this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.attachToGLContext(paramInt);
-          this.jdField_a_of_type_JavaLangThread = Thread.currentThread();
-          QLog.d("WatchTogetherSurfaceTextureHolder", 1, "attachToGLContext real attch");
-        }
-        QLog.d("WatchTogetherSurfaceTextureHolder", 1, "attachToGLContext textureId " + paramInt + ",Thread.currentThread()):=" + Thread.currentThread());
+        this.jdField_a_of_type_Int = paramInt;
       }
-      return;
+      if ((Build.VERSION.SDK_INT >= 16) && (!this.jdField_a_of_type_Boolean))
+      {
+        this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.attachToGLContext(paramInt);
+        this.jdField_a_of_type_JavaLangThread = Thread.currentThread();
+        QLog.d("WatchTogetherSurfaceTextureHolder", 1, "attachToGLContext real attch");
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("attachToGLContext textureId ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(",Thread.currentThread()):=");
+      localStringBuilder.append(Thread.currentThread());
+      QLog.d("WatchTogetherSurfaceTextureHolder", 1, localStringBuilder.toString());
     }
   }
   
@@ -75,16 +81,19 @@ public class WatchTogetherSurfaceTextureHolder
   
   public void c()
   {
-    QLog.d("WatchTogetherSurfaceTextureHolder", 1, "detachFromGLContext Thread.currentThread()):=" + Thread.currentThread());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("detachFromGLContext Thread.currentThread()):=");
+    ((StringBuilder)localObject).append(Thread.currentThread());
+    QLog.d("WatchTogetherSurfaceTextureHolder", 1, ((StringBuilder)localObject).toString());
     if (this.jdField_a_of_type_JavaLangThread != Thread.currentThread()) {
       QLog.d("WatchTogetherSurfaceTextureHolder", 1, "detachFromGLContext error", new Throwable("detachFromGLContext"));
     }
     if ((Build.VERSION.SDK_INT >= 16) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.detachFromGLContext();
-      int[] arrayOfInt = new int[1];
-      arrayOfInt[0] = this.jdField_a_of_type_Int;
-      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+      localObject = new int[1];
+      localObject[0] = this.jdField_a_of_type_Int;
+      GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
     }
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangThread = null;
@@ -93,8 +102,9 @@ public class WatchTogetherSurfaceTextureHolder
   public void d()
   {
     QLog.d("WatchTogetherSurfaceTextureHolder", 1, "lostEglContext");
-    if (this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder$OnSurfaceTextureEglFoucusListener != null) {
-      this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder$OnSurfaceTextureEglFoucusListener.a(this.jdField_a_of_type_JavaLangThread);
+    WatchTogetherSurfaceTextureHolder.OnSurfaceTextureEglFoucusListener localOnSurfaceTextureEglFoucusListener = this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder$OnSurfaceTextureEglFoucusListener;
+    if (localOnSurfaceTextureEglFoucusListener != null) {
+      localOnSurfaceTextureEglFoucusListener.a(this.jdField_a_of_type_JavaLangThread);
     }
     this.jdField_a_of_type_JavaLangThread = null;
   }
@@ -102,15 +112,16 @@ public class WatchTogetherSurfaceTextureHolder
   public void e()
   {
     QLog.d("WatchTogetherSurfaceTextureHolder", 1, "onResponsePauseMessage");
-    if (this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder$OnSurfaceTextureEglFoucusListener != null) {
-      this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder$OnSurfaceTextureEglFoucusListener.a();
+    WatchTogetherSurfaceTextureHolder.OnSurfaceTextureEglFoucusListener localOnSurfaceTextureEglFoucusListener = this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder$OnSurfaceTextureEglFoucusListener;
+    if (localOnSurfaceTextureEglFoucusListener != null) {
+      localOnSurfaceTextureEglFoucusListener.a();
     }
     this.jdField_a_of_type_JavaLangThread = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.gles.WatchTogetherSurfaceTextureHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,11 @@ class SuperPlayerState
   
   SuperPlayerState(String paramString)
   {
-    this.mTAG = (paramString + "-" + "SuperPlayerState.java");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("-");
+    localStringBuilder.append("SuperPlayerState.java");
+    this.mTAG = localStringBuilder.toString();
   }
   
   static String getStateStr(int paramInt)
@@ -23,28 +27,28 @@ class SuperPlayerState
     {
     default: 
       return " UNKNOW ";
-    case 0: 
-      return " IDLE ";
-    case 1: 
-      return " CGIING ";
-    case 2: 
-      return " CGIED ";
-    case 3: 
-      return " PREPARING ";
-    case 4: 
-      return " PREPARED ";
-    case 5: 
-      return " STARTED ";
-    case 6: 
-      return " PAUSED ";
-    case 7: 
-      return " COMPLETE ";
-    case 8: 
-      return " STOPPED ";
+    case 10: 
+      return " RELEASED ";
     case 9: 
       return " ERROR ";
+    case 8: 
+      return " STOPPED ";
+    case 7: 
+      return " COMPLETE ";
+    case 6: 
+      return " PAUSED ";
+    case 5: 
+      return " STARTED ";
+    case 4: 
+      return " PREPARED ";
+    case 3: 
+      return " PREPARING ";
+    case 2: 
+      return " CGIED ";
+    case 1: 
+      return " CGIING ";
     }
-    return " RELEASED ";
+    return " IDLE ";
   }
   
   void changeStateAndNotify(int paramInt)
@@ -59,7 +63,13 @@ class SuperPlayerState
         if (this.mStateListener != null) {
           this.mStateListener.onStateChange(copy());
         }
-        LogUtil.i(this.mTAG, "changeStateAndNotify(), " + getStateStr(i) + " ==> " + getStateStr(paramInt));
+        String str = this.mTAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("changeStateAndNotify(), ");
+        localStringBuilder.append(getStateStr(i));
+        localStringBuilder.append(" ==> ");
+        localStringBuilder.append(getStateStr(paramInt));
+        LogUtil.i(str, localStringBuilder.toString());
       }
       return;
     }
@@ -94,20 +104,28 @@ class SuperPlayerState
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("SuperPlayerState[ mPreState:").append(getStateStr(this.mPreState)).append("/n");
-    localStringBuilder.append("mCurState:").append(getStateStr(this.mCurState)).append("/n");
+    localStringBuilder.append("SuperPlayerState[ mPreState:");
+    localStringBuilder.append(getStateStr(this.mPreState));
+    localStringBuilder.append("/n");
+    localStringBuilder.append("mCurState:");
+    localStringBuilder.append(getStateStr(this.mCurState));
+    localStringBuilder.append("/n");
     localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
   
   void updatePlayerTag(String paramString)
   {
-    this.mTAG = (paramString + "-" + "SuperPlayerState.java");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("-");
+    localStringBuilder.append("SuperPlayerState.java");
+    this.mTAG = localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerState
  * JD-Core Version:    0.7.0.1
  */

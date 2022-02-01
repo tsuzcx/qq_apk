@@ -21,18 +21,19 @@ public class CenteredImageSpan
   
   private Drawable a()
   {
-    Object localObject = this.a;
-    Drawable localDrawable = null;
-    if (localObject != null) {
-      localDrawable = (Drawable)((WeakReference)localObject).get();
+    Object localObject1 = this.a;
+    if (localObject1 != null) {
+      localObject1 = (Drawable)((WeakReference)localObject1).get();
+    } else {
+      localObject1 = null;
     }
-    localObject = localDrawable;
-    if (localDrawable == null)
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      localObject = getDrawable();
-      this.a = new WeakReference(localObject);
+      localObject2 = getDrawable();
+      this.a = new WeakReference(localObject2);
     }
-    return localObject;
+    return localObject2;
   }
   
   public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
@@ -42,8 +43,7 @@ public class CenteredImageSpan
     paramInt1 = paramCharSequence.getIntrinsicHeight();
     paramInt2 = paramPaint.getFontMetricsInt().ascent;
     paramInt3 = paramPaint.getFontMetricsInt().descent;
-    paramInt4 = paramCharSequence.getBounds().bottom;
-    paramCanvas.translate(paramFloat, ((paramInt1 - paramInt3 + paramInt2) / 2 + (paramInt5 - paramInt4)) / 5);
+    paramCanvas.translate(paramFloat, (paramInt5 - paramCharSequence.getBounds().bottom + (paramInt1 - paramInt3 + paramInt2) / 2) / 5);
     paramCharSequence.draw(paramCanvas);
     paramCanvas.restore();
   }
@@ -64,7 +64,7 @@ public class CenteredImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ui.CenteredImageSpan
  * JD-Core Version:    0.7.0.1
  */

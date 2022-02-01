@@ -25,7 +25,8 @@ public class LogItem
     int i = 0;
     while (i < j)
     {
-      localStringBuilder.append(arrayOfString[i]).append("~");
+      localStringBuilder.append(arrayOfString[i]);
+      localStringBuilder.append("~");
       i += 1;
     }
     localStringBuilder.append(this.dimensions.length);
@@ -34,7 +35,7 @@ public class LogItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.bean.LogItem
  * JD-Core Version:    0.7.0.1
  */

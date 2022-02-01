@@ -2,6 +2,7 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
@@ -16,8 +17,15 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.EmoticonHandler;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticon.api.IEmojiManagerService;
+import com.tencent.mobileqq.emoticon.api.IVasEmojiManagerService;
 import com.tencent.mobileqq.emoticonview.api.IBigEmotionService;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmojiManagerServiceProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonHandlerProxy;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -29,6 +37,7 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.MqqWeakReferenceHandler;
 import java.net.MalformedURLException;
 import java.net.URL;
+import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
@@ -41,83 +50,90 @@ public class EmotionDownloadOrUpdateAdapter
   private static final int MSG_REFRESH_PROGRESS = 101;
   public static final int TYPE_DATA = 1;
   public static final int TYPE_UPDATE = 0;
-  private boolean authType = true;
+  private boolean authType;
   private int businessType;
   protected EmoticonPackage emotionPkg;
   protected EmotionDownloadOrUpdateAdapter.EmotionDownloadOrUpdateViewHolder holder;
   protected boolean isSmallEmotion;
   protected boolean isUpdatePanel;
-  private MqqHandler mUiHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
+  private MqqHandler mUiHandler;
   
   public EmotionDownloadOrUpdateAdapter(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonPackage paramEmoticonPackage, EmoticonCallback paramEmoticonCallback, int paramInt4)
   {
     super(paramIEmoticonMainPanelApp, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonCallback);
+    boolean bool = true;
+    this.authType = true;
+    this.mUiHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
     this.emotionPkg = paramEmoticonPackage;
-    if (paramEmoticonPackage.jobType == 4) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.isSmallEmotion = bool;
-      this.businessType = paramInt4;
-      return;
+    if (paramEmoticonPackage.jobType != 4) {
+      bool = false;
     }
+    this.isSmallEmotion = bool;
+    this.businessType = paramInt4;
   }
   
   private void doDownloadOpr(boolean paramBoolean)
   {
-    if ((this.emotionPkg == null) || (this.holder == null)) {}
-    ProgressButton localProgressButton;
-    do
+    if (this.emotionPkg != null)
     {
-      do
-      {
+      if (this.holder == null) {
         return;
-        if (QLog.isColorLevel()) {
-          QLog.d(TAG, 2, "doDownloadOpr epid = " + this.emotionPkg.epId);
-        }
-        localProgressButton = this.holder.downloadBtn;
-      } while (localProgressButton == null);
-      if (!paramBoolean) {
-        break;
       }
-      isAuthorized();
-    } while (!this.authType);
-    if ((this.emotionPkg.epId != null) && (this.emotionPkg.epId.equals("10278")))
-    {
-      ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).reportAddEmoticonPkg(this.app, this.emotionPkg.epId, this.businessType);
-      ReportController.b(this.app.getQQAppInterface(), "CliOper", "", "", "ep_mall", "Ep_endoffer_click", 0, 0, "", "", "", "");
-    }
-    localProgressButton.setProgressDrawable(localProgressButton.a(-16745986));
-    float f = ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).getEmoticonPackageLoadingProgress(this.app, this.emotionPkg.epId);
-    int i;
-    if (this.downBtnStatus == 2)
-    {
-      localProgressButton.setText(MobileQQ.getContext().getString(2131699611));
-      localProgressButton.setProgress((int)f);
-      ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).pullEmoticonPackage(this.app, this.emotionPkg, true, this.businessType);
-      this.downBtnStatus = 1;
-      i = 1;
-    }
-    for (;;)
-    {
-      ReportController.b(this.app.getQQAppInterface(), "CliOper", "", "", "ep_mall", "0X80057B1", 0, 0, "", this.emotionPkg.epId, i + "", "");
-      return;
-      if (this.downBtnStatus == 1)
+      if (QLog.isColorLevel())
       {
-        String str = MobileQQ.getContext().getString(2131699614);
-        if (this.isUpdatePanel) {
-          str = MobileQQ.getContext().getString(2131699644);
+        localObject1 = TAG;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("doDownloadOpr epid = ");
+        ((StringBuilder)localObject2).append(this.emotionPkg.epId);
+        QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+      }
+      Object localObject2 = this.holder.downloadBtn;
+      if (localObject2 == null) {
+        return;
+      }
+      if (paramBoolean)
+      {
+        isAuthorized();
+        if (!this.authType) {
+          return;
         }
-        localProgressButton.setText(str);
-        localProgressButton.setProgress(0);
+      }
+      if ((this.emotionPkg.epId != null) && (this.emotionPkg.epId.equals("10278")))
+      {
+        ((EmoticonHandlerProxy)this.app.getBusinessHandler(EmoticonHandler.a)).reportAddEmoticonPkg(this.emotionPkg.epId, this.businessType);
+        ReportController.b(this.app.getQQAppInterface(), "CliOper", "", "", "ep_mall", "Ep_endoffer_click", 0, 0, "", "", "", "");
+      }
+      ((ProgressButton)localObject2).setProgressDrawable(((ProgressButton)localObject2).a(-16745986));
+      Object localObject3 = (EmojiManagerServiceProxy)this.app.getRuntimeService(IEmojiManagerService.class);
+      float f = ((EmojiManagerServiceProxy)localObject3).getEmoticonPackageLoadingProgress(this.emotionPkg.epId);
+      int j = this.downBtnStatus;
+      int i = 1;
+      if (j == 2)
+      {
+        ((ProgressButton)localObject2).setText(MobileQQ.getContext().getString(2131699719));
+        ((ProgressButton)localObject2).setProgress((int)f);
+        ((EmojiManagerServiceProxy)localObject3).pullEmoticonPackage(this.emotionPkg, true, this.businessType);
+        this.downBtnStatus = 1;
+      }
+      else if (this.downBtnStatus == 1)
+      {
+        localObject1 = MobileQQ.getContext().getString(2131699724);
+        if (this.isUpdatePanel) {
+          localObject1 = MobileQQ.getContext().getString(2131699774);
+        }
+        ((ProgressButton)localObject2).setText((CharSequence)localObject1);
+        ((ProgressButton)localObject2).setProgress(0);
         this.downBtnStatus = 2;
-        ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).stopEmoticonPackageDownload(this.app, this.emotionPkg.epId);
+        ((EmojiManagerServiceProxy)localObject3).stopEmoticonPackageDownload(this.emotionPkg.epId);
         this.mContext.getSharedPreferences("mobileQQ", 0).edit().remove("LAST_ADD_EMO_PACKAGE").commit();
         i = 2;
       }
-      else
-      {
-        i = 1;
-      }
+      Object localObject1 = this.app.getQQAppInterface();
+      localObject2 = this.emotionPkg.epId;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(i);
+      ((StringBuilder)localObject3).append("");
+      ReportController.b((AppRuntime)localObject1, "CliOper", "", "", "ep_mall", "0X80057B1", 0, 0, "", (String)localObject2, ((StringBuilder)localObject3).toString(), "");
     }
   }
   
@@ -126,34 +142,23 @@ public class EmotionDownloadOrUpdateAdapter
     if (this.emotionPkg == null) {
       return;
     }
-    this.authType = ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).isAuthorized(this.app, this.emotionPkg.mobileFeetype);
+    this.authType = ((IVasEmojiManagerService)QRoute.api(IVasEmojiManagerService.class)).isAuthorized(this.app, this.emotionPkg.mobileFeetype);
   }
   
   private boolean isCurrentPanel()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.curPanelInfo != null)
+    if ((this.curPanelInfo != null) && (this.curPanelInfo.emotionPkg != null))
     {
-      bool1 = bool2;
-      if (this.curPanelInfo.emotionPkg != null)
+      EmoticonPackage localEmoticonPackage = this.emotionPkg;
+      if ((localEmoticonPackage != null) && (!TextUtils.isEmpty(localEmoticonPackage.epId)))
       {
-        bool1 = bool2;
-        if (this.emotionPkg != null)
-        {
-          bool1 = bool2;
-          if (!TextUtils.isEmpty(this.emotionPkg.epId))
-          {
-            EmoticonPackage localEmoticonPackage = this.curPanelInfo.emotionPkg;
-            bool1 = bool2;
-            if (this.emotionPkg.epId.equals(localEmoticonPackage.epId)) {
-              bool1 = true;
-            }
-          }
+        localEmoticonPackage = this.curPanelInfo.emotionPkg;
+        if (this.emotionPkg.epId.equals(localEmoticonPackage.epId)) {
+          return true;
         }
       }
     }
-    return bool1;
+    return false;
   }
   
   public View getEmotionView(BaseEmotionAdapter.ViewHolder paramViewHolder, int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -183,51 +188,74 @@ public class EmotionDownloadOrUpdateAdapter
   
   public boolean handleMessage(Message paramMessage)
   {
-    EmoticonPackage localEmoticonPackage = (EmoticonPackage)paramMessage.obj;
-    if ((this.holder == null) || (this.holder.cover == null)) {
-      QLog.e(TAG, 1, "packageDownloadEnd view is null");
-    }
-    int i;
-    do
+    Object localObject1 = (EmoticonPackage)paramMessage.obj;
+    Object localObject2 = this.holder;
+    if ((localObject2 != null) && (((EmotionDownloadOrUpdateAdapter.EmotionDownloadOrUpdateViewHolder)localObject2).cover != null))
     {
-      do
+      localObject2 = this.emotionPkg;
+      if ((localObject2 != null) && (!TextUtils.isEmpty(((EmoticonPackage)localObject2).epId)))
       {
-        do
-        {
+        if (localObject1 == null) {
           return true;
-        } while ((this.emotionPkg == null) || (TextUtils.isEmpty(this.emotionPkg.epId)) || (localEmoticonPackage == null) || (!this.emotionPkg.epId.equals(localEmoticonPackage.epId)));
+        }
+        if (!this.emotionPkg.epId.equals(((EmoticonPackage)localObject1).epId)) {
+          return true;
+        }
         switch (paramMessage.what)
         {
         default: 
           return true;
-        case 100: 
-          if (QLog.isColorLevel()) {
-            QLog.d(TAG, 2, "handleMessage refreshCover epid = " + this.emotionPkg.epId);
+        case 102: 
+          if (QLog.isColorLevel())
+          {
+            paramMessage = TAG;
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("handleMessage packageDownloadEnd epid = ");
+            ((StringBuilder)localObject1).append(this.emotionPkg.epId);
+            QLog.d(paramMessage, 2, ((StringBuilder)localObject1).toString());
           }
-          paramMessage = ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).getCoverBitmap(2, this.emotionPkg.epId);
+          if (this.isUpdatePanel) {
+            this.holder.downloadBtn.setText(MobileQQ.getContext().getString(2131699774));
+          }
+          this.holder.downloadBtn.setText(MobileQQ.getContext().getString(2131699724));
+          this.holder.downloadBtn.setProgress(0);
+          this.downBtnStatus = 2;
+          return true;
+        case 101: 
+          if (QLog.isColorLevel())
+          {
+            paramMessage = TAG;
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("handleMessage refreshprogress epid = ");
+            ((StringBuilder)localObject2).append(this.emotionPkg.epId);
+            QLog.d(paramMessage, 2, ((StringBuilder)localObject2).toString());
+          }
+          int i = (int)((EmojiManagerServiceProxy)this.app.getRuntimeService(IEmojiManagerService.class)).getStatusPercent(((EmoticonPackage)localObject1).epId);
+          if (i < 0) {
+            return true;
+          }
+          this.holder.downloadBtn.setText(MobileQQ.getContext().getString(2131699719));
+          this.downBtnStatus = 1;
+          this.holder.downloadBtn.setProgressDrawable(this.holder.downloadBtn.a(-16745986));
+          this.holder.downloadBtn.setProgress(i);
+          return true;
         }
-      } while (paramMessage == null);
-      this.holder.cover.setImageDrawable(paramMessage);
-      return true;
-      if (QLog.isColorLevel()) {
-        QLog.d(TAG, 2, "handleMessage refreshprogress epid = " + this.emotionPkg.epId);
+        if (QLog.isColorLevel())
+        {
+          paramMessage = TAG;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("handleMessage refreshCover epid = ");
+          ((StringBuilder)localObject1).append(this.emotionPkg.epId);
+          QLog.d(paramMessage, 2, ((StringBuilder)localObject1).toString());
+        }
+        paramMessage = EmosmUtils.a(2, this.emotionPkg.epId);
+        if (paramMessage != null) {
+          this.holder.cover.setImageDrawable(paramMessage);
+        }
       }
-      i = (int)((IBigEmotionService)QRoute.api(IBigEmotionService.class)).getStatusPercent(this.app, localEmoticonPackage.epId);
-    } while (i < 0);
-    this.holder.downloadBtn.setText(MobileQQ.getContext().getString(2131699611));
-    this.downBtnStatus = 1;
-    this.holder.downloadBtn.setProgressDrawable(this.holder.downloadBtn.a(-16745986));
-    this.holder.downloadBtn.setProgress(i);
-    return true;
-    if (QLog.isColorLevel()) {
-      QLog.d(TAG, 2, "handleMessage packageDownloadEnd epid = " + this.emotionPkg.epId);
+      return true;
     }
-    if (this.isUpdatePanel) {
-      this.holder.downloadBtn.setText(MobileQQ.getContext().getString(2131699644));
-    }
-    this.holder.downloadBtn.setText(MobileQQ.getContext().getString(2131699614));
-    this.holder.downloadBtn.setProgress(0);
-    this.downBtnStatus = 2;
+    QLog.e(TAG, 1, "packageDownloadEnd view is null");
     return true;
   }
   
@@ -238,86 +266,121 @@ public class EmotionDownloadOrUpdateAdapter
   
   public void onAdapterSelected()
   {
-    if ((this.emotionPkg == null) || (TextUtils.isEmpty(this.emotionPkg.epId))) {
-      QLog.e(TAG, 1, "onAdapterSelected emotionpkg = null");
-    }
-    do
+    Object localObject = this.emotionPkg;
+    if ((localObject != null) && (!TextUtils.isEmpty(((EmoticonPackage)localObject).epId)))
     {
-      return;
-      while ((((IBigEmotionService)QRoute.api(IBigEmotionService.class)).getEmoticonPackageLoadingProgress(this.app, this.emotionPkg.epId) >= 0.0F) || (NetworkUtil.a(MobileQQ.getContext()) != 1)) {
-        do
-        {
-          if ((this.emotionPkg.mobileFeetype != 4) && (this.emotionPkg.mobileFeetype != 5)) {
-            break;
-          }
-          isAuthorized();
-        } while (!this.authType);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(TAG, 2, "wifi auto download emotion , epid = " + this.emotionPkg.epId);
-      }
-      ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).pullEmoticonPackage(this.app, this.emotionPkg, false, this.businessType);
-      if ((this.holder != null) && (this.holder.downloadBtn != null))
+      if ((this.emotionPkg.mobileFeetype != 4) && (this.emotionPkg.mobileFeetype != 5))
       {
-        this.holder.downloadBtn.setVisibility(0);
-        this.holder.downloadBtn.setText(MobileQQ.getContext().getString(2131699611));
-        this.downBtnStatus = 1;
+        if (this.emotionPkg.valid) {}
       }
-      ReportController.b(this.app.getQQAppInterface(), "CliOper", "", "", "ep_mall", "0X80057B1", 0, 0, this.emotionPkg.epId, "", "", "");
+      else
+      {
+        isAuthorized();
+        if (!this.authType) {
+          return;
+        }
+      }
+      localObject = (EmojiManagerServiceProxy)this.app.getRuntimeService(IEmojiManagerService.class);
+      if ((((EmojiManagerServiceProxy)localObject).getEmoticonPackageLoadingProgress(this.emotionPkg.epId) < 0.0F) && (NetworkUtil.getSystemNetwork(MobileQQ.getContext()) == 1))
+      {
+        if (QLog.isColorLevel())
+        {
+          String str = TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("wifi auto download emotion , epid = ");
+          localStringBuilder.append(this.emotionPkg.epId);
+          QLog.d(str, 2, localStringBuilder.toString());
+        }
+        ((EmojiManagerServiceProxy)localObject).pullEmoticonPackage(this.emotionPkg, false, this.businessType);
+        localObject = this.holder;
+        if ((localObject != null) && (((EmotionDownloadOrUpdateAdapter.EmotionDownloadOrUpdateViewHolder)localObject).downloadBtn != null))
+        {
+          this.holder.downloadBtn.setVisibility(0);
+          this.holder.downloadBtn.setText(MobileQQ.getContext().getString(2131699719));
+          this.downBtnStatus = 1;
+        }
+        ReportController.b(this.app.getQQAppInterface(), "CliOper", "", "", "ep_mall", "0X80057B1", 0, 0, this.emotionPkg.epId, "", "", "");
+      }
       return;
-    } while (this.emotionPkg.valid);
+    }
+    QLog.e(TAG, 1, "onAdapterSelected emotionpkg = null");
   }
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() != 2131365519) || (this.emotionPkg == null)) {}
-    for (;;)
+    if (paramView.getId() == 2131365365)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if ((this.emotionPkg.mobileFeetype == 4) || (this.emotionPkg.mobileFeetype == 5))
+      Object localObject1 = this.emotionPkg;
+      if (localObject1 != null)
       {
-        isAuthorized();
-        if (!this.authType)
+        if ((((EmoticonPackage)localObject1).mobileFeetype != 4) && (this.emotionPkg.mobileFeetype != 5))
         {
-          String str2 = "mvip.g.a.bq_" + this.emotionPkg.epId;
-          String str1 = "!vip";
-          if (this.emotionPkg.mobileFeetype == 5) {
-            str1 = "!svip";
+          if (!this.emotionPkg.valid)
+          {
+            boolean bool;
+            if (this.emotionPkg.jobType == 4) {
+              bool = true;
+            } else {
+              bool = false;
+            }
+            ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).openEmojiDetailPage(this.mContext, this.app, this.app.getAccount(), 0, String.valueOf(this.emotionPkg.epId), false, null, bool);
+            break label344;
           }
-          str1 = "https://mc.vip.qq.com/qqwallet/index?aid=" + str2 + "&type=" + str1 + "&send=0&return_url=jsbridge://qw_charge/emojiPayResultOk";
-          if ((this.mContext instanceof Activity)) {
-            ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).startActivityForResult((Activity)this.mContext, str1, 4813);
-          }
-          if (this.isSmallEmotion) {
-            continue;
-          }
-          ReportController.b(this.app.getQQAppInterface(), "CliOper", "", "", "ep_mall", "0X80057B3", 0, 0, this.emotionPkg.epId, "", "", "");
         }
-      }
-      else if (!this.emotionPkg.valid)
-      {
-        if (this.emotionPkg.jobType == 4) {}
-        for (boolean bool = true;; bool = false)
+        else
         {
-          ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).openEmojiDetailPage(this.mContext, this.app, this.app.getAccount(), 0, String.valueOf(this.emotionPkg.epId), false, null, bool);
-          break;
+          isAuthorized();
+          if (!this.authType)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("mvip.g.a.bq_");
+            ((StringBuilder)localObject1).append(this.emotionPkg.epId);
+            Object localObject2 = ((StringBuilder)localObject1).toString();
+            if (this.emotionPkg.mobileFeetype == 5) {
+              localObject1 = "!svip";
+            } else {
+              localObject1 = "!vip";
+            }
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("https://mc.vip.qq.com/qqwallet/index?aid=");
+            localStringBuilder.append((String)localObject2);
+            localStringBuilder.append("&type=");
+            localStringBuilder.append((String)localObject1);
+            localStringBuilder.append("&send=0&return_url=jsbridge://qw_charge/emojiPayResultOk");
+            localObject1 = localStringBuilder.toString();
+            if ((this.mContext instanceof Activity))
+            {
+              localObject2 = new Intent();
+              ((Intent)localObject2).putExtra("url", (String)localObject1);
+              RouteUtils.a((Activity)this.mContext, (Intent)localObject2, "/base/browser", 4813);
+            }
+            if (this.isSmallEmotion) {
+              break label344;
+            }
+            ReportController.b(this.app.getQQAppInterface(), "CliOper", "", "", "ep_mall", "0X80057B3", 0, 0, this.emotionPkg.epId, "", "", "");
+            break label344;
+          }
         }
+        doDownloadOpr(false);
       }
-      doDownloadOpr(false);
     }
+    label344:
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void packageDownloadEnd(EmoticonPackage paramEmoticonPackage, int paramInt)
   {
-    if ((paramInt != 0) || (paramEmoticonPackage == null)) {
-      return;
+    if (paramInt == 0)
+    {
+      if (paramEmoticonPackage == null) {
+        return;
+      }
+      Message localMessage = Message.obtain();
+      localMessage.what = 102;
+      localMessage.obj = paramEmoticonPackage;
+      localMessage.arg1 = paramInt;
+      this.mUiHandler.sendMessage(localMessage);
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 102;
-    localMessage.obj = paramEmoticonPackage;
-    localMessage.arg1 = paramInt;
-    this.mUiHandler.sendMessage(localMessage);
   }
   
   public void payBack(int paramInt)
@@ -361,108 +424,122 @@ public class EmotionDownloadOrUpdateAdapter
   
   public void updateDownloadUI(EmotionDownloadOrUpdateAdapter.EmotionDownloadOrUpdateViewHolder paramEmotionDownloadOrUpdateViewHolder)
   {
-    if ((paramEmotionDownloadOrUpdateViewHolder == null) || (this.emotionPkg == null) || (TextUtils.isEmpty(this.emotionPkg.epId)))
+    Object localObject1;
+    Object localObject2;
+    if (paramEmotionDownloadOrUpdateViewHolder != null)
     {
-      QLog.e(TAG, 1, "updateUI holder is null");
-      return;
+      localObject1 = this.emotionPkg;
+      if ((localObject1 != null) && (!TextUtils.isEmpty(((EmoticonPackage)localObject1).epId)))
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject1 = TAG;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("updateUI epid = ");
+          ((StringBuilder)localObject2).append(this.emotionPkg.epId);
+          QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+        }
+        paramEmotionDownloadOrUpdateViewHolder.name.setText(this.emotionPkg.name);
+        paramEmotionDownloadOrUpdateViewHolder.name.setVisibility(0);
+        localObject1 = EmosmUtils.a(2, this.emotionPkg.epId);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(TAG, 2, "updateUI epid = " + this.emotionPkg.epId);
-    }
-    paramEmotionDownloadOrUpdateViewHolder.name.setText(this.emotionPkg.name);
-    paramEmotionDownloadOrUpdateViewHolder.name.setVisibility(0);
-    Object localObject = ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).getCoverPath(2, this.emotionPkg.epId);
-    String str;
-    for (;;)
+    try
     {
-      try
+      localObject2 = MobileQQ.getContext().getResources().getDrawable(2130846447);
+      Drawable localDrawable = MobileQQ.getContext().getResources().getDrawable(2130846453);
+      if (FileUtils.fileExists((String)localObject1))
       {
-        localDrawable1 = MobileQQ.getContext().getResources().getDrawable(2130846568);
-        localDrawable2 = MobileQQ.getContext().getResources().getDrawable(2130846574);
-        if (!FileUtils.a((String)localObject)) {
-          continue;
-        }
-        localObject = URLDrawable.getDrawable(new URL("file:///" + (String)localObject), localDrawable1, localDrawable2);
-        if (localObject == null) {
-          continue;
-        }
-        paramEmotionDownloadOrUpdateViewHolder.cover.setImageDrawable((Drawable)localObject);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("file:///");
+        localStringBuilder.append((String)localObject1);
+        localObject1 = URLDrawable.getDrawable(new URL(localStringBuilder.toString()), (Drawable)localObject2, localDrawable);
       }
-      catch (MalformedURLException localMalformedURLException)
+      else
       {
-        Drawable localDrawable1;
-        Drawable localDrawable2;
-        float f;
-        paramEmotionDownloadOrUpdateViewHolder.cover.setImageResource(2130846574);
-        continue;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        paramEmotionDownloadOrUpdateViewHolder.cover.setImageResource(2130846574);
-        continue;
-        str = MobileQQ.getContext().getString(2131699614);
-        if (!this.isUpdatePanel) {
-          break;
+        if (this.isSmallEmotion) {
+          localObject1 = EmosmUtils.b(19, this.emotionPkg.epId);
+        } else {
+          localObject1 = EmosmUtils.b(2, this.emotionPkg.epId);
         }
+        localObject1 = URLDrawable.getDrawable((String)localObject1, (Drawable)localObject2, localDrawable);
       }
-      paramEmotionDownloadOrUpdateViewHolder.cover.setVisibility(0);
-      f = ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).getEmoticonPackageLoadingProgress(this.app, this.emotionPkg.epId);
-      if (QLog.isColorLevel()) {
-        QLog.d(TAG, 2, "Ep id=" + this.emotionPkg.epId + ", progress=" + f);
+      if (localObject1 != null) {
+        paramEmotionDownloadOrUpdateViewHolder.cover.setImageDrawable((Drawable)localObject1);
+      } else {
+        paramEmotionDownloadOrUpdateViewHolder.cover.setImageResource(2130846453);
       }
-      if (f >= 0.0F)
+    }
+    catch (MalformedURLException localMalformedURLException)
+    {
+      float f;
+      break label279;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label266:
+      label279:
+      break label266;
+    }
+    paramEmotionDownloadOrUpdateViewHolder.cover.setImageResource(2130846453);
+    break label289;
+    paramEmotionDownloadOrUpdateViewHolder.cover.setImageResource(2130846453);
+    label289:
+    paramEmotionDownloadOrUpdateViewHolder.cover.setVisibility(0);
+    f = ((EmojiManagerServiceProxy)this.app.getRuntimeService(IEmojiManagerService.class)).getEmoticonPackageLoadingProgress(this.emotionPkg.epId);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Ep id=");
+      ((StringBuilder)localObject2).append(this.emotionPkg.epId);
+      ((StringBuilder)localObject2).append(", progress=");
+      ((StringBuilder)localObject2).append(f);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    if (f >= 0.0F)
+    {
+      paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setVisibility(0);
+      paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setProgress((int)(f * 100.0F));
+      paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setText(MobileQQ.getContext().getString(2131699719));
+      this.downBtnStatus = 1;
+    }
+    else
+    {
+      localObject1 = MobileQQ.getContext().getString(2131699724);
+      if (this.isUpdatePanel)
       {
-        paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setVisibility(0);
-        paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setProgress((int)(f * 100.0F));
-        paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setText(MobileQQ.getContext().getString(2131699611));
-        this.downBtnStatus = 1;
-        paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setOnClickListener(this);
-        return;
-        if (this.isSmallEmotion)
-        {
-          localObject = ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).getCoverUrl(19, this.emotionPkg.epId);
-          localObject = URLDrawable.getDrawable((String)localObject, localDrawable1, localDrawable2);
-        }
-        else
-        {
-          localObject = ((IBigEmotionService)QRoute.api(IBigEmotionService.class)).getCoverUrl(2, this.emotionPkg.epId);
-          continue;
-          paramEmotionDownloadOrUpdateViewHolder.cover.setImageResource(2130846574);
+        localObject1 = MobileQQ.getContext().getString(2131699774);
+      }
+      else if ((this.emotionPkg.mobileFeetype != 4) && (this.emotionPkg.mobileFeetype != 5))
+      {
+        if (!this.emotionPkg.valid) {
+          localObject1 = MobileQQ.getContext().getString(2131699775);
         }
       }
       else
       {
-        str = MobileQQ.getContext().getString(2131699644);
-      }
-    }
-    for (;;)
-    {
-      paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setVisibility(0);
-      paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setProgress(0);
-      paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setText(str);
-      this.downBtnStatus = 2;
-      if (!isCurrentPanel()) {
-        break;
-      }
-      onAdapterSelected();
-      break;
-      if ((this.emotionPkg.mobileFeetype == 4) || (this.emotionPkg.mobileFeetype == 5))
-      {
         isAuthorized();
         if (!this.authType) {
-          str = MobileQQ.getContext().getString(2131699632);
+          localObject1 = MobileQQ.getContext().getString(2131699751);
         }
       }
-      else if (!this.emotionPkg.valid)
-      {
-        str = MobileQQ.getContext().getString(2131699645);
+      paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setVisibility(0);
+      paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setProgress(0);
+      paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setText((CharSequence)localObject1);
+      this.downBtnStatus = 2;
+      if (isCurrentPanel()) {
+        onAdapterSelected();
       }
     }
+    paramEmotionDownloadOrUpdateViewHolder.downloadBtn.setOnClickListener(this);
+    return;
+    QLog.e(TAG, 1, "updateUI holder is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionDownloadOrUpdateAdapter
  * JD-Core Version:    0.7.0.1
  */

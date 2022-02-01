@@ -49,19 +49,23 @@ public class RoundProgressBar
     ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30L);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int i = getWidth() / 2;
-    int j = (int)(i - this.jdField_c_of_type_Float / 2.0F);
+    float f1 = i;
+    int j = (int)(f1 - this.jdField_c_of_type_Float / 2.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_c_of_type_Float);
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    paramCanvas.drawCircle(i, i, j, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawCircle(f1, f1, j, this.jdField_a_of_type_AndroidGraphicsPaint);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_c_of_type_Float);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(i - j, i - j, i + j, j + i);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    float f2 = i - j;
+    float f3 = i + j;
+    ((RectF)localObject).set(f2, f2, f3, f3);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, this.e * 360 / this.d, false, this.jdField_a_of_type_AndroidGraphicsPaint);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(0.0F);
@@ -69,16 +73,25 @@ public class RoundProgressBar
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Float);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(Typeface.DEFAULT_BOLD);
-    j = this.e * 100 / this.d;
-    float f1 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(j + "");
+    i = this.e * 100 / this.d;
+    localObject = this.jdField_a_of_type_AndroidGraphicsPaint;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(i);
+    localStringBuilder.append("");
+    f2 = ((Paint)localObject).measureText(localStringBuilder.toString());
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_b_of_type_Float);
-    float f2 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText("%");
-    if ((j != 0) && (this.jdField_a_of_type_Boolean))
+    f3 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText("%");
+    if ((i != 0) && (this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Float);
-      paramCanvas.drawText(j + "", i - (f1 + f2) / 2.0F, i + this.jdField_a_of_type_Float / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("");
+      localObject = ((StringBuilder)localObject).toString();
+      f3 = f1 - (f3 + f2) / 2.0F;
+      paramCanvas.drawText((String)localObject, f3, this.jdField_a_of_type_Float / 2.0F + f1, this.jdField_a_of_type_AndroidGraphicsPaint);
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_b_of_type_Float);
-      paramCanvas.drawText("%", f1 + (i - (f2 + f1) / 2.0F), i + this.jdField_a_of_type_Float / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawText("%", f3 + f2, f1 + this.jdField_a_of_type_Float / 2.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
   
@@ -94,14 +107,20 @@ public class RoundProgressBar
   
   public void setMax(int paramInt)
   {
-    if (paramInt < 0) {
+    if (paramInt >= 0) {
       try
       {
-        throw new IllegalArgumentException("max not less than 0");
+        this.d = paramInt;
+        return;
       }
-      finally {}
+      finally
+      {
+        break label28;
+      }
     }
-    this.d = paramInt;
+    throw new IllegalArgumentException("max not less than 0");
+    label28:
+    throw localObject;
   }
   
   public void setNeedShowProgreeText(boolean paramBoolean)
@@ -116,20 +135,27 @@ public class RoundProgressBar
   
   public void setProgress(int paramInt)
   {
-    if (paramInt < 0) {
+    if (paramInt >= 0)
+    {
+      int i = paramInt;
       try
       {
-        throw new IllegalArgumentException("progress not less than 0");
+        if (paramInt > this.d) {
+          i = this.d;
+        }
+        if ((i <= this.d) && (this.e != i)) {
+          a(i);
+        }
+        return;
       }
-      finally {}
+      finally
+      {
+        break label59;
+      }
     }
-    int i = paramInt;
-    if (paramInt > this.d) {
-      i = this.d;
-    }
-    if ((i <= this.d) && (this.e != i)) {
-      a(i);
-    }
+    throw new IllegalArgumentException("progress not less than 0");
+    label59:
+    throw localObject;
   }
   
   public void setRoundWidth(float paramFloat)
@@ -149,7 +175,7 @@ public class RoundProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ui.RoundProgressBar
  * JD-Core Version:    0.7.0.1
  */

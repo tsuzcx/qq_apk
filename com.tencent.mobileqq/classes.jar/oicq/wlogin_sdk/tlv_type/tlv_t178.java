@@ -44,17 +44,19 @@ public class tlv_t178
   
   public Boolean verify()
   {
-    if (this._body_len < 12) {
-      return Boolean.valueOf(false);
+    int i = this._body_len;
+    Boolean localBoolean = Boolean.valueOf(false);
+    if (i < 12) {
+      return localBoolean;
     }
-    int i = util.buf_to_int16(this._buf, this._head_len);
+    i = util.buf_to_int16(this._buf, this._head_len);
     if (this._body_len < i + 12) {
-      return Boolean.valueOf(false);
+      return localBoolean;
     }
     this._country_code_len = i;
     i = util.buf_to_int16(this._buf, this._head_len + 2 + this._country_code_len);
     if (this._body_len < this._country_code_len + 12 + i) {
-      return Boolean.valueOf(false);
+      return localBoolean;
     }
     this._mobile_len = i;
     return Boolean.valueOf(true);
@@ -62,7 +64,7 @@ public class tlv_t178
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.tlv_type.tlv_t178
  * JD-Core Version:    0.7.0.1
  */

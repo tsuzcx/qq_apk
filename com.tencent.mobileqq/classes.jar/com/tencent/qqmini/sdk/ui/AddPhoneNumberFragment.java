@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.qqmini.sdk.R.id;
 import com.tencent.qqmini.sdk.R.layout;
 import com.tencent.qqmini.sdk.annotation.MiniKeep;
@@ -56,7 +55,12 @@ public class AddPhoneNumberFragment
     this.mSendSmsCodeBtn.setClickable(false);
     this.mSendSmsCodeBtn.setTextColor(Color.parseColor("#B0B3BF"));
     mSecond = paramInt;
-    this.mSendSmsCodeBtn.setText("有效期(" + mSecond + ")");
+    Button localButton = this.mSendSmsCodeBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("有效期(");
+    localStringBuilder.append(mSecond);
+    localStringBuilder.append(")");
+    localButton.setText(localStringBuilder.toString());
     this.mHandler.postDelayed(this.runnableCountdown, 1000L);
   }
   
@@ -105,7 +109,6 @@ public class AddPhoneNumberFragment
       paramLayoutInflater.setFitsSystemWindows(true);
       paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
     }
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -140,7 +143,7 @@ public class AddPhoneNumberFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.AddPhoneNumberFragment
  * JD-Core Version:    0.7.0.1
  */

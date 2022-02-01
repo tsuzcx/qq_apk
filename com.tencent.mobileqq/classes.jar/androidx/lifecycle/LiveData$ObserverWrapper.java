@@ -14,42 +14,20 @@ abstract class LiveData$ObserverWrapper
   
   void activeStateChanged(boolean paramBoolean)
   {
-    int j = 1;
     if (paramBoolean == this.mActive) {
       return;
     }
     this.mActive = paramBoolean;
+    LiveData localLiveData = this.this$0;
     int i;
-    label28:
-    LiveData localLiveData;
-    int k;
-    if (this.this$0.mActiveCount == 0)
-    {
+    if (this.mActive) {
       i = 1;
-      localLiveData = this.this$0;
-      k = localLiveData.mActiveCount;
-      if (!this.mActive) {
-        break label120;
-      }
+    } else {
+      i = -1;
     }
-    for (;;)
-    {
-      localLiveData.mActiveCount = (j + k);
-      if ((i != 0) && (this.mActive)) {
-        this.this$0.onActive();
-      }
-      if ((this.this$0.mActiveCount == 0) && (!this.mActive)) {
-        this.this$0.onInactive();
-      }
-      if (!this.mActive) {
-        break;
-      }
+    localLiveData.changeActiveCounter(i);
+    if (this.mActive) {
       this.this$0.dispatchingValue(this);
-      return;
-      i = 0;
-      break label28;
-      label120:
-      j = -1;
     }
   }
   
@@ -64,7 +42,7 @@ abstract class LiveData$ObserverWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.LiveData.ObserverWrapper
  * JD-Core Version:    0.7.0.1
  */

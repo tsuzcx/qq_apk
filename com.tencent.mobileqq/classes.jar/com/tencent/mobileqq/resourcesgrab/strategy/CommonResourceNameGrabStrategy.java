@@ -14,16 +14,15 @@ public class CommonResourceNameGrabStrategy
   public List<ResourceGrabSkinData> a(View paramView)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramView instanceof ImageView)) {
-      a(((ImageView)paramView).getDrawable(), localArrayList, 1);
-    }
-    do
+    if ((paramView instanceof ImageView))
     {
-      do
-      {
-        return localArrayList;
-      } while (!(paramView instanceof TextView));
-      localObject = ((TextView)paramView).getCompoundDrawables();
+      a(((ImageView)paramView).getDrawable(), localArrayList, 1);
+      return localArrayList;
+    }
+    if ((paramView instanceof TextView))
+    {
+      paramView = (TextView)paramView;
+      Object localObject = paramView.getCompoundDrawables();
       int j = localObject.length;
       int i = 0;
       while (i < j)
@@ -31,19 +30,22 @@ public class CommonResourceNameGrabStrategy
         a(localObject[i], localArrayList, 2);
         i += 1;
       }
-      localObject = ((TextView)paramView).getTextColors();
-    } while (!(localObject instanceof SkinnableColorStateList));
-    paramView = (SkinnableColorStateList)localObject;
-    Object localObject = new ResourceGrabSkinData(3, ((SkinnableColorStateList)localObject).skinData);
-    ((ResourceGrabSkinData)localObject).jdField_a_of_type_Array2dOfInt = paramView.getStateSpecs();
-    ((ResourceGrabSkinData)localObject).jdField_a_of_type_ArrayOfInt = paramView.getColors();
-    localArrayList.add(localObject);
+      paramView = paramView.getTextColors();
+      if ((paramView instanceof SkinnableColorStateList))
+      {
+        paramView = (SkinnableColorStateList)paramView;
+        localObject = new ResourceGrabSkinData(3, paramView.skinData);
+        ((ResourceGrabSkinData)localObject).jdField_a_of_type_Array2dOfInt = paramView.getStateSpecs();
+        ((ResourceGrabSkinData)localObject).jdField_a_of_type_ArrayOfInt = paramView.getColors();
+        localArrayList.add(localObject);
+      }
+    }
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.strategy.CommonResourceNameGrabStrategy
  * JD-Core Version:    0.7.0.1
  */

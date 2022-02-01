@@ -12,12 +12,15 @@ class AppBrandService$2
   
   public void handleException(JsContext paramJsContext, JsError paramJsError)
   {
-    QMLog.e("AppBrandService", "X5Exception:" + paramJsError.getMessage());
+    paramJsContext = new StringBuilder();
+    paramJsContext.append("X5Exception:");
+    paramJsContext.append(paramJsError.getMessage());
+    QMLog.e("AppBrandService", paramJsContext.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AppBrandService.2
  * JD-Core Version:    0.7.0.1
  */

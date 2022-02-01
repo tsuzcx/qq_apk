@@ -130,8 +130,9 @@ public abstract class BaseEmotionPanel
   
   public void setPageIndicator(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentTkdCommentPanelBaseViewPageIndicator != null) {
-      this.jdField_a_of_type_ComTencentTkdCommentPanelBaseViewPageIndicator.setPageCount(paramInt);
+    PageIndicator localPageIndicator = this.jdField_a_of_type_ComTencentTkdCommentPanelBaseViewPageIndicator;
+    if (localPageIndicator != null) {
+      localPageIndicator.setPageCount(paramInt);
     }
   }
   
@@ -149,7 +150,7 @@ public abstract class BaseEmotionPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.base.BaseEmotionPanel
  * JD-Core Version:    0.7.0.1
  */

@@ -20,17 +20,21 @@ class AttaReport$1$1
   public void onResponse(Call paramCall, Response paramResponse)
   {
     paramCall = paramResponse.body();
-    if (paramCall != null) {}
-    for (paramCall = new String(paramCall.bytes(), "utf-8").trim();; paramCall = null)
-    {
-      ABTestLog.debug("res from net: " + paramCall + "  atta report finished", new Object[0]);
-      return;
+    if (paramCall != null) {
+      paramCall = new String(paramCall.bytes(), "utf-8").trim();
+    } else {
+      paramCall = null;
     }
+    paramResponse = new StringBuilder();
+    paramResponse.append("res from net: ");
+    paramResponse.append(paramCall);
+    paramResponse.append("  atta report finished");
+    ABTestLog.debug(paramResponse.toString(), new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.abtestsdk.report.AttaReport.1.1
  * JD-Core Version:    0.7.0.1
  */

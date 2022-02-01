@@ -17,35 +17,34 @@ public class PublicAccountAssistantProcessor
 {
   private void a(QQAppInterface paramQQAppInterface, List<RecentUser> paramList)
   {
-    SharedPreferences localSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("pubaccount_assistant_upgrade_pref" + paramQQAppInterface.getAccount(), 0);
+    Object localObject = paramQQAppInterface.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pubaccount_assistant_upgrade_pref");
+    localStringBuilder.append(paramQQAppInterface.getAccount());
+    SharedPreferences localSharedPreferences = ((MobileQQ)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
     if (localSharedPreferences.getBoolean("check_pubaccountassistant_when_upgrade", true))
     {
-      if (paramList != null) {
-        break label66;
+      if (paramList == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(this.a, 2, "checkPubAccountAssistant | descRecentList == null");
+        }
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a, 2, "checkPubAccountAssistant | descRecentList == null");
-      }
-    }
-    return;
-    label66:
-    Iterator localIterator = paramList.iterator();
-    RecentUser localRecentUser;
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localRecentUser = (RecentUser)localIterator.next();
-    } while (!AppConstants.PUBLIC_ACCOUNT_WPA_ASSISTANT_UIN.equals(localRecentUser.uin));
-    for (;;)
-    {
-      if (localRecentUser != null) {
-        paramList.remove(localRecentUser);
+      localStringBuilder = null;
+      Iterator localIterator = paramList.iterator();
+      do
+      {
+        localObject = localStringBuilder;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localObject = (RecentUser)localIterator.next();
+      } while (!AppConstants.PUBLIC_ACCOUNT_WPA_ASSISTANT_UIN.equals(((RecentUser)localObject).uin));
+      if (localObject != null) {
+        paramList.remove(localObject);
       }
       paramQQAppInterface.execute(new PublicAccountAssistantProcessor.1(this, paramQQAppInterface, localSharedPreferences));
-      return;
-      localRecentUser = null;
     }
   }
   
@@ -64,7 +63,7 @@ public class PublicAccountAssistantProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.cache.PublicAccountAssistantProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class VideoBanner
   extends JceStruct
@@ -38,17 +39,19 @@ public final class VideoBanner
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uUin, 0);
-    if (this.videos != null) {
-      paramJceOutputStream.write(this.videos, 1);
+    Object localObject = this.videos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 2);
+    localObject = this.nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_AD_BANNER.VideoBanner
  * JD-Core Version:    0.7.0.1
  */

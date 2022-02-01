@@ -12,18 +12,19 @@ class PublicAccountChatPie$HomeBroadcast
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS")) {
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
       PublicAccountChatPie.a(this.a, 1);
-    }
-    while (!paramContext.equals("android.intent.action.SCREEN_OFF")) {
       return;
     }
-    PublicAccountChatPie.a(this.a, 1);
+    if (paramContext.equals("android.intent.action.SCREEN_OFF")) {
+      PublicAccountChatPie.a(this.a, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.HomeBroadcast
  * JD-Core Version:    0.7.0.1
  */

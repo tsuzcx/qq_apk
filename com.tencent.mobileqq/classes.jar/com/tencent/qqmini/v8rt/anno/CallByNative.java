@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
 public @interface CallByNative {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.v8rt.anno.CallByNative
  * JD-Core Version:    0.7.0.1
  */

@@ -26,27 +26,27 @@ public final class TroopNickAuthRequest$Companion
     ((JSONObject)localObject1).put("aid", "mvip.g.a.qnc_20rx");
     ((JSONObject)localObject1).put("baseUrl", "https://zb.vip.qq.com/v2");
     localObject1 = ((JSONObject)localObject1).toString();
-    if ((localObject1 != null) && (localObject1 != null)) {}
-    for (;;)
-    {
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "JSONObject().let {\n     …ULT);\n            } ?: \"\"");
-      Object localObject2 = "https://h5.vip.qq.com/p/pay/vippaylogic.html?vipPayLogicParams=" + (String)localObject1;
-      localObject1 = new Intent(paramContext, QQTranslucentBrowserActivity.class);
-      ((Intent)localObject1).putExtra("url", (String)localObject2);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putBoolean("hide_left_button", true);
-      ((Bundle)localObject2).putBoolean("hide_more_button", true);
-      ((Intent)localObject1).putExtras((Bundle)localObject2);
-      ((Intent)localObject1).setFlags(268435456);
-      paramContext.startActivity((Intent)localObject1);
-      return;
+    if ((localObject1 == null) || (localObject1 == null)) {
       localObject1 = "";
     }
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "JSONObject().let {\n     …ULT);\n            } ?: \"\"");
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("https://h5.vip.qq.com/p/pay/vippaylogic.html?vipPayLogicParams=");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    localObject1 = new Intent(paramContext, QQTranslucentBrowserActivity.class);
+    ((Intent)localObject1).putExtra("url", (String)localObject2);
+    localObject2 = new Bundle();
+    ((Bundle)localObject2).putBoolean("hide_left_button", true);
+    ((Bundle)localObject2).putBoolean("hide_more_button", true);
+    ((Intent)localObject1).putExtras((Bundle)localObject2);
+    ((Intent)localObject1).setFlags(268435456);
+    paramContext.startActivity((Intent)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.shop.adapter.TroopNickAuthRequest.Companion
  * JD-Core Version:    0.7.0.1
  */

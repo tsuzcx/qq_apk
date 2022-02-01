@@ -21,15 +21,17 @@ public class RecentUserMsgFactory
   
   private MsgSerialize a(int paramInt)
   {
-    if (this.b != null)
+    Object localObject = this.b;
+    if (localObject != null)
     {
-      MsgSerialize localMsgSerialize = (MsgSerialize)((SparseArray)this.b.get()).get(paramInt);
-      if (localMsgSerialize != null) {
-        return localMsgSerialize;
+      localObject = (MsgSerialize)((SparseArray)((Provider)localObject).get()).get(paramInt);
+      if (localObject != null) {
+        return localObject;
       }
     }
-    if (this.d != null) {
-      return (MsgSerialize)this.d.get();
+    localObject = this.d;
+    if (localObject != null) {
+      return (MsgSerialize)((Provider)localObject).get();
     }
     return null;
   }
@@ -46,10 +48,11 @@ public class RecentUserMsgFactory
   
   RecentMsgProxy a(int paramInt)
   {
-    if (this.c == null) {
+    Provider localProvider = this.c;
+    if (localProvider == null) {
       return null;
     }
-    Provider localProvider = (Provider)((SparseArray)this.c.get()).get(paramInt);
+    localProvider = (Provider)((SparseArray)localProvider.get()).get(paramInt);
     if (localProvider != null) {
       return (RecentMsgProxy)localProvider.get();
     }
@@ -58,41 +61,53 @@ public class RecentUserMsgFactory
   
   public Object a(int paramInt, byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return null;
-    }
-    Object localObject = a(paramInt);
-    if (localObject != null) {
-      ((RecentMsgProxy)localObject).a(paramArrayOfByte);
-    }
-    for (localObject = ((RecentMsgProxy)localObject).a();; localObject = null)
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (paramArrayOfByte != null)
     {
-      if ((localObject == null) && (this.jdField_a_of_type_ComTencentMobileqqDataEntitymanagerProvider != null))
+      if (paramArrayOfByte.length <= 0) {
+        return null;
+      }
+      localObject2 = a(paramInt);
+      if (localObject2 != null)
       {
-        MsgDeserialize localMsgDeserialize = (MsgDeserialize)((SparseArray)this.jdField_a_of_type_ComTencentMobileqqDataEntitymanagerProvider.get()).get(paramInt);
-        if (localMsgDeserialize != null) {
-          return localMsgDeserialize.a(paramArrayOfByte);
+        ((RecentMsgProxy)localObject2).a(paramArrayOfByte);
+        localObject1 = ((RecentMsgProxy)localObject2).a();
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null)
+      {
+        Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqDataEntitymanagerProvider;
+        localObject2 = localObject1;
+        if (localObject3 != null)
+        {
+          localObject3 = (MsgDeserialize)((SparseArray)((Provider)localObject3).get()).get(paramInt);
+          localObject2 = localObject1;
+          if (localObject3 != null) {
+            localObject2 = ((MsgDeserialize)localObject3).a(paramArrayOfByte);
+          }
         }
       }
-      return localObject;
     }
+    return localObject2;
   }
   
   public byte[] a(int paramInt, Object paramObject)
   {
-    if (paramObject == null) {}
-    MsgSerialize localMsgSerialize;
-    do
-    {
+    byte[] arrayOfByte = null;
+    if (paramObject == null) {
       return null;
-      localMsgSerialize = a(paramInt);
-    } while (localMsgSerialize == null);
-    return localMsgSerialize.a(paramObject);
+    }
+    MsgSerialize localMsgSerialize = a(paramInt);
+    if (localMsgSerialize != null) {
+      arrayOfByte = localMsgSerialize.a(paramObject);
+    }
+    return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.RecentUserMsgFactory
  * JD-Core Version:    0.7.0.1
  */

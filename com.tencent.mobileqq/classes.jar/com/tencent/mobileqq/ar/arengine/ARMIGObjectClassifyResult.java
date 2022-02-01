@@ -32,7 +32,7 @@ public class ARMIGObjectClassifyResult
   
   static
   {
-    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131700808);
+    jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131700952);
   }
   
   public ARMIGObjectClassifyResult()
@@ -43,72 +43,73 @@ public class ARMIGObjectClassifyResult
   
   public static ARMIGObjectClassifyResult.JDSearchResult a(JDSearch.JdSearchRsp paramJdSearchRsp)
   {
-    int j = -1;
-    float f2 = 0.0F;
     ARMIGObjectClassifyResult.JDSearchResult localJDSearchResult = new ARMIGObjectClassifyResult.JDSearchResult();
+    boolean bool = paramJdSearchRsp.jd_search_errorcode.has();
+    int j = -1;
     int i;
-    Object localObject1;
-    label57:
-    label106:
-    Object localObject2;
-    label132:
-    label158:
-    float f1;
-    label212:
-    label243:
-    ARMIGObjectClassifyResult.JDSearchItem localJDSearchItem;
-    if (paramJdSearchRsp.jd_search_errorcode.has())
-    {
+    if (bool) {
       i = paramJdSearchRsp.jd_search_errorcode.get();
-      localJDSearchResult.jdField_a_of_type_Int = i;
-      if (!paramJdSearchRsp.jd_search_errormsg.has()) {
-        break label633;
-      }
+    } else {
+      i = -1;
+    }
+    localJDSearchResult.jdField_a_of_type_Int = i;
+    Object localObject1;
+    if (paramJdSearchRsp.jd_search_errormsg.has()) {
       localObject1 = paramJdSearchRsp.jd_search_errormsg.get();
-      localJDSearchResult.jdField_a_of_type_JavaLangString = ((String)localObject1);
-      if (!paramJdSearchRsp.jd_search_detail.has()) {
-        break label707;
-      }
+    } else {
+      localObject1 = "";
+    }
+    localJDSearchResult.jdField_a_of_type_JavaLangString = ((String)localObject1);
+    if (paramJdSearchRsp.jd_search_detail.has())
+    {
       localObject1 = (JDSearch.JdSearchDetail)paramJdSearchRsp.jd_search_detail.get();
-      if (!((JDSearch.JdSearchDetail)localObject1).errorcode.has()) {
-        break label640;
+      if (((JDSearch.JdSearchDetail)localObject1).errorcode.has()) {
+        i = ((JDSearch.JdSearchDetail)localObject1).errorcode.get();
+      } else {
+        i = -1;
       }
-      i = ((JDSearch.JdSearchDetail)localObject1).errorcode.get();
       localJDSearchResult.jdField_b_of_type_Int = i;
-      if (!((JDSearch.JdSearchDetail)localObject1).errormsg.has()) {
-        break label645;
+      if (((JDSearch.JdSearchDetail)localObject1).errormsg.has()) {
+        paramJdSearchRsp = ((JDSearch.JdSearchDetail)localObject1).errormsg.get();
+      } else {
+        paramJdSearchRsp = "";
       }
-      paramJdSearchRsp = ((JDSearch.JdSearchDetail)localObject1).errormsg.get();
       localJDSearchResult.jdField_b_of_type_JavaLangString = paramJdSearchRsp;
-      if (!((JDSearch.JdSearchDetail)localObject1).jd_more_url.has()) {
-        break label651;
+      if (((JDSearch.JdSearchDetail)localObject1).jd_more_url.has()) {
+        paramJdSearchRsp = ((JDSearch.JdSearchDetail)localObject1).jd_more_url.get();
+      } else {
+        paramJdSearchRsp = "";
       }
-      paramJdSearchRsp = ((JDSearch.JdSearchDetail)localObject1).jd_more_url.get();
       localJDSearchResult.d = paramJdSearchRsp;
+      Object localObject2;
       if (((JDSearch.JdSearchDetail)localObject1).rectangle.has())
       {
         paramJdSearchRsp = (JDSearch.Rectangle)((JDSearch.JdSearchDetail)localObject1).rectangle.get();
         localObject2 = localJDSearchResult.jdField_a_of_type_AndroidGraphicsRectF;
-        if (!paramJdSearchRsp.left.has()) {
-          break label657;
+        bool = paramJdSearchRsp.left.has();
+        float f2 = 0.0F;
+        if (bool) {
+          f1 = paramJdSearchRsp.left.get();
+        } else {
+          f1 = 0.0F;
         }
-        f1 = paramJdSearchRsp.left.get();
         ((RectF)localObject2).left = f1;
         localObject2 = localJDSearchResult.jdField_a_of_type_AndroidGraphicsRectF;
-        if (!paramJdSearchRsp.top.has()) {
-          break label662;
+        if (paramJdSearchRsp.top.has()) {
+          f1 = paramJdSearchRsp.top.get();
+        } else {
+          f1 = 0.0F;
         }
-        f1 = paramJdSearchRsp.top.get();
         ((RectF)localObject2).top = f1;
         localObject2 = localJDSearchResult.jdField_a_of_type_AndroidGraphicsRectF;
-        if (!paramJdSearchRsp.right.has()) {
-          break label667;
+        if (paramJdSearchRsp.right.has()) {
+          f1 = paramJdSearchRsp.right.get();
+        } else {
+          f1 = 0.0F;
         }
-        f1 = paramJdSearchRsp.right.get();
-        label274:
         ((RectF)localObject2).right = f1;
         localObject2 = localJDSearchResult.jdField_a_of_type_AndroidGraphicsRectF;
-        f1 = f2;
+        float f1 = f2;
         if (paramJdSearchRsp.bottom.has()) {
           f1 = paramJdSearchRsp.bottom.get();
         }
@@ -119,110 +120,66 @@ public class ARMIGObjectClassifyResult
         }
         localJDSearchResult.c = i;
       }
-      if (!((JDSearch.JdSearchDetail)localObject1).jd_sku_item.has()) {
-        break label672;
+      if (((JDSearch.JdSearchDetail)localObject1).jd_sku_item.has()) {
+        paramJdSearchRsp = ((JDSearch.JdSearchDetail)localObject1).jd_sku_item.get();
+      } else {
+        paramJdSearchRsp = null;
       }
-      paramJdSearchRsp = ((JDSearch.JdSearchDetail)localObject1).jd_sku_item.get();
-      label360:
       if ((paramJdSearchRsp != null) && (!paramJdSearchRsp.isEmpty())) {
         localJDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem = new ARMIGObjectClassifyResult.JDSearchItem[paramJdSearchRsp.size()];
       }
-      if ((paramJdSearchRsp == null) || (paramJdSearchRsp.size() <= 0)) {
-        break label707;
-      }
-      localObject1 = paramJdSearchRsp.iterator();
-      i = 0;
-      label410:
-      if (!((Iterator)localObject1).hasNext()) {
-        break label707;
-      }
-      localObject2 = (JDSearch.JdSkuItem)((Iterator)localObject1).next();
-      localJDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i] = new ARMIGObjectClassifyResult.JDSearchItem();
-      localJDSearchItem = localJDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i];
-      if (!((JDSearch.JdSkuItem)localObject2).detail_url.has()) {
-        break label677;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).detail_url.get();
-      label475:
-      localJDSearchItem.jdField_a_of_type_JavaLangString = paramJdSearchRsp;
-      localJDSearchItem = localJDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i];
-      if (!((JDSearch.JdSkuItem)localObject2).image_url.has()) {
-        break label683;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).image_url.get();
-      label510:
-      localJDSearchItem.jdField_b_of_type_JavaLangString = paramJdSearchRsp;
-      localJDSearchItem = localJDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i];
-      if (!((JDSearch.JdSkuItem)localObject2).sku_id.has()) {
-        break label689;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).sku_id.get();
-      label545:
-      localJDSearchItem.c = paramJdSearchRsp;
-      localJDSearchItem = localJDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i];
-      if (!((JDSearch.JdSkuItem)localObject2).sku_name.has()) {
-        break label695;
-      }
-      paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).sku_name.get();
-      label580:
-      localJDSearchItem.d = paramJdSearchRsp;
-      localJDSearchItem = localJDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i];
-      if (!((JDSearch.JdSkuItem)localObject2).sku_price.has()) {
-        break label701;
+      if ((paramJdSearchRsp != null) && (paramJdSearchRsp.size() > 0))
+      {
+        i = 0;
+        localObject1 = paramJdSearchRsp.iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (JDSearch.JdSkuItem)((Iterator)localObject1).next();
+          localJDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i] = new ARMIGObjectClassifyResult.JDSearchItem();
+          ARMIGObjectClassifyResult.JDSearchItem localJDSearchItem = localJDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i];
+          if (((JDSearch.JdSkuItem)localObject2).detail_url.has()) {
+            paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).detail_url.get();
+          } else {
+            paramJdSearchRsp = "";
+          }
+          localJDSearchItem.jdField_a_of_type_JavaLangString = paramJdSearchRsp;
+          localJDSearchItem = localJDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i];
+          if (((JDSearch.JdSkuItem)localObject2).image_url.has()) {
+            paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).image_url.get();
+          } else {
+            paramJdSearchRsp = "";
+          }
+          localJDSearchItem.jdField_b_of_type_JavaLangString = paramJdSearchRsp;
+          localJDSearchItem = localJDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i];
+          if (((JDSearch.JdSkuItem)localObject2).sku_id.has()) {
+            paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).sku_id.get();
+          } else {
+            paramJdSearchRsp = "";
+          }
+          localJDSearchItem.c = paramJdSearchRsp;
+          localJDSearchItem = localJDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i];
+          if (((JDSearch.JdSkuItem)localObject2).sku_name.has()) {
+            paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).sku_name.get();
+          } else {
+            paramJdSearchRsp = "";
+          }
+          localJDSearchItem.d = paramJdSearchRsp;
+          localJDSearchItem = localJDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem[i];
+          if (((JDSearch.JdSkuItem)localObject2).sku_price.has()) {
+            paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).sku_price.get();
+          } else {
+            paramJdSearchRsp = "";
+          }
+          localJDSearchItem.e = paramJdSearchRsp;
+          i += 1;
+        }
       }
     }
-    label640:
-    label645:
-    label651:
-    label657:
-    label662:
-    label667:
-    label672:
-    label677:
-    label683:
-    label689:
-    label695:
-    label701:
-    for (paramJdSearchRsp = ((JDSearch.JdSkuItem)localObject2).sku_price.get();; paramJdSearchRsp = "")
-    {
-      localJDSearchItem.e = paramJdSearchRsp;
-      i += 1;
-      break label410;
-      i = -1;
-      break;
-      label633:
-      localObject1 = "";
-      break label57;
-      i = -1;
-      break label106;
-      paramJdSearchRsp = "";
-      break label132;
-      paramJdSearchRsp = "";
-      break label158;
-      f1 = 0.0F;
-      break label212;
-      f1 = 0.0F;
-      break label243;
-      f1 = 0.0F;
-      break label274;
-      paramJdSearchRsp = null;
-      break label360;
-      paramJdSearchRsp = "";
-      break label475;
-      paramJdSearchRsp = "";
-      break label510;
-      paramJdSearchRsp = "";
-      break label545;
-      paramJdSearchRsp = "";
-      break label580;
-    }
-    label707:
     return localJDSearchResult;
   }
   
   private ARMIGObjectClassifyResult.MIGObjectSearchResult a()
   {
-    boolean bool2 = false;
     if (c())
     {
       ARMIGObjectClassifyResult.MIGObjectSearchResult localMIGObjectSearchResult = new ARMIGObjectClassifyResult.MIGObjectSearchResult();
@@ -230,85 +187,89 @@ public class ARMIGObjectClassifyResult
       if (localRetrievalItem == null) {
         return null;
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox != null)
+      ARMIGObjectClassifyResult.ObjectBox localObjectBox = this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox;
+      if (localObjectBox != null) {
+        localMIGObjectSearchResult.jdField_a_of_type_AndroidGraphicsRectF = new RectF(localObjectBox.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox.c, this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox.d);
+      } else {
+        localMIGObjectSearchResult.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
+      }
+      boolean bool1 = localRetrievalItem.jdField_b_of_type_Boolean;
+      boolean bool2 = false;
+      if (bool1)
       {
-        localMIGObjectSearchResult.jdField_a_of_type_AndroidGraphicsRectF = new RectF(this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox.c, this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox.jdField_b_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$ObjectBox.d);
-        if (!localRetrievalItem.jdField_b_of_type_Boolean) {
-          break label127;
-        }
         localMIGObjectSearchResult.jdField_a_of_type_JavaLangString = localRetrievalItem.jdField_a_of_type_JavaLangString;
         localMIGObjectSearchResult.jdField_a_of_type_Boolean = false;
         localMIGObjectSearchResult.jdField_a_of_type_Double = localRetrievalItem.jdField_a_of_type_Double;
-      }
-      for (;;)
-      {
         return localMIGObjectSearchResult;
-        localMIGObjectSearchResult.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-        break;
-        label127:
-        localMIGObjectSearchResult.jdField_a_of_type_JavaLangString = localRetrievalItem.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$LabelSource.jdField_a_of_type_JavaLangString;
-        boolean bool1 = bool2;
-        if (localRetrievalItem.jdField_a_of_type_ArrayOfByte != null)
-        {
-          bool1 = bool2;
-          if (localRetrievalItem.jdField_a_of_type_ArrayOfByte.length > 20) {
-            bool1 = true;
-          }
-        }
-        localMIGObjectSearchResult.jdField_a_of_type_Boolean = bool1;
-        localMIGObjectSearchResult.jdField_a_of_type_Double = localRetrievalItem.jdField_a_of_type_Double;
-        localMIGObjectSearchResult.jdField_a_of_type_ArrayOfByte = localRetrievalItem.jdField_a_of_type_ArrayOfByte;
-        localMIGObjectSearchResult.jdField_b_of_type_JavaLangString = localRetrievalItem.d;
-        localMIGObjectSearchResult.c = localRetrievalItem.e;
-        localMIGObjectSearchResult.d = localRetrievalItem.f;
-        localMIGObjectSearchResult.jdField_b_of_type_Boolean = localRetrievalItem.jdField_a_of_type_Boolean;
       }
+      localMIGObjectSearchResult.jdField_a_of_type_JavaLangString = localRetrievalItem.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$LabelSource.jdField_a_of_type_JavaLangString;
+      bool1 = bool2;
+      if (localRetrievalItem.jdField_a_of_type_ArrayOfByte != null)
+      {
+        bool1 = bool2;
+        if (localRetrievalItem.jdField_a_of_type_ArrayOfByte.length > 20) {
+          bool1 = true;
+        }
+      }
+      localMIGObjectSearchResult.jdField_a_of_type_Boolean = bool1;
+      localMIGObjectSearchResult.jdField_a_of_type_Double = localRetrievalItem.jdField_a_of_type_Double;
+      localMIGObjectSearchResult.jdField_a_of_type_ArrayOfByte = localRetrievalItem.jdField_a_of_type_ArrayOfByte;
+      localMIGObjectSearchResult.jdField_b_of_type_JavaLangString = localRetrievalItem.d;
+      localMIGObjectSearchResult.c = localRetrievalItem.e;
+      localMIGObjectSearchResult.d = localRetrievalItem.f;
+      localMIGObjectSearchResult.jdField_b_of_type_Boolean = localRetrievalItem.jdField_a_of_type_Boolean;
+      return localMIGObjectSearchResult;
     }
     return null;
   }
   
   private ARMIGObjectClassifyResult.RetrievalItem a()
   {
+    if (!c()) {
+      return null;
+    }
     Object localObject1 = null;
-    Object localObject2 = null;
-    if (!c()) {}
-    do
+    int i = 0;
+    ARMIGObjectClassifyResult.RetrievalClassInfo[] arrayOfRetrievalClassInfo;
+    for (;;)
     {
-      do
+      arrayOfRetrievalClassInfo = this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo;
+      if (i >= arrayOfRetrievalClassInfo.length) {
+        break;
+      }
+      int j = 0;
+      while ((this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[i].jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalItem != null) && (j < this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[i].jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalItem.length))
       {
-        return localObject2;
-        int i = 0;
-        while (i < this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo.length)
+        if (localObject1 != null)
         {
-          int j = 0;
-          while ((this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[i].jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalItem != null) && (j < this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[i].jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalItem.length))
-          {
-            if (localObject1 != null)
-            {
-              localObject2 = localObject1;
-              if (this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[i].jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalItem[j].jdField_a_of_type_Double >= ((ARMIGObjectClassifyResult.RetrievalItem)localObject1).jdField_a_of_type_Double) {}
-            }
-            else
-            {
-              localObject2 = this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[i].jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalItem[i];
-            }
-            j += 1;
-            localObject1 = localObject2;
-          }
-          i += 1;
+          localObject2 = localObject1;
+          if (this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[i].jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalItem[j].jdField_a_of_type_Double >= localObject1.jdField_a_of_type_Double) {}
         }
-        localObject2 = localObject1;
-      } while (localObject1 != null);
+        else
+        {
+          localObject2 = this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[i].jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalItem[i];
+        }
+        j += 1;
+        localObject1 = localObject2;
+      }
+      i += 1;
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
+    {
       localObject2 = localObject1;
-    } while (this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo.length != 1);
-    localObject1 = new ARMIGObjectClassifyResult.RetrievalItem();
-    ((ARMIGObjectClassifyResult.RetrievalItem)localObject1).jdField_b_of_type_Boolean = true;
-    ((ARMIGObjectClassifyResult.RetrievalItem)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[0].jdField_a_of_type_JavaLangString;
-    ((ARMIGObjectClassifyResult.RetrievalItem)localObject1).jdField_a_of_type_Double = this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[0].jdField_a_of_type_Double;
-    ((ARMIGObjectClassifyResult.RetrievalItem)localObject1).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[0].jdField_a_of_type_JavaLangString;
-    ((ARMIGObjectClassifyResult.RetrievalItem)localObject1).c = 0;
-    ((ARMIGObjectClassifyResult.RetrievalItem)localObject1).g = "";
-    return localObject1;
+      if (arrayOfRetrievalClassInfo.length == 1)
+      {
+        localObject2 = new ARMIGObjectClassifyResult.RetrievalItem();
+        ((ARMIGObjectClassifyResult.RetrievalItem)localObject2).jdField_b_of_type_Boolean = true;
+        ((ARMIGObjectClassifyResult.RetrievalItem)localObject2).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[0].jdField_a_of_type_JavaLangString;
+        ((ARMIGObjectClassifyResult.RetrievalItem)localObject2).jdField_a_of_type_Double = this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[0].jdField_a_of_type_Double;
+        ((ARMIGObjectClassifyResult.RetrievalItem)localObject2).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[0].jdField_a_of_type_JavaLangString;
+        ((ARMIGObjectClassifyResult.RetrievalItem)localObject2).c = 0;
+        ((ARMIGObjectClassifyResult.RetrievalItem)localObject2).g = "";
+      }
+    }
+    return localObject2;
   }
   
   public int a()
@@ -352,15 +313,21 @@ public class ARMIGObjectClassifyResult
   
   public boolean a(ARMIGObjectClassifyResult paramARMIGObjectClassifyResult)
   {
-    if (paramARMIGObjectClassifyResult == null) {}
-    ARMIGObjectClassifyResult.RetrievalItem localRetrievalItem;
-    do
-    {
+    if (paramARMIGObjectClassifyResult == null) {
       return false;
-      paramARMIGObjectClassifyResult = paramARMIGObjectClassifyResult.a();
-      localRetrievalItem = a();
-    } while ((paramARMIGObjectClassifyResult == null) || (localRetrievalItem == null) || (!paramARMIGObjectClassifyResult.jdField_a_of_type_JavaLangString.equalsIgnoreCase(localRetrievalItem.jdField_a_of_type_JavaLangString)));
-    return true;
+    }
+    paramARMIGObjectClassifyResult = paramARMIGObjectClassifyResult.a();
+    ARMIGObjectClassifyResult.RetrievalItem localRetrievalItem = a();
+    if (paramARMIGObjectClassifyResult != null)
+    {
+      if (localRetrievalItem == null) {
+        return false;
+      }
+      if (paramARMIGObjectClassifyResult.jdField_a_of_type_JavaLangString.equalsIgnoreCase(localRetrievalItem.jdField_a_of_type_JavaLangString)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public byte[] a()
@@ -374,65 +341,67 @@ public class ARMIGObjectClassifyResult
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchResult != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchResult.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchResult.jdField_b_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem.length > 0);
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      ARMIGObjectClassifyResult.JDSearchResult localJDSearchResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchResult;
+      if ((localJDSearchResult != null) && (localJDSearchResult.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchResult.jdField_b_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchItem.length > 0)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public boolean c()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Int == 0)
+    if ((this.jdField_a_of_type_Int == 0) && (this.jdField_b_of_type_Int == 0))
     {
-      bool1 = bool2;
-      if (this.jdField_b_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo != null)
-        {
-          bool1 = bool2;
-          if (this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo.length > 0)
-          {
-            bool1 = bool2;
-            if (!this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[0].jdField_a_of_type_JavaLangString.equalsIgnoreCase(jdField_a_of_type_JavaLangString)) {
-              bool1 = true;
-            }
-          }
-        }
+      ARMIGObjectClassifyResult.RetrievalClassInfo[] arrayOfRetrievalClassInfo = this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo;
+      if ((arrayOfRetrievalClassInfo != null) && (arrayOfRetrievalClassInfo.length > 0) && (!arrayOfRetrievalClassInfo[0].jdField_a_of_type_JavaLangString.equalsIgnoreCase(jdField_a_of_type_JavaLangString))) {
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   public boolean d()
   {
-    boolean bool = true;
     ARMIGObjectClassifyResult.RetrievalItem localRetrievalItem = a();
+    boolean bool = false;
     if (localRetrievalItem == null) {
       return false;
     }
-    if (localRetrievalItem.c == 1) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
+    if (localRetrievalItem.c == 1) {
+      bool = true;
     }
+    return bool;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (c()) {
-      localStringBuilder.append("\n {migObjectClassifyResult:" + this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[0].toString() + "} \n");
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2;
+    if (c())
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("\n {migObjectClassifyResult:");
+      localStringBuilder2.append(this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARMIGObjectClassifyResult$RetrievalClassInfo[0].toString());
+      localStringBuilder2.append("} \n");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    if (b()) {
-      localStringBuilder.append("\n {jdSearchResult:" + this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchResult.toString() + "}\n");
+    if (b())
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("\n {jdSearchResult:");
+      localStringBuilder2.append(this.jdField_a_of_type_ComTencentMobileqqArArengineARMIGObjectClassifyResult$JDSearchResult.toString());
+      localStringBuilder2.append("}\n");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    return localStringBuilder.toString();
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARMIGObjectClassifyResult
  * JD-Core Version:    0.7.0.1
  */

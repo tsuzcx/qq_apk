@@ -16,7 +16,7 @@ public class URLDrawableHelper$Adapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.URLDrawableHelper.Adapter
  * JD-Core Version:    0.7.0.1
  */

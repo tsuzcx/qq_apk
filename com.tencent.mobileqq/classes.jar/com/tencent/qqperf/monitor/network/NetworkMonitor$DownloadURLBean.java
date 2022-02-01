@@ -18,7 +18,7 @@ class NetworkMonitor$DownloadURLBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.network.NetworkMonitor.DownloadURLBean
  * JD-Core Version:    0.7.0.1
  */

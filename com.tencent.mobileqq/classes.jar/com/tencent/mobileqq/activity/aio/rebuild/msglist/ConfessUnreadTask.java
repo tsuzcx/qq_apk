@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.aio.rebuild.msglist;
 
 import com.tencent.imcore.message.ConversationFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.core.UnreadTask;
@@ -19,23 +19,27 @@ public class ConfessUnreadTask
   
   public int b()
   {
-    SessionInfo localSessionInfo = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getConversationFacade().a(localSessionInfo.jdField_a_of_type_JavaLangString, localSessionInfo.jdField_a_of_type_Int, localSessionInfo.e);
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfessUnreadTask", 2, "initHaveUnRead count " + i);
+    Object localObject = this.a.a();
+    int i = this.a.a().getConversationFacade().a(((BaseSessionInfo)localObject).jdField_a_of_type_JavaLangString, ((BaseSessionInfo)localObject).jdField_a_of_type_Int, ((BaseSessionInfo)localObject).e);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initHaveUnRead count ");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("ConfessUnreadTask", 2, ((StringBuilder)localObject).toString());
     }
     return i;
   }
   
   public void b()
   {
-    SessionInfo localSessionInfo = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-    ConfessMsgUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localSessionInfo.jdField_a_of_type_JavaLangString, localSessionInfo.jdField_a_of_type_Int, localSessionInfo.e, true, true);
+    BaseSessionInfo localBaseSessionInfo = this.a.a();
+    ConfessMsgUtil.a(this.a.a(), localBaseSessionInfo.jdField_a_of_type_JavaLangString, localBaseSessionInfo.jdField_a_of_type_Int, localBaseSessionInfo.e, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.ConfessUnreadTask
  * JD-Core Version:    0.7.0.1
  */

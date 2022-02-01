@@ -6,8 +6,9 @@ public class TimeFormatterUtilsProxy
   
   public static String a(StringBuffer paramStringBuffer, long paramLong, boolean paramBoolean, String paramString)
   {
-    if (a != null) {
-      return a.a(paramStringBuffer, paramLong, paramBoolean, paramString);
+    TimeFormatterUtilsProxy.Proxy localProxy = a;
+    if (localProxy != null) {
+      return localProxy.a(paramStringBuffer, paramLong, paramBoolean, paramString);
     }
     return null;
   }
@@ -19,7 +20,7 @@ public class TimeFormatterUtilsProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.basic.TimeFormatterUtilsProxy
  * JD-Core Version:    0.7.0.1
  */

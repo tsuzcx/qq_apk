@@ -3,7 +3,6 @@ package com.tencent.av.utils;
 import android.annotation.TargetApi;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build.VERSION;
@@ -15,13 +14,6 @@ public class TintStateDrawable
 {
   private ColorStateList a;
   
-  public TintStateDrawable(Resources paramResources, Bitmap paramBitmap, int paramInt)
-  {
-    super(paramResources, paramBitmap);
-    this.a = paramResources.getColorStateList(paramInt);
-    onStateChange(getState());
-  }
-  
   public TintStateDrawable(Resources paramResources, InputStream paramInputStream, int paramInt)
   {
     super(paramResources, paramInputStream);
@@ -32,11 +24,6 @@ public class TintStateDrawable
   public static TintStateDrawable a(Resources paramResources, int paramInt1, int paramInt2)
   {
     return new TintStateDrawable(paramResources, paramResources.openRawResource(paramInt1), paramInt2);
-  }
-  
-  public static TintStateDrawable a(Resources paramResources, Bitmap paramBitmap, int paramInt)
-  {
-    return new TintStateDrawable(paramResources, paramBitmap, paramInt);
   }
   
   @TargetApi(16)
@@ -64,18 +51,16 @@ public class TintStateDrawable
     int i = this.a.getColorForState(paramArrayOfInt, 0);
     if (i != 0) {
       setColorFilter(i, PorterDuff.Mode.MULTIPLY);
-    }
-    for (;;)
-    {
-      invalidateSelf();
-      return super.onStateChange(paramArrayOfInt);
+    } else {
       clearColorFilter();
     }
+    invalidateSelf();
+    return super.onStateChange(paramArrayOfInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.TintStateDrawable
  * JD-Core Version:    0.7.0.1
  */

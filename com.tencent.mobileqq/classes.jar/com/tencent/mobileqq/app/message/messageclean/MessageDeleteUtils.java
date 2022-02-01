@@ -18,129 +18,118 @@ public class MessageDeleteUtils
   private static int a(String paramString, int paramInt, StringBuilder paramStringBuilder, QQAppInterface paramQQAppInterface)
   {
     paramQQAppInterface = paramQQAppInterface.getReadableDatabase();
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      do
-      {
-        return 0;
-        StringBuilder localStringBuilder = new StringBuilder(" where msgtype != ");
-        localStringBuilder.append(-2006);
-        paramString = MessageDBUtils.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), paramQQAppInterface, localStringBuilder.toString());
-      } while (paramString == null);
-      paramString = paramQQAppInterface.rawQuery(paramString.toString(), null);
-    } while (paramString == null);
-    long l;
+    if (paramQQAppInterface == null) {
+      return 0;
+    }
+    StringBuilder localStringBuilder = new StringBuilder(" where msgtype != ");
+    localStringBuilder.append(-2006);
+    paramString = MessageDBUtils.a(MessageRecord.getOldTableName(paramString, paramInt), MessageRecord.getTableName(paramString, paramInt), paramQQAppInterface, localStringBuilder.toString());
+    if (paramString == null) {
+      return 0;
+    }
+    paramString = paramQQAppInterface.rawQuery(paramString.toString(), null);
+    if (paramString == null) {
+      return 0;
+    }
     if ((paramString.getCount() > 0) && (paramStringBuilder != null))
     {
       paramString.moveToLast();
-      if (paramInt != 3000) {
-        break label144;
-      }
-      l = paramString.getLong(paramString.getColumnIndex("shmsgseq"));
-    }
-    for (;;)
-    {
-      if (l > 0L) {
-        paramStringBuilder.append(String.valueOf(l));
-      }
-      paramInt = paramString.getCount();
-      paramString.close();
-      return paramInt;
-      label144:
-      if (paramInt == 0) {
+      long l;
+      if (paramInt == 3000) {
+        l = paramString.getLong(paramString.getColumnIndex("shmsgseq"));
+      } else if (paramInt == 0) {
         l = paramString.getLong(paramString.getColumnIndex("time"));
       } else if (paramInt == 1) {
         l = paramString.getLong(paramString.getColumnIndex("shmsgseq"));
       } else {
         l = 0L;
       }
+      if (l > 0L) {
+        paramStringBuilder.append(String.valueOf(l));
+      }
     }
+    paramInt = paramString.getCount();
+    paramString.close();
+    return paramInt;
   }
   
   private static String a(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    paramInt = ((MessageRoamManager)paramQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).a(paramString, paramInt, localStringBuilder);
-    paramQQAppInterface = null;
-    paramString = paramQQAppInterface;
-    if (paramInt > 0)
-    {
-      paramString = paramQQAppInterface;
-      if (localStringBuilder.length() > 0) {
-        paramString = localStringBuilder.toString();
-      }
+    if ((((MessageRoamManager)paramQQAppInterface.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER)).a(paramString, paramInt, localStringBuilder) > 0) && (localStringBuilder.length() > 0)) {
+      return localStringBuilder.toString();
     }
-    return paramString;
+    return null;
   }
   
   public static void a(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
   {
-    if (!TextUtils.isEmpty(paramString))
+    if ((TextUtils.isEmpty(paramString)) || ((paramInt == 0) || ((paramInt == 1) || ((paramInt != 1000) && (paramInt != 1004) && ((paramInt == 3000) || (paramInt != 10010)))))) {}
+    try
     {
-      switch (paramInt)
-      {
-      default: 
-      case 0: 
-        try
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-          QLog.d("MessageDeleteUtils", 2, "cleanMessage type not support = " + paramInt);
-          return;
-        }
-        catch (Exception paramString)
-        {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MessageDeleteUtils", 2, "cleanMessage exception = " + paramString.getMessage());
-          paramString.printStackTrace();
-          return;
-        }
-        a(paramString, paramInt, a(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
-        return;
-      case 1000: 
-      case 1004: 
-      case 10010: 
-        a(paramString, paramInt, b(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
-        return;
+      if (!QLog.isColorLevel()) {
+        break label165;
       }
-      a(paramString, paramInt, b(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
+      paramString = new StringBuilder();
+      paramString.append("cleanMessage type not support = ");
+      paramString.append(paramInt);
+      QLog.d("MessageDeleteUtils", 2, paramString.toString());
+      return;
     }
+    catch (Exception paramQQAppInterface)
+    {
+      break label121;
+    }
+    a(paramString, paramInt, b(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
+    return;
+    a(paramString, paramInt, b(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
+    return;
+    a(paramString, paramInt, a(paramString, paramInt, paramQQAppInterface), paramQQAppInterface);
+    return;
+    label121:
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("cleanMessage exception = ");
+      paramString.append(paramQQAppInterface.getMessage());
+      QLog.d("MessageDeleteUtils", 2, paramString.toString());
+    }
+    paramQQAppInterface.printStackTrace();
+    label165:
   }
   
   private static void a(String paramString1, int paramInt, String paramString2, QQAppInterface paramQQAppInterface)
   {
-    List localList = paramQQAppInterface.getMessageFacade().b(paramString1, paramInt);
-    if ((localList != null) && (!localList.isEmpty())) {
-      if (!((MessageRecord)localList.get(localList.size() - 1)).isSendFromLocal()) {}
+    List localList = paramQQAppInterface.getMessageFacade().a(paramString1, paramInt);
+    long l1;
+    if ((localList != null) && (!localList.isEmpty()))
+    {
+      if (((MessageRecord)localList.get(localList.size() - 1)).isSendFromLocal()) {
+        l1 = ((MessageRecord)localList.get(localList.size() - 1)).time + 2L;
+      } else {
+        l1 = ((MessageRecord)localList.get(localList.size() - 1)).time;
+      }
     }
-    for (long l1 = ((MessageRecord)localList.get(localList.size() - 1)).time + 2L;; l1 = 0L) {
-      for (;;)
+    else {
+      l1 = 0L;
+    }
+    paramQQAppInterface.getMessageFacade().a(paramString1, paramInt);
+    paramQQAppInterface.getMessageFacade().c(paramString1, paramInt);
+    if (paramString2 != null)
+    {
+      long l2;
+      try
       {
-        paramQQAppInterface.getMessageFacade().a(paramString1, paramInt);
-        paramQQAppInterface.getMessageFacade().e(paramString1, paramInt);
-        if (paramString2 != null) {}
-        try
-        {
-          l2 = Long.parseLong(paramString2);
-          l1 = Math.max(l2, l1);
-          if (l1 > 0L) {
-            paramQQAppInterface.getMsgCache().a(paramString1, paramInt, l1);
-          }
-          return;
-          l1 = ((MessageRecord)localList.get(localList.size() - 1)).time;
-        }
-        catch (Exception paramString2)
-        {
-          for (;;)
-          {
-            paramString2.printStackTrace();
-            long l2 = 0L;
-          }
-        }
+        l2 = Long.parseLong(paramString2);
+      }
+      catch (Exception paramString2)
+      {
+        paramString2.printStackTrace();
+        l2 = 0L;
+      }
+      l1 = Math.max(l2, l1);
+      if (l1 > 0L) {
+        paramQQAppInterface.getMsgCache().a(paramString1, paramInt, l1);
       }
     }
   }
@@ -148,17 +137,15 @@ public class MessageDeleteUtils
   private static String b(String paramString, int paramInt, QQAppInterface paramQQAppInterface)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    paramInt = a(paramString, paramInt, localStringBuilder, paramQQAppInterface);
-    paramString = null;
-    if (paramInt > 0) {
-      paramString = localStringBuilder.toString();
+    if (a(paramString, paramInt, localStringBuilder, paramQQAppInterface) > 0) {
+      return localStringBuilder.toString();
     }
-    return paramString;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.messageclean.MessageDeleteUtils
  * JD-Core Version:    0.7.0.1
  */

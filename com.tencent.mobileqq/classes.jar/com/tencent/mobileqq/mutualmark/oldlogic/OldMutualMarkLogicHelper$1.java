@@ -15,31 +15,38 @@ final class OldMutualMarkLogicHelper$1
   
   public void run()
   {
-    Object localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (((FriendsManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, false) == null) {
-      break label29;
-    }
-    label29:
-    while (((FriendsManager)localObject).a(false)) {
+    Object localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+    boolean bool2 = false;
+    if (((FriendsManager)localObject1).a((String)localObject2, false) == null) {
       return;
     }
-    localObject = MutualMarkDataCenter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 7L, false);
-    FriendChatPie localFriendChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie;
-    if ((localObject != null) && (((MutualMarkForDisplayInfo)localObject).b > 0L) && (((MutualMarkForDisplayInfo)localObject).a())) {}
-    for (boolean bool = true;; bool = false)
+    if (((FriendsManager)localObject1).a(false)) {
+      return;
+    }
+    localObject1 = MutualMarkDataCenter.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 7L, false);
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie;
+    boolean bool1 = bool2;
+    if (localObject1 != null)
     {
-      localFriendChatPie.P = bool;
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie.P) {
-        break;
+      bool1 = bool2;
+      if (((MutualMarkForDisplayInfo)localObject1).b > 0L)
+      {
+        bool1 = bool2;
+        if (((MutualMarkForDisplayInfo)localObject1).a()) {
+          bool1 = true;
+        }
       }
+    }
+    ((FriendChatPie)localObject2).F = bool1;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie.F) {
       OldMutualMarkLogicHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreFriendChatPie);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.oldlogic.OldMutualMarkLogicHelper.1
  * JD-Core Version:    0.7.0.1
  */

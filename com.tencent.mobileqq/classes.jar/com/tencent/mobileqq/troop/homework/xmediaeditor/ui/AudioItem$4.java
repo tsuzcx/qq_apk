@@ -12,18 +12,22 @@ class AudioItem$4
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if ("com.tencent.mobileqq.activity.ai.audiopanel.startrecord_action".equals(paramContext)) {
-      this.a.b(AudioItem.a(this.a));
-    }
-    while (!"com.tencent.mobileqq.troop.homework.xmediaeditor.ui.action_play_video".equals(paramContext)) {
+    if ("com.tencent.mobileqq.activity.ai.audiopanel.startrecord_action".equals(paramContext))
+    {
+      paramContext = this.a;
+      paramContext.b(AudioItem.a(paramContext));
       return;
     }
-    this.a.b(AudioItem.a(this.a));
+    if ("com.tencent.mobileqq.troop.homework.xmediaeditor.ui.action_play_video".equals(paramContext))
+    {
+      paramContext = this.a;
+      paramContext.b(AudioItem.a(paramContext));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.4
  * JD-Core Version:    0.7.0.1
  */

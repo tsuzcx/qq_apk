@@ -15,42 +15,36 @@ class WifiJsPlugin$2
   {
     if (paramBoolean)
     {
-      WifiJsPlugin.access$102(this.this$0, (WifiManager)WifiJsPlugin.access$200(this.this$0).getApplicationContext().getSystemService("wifi"));
-      localJSONObject = new JSONObject();
+      localObject = this.this$0;
+      WifiJsPlugin.access$102((WifiJsPlugin)localObject, (WifiManager)WifiJsPlugin.access$200((WifiJsPlugin)localObject).getApplicationContext().getSystemService("wifi"));
+      localObject = new JSONObject();
       try
       {
-        localJSONObject.put("errCode", 0);
-        this.val$req.ok(localJSONObject);
-        WifiJsPlugin.access$300(this.this$0);
-        return;
+        ((JSONObject)localObject).put("errCode", 0);
       }
       catch (JSONException localJSONException1)
       {
-        for (;;)
-        {
-          localJSONException1.printStackTrace();
-        }
+        localJSONException1.printStackTrace();
       }
+      this.val$req.ok((JSONObject)localObject);
+      WifiJsPlugin.access$300(this.this$0);
+      return;
     }
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new JSONObject();
     try
     {
-      localJSONObject.put("errCode", 12010);
-      this.val$req.fail(localJSONObject, ":ACCESS_FINE_LOCATION denied");
-      return;
+      ((JSONObject)localObject).put("errCode", 12010);
     }
     catch (JSONException localJSONException2)
     {
-      for (;;)
-      {
-        localJSONException2.printStackTrace();
-      }
+      localJSONException2.printStackTrace();
     }
+    this.val$req.fail((JSONObject)localObject, ":ACCESS_FINE_LOCATION denied");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.WifiJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

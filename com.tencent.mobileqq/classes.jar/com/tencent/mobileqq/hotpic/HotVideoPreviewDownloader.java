@@ -28,58 +28,67 @@ import java.util.Calendar;
 public class HotVideoPreviewDownloader
   extends ProtocolDownloader.Adapter
 {
-  public static final String a = AppConstants.SDCARD_PATH + "hotvideo/preview/";
+  public static final String a;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("hotvideo/preview/");
+    a = localStringBuilder.toString();
+  }
   
   public static Drawable a(Context paramContext, HotVideoData paramHotVideoData)
   {
-    Object localObject2 = null;
-    Object localObject1;
     if (Build.VERSION.SDK_INT < 17) {
-      localObject1 = new ColorDrawable(Color.parseColor("#7f000000"));
+      return new ColorDrawable(Color.parseColor("#7f000000"));
     }
-    do
+    StringBuilder localStringBuilder = null;
+    Object localObject1 = localStringBuilder;
+    Object localObject2;
+    if (paramHotVideoData != null)
     {
-      do
+      localObject1 = localStringBuilder;
+      if (paramHotVideoData.url != null)
       {
-        do
+        localObject1 = localStringBuilder;
+        if (paramHotVideoData.md5 != null)
         {
-          do
+          if (paramContext == null) {
+            return null;
+          }
+          localObject1 = localStringBuilder;
+          if (a(paramHotVideoData.md5).exists())
           {
-            do
+            localObject1 = com.tencent.image.Utils.Crc64String(paramHotVideoData.md5);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(a);
+            localStringBuilder.append((String)localObject1);
+            localObject1 = localStringBuilder.toString();
+            try
             {
-              do
-              {
-                return localObject1;
-                localObject1 = localObject2;
-              } while (paramHotVideoData == null);
-              localObject1 = localObject2;
-            } while (paramHotVideoData.url == null);
-            localObject1 = localObject2;
-          } while (paramHotVideoData.md5 == null);
-          localObject1 = localObject2;
-        } while (paramContext == null);
-        localObject1 = localObject2;
-      } while (!a(paramHotVideoData.md5).exists());
-      localObject1 = com.tencent.image.Utils.Crc64String(paramHotVideoData.md5);
-      localObject1 = a + (String)localObject1;
-      try
-      {
-        localObject1 = BitmapFactory.decodeFile((String)localObject1);
-        paramHotVideoData = (HotVideoData)localObject1;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        for (;;)
-        {
-          localOutOfMemoryError.printStackTrace();
-          QLog.e("HotPicManager.HotVideoPreviewDownloader", 1, "decodeFile hotVideo thum Bitmap OOM. hotVideo name is " + paramHotVideoData.name);
-          paramHotVideoData = null;
+              localObject1 = BitmapFactory.decodeFile((String)localObject1);
+              paramHotVideoData = (HotVideoData)localObject1;
+            }
+            catch (OutOfMemoryError localOutOfMemoryError)
+            {
+              localOutOfMemoryError.printStackTrace();
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("decodeFile hotVideo thum Bitmap OOM. hotVideo name is ");
+              ((StringBuilder)localObject2).append(paramHotVideoData.name);
+              QLog.e("HotPicManager.HotVideoPreviewDownloader", 1, ((StringBuilder)localObject2).toString());
+              paramHotVideoData = null;
+            }
+            if (paramHotVideoData == null) {
+              return null;
+            }
+            paramHotVideoData = HotVideoUtils.a(paramHotVideoData, 10.0F, paramContext);
+            localObject2 = new BitmapDrawable(paramContext.getResources(), paramHotVideoData);
+          }
         }
       }
-      localObject1 = localObject2;
-    } while (paramHotVideoData == null);
-    paramHotVideoData = HotVideoUtils.a(paramHotVideoData, 10.0F, paramContext);
-    return new BitmapDrawable(paramContext.getResources(), paramHotVideoData);
+    }
+    return localObject2;
   }
   
   public static File a(String paramString)
@@ -87,7 +96,10 @@ public class HotVideoPreviewDownloader
     try
     {
       paramString = com.tencent.image.Utils.Crc64String(paramString);
-      paramString = new File(a + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a);
+      localStringBuilder.append(paramString);
+      paramString = new File(localStringBuilder.toString());
       return paramString;
     }
     catch (Exception paramString)
@@ -102,7 +114,11 @@ public class HotVideoPreviewDownloader
     if (paramHotVideoData == null) {
       return null;
     }
-    return a + paramHotVideoData.md5 + ".jpg";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a);
+    localStringBuilder.append(paramHotVideoData.md5);
+    localStringBuilder.append(".jpg");
+    return localStringBuilder.toString();
   }
   
   public static URL a(HotVideoData paramHotVideoData)
@@ -122,34 +138,44 @@ public class HotVideoPreviewDownloader
   
   private void a(File paramFile, HotVideoData paramHotVideoData, URLDrawableHandler paramURLDrawableHandler)
   {
-    File localFile = paramFile;
+    Object localObject = paramFile;
     if (paramFile == null) {
-      localFile = a(paramHotVideoData.md5);
+      localObject = a(paramHotVideoData.md5);
     }
     paramFile = new File(a);
     if (!paramFile.exists()) {
       paramFile.mkdir();
     }
     SystemClock.uptimeMillis();
-    paramFile = new DownloadTask(paramHotVideoData.url.replaceFirst("https", "http"), localFile);
+    paramFile = new DownloadTask(paramHotVideoData.url.replaceFirst("https", "http"), (File)localObject);
     paramFile.n = true;
     paramFile.b = 2;
     int i = DownloaderFactory.a(paramFile, null, null);
     if (i == 0)
     {
-      paramFile = PortalUtils.a(localFile.getAbsolutePath());
+      paramFile = PortalUtils.a(((File)localObject).getAbsolutePath());
       if (!paramHotVideoData.md5.equalsIgnoreCase(paramFile))
       {
-        localFile.delete();
-        a("onFileDownloadFailed .md5.equalsIgnoreCase is false videoData.md5 is :" + paramHotVideoData.md5 + " fileMD5 is " + paramFile, paramHotVideoData);
+        ((File)localObject).delete();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onFileDownloadFailed .md5.equalsIgnoreCase is false videoData.md5 is :");
+        ((StringBuilder)localObject).append(paramHotVideoData.md5);
+        ((StringBuilder)localObject).append(" fileMD5 is ");
+        ((StringBuilder)localObject).append(paramFile);
+        a(((StringBuilder)localObject).toString(), paramHotVideoData);
         if (paramURLDrawableHandler != null) {
           paramURLDrawableHandler.onFileDownloadFailed(paramHotVideoData.picIndex);
         }
         paramHotVideoData.onFileDownloadFailed(paramHotVideoData.picIndex);
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotVideoPreviewDownloader", 2, "onFileDownloadSucceed download:" + paramHotVideoData.picIndex + localFile.getAbsolutePath());
+      if (QLog.isColorLevel())
+      {
+        paramFile = new StringBuilder();
+        paramFile.append("onFileDownloadSucceed download:");
+        paramFile.append(paramHotVideoData.picIndex);
+        paramFile.append(((File)localObject).getAbsolutePath());
+        QLog.d("HotPicManager.HotVideoPreviewDownloader", 2, paramFile.toString());
       }
       if (paramURLDrawableHandler != null) {
         paramURLDrawableHandler.onFileDownloadSucceed(paramHotVideoData.picIndex);
@@ -160,8 +186,14 @@ public class HotVideoPreviewDownloader
     }
     if (paramURLDrawableHandler != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManager.HotVideoPreviewDownloader", 2, "onFileDownloadFailed:" + paramHotVideoData.picIndex + " " + i);
+      if (QLog.isColorLevel())
+      {
+        paramFile = new StringBuilder();
+        paramFile.append("onFileDownloadFailed:");
+        paramFile.append(paramHotVideoData.picIndex);
+        paramFile.append(" ");
+        paramFile.append(i);
+        QLog.d("HotPicManager.HotVideoPreviewDownloader", 2, paramFile.toString());
       }
       paramURLDrawableHandler.onFileDownloadFailed(paramHotVideoData.picIndex);
     }
@@ -174,13 +206,35 @@ public class HotVideoPreviewDownloader
     if (QLog.isColorLevel())
     {
       Object localObject = Calendar.getInstance();
-      localObject = "" + " Time is :" + ((Calendar)localObject).get(11) + ":" + ((Calendar)localObject).get(12) + ":" + ((Calendar)localObject).get(13) + ":" + ((Calendar)localObject).get(14);
-      localObject = (String)localObject + " " + paramString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(" Time is :");
+      localStringBuilder.append(((Calendar)localObject).get(11));
+      localStringBuilder.append(":");
+      localStringBuilder.append(((Calendar)localObject).get(12));
+      localStringBuilder.append(":");
+      localStringBuilder.append(((Calendar)localObject).get(13));
+      localStringBuilder.append(":");
+      localStringBuilder.append(((Calendar)localObject).get(14));
+      localObject = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString);
+      localObject = localStringBuilder.toString();
       paramString = (String)localObject;
       if (paramHotVideoData != null)
       {
-        paramString = (String)localObject + " PicIndex is " + paramHotVideoData.picIndex;
-        paramString = paramString + " Name is " + paramHotVideoData.name;
+        paramString = new StringBuilder();
+        paramString.append((String)localObject);
+        paramString.append(" PicIndex is ");
+        paramString.append(paramHotVideoData.picIndex);
+        paramString = paramString.toString();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(" Name is ");
+        ((StringBuilder)localObject).append(paramHotVideoData.name);
+        paramString = ((StringBuilder)localObject).toString();
       }
       QLog.d("HotPicManager.HotVideoPreviewDownloader", 2, paramString);
     }
@@ -188,13 +242,17 @@ public class HotVideoPreviewDownloader
   
   public static boolean a(HotVideoData paramHotVideoData)
   {
-    if ((paramHotVideoData == null) || (paramHotVideoData.md5 == null)) {}
-    do
+    if (paramHotVideoData != null)
     {
-      return false;
+      if (paramHotVideoData.md5 == null) {
+        return false;
+      }
       paramHotVideoData = a(paramHotVideoData.md5);
-    } while ((paramHotVideoData == null) || (!paramHotVideoData.exists()));
-    return true;
+      if (paramHotVideoData != null) {
+        return paramHotVideoData.exists();
+      }
+    }
+    return false;
   }
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
@@ -210,8 +268,10 @@ public class HotVideoPreviewDownloader
       catch (OutOfMemoryError paramFile)
       {
         paramFile.printStackTrace();
-        QLog.e("HotPicManager.HotVideoPreviewDownloader", 1, "Override decodeFile hotVideo thum Bitmap OOM. HotVideo name is " + paramDownloadParams.name);
-        return null;
+        paramFile = new StringBuilder();
+        paramFile.append("Override decodeFile hotVideo thum Bitmap OOM. HotVideo name is ");
+        paramFile.append(paramDownloadParams.name);
+        QLog.e("HotPicManager.HotVideoPreviewDownloader", 1, paramFile.toString());
       }
     }
     return null;
@@ -231,8 +291,12 @@ public class HotVideoPreviewDownloader
       }
       return localFile;
     }
-    if ((com.tencent.mobileqq.util.Utils.a()) && (com.tencent.mobileqq.util.Utils.b() < 20971520L)) {
-      throw new IOException("SD card free space is " + com.tencent.mobileqq.util.Utils.b());
+    if ((com.tencent.mobileqq.util.Utils.a()) && (com.tencent.mobileqq.util.Utils.b() < 31457280L))
+    {
+      paramDownloadParams = new StringBuilder();
+      paramDownloadParams.append("SD card free space is ");
+      paramDownloadParams.append(com.tencent.mobileqq.util.Utils.b());
+      throw new IOException(paramDownloadParams.toString());
     }
     if (paramDownloadParams.url.isEmpty())
     {
@@ -245,7 +309,7 @@ public class HotVideoPreviewDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoPreviewDownloader
  * JD-Core Version:    0.7.0.1
  */

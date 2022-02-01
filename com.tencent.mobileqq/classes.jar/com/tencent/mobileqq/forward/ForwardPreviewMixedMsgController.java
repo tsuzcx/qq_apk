@@ -24,6 +24,8 @@ import com.tencent.mobileqq.data.MessageForReplyText;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.drawable.EmptyDrawable;
+import com.tencent.mobileqq.pic.api.IPicHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.transfile.CommonImgThumbHelper;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -55,45 +57,45 @@ public class ForwardPreviewMixedMsgController
       paramChatMessage = (MessageForMixedMsg)paramChatMessage;
       if (paramChatMessage.msgElemList != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardPreviewMixedMsgController", 2, " initMixMsgLayout size:" + paramChatMessage.msgElemList.size());
+        Object localObject1;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(" initMixMsgLayout size:");
+          ((StringBuilder)localObject1).append(paramChatMessage.msgElemList.size());
+          QLog.d("ForwardPreviewMixedMsgController", 2, ((StringBuilder)localObject1).toString());
         }
         int i = ViewUtils.a(4.0F);
         paramChatMessage = new ArrayList(paramChatMessage.msgElemList).iterator();
         while (paramChatMessage.hasNext())
         {
           Object localObject2 = (MessageRecord)paramChatMessage.next();
-          Object localObject1;
           if ((localObject2 instanceof MessageForText))
           {
             localObject1 = new AnimationTextView(this.jdField_a_of_type_AndroidContentContext);
             ((AnimationTextView)localObject1).setTextSize(17.0F);
-            ((AnimationTextView)localObject1).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165672));
+            ((AnimationTextView)localObject1).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165656));
             ((AnimationTextView)localObject1).setSpannableFactory(QQText.SPANNABLE_FACTORY);
+            localObject2 = (MessageForText)localObject2;
             if (!TextUtils.isEmpty(((MessageForText)localObject2).sb2)) {
               ((AnimationTextView)localObject1).setText(new QQText(((MessageForText)localObject2).sb2.toString(), 5, 20));
+            } else if (!TextUtils.isEmpty(((MessageForText)localObject2).sb)) {
+              ((AnimationTextView)localObject1).setText(new QQText(((MessageForText)localObject2).sb.toString(), 5, 20));
+            } else if (!TextUtils.isEmpty(((MessageForText)localObject2).msg)) {
+              ((AnimationTextView)localObject1).setText(new QQText(((MessageForText)localObject2).msg, 5, 20));
             }
-            for (;;)
-            {
-              localObject2 = new LinearLayout.LayoutParams(-2, -2);
-              ((LinearLayout.LayoutParams)localObject2).gravity = 3;
-              ((LinearLayout.LayoutParams)localObject2).setMargins(0, i, 0, i);
-              this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-              break;
-              if (!TextUtils.isEmpty(((MessageForText)localObject2).sb)) {
-                ((AnimationTextView)localObject1).setText(new QQText(((MessageForText)localObject2).sb.toString(), 5, 20));
-              } else if (!TextUtils.isEmpty(((MessageForText)localObject2).msg)) {
-                ((AnimationTextView)localObject1).setText(new QQText(((MessageForText)localObject2).msg, 5, 20));
-              }
-            }
+            localObject2 = new LinearLayout.LayoutParams(-2, -2);
+            ((LinearLayout.LayoutParams)localObject2).gravity = 3;
+            ((LinearLayout.LayoutParams)localObject2).setMargins(0, i, 0, i);
+            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
           }
-          if ((localObject2 instanceof MessageForPic))
+          else if ((localObject2 instanceof MessageForPic))
           {
             Object localObject3 = (MessageForPic)localObject2;
             localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
             localObject2 = PicItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, (MessageForPic)localObject3);
-            ((ImageView)localObject1).setMaxWidth(CommonImgThumbHelper.getImgThumbMaxPx(PicItemBuilder.a((MessageForPic)localObject3)));
-            ((ImageView)localObject1).setMaxHeight(CommonImgThumbHelper.getImgThumbMaxPx(PicItemBuilder.a((MessageForPic)localObject3)));
+            ((ImageView)localObject1).setMaxWidth(CommonImgThumbHelper.getImgThumbMaxPx(((IPicHelper)QRoute.api(IPicHelper.class)).isEmotion((MessageForPic)localObject3)));
+            ((ImageView)localObject1).setMaxHeight(CommonImgThumbHelper.getImgThumbMaxPx(((IPicHelper)QRoute.api(IPicHelper.class)).isEmotion((MessageForPic)localObject3)));
             if (localObject2 != null)
             {
               if (((((URLDrawable)localObject2).getCurrDrawable() instanceof RoundRectDrawable)) && (a()))
@@ -102,16 +104,15 @@ public class ForwardPreviewMixedMsgController
                 ((ImageView)localObject1).setImageDrawable(new EmptyDrawable(0, ((RoundRectDrawable)localObject3).getIntrinsicWidth(), ((RoundRectDrawable)localObject3).getIntrinsicHeight()));
                 ((ImageView)localObject1).postDelayed(new ForwardPreviewMixedMsgController.1(this, (ImageView)localObject1, (URLDrawable)localObject2), 300L);
               }
-              for (;;)
+              else
               {
-                ((ImageView)localObject1).setAdjustViewBounds(true);
-                localObject2 = new LinearLayout.LayoutParams(-2, -2);
-                ((LinearLayout.LayoutParams)localObject2).gravity = 3;
-                ((LinearLayout.LayoutParams)localObject2).setMargins(0, i, 0, i);
-                this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-                break;
                 ((ImageView)localObject1).setImageDrawable((Drawable)localObject2);
               }
+              ((ImageView)localObject1).setAdjustViewBounds(true);
+              localObject2 = new LinearLayout.LayoutParams(-2, -2);
+              ((LinearLayout.LayoutParams)localObject2).gravity = 3;
+              ((LinearLayout.LayoutParams)localObject2).setMargins(0, i, 0, i);
+              this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
             }
           }
           else if ((localObject2 instanceof MessageForReplyText))
@@ -119,22 +120,21 @@ public class ForwardPreviewMixedMsgController
             localObject2 = (MessageForReplyText)localObject2;
             localObject1 = new AnimationTextView(this.jdField_a_of_type_AndroidContentContext);
             ((AnimationTextView)localObject1).setTextSize(17.0F);
-            ((AnimationTextView)localObject1).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165672));
+            ((AnimationTextView)localObject1).setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131165656));
             ((AnimationTextView)localObject1).setSpannableFactory(QQText.SPANNABLE_FACTORY);
             if (!TextUtils.isEmpty(((MessageForReplyText)localObject2).sb))
             {
               ((AnimationTextView)localObject1).setText(new QQText(((MessageForReplyText)localObject2).sb.toString(), 5, 20));
               ((AnimationTextView)localObject1).setVisibility(0);
             }
-            for (;;)
+            else
             {
-              localObject2 = new LinearLayout.LayoutParams(-2, -2);
-              ((LinearLayout.LayoutParams)localObject2).gravity = 3;
-              ((LinearLayout.LayoutParams)localObject2).setMargins(0, i, 0, i);
-              this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-              break;
               ((AnimationTextView)localObject1).setVisibility(8);
             }
+            localObject2 = new LinearLayout.LayoutParams(-2, -2);
+            ((LinearLayout.LayoutParams)localObject2).gravity = 3;
+            ((LinearLayout.LayoutParams)localObject2).setMargins(0, i, 0, i);
+            this.jdField_a_of_type_AndroidWidgetLinearLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
           }
         }
       }
@@ -145,14 +145,13 @@ public class ForwardPreviewMixedMsgController
   private boolean a()
   {
     String str = Build.MODEL;
-    if ((str.equals("vivo X20A")) || (str.equals("vivo X20")) || (str.equals("vivo X20Plus A")) || (str.equals("vivo X20Plus")))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardPreviewMixedMsgController", 2, "isVivoBlackModel  ");
-      }
-      return true;
+    if ((!str.equals("vivo X20A")) && (!str.equals("vivo X20")) && (!str.equals("vivo X20Plus A")) && (!str.equals("vivo X20Plus"))) {
+      return false;
     }
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardPreviewMixedMsgController", 2, "isVivoBlackModel  ");
+    }
+    return true;
   }
   
   private void f()
@@ -170,7 +169,7 @@ public class ForwardPreviewMixedMsgController
   protected int a()
   {
     if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_Int = ((int)((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297133)) / ViewUtils.a));
+      this.jdField_a_of_type_Int = ((int)((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getRootViewHeight() - this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131297115)) / ViewUtils.a));
     }
     return this.jdField_a_of_type_Int;
   }
@@ -204,7 +203,7 @@ public class ForwardPreviewMixedMsgController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewMixedMsgController
  * JD-Core Version:    0.7.0.1
  */

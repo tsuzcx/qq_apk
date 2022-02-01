@@ -14,61 +14,56 @@ public class SimpleParser
   
   private static Map<String, String> parseContentXml(Reader paramReader)
   {
-    HashMap localHashMap = new HashMap();
-    for (;;)
+    localHashMap = new HashMap();
+    try
     {
-      try
-      {
-        XmlPullParser localXmlPullParser = Xml.newPullParser();
-        localXmlPullParser.setFeature("http://xmlpull.org/v1/doc/features.html#process-namespaces", false);
-        localXmlPullParser.setInput(paramReader);
-        int i = localXmlPullParser.getEventType();
-        if (i != 1)
+      XmlPullParser localXmlPullParser = Xml.newPullParser();
+      localXmlPullParser.setFeature("http://xmlpull.org/v1/doc/features.html#process-namespaces", false);
+      localXmlPullParser.setInput(paramReader);
+      for (int i = localXmlPullParser.getEventType(); i != 1; i = localXmlPullParser.next()) {
+        if (localXmlPullParser.getEventType() == 0)
         {
-          if (localXmlPullParser.getEventType() == 0)
-          {
-            Log.d("SimpleParser", "parseContentXml: START_DOCUMENT");
-            i = localXmlPullParser.next();
-            continue;
-          }
-          if (localXmlPullParser.getEventType() != 2) {
-            continue;
-          }
+          Log.d("SimpleParser", "parseContentXml: START_DOCUMENT");
+        }
+        else if (localXmlPullParser.getEventType() == 2)
+        {
           Log.d("SimpleParser", "parseContentXml: START_TAG");
           paramReader = localXmlPullParser.getName();
           if ("configs".equals(paramReader))
           {
             readConfigs(localXmlPullParser, localHashMap);
-            continue;
+          }
+          else
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("parseContentXml: unknown tag: ");
+            localStringBuilder.append(paramReader);
+            Log.e("SimpleParser", localStringBuilder.toString());
           }
         }
-        else
-        {
-          return localHashMap;
-        }
       }
-      catch (Exception paramReader)
-      {
-        Log.e("SimpleParser", "parseContentXml: ", paramReader);
-      }
-      Log.e("SimpleParser", "parseContentXml: unknown tag: " + paramReader);
+      return localHashMap;
+    }
+    catch (Exception paramReader)
+    {
+      Log.e("SimpleParser", "parseContentXml: ", paramReader);
     }
   }
   
   private static void readConfigs(XmlPullParser paramXmlPullParser, Map<String, String> paramMap)
   {
     paramXmlPullParser.require(2, null, "configs");
-    int i = paramXmlPullParser.next();
-    if ((i != 3) && (i != 1))
-    {
-      if (i == 2) {
+    for (int i = paramXmlPullParser.next(); (i != 3) && (i != 1); i = paramXmlPullParser.next()) {
+      if (i == 2)
+      {
         readTag(paramXmlPullParser, paramMap);
       }
-      for (;;)
+      else
       {
-        i = paramXmlPullParser.next();
-        break;
-        Log.e("SimpleParser", "readConfigs: unknown event type: " + i);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("readConfigs: unknown event type: ");
+        localStringBuilder.append(i);
+        Log.e("SimpleParser", localStringBuilder.toString());
       }
     }
     paramXmlPullParser.require(3, null, "configs");
@@ -76,49 +71,68 @@ public class SimpleParser
   
   private static void readTag(XmlPullParser paramXmlPullParser, Map<String, String> paramMap)
   {
-    if (paramXmlPullParser.getEventType() != 2) {
-      throw new IllegalStateException();
-    }
-    String str = paramXmlPullParser.getName();
-    int i = paramXmlPullParser.next();
-    if ((i != 3) && (i != 1))
+    if (paramXmlPullParser.getEventType() == 2)
     {
-      if (paramXmlPullParser.getEventType() == 4) {
-        paramMap.put(str, paramXmlPullParser.getText());
-      }
-      for (;;)
-      {
-        i = paramXmlPullParser.next();
-        break;
-        if (paramXmlPullParser.getEventType() == 2)
+      String str = paramXmlPullParser.getName();
+      for (int i = paramXmlPullParser.next(); (i != 3) && (i != 1); i = paramXmlPullParser.next()) {
+        if (paramXmlPullParser.getEventType() == 4)
         {
-          Log.d("SimpleParser", "readTag: unexpected nested tag: " + paramXmlPullParser.getName() + ", skip.");
+          paramMap.put(str, paramXmlPullParser.getText());
+        }
+        else if (paramXmlPullParser.getEventType() == 2)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("readTag: unexpected nested tag: ");
+          localStringBuilder.append(paramXmlPullParser.getName());
+          localStringBuilder.append(", skip.");
+          Log.d("SimpleParser", localStringBuilder.toString());
           skip(paramXmlPullParser);
         }
       }
+      return;
+    }
+    paramXmlPullParser = new IllegalStateException();
+    for (;;)
+    {
+      throw paramXmlPullParser;
     }
   }
   
   private static void skip(XmlPullParser paramXmlPullParser)
   {
-    if (paramXmlPullParser.getEventType() != 2) {
-      throw new IllegalStateException();
-    }
-    int i = 1;
-    while (i != 0) {
-      switch (paramXmlPullParser.next())
+    if (paramXmlPullParser.getEventType() == 2)
+    {
+      int i = 1;
+      while (i != 0)
       {
-      default: 
-        break;
-      case 1: 
-        throw new IllegalStateException();
-      case 3: 
-        i -= 1;
-        break;
-      case 2: 
-        Log.d("SimpleParser", "skip: " + paramXmlPullParser.getName());
-        i += 1;
+        int j = paramXmlPullParser.next();
+        if (j != 1)
+        {
+          if (j != 2)
+          {
+            if (j == 3) {
+              i -= 1;
+            }
+          }
+          else
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("skip: ");
+            localStringBuilder.append(paramXmlPullParser.getName());
+            Log.d("SimpleParser", localStringBuilder.toString());
+            i += 1;
+          }
+        }
+        else {
+          throw new IllegalStateException();
+        }
       }
+      return;
+    }
+    paramXmlPullParser = new IllegalStateException();
+    for (;;)
+    {
+      throw paramXmlPullParser;
     }
   }
   

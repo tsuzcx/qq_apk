@@ -20,17 +20,18 @@ class CheckLoveStateRequestManager$1
   public JceStruct getReq()
   {
     sweet_pair_check_req localsweet_pair_check_req = new sweet_pair_check_req();
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    Object localObject = this.jdField_a_of_type_AndroidContentIntent;
+    if (localObject != null)
     {
-      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
-      sweet_req_comm localsweet_req_comm = new sweet_req_comm();
-      localsweet_req_comm.opuin = l;
-      localsweet_req_comm.uin = l;
-      localsweet_req_comm.loveuin = 0L;
-      localsweet_req_comm.qua = QUA.getQUA3();
-      localsweet_req_comm.pf = 1;
-      localsweet_req_comm.src = 3;
-      localsweet_pair_check_req.req_comm = localsweet_req_comm;
+      long l = ((Intent)localObject).getLongExtra("currentUin", -1L);
+      localObject = new sweet_req_comm();
+      ((sweet_req_comm)localObject).opuin = l;
+      ((sweet_req_comm)localObject).uin = l;
+      ((sweet_req_comm)localObject).loveuin = 0L;
+      ((sweet_req_comm)localObject).qua = QUA.getQUA3();
+      ((sweet_req_comm)localObject).pf = 1;
+      ((sweet_req_comm)localObject).src = 3;
+      localsweet_pair_check_req.req_comm = ((sweet_req_comm)localObject);
     }
     return localsweet_pair_check_req;
   }
@@ -42,7 +43,7 @@ class CheckLoveStateRequestManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.manager.CheckLoveStateRequestManager.1
  * JD-Core Version:    0.7.0.1
  */

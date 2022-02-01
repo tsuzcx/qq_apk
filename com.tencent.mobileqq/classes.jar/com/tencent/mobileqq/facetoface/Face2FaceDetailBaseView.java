@@ -79,7 +79,7 @@ public abstract class Face2FaceDetailBaseView
   private void d()
   {
     this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
-    this.jdField_a_of_type_Int = 2130840232;
+    this.jdField_a_of_type_Int = 2130840091;
   }
   
   public View a()
@@ -91,48 +91,100 @@ public abstract class Face2FaceDetailBaseView
   
   protected void a(View paramView)
   {
+    Object localObject1 = this;
     try
     {
       long l1 = System.currentTimeMillis();
-      Bitmap localBitmap = Bitmap.createBitmap(paramView.getWidth(), paramView.getHeight(), Bitmap.Config.ARGB_8888);
-      long l2 = System.currentTimeMillis();
-      this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(localBitmap);
-      paramView.draw(this.jdField_a_of_type_AndroidGraphicsCanvas);
-      this.jdField_a_of_type_AndroidGraphicsCanvas.drawColor(Color.parseColor("#70000000"), PorterDuff.Mode.DARKEN);
-      long l3 = System.currentTimeMillis();
-      paramView = Bitmap.createScaledBitmap(localBitmap, localBitmap.getWidth() / 10, localBitmap.getHeight() / 10, true);
-      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
-        localBitmap.recycle();
-      }
-      long l4 = System.currentTimeMillis();
-      StackBlur.a(paramView, 8);
-      long l5 = System.currentTimeMillis();
-      if (paramView != null) {
-        this.jdField_c_of_type_AndroidViewView.setBackgroundDrawable(new BitmapDrawable(getResources(), paramView));
-      }
-      while (QLog.isColorLevel())
+      try
       {
-        QLog.d("Face2FaceDetailBaseView", 2, "blurBackground, createEmptyBmp=" + (l2 - l1) + ", drawBmp=" + (l3 - l2) + ", scale-recyle=" + (l4 - l3) + ", blur=" + (l5 - l4) + " total=" + (l5 - l1));
-        return;
-        this.jdField_c_of_type_AndroidViewView.setBackgroundResource(this.jdField_a_of_type_Int);
+        localObject2 = Bitmap.createBitmap(paramView.getWidth(), paramView.getHeight(), Bitmap.Config.ARGB_8888);
+        long l2 = System.currentTimeMillis();
+        ((Face2FaceDetailBaseView)localObject1).jdField_a_of_type_AndroidGraphicsCanvas.setBitmap((Bitmap)localObject2);
+        paramView.draw(((Face2FaceDetailBaseView)localObject1).jdField_a_of_type_AndroidGraphicsCanvas);
+        ((Face2FaceDetailBaseView)localObject1).jdField_a_of_type_AndroidGraphicsCanvas.drawColor(Color.parseColor("#70000000"), PorterDuff.Mode.DARKEN);
+        long l3 = System.currentTimeMillis();
+        paramView = Bitmap.createScaledBitmap((Bitmap)localObject2, ((Bitmap)localObject2).getWidth() / 10, ((Bitmap)localObject2).getHeight() / 10, true);
+        if (localObject2 != null) {
+          try
+          {
+            if (!((Bitmap)localObject2).isRecycled()) {
+              ((Bitmap)localObject2).recycle();
+            }
+          }
+          catch (Exception paramView)
+          {
+            break label309;
+          }
+        }
+        long l4 = System.currentTimeMillis();
+        StackBlur.a(paramView, 8);
+        long l5 = System.currentTimeMillis();
+        if (paramView != null)
+        {
+          localObject1 = ((Face2FaceDetailBaseView)localObject1).jdField_c_of_type_AndroidViewView;
+          try
+          {
+            ((View)localObject1).setBackgroundDrawable(new BitmapDrawable(getResources(), paramView));
+          }
+          catch (Exception paramView)
+          {
+            break label309;
+          }
+          catch (OutOfMemoryError paramView)
+          {
+            break label297;
+          }
+        }
+        try
+        {
+          ((Face2FaceDetailBaseView)localObject1).jdField_c_of_type_AndroidViewView.setBackgroundResource(((Face2FaceDetailBaseView)localObject1).jdField_a_of_type_Int);
+          if (QLog.isColorLevel())
+          {
+            paramView = new StringBuilder();
+            paramView.append("blurBackground, createEmptyBmp=");
+            paramView.append(l2 - l1);
+            paramView.append(", drawBmp=");
+            paramView.append(l3 - l2);
+            paramView.append(", scale-recyle=");
+            paramView.append(l4 - l3);
+            paramView.append(", blur=");
+            paramView.append(l5 - l4);
+            paramView.append(" total=");
+            paramView.append(l5 - l1);
+            QLog.d("Face2FaceDetailBaseView", 2, paramView.toString());
+          }
+          return;
+        }
+        catch (Exception paramView) {}catch (OutOfMemoryError paramView) {}
+        label297:
+        localObject1 = "blurBackground:";
       }
-      return;
-    }
-    catch (OutOfMemoryError paramView)
-    {
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(this.jdField_a_of_type_Int);
-      if (QLog.isColorLevel())
-      {
-        QLog.e("Face2FaceDetailBaseView", 2, "blurBackground:" + paramView.toString());
-        return;
-      }
+      catch (OutOfMemoryError paramView) {}
+      label309:
+      localObject1 = "blurBackground:";
     }
     catch (Exception paramView)
     {
-      this.jdField_c_of_type_AndroidViewView.setBackgroundResource(this.jdField_a_of_type_Int);
-      if (QLog.isColorLevel()) {
-        QLog.e("Face2FaceDetailBaseView", 2, "blurBackground:" + paramView.toString());
+      localObject1 = this;
+      ((Face2FaceDetailBaseView)localObject1).jdField_c_of_type_AndroidViewView.setBackgroundResource(((Face2FaceDetailBaseView)localObject1).jdField_a_of_type_Int);
+      if (!QLog.isColorLevel()) {
+        return;
       }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("blurBackground:");
+      ((StringBuilder)localObject1).append(paramView.toString());
+      QLog.e("Face2FaceDetailBaseView", 2, ((StringBuilder)localObject1).toString());
+      return;
+    }
+    catch (OutOfMemoryError paramView) {}
+    Object localObject2 = this;
+    ((Face2FaceDetailBaseView)localObject2).jdField_c_of_type_AndroidViewView.setBackgroundResource(((Face2FaceDetailBaseView)localObject2).jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramView.toString());
+      QLog.e("Face2FaceDetailBaseView", 2, ((StringBuilder)localObject2).toString());
     }
   }
   
@@ -158,8 +210,8 @@ public abstract class Face2FaceDetailBaseView
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidViewView.clearAnimation();
     setVisibility(0);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367564);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367565);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367322);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367323);
     int i = this.jdField_a_of_type_AndroidViewView.getLeft();
     int j = ((View)localObject1).getLeft();
     int k = ((View)localObject2).getLeft();
@@ -169,7 +221,7 @@ public abstract class Face2FaceDetailBaseView
     int i2 = ((View)localObject2).getTop();
     int i3 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.getTop();
     float f = ((View)localObject1).getWidth() * 1.0F / this.jdField_a_of_type_AndroidViewView.getWidth();
-    localObject1 = a(i - (j + k + m), n - (i2 + i1 + i3), f, f);
+    localObject1 = a(i - (j + k + m), n - (i1 + i2 + i3), f, f);
     localObject2 = new AlphaAnimation(0.0F, 1.0F);
     ((AlphaAnimation)localObject2).setDuration(200L);
     ((AlphaAnimation)localObject2).setStartOffset(150L);
@@ -186,8 +238,17 @@ public abstract class Face2FaceDetailBaseView
     this.jdField_b_of_type_AndroidViewView.startAnimation(localAlphaAnimation1);
     this.e.startAnimation(localAlphaAnimation2);
     long l2 = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceDetailBaseView", 2, "animShow: totalTime=" + (l2 - this.jdField_a_of_type_Long) + ",blurAndVisiableTime:" + (l1 - this.jdField_a_of_type_Long) + ",buildAnimTime:" + (l2 - l1) + "");
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("animShow: totalTime=");
+      ((StringBuilder)localObject1).append(l2 - this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(",blurAndVisiableTime:");
+      ((StringBuilder)localObject1).append(l1 - this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(",buildAnimTime:");
+      ((StringBuilder)localObject1).append(l2 - l1);
+      ((StringBuilder)localObject1).append("");
+      QLog.d("Face2FaceDetailBaseView", 2, ((StringBuilder)localObject1).toString());
     }
   }
   
@@ -199,16 +260,20 @@ public abstract class Face2FaceDetailBaseView
   
   protected void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Face2FaceDetailBaseView", 2, "animHide, isAnimHideEnd=" + this.jdField_b_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("animHide, isAnimHideEnd=");
+      ((StringBuilder)localObject1).append(this.jdField_b_of_type_Boolean);
+      QLog.d("Face2FaceDetailBaseView", 2, ((StringBuilder)localObject1).toString());
     }
     if (!this.jdField_b_of_type_Boolean) {
       return;
     }
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_Boolean = false;
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367564);
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367565);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367322);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.findViewById(2131367323);
     int i = this.jdField_a_of_type_AndroidViewView.getLeft();
     int j = ((View)localObject1).getLeft();
     int k = ((View)localObject2).getLeft();
@@ -218,7 +283,7 @@ public abstract class Face2FaceDetailBaseView
     int i2 = ((View)localObject2).getTop();
     int i3 = this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceFriendBubbleView.getTop();
     float f = ((View)localObject1).getWidth() * 1.0F / this.jdField_a_of_type_AndroidViewView.getWidth();
-    localObject1 = b(i - (j + k + m), n - (i2 + i1 + i3), f, f);
+    localObject1 = b(i - (j + k + m), n - (i1 + i2 + i3), f, f);
     this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceDetailBaseView$IFace2faceContext.c();
     ((AnimationSet)localObject1).setAnimationListener(new Face2FaceDetailBaseView.2(this));
     localObject2 = new AlphaAnimation(1.0F, 0.0F);
@@ -236,7 +301,7 @@ public abstract class Face2FaceDetailBaseView
     this.e.startAnimation(localAlphaAnimation2);
   }
   
-  public void onFinishInflate()
+  protected void onFinishInflate()
   {
     super.onFinishInflate();
     a();
@@ -251,7 +316,7 @@ public abstract class Face2FaceDetailBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceDetailBaseView
  * JD-Core Version:    0.7.0.1
  */

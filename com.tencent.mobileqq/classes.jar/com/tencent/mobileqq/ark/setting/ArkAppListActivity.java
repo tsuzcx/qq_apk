@@ -27,21 +27,22 @@ public class ArkAppListActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
-    int i = 0;
     super.doOnCreate(paramBundle);
     paramBundle = new LinearLayout(this);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -1);
-    paramBundle.setBackgroundResource(2130838980);
+    paramBundle.setBackgroundResource(2130838740);
     paramBundle.setLayoutParams(localLayoutParams);
     paramBundle.setOrientation(1);
-    paramBundle.setPadding(0, AIOUtils.a(20.0F, getResources()), 0, 0);
+    int j = AIOUtils.b(20.0F, getResources());
+    int i = 0;
+    paramBundle.setPadding(0, j, 0, 0);
     this.a = paramBundle;
     paramBundle = getIntent().getStringArrayExtra("intent_extra_authority_app_list");
     if ((paramBundle != null) && (paramBundle.length > 0))
     {
-      int j = paramBundle.length;
+      j = paramBundle.length;
       while (i < j)
       {
         localLayoutParams = paramBundle[i];
@@ -57,7 +58,7 @@ public class ArkAppListActivity
       }
     }
     super.setContentView(this.a);
-    super.setTitle(2131690207);
+    super.setTitle(2131690123);
     return true;
   }
   
@@ -70,7 +71,7 @@ public class ArkAppListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.setting.ArkAppListActivity
  * JD-Core Version:    0.7.0.1
  */

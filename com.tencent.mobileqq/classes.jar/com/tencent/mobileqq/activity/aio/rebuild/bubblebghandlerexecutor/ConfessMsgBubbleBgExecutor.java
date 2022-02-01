@@ -26,29 +26,25 @@ public class ConfessMsgBubbleBgExecutor
   {
     boolean bool = paramChatMessage.isSend();
     paramChatMessage = SkinEngine.getInstances();
-    Object localObject;
-    if (bool)
-    {
-      i = 2130850409;
-      paramChatMessage = paramChatMessage.getDefaultThemeDrawable(i);
-      localObject = SkinEngine.getInstances();
-      if (!bool) {
-        break label111;
-      }
+    int i;
+    if (bool) {
+      i = 2130850336;
+    } else {
+      i = 2130850160;
     }
-    label111:
-    for (int i = 2130850408;; i = 2130850232)
-    {
-      localObject = ((SkinEngine)localObject).getDefaultThemeDrawable(i);
-      StateListDrawable localStateListDrawable = new StateListDrawable();
-      localStateListDrawable.addState(new int[] { 16842919 }, paramChatMessage);
-      localStateListDrawable.addState(new int[] { 16842910 }, (Drawable)localObject);
-      paramViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localStateListDrawable);
-      paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo = new BubbleInfo(0);
-      return;
-      i = 2130850233;
-      break;
+    paramChatMessage = paramChatMessage.getDefaultThemeDrawable(i);
+    Object localObject = SkinEngine.getInstances();
+    if (bool) {
+      i = 2130850335;
+    } else {
+      i = 2130850159;
     }
+    localObject = ((SkinEngine)localObject).getDefaultThemeDrawable(i);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    localStateListDrawable.addState(new int[] { 16842919 }, paramChatMessage);
+    localStateListDrawable.addState(new int[] { 16842910 }, (Drawable)localObject);
+    paramViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(localStateListDrawable);
+    paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo = new BubbleInfo(0);
   }
   
   public int a()
@@ -68,7 +64,7 @@ public class ConfessMsgBubbleBgExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.bubblebghandlerexecutor.ConfessMsgBubbleBgExecutor
  * JD-Core Version:    0.7.0.1
  */

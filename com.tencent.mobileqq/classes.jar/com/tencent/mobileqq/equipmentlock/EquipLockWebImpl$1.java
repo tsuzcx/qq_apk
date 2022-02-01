@@ -10,25 +10,20 @@ class EquipLockWebImpl$1
 {
   EquipLockWebImpl$1(EquipLockWebImpl paramEquipLockWebImpl) {}
   
-  public void onGetRecommendDeviceList(boolean paramBoolean, ArrayList<DeviceLockItemInfo> paramArrayList)
+  protected void onGetRecommendDeviceList(boolean paramBoolean, ArrayList<DeviceLockItemInfo> paramArrayList)
   {
     if (paramBoolean) {
       EquipmentLockImpl.a().a(paramArrayList);
+    } else if (QLog.isColorLevel()) {
+      QLog.d("EquipLockWebImpl", 2, "error, fetch recommend list !");
     }
-    for (;;)
-    {
-      EquipLockWebImpl.a(this.a, false);
-      EquipLockWebImpl.b(this.a, false);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("EquipLockWebImpl", 2, "error, fetch recommend list !");
-      }
-    }
+    EquipLockWebImpl.a(this.a, false);
+    EquipLockWebImpl.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.equipmentlock.EquipLockWebImpl.1
  * JD-Core Version:    0.7.0.1
  */

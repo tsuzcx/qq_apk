@@ -1,44 +1,78 @@
 package com.tencent.mobileqq.location.ui;
 
-import com.tencent.mobileqq.app.QBaseActivity;
-import com.tencent.mobileqq.location.data.LocationRoom.RoomKey;
-import com.tencent.mobileqq.troop.api.observer.TroopObserver;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Point;
+import android.graphics.Rect;
+import android.widget.ImageView;
+import androidx.lifecycle.MutableLiveData;
+import com.tencent.mobileqq.location.LocationShareViewModel;
+import com.tencent.mobileqq.location.data.LocationRoom.Venue;
+import com.tencent.mobileqq.utils.BaseImageUtil;
+import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
+import java.util.Iterator;
+import java.util.List;
 
 class LocationShareController$3
-  extends TroopObserver
+  implements MapWidget.EventListener
 {
   LocationShareController$3(LocationShareController paramLocationShareController) {}
   
-  public void onPassiveExit(String paramString, int paramInt)
+  public void a(LocationRoom.Venue paramVenue)
   {
-    super.onPassiveExit(paramString, paramInt);
-    if ((LocationShareController.a(this.a).a() == 1) && (LocationShareController.a(this.a).a().equals(paramString)))
+    if (paramVenue != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("LocationShareController", 2, new Object[] { "onPassiveExit: invoked. ", " troopUin: ", paramString });
-      }
-      if (LocationShareController.a(this.a) != null)
+      this.a.c();
+      return;
+    }
+    LocationShareController.a(this.a);
+  }
+  
+  public void a(LatLng paramLatLng) {}
+  
+  public void a(LatLng paramLatLng, float paramFloat, List<String> paramList)
+  {
+    if (paramList == null) {
+      return;
+    }
+    paramLatLng = paramList.iterator();
+    while (paramLatLng.hasNext())
+    {
+      paramList = (String)paramLatLng.next();
+      Bitmap localBitmap = LocationAvatarHelper.a().a(paramList);
+      if (localBitmap != null)
       {
-        LocationShareController.a(this.a).finish();
-        QQToast.a(LocationShareController.a(this.a), 2131693157, 1).a();
+        localBitmap = BaseImageUtil.c(localBitmap, localBitmap.getWidth(), localBitmap.getHeight());
+        this.a.a.a(paramList, localBitmap);
       }
-      LocationShareController.a(LocationShareController.a(this.a), 1, paramString);
     }
   }
   
-  public void onTroopManagerSuccess(int paramInt1, int paramInt2, String paramString)
+  public void a(boolean paramBoolean, Point paramPoint)
   {
-    super.onTroopManagerSuccess(paramInt1, paramInt2, paramString);
-    if (((paramInt1 == 2) || (paramInt1 == 9)) && (paramInt2 == 0)) {
-      LocationShareController.a(LocationShareController.a(this.a), 1, paramString);
+    if (paramBoolean)
+    {
+      LocationShareController.a(this.a).b.setValue(Boolean.valueOf(true));
+      return;
     }
+    if (paramPoint != null)
+    {
+      Rect localRect = new Rect();
+      LocationShareController.a(this.a).getGlobalVisibleRect(localRect);
+      if (localRect.contains(paramPoint.x, paramPoint.y)) {
+        return;
+      }
+    }
+    LocationShareController.a(this.a).b.setValue(Boolean.valueOf(false));
+  }
+  
+  public void a(boolean paramBoolean, MapWidget.RouteDetail paramRouteDetail)
+  {
+    LocationShareController.a(this.a, paramBoolean, paramRouteDetail);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.LocationShareController.3
  * JD-Core Version:    0.7.0.1
  */

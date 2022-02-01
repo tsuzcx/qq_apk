@@ -3,11 +3,13 @@ package com.tencent.tkd.weibo.framework;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
+import com.tencent.tkd.topicsdk.interfaces.IImageLoader;
+import com.tencent.tkd.topicsdk.interfaces.IImageLoader.ImageLoaderOption;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/weibo/framework/ImageLoader;", "", "context", "Landroid/content/Context;", "imageLoaderImpl", "Lcom/tencent/tkd/weibo/framework/IImageLoader;", "(Landroid/content/Context;Lcom/tencent/tkd/weibo/framework/IImageLoader;)V", "getContext", "()Landroid/content/Context;", "errorDrawable", "Landroid/graphics/drawable/Drawable;", "height", "", "loadingDrawable", "radius", "view", "Landroid/widget/ImageView;", "width", "circle", "error", "drawable", "load", "", "path", "", "loading", "size", "imageView", "Companion", "tkd-weibo-component_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/weibo/framework/ImageLoader;", "", "context", "Landroid/content/Context;", "imageLoaderImpl", "Lcom/tencent/tkd/topicsdk/interfaces/IImageLoader;", "(Landroid/content/Context;Lcom/tencent/tkd/topicsdk/interfaces/IImageLoader;)V", "getContext", "()Landroid/content/Context;", "errorDrawable", "Landroid/graphics/drawable/Drawable;", "height", "", "loadingDrawable", "radius", "view", "Landroid/widget/ImageView;", "width", "circle", "error", "drawable", "load", "", "path", "", "loading", "size", "imageView", "Companion", "tkd-weibo-component_release"}, k=1, mv={1, 1, 16})
 public final class ImageLoader
 {
   public static final ImageLoader.Companion a;
@@ -16,7 +18,7 @@ public final class ImageLoader
   private final Context jdField_a_of_type_AndroidContentContext;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private final IImageLoader jdField_a_of_type_ComTencentTkdWeiboFrameworkIImageLoader;
+  private final IImageLoader jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader;
   private int jdField_b_of_type_Int;
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
   private int c;
@@ -29,7 +31,7 @@ public final class ImageLoader
   public ImageLoader(@NotNull Context paramContext, @NotNull IImageLoader paramIImageLoader)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_ComTencentTkdWeiboFrameworkIImageLoader = paramIImageLoader;
+    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader = paramIImageLoader;
   }
   
   @NotNull
@@ -79,12 +81,12 @@ public final class ImageLoader
     localImageLoaderOption.c = this.c;
     localImageLoaderOption.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
     localImageLoaderOption.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-    this.jdField_a_of_type_ComTencentTkdWeiboFrameworkIImageLoader.a(this.jdField_a_of_type_AndroidContentContext, paramString, this.jdField_a_of_type_AndroidWidgetImageView, localImageLoaderOption);
+    this.jdField_a_of_type_ComTencentTkdTopicsdkInterfacesIImageLoader.a(this.jdField_a_of_type_AndroidContentContext, paramString, this.jdField_a_of_type_AndroidWidgetImageView, localImageLoaderOption);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.framework.ImageLoader
  * JD-Core Version:    0.7.0.1
  */

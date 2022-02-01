@@ -2,7 +2,7 @@ package com.tencent.mobileqq.simpleui;
 
 import android.app.Activity;
 import android.view.Window;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.widget.immersive.ImmersiveUtils;
 import com.tencent.widget.immersive.SystemBarCompact;
 import common.config.service.QzoneConfig;
@@ -11,9 +11,6 @@ public class SimpleQZoneUIUtil
 {
   public static SystemBarCompact a(SystemBarCompact paramSystemBarCompact, Activity paramActivity, boolean paramBoolean1, boolean paramBoolean2)
   {
-    int j = 0;
-    int i = 0;
-    boolean bool = true;
     if (paramActivity == null) {
       return null;
     }
@@ -23,28 +20,25 @@ public class SimpleQZoneUIUtil
     if (!a()) {
       return null;
     }
-    int k = SimpleUIUtil.d();
+    int i = SimpleUIUtil.d();
     if (ImmersiveUtils.couldSetStatusTextColor())
     {
       paramActivity.getWindow().addFlags(ImmersiveUtils.FLAG_TRANSLUCENT_STATUS);
       ImmersiveUtils.clearCoverForStatus(paramActivity.getWindow(), true);
-      if (paramSystemBarCompact == null) {
-        if (!paramBoolean1)
-        {
-          paramBoolean1 = bool;
-          paramSystemBarCompact = new SystemBarCompact(paramActivity, paramBoolean1, k);
-          paramSystemBarCompact.init();
-        }
-      }
-      for (;;)
+      if (paramSystemBarCompact == null)
       {
-        ImmersiveUtils.setStatusTextColor(paramBoolean2, paramActivity.getWindow());
-        return paramSystemBarCompact;
-        paramBoolean1 = false;
-        break;
-        paramSystemBarCompact.setStatusBarColor(k);
+        paramSystemBarCompact = new SystemBarCompact(paramActivity, paramBoolean1 ^ true, i);
+        paramSystemBarCompact.init();
       }
+      else
+      {
+        paramSystemBarCompact.setStatusBarColor(i);
+      }
+      ImmersiveUtils.setStatusTextColor(paramBoolean2, paramActivity.getWindow());
+      return paramSystemBarCompact;
     }
+    int j = 0;
+    i = 0;
     if (paramSystemBarCompact == null)
     {
       paramActivity.getWindow().addFlags(ImmersiveUtils.FLAG_TRANSLUCENT_STATUS);
@@ -66,12 +60,12 @@ public class SimpleQZoneUIUtil
   
   public static final boolean a()
   {
-    return (SimpleUIUtil.a()) && (!ThemeUtil.isNowThemeIsNightForQzone()) && (QzoneConfig.getInstance().getConfig("QZoneSetting", "qzonesimpleui", true));
+    return (SimpleUIUtil.a()) && (!QQTheme.d()) && (QzoneConfig.getInstance().getConfig("QZoneSetting", "qzonesimpleui", true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.simpleui.SimpleQZoneUIUtil
  * JD-Core Version:    0.7.0.1
  */

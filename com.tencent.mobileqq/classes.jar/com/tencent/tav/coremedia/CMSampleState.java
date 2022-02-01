@@ -26,6 +26,7 @@ public class CMSampleState
   
   public CMSampleState(@NonNull CMTime paramCMTime)
   {
+    Utils.a(paramCMTime);
     this.time = paramCMTime;
     if (paramCMTime.value < 0L) {
       this.stateCode = paramCMTime.value;
@@ -34,7 +35,10 @@ public class CMSampleState
   
   public static CMSampleState fromError(long paramLong)
   {
-    return fromError(paramLong, "state:" + paramLong);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("state:");
+    localStringBuilder.append(paramLong);
+    return fromError(paramLong, localStringBuilder.toString());
   }
   
   public static CMSampleState fromError(long paramLong, String paramString)
@@ -85,35 +89,40 @@ public class CMSampleState
   
   public boolean stateMatchingTo(long... paramVarArgs)
   {
-    boolean bool2 = false;
     int j = paramVarArgs.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        long l = paramVarArgs[i];
-        if (this.stateCode == l) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
+      long l = paramVarArgs[i];
+      if (this.stateCode == l) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public String toString()
   {
-    return "CMSampleState{time=" + this.time + ", isNewFrame=" + this.isNewFrame + ", stateCode=" + this.stateCode + ", throwable=" + this.throwable + ", msg='" + this.msg + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CMSampleState{time=");
+    localStringBuilder.append(this.time);
+    localStringBuilder.append(", isNewFrame=");
+    localStringBuilder.append(this.isNewFrame);
+    localStringBuilder.append(", stateCode=");
+    localStringBuilder.append(this.stateCode);
+    localStringBuilder.append(", throwable=");
+    localStringBuilder.append(this.throwable);
+    localStringBuilder.append(", msg='");
+    localStringBuilder.append(this.msg);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.coremedia.CMSampleState
  * JD-Core Version:    0.7.0.1
  */

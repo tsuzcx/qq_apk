@@ -15,32 +15,38 @@ final class Okio$2
   
   public long read(Buffer paramBuffer, long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("byteCount < 0: " + paramLong);
-    }
-    if (paramLong == 0L) {
-      return 0L;
-    }
-    try
+    if (paramLong >= 0L)
     {
-      this.val$timeout.throwIfReached();
-      Segment localSegment = paramBuffer.writableSegment(1);
-      int i = (int)Math.min(paramLong, 8192 - localSegment.limit);
-      i = this.val$in.read(localSegment.data, localSegment.limit, i);
-      if (i == -1) {
-        return -1L;
+      if (paramLong == 0L) {
+        return 0L;
       }
-      localSegment.limit += i;
-      paramBuffer.size += i;
-      return i;
-    }
-    catch (AssertionError paramBuffer)
-    {
-      if (Okio.isAndroidGetsocknameError(paramBuffer)) {
-        throw new IOException(paramBuffer);
+      try
+      {
+        this.val$timeout.throwIfReached();
+        Segment localSegment = paramBuffer.writableSegment(1);
+        int i = (int)Math.min(paramLong, 8192 - localSegment.limit);
+        i = this.val$in.read(localSegment.data, localSegment.limit, i);
+        if (i == -1) {
+          return -1L;
+        }
+        localSegment.limit += i;
+        paramLong = paramBuffer.size;
+        long l = i;
+        paramBuffer.size = (paramLong + l);
+        return l;
       }
-      throw paramBuffer;
+      catch (AssertionError paramBuffer)
+      {
+        if (Okio.isAndroidGetsocknameError(paramBuffer)) {
+          throw new IOException(paramBuffer);
+        }
+        throw paramBuffer;
+      }
     }
+    paramBuffer = new StringBuilder();
+    paramBuffer.append("byteCount < 0: ");
+    paramBuffer.append(paramLong);
+    throw new IllegalArgumentException(paramBuffer.toString());
   }
   
   public Timeout timeout()
@@ -50,12 +56,16 @@ final class Okio$2
   
   public String toString()
   {
-    return "source(" + this.val$in + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("source(");
+    localStringBuilder.append(this.val$in);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.Okio.2
  * JD-Core Version:    0.7.0.1
  */

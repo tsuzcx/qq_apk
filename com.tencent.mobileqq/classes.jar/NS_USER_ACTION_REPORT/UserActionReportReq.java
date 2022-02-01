@@ -55,20 +55,23 @@ public final class UserActionReportReq
   {
     paramJceOutputStream.write(this.type, 0);
     paramJceOutputStream.write(this.user_comm_report, 1);
-    if (this.report_infos != null) {
-      paramJceOutputStream.write(this.report_infos, 2);
+    ArrayList localArrayList = this.report_infos;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
-    if (this.stay_time_infos != null) {
-      paramJceOutputStream.write(this.stay_time_infos, 3);
+    localArrayList = this.stay_time_infos;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
-    if (this.schema_infos != null) {
-      paramJceOutputStream.write(this.schema_infos, 4);
+    localArrayList = this.schema_infos;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_USER_ACTION_REPORT.UserActionReportReq
  * JD-Core Version:    0.7.0.1
  */

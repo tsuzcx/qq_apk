@@ -16,10 +16,7 @@ class QfileFavFileRecordProvider$FavFileRecords
   Comparator<FavFileInfo> jdField_a_of_type_JavaUtilComparator = new QfileFavFileRecordProvider.FavFileRecords.1(this);
   Map<Long, FavFileInfo> jdField_a_of_type_JavaUtilMap = new HashMap();
   
-  QfileFavFileRecordProvider$FavFileRecords(QfileFavFileRecordProvider paramQfileFavFileRecordProvider)
-  {
-    super(paramQfileFavFileRecordProvider);
-  }
+  QfileFavFileRecordProvider$FavFileRecords(QfileFavFileRecordProvider paramQfileFavFileRecordProvider) {}
   
   FavFileInfo a(long paramLong)
   {
@@ -54,37 +51,24 @@ class QfileFavFileRecordProvider$FavFileRecords
     this.d.clear();
     this.e.clear();
     this.jdField_a_of_type_JavaUtilMap.clear();
-    QLog.i(QfileFavFileRecordProvider.a, 1, QfileFavFileRecordProvider.b + "FavFileRecords clear...");
+    String str = QfileFavFileRecordProvider.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(QfileFavFileRecordProvider.b);
+    localStringBuilder.append("FavFileRecords clear...");
+    QLog.i(str, 1, localStringBuilder.toString());
   }
   
   void a(List<FavFileInfo> paramList, int paramInt)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    ArrayList localArrayList;
-    if (paramInt == 1) {
-      localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
-    }
-    int i;
-    for (;;)
+    if (paramList != null)
     {
-      Iterator localIterator = paramList.iterator();
-      i = 0;
-      while (localIterator.hasNext())
-      {
-        FavFileInfo localFavFileInfo = (FavFileInfo)localIterator.next();
-        if (localFavFileInfo != null)
-        {
-          if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(localFavFileInfo.a))) {
-            QLog.w(QfileFavFileRecordProvider.a, 1, QfileFavFileRecordProvider.b + "addOrUpdateFileRecords favfile is exsited, favid:" + localFavFileInfo.a);
-          }
-          localArrayList.add(localFavFileInfo);
-          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(localFavFileInfo.a), localFavFileInfo);
-          i = 1;
-        }
+      if (paramList.size() == 0) {
+        return;
       }
-      if (paramInt == 2) {
+      ArrayList localArrayList;
+      if (paramInt == 1) {
+        localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      } else if (paramInt == 2) {
         localArrayList = this.b;
       } else if (paramInt == 3) {
         localArrayList = this.c;
@@ -95,16 +79,46 @@ class QfileFavFileRecordProvider$FavFileRecords
       } else {
         localArrayList = this.e;
       }
+      int i = 0;
+      Object localObject1 = paramList.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (FavFileInfo)((Iterator)localObject1).next();
+        if (localObject2 != null)
+        {
+          if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(((FavFileInfo)localObject2).a)))
+          {
+            String str = QfileFavFileRecordProvider.a;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(QfileFavFileRecordProvider.b);
+            localStringBuilder.append("addOrUpdateFileRecords favfile is exsited, favid:");
+            localStringBuilder.append(((FavFileInfo)localObject2).a);
+            QLog.w(str, 1, localStringBuilder.toString());
+          }
+          localArrayList.add(localObject2);
+          this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(((FavFileInfo)localObject2).a), localObject2);
+          i = 1;
+        }
+      }
+      if (i != 0) {
+        Collections.sort(localArrayList, this.jdField_a_of_type_JavaUtilComparator);
+      }
+      localObject1 = QfileFavFileRecordProvider.a;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(QfileFavFileRecordProvider.b);
+      ((StringBuilder)localObject2).append("addOrUpdateFileRecords recordType:");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(" addsize:");
+      ((StringBuilder)localObject2).append(paramList.size());
+      ((StringBuilder)localObject2).append(" recordSize:");
+      ((StringBuilder)localObject2).append(localArrayList.size());
+      QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
     }
-    if (i != 0) {
-      Collections.sort(localArrayList, this.jdField_a_of_type_JavaUtilComparator);
-    }
-    QLog.i(QfileFavFileRecordProvider.a, 1, QfileFavFileRecordProvider.b + "addOrUpdateFileRecords recordType:" + paramInt + " addsize:" + paramList.size() + " recordSize:" + localArrayList.size());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileRecordProvider.FavFileRecords
  * JD-Core Version:    0.7.0.1
  */

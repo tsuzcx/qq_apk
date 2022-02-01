@@ -8,8 +8,6 @@ import android.content.pm.PackageManager.NameNotFoundException;
 public class PackageUtils
 {
   private static final String TAG = "PackageUtils";
-  private static String USER_AGENT = null;
-  private static final String VERSION = "4.0.2.300";
   
   public static String getVersionName(Context paramContext)
   {
@@ -31,7 +29,7 @@ public class PackageUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.common.PackageUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -4,10 +4,10 @@ import android.os.Handler;
 import android.os.Message;
 import com.tencent.av.camera.FrameBufMgr;
 import com.tencent.av.opengl.GraphicRenderMgr;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.utils.FramePerfData;
 import com.tencent.av.utils.SeqUtil;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.avcore.util.AVCoreLog;
 
 public abstract class EffectRenderWrapper
   extends GLContextThread
@@ -42,8 +42,9 @@ public abstract class EffectRenderWrapper
     a(paramCameraFrame, this.jdField_a_of_type_ComTencentAvOpenglEffectsRenderParams);
     FramePerfData localFramePerfData = paramCameraFrame.jdField_a_of_type_ComTencentAvUtilsFramePerfData;
     localFramePerfData.c();
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a(paramCameraFrame, this.jdField_a_of_type_ComTencentAvOpenglEffectsRenderParams, null, this.jdField_a_of_type_ComTencentAvOpenglEffectsRenderResult);
+    FilterProcessRender localFilterProcessRender = this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender;
+    if (localFilterProcessRender != null) {
+      localFilterProcessRender.a(paramCameraFrame, this.jdField_a_of_type_ComTencentAvOpenglEffectsRenderParams, null, this.jdField_a_of_type_ComTencentAvOpenglEffectsRenderResult);
     }
     paramCameraFrame.a();
     localFramePerfData.d();
@@ -59,8 +60,9 @@ public abstract class EffectRenderWrapper
   
   private void g()
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a();
+    FilterProcessRender localFilterProcessRender = this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender;
+    if (localFilterProcessRender != null) {
+      localFilterProcessRender.a();
     }
   }
   
@@ -71,16 +73,17 @@ public abstract class EffectRenderWrapper
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EffectRenderWrapper", 2, "uninit");
+    if (AVCoreLog.isColorLevel()) {
+      AVCoreLog.i("EffectRenderWrapper", "uninit");
     }
     this.jdField_a_of_type_AndroidOsHandler.obtainMessage(5).sendToTarget();
   }
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a(paramLong);
+    FilterProcessRender localFilterProcessRender = this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender;
+    if (localFilterProcessRender != null) {
+      localFilterProcessRender.a(paramLong);
     }
   }
   
@@ -90,51 +93,51 @@ public abstract class EffectRenderWrapper
     {
     default: 
       return;
-    case 1: 
-      c(SeqUtil.a(paramMessage.obj));
-      return;
-    case 2: 
-      d(SeqUtil.a(paramMessage.obj));
-      return;
-    case 3: 
-      b((CameraFrame)paramMessage.obj);
-      return;
-    case 4: 
-      e(SeqUtil.a(paramMessage.obj));
+    case 6: 
+      g();
       return;
     case 5: 
       e();
       return;
+    case 4: 
+      e(SeqUtil.a(paramMessage.obj));
+      return;
+    case 3: 
+      b((CameraFrame)paramMessage.obj);
+      return;
+    case 2: 
+      d(SeqUtil.a(paramMessage.obj));
+      return;
     }
-    g();
+    c(SeqUtil.a(paramMessage.obj));
   }
   
   public void a(CameraFrame paramCameraFrame)
   {
-    int i;
-    if (paramCameraFrame.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null) {
-      i = 1;
+    Object localObject = paramCameraFrame.jdField_a_of_type_AndroidGraphicsSurfaceTexture;
+    int i = 1;
+    if (localObject == null)
+    {
+      this.jdField_a_of_type_ComTencentAvOpenglEffectsProcessFrameInfo.a(paramCameraFrame.jdField_a_of_type_ArrayOfByte, paramCameraFrame.jdField_a_of_type_Int, paramCameraFrame.b, paramCameraFrame.jdField_c_of_type_Int, paramCameraFrame.d, paramCameraFrame.jdField_a_of_type_Long, paramCameraFrame.jdField_a_of_type_Boolean, paramCameraFrame.jdField_c_of_type_Long);
+      if ((paramCameraFrame.jdField_a_of_type_ArrayOfByte == null) || (paramCameraFrame.jdField_a_of_type_Int == 0) || (paramCameraFrame.b == 0)) {
+        i = 0;
+      }
     }
-    while (i == 0)
+    if (i == 0)
     {
       paramCameraFrame.b();
       return;
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsProcessFrameInfo.a(paramCameraFrame.jdField_a_of_type_ArrayOfByte, paramCameraFrame.jdField_a_of_type_Int, paramCameraFrame.b, paramCameraFrame.jdField_c_of_type_Int, paramCameraFrame.d, paramCameraFrame.jdField_a_of_type_Long, paramCameraFrame.jdField_a_of_type_Boolean, paramCameraFrame.jdField_c_of_type_Long);
-      if ((paramCameraFrame.jdField_a_of_type_ArrayOfByte != null) && (paramCameraFrame.jdField_a_of_type_Int != 0) && (paramCameraFrame.b != 0)) {
-        i = 1;
-      } else {
-        i = 0;
-      }
     }
     if (this.jdField_a_of_type_AndroidOsHandler.hasMessages(3))
     {
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-      if ((this.jdField_a_of_type_ComTencentAvOpenglEffectsCameraFrame == null) || (this.jdField_a_of_type_ComTencentAvOpenglEffectsCameraFrame == paramCameraFrame)) {}
+      localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsCameraFrame;
+      if ((localObject == null) || (localObject == paramCameraFrame)) {}
     }
     try
     {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsCameraFrame.b();
-      label129:
+      ((CameraFrame)localObject).b();
+      label125:
       this.jdField_a_of_type_ComTencentAvOpenglEffectsCameraFrame = null;
       if (paramCameraFrame.jdField_a_of_type_ArrayOfByte != null) {
         FrameBufMgr.a().a(2, 0);
@@ -148,7 +151,7 @@ public abstract class EffectRenderWrapper
     }
     catch (Throwable localThrowable)
     {
-      break label129;
+      break label125;
     }
   }
   
@@ -161,8 +164,8 @@ public abstract class EffectRenderWrapper
     Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1);
     localMessage.obj = Long.valueOf(AudioHelper.b());
     localMessage.sendToTarget();
-    if (QLog.isColorLevel()) {
-      QLog.i("SurfaceTag", 2, "Effect-init");
+    if (AVCoreLog.isColorLevel()) {
+      AVCoreLog.i("SurfaceTag", "Effect-init");
     }
   }
   
@@ -182,17 +185,27 @@ public abstract class EffectRenderWrapper
   
   protected void c(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("EffectRenderWrapper", 2, "initInGL, isInitial[" + this.jdField_a_of_type_Boolean + "], loadPtvSo[" + GraphicRenderMgr.soloadedPTV + "], seq[" + paramLong + "]");
-    }
-    if (this.jdField_a_of_type_Boolean) {}
-    do
+    if (AVCoreLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initInGL, isInitial[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject).append("], loadPtvSo[");
+      ((StringBuilder)localObject).append(GraphicRenderMgr.soloadedPTV);
+      ((StringBuilder)localObject).append("], seq[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("]");
+      AVCoreLog.i("EffectRenderWrapper", ((StringBuilder)localObject).toString());
+    }
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_a_of_type_Boolean = true;
-      super.b();
-    } while (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender == null);
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a(paramLong, a());
+    }
+    this.jdField_a_of_type_Boolean = true;
+    super.b();
+    Object localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender;
+    if (localObject != null) {
+      ((FilterProcessRender)localObject).a(paramLong, a());
+    }
   }
   
   public void d()
@@ -206,35 +219,48 @@ public abstract class EffectRenderWrapper
       return;
     }
     this.jdField_a_of_type_Boolean = false;
-    if (AudioHelper.e()) {
-      QLog.w("EffectRenderWrapper", 1, "terminateInGL, seq[" + paramLong + "]");
+    if (AVCoreLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("terminateInGL, seq[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("]");
+      AVCoreLog.i("EffectRenderWrapper", ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.b(paramLong);
+    Object localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender;
+    if (localObject != null) {
+      ((FilterProcessRender)localObject).b(paramLong);
     }
     super.c();
   }
   
   protected void e()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EffectRenderWrapper", 2, "unInitInGL, p[" + this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender + "]");
+    if (AVCoreLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("unInitInGL, p[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender);
+      ((StringBuilder)localObject).append("]");
+      AVCoreLog.i("EffectRenderWrapper", ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.b();
+    Object localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender;
+    if (localObject != null) {
+      ((FilterProcessRender)localObject).b();
     }
   }
   
   protected void e(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a(paramLong, a());
+    FilterProcessRender localFilterProcessRender = this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender;
+    if (localFilterProcessRender != null) {
+      localFilterProcessRender.a(paramLong, a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.EffectRenderWrapper
  * JD-Core Version:    0.7.0.1
  */

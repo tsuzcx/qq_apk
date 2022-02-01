@@ -41,14 +41,15 @@ public class LottieValueCallback<T>
   public final void setValue(@Nullable T paramT)
   {
     this.value = paramT;
-    if (this.animation != null) {
-      this.animation.notifyListeners();
+    paramT = this.animation;
+    if (paramT != null) {
+      paramT.notifyListeners();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.value.LottieValueCallback
  * JD-Core Version:    0.7.0.1
  */

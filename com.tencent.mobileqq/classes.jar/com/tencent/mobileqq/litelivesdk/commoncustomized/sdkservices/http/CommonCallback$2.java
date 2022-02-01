@@ -10,14 +10,14 @@ class CommonCallback$2
   
   public void run()
   {
-    if (CommonCallback.a(this.this$0) != null) {
+    if ((CommonCallback.a(this.this$0) != null) && (this.a != null)) {
       CommonCallback.a(this.this$0).onResponse(this.a.code(), null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.http.CommonCallback.2
  * JD-Core Version:    0.7.0.1
  */

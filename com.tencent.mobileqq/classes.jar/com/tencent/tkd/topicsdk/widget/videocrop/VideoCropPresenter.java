@@ -56,23 +56,23 @@ public final class VideoCropPresenter
         str = localMediaMetadataRetriever.extractMetadata(24);
         Intrinsics.checkExpressionValueIsNotNull(str, "extractMetadata(MediaMet…ADATA_KEY_VIDEO_ROTATION)");
         i = Integer.parseInt(str);
-        if ((i != 90) && (i != 270)) {
-          break label186;
-        }
-        paramString.getMedia().setHeight(j);
-        paramString.getMedia().setWidth(k);
       }
-      for (;;)
+      else
       {
-        localMediaMetadataRetriever.release();
-        this.jdField_a_of_type_ComTencentTkdTopicsdkBeanDisplayItem = paramString;
-        return;
         i = 0;
-        break;
-        label186:
+      }
+      if ((i != 90) && (i != 270))
+      {
         paramString.getMedia().setHeight(k);
         paramString.getMedia().setWidth(j);
       }
+      else
+      {
+        paramString.getMedia().setHeight(j);
+        paramString.getMedia().setWidth(k);
+      }
+      localMediaMetadataRetriever.release();
+      this.jdField_a_of_type_ComTencentTkdTopicsdkBeanDisplayItem = paramString;
     }
   }
   
@@ -166,7 +166,7 @@ public final class VideoCropPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropPresenter
  * JD-Core Version:    0.7.0.1
  */

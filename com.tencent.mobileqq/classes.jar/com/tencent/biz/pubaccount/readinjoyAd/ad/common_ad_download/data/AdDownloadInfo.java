@@ -3,7 +3,7 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.data;
 import kotlin.Metadata;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/data/AdDownloadInfo;", "", "()V", "appid", "", "getAppid", "()Ljava/lang/String;", "setAppid", "(Ljava/lang/String;)V", "downloadUrl", "getDownloadUrl", "setDownloadUrl", "errorCode", "", "getErrorCode", "()I", "setErrorCode", "(I)V", "errorMsg", "getErrorMsg", "setErrorMsg", "filePath", "getFilePath", "setFilePath", "packageName", "getPackageName", "setPackageName", "pkgSize", "", "getPkgSize", "()J", "setPkgSize", "(J)V", "progress", "getProgress", "setProgress", "state", "getState", "setState", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/data/AdDownloadInfo;", "", "()V", "appid", "", "getAppid", "()Ljava/lang/String;", "setAppid", "(Ljava/lang/String;)V", "downloadUrl", "getDownloadUrl", "setDownloadUrl", "errorCode", "", "getErrorCode", "()I", "setErrorCode", "(I)V", "errorMsg", "getErrorMsg", "setErrorMsg", "filePath", "getFilePath", "setFilePath", "packageName", "getPackageName", "setPackageName", "pkgSize", "", "getPkgSize", "()J", "setPkgSize", "(J)V", "progress", "getProgress", "setProgress", "state", "getState", "setState", "kandian-ad-api_release"}, k=1, mv={1, 1, 16})
 public final class AdDownloadInfo
 {
   private int jdField_a_of_type_Int;
@@ -113,7 +113,7 @@ public final class AdDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_download.data.AdDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

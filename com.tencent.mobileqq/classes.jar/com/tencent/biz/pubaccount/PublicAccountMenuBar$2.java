@@ -24,25 +24,25 @@ class PublicAccountMenuBar$2
         PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, false);
         return;
       }
+      paramView = (MenuItem)this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
+      if (paramView == null)
+      {
+        PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, false);
+        return;
+      }
+      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, paramView);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
     }
     catch (Exception paramView)
     {
       paramView.printStackTrace();
-      return;
     }
-    paramView = (MenuItem)this.jdField_a_of_type_JavaUtilList.get(paramInt - 1);
-    if (paramView == null)
-    {
-      PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, false);
-      return;
-    }
-    PublicAccountMenuBar.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountMenuBar, paramView);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.PublicAccountMenuBar.2
  * JD-Core Version:    0.7.0.1
  */

@@ -35,9 +35,10 @@ public final class j
   
   public static void a(String paramString)
   {
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      throw new IllegalStateException(paramString);
+    if (Looper.myLooper() != Looper.getMainLooper()) {
+      return;
     }
+    throw new IllegalStateException(paramString);
   }
   
   public static <TResult> Task<List<TResult>> b(Collection<? extends Task<?>> paramCollection)
@@ -75,20 +76,17 @@ public final class j
     try
     {
       paramExecutor.execute(new j.1(this, localTaskCompletionSource, paramCallable));
-      return localTaskCompletionSource.getTask();
     }
     catch (Exception paramExecutor)
     {
-      for (;;)
-      {
-        localTaskCompletionSource.setException(paramExecutor);
-      }
+      localTaskCompletionSource.setException(paramExecutor);
     }
+    return localTaskCompletionSource.getTask();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hmf.tasks.a.j
  * JD-Core Version:    0.7.0.1
  */

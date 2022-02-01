@@ -5,6 +5,7 @@ import com.tencent.falco.base.libapi.channel.helper.PushReceiver;
 import com.tencent.falco.base.libapi.datareport.DataReportInterface;
 import com.tencent.falco.base.libapi.downloader.DownLoaderInterface;
 import com.tencent.falco.base.libapi.generalinfo.AppGeneralInfoService;
+import com.tencent.falco.base.libapi.hostproxy.HostProxyInterface;
 import com.tencent.falco.base.libapi.http.HttpInterface;
 import com.tencent.falco.base.libapi.log.LogInterface;
 import com.tencent.falco.base.libapi.login.LoginServiceInterface;
@@ -47,6 +48,11 @@ class AVMediaServiceBuilder$1
     return (AppGeneralInfoService)this.val$serviceAccessor.getService(AppGeneralInfoService.class);
   }
   
+  public JSONObject getAvExtraConfig()
+  {
+    return ((LiveConfigServiceInterface)this.val$serviceAccessor.getService(LiveConfigServiceInterface.class)).getJson("av_param");
+  }
+  
   public BeautyFilterServiceInterface getBeautyFilterService()
   {
     return (BeautyFilterServiceInterface)this.val$serviceAccessor.getService(BeautyFilterServiceInterface.class);
@@ -72,6 +78,11 @@ class AVMediaServiceBuilder$1
     return (DownLoaderInterface)this.val$serviceAccessor.getService(DownLoaderInterface.class);
   }
   
+  public HostProxyInterface getHostProxyInterface()
+  {
+    return (HostProxyInterface)this.val$serviceAccessor.getService(HostProxyInterface.class);
+  }
+  
   public HttpInterface getHttp()
   {
     return (HttpInterface)this.val$serviceAccessor.getService(HttpInterface.class);
@@ -89,12 +100,11 @@ class AVMediaServiceBuilder$1
   
   public String getResolution()
   {
-    String str2 = ((LiveConfigServiceInterface)this.val$serviceAccessor.getService(LiveConfigServiceInterface.class)).getString("anchor_resolution", "");
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
+    String str = ((LiveConfigServiceInterface)this.val$serviceAccessor.getService(LiveConfigServiceInterface.class)).getString("anchor_resolution", "");
+    if (str == null) {
+      return "";
     }
-    return str1;
+    return str;
   }
   
   public int getShield()
@@ -109,7 +119,7 @@ class AVMediaServiceBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.builder.avmedia.AVMediaServiceBuilder.1
  * JD-Core Version:    0.7.0.1
  */

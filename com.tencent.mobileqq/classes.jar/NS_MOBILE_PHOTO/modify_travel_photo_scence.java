@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class modify_travel_photo_scence
   extends JceStruct
 {
-  static int cache_opetype = 0;
+  static int cache_opetype;
   static stPhotoPoiArea cache_poi = new stPhotoPoiArea();
   public int opetype;
   public stPhotoPoiArea poi;
@@ -38,7 +38,7 @@ public final class modify_travel_photo_scence
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.modify_travel_photo_scence
  * JD-Core Version:    0.7.0.1
  */

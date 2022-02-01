@@ -28,22 +28,22 @@ public class UrlFetcher
   
   private void performFetchUrl(UploadJobContext paramUploadJobContext, int paramInt)
   {
-    if (paramUploadJobContext == null) {}
-    long l;
-    do
-    {
+    if (paramUploadJobContext == null) {
       return;
-      l = paramUploadJobContext.dbId();
-    } while (paramUploadJobContext.isCanceled());
+    }
+    long l = paramUploadJobContext.dbId();
+    if (paramUploadJobContext.isCanceled()) {
+      return;
+    }
     paramUploadJobContext.statisticsTimes().onFetchUrlStart();
     WeiyunTransmissionGlobal.HostInterface localHostInterface = WeiyunTransmissionGlobal.getInstance().getHostInterface();
     UploadFile localUploadFile = paramUploadJobContext.file().clone();
-    if (!TextUtils.isEmpty(paramUploadJobContext.file().compressedPath)) {}
-    for (paramUploadJobContext = UploadType.EXIST_COVER;; paramUploadJobContext = UploadType.values()[paramInt])
-    {
-      localHostInterface.fetchUploadServerInfo(localUploadFile, paramUploadJobContext, new UrlFetcher.1(this, l));
-      return;
+    if (!TextUtils.isEmpty(paramUploadJobContext.file().compressedPath)) {
+      paramUploadJobContext = UploadType.EXIST_COVER;
+    } else {
+      paramUploadJobContext = UploadType.values()[paramInt];
     }
+    localHostInterface.fetchUploadServerInfo(localUploadFile, paramUploadJobContext, new UrlFetcher.1(this, l));
   }
   
   public void cancelAll()
@@ -71,7 +71,7 @@ public class UrlFetcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.transmission.upload.processor.UrlFetcher
  * JD-Core Version:    0.7.0.1
  */

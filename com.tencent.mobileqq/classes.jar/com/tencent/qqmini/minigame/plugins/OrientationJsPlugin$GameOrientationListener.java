@@ -16,53 +16,45 @@ public class OrientationJsPlugin$GameOrientationListener
   
   public void onOrientationChanged(int paramInt)
   {
-    if (paramInt == -1) {}
-    for (;;)
-    {
+    if (paramInt == -1) {
       return;
-      String str = null;
-      label24:
-      JSONObject localJSONObject;
-      if ((paramInt > 350) || (paramInt < 10))
-      {
-        str = "portrait";
-        if ((str == null) || (str.equals(OrientationJsPlugin.access$000(this.this$0)))) {
-          continue;
+    }
+    String str = null;
+    if ((paramInt <= 350) && (paramInt >= 10))
+    {
+      if ((paramInt > 80) && (paramInt < 100)) {
+        str = "landscapeReverse";
+      } else if ((paramInt <= 170) || (paramInt >= 190)) {
+        if ((paramInt > 260) && (paramInt < 280)) {
+          str = "landscape";
         }
-        OrientationJsPlugin.access$002(this.this$0, str);
-        localJSONObject = new JSONObject();
       }
+    }
+    else {
+      str = "portrait";
+    }
+    if ((str != null) && (!str.equals(OrientationJsPlugin.access$000(this.this$0))))
+    {
+      OrientationJsPlugin.access$002(this.this$0, str);
+      JSONObject localJSONObject = new JSONObject();
       try
       {
         localJSONObject.put("value", str);
-        OrientationJsPlugin.access$100(this.this$0, "onDeviceOrientationChange", localJSONObject.toString());
-        return;
-        if ((paramInt > 80) && (paramInt < 100))
-        {
-          str = "landscapeReverse";
-          break label24;
-        }
-        if ((paramInt > 170) && (paramInt < 190)) {
-          break label24;
-        }
-        if ((paramInt <= 260) || (paramInt >= 280)) {
-          continue;
-        }
-        str = "landscape";
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
-        {
-          QMLog.e("OrientationJsPlugin", "OrientationChange call back error:" + localJSONException.toString());
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("OrientationChange call back error:");
+        localStringBuilder.append(localJSONException.toString());
+        QMLog.e("OrientationJsPlugin", localStringBuilder.toString());
       }
+      OrientationJsPlugin.access$100(this.this$0, "onDeviceOrientationChange", localJSONObject.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.OrientationJsPlugin.GameOrientationListener
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ import com.tencent.mobileqq.utils.AudioUtil;
 public class CountDownView
   extends ImageView
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838992, 2130838991, 2130838990 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130838752, 2130838751, 2130838750 };
   private int jdField_a_of_type_Int = 0;
   private CountDownView.CountDownFinishedListener jdField_a_of_type_ComTencentMobileqqActivityBlessCountDownView$CountDownFinishedListener;
   private Runnable jdField_a_of_type_JavaLangRunnable = new CountDownView.1(this);
@@ -33,7 +33,7 @@ public class CountDownView
   private void b()
   {
     AudioUtil.a();
-    AudioUtil.a(2131230746, 1, null, null);
+    AudioUtil.a(2131230750, 1, null, null);
   }
   
   public void a()
@@ -55,7 +55,7 @@ public class CountDownView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.CountDownView
  * JD-Core Version:    0.7.0.1
  */

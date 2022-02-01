@@ -19,16 +19,16 @@ class UploaderProxyImpl$1$1
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    QLog.e("UploaderProxyImpl", 1, "httpConnect err url:" + this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_JavaLangString, paramIOException);
+    paramCall = new StringBuilder();
+    paramCall.append("httpConnect err url:");
+    paramCall.append(this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_JavaLangString);
+    QLog.e("UploaderProxyImpl", 1, paramCall.toString(), paramIOException);
     if ("Canceled".equals(paramIOException.getLocalizedMessage())) {
       this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadFailed(-5, "download error:cancel");
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.this$0.a.remove(this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_JavaLangString);
-      return;
+    } else {
       this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyUploaderProxy$UploadListener.onUploadFailed(HttpUtil.a(paramIOException, -1), "request error:network");
     }
+    this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.this$0.a.remove(this.jdField_a_of_type_ComTencentQqminiProxyimplUploaderProxyImpl$1.jdField_a_of_type_JavaLangString);
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
@@ -45,7 +45,7 @@ class UploaderProxyImpl$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.UploaderProxyImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -23,10 +23,17 @@ class QzoneBackupConfig
   
   private void addConfigItem(Map<String, String> paramMap, String paramString1, String paramString2)
   {
-    if ((paramMap == null) || (paramString1 == null) || (paramString2 == null)) {
-      return;
+    if ((paramMap != null) && (paramString1 != null))
+    {
+      if (paramString2 == null) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("||");
+      localStringBuilder.append(paramString2);
+      paramMap.put(localStringBuilder.toString(), QzoneConfig.getInstance().getConfig(paramString1, paramString2));
     }
-    paramMap.put(paramString1 + "||" + paramString2, QzoneConfig.getInstance().getConfig(paramString1, paramString2));
   }
   
   private void initConfig()
@@ -53,7 +60,7 @@ class QzoneBackupConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.reuse.QzoneBackupConfig
  * JD-Core Version:    0.7.0.1
  */

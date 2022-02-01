@@ -15,20 +15,20 @@ class AddAccountActivity$8
   
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramCharSequence.length() > 0) {
-      if (this.a.a != null) {
-        this.a.a.setVisibility(0);
+    if (paramCharSequence.length() > 0)
+    {
+      if (this.a.mDelIcon != null) {
+        this.a.mDelIcon.setVisibility(0);
       }
     }
-    while ((this.a.a == null) || (!this.a.a.isShown())) {
-      return;
+    else if ((this.a.mDelIcon != null) && (this.a.mDelIcon.isShown())) {
+      this.a.mDelIcon.setVisibility(8);
     }
-    this.a.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddAccountActivity.8
  * JD-Core Version:    0.7.0.1
  */

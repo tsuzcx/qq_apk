@@ -41,22 +41,24 @@ public class VideoThumbProviderManager
     this.mHandler = new Handler(localHandlerThread.getLooper());
     int j = MAX_SIZE;
     int i = j;
-    if (!TextUtils.isEmpty("")) {}
-    try
-    {
-      i = Integer.parseInt("");
-      Logger.i("VideoThumbProviderManager", "maxSizeStr:" + "" + ",maxSize:" + i);
-      this.mLruCache = new VideoThumbProviderManager.VideoThumbLruCache(this, i);
-      return;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      for (;;)
+    if (!TextUtils.isEmpty("")) {
+      try
+      {
+        i = Integer.parseInt("");
+      }
+      catch (NumberFormatException localNumberFormatException)
       {
         Logger.e("VideoThumbProviderManager", "constructor", localNumberFormatException);
         i = j;
       }
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("maxSizeStr:");
+    localStringBuilder.append("");
+    localStringBuilder.append(",maxSize:");
+    localStringBuilder.append(i);
+    Logger.i("VideoThumbProviderManager", localStringBuilder.toString());
+    this.mLruCache = new VideoThumbProviderManager.VideoThumbLruCache(this, i);
   }
   
   private VideoThumbAssetProvider createProvider(TAVSource paramTAVSource, String paramString1, String paramString2)
@@ -88,15 +90,16 @@ public class VideoThumbProviderManager
   
   public static VideoThumbProviderManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new VideoThumbProviderManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new VideoThumbProviderManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public static void initLruCacheSize(int paramInt)
@@ -126,17 +129,24 @@ public class VideoThumbProviderManager
   
   private void resetProvider(TAVSource paramTAVSource, String paramString1, String paramString2)
   {
-    Logger.i("VideoThumbProviderManager", "resetProvider start:" + paramString1);
-    ArrayList localArrayList = new ArrayList();
-    if (findVideoThumbAssetProviderByAssetPath(paramString1, this.mVideoThumbAssetProviders) != null) {
-      Logger.i("VideoThumbProviderManager", "resetProvider find:" + paramString1);
-    }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("resetProvider start:");
+    ((StringBuilder)localObject).append(paramString1);
+    Logger.i("VideoThumbProviderManager", ((StringBuilder)localObject).toString());
+    localObject = new ArrayList();
+    if (findVideoThumbAssetProviderByAssetPath(paramString1, this.mVideoThumbAssetProviders) != null)
     {
-      localArrayList.add(paramString1);
-      releaseGroup(this.mVideoThumbAssetProviders, paramString2, localArrayList);
-      return;
-      Logger.i("VideoThumbProviderManager", "resetProvider can't find:" + paramString1);
+      paramTAVSource = new StringBuilder();
+      paramTAVSource.append("resetProvider find:");
+      paramTAVSource.append(paramString1);
+      Logger.i("VideoThumbProviderManager", paramTAVSource.toString());
+    }
+    else
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("resetProvider can't find:");
+      localStringBuilder.append(paramString1);
+      Logger.i("VideoThumbProviderManager", localStringBuilder.toString());
       if (paramTAVSource == null)
       {
         Logger.e("VideoThumbProviderManager", "assetPath is null");
@@ -150,6 +160,8 @@ public class VideoThumbProviderManager
       }
       this.mVideoThumbAssetProviders.add(paramTAVSource);
     }
+    ((ArrayList)localObject).add(paramString1);
+    releaseGroup(this.mVideoThumbAssetProviders, paramString2, (List)localObject);
   }
   
   private void resetProvider(MediaResourceModel paramMediaResourceModel, String paramString)
@@ -162,47 +174,58 @@ public class VideoThumbProviderManager
     Logger.i("VideoThumbProviderManager", "resetProvider start");
     ArrayList localArrayList = new ArrayList();
     paramMediaResourceModel = paramMediaResourceModel.getVideos().iterator();
-    if (paramMediaResourceModel.hasNext())
+    while (paramMediaResourceModel.hasNext())
     {
-      VideoResourceModel localVideoResourceModel = ((MediaClipModel)paramMediaResourceModel.next()).getResource();
-      String str = localVideoResourceModel.getPath();
+      Object localObject1 = ((MediaClipModel)paramMediaResourceModel.next()).getResource();
+      String str = ((VideoResourceModel)localObject1).getPath();
       if (findVideoThumbAssetProviderByAssetPath(str, this.mVideoThumbAssetProviders) == null)
       {
-        Logger.i("VideoThumbProviderManager", "resetProvider can't find:" + str);
-        VideoThumbAssetProvider localVideoThumbAssetProvider = new VideoThumbAssetProvider(paramString);
-        localVideoThumbAssetProvider.init(localVideoResourceModel, this.mWidth, this.mHeight, this.mLruCache, this.mRunnableHandler);
-        localVideoThumbAssetProvider.setThumbListener(this.mSubVideoThumbListener);
-        localVideoThumbAssetProvider.setDefaultBitmap(this.mDefaultBitmap);
-        this.mVideoThumbAssetProviders.add(localVideoThumbAssetProvider);
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("resetProvider can't find:");
+        ((StringBuilder)localObject2).append(str);
+        Logger.i("VideoThumbProviderManager", ((StringBuilder)localObject2).toString());
+        localObject2 = new VideoThumbAssetProvider(paramString);
+        ((VideoThumbAssetProvider)localObject2).init((VideoResourceModel)localObject1, this.mWidth, this.mHeight, this.mLruCache, this.mRunnableHandler);
+        ((VideoThumbAssetProvider)localObject2).setThumbListener(this.mSubVideoThumbListener);
+        ((VideoThumbAssetProvider)localObject2).setDefaultBitmap(this.mDefaultBitmap);
+        this.mVideoThumbAssetProviders.add(localObject2);
       }
-      for (;;)
+      else
       {
-        localArrayList.add(str);
-        break;
-        Logger.i("VideoThumbProviderManager", "resetProvider find:" + str);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("resetProvider find:");
+        ((StringBuilder)localObject1).append(str);
+        Logger.i("VideoThumbProviderManager", ((StringBuilder)localObject1).toString());
       }
+      localArrayList.add(str);
     }
     releaseGroup(this.mVideoThumbAssetProviders, paramString, localArrayList);
   }
   
   public boolean addProvider(TAVSource paramTAVSource, String paramString)
   {
-    VideoThumbAssetProvider localVideoThumbAssetProvider = findVideoThumbAssetProviderByAssetPath(paramString, this.mVideoThumbAssetProviders);
-    Logger.i("VideoThumbProviderManager", "addProvider:" + paramString);
-    if (localVideoThumbAssetProvider == null)
+    Object localObject = findVideoThumbAssetProviderByAssetPath(paramString, this.mVideoThumbAssetProviders);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addProvider:");
+    localStringBuilder.append(paramString);
+    Logger.i("VideoThumbProviderManager", localStringBuilder.toString());
+    boolean bool = false;
+    if (localObject == null)
     {
-      Logger.i("VideoThumbProviderManager", "addProvider can't find:" + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("addProvider can't find:");
+      ((StringBuilder)localObject).append(paramString);
+      Logger.i("VideoThumbProviderManager", ((StringBuilder)localObject).toString());
       paramTAVSource = createProvider(paramTAVSource, paramString, "");
-      if (paramTAVSource == null) {
+      if (paramTAVSource == null)
+      {
         Logger.e("VideoThumbProviderManager", "newProvider is null");
+        return false;
       }
+      bool = true;
+      this.mVideoThumbAssetProviders.add(paramTAVSource);
     }
-    else
-    {
-      return false;
-    }
-    this.mVideoThumbAssetProviders.add(paramTAVSource);
-    return true;
+    return bool;
   }
   
   public boolean checkProviderIsExist(String paramString)
@@ -228,7 +251,7 @@ public class VideoThumbProviderManager
   public long getCacheSize()
   {
     Iterator localIterator = this.mVideoThumbAssetProviders.iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((VideoThumbAssetProvider)localIterator.next()).getCache() + l) {}
+    for (long l = 0L; localIterator.hasNext(); l += ((VideoThumbAssetProvider)localIterator.next()).getCache()) {}
     return l;
   }
   
@@ -236,7 +259,12 @@ public class VideoThumbProviderManager
   {
     this.mWidth = paramInt1;
     this.mHeight = paramInt2;
-    Logger.i("VideoThumbProviderManager", "mWidth:" + this.mWidth + "mHeight:" + this.mHeight);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mWidth:");
+    localStringBuilder.append(this.mWidth);
+    localStringBuilder.append("mHeight:");
+    localStringBuilder.append(this.mHeight);
+    Logger.i("VideoThumbProviderManager", localStringBuilder.toString());
   }
   
   public void pause()
@@ -260,19 +288,26 @@ public class VideoThumbProviderManager
   public void release(String paramString)
   {
     releaseGroup(this.mVideoThumbAssetProviders, paramString, new ArrayList());
-    Logger.i("VideoThumbProviderManager", "release:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("release:");
+    localStringBuilder.append(paramString);
+    Logger.i("VideoThumbProviderManager", localStringBuilder.toString());
   }
   
   public void releaseBitmapCacheByKey(@NonNull BaseVideoThumbAssetCache.LRUKey paramLRUKey)
   {
-    if (this.mLruCache != null) {
-      this.mLruCache.remove(paramLRUKey);
+    LruCache localLruCache = this.mLruCache;
+    if (localLruCache != null) {
+      localLruCache.remove(paramLRUKey);
     }
   }
   
   public void releaseProviderByAssetPath(String paramString)
   {
-    Logger.i("VideoThumbProviderManager", "releaseProviderByAssetPath:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("releaseProviderByAssetPath:");
+    localStringBuilder.append(paramString);
+    Logger.i("VideoThumbProviderManager", localStringBuilder.toString());
     paramString = findVideoThumbAssetProviderByAssetPath(paramString, this.mVideoThumbAssetProviders);
     if (paramString != null)
     {
@@ -317,12 +352,15 @@ public class VideoThumbProviderManager
   public void unRegisterListener(VideoThumbListener paramVideoThumbListener)
   {
     boolean bool = this.mVideoThumbListeners.remove(paramVideoThumbListener);
-    Logger.i("VideoThumbProviderManager", "unRegisterListener removeSuccess:" + bool);
+    paramVideoThumbListener = new StringBuilder();
+    paramVideoThumbListener.append("unRegisterListener removeSuccess:");
+    paramVideoThumbListener.append(bool);
+    Logger.i("VideoThumbProviderManager", paramVideoThumbListener.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbProviderManager
  * JD-Core Version:    0.7.0.1
  */

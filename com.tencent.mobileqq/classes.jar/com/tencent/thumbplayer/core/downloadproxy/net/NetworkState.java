@@ -14,115 +14,109 @@ public class NetworkState
     this.mConnected = paramBoolean1;
     this.mType = paramInt1;
     this.mSubtype = paramInt2;
-    String str = paramString1;
+    String str2 = "";
+    String str1 = paramString1;
     if (paramString1 == null) {
-      str = "";
+      str1 = "";
     }
-    this.mNetworkIdentifier = str;
+    this.mNetworkIdentifier = str1;
     this.mIsPrivateDnsActive = paramBoolean2;
-    paramString1 = paramString2;
     if (paramString2 == null) {
-      paramString1 = "";
+      paramString2 = str2;
     }
-    this.mPrivateDnsServerName = paramString1;
+    this.mPrivateDnsServerName = paramString2;
   }
   
   @NetworkConstants.ConnectionType
   public static int convertToConnectionType(int paramInt1, int paramInt2)
   {
-    int j = 5;
-    int i = j;
-    switch (paramInt1)
+    int i = 5;
+    if (paramInt1 != 0)
     {
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 8: 
-    default: 
-      i = 0;
-    case 6: 
-      return i;
-    case 9: 
-      return 1;
-    case 1: 
+      if (paramInt1 != 1)
+      {
+        paramInt2 = i;
+        if (paramInt1 != 6)
+        {
+          paramInt2 = 7;
+          if (paramInt1 != 7)
+          {
+            if (paramInt1 != 9) {
+              return 0;
+            }
+            return 1;
+          }
+        }
+        return paramInt2;
+      }
       return 2;
-    case 7: 
-      return 7;
     }
-    i = j;
     switch (paramInt2)
     {
-    case 13: 
     default: 
       return 0;
-    case 1: 
-    case 2: 
-    case 4: 
-    case 7: 
-    case 11: 
-      return 3;
+    case 13: 
+      return 5;
+    case 3: 
+    case 5: 
+    case 6: 
+    case 8: 
+    case 9: 
+    case 10: 
+    case 12: 
+    case 14: 
+    case 15: 
+      return 4;
     }
-    return 4;
+    return 3;
   }
   
   @NetworkConstants.ConnectionSubType
   public int getConnectionSubtype()
   {
-    int i = 0;
-    if (!isConnected())
-    {
-      i = 1;
-      return i;
+    if (!isConnected()) {
+      return 1;
     }
-    switch (getNetworkType())
+    int i = getNetworkType();
+    if (i != 0)
     {
-    case 1: 
-    case 6: 
-    case 7: 
-    case 9: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 5: 
-    case 8: 
-    default: 
+      if ((i != 1) && (i != 6) && (i != 7) && (i != 9)) {}
       return 0;
     }
     switch (getNetworkSubType())
     {
     default: 
       return 0;
-    case 1: 
-      return 7;
-    case 2: 
-      return 8;
-    case 4: 
-      return 5;
-    case 7: 
-      return 6;
-    case 11: 
-      return 4;
-    case 3: 
-      return 9;
-    case 5: 
-      return 10;
-    case 6: 
-      return 11;
-    case 8: 
-      return 14;
-    case 9: 
-      return 15;
-    case 10: 
-      return 12;
-    case 12: 
-      return 13;
-    case 14: 
-      return 16;
     case 15: 
       return 17;
+    case 14: 
+      return 16;
+    case 13: 
+      return 18;
+    case 12: 
+      return 13;
+    case 11: 
+      return 4;
+    case 10: 
+      return 12;
+    case 9: 
+      return 15;
+    case 8: 
+      return 14;
+    case 7: 
+      return 6;
+    case 6: 
+      return 11;
+    case 5: 
+      return 10;
+    case 4: 
+      return 5;
+    case 3: 
+      return 9;
+    case 2: 
+      return 8;
     }
-    return 18;
+    return 7;
   }
   
   @NetworkConstants.ConnectionType
@@ -166,7 +160,7 @@ public class NetworkState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.net.NetworkState
  * JD-Core Version:    0.7.0.1
  */

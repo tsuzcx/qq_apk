@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.adapter;
+package com.tencent.biz.pubaccount.accountdetail.adapter;
 
 public abstract interface AccountDetailBaseAdapter$PrefetchListener
 {
@@ -6,7 +6,7 @@ public abstract interface AccountDetailBaseAdapter$PrefetchListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter.PrefetchListener
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.adapter.AccountDetailBaseAdapter.PrefetchListener
  * JD-Core Version:    0.7.0.1
  */

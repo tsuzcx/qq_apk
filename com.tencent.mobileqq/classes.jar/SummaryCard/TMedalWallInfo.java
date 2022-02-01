@@ -16,16 +16,6 @@ public final class TMedalWallInfo
   public int iUpgradeCount = 0;
   public String strPromptParams = "";
   
-  static
-  {
-    if (!TMedalWallInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public TMedalWallInfo() {}
   
   public TMedalWallInfo(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
@@ -44,18 +34,17 @@ public final class TMedalWallInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -80,13 +69,32 @@ public final class TMedalWallInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (TMedalWallInfo)paramObject;
-    } while ((!JceUtil.equals(this.iOpenFlag, paramObject.iOpenFlag)) || (!JceUtil.equals(this.iMedalCount, paramObject.iMedalCount)) || (!JceUtil.equals(this.iNewCount, paramObject.iNewCount)) || (!JceUtil.equals(this.iUpgradeCount, paramObject.iUpgradeCount)) || (!JceUtil.equals(this.strPromptParams, paramObject.strPromptParams)));
-    return true;
+    }
+    paramObject = (TMedalWallInfo)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.iOpenFlag, paramObject.iOpenFlag))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.iMedalCount, paramObject.iMedalCount))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.iNewCount, paramObject.iNewCount))
+        {
+          bool1 = bool2;
+          if (JceUtil.equals(this.iUpgradeCount, paramObject.iUpgradeCount))
+          {
+            bool1 = bool2;
+            if (JceUtil.equals(this.strPromptParams, paramObject.strPromptParams)) {
+              bool1 = true;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -172,8 +180,9 @@ public final class TMedalWallInfo
     paramJceOutputStream.write(this.iMedalCount, 1);
     paramJceOutputStream.write(this.iNewCount, 2);
     paramJceOutputStream.write(this.iUpgradeCount, 3);
-    if (this.strPromptParams != null) {
-      paramJceOutputStream.write(this.strPromptParams, 4);
+    String str = this.strPromptParams;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }

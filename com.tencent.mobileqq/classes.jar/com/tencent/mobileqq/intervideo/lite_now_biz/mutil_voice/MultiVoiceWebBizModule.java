@@ -15,6 +15,8 @@ import com.tencent.mobileqq.intervideo.lite_now_biz.js.NowQbizApiJs;
 import com.tencent.mobileqq.intervideo.lite_now_biz.js.NowUIJs;
 import com.tencent.mobileqq.intervideo.lite_now_biz.js.SsoJavascriptInterface;
 import com.tencent.mobileqq.intervideo.lite_now_biz.module.NowCustomWebModule;
+import com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.event.MultiVoicePageEvent;
+import com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.js.MultiVoiceAppJs;
 import com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.datareport.OnGetRoomExtInfoListener;
 import com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.LiteLiveJsProvider;
 import com.tencent.mobileqq.utils.StringUtil;
@@ -25,12 +27,25 @@ public class MultiVoiceWebBizModule
   extends NowCustomWebModule
   implements OnGetRoomExtInfoListener
 {
-  Observer<AudioChangeEvent> jdField_a_of_type_AndroidxLifecycleObserver = new MultiVoiceWebBizModule.1(this);
+  private Observer<AudioChangeEvent> jdField_a_of_type_AndroidxLifecycleObserver = new MultiVoiceWebBizModule.1(this);
   private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Observer<MultiVoicePageEvent> b = new MultiVoiceWebBizModule.2(this);
   
   public MultiVoiceWebBizModule()
   {
     c();
+  }
+  
+  private void h()
+  {
+    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.getModuleEvent().observe(AudioChangeEvent.class, this.jdField_a_of_type_AndroidxLifecycleObserver);
+    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.getModuleEvent().observe(MultiVoicePageEvent.class, this.b);
+  }
+  
+  private void i()
+  {
+    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.getModuleEvent().removeObserver(AudioChangeEvent.class, this.jdField_a_of_type_AndroidxLifecycleObserver);
+    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.getModuleEvent().removeObserver(MultiVoicePageEvent.class, this.b);
   }
   
   public RoomExtInfo a()
@@ -40,38 +55,41 @@ public class MultiVoiceWebBizModule
   
   public String a()
   {
-    return "multi_voice";
+    return "od";
   }
   
   public String a(String paramString)
   {
-    String str2 = Build.VERSION.RELEASE;
+    String str = Build.VERSION.RELEASE;
     int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
-    String str1;
-    if (!StringUtil.a(paramString))
-    {
-      str1 = paramString;
-      if (paramString.contains("NowSDK/")) {}
+    if ((!StringUtil.a(paramString)) && (paramString.contains("NowSDK/"))) {
+      return paramString;
     }
-    else
-    {
-      str1 = paramString + " NowLive/" + 10305 + "_" + str2 + " QQ/8.4.8.1522 NetType/" + i + " NowSDK/18_10.20";
-    }
-    return str1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" NowLive/");
+    localStringBuilder.append(10800);
+    localStringBuilder.append("_");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" QQ/8.4.8.1522 NetType/");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" NowSDK/18_10.20");
+    return localStringBuilder.toString();
   }
   
-  public void a()
+  protected void a()
   {
     super.a();
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new SsoJavascriptInterface(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new NowQQApiJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
+    this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new MultiVoiceAppJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new NowAppJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new NowUIJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter, this.roomBizContext));
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new NowQbizApiJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new NowEventJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter, this.jdField_a_of_type_JavaUtilMap));
   }
   
-  public boolean a()
+  protected boolean a()
   {
     return false;
   }
@@ -81,7 +99,7 @@ public class MultiVoiceWebBizModule
     return "https://now.qq.com/qq/qun-jiaoyou/index.html";
   }
   
-  public void b()
+  protected void b()
   {
     MultiVoiceWebCookieManager.a().a(this.jdField_a_of_type_JavaLangString);
     MultiVoiceWebCookieManager.a().a("https://yutang.qq.com/");
@@ -126,18 +144,18 @@ public class MultiVoiceWebBizModule
   public void onEnterRoom(boolean paramBoolean)
   {
     super.onEnterRoom(paramBoolean);
-    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.getModuleEvent().observe(AudioChangeEvent.class, this.jdField_a_of_type_AndroidxLifecycleObserver);
+    h();
   }
   
   public void onExitRoom(boolean paramBoolean)
   {
     super.onExitRoom(paramBoolean);
-    this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter.getModuleEvent().removeObserver(AudioChangeEvent.class, this.jdField_a_of_type_AndroidxLifecycleObserver);
+    i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.mutil_voice.MultiVoiceWebBizModule
  * JD-Core Version:    0.7.0.1
  */

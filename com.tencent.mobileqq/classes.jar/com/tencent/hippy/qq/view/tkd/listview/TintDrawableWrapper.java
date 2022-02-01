@@ -37,37 +37,36 @@ public class TintDrawableWrapper
   
   private boolean updateTint(int[] paramArrayOfInt)
   {
-    if (this.mTintStateList != null)
+    ColorStateList localColorStateList = this.mTintStateList;
+    if (localColorStateList != null)
     {
-      int i = this.mTintStateList.getColorForState(paramArrayOfInt, this.mCurrentColor);
-      if (i != this.mCurrentColor) {
-        if (i != 0)
-        {
-          setColorFilter(i, this.mTintMode);
-          this.mCurrentColor = i;
-        }
-      }
-    }
-    while (this.mTint != 0) {
-      for (;;)
+      int i = localColorStateList.getColorForState(paramArrayOfInt, this.mCurrentColor);
+      if (i != this.mCurrentColor)
       {
+        if (i != 0) {
+          setColorFilter(i, this.mTintMode);
+        } else {
+          clearColorFilter();
+        }
+        this.mCurrentColor = i;
         return true;
-        clearColorFilter();
       }
     }
-    return false;
+    return this.mTint != 0;
   }
   
   public void clearColorFilter()
   {
-    if (this.mTint != 0) {
-      super.setColorFilter(this.mTint, this.mTintMode);
+    int i = this.mTint;
+    if (i != 0) {
+      super.setColorFilter(i, this.mTintMode);
     }
   }
   
   public boolean isStateful()
   {
-    return ((this.mTintStateList != null) && (this.mTintStateList.isStateful())) || (super.isStateful());
+    ColorStateList localColorStateList = this.mTintStateList;
+    return ((localColorStateList != null) && (localColorStateList.isStateful())) || (super.isStateful());
   }
   
   public void setColorFilter(int paramInt, PorterDuff.Mode paramMode)
@@ -91,10 +90,14 @@ public class TintDrawableWrapper
   
   public void setColorFilter(ColorFilter paramColorFilter)
   {
-    if ((paramColorFilter == null) && (this.mTint != 0))
+    if (paramColorFilter == null)
     {
-      super.setColorFilter(this.mTint, this.mTintMode);
-      return;
+      int i = this.mTint;
+      if (i != 0)
+      {
+        super.setColorFilter(i, this.mTintMode);
+        return;
+      }
     }
     super.setColorFilter(paramColorFilter);
   }
@@ -107,7 +110,7 @@ public class TintDrawableWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.TintDrawableWrapper
  * JD-Core Version:    0.7.0.1
  */

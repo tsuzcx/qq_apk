@@ -19,12 +19,25 @@ class LiteRoomWebModule$1
   
   public void callJsFunctionByNative(String paramString, JSONObject paramJSONObject, JsBizAdapter.ValueCallback paramValueCallback)
   {
-    if (paramJSONObject != null) {}
-    for (paramString = "javascript:(" + paramString + "(" + paramJSONObject.toString() + "))";; paramString = "javascript:" + paramString + "()")
+    if (paramJSONObject != null)
     {
-      LiteRoomWebModule.access$000(this.this$0).evaluateJavascript(paramString, new LiteRoomWebModule.1.1(this, paramValueCallback));
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("javascript:(");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("(");
+      localStringBuilder.append(paramJSONObject.toString());
+      localStringBuilder.append("))");
+      paramString = localStringBuilder.toString();
     }
+    else
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("javascript:");
+      paramJSONObject.append(paramString);
+      paramJSONObject.append("()");
+      paramString = paramJSONObject.toString();
+    }
+    LiteRoomWebModule.access$000(this.this$0).evaluateJavascript(paramString, new LiteRoomWebModule.1.1(this, paramValueCallback));
   }
   
   public HttpInterface getHttp()
@@ -62,7 +75,7 @@ class LiteRoomWebModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteRoomWebModule.1
  * JD-Core Version:    0.7.0.1
  */

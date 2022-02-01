@@ -24,8 +24,14 @@ public class PluginTab
     if (this.mPluginTabHost == null) {
       return;
     }
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginTab addTabSpec:" + paramTabSpec.getTag() + ", " + paramString);
+    if (DebugHelper.sDebug)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PluginTab addTabSpec:");
+      localStringBuilder.append(paramTabSpec.getTag());
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramString);
+      DebugHelper.log("plugin_tag", localStringBuilder.toString());
     }
     paramTabSpec.setContent(this);
     this.mPluginTabHost.addPluginInfo(paramTabSpec.getTag(), paramString, paramIntent);
@@ -34,48 +40,65 @@ public class PluginTab
   
   public View createTabContent(String paramString)
   {
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginTab createTabContent:" + paramString);
-    }
-    PluginTabHost.TabSpecPluginInfo localTabSpecPluginInfo = this.mPluginTabHost.getPluginInfo(paramString);
-    if (localTabSpecPluginInfo != null)
+    if (DebugHelper.sDebug)
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("PluginTab createTabContent:");
+      ((StringBuilder)localObject1).append(paramString);
+      DebugHelper.log("plugin_tag", ((StringBuilder)localObject1).toString());
+    }
+    Object localObject2 = this.mPluginTabHost.getPluginInfo(paramString);
+    paramString = null;
+    Object localObject1 = null;
+    if (localObject2 != null)
+    {
+      paramString = (String)localObject1;
       try
       {
-        paramString = getBaseContext().getClassLoader();
-        IPluginActivity localIPluginActivity = (IPluginActivity)paramString.loadClass(localTabSpecPluginInfo.mActivityName).newInstance();
-        if (DebugHelper.sDebug) {
-          DebugHelper.log("plugin_tag", "PluginTab Activity:" + localIPluginActivity);
+        ClassLoader localClassLoader = getBaseContext().getClassLoader();
+        paramString = (String)localObject1;
+        IPluginActivity localIPluginActivity = (IPluginActivity)localClassLoader.loadClass(((PluginTabHost.TabSpecPluginInfo)localObject2).mActivityName).newInstance();
+        paramString = (String)localObject1;
+        if (DebugHelper.sDebug)
+        {
+          paramString = (String)localObject1;
+          StringBuilder localStringBuilder = new StringBuilder();
+          paramString = (String)localObject1;
+          localStringBuilder.append("PluginTab Activity:");
+          paramString = (String)localObject1;
+          localStringBuilder.append(localIPluginActivity);
+          paramString = (String)localObject1;
+          DebugHelper.log("plugin_tag", localStringBuilder.toString());
         }
-        localIPluginActivity.IInit(this.mPluginID, this.mApkFilePath, this, paramString, this.mPackageInfo, this.mUseSkinEngine, this.mPluginResourcesType);
+        paramString = (String)localObject1;
+        localIPluginActivity.IInit(this.mPluginID, this.mApkFilePath, this, localClassLoader, this.mPackageInfo, this.mUseSkinEngine, this.mPluginResourcesType);
+        paramString = (String)localObject1;
         localIPluginActivity.ISetIsTab();
+        paramString = (String)localObject1;
         localIPluginActivity.ISetParent(this);
-        localIPluginActivity.ISetIntent(localTabSpecPluginInfo.mIntent);
+        paramString = (String)localObject1;
+        localIPluginActivity.ISetIntent(((PluginTabHost.TabSpecPluginInfo)localObject2).mIntent);
+        paramString = (String)localObject1;
         localIPluginActivity.IOnSetTheme();
+        paramString = (String)localObject1;
         localIPluginActivity.IOnCreate(null);
-        paramString = localIPluginActivity.IGetContentView();
-        localException1.printStackTrace();
+        paramString = (String)localObject1;
+        localObject1 = localIPluginActivity.IGetContentView();
+        paramString = (String)localObject1;
+        ((PluginTabHost.TabSpecPluginInfo)localObject2).mActivity = localIPluginActivity;
+        return localObject1;
       }
-      catch (Exception localException1)
+      catch (Exception localException)
       {
-        try
-        {
-          localTabSpecPluginInfo.mActivity = localIPluginActivity;
-          return paramString;
-        }
-        catch (Exception localException2)
-        {
-          break label177;
-        }
-        localException1 = localException1;
-        paramString = null;
+        localException.printStackTrace();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.mPluginID);
+        ((StringBuilder)localObject2).append(" createTabContent fail");
+        QLog.e("plugin_tag", 1, ((StringBuilder)localObject2).toString(), localException);
+        PluginRuntime.handleCrash(localException, this.mPluginID, this);
       }
-      label177:
-      QLog.e("plugin_tag", 1, this.mPluginID + " createTabContent fail", localException1);
-      PluginRuntime.handleCrash(localException1, this.mPluginID, this);
-      return paramString;
     }
-    return null;
+    return paramString;
   }
   
   @Override
@@ -89,29 +112,27 @@ public class PluginTab
   
   protected IPluginActivity getActivityByTag(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
     if (paramString != null)
     {
-      localObject1 = localObject2;
-      if (this.mPluginTabHost != null)
+      PluginTabHost localPluginTabHost = this.mPluginTabHost;
+      if (localPluginTabHost != null)
       {
-        paramString = this.mPluginTabHost.getPluginInfo(paramString);
-        localObject1 = localObject2;
+        paramString = localPluginTabHost.getPluginInfo(paramString);
         if (paramString != null) {
-          localObject1 = paramString.mActivity;
+          return paramString.mActivity;
         }
       }
     }
-    return localObject1;
+    return null;
   }
   
   protected IPluginActivity getCurrentActivity()
   {
-    if (this.mPluginTabHost == null) {
+    PluginTabHost localPluginTabHost = this.mPluginTabHost;
+    if (localPluginTabHost == null) {
       return null;
     }
-    return getActivityByTag(this.mPluginTabHost.getCurrentTabTag());
+    return getActivityByTag(localPluginTabHost.getCurrentTabTag());
   }
   
   public PluginTabHost getTabHost()
@@ -139,38 +160,39 @@ public class PluginTab
       if (localObject != null)
       {
         localObject = this.mPluginTabHost.getPluginInfo(((TabHost.TabSpec)localObject).getTag());
-        if ((localObject == null) || (((PluginTabHost.TabSpecPluginInfo)localObject).mActivity == null)) {}
+        if (localObject != null) {
+          localObject = ((PluginTabHost.TabSpecPluginInfo)localObject).mActivity;
+        }
       }
       i += 1;
     }
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    if (this.mPluginTabHost == null) {}
-    for (;;)
-    {
+    Object localObject = this.mPluginTabHost;
+    if (localObject == null) {
       return;
-      int j = this.mPluginTabHost.getTabCount();
-      int i = 0;
-      while (i < j)
+    }
+    int j = ((PluginTabHost)localObject).getTabCount();
+    int i = 0;
+    while (i < j)
+    {
+      localObject = this.mPluginTabHost.getTabAt(i);
+      if (localObject != null)
       {
-        Object localObject = this.mPluginTabHost.getTabAt(i);
-        if (localObject != null)
-        {
-          localObject = this.mPluginTabHost.getPluginInfo(((TabHost.TabSpec)localObject).getTag());
-          if ((localObject != null) && (((PluginTabHost.TabSpecPluginInfo)localObject).mActivity != null)) {
-            ((PluginTabHost.TabSpecPluginInfo)localObject).mActivity.IOnDestroy();
-          }
+        localObject = this.mPluginTabHost.getPluginInfo(((TabHost.TabSpec)localObject).getTag());
+        if ((localObject != null) && (((PluginTabHost.TabSpecPluginInfo)localObject).mActivity != null)) {
+          ((PluginTabHost.TabSpecPluginInfo)localObject).mActivity.IOnDestroy();
         }
-        i += 1;
       }
+      i += 1;
     }
   }
   
-  public void onPause()
+  protected void onPause()
   {
     super.onPause();
     IPluginActivity localIPluginActivity = getCurrentActivity();
@@ -188,7 +210,7 @@ public class PluginTab
     }
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     IPluginActivity localIPluginActivity = getCurrentActivity();
@@ -197,7 +219,7 @@ public class PluginTab
     }
   }
   
-  public void onStart()
+  protected void onStart()
   {
     super.onStart();
     IPluginActivity localIPluginActivity = getCurrentActivity();
@@ -206,7 +228,7 @@ public class PluginTab
     }
   }
   
-  public void onStop()
+  protected void onStop()
   {
     super.onStop();
     IPluginActivity localIPluginActivity = getCurrentActivity();
@@ -217,20 +239,25 @@ public class PluginTab
   
   public void onTabChanged(String paramString)
   {
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginTab onTabChanged:" + paramString);
+    if (DebugHelper.sDebug)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("PluginTab onTabChanged:");
+      ((StringBuilder)localObject).append(paramString);
+      DebugHelper.log("plugin_tag", ((StringBuilder)localObject).toString());
     }
-    IPluginActivity localIPluginActivity = getActivityByTag(this.mPreTag);
-    if (localIPluginActivity != null) {
-      localIPluginActivity.IOnPause();
+    Object localObject = getActivityByTag(this.mPreTag);
+    if (localObject != null) {
+      ((IPluginActivity)localObject).IOnPause();
     }
     this.mPreTag = paramString;
-    localIPluginActivity = getCurrentActivity();
-    if (localIPluginActivity != null) {
-      localIPluginActivity.IOnResume();
+    localObject = getCurrentActivity();
+    if (localObject != null) {
+      ((IPluginActivity)localObject).IOnResume();
     }
-    if (this.mOnTabChangeListener != null) {
-      this.mOnTabChangeListener.onTabChanged(paramString);
+    localObject = this.mOnTabChangeListener;
+    if (localObject != null) {
+      ((TabHost.OnTabChangeListener)localObject).onTabChanged(paramString);
     }
   }
   
@@ -241,8 +268,12 @@ public class PluginTab
   
   protected final void setPluginTabHost(PluginTabHost paramPluginTabHost)
   {
-    if (DebugHelper.sDebug) {
-      DebugHelper.log("plugin_tag", "PluginTab setPluginTabHost:" + paramPluginTabHost);
+    if (DebugHelper.sDebug)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PluginTab setPluginTabHost:");
+      localStringBuilder.append(paramPluginTabHost);
+      DebugHelper.log("plugin_tag", localStringBuilder.toString());
     }
     this.mPluginTabHost = paramPluginTabHost;
     this.mPluginTabHost.setup();
@@ -251,7 +282,7 @@ public class PluginTab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginTab
  * JD-Core Version:    0.7.0.1
  */

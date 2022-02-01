@@ -10,14 +10,14 @@ class Leba$1
   
   public void run()
   {
-    ViewStub localViewStub = (ViewStub)this.this$0.a(2131378609);
-    ((CommonLoadingView)this.this$0.a(2131365136)).setVisibility(8);
+    ViewStub localViewStub = (ViewStub)this.this$0.a(2131378001);
+    ((CommonLoadingView)this.this$0.a(2131365016)).setVisibility(8);
     localViewStub.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.Leba.1
  * JD-Core Version:    0.7.0.1
  */

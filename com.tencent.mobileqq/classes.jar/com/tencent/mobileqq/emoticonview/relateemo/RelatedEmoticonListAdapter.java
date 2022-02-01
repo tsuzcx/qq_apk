@@ -19,29 +19,24 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.PopupWindow;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.EmotionUtils;
+import com.tencent.mobileqq.core.util.EmoticonPanelUtils;
 import com.tencent.mobileqq.emoticonview.EmoticonCallback;
 import com.tencent.mobileqq.emoticonview.EmoticonInfo;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
 import com.tencent.mobileqq.emoticonview.EmotionPanelData;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import com.tencent.mobileqq.emoticonview.api.IEmosmService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.qphone.base.util.MD5;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import mqq.app.AppRuntime;
 
 public class RelatedEmoticonListAdapter
   extends RecyclerView.Adapter<RelatedEmoticonListAdapter.VH>
@@ -52,7 +47,7 @@ public class RelatedEmoticonListAdapter
   public static final int ITEM_TYPE_HEADER = 1;
   public static final int ITEM_TYPE_NORMAL = 3;
   private static final String TAG = "RelatedEmoticonListAdapter";
-  protected QQAppInterface mApp;
+  protected BaseQQAppInterface mApp;
   protected EmoticonCallback mCallback;
   private int mColumnNum = 4;
   private Context mContext;
@@ -68,32 +63,18 @@ public class RelatedEmoticonListAdapter
   private PopupWindow mTipsPopupWindow;
   private int mWidthPixels = 0;
   
-  public RelatedEmoticonListAdapter(QQAppInterface paramQQAppInterface, Context paramContext, EmoticonCallback paramEmoticonCallback)
+  public RelatedEmoticonListAdapter(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, EmoticonCallback paramEmoticonCallback)
   {
     this.mContext = paramContext;
     this.mCallback = paramEmoticonCallback;
-    this.mApp = paramQQAppInterface;
+    this.mApp = paramBaseQQAppInterface;
     this.mWidthPixels = ViewUtils.a();
     this.mDensity = paramContext.getResources().getDisplayMetrics().density;
   }
   
   private void addToCustomEmotionForPic(String paramString)
   {
-    File localFile = AbsDownloader.getFile(paramString);
-    if ((localFile == null) || (!localFile.exists()))
-    {
-      QLog.e("RelatedEmoticonListAdapter", 4, " add custom fail file no exist");
-      return;
-    }
-    MessageForPic localMessageForPic = (MessageForPic)MessageRecordFactory.a(-2000);
-    localMessageForPic.path = localFile.getAbsolutePath();
-    localMessageForPic.md5 = HexUtil.bytes2HexStr(MD5.getFileMd5(localMessageForPic.path));
-    localMessageForPic.thumbMsgUrl = paramString;
-    localMessageForPic.bigMsgUrl = paramString;
-    localMessageForPic.imageType = 2000;
-    paramString = URLDrawableHelper.getDrawable(paramString);
-    paramString.setTag(localMessageForPic);
-    AIOGalleryUtils.a(this.mContext, this.mApp, paramString, this.mCurFriendUin, this.mContext.getResources().getDimensionPixelSize(2131299166), null, localMessageForPic.picExtraData);
+    ((IEmosmService)QRoute.api(IEmosmService.class)).addToCustomEmotionForPic(this.mContext, paramString, false);
   }
   
   private URLImageView getRelatedSearchEmoView(int paramInt)
@@ -101,82 +82,97 @@ public class RelatedEmoticonListAdapter
     if (QLog.isColorLevel()) {
       QLog.d("RelatedEmoticonListAdapter", 2, "getCameraEmoView");
     }
-    int i = (int)(this.mWidthPixels - 2.0F * this.mDensity * (this.mColumnNum - 1));
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(i / this.mColumnNum, i / this.mColumnNum);
+    float f1 = this.mWidthPixels;
+    float f2 = this.mDensity;
+    int i = this.mColumnNum;
+    int j = (int)(f1 - f2 * 2.0F * (i - 1));
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(j / i, j / i);
     if (paramInt == 0)
     {
       localLayoutParams.rightMargin = ((int)(this.mDensity * 1.0F));
       localLayoutParams.leftMargin = 0;
     }
-    for (;;)
+    else if (paramInt == this.mColumnNum - 1)
     {
-      URLImageView localURLImageView = new URLImageView(this.mContext);
-      localURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-      localURLImageView.setAdjustViewBounds(false);
-      localURLImageView.setLayoutParams(localLayoutParams);
-      localURLImageView.setContentDescription(this.mContext.getString(2131691326));
-      return localURLImageView;
-      if (paramInt == this.mColumnNum - 1)
-      {
-        localLayoutParams.leftMargin = ((int)(this.mDensity * 1.0F));
-        localLayoutParams.rightMargin = 0;
-        localLayoutParams.width = -1;
-      }
-      else
-      {
-        localLayoutParams.rightMargin = ((int)(this.mDensity * 1.0F));
-        localLayoutParams.leftMargin = ((int)(this.mDensity * 1.0F));
-      }
+      localLayoutParams.leftMargin = ((int)(this.mDensity * 1.0F));
+      localLayoutParams.rightMargin = 0;
+      localLayoutParams.width = -1;
     }
+    else
+    {
+      f1 = this.mDensity;
+      localLayoutParams.rightMargin = ((int)(f1 * 1.0F));
+      localLayoutParams.leftMargin = ((int)(f1 * 1.0F));
+    }
+    URLImageView localURLImageView = new URLImageView(this.mContext);
+    localURLImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    localURLImageView.setAdjustViewBounds(false);
+    localURLImageView.setLayoutParams(localLayoutParams);
+    localURLImageView.setContentDescription(this.mContext.getString(2131691247));
+    return localURLImageView;
   }
   
   private void send(EmoticonInfo paramEmoticonInfo)
   {
-    if ((this.mCallback != null) && (paramEmoticonInfo != null)) {
-      this.mCallback.send(paramEmoticonInfo);
+    EmoticonCallback localEmoticonCallback = this.mCallback;
+    if ((localEmoticonCallback != null) && (paramEmoticonInfo != null)) {
+      localEmoticonCallback.send(paramEmoticonInfo);
     }
   }
   
   private void updateUI(View paramView, EmotionPanelData paramEmotionPanelData, int paramInt)
   {
-    if ((paramView == null) || (!(paramEmotionPanelData instanceof RelatedEmoSearchEmoticonInfo))) {
-      QLog.e("RelatedEmoticonListAdapter", 1, "emotionInfo or contentView = null");
-    }
-    String str1;
-    String str2;
-    int i;
-    do
+    if ((paramView != null) && ((paramEmotionPanelData instanceof RelatedEmoSearchEmoticonInfo)))
     {
-      URLImageView localURLImageView;
-      EmoticonInfo localEmoticonInfo;
-      do
+      Object localObject = (RelatedEmoSearchEmoticonInfo)paramEmotionPanelData;
+      String str1 = ((RelatedEmoSearchEmoticonInfo)localObject).mResultItem.md5;
+      String str2 = ((RelatedEmoSearchEmoticonInfo)localObject).mResultItem.url;
+      int i = ((RelatedEmoSearchEmoticonInfo)localObject).mDefaultCount;
+      localObject = (URLImageView)paramView;
+      EmoticonInfo localEmoticonInfo = (EmoticonInfo)paramEmotionPanelData;
+      paramView.setTag(localEmoticonInfo);
+      paramView.setVisibility(0);
+      if ((QLog.isColorLevel()) && (!StringUtil.a(localEmoticonInfo.action)))
       {
+        paramView = new StringBuilder();
+        paramView.append("updateUI info = ");
+        paramView.append(localEmoticonInfo.action);
+        QLog.d("RelatedEmoticonListAdapter", 2, paramView.toString());
+      }
+      if (((URLImageView)localObject).getTag(2131380884) == paramEmotionPanelData) {
         return;
-        str1 = ((RelatedEmoSearchEmoticonInfo)paramEmotionPanelData).mResultItem.md5;
-        str2 = ((RelatedEmoSearchEmoticonInfo)paramEmotionPanelData).mResultItem.url;
-        i = ((RelatedEmoSearchEmoticonInfo)paramEmotionPanelData).mDefaultCount;
-        localURLImageView = (URLImageView)paramView;
-        localEmoticonInfo = (EmoticonInfo)paramEmotionPanelData;
-        paramView.setTag(localEmoticonInfo);
-        paramView.setVisibility(0);
-        if ((QLog.isColorLevel()) && (!StringUtil.a(localEmoticonInfo.action))) {
-          QLog.d("RelatedEmoticonListAdapter", 2, "updateUI info = " + localEmoticonInfo.action);
-        }
-      } while (localURLImageView.getTag(2131381651) == paramEmotionPanelData);
-      localURLImageView.setOnClickListener(new RelatedEmoticonListAdapter.1(this, localEmoticonInfo));
-      localURLImageView.setFocusable(true);
-      localURLImageView.setOnLongClickListener(this);
-      localURLImageView.setTag(2131381651, paramEmotionPanelData);
-      localURLImageView.setVisibility(0);
-      localURLImageView.setURLDrawableDownListener(null);
+      }
+      ((URLImageView)localObject).setOnClickListener(new RelatedEmoticonListAdapter.1(this, localEmoticonInfo));
+      ((URLImageView)localObject).setFocusable(true);
+      ((URLImageView)localObject).setOnLongClickListener(this);
+      ((URLImageView)localObject).setTag(2131380884, paramEmotionPanelData);
+      ((URLImageView)localObject).setVisibility(0);
+      ((URLImageView)localObject).setURLDrawableDownListener(null);
       paramView = localEmoticonInfo.getBigDrawable(this.mContext, this.mDensity);
       if ((paramView instanceof URLDrawable)) {
-        localURLImageView.setURLDrawableDownListener(new RelatedEmoticonListAdapter.2(this, localEmoticonInfo));
+        ((URLImageView)localObject).setURLDrawableDownListener(new RelatedEmoticonListAdapter.2(this, localEmoticonInfo));
       }
-      localURLImageView.setImageDrawable(paramView);
-      ReportController.b(this.mApp, "dc00898", "", this.mCurFriendUin, "0X800B116", "0X800B116", EmoticonUtils.getRelatedEmotionReportFromType(this.mCurType), 0, "", paramInt + 1 + "", str1, str2);
-    } while (i <= 0);
-    ReportController.b(this.mApp, "dc00898", "", this.mCurFriendUin, "0X800B11D", "0X800B11D", i, 0, "", paramInt + 1 + "", str1, str2);
+      ((URLImageView)localObject).setImageDrawable(paramView);
+      paramView = this.mApp;
+      paramEmotionPanelData = this.mCurFriendUin;
+      int j = EmoticonPanelUtils.a(this.mCurType);
+      localObject = new StringBuilder();
+      paramInt += 1;
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("");
+      ReportController.b(paramView, "dc00898", "", paramEmotionPanelData, "0X800B116", "0X800B116", j, 0, "", ((StringBuilder)localObject).toString(), str1, str2);
+      if (i > 0)
+      {
+        paramView = this.mApp;
+        paramEmotionPanelData = this.mCurFriendUin;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramInt);
+        ((StringBuilder)localObject).append("");
+        ReportController.b(paramView, "dc00898", "", paramEmotionPanelData, "0X800B11D", "0X800B11D", i, 0, "", ((StringBuilder)localObject).toString(), str1, str2);
+      }
+      return;
+    }
+    QLog.e("RelatedEmoticonListAdapter", 1, "emotionInfo or contentView = null");
   }
   
   public List<EmotionPanelData> getData()
@@ -186,33 +182,32 @@ public class RelatedEmoticonListAdapter
   
   public int getItemCount()
   {
-    int k = 1;
+    List localList = this.mData;
+    int k = 0;
     int j;
-    if (this.mData != null)
+    int i;
+    if (localList != null)
     {
-      int m = this.mData.size();
-      j = m / this.mColumnNum;
-      i = j;
-      if (m % this.mColumnNum <= 0) {}
-    }
-    for (int i = j + 1;; i = 0)
-    {
-      if (this.mHeaderView != null)
-      {
-        j = 1;
-        if (this.mFooterView == null) {
-          break label71;
-        }
-      }
-      for (;;)
-      {
-        return i + j + k;
-        j = 0;
-        break;
-        label71:
-        k = 0;
+      j = localList.size();
+      int m = this.mColumnNum;
+      i = j / m;
+      if (j % m > 0) {
+        i += 1;
       }
     }
+    else
+    {
+      i = 0;
+    }
+    if (this.mHeaderView != null) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if (this.mFooterView != null) {
+      k = 1;
+    }
+    return i + j + k;
   }
   
   public int getItemViewType(int paramInt)
@@ -228,89 +223,107 @@ public class RelatedEmoticonListAdapter
   
   public void onBindViewHolder(@NonNull RelatedEmoticonListAdapter.VH paramVH, int paramInt)
   {
-    int j = 0;
-    if (paramVH.getItemViewType() != 3) {
+    int j;
+    if (paramVH.getItemViewType() != 3)
+    {
       j = paramInt;
     }
-    int i;
-    do
+    else
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramVH, j, getItemId(j));
-      return;
-      i = paramInt;
+      int i = paramInt;
       if (this.mHeaderView != null) {
         i = paramInt - 1;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("RelatedEmoticonListAdapter", 2, "getEmotionView position = " + i + "; view from inflater");
-      }
-      LinearLayout localLinearLayout = (LinearLayout)paramVH.itemView;
-      localLinearLayout.setFocusable(false);
-      localLinearLayout.setClickable(false);
-      localLinearLayout.setDescendantFocusability(262144);
-      localLinearLayout.setFocusableInTouchMode(false);
-      localLinearLayout.setLayoutParams(new RecyclerView.LayoutParams(-1, -2));
-      localLinearLayout.setOrientation(0);
-      localLinearLayout.setPadding(0, ViewUtils.a(2.0F), 0, 0);
-      paramInt = 0;
-      while (paramInt < this.mColumnNum)
+      if (QLog.isColorLevel())
       {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getEmotionView position = ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append("; view from inflater");
+        QLog.d("RelatedEmoticonListAdapter", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = (LinearLayout)paramVH.itemView;
+      j = 0;
+      ((LinearLayout)localObject).setFocusable(false);
+      ((LinearLayout)localObject).setClickable(false);
+      ((LinearLayout)localObject).setDescendantFocusability(262144);
+      ((LinearLayout)localObject).setFocusableInTouchMode(false);
+      ((LinearLayout)localObject).setLayoutParams(new RecyclerView.LayoutParams(-1, -2));
+      ((LinearLayout)localObject).setOrientation(0);
+      ((LinearLayout)localObject).setPadding(0, ViewUtils.a(2.0F), 0, 0);
+      paramInt = 0;
+      int k;
+      for (;;)
+      {
+        k = this.mColumnNum;
+        if (paramInt >= k) {
+          break;
+        }
         URLImageView localURLImageView = getRelatedSearchEmoView(paramInt);
         localURLImageView.setVisibility(8);
         localURLImageView.setFocusable(true);
         localURLImageView.setFocusableInTouchMode(true);
-        localLinearLayout.addView(localURLImageView);
+        ((LinearLayout)localObject).addView(localURLImageView);
         paramInt += 1;
       }
-      paramVH.contentViews = new URLImageView[this.mColumnNum];
+      paramVH.contentViews = new URLImageView[k];
       paramInt = 0;
       while (paramInt < this.mColumnNum)
       {
-        paramVH.contentViews[paramInt] = ((URLImageView)localLinearLayout.getChildAt(paramInt));
+        paramVH.contentViews[paramInt] = ((URLImageView)((LinearLayout)localObject).getChildAt(paramInt));
         paramInt += 1;
       }
-      localLinearLayout.setTag(paramVH);
+      ((LinearLayout)localObject).setTag(paramVH);
       paramInt = j;
-      j = i;
-    } while (paramInt >= this.mColumnNum);
-    j = this.mColumnNum * i + paramInt;
-    if (j > this.mData.size() - 1)
-    {
-      paramVH.contentViews[paramInt].setTag(null);
-      paramVH.contentViews[paramInt].setVisibility(8);
+      for (;;)
+      {
+        k = this.mColumnNum;
+        j = i;
+        if (paramInt >= k) {
+          break;
+        }
+        j = k * i + paramInt;
+        if (j > this.mData.size() - 1)
+        {
+          paramVH.contentViews[paramInt].setTag(null);
+          paramVH.contentViews[paramInt].setVisibility(8);
+        }
+        else
+        {
+          updateUI(paramVH.contentViews[paramInt], (EmotionPanelData)this.mData.get(j), j);
+        }
+        paramInt += 1;
+      }
     }
-    for (;;)
-    {
-      paramInt += 1;
-      break;
-      updateUI(paramVH.contentViews[paramInt], (EmotionPanelData)this.mData.get(j), j);
-    }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramVH, j, getItemId(j));
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131362218)
+    if (paramView.getId() == 2131362241)
     {
       if (QLog.isColorLevel()) {
         QLog.d("RelatedEmoticonListAdapter", 4, " add_to_custom_face ");
       }
-      if ((this.mTipsPopupWindow != null) && (this.mTipsPopupWindow.isShowing())) {
-        break label50;
-      }
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label50:
-      if (this.mMenuShowInfo != null)
+      Object localObject = this.mTipsPopupWindow;
+      if ((localObject != null) && (((PopupWindow)localObject).isShowing()))
       {
-        addToCustomEmotionForPic(this.mMenuShowInfo.mResultItem.url);
-        ReportController.b(this.mApp, "dc00898", "", this.mCurFriendUin, "0X800B119", "0X800B119", 0, 0, "", this.mMenuShowInfo.mReportPosition + 1 + "", this.mMenuShowInfo.mResultItem.md5, this.mMenuShowInfo.mResultItem.url);
-        this.mMenuShowInfo = null;
+        localObject = this.mMenuShowInfo;
+        if (localObject != null)
+        {
+          addToCustomEmotionForPic(((RelatedEmoSearchEmoticonInfo)localObject).mResultItem.url);
+          localObject = this.mApp;
+          String str = this.mCurFriendUin;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.mMenuShowInfo.mReportPosition + 1);
+          localStringBuilder.append("");
+          ReportController.b((AppRuntime)localObject, "dc00898", "", str, "0X800B119", "0X800B119", 0, 0, "", localStringBuilder.toString(), this.mMenuShowInfo.mResultItem.md5, this.mMenuShowInfo.mResultItem.url);
+          this.mMenuShowInfo = null;
+        }
+        this.mTipsPopupWindow.dismiss();
       }
-      this.mTipsPopupWindow.dismiss();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @NonNull
@@ -333,14 +346,20 @@ public class RelatedEmoticonListAdapter
   
   public boolean onLongClick(View paramView)
   {
-    if (!(paramView instanceof URLImageView)) {}
-    do
-    {
+    if (!(paramView instanceof URLImageView)) {
       return false;
-      showAddCustomFacePop(paramView);
-      this.mMenuShowInfo = ((RelatedEmoSearchEmoticonInfo)paramView.getTag(2131381651));
-    } while (this.mMenuShowInfo == null);
-    ReportController.b(this.mApp, "dc00898", "", this.mCurFriendUin, "0X800B118", "0X800B118", 0, 0, "", this.mMenuShowInfo.mReportPosition + 1 + "", this.mMenuShowInfo.mResultItem.md5, this.mMenuShowInfo.mResultItem.url);
+    }
+    showAddCustomFacePop(paramView);
+    this.mMenuShowInfo = ((RelatedEmoSearchEmoticonInfo)paramView.getTag(2131380884));
+    if (this.mMenuShowInfo != null)
+    {
+      paramView = this.mApp;
+      String str = this.mCurFriendUin;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.mMenuShowInfo.mReportPosition + 1);
+      localStringBuilder.append("");
+      ReportController.b(paramView, "dc00898", "", str, "0X800B118", "0X800B118", 0, 0, "", localStringBuilder.toString(), this.mMenuShowInfo.mResultItem.md5, this.mMenuShowInfo.mResultItem.url);
+    }
     return false;
   }
   
@@ -372,20 +391,20 @@ public class RelatedEmoticonListAdapter
     localLinearLayout.setOrientation(1);
     localLinearLayout.setGravity(1);
     Object localObject = new TextView(this.mContext);
-    ((TextView)localObject).setId(2131362218);
+    ((TextView)localObject).setId(2131362241);
     ((TextView)localObject).setOnClickListener(this);
-    ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131167374));
+    ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131167394));
     ((TextView)localObject).setTextSize(14.0F);
     ((TextView)localObject).setGravity(17);
-    ((TextView)localObject).setText(this.mContext.getResources().getString(2131693294));
-    ((TextView)localObject).setBackgroundResource(2130839044);
+    ((TextView)localObject).setText(this.mContext.getResources().getString(2131699745));
+    ((TextView)localObject).setBackgroundResource(2130838897);
     localLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(ViewUtils.a(65.0F), ViewUtils.a(46.0F)));
     localObject = new ImageView(this.mContext);
-    ((ImageView)localObject).setImageDrawable(this.mContext.getResources().getDrawable(2130839036));
+    ((ImageView)localObject).setImageDrawable(this.mContext.getResources().getDrawable(2130838864));
     localLinearLayout.addView((View)localObject, new LinearLayout.LayoutParams(ViewUtils.a(20.0F), ViewUtils.a(10.0F)));
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)((ImageView)localObject).getLayoutParams();
-    localLayoutParams.topMargin = (-AIOUtils.a(7.0F, this.mContext.getResources()));
-    localLayoutParams.bottomMargin = AIOUtils.a(3.0F, this.mContext.getResources());
+    localLayoutParams.topMargin = (-EmotionUtils.a(7.0F, this.mContext.getResources()));
+    localLayoutParams.bottomMargin = EmotionUtils.a(3.0F, this.mContext.getResources());
     ((ImageView)localObject).setLayoutParams(localLayoutParams);
     this.mTipsPopupWindow = new PopupWindow(localLinearLayout, -2, -2);
     this.mTipsPopupWindow.setBackgroundDrawable(new ColorDrawable(0));
@@ -398,7 +417,7 @@ public class RelatedEmoticonListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoticonListAdapter
  * JD-Core Version:    0.7.0.1
  */

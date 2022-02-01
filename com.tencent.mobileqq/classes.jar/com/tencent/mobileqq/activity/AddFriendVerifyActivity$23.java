@@ -1,33 +1,26 @@
 package com.tencent.mobileqq.activity;
 
 import android.view.View;
-import com.tencent.mobileqq.activity.photo.TroopPhotoUtil;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AddFriendVerifyActivity$23
-  implements ActionSheet.OnButtonClickListener
+  implements View.OnClickListener
 {
-  AddFriendVerifyActivity$23(AddFriendVerifyActivity paramAddFriendVerifyActivity, ActionSheet paramActionSheet) {}
+  AddFriendVerifyActivity$23(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
+    int i = paramView.getId();
+    if ((i == 2131362182) || (i == 2131368486)) {
+      AddFriendVerifyActivity.d(this.a);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1001));
-      continue;
-      TroopPhotoUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, 1);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.23
  * JD-Core Version:    0.7.0.1
  */

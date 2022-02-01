@@ -11,15 +11,15 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
-import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.qzonehub.api.panorama.IPanoramaBallView;
 
 public class PanoramaBallView
   extends View
 {
-  public static final int HEIGHT = ViewUtils.b(32.0F);
+  public static final int HEIGHT = IPanoramaBallView.HEIGHT;
   private static final int SWEEP_ANGLE_MAX = 120;
   private static final int SWEEP_ANGLE_MIN = 45;
-  public static final int WIDTH = ViewUtils.b(32.0F);
+  public static final int WIDTH = IPanoramaBallView.WIDTH;
   private int colorBackground;
   private int innerCircleRadius;
   private Paint mPaint;
@@ -48,30 +48,34 @@ public class PanoramaBallView
   {
     this.mPaint.setColor(this.colorBackground);
     this.mPaint.setStyle(Paint.Style.FILL);
-    paramCanvas.drawCircle(this.mViewWidth / 2, this.mViewWidth / 2, this.mViewWidth / 2, this.mPaint);
+    int i = this.mViewWidth;
+    paramCanvas.drawCircle(i / 2, i / 2, i / 2, this.mPaint);
   }
   
   private void drawContent(Canvas paramCanvas)
   {
-    int i = (this.outCircleRadius - this.innerCircleRadius) / 2;
-    RectF localRectF = new RectF(this.outCircleRadius - this.innerCircleRadius + i, this.outCircleRadius - this.innerCircleRadius + i, this.outCircleRadius + this.innerCircleRadius - i, this.outCircleRadius + this.innerCircleRadius - i);
+    int i = this.outCircleRadius;
+    int j = this.innerCircleRadius;
+    int k = (i - j) / 2;
+    RectF localRectF = new RectF(i - j + k, i - j + k, i + j - k, i + j - k);
     this.mPaint.setColor(-1);
     float f3 = -90.0F - this.sweepAngle / 2.0F + this.moveDegreeX;
+    i = this.sectorDegree;
     float f2 = f3;
-    if (this.sectorDegree != 360)
+    if (i != 360)
     {
-      f1 = f3;
-      if (f3 < -90 - this.sectorDegree / 2) {
-        f1 = -90 - this.sectorDegree / 2;
+      float f1 = f3;
+      if (f3 < -90 - i / 2) {
+        f1 = -90 - i / 2;
       }
+      f3 = this.sweepAngle;
+      i = this.sectorDegree;
       f2 = f1;
-      if (this.sweepAngle + f1 <= this.sectorDegree / 2 - 90) {}
+      if (f1 + f3 > i / 2 - 90) {
+        f2 = i / 2 - 90 - f3;
+      }
     }
-    for (float f1 = this.sectorDegree / 2 - 90 - this.sweepAngle;; f1 = f2)
-    {
-      paramCanvas.drawArc(localRectF, f1, this.sweepAngle, true, this.mPaint);
-      return;
-    }
+    paramCanvas.drawArc(localRectF, f2, this.sweepAngle, true, this.mPaint);
   }
   
   private void drawContentDeco(Canvas paramCanvas)
@@ -79,57 +83,61 @@ public class PanoramaBallView
     this.mPaint.setColor(-1);
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.mPaint.setStrokeWidth(2.0F);
-    paramCanvas.drawArc(new RectF(this.outCircleRadius - this.innerCircleRadius, this.outCircleRadius - this.innerCircleRadius, this.outCircleRadius + this.innerCircleRadius, this.outCircleRadius + this.innerCircleRadius), -90 - this.sectorDegree / 2, this.sectorDegree, false, this.mPaint);
+    int i = this.outCircleRadius;
+    int j = this.innerCircleRadius;
+    Object localObject = new RectF(i - j, i - j, i + j, i + j);
+    i = this.sectorDegree;
+    paramCanvas.drawArc((RectF)localObject, -90 - i / 2, i, false, this.mPaint);
     this.mPaint.setStyle(Paint.Style.FILL);
-    Path localPath = new Path();
-    int i = (this.outCircleRadius - this.innerCircleRadius) / 2;
-    int j = i / 2;
-    localPath.moveTo(this.outCircleRadius, this.outCircleRadius - this.innerCircleRadius - i);
-    localPath.lineTo(this.outCircleRadius - j, this.outCircleRadius - this.innerCircleRadius);
-    localPath.lineTo(this.outCircleRadius + j, this.outCircleRadius - this.innerCircleRadius);
-    localPath.close();
-    paramCanvas.drawPath(localPath, this.mPaint);
+    localObject = new Path();
+    j = this.outCircleRadius;
+    int k = this.innerCircleRadius;
+    int m = (j - k) / 2;
+    i = m / 2;
+    ((Path)localObject).moveTo(j, j - k - m);
+    j = this.outCircleRadius;
+    ((Path)localObject).lineTo(j - i, j - this.innerCircleRadius);
+    j = this.outCircleRadius;
+    ((Path)localObject).lineTo(i + j, j - this.innerCircleRadius);
+    ((Path)localObject).close();
+    paramCanvas.drawPath((Path)localObject, this.mPaint);
   }
   
   private void init(Context paramContext)
   {
     this.mPaint = new Paint();
     this.mPaint.setAntiAlias(true);
-    this.colorBackground = paramContext.getResources().getColor(2131165370);
+    this.colorBackground = paramContext.getResources().getColor(2131165338);
   }
   
   private int measureHeight(int paramInt)
   {
     int i = View.MeasureSpec.getMode(paramInt);
     paramInt = View.MeasureSpec.getSize(paramInt);
-    if (i == 1073741824) {}
-    for (;;)
-    {
-      this.mViewHeight = paramInt;
-      return paramInt;
+    if (i != 1073741824) {
       if (i == -2147483648) {
         paramInt = Math.min(paramInt, this.mViewHeight);
       } else {
         paramInt = this.mViewHeight;
       }
     }
+    this.mViewHeight = paramInt;
+    return paramInt;
   }
   
   private int measureWidth(int paramInt)
   {
     int i = View.MeasureSpec.getMode(paramInt);
     paramInt = View.MeasureSpec.getSize(paramInt);
-    if (i == 1073741824) {}
-    for (;;)
-    {
-      this.mViewWidth = paramInt;
-      return paramInt;
+    if (i != 1073741824) {
       if (i == -2147483648) {
         paramInt = Math.min(paramInt, this.mViewWidth);
       } else {
         paramInt = this.mViewWidth;
       }
     }
+    this.mViewWidth = paramInt;
+    return paramInt;
   }
   
   public int getMoveDegreeX()
@@ -142,17 +150,18 @@ public class PanoramaBallView
     return this.moveDegreeY;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.outCircleRadius = (this.mViewWidth / 2);
-    this.innerCircleRadius = (this.outCircleRadius - this.mViewWidth / 6);
+    int i = this.mViewWidth;
+    this.outCircleRadius = (i / 2);
+    this.innerCircleRadius = (this.outCircleRadius - i / 6);
     drawBackground(paramCanvas);
     drawContentDeco(paramCanvas);
     drawContent(paramCanvas);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(measureWidth(paramInt1), measureHeight(paramInt2));
   }
@@ -162,13 +171,19 @@ public class PanoramaBallView
     this.sectorDegree = paramInt1;
     this.moveDegreeX = paramInt2;
     this.moveDegreeY = paramInt3;
-    if (this.modeType == 2) {}
-    for (paramFloat = (paramFloat - 0.122F) / 0.878F;; paramFloat = (paramFloat - 0.35F) / 1.15F)
+    float f;
+    if (this.modeType == 2)
     {
-      this.sweepAngle = (paramFloat * 75.0F + 45.0F);
-      postInvalidate();
-      return;
+      f = paramFloat - 0.122F;
+      paramFloat = 0.878F;
     }
+    else
+    {
+      f = paramFloat - 0.35F;
+      paramFloat = 1.15F;
+    }
+    this.sweepAngle = (f / paramFloat * 75.0F + 45.0F);
+    postInvalidate();
   }
   
   public void setModeType(int paramInt)
@@ -178,7 +193,7 @@ public class PanoramaBallView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.panorama.widget.PanoramaBallView
  * JD-Core Version:    0.7.0.1
  */

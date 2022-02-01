@@ -36,77 +36,73 @@ class NotificationActivity$19
     //   42: ldc 48
     //   44: ldc 48
     //   46: invokestatic 58	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   49: aload_0
-    //   50: getfield 13	com/tencent/mobileqq/activity/NotificationActivity$19:jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity	Lcom/tencent/mobileqq/activity/NotificationActivity;
-    //   53: invokevirtual 61	com/tencent/mobileqq/activity/NotificationActivity:finish	()V
-    //   56: return
-    //   57: astore_1
-    //   58: aload_1
-    //   59: invokevirtual 64	java/lang/Exception:printStackTrace	()V
-    //   62: goto -13 -> 49
-    //   65: astore_1
-    //   66: aconst_null
-    //   67: ldc 44
-    //   69: ldc 46
-    //   71: ldc 48
-    //   73: ldc 50
-    //   75: ldc 52
-    //   77: iconst_0
-    //   78: iconst_0
-    //   79: ldc 48
-    //   81: ldc 48
-    //   83: ldc 48
-    //   85: ldc 48
-    //   87: invokestatic 58	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   90: aload_0
-    //   91: getfield 13	com/tencent/mobileqq/activity/NotificationActivity$19:jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity	Lcom/tencent/mobileqq/activity/NotificationActivity;
-    //   94: invokevirtual 61	com/tencent/mobileqq/activity/NotificationActivity:finish	()V
-    //   97: return
-    //   98: astore_1
-    //   99: aload_1
-    //   100: invokevirtual 64	java/lang/Exception:printStackTrace	()V
-    //   103: goto -13 -> 90
-    //   106: astore_1
-    //   107: aconst_null
-    //   108: ldc 44
-    //   110: ldc 46
-    //   112: ldc 48
-    //   114: ldc 50
-    //   116: ldc 52
-    //   118: iconst_0
-    //   119: iconst_0
-    //   120: ldc 48
-    //   122: ldc 48
-    //   124: ldc 48
-    //   126: ldc 48
-    //   128: invokestatic 58	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   131: aload_0
-    //   132: getfield 13	com/tencent/mobileqq/activity/NotificationActivity$19:jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity	Lcom/tencent/mobileqq/activity/NotificationActivity;
-    //   135: invokevirtual 61	com/tencent/mobileqq/activity/NotificationActivity:finish	()V
-    //   138: aload_1
-    //   139: athrow
-    //   140: astore_3
-    //   141: aload_3
-    //   142: invokevirtual 64	java/lang/Exception:printStackTrace	()V
-    //   145: goto -14 -> 131
+    //   49: goto +81 -> 130
+    //   52: astore_1
+    //   53: goto +73 -> 126
+    //   56: astore_1
+    //   57: aconst_null
+    //   58: ldc 44
+    //   60: ldc 46
+    //   62: ldc 48
+    //   64: ldc 50
+    //   66: ldc 52
+    //   68: iconst_0
+    //   69: iconst_0
+    //   70: ldc 48
+    //   72: ldc 48
+    //   74: ldc 48
+    //   76: ldc 48
+    //   78: invokestatic 58	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   81: goto +8 -> 89
+    //   84: astore_3
+    //   85: aload_3
+    //   86: invokevirtual 61	java/lang/Exception:printStackTrace	()V
+    //   89: aload_0
+    //   90: getfield 13	com/tencent/mobileqq/activity/NotificationActivity$19:jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity	Lcom/tencent/mobileqq/activity/NotificationActivity;
+    //   93: invokevirtual 64	com/tencent/mobileqq/activity/NotificationActivity:finish	()V
+    //   96: aload_1
+    //   97: athrow
+    //   98: aconst_null
+    //   99: ldc 44
+    //   101: ldc 46
+    //   103: ldc 48
+    //   105: ldc 50
+    //   107: ldc 52
+    //   109: iconst_0
+    //   110: iconst_0
+    //   111: ldc 48
+    //   113: ldc 48
+    //   115: ldc 48
+    //   117: ldc 48
+    //   119: invokestatic 58	com/tencent/mobileqq/statistics/ReportController:b	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;IILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   122: goto +8 -> 130
+    //   125: astore_1
+    //   126: aload_1
+    //   127: invokevirtual 61	java/lang/Exception:printStackTrace	()V
+    //   130: aload_0
+    //   131: getfield 13	com/tencent/mobileqq/activity/NotificationActivity$19:jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity	Lcom/tencent/mobileqq/activity/NotificationActivity;
+    //   134: invokevirtual 64	com/tencent/mobileqq/activity/NotificationActivity:finish	()V
+    //   137: return
+    //   138: astore_1
+    //   139: goto -41 -> 98
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	148	0	this	19
-    //   0	148	1	paramDialogInterface	android.content.DialogInterface
-    //   0	148	2	paramInt	int
-    //   140	2	3	localException	java.lang.Exception
+    //   0	142	0	this	19
+    //   0	142	1	paramDialogInterface	android.content.DialogInterface
+    //   0	142	2	paramInt	int
+    //   84	2	3	localException	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   25	49	57	java/lang/Exception
-    //   0	25	65	java/lang/Exception
-    //   66	90	98	java/lang/Exception
-    //   0	25	106	finally
-    //   107	131	140	java/lang/Exception
+    //   25	49	52	java/lang/Exception
+    //   0	25	56	finally
+    //   57	81	84	java/lang/Exception
+    //   98	122	125	java/lang/Exception
+    //   0	25	138	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.19
  * JD-Core Version:    0.7.0.1
  */

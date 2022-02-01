@@ -10,21 +10,23 @@ public class PttWithTextSwitchBean
   
   public static PttWithTextSwitchBean a(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return null;
-      try
-      {
-        PttWithTextSwitchBean localPttWithTextSwitchBean = new PttWithTextSwitchBean();
-        paramString = new JSONObject(paramString);
-        localPttWithTextSwitchBean.jdField_a_of_type_Int = paramString.optInt("pttWithTextSwitch", -1);
-        localPttWithTextSwitchBean.jdField_a_of_type_Long = paramString.optLong("aioSttSpliceTimeout", 45000L);
-        return localPttWithTextSwitchBean;
+    }
+    try
+    {
+      PttWithTextSwitchBean localPttWithTextSwitchBean = new PttWithTextSwitchBean();
+      paramString = new JSONObject(paramString);
+      localPttWithTextSwitchBean.jdField_a_of_type_Int = paramString.optInt("pttWithTextSwitch", -1);
+      localPttWithTextSwitchBean.jdField_a_of_type_Long = paramString.optLong("aioSttSpliceTimeout", 45000L);
+      return localPttWithTextSwitchBean;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PttWithTextSwitchBean", 1, new Object[] { "parse e:", paramString.toString() });
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("PttWithTextSwitchBean", 1, new Object[] { "parse e:", paramString.toString() });
+    }
     return null;
   }
   
@@ -40,12 +42,17 @@ public class PttWithTextSwitchBean
   
   public String toString()
   {
-    return "open:" + this.jdField_a_of_type_Int + "  |  aioSttSpliceTimeout:" + this.jdField_a_of_type_Long;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("open:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("  |  aioSttSpliceTimeout:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.PttWithTextSwitchBean
  * JD-Core Version:    0.7.0.1
  */

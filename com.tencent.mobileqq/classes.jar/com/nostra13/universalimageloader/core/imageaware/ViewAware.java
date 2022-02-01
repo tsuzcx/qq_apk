@@ -25,28 +25,36 @@ public abstract class ViewAware
   
   public ViewAware(View paramView, boolean paramBoolean)
   {
-    if (paramView == null) {
-      throw new IllegalArgumentException("view must not be null");
+    if (paramView != null)
+    {
+      this.viewRef = new WeakReference(paramView);
+      this.checkActualViewSize = paramBoolean;
+      return;
     }
-    this.viewRef = new WeakReference(paramView);
-    this.checkActualViewSize = paramBoolean;
+    throw new IllegalArgumentException("view must not be null");
   }
   
   public int getHeight()
   {
     View localView = (View)this.viewRef.get();
-    ViewGroup.LayoutParams localLayoutParams;
+    int j = 0;
+    int k = 0;
     if (localView != null)
     {
-      localLayoutParams = localView.getLayoutParams();
-      if ((!this.checkActualViewSize) || (localLayoutParams == null) || (localLayoutParams.height == -2)) {
-        break label71;
+      ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
+      int i = k;
+      if (this.checkActualViewSize)
+      {
+        i = k;
+        if (localLayoutParams != null)
+        {
+          i = k;
+          if (localLayoutParams.height != -2) {
+            i = localView.getHeight();
+          }
+        }
       }
-    }
-    label71:
-    for (int i = localView.getHeight();; i = 0)
-    {
-      int j = i;
+      j = i;
       if (i <= 0)
       {
         j = i;
@@ -54,9 +62,8 @@ public abstract class ViewAware
           j = localLayoutParams.height;
         }
       }
-      return j;
-      return 0;
     }
+    return j;
   }
   
   public int getId()
@@ -76,18 +83,24 @@ public abstract class ViewAware
   public int getWidth()
   {
     View localView = (View)this.viewRef.get();
-    ViewGroup.LayoutParams localLayoutParams;
+    int j = 0;
+    int k = 0;
     if (localView != null)
     {
-      localLayoutParams = localView.getLayoutParams();
-      if ((!this.checkActualViewSize) || (localLayoutParams == null) || (localLayoutParams.width == -2)) {
-        break label71;
+      ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
+      int i = k;
+      if (this.checkActualViewSize)
+      {
+        i = k;
+        if (localLayoutParams != null)
+        {
+          i = k;
+          if (localLayoutParams.width != -2) {
+            i = localView.getWidth();
+          }
+        }
       }
-    }
-    label71:
-    for (int i = localView.getWidth();; i = 0)
-    {
-      int j = i;
+      j = i;
       if (i <= 0)
       {
         j = i;
@@ -95,9 +108,8 @@ public abstract class ViewAware
           j = localLayoutParams.width;
         }
       }
-      return j;
-      return 0;
     }
+    return j;
   }
   
   public View getWrappedView()
@@ -152,7 +164,7 @@ public abstract class ViewAware
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.imageaware.ViewAware
  * JD-Core Version:    0.7.0.1
  */

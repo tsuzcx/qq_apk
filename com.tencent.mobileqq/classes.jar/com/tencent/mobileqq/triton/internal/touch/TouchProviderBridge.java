@@ -40,20 +40,26 @@ public final class TouchProviderBridge
     try
     {
       l = TouchProviderBridge.Companion.access$nativeCreate(Companion, paramJankCanaryAgent);
-      this.nativeInstance = l;
-      if (this.nativeInstance == 0L) {
-        throw ((Throwable)new TritonInitException("pointer " + "TouchProviderBridge::nativeInstance" + " is nullptr", ErrorCodes.NATIVE_FUNCTION_CALL, null, 4, null));
-      }
     }
     catch (UnsatisfiedLinkError paramLifeCycleOwner)
     {
-      for (;;)
-      {
-        long l = TouchProviderBridge.Companion.access$nativeCreate(Companion, paramJankCanaryAgent);
-      }
+      long l;
+      label57:
+      break label57;
+    }
+    l = TouchProviderBridge.Companion.access$nativeCreate(Companion, paramJankCanaryAgent);
+    this.nativeInstance = l;
+    if (this.nativeInstance != 0L)
+    {
       this.lastClicksCallbackHolder.observe((Function1)new TouchProviderBridge.1(this));
       this.lastClickInfoCallbackHolder.observe((Function1)new TouchProviderBridge.2(this));
+      return;
     }
+    paramJankCanaryAgent = new StringBuilder();
+    paramJankCanaryAgent.append("pointer ");
+    paramJankCanaryAgent.append("TouchProviderBridge::nativeInstance");
+    paramJankCanaryAgent.append(" is nullptr");
+    throw ((Throwable)new TritonInitException(paramJankCanaryAgent.toString(), ErrorCodes.NATIVE_FUNCTION_CALL, null, 4, null));
   }
   
   private final String getLastClicks()
@@ -106,7 +112,7 @@ public final class TouchProviderBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.touch.TouchProviderBridge
  * JD-Core Version:    0.7.0.1
  */

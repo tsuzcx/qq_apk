@@ -20,8 +20,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.emoticonview.EmoticonUtils;
-import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.emoticonview.EmotionPanelConstans;
+import com.tencent.mobileqq.emoticonview.IPicEmoticonInfo;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.mobileqq.vip.DownloaderInterface;
@@ -64,69 +64,82 @@ public class PngFrameManager
   
   PngFrameDrawable a(String paramString, int paramInt, boolean paramBoolean)
   {
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("func getPngFrameDrawable begins,epId:");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(",pos:");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(",showProcess:");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      QLog.d("PngFrameManager", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("PngFrameManager_");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append("_");
+    ((StringBuilder)localObject1).append(paramInt);
+    String str = ((StringBuilder)localObject1).toString();
+    localObject1 = a(paramString);
+    paramString = null;
+    if (localObject1 == null) {
+      return null;
+    }
+    Object localObject2 = GlobalImageCache.a.get(str);
+    if ((localObject2 instanceof PngFrameDrawable)) {
+      paramString = (PngFrameDrawable)localObject2;
+    }
+    if ((paramString != null) && (!paramBoolean) && (paramString.a()))
+    {
+      localObject1 = paramString;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("func getPngFrameDrawable, drawable exists in map,pos:");
+        ((StringBuilder)localObject1).append(paramInt);
+        QLog.d("PngFrameManager", 2, ((StringBuilder)localObject1).toString());
+        localObject1 = paramString;
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PngFrameManager", 2, "func getPngFrameDrawable, 【NOT find】  drawable in the map.");
+      }
+      ((PngPlayParam)localObject1).jdField_a_of_type_Boolean = paramBoolean;
+      localObject1 = new PngFrameDrawable((PngPlayParam)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources());
+      GlobalImageCache.a.put(str, localObject1);
+      ((PngFrameDrawable)localObject1).a(paramInt);
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("PngFrameManager", 2, "func getPngFrameDrawable begins,epId:" + paramString + ",pos:" + paramInt + ",showProcess:" + paramBoolean);
+      QLog.d("PngFrameManager", 2, "func getPngFrameDrawable ends");
     }
-    String str = "PngFrameManager_" + paramString + "_" + paramInt;
-    Object localObject = a(paramString);
-    if (localObject == null)
-    {
-      paramString = null;
-      return paramString;
-    }
-    paramString = GlobalImageCache.a.get(str);
-    if ((paramString instanceof PngFrameDrawable)) {}
-    for (paramString = (PngFrameDrawable)paramString;; paramString = null)
-    {
-      if ((paramString == null) || (paramBoolean) || (!paramString.a()))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("PngFrameManager", 2, "func getPngFrameDrawable, 【NOT find】  drawable in the map.");
-        }
-        ((PngPlayParam)localObject).jdField_a_of_type_Boolean = paramBoolean;
-        localObject = new PngFrameDrawable((PngPlayParam)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources());
-        GlobalImageCache.a.put(str, localObject);
-        ((PngFrameDrawable)localObject).a(paramInt);
-      }
-      for (;;)
-      {
-        paramString = (String)localObject;
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("PngFrameManager", 2, "func getPngFrameDrawable ends");
-        return localObject;
-        localObject = paramString;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("PngFrameManager", 2, "func getPngFrameDrawable, drawable exists in map,pos:" + paramInt);
-          localObject = paramString;
-        }
-      }
-    }
+    return localObject1;
   }
   
   public PngPlayParam a(String paramString)
   {
-    Object localObject;
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null)) {
-      localObject = null;
-    }
-    PngPlayParam localPngPlayParam;
-    do
+    if (!TextUtils.isEmpty(paramString))
     {
-      return localObject;
-      localPngPlayParam = (PngPlayParam)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-      localObject = localPngPlayParam;
-    } while (localPngPlayParam != null);
-    return b(paramString);
+      Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      if (localObject != null)
+      {
+        localObject = (PngPlayParam)((ConcurrentHashMap)localObject).get(paramString);
+        if (localObject != null) {
+          return localObject;
+        }
+        return b(paramString);
+      }
+    }
+    return null;
   }
   
   @SuppressLint({"InlinedApi"})
   void a(MarketFaceItemBuilder.Holder paramHolder, boolean paramBoolean)
   {
     int j = BaseApplication.getContext().getResources().getDisplayMetrics().densityDpi;
-    int i = (j * 200 + 160) / 320;
+    int i = (200 * j + 160) / 320;
     j = (200 * j + 160) / 320;
     if (paramBoolean)
     {
@@ -151,18 +164,12 @@ public class PngFrameManager
   
   public void a(String paramString, MarketFaceItemBuilder.Holder paramHolder, long paramLong, boolean paramBoolean1, boolean paramBoolean2, PngFrameManager.IMagicCallback paramIMagicCallback)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramHolder == null)) {
-      if (paramIMagicCallback != null) {
-        paramIMagicCallback.a(true);
-      }
-    }
-    for (;;)
+    if ((!TextUtils.isEmpty(paramString)) && (paramHolder != null))
     {
-      return;
       a(paramHolder, paramBoolean2);
       PngFrameManager.RandomDrawableParam localRandomDrawableParam = new PngFrameManager.RandomDrawableParam(this);
       localRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$IMagicCallback = paramIMagicCallback;
-      localRandomDrawableParam.jdField_a_of_type_JavaLangString = paramHolder.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.epId;
+      localRandomDrawableParam.jdField_a_of_type_JavaLangString = paramHolder.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().epId;
       localRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder = paramHolder;
       localRandomDrawableParam.jdField_a_of_type_Long = paramLong;
       localRandomDrawableParam.jdField_a_of_type_Boolean = paramBoolean1;
@@ -174,134 +181,114 @@ public class PngFrameManager
         localRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetImageView = new ImageView(BaseApplicationImpl.getContext());
       }
       int i = PngFrameUtil.a(paramString);
-      if (QLog.isColorLevel()) {
-        QLog.d("PngFrameManager", 2, "func setMagicDrawable, 【rscType】:" + i + ",【randomValue】:" + localRandomDrawableParam.b + ",【showProcess】:" + paramBoolean1 + ",tag:" + paramLong);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("func setMagicDrawable, 【rscType】:");
+        paramString.append(i);
+        paramString.append(",【randomValue】:");
+        paramString.append(localRandomDrawableParam.b);
+        paramString.append(",【showProcess】:");
+        paramString.append(paramBoolean1);
+        paramString.append(",tag:");
+        paramString.append(paramLong);
+        QLog.d("PngFrameManager", 2, paramString.toString());
       }
       paramHolder.jdField_e_of_type_Int = i;
-      switch (i)
+      if (i != -1)
       {
+        if (i != 0)
+        {
+          if (i == 1) {
+            c(localRandomDrawableParam);
+          }
+        }
+        else {
+          a(localRandomDrawableParam);
+        }
       }
-      while ((localRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetFrameLayout != null) && (this.jdField_a_of_type_AndroidOsHandler != null))
-      {
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new PngFrameManager.1(this, localRandomDrawableParam), 1000L);
-        return;
-        a(localRandomDrawableParam);
-        continue;
-        c(localRandomDrawableParam);
-        continue;
+      else {
         b(localRandomDrawableParam);
       }
+      if (localRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetFrameLayout == null) {
+        return;
+      }
+      paramString = this.jdField_a_of_type_AndroidOsHandler;
+      if (paramString == null) {
+        return;
+      }
+      paramString.postDelayed(new PngFrameManager.1(this, localRandomDrawableParam), 1000L);
+      return;
+    }
+    if (paramIMagicCallback != null) {
+      paramIMagicCallback.a(true);
     }
   }
   
-  /* Error */
   public boolean a(long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 61	com/tencent/mobileqq/magicface/drawable/PngFrameManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   6: ifnonnull +14 -> 20
-    //   9: aload_0
-    //   10: new 58	java/util/HashMap
-    //   13: dup
-    //   14: invokespecial 59	java/util/HashMap:<init>	()V
-    //   17: putfield 61	com/tencent/mobileqq/magicface/drawable/PngFrameManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   20: aload_0
-    //   21: getfield 61	com/tencent/mobileqq/magicface/drawable/PngFrameManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   24: lload_1
-    //   25: invokestatic 331	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   28: invokevirtual 332	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   31: checkcast 334	java/lang/Boolean
-    //   34: ifnonnull +36 -> 70
-    //   37: aload_0
-    //   38: getfield 46	com/tencent/mobileqq/magicface/drawable/PngFrameManager:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   41: ifnull +29 -> 70
-    //   44: aload_0
-    //   45: getfield 46	com/tencent/mobileqq/magicface/drawable/PngFrameManager:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   48: new 336	com/tencent/mobileqq/magicface/drawable/PngFrameManager$5
-    //   51: dup
-    //   52: aload_0
-    //   53: lload_1
-    //   54: invokespecial 339	com/tencent/mobileqq/magicface/drawable/PngFrameManager$5:<init>	(Lcom/tencent/mobileqq/magicface/drawable/PngFrameManager;J)V
-    //   57: ldc2_w 340
-    //   60: invokevirtual 317	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   63: pop
-    //   64: iconst_1
-    //   65: istore_3
-    //   66: aload_0
-    //   67: monitorexit
-    //   68: iload_3
-    //   69: ireturn
-    //   70: iconst_0
-    //   71: istore_3
-    //   72: goto -6 -> 66
-    //   75: astore 4
-    //   77: aload_0
-    //   78: monitorexit
-    //   79: aload 4
-    //   81: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	82	0	this	PngFrameManager
-    //   0	82	1	paramLong	long
-    //   65	7	3	bool	boolean
-    //   75	5	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	20	75	finally
-    //   20	64	75	finally
+    try
+    {
+      if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+        this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      }
+      if (((Boolean)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong)) == null) && (this.jdField_a_of_type_AndroidOsHandler != null))
+      {
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new PngFrameManager.5(this, paramLong), 500L);
+        return true;
+      }
+      return false;
+    }
+    finally {}
   }
   
   public PngPlayParam b(String paramString)
   {
-    Object localObject;
     if (TextUtils.isEmpty(paramString)) {
-      localObject = null;
+      return null;
     }
-    PngPlayParam localPngPlayParam;
-    do
-    {
-      return localObject;
-      localPngPlayParam = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil.a(paramString);
-      localObject = localPngPlayParam;
-    } while (localPngPlayParam == null);
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localPngPlayParam);
+    PngPlayParam localPngPlayParam = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil.a(paramString);
+    if (localPngPlayParam != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localPngPlayParam);
+    }
     return localPngPlayParam;
   }
   
   void b(PngFrameManager.RandomDrawableParam paramRandomDrawableParam)
   {
     paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130847478);
+    paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130847348);
     ThreadManager.post(new PngFrameManager.2(this, paramRandomDrawableParam), 5, null, true);
   }
   
   void c(PngFrameManager.RandomDrawableParam paramRandomDrawableParam)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngFrameManager", 2, "func onTypePngZip begins, param:" + paramRandomDrawableParam);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("func onTypePngZip begins, param:");
+      localStringBuilder.append(paramRandomDrawableParam);
+      QLog.d("PngFrameManager", 2, localStringBuilder.toString());
     }
-    if (new File(EmoticonUtils.pngFramePath.replace("[epId]", paramRandomDrawableParam.jdField_a_of_type_JavaLangString)).exists())
+    if (new File(EmotionPanelConstans.pngFramePath.replace("[epId]", paramRandomDrawableParam.jdField_a_of_type_JavaLangString)).exists())
     {
       f(paramRandomDrawableParam);
       return;
     }
-    int i = NetworkUtil.a(BaseApplication.getContext());
+    int i = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
     if ((i != 1) && (i != 3) && (i != 4) && (i != 0))
     {
       d(paramRandomDrawableParam);
       return;
     }
     paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130847478);
+    paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130847348);
     e(paramRandomDrawableParam);
   }
   
   void d(PngFrameManager.RandomDrawableParam paramRandomDrawableParam)
   {
-    String str = EmoticonUtils.emoticonAIOPreviewPath.replace("[epId]", paramRandomDrawableParam.jdField_a_of_type_JavaLangString).replace("[eId]", paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.emoticon.eId);
+    String str = EmotionPanelConstans.emoticonAIOPreviewPath.replace("[epId]", paramRandomDrawableParam.jdField_a_of_type_JavaLangString).replace("[eId]", paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqEmoticonviewIPicEmoticonInfo.getEmoticon().eId);
     Bitmap localBitmap = (Bitmap)GlobalImageCache.a.get(str);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
@@ -319,7 +306,7 @@ public class PngFrameManager
       finally {}
     }
     paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130847478);
+    paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130847348);
     ThreadManager.post(new PngFrameManager.3(this, str, paramRandomDrawableParam), 5, null, true);
   }
   
@@ -331,66 +318,71 @@ public class PngFrameManager
   void f(PngFrameManager.RandomDrawableParam paramRandomDrawableParam)
   {
     Object localObject = a(paramRandomDrawableParam.jdField_a_of_type_JavaLangString);
-    if ((localObject == null) || (!((PngPlayParam)localObject).a())) {}
-    do
-    {
-      return;
-      localObject = a(paramRandomDrawableParam.jdField_a_of_type_JavaLangString, paramRandomDrawableParam.b, paramRandomDrawableParam.jdField_a_of_type_Boolean);
-      if ((paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder != null) && (paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_Long == paramRandomDrawableParam.jdField_a_of_type_Long)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PngFrameManager", 2, "func showDrawable ends, 【holder not Exists!】");
-    return;
     if (localObject != null)
     {
-      paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      return;
-    }
-    try
-    {
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.obtainMessage(226, paramRandomDrawableParam).sendToTarget();
+      if (!((PngPlayParam)localObject).a()) {
+        return;
       }
-      return;
+      localObject = a(paramRandomDrawableParam.jdField_a_of_type_JavaLangString, paramRandomDrawableParam.b, paramRandomDrawableParam.jdField_a_of_type_Boolean);
+      if ((paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder != null) && (paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_Long == paramRandomDrawableParam.jdField_a_of_type_Long))
+      {
+        if (localObject != null)
+        {
+          paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+          paramRandomDrawableParam.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+          return;
+        }
+        try
+        {
+          if (this.jdField_a_of_type_AndroidOsHandler != null) {
+            this.jdField_a_of_type_AndroidOsHandler.obtainMessage(226, paramRandomDrawableParam).sendToTarget();
+          }
+          return;
+        }
+        finally {}
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PngFrameManager", 2, "func showDrawable ends, 【holder not Exists!】");
+      }
     }
-    finally {}
   }
   
   public void handleMsg(Message paramMessage)
   {
     switch (paramMessage.what)
     {
-    }
-    do
-    {
-      do
-      {
-        return;
-        paramMessage = (PngFrameManager.RandomDrawableParam)paramMessage.obj;
-        paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_Int = paramMessage.jdField_a_of_type_Int;
-        if (paramMessage.jdField_a_of_type_Int == 0)
-        {
-          a(paramMessage);
-          return;
-        }
-      } while (paramMessage.jdField_a_of_type_Int != 1);
-      c(paramMessage);
+    default: 
       return;
+    case 227: 
+      paramMessage = (PngFrameManager.RandomDrawableParam)paramMessage.obj;
+      if (paramMessage.jdField_a_of_type_Long != paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_Long) {
+        return;
+      }
+      paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)paramMessage.jdField_a_of_type_JavaLangObject);
+      return;
+    case 226: 
+      paramMessage = (PngFrameManager.RandomDrawableParam)paramMessage.obj;
+      paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
+      paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130847349);
+      return;
+    case 225: 
       paramMessage = (PngFrameManager.RandomDrawableParam)paramMessage.obj;
       paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       f(paramMessage);
       return;
-      paramMessage = (PngFrameManager.RandomDrawableParam)paramMessage.obj;
-      paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130847479);
+    }
+    paramMessage = (PngFrameManager.RandomDrawableParam)paramMessage.obj;
+    paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_Int = paramMessage.jdField_a_of_type_Int;
+    if (paramMessage.jdField_a_of_type_Int == 0)
+    {
+      a(paramMessage);
       return;
-      paramMessage = (PngFrameManager.RandomDrawableParam)paramMessage.obj;
-    } while (paramMessage.jdField_a_of_type_Long != paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_Long);
-    paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    paramMessage.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.jdField_e_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)paramMessage.jdField_a_of_type_JavaLangObject);
+    }
+    if (paramMessage.jdField_a_of_type_Int == 1) {
+      c(paramMessage);
+    }
   }
   
   public void onDestroy()
@@ -398,14 +390,16 @@ public class PngFrameManager
     if (QLog.isColorLevel()) {
       QLog.d("PngFrameManager", 2, "PngFrameManager 【onDestroy】  ");
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      ((ConcurrentHashMap)localObject).clear();
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = null;
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      ((HashMap)localObject).clear();
       this.jdField_a_of_type_JavaUtilHashMap = null;
     }
     this.jdField_a_of_type_AndroidOsHandler = null;
@@ -414,7 +408,7 @@ public class PngFrameManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameManager
  * JD-Core Version:    0.7.0.1
  */

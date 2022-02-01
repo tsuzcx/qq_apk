@@ -10,12 +10,15 @@ class CustomWebModule$12
   
   public void a(String paramString)
   {
-    QLog.d("IliveCustomWebModule", 1, "AppJavascriptInterface __WEBVIEW_CLIENTAVSTATE ValueCallback value = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppJavascriptInterface onVideoProgressUpdate ValueCallback value = ");
+    localStringBuilder.append(paramString);
+    QLog.d("IliveCustomWebModule", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.CustomWebModule.12
  * JD-Core Version:    0.7.0.1
  */

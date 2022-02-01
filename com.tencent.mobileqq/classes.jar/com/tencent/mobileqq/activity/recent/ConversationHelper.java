@@ -3,10 +3,7 @@ package com.tencent.mobileqq.activity.recent;
 import android.util.Pair;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.activity.recent.config.recentlist.RecentCheckFilterDispatcher;
-import com.tencent.mobileqq.activity.recent.config.recentlist.RecentSortTopDispatcher;
-import com.tencent.mobileqq.activity.recent.config.recentlist.RecentSortValueDispatcher;
 import com.tencent.mobileqq.activity.recent.config.recentlist.base.RecentListConfig;
-import com.tencent.mobileqq.activity.recent.data.RecentUserBaseData;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.RecentUser;
@@ -27,104 +24,35 @@ public class ConversationHelper
   
   private void b(List<RecentUser> paramList)
   {
-    if ((this.a == null) || (!TempMsgBoxManagerProxy.a(this.a))) {}
-    RecentUser localRecentUser;
-    do
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      return;
-      RecentUserProxy localRecentUserProxy = ((IRecentUserProxyService)this.a.getRuntimeService(IRecentUserProxyService.class)).getRecentUserCache();
-      localRecentUser = null;
-      if (localRecentUserProxy != null) {
-        localRecentUser = localRecentUserProxy.b(AppConstants.TEMP_MSG_BOX_UIN, 10011);
+      if (!TempMsgBoxManagerProxy.a((BaseQQAppInterface)localObject)) {
+        return;
       }
-    } while (localRecentUser == null);
-    paramList.add(localRecentUser);
+      localObject = ((IRecentUserProxyService)this.a.getRuntimeService(IRecentUserProxyService.class)).getRecentUserCache();
+      RecentUser localRecentUser = null;
+      if (localObject != null)
+      {
+        localRecentUser = ((RecentUserProxy)localObject).b(AppConstants.TEMP_MSG_BOX_UIN, 10011);
+        localObject = ((RecentUserProxy)localObject).b(AppConstants.FILTER_MSG_UIN, 10012);
+      }
+      else
+      {
+        localObject = null;
+      }
+      if (localRecentUser != null) {
+        paramList.add(localRecentUser);
+      }
+      if (localObject != null) {
+        paramList.add(localObject);
+      }
+    }
   }
   
   public int a(RecentBaseData paramRecentBaseData1, RecentBaseData paramRecentBaseData2)
   {
-    if (((paramRecentBaseData1 instanceof RecentUserBaseData)) && ((paramRecentBaseData2 instanceof RecentUserBaseData)))
-    {
-      paramRecentBaseData1 = (RecentUserBaseData)paramRecentBaseData1;
-      paramRecentBaseData2 = (RecentUserBaseData)paramRecentBaseData2;
-      long l1 = 0L;
-      int i;
-      int j;
-      label60:
-      long l2;
-      label104:
-      int k;
-      if (RecentListConfig.a().a(this.a, paramRecentBaseData1))
-      {
-        i = 1;
-        if (!RecentListConfig.a().a(this.a, paramRecentBaseData2)) {
-          break label149;
-        }
-        j = 2;
-        switch (i + j)
-        {
-        default: 
-          l2 = 0L;
-          i = 0;
-          j = 0;
-          if (l2 > l1) {
-            k = 1;
-          }
-          break;
-        }
-      }
-      for (;;)
-      {
-        l1 = (k + 2L | j) - (0x2 | i);
-        if (l1 != 0L) {
-          break label340;
-        }
-        return 0;
-        i = 0;
-        break;
-        label149:
-        j = 0;
-        break label60;
-        k = RecentListConfig.a().a(this.a, paramRecentBaseData1, 0);
-        int m = RecentListConfig.a().a(this.a, paramRecentBaseData2, 0);
-        l1 = Math.max(paramRecentBaseData1.mUser.lastmsgtime, paramRecentBaseData1.mUser.lastmsgdrafttime);
-        long l3 = l1;
-        if (l1 <= 0L) {
-          l3 = Math.max(l1, paramRecentBaseData1.mUser.opTime);
-        }
-        long l4 = Math.max(paramRecentBaseData2.mUser.lastmsgtime, paramRecentBaseData2.mUser.lastmsgdrafttime);
-        l2 = l3;
-        l1 = l4;
-        i = m;
-        j = k;
-        if (l4 > 0L) {
-          break label104;
-        }
-        l1 = Math.max(l4, paramRecentBaseData2.mUser.opTime);
-        l2 = l3;
-        i = m;
-        j = k;
-        break label104;
-        return -1;
-        return 1;
-        l2 = paramRecentBaseData1.mDisplayTime;
-        l1 = paramRecentBaseData2.mDisplayTime;
-        i = 0;
-        j = 0;
-        break label104;
-        if (l2 == l1) {
-          k = 0;
-        } else {
-          k = -1;
-        }
-      }
-      label340:
-      if (l1 < 0L) {
-        return 1;
-      }
-      return -1;
-    }
-    return 0;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void a(BaseQQAppInterface paramBaseQQAppInterface)
@@ -137,34 +65,20 @@ public class ConversationHelper
     ConversationHelper.LogBuilder localLogBuilder = new ConversationHelper.LogBuilder("Q.recent", null);
     ConversationHelper.LogBuilder.a(localLogBuilder, paramList);
     int i;
-    label26:
-    Object localObject;
-    if (paramList == null)
-    {
+    if (paramList == null) {
       i = 0;
-      i -= 1;
-      if (i < 0) {
-        break label205;
-      }
-      localObject = (RecentUser)paramList.get(i);
-      if (localObject != null) {
-        break label72;
-      }
-      paramList.remove(i);
-    }
-    for (;;)
-    {
-      i -= 1;
-      break label26;
+    } else {
       i = paramList.size();
-      break;
-      label72:
-      if ((((RecentUser)localObject).uin == null) || (((RecentUser)localObject).uin.trim().length() == 0))
+    }
+    i -= 1;
+    while (i >= 0)
+    {
+      Object localObject = (RecentUser)paramList.get(i);
+      if (localObject == null)
       {
         paramList.remove(i);
-        ConversationHelper.LogBuilder.a(localLogBuilder, new String[] { String.valueOf(i), ",", String.valueOf(((RecentUser)localObject).getType()), ";" });
       }
-      else
+      else if ((((RecentUser)localObject).uin != null) && (((RecentUser)localObject).uin.trim().length() != 0))
       {
         localObject = RecentListConfig.a().a(this.a, (RecentUser)localObject, i);
         if ((localObject != null) && (((Boolean)((Pair)localObject).second).booleanValue()))
@@ -173,8 +87,13 @@ public class ConversationHelper
           ConversationHelper.LogBuilder.a(localLogBuilder, new String[] { (String)((Pair)localObject).first });
         }
       }
+      else
+      {
+        paramList.remove(i);
+        ConversationHelper.LogBuilder.a(localLogBuilder, new String[] { String.valueOf(i), ",", String.valueOf(((RecentUser)localObject).getType()), ";" });
+      }
+      i -= 1;
     }
-    label205:
     if (paramList != null) {
       b(paramList);
     }
@@ -183,7 +102,7 @@ public class ConversationHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.ConversationHelper
  * JD-Core Version:    0.7.0.1
  */

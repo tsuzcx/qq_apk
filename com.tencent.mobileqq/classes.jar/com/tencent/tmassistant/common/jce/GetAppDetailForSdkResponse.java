@@ -35,14 +35,15 @@ public final class GetAppDetailForSdkResponse
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.detailList != null) {
-      paramJceOutputStream.write(this.detailList, 1);
+    ArrayList localArrayList = this.detailList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.GetAppDetailForSdkResponse
  * JD-Core Version:    0.7.0.1
  */

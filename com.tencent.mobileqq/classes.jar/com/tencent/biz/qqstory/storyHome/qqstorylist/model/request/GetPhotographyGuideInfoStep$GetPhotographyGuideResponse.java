@@ -33,12 +33,18 @@ public class GetPhotographyGuideInfoStep$GetPhotographyGuideResponse
   
   public String toString()
   {
-    return "GetPhotographyGuideResponse{, wordList=" + this.a.size() + ", seqno=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetPhotographyGuideResponse{, wordList=");
+    localStringBuilder.append(this.a.size());
+    localStringBuilder.append(", seqno=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetPhotographyGuideInfoStep.GetPhotographyGuideResponse
  * JD-Core Version:    0.7.0.1
  */

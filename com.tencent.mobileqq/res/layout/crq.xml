@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="422.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/n8x" android:layout_width="15.0dip" android:layout_height="15.0dip" android:layout_marginRight="4.0dip" android:includeFontPadding="false" />
-    <TextView android:textSize="12.0sp" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/n8w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" android:layout_toRightOf="@id/n8x" />
-</RelativeLayout>
+    <com.tencent.mobileqq.vas.qid.QidPagView android:id="@id/nw8" android:layout_width="362.0dip" android:layout_height="532.0dip" android:layout_marginTop="-110.0dip" />
+</LinearLayout>

@@ -11,8 +11,9 @@ class HippyTKDRefreshHeader$6
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (this.val$endRunnable != null) {
-      this.val$endRunnable.run();
+    Runnable localRunnable = this.val$endRunnable;
+    if (localRunnable != null) {
+      localRunnable.run();
     }
     this.this$0.hideAnimator.removeListener(this);
     super.onAnimationEnd(paramAnimator);
@@ -20,7 +21,7 @@ class HippyTKDRefreshHeader$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDRefreshHeader.6
  * JD-Core Version:    0.7.0.1
  */

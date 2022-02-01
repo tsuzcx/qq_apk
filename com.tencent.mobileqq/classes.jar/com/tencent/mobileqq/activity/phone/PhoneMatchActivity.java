@@ -11,18 +11,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.contact.phonecontact.permission.PermissionChecker;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.business.NewFriendContactGuideConfBean;
-import com.tencent.mobileqq.config.business.NewFriendContactGuideConfBean.UIElement;
-import com.tencent.mobileqq.config.business.NewFriendContactGuideConfProcessor;
+import com.tencent.mobileqq.newfriend.api.INewFriendApi;
+import com.tencent.mobileqq.newfriend.config.NewFriendContactGuideConfBean;
+import com.tencent.mobileqq.newfriend.config.NewFriendContactGuideConfBean.UIElement;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.phonecontact.permission.PermissionChecker;
+import com.tencent.mobileqq.phonecontact.util.PhoneContactUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -46,12 +47,12 @@ public class PhoneMatchActivity
   public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-    if (paramInt1 == 99999)
+    if (paramInt1 == 9999)
     {
       if (QLog.isColorLevel()) {
         QLog.i("BindMsgConstant", 2, "REQ_FOR_SETTING");
       }
-      if (((PhoneContactManagerImp)this.app.getManager(QQManagerFactory.CONTACT_MANAGER)).a(true))
+      if (((IPhoneContactService)this.app.getRuntimeService(IPhoneContactService.class, "")).checkAndUploadContact(true))
       {
         ContactBindedActivity.a(this.app, -1, 2, null);
         setResult(-1);
@@ -60,59 +61,53 @@ public class PhoneMatchActivity
     }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559339);
-    PhoneContactManagerImp.a(this.app, getResources(), (ImageView)findViewById(2131365233));
-    paramBundle = findViewById(2131370057);
-    Object localObject;
+    super.setContentView(2131559216);
+    PhoneContactUtils.a(this.app, getResources(), (ImageView)findViewById(2131365110));
+    paramBundle = findViewById(2131369736);
+    if ((paramBundle != null) && ("1000".equals(ThemeUtil.curThemeId))) {
+      paramBundle.setBackgroundResource(2130839393);
+    } else if (paramBundle != null) {
+      paramBundle.setBackgroundResource(2130838739);
+    }
+    this.centerView.setText(HardCodeUtil.a(2131708018));
+    this.jdField_a_of_type_Int = getIntent().getIntExtra("kSrouce", -1);
+    Object localObject = ((INewFriendApi)QRoute.api(INewFriendApi.class)).loadNewFriendContactGuideConfig();
     String str;
-    if ((paramBundle != null) && ("1000".equals(ThemeUtil.curThemeId)))
+    if (PermissionChecker.a().b())
     {
-      paramBundle.setBackgroundResource(2130839537);
-      this.centerView.setText(HardCodeUtil.a(2131707999));
-      this.jdField_a_of_type_Int = getIntent().getIntExtra("kSrouce", -1);
-      localObject = NewFriendContactGuideConfProcessor.a();
-      if (!this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.k()) {
-        break label251;
-      }
-      str = ((NewFriendContactGuideConfBean)localObject).b.a;
-      paramBundle = ((NewFriendContactGuideConfBean)localObject).b.b;
+      paramBundle = ((NewFriendContactGuideConfBean)localObject).b.a;
+      str = ((NewFriendContactGuideConfBean)localObject).b.b;
       localObject = ((NewFriendContactGuideConfBean)localObject).b.c;
-      label124:
-      ((TextView)findViewById(2131365235)).setText(str);
-      ((TextView)findViewById(2131365234)).setText(paramBundle);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365232));
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject);
-      if (this.jdField_a_of_type_Int != 14) {
-        break label278;
-      }
-      setLeftViewName(2131690601);
     }
-    for (;;)
+    else
     {
-      ReportController.b(this.app, "dc00898", "", "", "0X800689B", "0X800689B", 0, 0, "", "", "", "");
-      ThreadManager.excute(new PhoneMatchActivity.1(this), 16, null, true);
-      return true;
-      if (paramBundle == null) {
-        break;
-      }
-      paramBundle.setBackgroundResource(2130838979);
-      break;
-      label251:
-      str = ((NewFriendContactGuideConfBean)localObject).a.a;
-      paramBundle = ((NewFriendContactGuideConfBean)localObject).a.b;
+      paramBundle = ((NewFriendContactGuideConfBean)localObject).a.a;
+      str = ((NewFriendContactGuideConfBean)localObject).a.b;
       localObject = ((NewFriendContactGuideConfBean)localObject).a.c;
-      break label124;
-      label278:
-      setLeftButton("", null);
-      setRightButton(2131690946, this);
     }
+    ((TextView)findViewById(2131365112)).setText(paramBundle);
+    ((TextView)findViewById(2131365111)).setText(str);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365109));
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject);
+    if (this.jdField_a_of_type_Int == 14)
+    {
+      setLeftViewName(2131690529);
+    }
+    else
+    {
+      setLeftButton("", null);
+      setRightButton(2131690874, this);
+    }
+    ReportController.b(this.app, "dc00898", "", "", "0X800689B", "0X800689B", 0, 0, "", "", "", "");
+    ThreadManager.excute(new PhoneMatchActivity.1(this), 16, null, true);
+    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
   }
@@ -123,30 +118,34 @@ public class PhoneMatchActivity
     if (this.jdField_a_of_type_Int == 14) {
       return;
     }
-    overridePendingTransition(0, 2130771980);
+    overridePendingTransition(0, 2130771992);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView == this.jdField_a_of_type_AndroidWidgetButton) {
-      if (!NetworkUtil.d(this)) {
-        QQToast.a(BaseApplicationImpl.getContext(), 1, 2131694510, 0).b(getTitleBarHeight());
+    if (paramView == this.jdField_a_of_type_AndroidWidgetButton)
+    {
+      if (!NetworkUtil.isNetSupport(this))
+      {
+        QQToast.a(BaseApplicationImpl.getContext(), 1, 2131694475, 0).b(getTitleBarHeight());
+      }
+      else
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("clickMatch state: ");
+          localStringBuilder.append(this.mPhoneContactService.getSelfBindState());
+          QLog.i("IphoneTitleBarActivity", 2, localStringBuilder.toString());
+        }
+        ReportController.b(this.app, "dc00898", "", "", "0X80095ED", "0X80095ED", 0, 0, "", "", "", "");
+        PermissionChecker.a(this, new PhoneMatchActivity.2(this), new DenyRunnable(this, new DenyRunnable.JumpSettingAction(this.app)));
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("IphoneTitleBarActivity", 2, "clickMatch state: " + this.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.d());
-      }
-      ReportController.b(this.app, "dc00898", "", "", "0X80095ED", "0X80095ED", 0, 0, "", "", "", "");
-      PhoneMatchActivity.2 local2 = new PhoneMatchActivity.2(this);
-      DenyRunnable localDenyRunnable = new DenyRunnable(this, new DenyRunnable.JumpSettingAction(this.app));
-      PermissionChecker.a(this, this.app, local2, localDenyRunnable);
-      continue;
+    else {
       finish();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -158,7 +157,7 @@ public class PhoneMatchActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneMatchActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class SurfacePreviewContext
     super(paramCameraProxy, paramInt1, paramInt2);
   }
   
-  public void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera)
+  public void a(byte[] paramArrayOfByte, Camera paramCamera)
   {
     getPreviewFrame(paramArrayOfByte, paramCamera);
   }
@@ -43,7 +43,7 @@ public class SurfacePreviewContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.SurfacePreviewContext
  * JD-Core Version:    0.7.0.1
  */

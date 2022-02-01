@@ -1,56 +1,50 @@
 package com.tencent.mobileqq.app.parser;
 
 import android.content.Context;
-import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.contentbox.QZoneMsgActivity;
+import com.tencent.qzonehub.api.contentbox.IQzoneMsgApi;
 
 public class QzonePublicAccountAction
-  extends JumpActionBase
+  extends JumpAction
 {
   public QzonePublicAccountAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super(paramQQAppInterface, paramContext);
   }
   
-  private boolean C()
+  private boolean c()
   {
     if (this.a == null) {
       return false;
     }
-    long l = QZoneHelper.enableQZoneContentBoxMiniProgram();
-    if (l != 0L) {
-      QZoneMsgActivity.launchContentBoxMiniProgram(l, this.a);
-    }
-    for (;;)
-    {
-      return true;
-      Intent localIntent = new Intent(this.a, QZoneMsgActivity.class);
-      localIntent.addFlags(67108864);
-      this.a.startActivity(localIntent);
-    }
+    ((IQzoneMsgApi)QRoute.api(IQzoneMsgApi.class)).openContentBox(this.a);
+    return true;
   }
   
   public boolean a()
   {
     try
     {
-      boolean bool = C();
+      boolean bool = c();
       return bool;
     }
     catch (Exception localException)
     {
-      QLog.e("QzonePublicAccountAction", 1, "doAction error: " + localException.getMessage());
-      a("QzonePublicAccountAction");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doAction error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("QzonePublicAccountAction", 1, localStringBuilder.toString());
+      b_("QzonePublicAccountAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.QzonePublicAccountAction
  * JD-Core Version:    0.7.0.1
  */

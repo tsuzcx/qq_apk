@@ -38,6 +38,8 @@ import com.tencent.mobileqq.utils.QQUtils;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.IQzoneMixApi;
+import com.tencent.qzonehub.api.IQzoneReq;
 import com.tencent.sc.qzonepush.QQService.SvcMsgPush;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
@@ -50,8 +52,6 @@ import cooperation.qzone.remote.logic.RemoteRequestSender;
 import cooperation.qzone.remote.logic.WebEventListener;
 import cooperation.qzone.util.JceUtils;
 import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.QZoneDistributedAppCtrl;
-import cooperation.qzone.util.QZoneDistributedAppCtrl.Control;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -59,7 +59,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import mqq.app.MSFServlet;
-import mqq.app.NewIntent;
 import mqq.app.Packet;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -95,8 +94,13 @@ public class CliNotifyPush
       if (paramQQAppInterface != null)
       {
         l1 = l2;
-        if (paramQQAppInterface.length() > 0) {
-          l1 = localSharedPreferences.getLong(paramQQAppInterface + ":" + paramInt, 0L);
+        if (paramQQAppInterface.length() > 0)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramQQAppInterface);
+          localStringBuilder.append(":");
+          localStringBuilder.append(paramInt);
+          l1 = localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
         }
       }
     }
@@ -105,7 +109,10 @@ public class CliNotifyPush
   
   private void a(int paramInt)
   {
-    QLog.e("CliNotifyPush", 1, "report resultCode:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("report resultCode:");
+    localStringBuilder.append(paramInt);
+    QLog.e("CliNotifyPush", 1, localStringBuilder.toString());
     b(paramInt);
     QZoneHelper.preloadQZoneForHaboReport((QQAppInterface)getAppRuntime(), "qzonenewservice.callqzonev2", paramInt, "CliNotifyPush", 1, System.currentTimeMillis());
   }
@@ -148,8 +155,13 @@ public class CliNotifyPush
     {
       SharedPreferences.Editor localEditor = paramQQAppInterface.getApp().getSharedPreferences("QZONE_PUSH_ST", 0).edit();
       paramQQAppInterface = paramQQAppInterface.getAccount();
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.length() > 0)) {
-        localEditor.putLong(paramQQAppInterface + ":" + paramInt, paramLong);
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.length() > 0))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramQQAppInterface);
+        localStringBuilder.append(":");
+        localStringBuilder.append(paramInt);
+        localEditor.putLong(localStringBuilder.toString(), paramLong);
       }
       localEditor.commit();
     }
@@ -165,14 +177,19 @@ public class CliNotifyPush
     if (paramQQAppInterface == null) {
       return;
     }
-    QLog.i("CliNotifyPush", 1, "handleQQCirclePush " + paramQQAppInterface.isBackgroundPause + ", " + paramQQAppInterface.isBackgroundStop);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleQQCirclePush ");
+    ((StringBuilder)localObject).append(paramQQAppInterface.isBackgroundPause);
+    ((StringBuilder)localObject).append(", ");
+    ((StringBuilder)localObject).append(paramQQAppInterface.isBackgroundStop);
+    QLog.i("CliNotifyPush", 1, ((StringBuilder)localObject).toString());
     if ((paramQQAppInterface.isBackgroundPause) && (paramQQAppInterface.isBackgroundStop))
     {
       localObject = (IRedTouchServer)paramQQAppInterface.getRuntimeService(IRedTouchServer.class, "");
       QLog.i("CliNotifyPush", 1, "handleQQCirclePush sendRedpointReq");
       ((IRedTouchServer)localObject).sendRedpointReq(true, false, 6);
     }
-    Object localObject = new Intent();
+    localObject = new Intent();
     ((Intent)localObject).setAction("action_receive_message_push");
     BaseApplication.getContext().sendBroadcast((Intent)localObject);
     QLog.e("CliNotifyPush", 1, "showQQCirclePush()");
@@ -188,20 +205,15 @@ public class CliNotifyPush
     String str4 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("fake_push");
     String str5 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("icon_type");
     String str6 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("icon_url");
-    int i = 0;
+    int i;
     try
     {
-      int j = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("VideoCirclePushMergeType"));
-      i = j;
+      i = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("VideoCirclePushMergeType"));
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("CliNotifyPush", 1, localException, new Object[0]);
-      }
-      MsgNotification.getInstance().updateUnreadcount(366, i);
-      a(paramSinglePushMsg, paramQQAppInterface, 32L);
+      QLog.e("CliNotifyPush", 1, localException, new Object[0]);
+      i = 0;
     }
     if (paramQQAppInterface.isBackgroundPause)
     {
@@ -210,35 +222,38 @@ public class CliNotifyPush
       QLog.e("CliNotifyPush", 1, "show push: XXX");
       return;
     }
+    MsgNotification.getInstance().updateUnreadcount(366, i);
+    a(paramSinglePushMsg, paramQQAppInterface, 32L);
   }
   
   private void a(QQAppInterface paramQQAppInterface, Map<String, String> paramMap)
   {
-    if (paramMap == null) {
-      QLog.e("CliNotifyPush", 1, "processMiniAppRedDotPush, data is null.");
-    }
-    for (;;)
+    if (paramMap == null)
     {
+      QLog.e("CliNotifyPush", 1, "processMiniAppRedDotPush, data is null.");
       return;
-      try
+    }
+    try
+    {
+      String str = (String)paramMap.get("maappid");
+      int i = Integer.valueOf((String)paramMap.get("reddotcount")).intValue();
+      if ((!TextUtils.isEmpty(str)) && (i > 0))
       {
-        String str = (String)paramMap.get("maappid");
-        int i = Integer.valueOf((String)paramMap.get("reddotcount")).intValue();
-        if ((!TextUtils.isEmpty(str)) && (i > 0))
+        paramMap = new MiniAppRedDotEntity(str, 0, i);
+        paramQQAppInterface = (AppletsHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
+        if (paramQQAppInterface != null)
         {
-          paramMap = new MiniAppRedDotEntity(str, 0, i);
-          paramQQAppInterface = (AppletsHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.APPLET_PUSH_HANDLER);
-          if (paramQQAppInterface != null)
-          {
-            paramQQAppInterface.notifyUI(9, true, paramMap);
-            return;
-          }
+          paramQQAppInterface.notifyUI(9, true, paramMap);
+          return;
         }
       }
-      catch (Throwable paramQQAppInterface)
-      {
-        QLog.e("CliNotifyPush", 1, "processMiniAppRedDotPush, exception: " + paramQQAppInterface.toString());
-      }
+    }
+    catch (Throwable paramQQAppInterface)
+    {
+      paramMap = new StringBuilder();
+      paramMap.append("processMiniAppRedDotPush, exception: ");
+      paramMap.append(paramQQAppInterface.toString());
+      QLog.e("CliNotifyPush", 1, paramMap.toString());
     }
   }
   
@@ -246,21 +261,26 @@ public class CliNotifyPush
   {
     QLog.e("CliNotifyPush", 1, "dispathQzonePushMsg()");
     QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    if (localQQAppInterface == null) {}
-    while ((paramSinglePushMsg == null) || (paramSinglePushMsg.jdField_a_of_type_JavaUtilMap == null)) {
+    if (localQQAppInterface == null) {
       return;
     }
-    if ((paramSinglePushMsg.jdField_a_of_type_JavaUtilMap != null) && (paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("utime") != null) && (LocalMultiProcConfig.getInt4Uin("qzone_preget_passive_open", 0, localQQAppInterface.getLongAccountUin()) == 1))
+    if (paramSinglePushMsg != null)
     {
-      String str = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("utime");
-      if (!LocalMultiProcConfig.getString4Uin("qzone_passive_undealtime", "", localQQAppInterface.getLongAccountUin()).equals(str))
-      {
-        paramSinglePushMsg.jdField_a_of_type_Boolean = true;
-        int i = RemoteHandleManager.getInstance().getSender().pregetPassiveFeeds(localQQAppInterface.getLongAccountUin());
-        jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), paramSinglePushMsg);
+      if (paramSinglePushMsg.jdField_a_of_type_JavaUtilMap == null) {
+        return;
       }
+      if ((paramSinglePushMsg.jdField_a_of_type_JavaUtilMap != null) && (paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("utime") != null) && (LocalMultiProcConfig.getInt4Uin("qzone_preget_passive_open", 0, localQQAppInterface.getLongAccountUin()) == 1))
+      {
+        String str = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("utime");
+        if (!LocalMultiProcConfig.getString4Uin("qzone_passive_undealtime", "", localQQAppInterface.getLongAccountUin()).equals(str))
+        {
+          paramSinglePushMsg.jdField_a_of_type_Boolean = true;
+          int i = RemoteHandleManager.getInstance().getSender().pregetPassiveFeeds(localQQAppInterface.getLongAccountUin());
+          jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), paramSinglePushMsg);
+        }
+      }
+      b(paramSinglePushMsg);
     }
-    b(paramSinglePushMsg);
   }
   
   public static void a(SinglePushMsg paramSinglePushMsg, QQAppInterface paramQQAppInterface, long paramLong)
@@ -268,61 +288,56 @@ public class CliNotifyPush
     if (paramSinglePushMsg == null) {
       return;
     }
-    if (paramQQAppInterface != null) {}
-    for (long l1 = Long.parseLong(paramQQAppInterface.getAccount());; l1 = 0L)
+    long l1;
+    if (paramQQAppInterface != null) {
+      l1 = Long.parseLong(paramQQAppInterface.getAccount());
+    } else {
+      l1 = 0L;
+    }
+    long l2 = paramLong;
+    if (paramSinglePushMsg.jdField_a_of_type_Long != 0L)
     {
-      long l2 = paramLong;
-      NewIntent localNewIntent;
-      if (paramSinglePushMsg.jdField_a_of_type_Long != 0L)
+      l2 = paramLong;
+      if (l1 != 0L)
       {
-        l2 = paramLong;
-        if (l1 != 0L)
-        {
-          localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), QZonePushAckServlet.class);
-          localNewIntent.putExtra("timestamp", paramSinglePushMsg.jdField_a_of_type_Long);
-          localNewIntent.putExtra("hostuin", l1);
-          if (!paramSinglePushMsg.jdField_b_of_type_Boolean) {
-            break label229;
-          }
+        if (paramSinglePushMsg.jdField_b_of_type_Boolean) {
+          paramLong |= 1L;
+        } else {
+          paramLong &= 0xFFFFFFFE;
         }
-      }
-      label229:
-      for (paramLong = 1L | paramLong;; paramLong = 0xFFFFFFFE & paramLong)
-      {
-        String str2 = paramSinglePushMsg.jdField_a_of_type_JavaLangString;
-        String str1;
-        if (!TextUtils.isEmpty(str2))
+        String str = paramSinglePushMsg.jdField_a_of_type_JavaLangString;
+        if (!TextUtils.isEmpty(str))
         {
-          str1 = str2;
-          if (!str2.equals("0")) {}
+          paramQQAppInterface = str;
+          if (!str.equals("0")) {}
         }
         else
         {
-          str1 = str2;
+          paramQQAppInterface = str;
           if (paramSinglePushMsg.jdField_a_of_type_JavaUtilMap != null) {
-            str1 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("pushstatkey");
+            paramQQAppInterface = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("pushstatkey");
           }
         }
-        localNewIntent.putExtra("mark", str1);
-        localNewIntent.putExtra("flag", paramLong);
-        paramQQAppInterface.startServlet(localNewIntent);
+        ((IQzoneReq)QRoute.api(IQzoneReq.class)).sentPushAckServlet(paramSinglePushMsg.jdField_a_of_type_Long, l1, paramQQAppInterface, paramLong);
         l2 = paramLong;
-        QLog.e("CliNotifyPush", 1, "sentQzoneMsfPushAck: localTimeStamp=" + paramSinglePushMsg.jdField_a_of_type_Long + " uin=" + l1 + " flag=" + l2);
-        return;
       }
     }
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("sentQzoneMsfPushAck: localTimeStamp=");
+    paramQQAppInterface.append(paramSinglePushMsg.jdField_a_of_type_Long);
+    paramQQAppInterface.append(" uin=");
+    paramQQAppInterface.append(l1);
+    paramQQAppInterface.append(" flag=");
+    paramQQAppInterface.append(l2);
+    QLog.e("CliNotifyPush", 1, paramQQAppInterface.toString());
   }
   
   private void a(SinglePushMsg paramSinglePushMsg, boolean paramBoolean)
   {
-    if ((paramSinglePushMsg == null) || (paramSinglePushMsg.jdField_a_of_type_JavaUtilMap == null)) {
-      QLog.e("CliNotifyPush", 1, "showRedTouch failed sm=null");
-    }
     Object localObject1;
     QZoneManagerImp localQZoneManagerImp;
-    do
+    if ((paramSinglePushMsg != null) && (paramSinglePushMsg.jdField_a_of_type_JavaUtilMap != null))
     {
-      return;
       localObject1 = (QQAppInterface)getAppRuntime();
       if (localObject1 == null)
       {
@@ -330,116 +345,135 @@ public class CliNotifyPush
         return;
       }
       localQZoneManagerImp = (QZoneManagerImp)((QQAppInterface)localObject1).getManager(QQManagerFactory.QZONE_MANAGER);
-    } while (localQZoneManagerImp == null);
-    for (;;)
+      if (localQZoneManagerImp == null) {
+        return;
+      }
+    }
+    try
     {
-      int m;
-      try
+      k = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("pushtype"));
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("showRedTouch type:");
+      ((StringBuilder)localObject2).append(k);
+      ((StringBuilder)localObject2).append(",uin:");
+      ((StringBuilder)localObject2).append(paramSinglePushMsg.jdField_b_of_type_Long);
+      ((StringBuilder)localObject2).append(",isBackground_Pause:");
+      ((StringBuilder)localObject2).append(((QQAppInterface)localObject1).isBackgroundPause);
+      QLog.i("CliNotifyPush", 1, ((StringBuilder)localObject2).toString());
+      if ((k == 1) || (k == 300) || (k == 302))
       {
-        int k = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("pushtype"));
-        QLog.i("CliNotifyPush", 1, "showRedTouch type:" + k + ",uin:" + paramSinglePushMsg.jdField_b_of_type_Long + ",isBackground_Pause:" + ((QQAppInterface)localObject1).isBackgroundPause);
-        if ((k != 1) && (k != 300) && (k != 302)) {
-          break;
-        }
         localObject1 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("conent");
         m = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("count"));
         l = paramSinglePushMsg.jdField_b_of_type_Long;
-        int i = 0;
+      }
+    }
+    catch (Exception paramSinglePushMsg)
+    {
+      int k;
+      Object localObject2;
+      int m;
+      long l;
+      boolean bool;
+      int i;
+      int j;
+      label262:
+      Object localObject3;
+      Object localObject4;
+      break label690;
+    }
+    try
+    {
+      bool = paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.containsKey("opuin_qzoneVipLevel");
+      if (!bool) {}
+    }
+    catch (Exception localException1)
+    {
+      break label276;
+    }
+    try
+    {
+      i = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("opuin_qzoneVipLevel"));
+      j = 1;
+    }
+    catch (Exception localException2)
+    {
+      break label262;
+      break label398;
+    }
+    j = 1;
+    break label279;
+    i = 0;
+    j = 0;
+    break label290;
+    label276:
+    j = 0;
+    label279:
+    QLog.i("CliNotifyPush", 2, "parse vip level error");
+    i = 0;
+    label290:
+    localObject2 = new ArrayList();
+    localObject3 = new QZoneCountUserInfo();
+    ((QZoneCountUserInfo)localObject3).uin = l;
+    ((QZoneCountUserInfo)localObject3).iYellowLevel = i;
+    ((QZoneCountUserInfo)localObject3).iYellowType = j;
+    paramSinglePushMsg.jdField_a_of_type_ArrayOfByte = JceUtils.inflateByte(paramSinglePushMsg.jdField_a_of_type_ArrayOfByte);
+    if (paramSinglePushMsg.jdField_a_of_type_ArrayOfByte != null)
+    {
+      localObject4 = (PassiveFeedsPush)JceUtils.decodeWup(PassiveFeedsPush.class, paramSinglePushMsg.jdField_a_of_type_ArrayOfByte);
+      if ((localObject4 != null) && (((PassiveFeedsPush)localObject4).stBubbleSkin != null))
+      {
+        if (((PassiveFeedsPush)localObject4).stBubbleSkin.lUin == l) {
+          ((QZoneCountUserInfo)localObject3).pushData = ((PassiveFeedsPush)localObject4);
+        }
+        label398:
+        ((ArrayList)localObject2).add(localObject3);
+        localObject3 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("shcemaUrlAnd");
         try
         {
-          boolean bool = paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.containsKey("opuin_qzoneVipLevel");
-          if (!bool) {
-            break label673;
+          paramSinglePushMsg = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("psv_tab_textlist");
+          if (!TextUtils.isEmpty(paramSinglePushMsg))
+          {
+            paramSinglePushMsg = new JSONObject(paramSinglePushMsg);
+            paramSinglePushMsg.getJSONObject("psv_tab_list");
+            paramSinglePushMsg = paramSinglePushMsg.getJSONObject("psv_tab_list").getJSONArray("text_data");
+            i = 0;
+            while (i < paramSinglePushMsg.length())
+            {
+              Object localObject5 = (JSONObject)paramSinglePushMsg.get(i);
+              l = ((JSONObject)localObject5).getLong("uin");
+              localObject4 = ((JSONObject)localObject5).getString("nk");
+              localObject5 = new feed_info(0L, 0L, 0L, ((JSONObject)localObject5).getString("text"));
+              QZoneCountUserInfo localQZoneCountUserInfo = new QZoneCountUserInfo();
+              localQZoneCountUserInfo.nickName = ((String)localObject4);
+              localQZoneCountUserInfo.uin = l;
+              localObject4 = new ArrayList();
+              ((ArrayList)localObject4).add(localObject5);
+              localQZoneCountUserInfo.vec_feedInfos = ((ArrayList)localObject4);
+              ((ArrayList)localObject2).add(localQZoneCountUserInfo);
+              i += 1;
+            }
           }
-          i = 1;
-          ArrayList localArrayList;
-          Object localObject3;
-          Object localObject4;
-          QZoneCountUserInfo localQZoneCountUserInfo;
-          if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label645;
-          }
+          QLog.e("CliNotifyPush", 1, "showRedTouch failed");
         }
-        catch (Exception localException1)
+        catch (Exception paramSinglePushMsg)
         {
-          try
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("psv_tab_textlist failed");
+          ((StringBuilder)localObject4).append(paramSinglePushMsg);
+          QLog.e("CliNotifyPush", 1, ((StringBuilder)localObject4).toString());
+          if ((k == 302) && (!TextUtils.isEmpty((CharSequence)localObject3)))
           {
-            j = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("opuin_qzoneVipLevel"));
-            i = 1;
-            localArrayList = new ArrayList();
-            localObject2 = new QZoneCountUserInfo();
-            ((QZoneCountUserInfo)localObject2).uin = l;
-            ((QZoneCountUserInfo)localObject2).iYellowLevel = j;
-            ((QZoneCountUserInfo)localObject2).iYellowType = i;
-            paramSinglePushMsg.jdField_a_of_type_ArrayOfByte = JceUtils.inflateByte(paramSinglePushMsg.jdField_a_of_type_ArrayOfByte);
-            if (paramSinglePushMsg.jdField_a_of_type_ArrayOfByte != null)
-            {
-              localObject3 = (PassiveFeedsPush)JceUtils.decodeWup(PassiveFeedsPush.class, paramSinglePushMsg.jdField_a_of_type_ArrayOfByte);
-              if ((localObject3 != null) && (((PassiveFeedsPush)localObject3).stBubbleSkin != null) && (((PassiveFeedsPush)localObject3).stBubbleSkin.lUin == l)) {
-                ((QZoneCountUserInfo)localObject2).pushData = ((PassiveFeedsPush)localObject3);
-              }
-            }
-            localArrayList.add(localObject2);
-            localObject2 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("shcemaUrlAnd");
+            localQZoneManagerImp.a(1, m, (ArrayList)localObject2, (String)localObject1, paramBoolean, true, (String)localObject3);
+            return;
           }
-          catch (Exception localException2)
-          {
-            Object localObject2;
-            continue;
-          }
-          try
-          {
-            paramSinglePushMsg = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("psv_tab_textlist");
-            if (!TextUtils.isEmpty(paramSinglePushMsg))
-            {
-              paramSinglePushMsg = new JSONObject(paramSinglePushMsg);
-              paramSinglePushMsg.getJSONObject("psv_tab_list");
-              paramSinglePushMsg = paramSinglePushMsg.getJSONObject("psv_tab_list").getJSONArray("text_data");
-              i = 0;
-              if (i < paramSinglePushMsg.length())
-              {
-                localObject4 = (JSONObject)paramSinglePushMsg.get(i);
-                l = ((JSONObject)localObject4).getLong("uin");
-                localObject3 = ((JSONObject)localObject4).getString("nk");
-                localObject4 = new feed_info(0L, 0L, 0L, ((JSONObject)localObject4).getString("text"));
-                localQZoneCountUserInfo = new QZoneCountUserInfo();
-                localQZoneCountUserInfo.nickName = ((String)localObject3);
-                localQZoneCountUserInfo.uin = l;
-                localObject3 = new ArrayList();
-                ((ArrayList)localObject3).add(localObject4);
-                localQZoneCountUserInfo.vec_feedInfos = ((ArrayList)localObject3);
-                localArrayList.add(localQZoneCountUserInfo);
-                i += 1;
-                continue;
-                localException1 = localException1;
-                i = 0;
-                QLog.i("CliNotifyPush", 2, "parse vip level error");
-                j = 0;
-              }
-            }
-          }
-          catch (Exception paramSinglePushMsg)
-          {
-            QLog.e("CliNotifyPush", 1, "psv_tab_textlist failed" + paramSinglePushMsg);
-            if (k != 302) {
-              break label645;
-            }
-          }
+          localQZoneManagerImp.a(1, m, (ArrayList)localObject2, (String)localObject1, paramBoolean, true, "");
+          return;
         }
-        localQZoneManagerImp.a(1, m, localException1, (String)localObject1, paramBoolean, true, (String)localObject2);
+        label690:
+        return;
+        QLog.e("CliNotifyPush", 1, "showRedTouch failed sm=null");
         return;
       }
-      catch (Exception paramSinglePushMsg)
-      {
-        QLog.e("CliNotifyPush", 1, "showRedTouch failed");
-        return;
-      }
-      label645:
-      long l = m;
-      localQZoneManagerImp.a(1, l, localException1, (String)localObject1, paramBoolean, true, "");
-      return;
-      label673:
-      int j = 0;
     }
   }
   
@@ -454,125 +488,122 @@ public class CliNotifyPush
   
   private void a(Map<String, String> paramMap, String paramString)
   {
-    if ((paramMap == null) || (paramMap.isEmpty())) {
-      return;
-    }
-    try
+    if (paramMap != null)
     {
-      QZoneDistributedAppCtrl.Control localControl = new QZoneDistributedAppCtrl.Control();
-      localControl.cmd = Integer.parseInt((String)paramMap.get("key_ctrl_cmd"));
-      localControl.data.putAll(paramMap);
-      QZoneDistributedAppCtrl.getInstance(paramString).submitCtrl(localControl);
-      return;
-    }
-    catch (Exception paramMap)
-    {
-      paramMap.printStackTrace();
+      if (paramMap.isEmpty()) {
+        return;
+      }
+      try
+      {
+        ((IQzoneMixApi)QRoute.api(IQzoneMixApi.class)).execCtrlCommand(paramString, Integer.parseInt((String)paramMap.get("key_ctrl_cmd")), paramMap);
+        return;
+      }
+      catch (Exception paramMap)
+      {
+        paramMap.printStackTrace();
+      }
     }
   }
   
   public static boolean a(Context paramContext, String paramString)
   {
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return false;
-      try
-      {
-        paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
-        if (paramContext != null) {
-          return true;
-        }
-      }
-      catch (PackageManager.NameNotFoundException paramContext)
-      {
-        for (;;)
-        {
-          paramContext = null;
-        }
-      }
-      catch (Exception paramContext) {}
     }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      label19:
+      break label19;
+    }
+    catch (Exception paramContext) {}
+    paramContext = null;
+    return paramContext != null;
     return false;
   }
   
   private boolean a(QQAppInterface paramQQAppInterface, int paramInt)
   {
-    if (paramInt == 10000) {}
-    do
-    {
+    if (paramInt == 10000) {
       return false;
-      if ((8 == paramInt) || (4 == paramInt) || (366 == paramInt)) {
+    }
+    if ((8 != paramInt) && (4 != paramInt))
+    {
+      if (366 == paramInt) {
         return true;
       }
       if (paramInt == 2) {
         return true;
       }
-    } while ((paramInt != 1) && (paramInt != 300));
-    return LocalMultiProcConfig.getBool(paramQQAppInterface.getApp().getApplicationContext().getString(2131718678) + paramQQAppInterface.getAccount(), true);
+      if ((paramInt != 1) && (paramInt != 300)) {
+        return false;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramQQAppInterface.getApp().getApplicationContext().getString(2131718396));
+      localStringBuilder.append(paramQQAppInterface.getAccount());
+      return LocalMultiProcConfig.getBool(localStringBuilder.toString(), true);
+    }
+    return true;
   }
   
   private boolean a(SinglePushMsg paramSinglePushMsg)
   {
-    int i = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("pushtype"));
+    int j = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("pushtype"));
     QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    if (i == 301)
-    {
-      Object localObject;
-      QzNotificationStruct localQzNotificationStruct2;
+    int i = 0;
+    QzNotificationStruct localQzNotificationStruct;
+    if (j == 301) {
       if ((jdField_a_of_type_JavaUtilList != null) && (jdField_a_of_type_JavaUtilList.size() > 0))
       {
         localObject = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("live_roomid");
         if (localObject != null)
         {
-          localQzNotificationStruct2 = (QzNotificationStruct)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1);
-          if ((localQzNotificationStruct2 == null) || (!((String)localObject).equals(localQzNotificationStruct2.roomId))) {
-            break label251;
-          }
-          jdField_a_of_type_JavaUtilList.remove(localQzNotificationStruct2);
-          if (jdField_a_of_type_JavaUtilList.size() != 0) {
-            break label181;
-          }
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          localObject = QQNotificationManager.getInstance();
-          if (localObject != null) {
-            ((QQNotificationManager)localObject).cancel("CliNotifyPush.clearLivePush", 242);
-          }
-        }
-        catch (Exception localException)
-        {
-          QLog.e("CliNotifyPush", 1, "NotificationManager cancel exception");
-          continue;
-        }
-        a(paramSinglePushMsg, localQQAppInterface, 16L);
-        return true;
-        label181:
-        QzNotificationStruct localQzNotificationStruct1 = (QzNotificationStruct)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1);
-        if (localQzNotificationStruct1 != null)
-        {
-          MsgNotification.getInstance().showQZoneMsgNotification(localQQAppInterface, 0, null, localQzNotificationStruct1.notifyText, null, null, localQzNotificationStruct1.showMsgContent, localQzNotificationStruct1.pushType, localQzNotificationStruct1.actionUrl, localQzNotificationStruct1.pushstatkey, false, false, -1);
-          continue;
-          label251:
-          if (jdField_a_of_type_JavaUtilList.size() > 1)
+          localQzNotificationStruct = (QzNotificationStruct)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1);
+          if ((localQzNotificationStruct != null) && (((String)localObject).equals(localQzNotificationStruct.roomId)))
           {
-            i = 0;
-            while (i < jdField_a_of_type_JavaUtilList.size() - 1)
-            {
-              localQzNotificationStruct2 = (QzNotificationStruct)jdField_a_of_type_JavaUtilList.get(i);
-              if ((localQzNotificationStruct2 != null) && (localQzNotificationStruct1.equals(localQzNotificationStruct2.roomId))) {
-                jdField_a_of_type_JavaUtilList.remove(localQzNotificationStruct2);
-              }
-              i += 1;
-            }
+            jdField_a_of_type_JavaUtilList.remove(localQzNotificationStruct);
+            if (jdField_a_of_type_JavaUtilList.size() != 0) {}
           }
         }
       }
     }
+    try
+    {
+      localObject = QQNotificationManager.getInstance();
+      if (localObject == null) {
+        break label322;
+      }
+      ((QQNotificationManager)localObject).cancel("CliNotifyPush.clearLivePush", 242);
+    }
+    catch (Exception localException)
+    {
+      label163:
+      break label163;
+    }
+    QLog.e("CliNotifyPush", 1, "NotificationManager cancel exception");
+    break label322;
+    Object localObject = (QzNotificationStruct)jdField_a_of_type_JavaUtilList.get(jdField_a_of_type_JavaUtilList.size() - 1);
+    if (localObject != null)
+    {
+      MsgNotification.getInstance().showQZoneMsgNotification(localQQAppInterface, 0, null, ((QzNotificationStruct)localObject).notifyText, null, null, ((QzNotificationStruct)localObject).showMsgContent, ((QzNotificationStruct)localObject).pushType, ((QzNotificationStruct)localObject).actionUrl, ((QzNotificationStruct)localObject).pushstatkey, false, false, -1);
+      break label322;
+      if (jdField_a_of_type_JavaUtilList.size() > 1) {
+        while (i < jdField_a_of_type_JavaUtilList.size() - 1)
+        {
+          localQzNotificationStruct = (QzNotificationStruct)jdField_a_of_type_JavaUtilList.get(i);
+          if ((localQzNotificationStruct != null) && (((String)localObject).equals(localQzNotificationStruct.roomId))) {
+            jdField_a_of_type_JavaUtilList.remove(localQzNotificationStruct);
+          }
+          i += 1;
+        }
+      }
+    }
+    label322:
+    a(paramSinglePushMsg, localQQAppInterface, 16L);
+    return true;
     return false;
   }
   
@@ -591,181 +622,222 @@ public class CliNotifyPush
   private void b(SinglePushMsg paramSinglePushMsg)
   {
     QLog.e("CliNotifyPush", 1, "showPush()");
-    if ((paramSinglePushMsg.jdField_a_of_type_Boolean) && (paramSinglePushMsg.jdField_a_of_type_Int == 0)) {
-      paramSinglePushMsg.jdField_a_of_type_Int += 1;
-    }
-    QQAppInterface localQQAppInterface;
-    int m;
-    do
+    if ((paramSinglePushMsg.jdField_a_of_type_Boolean) && (paramSinglePushMsg.jdField_a_of_type_Int == 0))
     {
+      paramSinglePushMsg.jdField_a_of_type_Int += 1;
       return;
-      localQQAppInterface = (QQAppInterface)getAppRuntime();
-      m = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("pushtype"));
-      QLog.e("CliNotifyPush", 1, "pushType:" + m);
-      if (m == 10000)
-      {
-        a(paramSinglePushMsg.jdField_a_of_type_JavaUtilMap, localQQAppInterface.getAccount());
-        a(paramSinglePushMsg, localQQAppInterface, 16L);
-        return;
-      }
-      if (m == 10100)
-      {
-        b(paramSinglePushMsg.jdField_a_of_type_JavaUtilMap, localQQAppInterface.getAccount());
-        a(paramSinglePushMsg, localQQAppInterface, 16L);
-        return;
-      }
-      if (m == 350)
-      {
-        a(paramSinglePushMsg, localQQAppInterface, 16L);
-        c(paramSinglePushMsg);
-        return;
-      }
-    } while (a(paramSinglePushMsg));
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
+    int m = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("pushtype"));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("pushType:");
+    ((StringBuilder)localObject).append(m);
+    QLog.e("CliNotifyPush", 1, ((StringBuilder)localObject).toString());
+    if (m == 10000)
+    {
+      a(paramSinglePushMsg.jdField_a_of_type_JavaUtilMap, localQQAppInterface.getAccount());
+      a(paramSinglePushMsg, localQQAppInterface, 16L);
+      return;
+    }
+    if (m == 10100)
+    {
+      b(paramSinglePushMsg.jdField_a_of_type_JavaUtilMap, localQQAppInterface.getAccount());
+      a(paramSinglePushMsg, localQQAppInterface, 16L);
+      return;
+    }
+    if (m == 350)
+    {
+      a(paramSinglePushMsg, localQQAppInterface, 16L);
+      c(paramSinglePushMsg);
+      return;
+    }
+    if (a(paramSinglePushMsg)) {
+      return;
+    }
     if (m == 100)
     {
       a(paramSinglePushMsg, localQQAppInterface, 16L);
       return;
     }
-    String str1 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("conent");
-    String str2 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("pushstatkey");
-    String str3 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("shcemaUrlAnd");
-    String str4 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("title");
-    String str5 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("fake_push");
-    String str6 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("icon_type");
-    String str7 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("icon_url");
+    localObject = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("conent");
+    String str1 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("pushstatkey");
+    String str2 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("shcemaUrlAnd");
+    String str3 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("title");
+    String str4 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("fake_push");
+    String str5 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("icon_type");
+    String str6 = (String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("icon_url");
     if (QLog.isColorLevel()) {
-      QLog.d("CliNotifyPush", 2, new Object[] { "showPush: invoked. ", " iconType: ", str6, " title: ", str4, " message: ", str1 });
+      QLog.d("CliNotifyPush", 2, new Object[] { "showPush: invoked. ", " iconType: ", str5, " title: ", str3, " message: ", localObject });
     }
     long l = paramSinglePushMsg.jdField_b_of_type_Long;
-    if (paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("count") != null) {
-      QLog.i("CliNotifyPush", 1, "showPush receive push time:" + paramSinglePushMsg.jdField_a_of_type_Long + ",unreadCount=" + 1 + ",uin=" + l + ",type=" + m);
-    }
-    for (;;)
+    StringBuilder localStringBuilder;
+    if (paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("count") != null)
     {
-      boolean bool1;
-      try
-      {
-        int j = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("count"));
-        i = j;
-        if (j < 1) {
-          i = 1;
-        }
-        int k;
-        bool3 = localQQAppInterface.isShowMsgContent();
-      }
-      catch (Exception localException2)
-      {
-        try
-        {
-          j = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("CtrlFlag"));
-          if (QLog.isColorLevel())
-          {
-            QLog.i("CliNotifyPush", 2, "qzone redtypeinfo:receive push time:" + paramSinglePushMsg.jdField_a_of_type_Long + "=unreadCount=" + i + "=uin=" + l + "=type=" + m + "=CtrlFlag=" + j + "=message=" + str1);
-            if (j != 1) {
-              continue;
-            }
-            bool1 = true;
-            a(paramSinglePushMsg, bool1);
-          }
-        }
-        catch (Exception localException2)
-        {
-          try
-          {
-            k = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("show_level"));
-            if ((!localQQAppInterface.isBackgroundPause) && (!a(k, 1))) {
-              break label1060;
-            }
-            if (!a(localQQAppInterface, m))
-            {
-              a(paramSinglePushMsg, localQQAppInterface, 16L);
-              return;
-              localException1 = localException1;
-              i = 1;
-              continue;
-              localException2 = localException2;
-              j = 0;
-              continue;
-              QLog.i("CliNotifyPush", 1, "qzone redtypeinfo:receive push time:" + paramSinglePushMsg.jdField_a_of_type_Long + "=unreadCount=" + i + "=uin=" + l + "=type=" + m + "=CtrlFlag=" + j);
-              continue;
-              bool1 = false;
-            }
-          }
-          catch (Exception localException3)
-          {
-            k = 4;
-            continue;
-            if (j == 1)
-            {
-              QLog.e("CliNotifyPush", 1, "not show push, existDL = " + j);
-              a(paramSinglePushMsg, localQQAppInterface, 128L);
-              return;
-            }
-            if ((!QQUtils.a(localQQAppInterface.getApp())) && (a(localQQAppInterface)) && (!a(k, 0)))
-            {
-              a(paramSinglePushMsg, localQQAppInterface, 64L);
-              return;
-            }
-            if (!QQNotificationManager.getInstance().areNotificationsEnabled(BaseApplicationImpl.getContext()))
-            {
-              a(paramSinglePushMsg, localQQAppInterface, 512L);
-              return;
-            }
-            if (str1 == null) {
-              break label1050;
-            }
-          }
-        }
-      }
-      boolean bool3;
-      if (!bool3) {
-        str1 = localQQAppInterface.getApp().getApplicationContext().getString(2131717887) + i + localQQAppInterface.getApp().getApplicationContext().getString(2131717888);
-      }
-      for (;;)
-      {
-        boolean bool2 = true;
-        bool1 = bool2;
-        if (paramSinglePushMsg.jdField_a_of_type_JavaUtilMap != null)
-        {
-          bool1 = bool2;
-          if (paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("daemonShow") != null) {
-            bool1 = "1".equals(paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("daemonShow"));
-          }
-        }
-        if (bool1)
-        {
-          MsgNotification.getInstance().showQZoneMsgNotification(localQQAppInterface, 1, str4, str1, str6, str7, bool3, m, str3, str2, true, "1".equals(str5), -1);
-          a(paramSinglePushMsg, localQQAppInterface, 4L);
-        }
-        QLog.e("CliNotifyPush", 1, "show push: XXX");
-        return;
-        label1050:
-        a(paramSinglePushMsg, localQQAppInterface, 256L);
-        return;
-        label1060:
-        a(paramSinglePushMsg, localQQAppInterface, 32L);
-        return;
-      }
-      int i = 1;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showPush receive push time:");
+      localStringBuilder.append(paramSinglePushMsg.jdField_a_of_type_Long);
+      localStringBuilder.append(",unreadCount=");
+      localStringBuilder.append(1);
+      localStringBuilder.append(",uin=");
+      localStringBuilder.append(l);
+      localStringBuilder.append(",type=");
+      localStringBuilder.append(m);
+      QLog.i("CliNotifyPush", 1, localStringBuilder.toString());
     }
+    try
+    {
+      i = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("count"));
+      j = i;
+      if (i >= 1) {
+        break label527;
+      }
+    }
+    catch (Exception localException1)
+    {
+      int i;
+      int j;
+      label525:
+      break label525;
+    }
+    j = 1;
+    try
+    {
+      label527:
+      i = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("CtrlFlag"));
+    }
+    catch (Exception localException2)
+    {
+      label549:
+      int k;
+      boolean bool1;
+      break label549;
+    }
+    i = 0;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qzone redtypeinfo:receive push time:");
+      localStringBuilder.append(paramSinglePushMsg.jdField_a_of_type_Long);
+      localStringBuilder.append("=unreadCount=");
+      localStringBuilder.append(j);
+      localStringBuilder.append("=uin=");
+      localStringBuilder.append(l);
+      localStringBuilder.append("=type=");
+      localStringBuilder.append(m);
+      localStringBuilder.append("=CtrlFlag=");
+      localStringBuilder.append(i);
+      localStringBuilder.append("=message=");
+      localStringBuilder.append((String)localObject);
+      QLog.i("CliNotifyPush", 2, localStringBuilder.toString());
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qzone redtypeinfo:receive push time:");
+      localStringBuilder.append(paramSinglePushMsg.jdField_a_of_type_Long);
+      localStringBuilder.append("=unreadCount=");
+      localStringBuilder.append(j);
+      localStringBuilder.append("=uin=");
+      localStringBuilder.append(l);
+      localStringBuilder.append("=type=");
+      localStringBuilder.append(m);
+      localStringBuilder.append("=CtrlFlag=");
+      localStringBuilder.append(i);
+      QLog.i("CliNotifyPush", 1, localStringBuilder.toString());
+    }
+    k = i;
+    if (k == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    a(paramSinglePushMsg, bool1);
+    try
+    {
+      i = Integer.parseInt((String)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("show_level"));
+    }
+    catch (Exception localException3)
+    {
+      label834:
+      boolean bool2;
+      break label834;
+    }
+    i = 4;
+    if ((!localQQAppInterface.isBackgroundPause) && (!a(i, 1)))
+    {
+      a(paramSinglePushMsg, localQQAppInterface, 32L);
+      return;
+    }
+    if (!a(localQQAppInterface, m))
+    {
+      a(paramSinglePushMsg, localQQAppInterface, 16L);
+      return;
+    }
+    if (k == 1)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("not show push, existDL = ");
+      ((StringBuilder)localObject).append(k);
+      QLog.e("CliNotifyPush", 1, ((StringBuilder)localObject).toString());
+      a(paramSinglePushMsg, localQQAppInterface, 128L);
+      return;
+    }
+    if ((!QQUtils.a(localQQAppInterface.getApp())) && (a(localQQAppInterface)) && (!a(i, 0)))
+    {
+      a(paramSinglePushMsg, localQQAppInterface, 64L);
+      return;
+    }
+    if (!QQNotificationManager.getInstance().areNotificationsEnabled(BaseApplicationImpl.getContext()))
+    {
+      a(paramSinglePushMsg, localQQAppInterface, 512L);
+      return;
+    }
+    if (localObject != null)
+    {
+      bool2 = localQQAppInterface.isShowMsgContent();
+      if (!bool2)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(localQQAppInterface.getApp().getApplicationContext().getString(2131717546));
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(localQQAppInterface.getApp().getApplicationContext().getString(2131717547));
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      if ((paramSinglePushMsg.jdField_a_of_type_JavaUtilMap != null) && (paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("daemonShow") != null)) {
+        bool1 = "1".equals(paramSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("daemonShow"));
+      } else {
+        bool1 = true;
+      }
+      if (bool1)
+      {
+        MsgNotification.getInstance().showQZoneMsgNotification(localQQAppInterface, 1, str3, (String)localObject, str5, str6, bool2, m, str2, str1, true, "1".equals(str4), -1);
+        a(paramSinglePushMsg, localQQAppInterface, 4L);
+      }
+      QLog.e("CliNotifyPush", 1, "show push: XXX");
+      return;
+    }
+    a(paramSinglePushMsg, localQQAppInterface, 256L);
   }
   
   private void b(Map<String, String> paramMap, String paramString)
   {
-    if ((paramMap == null) || (paramMap.isEmpty())) {
-      return;
-    }
-    try
+    if (paramMap != null)
     {
-      MiniAppControlInfo localMiniAppControlInfo = new MiniAppControlInfo();
-      localMiniAppControlInfo.cmd = ((String)paramMap.get("key_ctrl_cmd"));
-      localMiniAppControlInfo.data.putAll(paramMap);
-      ((IMiniAppService)QRoute.api(IMiniAppService.class)).processControlInfo(paramString, localMiniAppControlInfo);
-      return;
-    }
-    catch (Exception paramMap)
-    {
-      QLog.e("CliNotifyPush", 1, "decodeMiniAppCtrlPush failed:", paramMap);
+      if (paramMap.isEmpty()) {
+        return;
+      }
+      try
+      {
+        MiniAppControlInfo localMiniAppControlInfo = new MiniAppControlInfo();
+        localMiniAppControlInfo.cmd = ((String)paramMap.get("key_ctrl_cmd"));
+        localMiniAppControlInfo.data.putAll(paramMap);
+        ((IMiniAppService)QRoute.api(IMiniAppService.class)).processControlInfo(paramString, localMiniAppControlInfo);
+        return;
+      }
+      catch (Exception paramMap)
+      {
+        QLog.e("CliNotifyPush", 1, "decodeMiniAppCtrlPush failed:", paramMap);
+      }
     }
   }
   
@@ -778,154 +850,206 @@ public class CliNotifyPush
     Intent localIntent = new Intent("com.qzone.push_feed_update");
     if ((paramSinglePushMsg.jdField_a_of_type_ArrayOfByte != null) && (paramSinglePushMsg.jdField_a_of_type_ArrayOfByte.length > 0)) {
       localIntent.putExtra("update_feeds_buffer", paramSinglePushMsg.jdField_a_of_type_ArrayOfByte);
+    } else if ((paramSinglePushMsg.jdField_a_of_type_JavaUtilMap != null) && ((paramSinglePushMsg.jdField_a_of_type_JavaUtilMap instanceof HashMap))) {
+      localIntent.putExtra("update_feeds", (HashMap)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap);
     }
-    for (;;)
-    {
-      BaseApplication.getContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
-      return;
-      if ((paramSinglePushMsg.jdField_a_of_type_JavaUtilMap != null) && ((paramSinglePushMsg.jdField_a_of_type_JavaUtilMap instanceof HashMap))) {
-        localIntent.putExtra("update_feeds", (HashMap)paramSinglePushMsg.jdField_a_of_type_JavaUtilMap);
-      }
-    }
+    BaseApplication.getContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
   }
   
   public Map<Integer, SinglePushMsg> a(FromServiceMsg paramFromServiceMsg)
   {
+    Object localObject2 = this;
+    String str = "CliNotifyPush";
     QLog.e("CliNotifyPush", 1, "decodeQzonePushMsgs()");
-    QQAppInterface localQQAppInterface = (QQAppInterface)getAppRuntime();
-    if (localQQAppInterface == null) {
+    QQAppInterface localQQAppInterface1 = (QQAppInterface)getAppRuntime();
+    if (localQQAppInterface1 == null) {
       return null;
     }
-    paramFromServiceMsg = paramFromServiceMsg.getWupBuffer();
-    System.arraycopy(paramFromServiceMsg, 4, paramFromServiceMsg, 0, paramFromServiceMsg.length - 4);
-    PushInfo localPushInfo = new PushInfo();
-    paramFromServiceMsg = new JceInputStream(paramFromServiceMsg);
-    paramFromServiceMsg.setServerEncoding("utf-8");
-    localPushInfo.readFrom(paramFromServiceMsg);
-    paramFromServiceMsg = localPushInfo.vecMsg;
-    HashMap localHashMap = new HashMap();
-    long l3 = a(localQQAppInterface);
-    Iterator localIterator = paramFromServiceMsg.iterator();
-    long l1 = l3;
-    SingleMsg localSingleMsg;
-    int i;
-    for (;;)
+    Object localObject1 = paramFromServiceMsg.getWupBuffer();
+    System.arraycopy(localObject1, 4, localObject1, 0, localObject1.length - 4);
+    paramFromServiceMsg = new PushInfo();
+    localObject1 = new JceInputStream((byte[])localObject1);
+    ((JceInputStream)localObject1).setServerEncoding("utf-8");
+    paramFromServiceMsg.readFrom((JceInputStream)localObject1);
+    Object localObject3 = paramFromServiceMsg.vecMsg;
+    localObject1 = new HashMap();
+    long l2 = a(localQQAppInterface1);
+    localObject3 = ((ArrayList)localObject3).iterator();
+    long l1 = l2;
+    label1214:
+    while (((Iterator)localObject3).hasNext())
     {
-      if (localIterator.hasNext())
+      SingleMsg localSingleMsg = (SingleMsg)((Iterator)localObject3).next();
+      int i;
+      QQAppInterface localQQAppInterface2;
+      long l3;
+      Object localObject5;
+      if (localSingleMsg != null)
       {
-        localSingleMsg = (SingleMsg)localIterator.next();
-        if (localSingleMsg != null) {
+        long l4;
+        for (;;)
+        {
           if (localSingleMsg.data.containsKey("pushtype")) {
             i = Integer.parseInt((String)localSingleMsg.data.get("pushtype"));
+          } else if (localSingleMsg.data.containsKey("type")) {
+            i = Integer.parseInt((String)localSingleMsg.data.get("type"));
+          } else {
+            i = 0;
           }
-        }
-      }
-    }
-    for (;;)
-    {
-      long l2;
-      label551:
-      SinglePushMsg localSinglePushMsg;
-      if ((i == 1) || (i == 2) || (i == 4) || (i == 301) || (i == 8) || (i == 300) || (i == 10000) || (i == 10100) || (i == 302) || (i == 350) || (i == 100) || (i == 366))
-      {
-        l2 = a(localQQAppInterface, i);
-        if (QzoneConfig.getInstance().getConfig("QZoneSetting", "PushDeduplication", 1) == 1)
-        {
-          if (localSingleMsg.addTime > l2) {
-            break label551;
-          }
-          QLog.e("CliNotifyPush", 1, "PushDeduplication: localTimeStap:" + l2 + " newTimeStap:" + localSingleMsg.addTime + " msg:" + (String)localSingleMsg.data.get("conent"));
-          a(new SinglePushMsg(localSingleMsg.addTime, localSingleMsg.data, localSingleMsg.opUin, localPushInfo.Mark), localQQAppInterface, 8L);
-          a(2014);
-          break;
-          if (!localSingleMsg.data.containsKey("type")) {
-            break label1061;
-          }
-          i = Integer.parseInt((String)localSingleMsg.data.get("type"));
-          continue;
-        }
-        if (localSingleMsg.addTime < l2)
-        {
-          QLog.e("CliNotifyPush", 1, "PushDeduplication: localTimeStap:" + l2 + " newTimeStap:" + localSingleMsg.addTime + " msg:" + (String)localSingleMsg.data.get("conent"));
-          a(new SinglePushMsg(localSingleMsg.addTime, localSingleMsg.data, localSingleMsg.opUin, localPushInfo.Mark), localQQAppInterface, 8L);
-          a(2014);
-          break;
-        }
-        if (localHashMap.containsKey(Integer.valueOf(i)))
-        {
-          localSinglePushMsg = (SinglePushMsg)localHashMap.get(Integer.valueOf(i));
-          if ((localSinglePushMsg != null) && (localSinglePushMsg.jdField_a_of_type_Long < localSingleMsg.addTime))
+          if ((i != 1) && (i != 2) && (i != 4) && (i != 301) && (i != 8) && (i != 300) && (i != 10000) && (i != 10100) && (i != 302) && (i != 350) && (i != 100) && (i != 366))
           {
-            paramFromServiceMsg = new SinglePushMsg(localSingleMsg.addTime, localSingleMsg.data, localSingleMsg.opUin, localPushInfo.Mark, localSingleMsg.extBuffer);
-            if (i != 366) {
-              localHashMap.put(Integer.valueOf(i), paramFromServiceMsg);
+            if (i == 7066) {
+              ((CliNotifyPush)localObject2).a(localSingleMsg.data);
             }
-            QLog.e("CliNotifyPush", 1, "PushDeduplication: msg localTimeStap:" + localSingleMsg.addTime + " sm newTimeStap:" + localSinglePushMsg.jdField_a_of_type_Long + " msg:" + (String)localSinglePushMsg.jdField_a_of_type_JavaUtilMap.get("conent"));
-            a(localSinglePushMsg, localQQAppInterface, 8L);
-            label732:
-            a(localQQAppInterface, i, localSingleMsg.addTime);
-            l2 = l1;
-            if (l1 < localSingleMsg.addTime) {
-              l2 = localSingleMsg.addTime;
+            for (;;)
+            {
+              break;
+              if (i == 200) {
+                ((CliNotifyPush)localObject2).a(localQQAppInterface1, localSingleMsg.data);
+              } else if (i == 699) {
+                ((CliNotifyPush)localObject2).a(localSingleMsg);
+              } else {
+                a(new SinglePushMsg(localSingleMsg.addTime, localSingleMsg.data, localSingleMsg.opUin, paramFromServiceMsg.Mark), localQQAppInterface1, 256L);
+              }
             }
-            if (i == 366) {
-              a(localQQAppInterface, paramFromServiceMsg);
+            break label1214;
+          }
+          localQQAppInterface2 = localQQAppInterface1;
+          l4 = a(localQQAppInterface2, i);
+          if (QzoneConfig.getInstance().getConfig("QZoneSetting", "PushDeduplication", 1) == 1)
+          {
+            if (localSingleMsg.addTime > l4) {
+              break;
             }
-            l1 = l2;
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("PushDeduplication: localTimeStap:");
+            ((StringBuilder)localObject4).append(l4);
+            ((StringBuilder)localObject4).append(" newTimeStap:");
+            ((StringBuilder)localObject4).append(localSingleMsg.addTime);
+            ((StringBuilder)localObject4).append(" msg:");
+            ((StringBuilder)localObject4).append((String)localSingleMsg.data.get("conent"));
+            QLog.e(str, 1, ((StringBuilder)localObject4).toString());
+            a(new SinglePushMsg(localSingleMsg.addTime, localSingleMsg.data, localSingleMsg.opUin, paramFromServiceMsg.Mark), localQQAppInterface2, 8L);
+            ((CliNotifyPush)localObject2).a(2014);
+          }
+          else
+          {
+            if (localSingleMsg.addTime >= l4) {
+              break;
+            }
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("PushDeduplication: localTimeStap:");
+            ((StringBuilder)localObject4).append(l4);
+            ((StringBuilder)localObject4).append(" newTimeStap:");
+            ((StringBuilder)localObject4).append(localSingleMsg.addTime);
+            ((StringBuilder)localObject4).append(" msg:");
+            ((StringBuilder)localObject4).append((String)localSingleMsg.data.get("conent"));
+            QLog.e(str, 1, ((StringBuilder)localObject4).toString());
+            a(new SinglePushMsg(localSingleMsg.addTime, localSingleMsg.data, localSingleMsg.opUin, paramFromServiceMsg.Mark), localQQAppInterface2, 8L);
+            ((CliNotifyPush)localObject2).a(2014);
           }
         }
+        l3 = l1;
+        localObject5 = localObject1;
+        if (((Map)localObject5).containsKey(Integer.valueOf(i)))
+        {
+          localObject4 = (SinglePushMsg)((Map)localObject5).get(Integer.valueOf(i));
+          if (localObject4 != null) {
+            if (((SinglePushMsg)localObject4).jdField_a_of_type_Long < localSingleMsg.addTime)
+            {
+              localObject2 = new SinglePushMsg(localSingleMsg.addTime, localSingleMsg.data, localSingleMsg.opUin, paramFromServiceMsg.Mark, localSingleMsg.extBuffer);
+              if (i != 366) {
+                ((Map)localObject5).put(Integer.valueOf(i), localObject2);
+              }
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append("PushDeduplication: msg localTimeStap:");
+              ((StringBuilder)localObject5).append(localSingleMsg.addTime);
+              ((StringBuilder)localObject5).append(" sm newTimeStap:");
+              ((StringBuilder)localObject5).append(((SinglePushMsg)localObject4).jdField_a_of_type_Long);
+              ((StringBuilder)localObject5).append(" msg:");
+              ((StringBuilder)localObject5).append((String)((SinglePushMsg)localObject4).jdField_a_of_type_JavaUtilMap.get("conent"));
+              QLog.e(str, 1, ((StringBuilder)localObject5).toString());
+              a((SinglePushMsg)localObject4, localQQAppInterface2, 8L);
+              localObject4 = paramFromServiceMsg;
+              break label1148;
+            }
+          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("PushDeduplication: localTimeStap:");
+          ((StringBuilder)localObject2).append(l4);
+          ((StringBuilder)localObject2).append(" newTimeStap:");
+          ((StringBuilder)localObject2).append(localSingleMsg.addTime);
+          ((StringBuilder)localObject2).append(" msg:");
+          ((StringBuilder)localObject2).append((String)localSingleMsg.data.get("conent"));
+          QLog.e(str, 1, ((StringBuilder)localObject2).toString());
+          l3 = localSingleMsg.addTime;
+          localObject2 = localSingleMsg.data;
+          l4 = localSingleMsg.opUin;
+          a(new SinglePushMsg(l3, (Map)localObject2, l4, paramFromServiceMsg.Mark), localQQAppInterface2, 8L);
+        }
       }
-      for (;;)
+      else
       {
-        break;
-        QLog.e("CliNotifyPush", 1, "PushDeduplication: localTimeStap:" + l2 + " newTimeStap:" + localSingleMsg.addTime + " msg:" + (String)localSingleMsg.data.get("conent"));
-        a(new SinglePushMsg(localSingleMsg.addTime, localSingleMsg.data, localSingleMsg.opUin, localPushInfo.Mark), localQQAppInterface, 8L);
-        break;
-        localSinglePushMsg = new SinglePushMsg(localSingleMsg.addTime, localSingleMsg.data, localSingleMsg.opUin, localPushInfo.Mark, localSingleMsg.extBuffer);
-        paramFromServiceMsg = localSinglePushMsg;
-        if (i == 366) {
-          break label732;
-        }
-        localHashMap.put(Integer.valueOf(i), localSinglePushMsg);
-        paramFromServiceMsg = localSinglePushMsg;
-        break label732;
-        if (i == 7066) {
-          a(localSingleMsg.data);
-        } else if (i == 200) {
-          a(localQQAppInterface, localSingleMsg.data);
-        } else if (i == 699) {
-          a(localSingleMsg);
-        } else {
-          a(new SinglePushMsg(localSingleMsg.addTime, localSingleMsg.data, localSingleMsg.opUin, localPushInfo.Mark), localQQAppInterface, 256L);
-        }
+        localObject2 = this;
+        continue;
       }
-      if (l3 < l1) {
-        a(localQQAppInterface, l1);
+      SinglePushMsg localSinglePushMsg = new SinglePushMsg(localSingleMsg.addTime, localSingleMsg.data, localSingleMsg.opUin, paramFromServiceMsg.Mark, localSingleMsg.extBuffer);
+      localObject2 = localSinglePushMsg;
+      Object localObject4 = paramFromServiceMsg;
+      if (i != 366)
+      {
+        ((Map)localObject5).put(Integer.valueOf(i), localSinglePushMsg);
+        localObject4 = paramFromServiceMsg;
+        localObject2 = localSinglePushMsg;
       }
-      return localHashMap;
-      label1061:
-      i = 0;
+      label1148:
+      a(localQQAppInterface2, i, localSingleMsg.addTime);
+      if (l3 < localSingleMsg.addTime) {
+        l1 = localSingleMsg.addTime;
+      } else {
+        l1 = l3;
+      }
+      if (i == 366)
+      {
+        paramFromServiceMsg = this;
+        paramFromServiceMsg.a(localQQAppInterface2, (SinglePushMsg)localObject2);
+        localObject2 = paramFromServiceMsg;
+        paramFromServiceMsg = (FromServiceMsg)localObject4;
+      }
+      else
+      {
+        localObject2 = this;
+        paramFromServiceMsg = (FromServiceMsg)localObject4;
+      }
     }
+    if (l2 < l1) {
+      a(localQQAppInterface1, l1);
+    }
+    return localObject1;
   }
   
   public boolean a(int paramInt1, int paramInt2)
   {
     boolean bool = true;
-    if ((1 << paramInt2 & paramInt1) != 0) {}
-    for (;;)
-    {
-      if (QZLog.isColorLevel()) {
-        QZLog.i("CliNotifyPush", 2, "checkForegroundShowEnabled showLevel: " + paramInt1 + ",result: " + bool);
-      }
-      return bool;
+    if ((1 << paramInt2 & paramInt1) == 0) {
       bool = false;
     }
+    if (QZLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkForegroundShowEnabled showLevel: ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(",result: ");
+      localStringBuilder.append(bool);
+      QZLog.i("CliNotifyPush", 2, localStringBuilder.toString());
+    }
+    return bool;
   }
   
   public boolean a(QQAppInterface paramQQAppInterface)
   {
-    boolean bool2 = false;
     paramQQAppInterface = ((ActivityManager)paramQQAppInterface.getApp().getSystemService("activity")).getRunningTasks(1);
+    boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramQQAppInterface != null)
     {
@@ -933,15 +1057,18 @@ public class CliNotifyPush
       if (paramQQAppInterface.size() > 0)
       {
         paramQQAppInterface = ((ActivityManager.RunningTaskInfo)paramQQAppInterface.get(0)).topActivity.getClassName();
-        if ((!"cooperation.qzone.QzoneGPUPluginProxyActivity".equals(paramQQAppInterface)) && (!"cooperation.qzone.QzonePluginProxyActivity".equals(paramQQAppInterface)) && (!"cooperation.qzone.QzoneFeedsPluginProxyActivity".equals(paramQQAppInterface))) {
-          break label88;
+        if ((!"cooperation.qzone.QzoneGPUPluginProxyActivity".equals(paramQQAppInterface)) && (!"cooperation.qzone.QzonePluginProxyActivity".equals(paramQQAppInterface)))
+        {
+          bool1 = bool2;
+          if (!"cooperation.qzone.QzoneFeedsPluginProxyActivity".equals(paramQQAppInterface)) {}
+        }
+        else
+        {
+          bool1 = true;
         }
       }
     }
-    label88:
-    for (bool1 = true;; bool1 = false) {
-      return bool1;
-    }
+    return bool1;
   }
   
   public String[] getPreferSSOCommands()
@@ -949,13 +1076,13 @@ public class CliNotifyPush
     return jdField_a_of_type_ArrayOfJavaLangString;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     RemoteHandleManager.getInstance().addWebEventListener(this);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     RemoteHandleManager.getInstance().removeWebEventListener(this);
@@ -975,50 +1102,62 @@ public class CliNotifyPush
       SvcMsgPush localSvcMsgPush = new SvcMsgPush();
       localSvcMsgPush.readFrom(new JceInputStream(paramIntent));
       ((MessageHandler)((QQAppInterface)getAppRuntime()).getBusinessHandler(BusinessHandlerFactory.MESSAGE_HANDLER)).onReceive(null, paramFromServiceMsg, localSvcMsgPush);
-    }
-    for (;;)
-    {
       return;
-      if ((!paramFromServiceMsg.getServiceCmd().equals("MessageSvc.WNSQzone")) || (!paramFromServiceMsg.isSuccess())) {
-        break;
-      }
+    }
+    if ((paramFromServiceMsg.getServiceCmd().equals("MessageSvc.WNSQzone")) && (paramFromServiceMsg.isSuccess()))
+    {
       QLog.e("CliNotifyPush", 1, "get qzone push begin");
       paramIntent = a(paramFromServiceMsg);
-      if (paramIntent != null)
-      {
+      if (paramIntent != null) {
         paramIntent = paramIntent.values().iterator();
-        while (paramIntent.hasNext()) {
-          a((SinglePushMsg)paramIntent.next());
-        }
       }
     }
-    QLog.e("CliNotifyPush", 1, "get qzone push error");
+    else
+    {
+      while (paramIntent.hasNext())
+      {
+        a((SinglePushMsg)paramIntent.next());
+        continue;
+        QLog.e("CliNotifyPush", 1, "get qzone push error");
+      }
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket) {}
   
   public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    if ((!paramString.equals("cmd.pre.getpassivefeeds")) || (paramBundle == null) || (!paramBundle.containsKey("data"))) {}
-    int i;
-    do
+    if ((paramString.equals("cmd.pre.getpassivefeeds")) && (paramBundle != null))
     {
-      return;
+      if (!paramBundle.containsKey("data")) {
+        return;
+      }
       paramString = paramBundle.getBundle("data");
-      i = paramString.getInt("param.preget_seqid");
+      int i = paramString.getInt("param.preget_seqid");
       paramString = Long.valueOf(paramString.getLong("param.preget_undealcount", -1L));
-    } while (jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)) == null);
-    paramBundle = (SinglePushMsg)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
-    if (paramString.longValue() != -1L) {
-      paramBundle.jdField_a_of_type_JavaUtilMap.put("count", paramString + "");
+      if (jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)) != null)
+      {
+        paramBundle = (SinglePushMsg)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i));
+        if (paramString.longValue() != -1L)
+        {
+          paramBundle = paramBundle.jdField_a_of_type_JavaUtilMap;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append("");
+          paramBundle.put("count", localStringBuilder.toString());
+        }
+        paramBundle = new StringBuilder();
+        paramBundle.append("onWebEvent showPush count:");
+        paramBundle.append(paramString);
+        QLog.e("CliNotifyPush", 1, paramBundle.toString());
+        b((SinglePushMsg)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)));
+      }
     }
-    QLog.e("CliNotifyPush", 1, "onWebEvent showPush count:" + paramString);
-    b((SinglePushMsg)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.CliNotifyPush
  * JD-Core Version:    0.7.0.1
  */

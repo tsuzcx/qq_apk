@@ -13,7 +13,7 @@ class SavingAnimView$7
     float f2 = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     paramValueAnimator = this.a;
     float f1 = f2;
-    if (SavingAnimView.a(this.a) == 0) {
+    if (SavingAnimView.a(paramValueAnimator) == 0) {
       f1 = 1.0F - f2;
     }
     SavingAnimView.e(paramValueAnimator, f1);
@@ -22,7 +22,7 @@ class SavingAnimView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.SavingAnimView.7
  * JD-Core Version:    0.7.0.1
  */

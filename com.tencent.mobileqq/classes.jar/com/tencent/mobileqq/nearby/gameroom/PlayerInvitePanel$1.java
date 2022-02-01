@@ -12,15 +12,19 @@ class PlayerInvitePanel$1
   
   public void onClick(View paramView)
   {
-    if (PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel) != null) {
-      PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel).onItemClick(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel, paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
+    if (PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel) != null)
+    {
+      AdapterView.OnItemClickListener localOnItemClickListener = PlayerInvitePanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel);
+      PlayerInvitePanel localPlayerInvitePanel = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomPlayerInvitePanel;
+      int i = this.jdField_a_of_type_Int;
+      localOnItemClickListener.onItemClick(localPlayerInvitePanel, paramView, i, i);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.gameroom.PlayerInvitePanel.1
  * JD-Core Version:    0.7.0.1
  */

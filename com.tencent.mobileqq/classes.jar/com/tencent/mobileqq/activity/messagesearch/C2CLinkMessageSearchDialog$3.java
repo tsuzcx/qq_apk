@@ -11,14 +11,15 @@ class C2CLinkMessageSearchDialog$3
   
   public void onClick(View paramView)
   {
-    this.a.a = null;
-    this.a.dismiss();
+    C2CLinkMessageSearchDialog localC2CLinkMessageSearchDialog = this.a;
+    localC2CLinkMessageSearchDialog.a = null;
+    localC2CLinkMessageSearchDialog.dismiss();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.C2CLinkMessageSearchDialog.3
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.photo.album.NewPhotoListActivity;
+import com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoListCustomizationScanEntry;
+import com.tencent.mobileqq.activity.photo.albumlogicImp.PhotoPreviewCustomizationScanEntry;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 import com.tencent.mobileqq.ar.model.AbstractSession;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
@@ -47,8 +49,9 @@ public abstract class ScanEntryProviderView
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession.g();
+    AbstractSession localAbstractSession = this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession;
+    if (localAbstractSession != null) {
+      localAbstractSession.g();
     }
   }
   
@@ -61,15 +64,17 @@ public abstract class ScanEntryProviderView
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession.h();
+    AbstractSession localAbstractSession = this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession;
+    if (localAbstractSession != null) {
+      localAbstractSession.h();
     }
   }
   
   public void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession.j();
+    AbstractSession localAbstractSession = this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession;
+    if (localAbstractSession != null) {
+      localAbstractSession.j();
     }
   }
   
@@ -77,8 +82,9 @@ public abstract class ScanEntryProviderView
   {
     this.m = true;
     this.l = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession.g();
+    AbstractSession localAbstractSession = this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession;
+    if (localAbstractSession != null) {
+      localAbstractSession.g();
     }
   }
   
@@ -87,8 +93,9 @@ public abstract class ScanEntryProviderView
     if (this.jdField_a_of_type_Boolean != paramBoolean)
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryContainerViewListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryContainerViewListener.a(paramBoolean);
+      ScanEntryContainerViewListener localScanEntryContainerViewListener = this.jdField_a_of_type_ComTencentMobileqqArViewScanEntryContainerViewListener;
+      if (localScanEntryContainerViewListener != null) {
+        localScanEntryContainerViewListener.a(paramBoolean);
       }
     }
   }
@@ -97,8 +104,9 @@ public abstract class ScanEntryProviderView
   {
     this.m = false;
     this.l = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession.h();
+    AbstractSession localAbstractSession = this.jdField_a_of_type_ComTencentMobileqqArModelAbstractSession;
+    if (localAbstractSession != null) {
+      localAbstractSession.h();
     }
   }
   
@@ -112,6 +120,8 @@ public abstract class ScanEntryProviderView
     ScanTorchActivity localScanTorchActivity = (ScanTorchActivity)this.jdField_a_of_type_AndroidContentContext;
     Intent localIntent = new Intent(localScanTorchActivity, NewPhotoListActivity.class);
     localIntent.putExtra("enter_from", 45);
+    localIntent.putExtra("KEY_PHOTO_LIST_CLASS_NAME", PhotoListCustomizationScanEntry.a);
+    localIntent.putExtra("KEY_PHOTO_PREVIEW_CLASS_NAME", PhotoPreviewCustomizationScanEntry.a);
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ScanTorchActivity.class.getName());
     localIntent.putExtra("PhotoConst.INIT_ACTIVITY_PACKAGE_NAME", "com.tencent.mobileqq");
     localIntent.putExtra("PhotoConst.MAXUM_SELECTED_NUM", 1);
@@ -130,7 +140,7 @@ public abstract class ScanEntryProviderView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderView
  * JD-Core Version:    0.7.0.1
  */

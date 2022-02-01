@@ -23,37 +23,49 @@ public class AbFactorManger
       if ("actScenePerf".equals(paramString)) {
         return PluginCombination.resourcePlugin.plugin;
       }
-      if (!"unifiedMonitor".equals(paramString)) {}
+      if ("unifiedMonitor".equals(paramString))
+      {
+        int i = Integer.parseInt((String)paramHashMap.get("family"));
+        if (i != 0)
+        {
+          if (i != 20) {
+            switch (i)
+            {
+            default: 
+              break;
+            case 11: 
+              return PluginCombination.qqBatteryPlugin.plugin;
+            case 9: 
+            case 10: 
+              return PluginCombination.dropFramePlugin.plugin;
+            }
+          } else {
+            return PluginCombination.resourcePlugin.plugin;
+          }
+        }
+        else {
+          return PluginCombination.loopStackPlugin.plugin;
+        }
+      }
     }
-    switch (Integer.parseInt((String)paramHashMap.get("family")))
-    {
-    default: 
-      return -1;
-    case 9: 
-    case 10: 
-      return PluginCombination.dropFramePlugin.plugin;
-    case 0: 
-      return PluginCombination.loopStackPlugin.plugin;
-    case 20: 
-      return PluginCombination.resourcePlugin.plugin;
-    }
-    return PluginCombination.qqBatteryPlugin.plugin;
+    return -1;
   }
   
   public static void a(String paramString, HashMap<String, String> paramHashMap)
   {
-    if (paramHashMap == null) {}
-    do
-    {
+    if (paramHashMap == null) {
       return;
-      paramHashMap.put("deviceLv", String.valueOf(DeviceInfoUtils.a()));
-      paramString = AbProxy.getAbFactorByQapmPlugin(a(paramString, paramHashMap));
-    } while ((paramString == null) || (paramString.length() <= 0));
-    paramHashMap.put("abfactor", paramString);
+    }
+    paramHashMap.put("deviceLv", String.valueOf(DeviceInfoUtils.a()));
+    paramString = AbProxy.getAbFactorByQapmPlugin(a(paramString, paramHashMap));
+    if ((paramString != null) && (paramString.length() > 0)) {
+      paramHashMap.put("abfactor", paramString);
+    }
   }
   
   public static void a(JSONObject paramJSONObject)
   {
+    String str = "newplugin";
     if (paramJSONObject == null) {
       return;
     }
@@ -61,13 +73,13 @@ public class AbFactorManger
     {
       try
       {
-        if (paramJSONObject.has("newplugin"))
+        if (!paramJSONObject.has("newplugin")) {
+          break label62;
+        }
+        int i = paramJSONObject.getInt(str);
+        str = AbProxy.getAbFactorByQapmPlugin(i);
+        if ((str != null) && (str.length() > 0))
         {
-          i = paramJSONObject.getInt("newplugin");
-          String str = AbProxy.getAbFactorByQapmPlugin(i);
-          if ((str == null) || (str.length() <= 0)) {
-            break;
-          }
           paramJSONObject.put("abfactor", str);
           return;
         }
@@ -75,15 +87,16 @@ public class AbFactorManger
       catch (Exception paramJSONObject)
       {
         QLog.e("MagnifierSDK.QAPM.AbFactorManger", 2, "", paramJSONObject);
-        return;
       }
-      int i = paramJSONObject.getInt("plugin");
+      return;
+      label62:
+      str = "plugin";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.abfactor.AbFactorManger
  * JD-Core Version:    0.7.0.1
  */

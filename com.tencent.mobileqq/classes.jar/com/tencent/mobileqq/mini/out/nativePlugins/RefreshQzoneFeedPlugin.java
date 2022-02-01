@@ -32,17 +32,21 @@ public class RefreshQzoneFeedPlugin
         if (QLog.isColorLevel()) {
           QLog.i("RefreshQzoneFeedPlugin", 2, "RefreshQzoneFeed");
         }
-        return;
       }
-      QLog.e("RefreshQzoneFeedPlugin", 1, "activity is null");
-      return;
+      else
+      {
+        QLog.e("RefreshQzoneFeedPlugin", 1, "activity is null");
+      }
     }
-    QLog.e("RefreshQzoneFeedPlugin", 1, "jsContext is null");
+    else
+    {
+      QLog.e("RefreshQzoneFeedPlugin", 1, "jsContext is null");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.RefreshQzoneFeedPlugin
  * JD-Core Version:    0.7.0.1
  */

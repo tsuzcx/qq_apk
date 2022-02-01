@@ -68,23 +68,29 @@ public class FragmentActivity
   
   private int allocateRequestIndex(@NonNull Fragment paramFragment)
   {
-    if (this.mPendingFragmentActivityResults.size() >= 65534) {
-      throw new IllegalStateException("Too many pending Fragment activity results.");
-    }
-    while (this.mPendingFragmentActivityResults.indexOfKey(this.mNextCandidateRequestIndex) >= 0) {
+    if (this.mPendingFragmentActivityResults.size() < 65534)
+    {
+      while (this.mPendingFragmentActivityResults.indexOfKey(this.mNextCandidateRequestIndex) >= 0) {
+        this.mNextCandidateRequestIndex = ((this.mNextCandidateRequestIndex + 1) % 65534);
+      }
+      int i = this.mNextCandidateRequestIndex;
+      this.mPendingFragmentActivityResults.put(i, paramFragment.mWho);
       this.mNextCandidateRequestIndex = ((this.mNextCandidateRequestIndex + 1) % 65534);
+      return i;
     }
-    int i = this.mNextCandidateRequestIndex;
-    this.mPendingFragmentActivityResults.put(i, paramFragment.mWho);
-    this.mNextCandidateRequestIndex = ((this.mNextCandidateRequestIndex + 1) % 65534);
-    return i;
+    paramFragment = new IllegalStateException("Too many pending Fragment activity results.");
+    for (;;)
+    {
+      throw paramFragment;
+    }
   }
   
   static void checkForValidRequestCode(int paramInt)
   {
-    if ((0xFFFF0000 & paramInt) != 0) {
-      throw new IllegalArgumentException("Can only use lower 16 bits for requestCode");
+    if ((paramInt & 0xFFFF0000) == 0) {
+      return;
     }
+    throw new IllegalArgumentException("Can only use lower 16 bits for requestCode");
   }
   
   private void markFragmentsCreated()
@@ -95,39 +101,34 @@ public class FragmentActivity
   private static boolean markState(FragmentManager paramFragmentManager, Lifecycle.State paramState)
   {
     paramFragmentManager = paramFragmentManager.getFragments().iterator();
-    boolean bool2 = false;
+    boolean bool1 = false;
     while (paramFragmentManager.hasNext())
     {
       Fragment localFragment = (Fragment)paramFragmentManager.next();
       if (localFragment != null)
       {
-        bool1 = bool2;
+        boolean bool2 = bool1;
         if (localFragment.getHost() != null) {
-          bool1 = bool2 | markState(localFragment.getChildFragmentManager(), paramState);
+          bool2 = bool1 | markState(localFragment.getChildFragmentManager(), paramState);
         }
-        bool2 = bool1;
+        bool1 = bool2;
         if (localFragment.mViewLifecycleOwner != null)
         {
-          bool2 = bool1;
+          bool1 = bool2;
           if (localFragment.mViewLifecycleOwner.getLifecycle().getCurrentState().isAtLeast(Lifecycle.State.STARTED))
           {
             localFragment.mViewLifecycleOwner.setCurrentState(paramState);
-            bool2 = true;
+            bool1 = true;
           }
         }
-        if (!localFragment.mLifecycleRegistry.getCurrentState().isAtLeast(Lifecycle.State.STARTED)) {
-          break label137;
+        if (localFragment.mLifecycleRegistry.getCurrentState().isAtLeast(Lifecycle.State.STARTED))
+        {
+          localFragment.mLifecycleRegistry.setCurrentState(paramState);
+          bool1 = true;
         }
-        localFragment.mLifecycleRegistry.setCurrentState(paramState);
       }
     }
-    label137:
-    for (boolean bool1 = true;; bool1 = bool2)
-    {
-      bool2 = bool1;
-      break;
-      return bool2;
-    }
+    return bool1;
   }
   
   @Nullable
@@ -152,8 +153,11 @@ public class FragmentActivity
     paramPrintWriter.print("Local FragmentActivity ");
     paramPrintWriter.print(Integer.toHexString(System.identityHashCode(this)));
     paramPrintWriter.println(" State:");
-    String str = paramString + "  ";
-    paramPrintWriter.print(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("  ");
+    localObject = ((StringBuilder)localObject).toString();
+    paramPrintWriter.print((String)localObject);
     paramPrintWriter.print("mCreated=");
     paramPrintWriter.print(this.mCreated);
     paramPrintWriter.print(" mResumed=");
@@ -161,7 +165,7 @@ public class FragmentActivity
     paramPrintWriter.print(" mStopped=");
     paramPrintWriter.print(this.mStopped);
     if (getApplication() != null) {
-      LoaderManager.getInstance(this).dump(str, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+      LoaderManager.getInstance(this).dump((String)localObject, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     }
     this.mFragments.getSupportFragmentManager().dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
   }
@@ -184,29 +188,32 @@ public class FragmentActivity
   {
     this.mFragments.noteStateNotSaved();
     int i = paramInt1 >> 16;
-    Object localObject;
     if (i != 0)
     {
       i -= 1;
       localObject = (String)this.mPendingFragmentActivityResults.get(i);
       this.mPendingFragmentActivityResults.remove(i);
-      if (localObject == null) {
+      if (localObject == null)
+      {
         Log.w("FragmentActivity", "Activity result delivered for unknown Fragment.");
+        return;
       }
-    }
-    do
-    {
-      return;
       Fragment localFragment = this.mFragments.findFragmentByWho((String)localObject);
       if (localFragment == null)
       {
-        Log.w("FragmentActivity", "Activity result no fragment exists for who: " + (String)localObject);
+        paramIntent = new StringBuilder();
+        paramIntent.append("Activity result no fragment exists for who: ");
+        paramIntent.append((String)localObject);
+        Log.w("FragmentActivity", paramIntent.toString());
         return;
       }
-      localFragment.onActivityResult(0xFFFF & paramInt1, paramInt2, paramIntent);
+      localFragment.onActivityResult(paramInt1 & 0xFFFF, paramInt2, paramIntent);
       return;
-      localObject = ActivityCompat.getPermissionCompatDelegate();
-    } while ((localObject != null) && (((ActivityCompat.PermissionCompatDelegate)localObject).onActivityResult(this, paramInt1, paramInt2, paramIntent)));
+    }
+    Object localObject = ActivityCompat.getPermissionCompatDelegate();
+    if ((localObject != null) && (((ActivityCompat.PermissionCompatDelegate)localObject).onActivityResult(this, paramInt1, paramInt2, paramIntent))) {
+      return;
+    }
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
@@ -220,46 +227,41 @@ public class FragmentActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(@Nullable Bundle paramBundle)
+  protected void onCreate(@Nullable Bundle paramBundle)
   {
     this.mFragments.attachHost(null);
-    Object localObject;
-    String[] arrayOfString;
     if (paramBundle != null)
     {
-      localObject = paramBundle.getParcelable("android:support:fragments");
+      Object localObject = paramBundle.getParcelable("android:support:fragments");
       this.mFragments.restoreSaveState((Parcelable)localObject);
       if (paramBundle.containsKey("android:support:next_request_index"))
       {
         this.mNextCandidateRequestIndex = paramBundle.getInt("android:support:next_request_index");
         localObject = paramBundle.getIntArray("android:support:request_indicies");
-        arrayOfString = paramBundle.getStringArray("android:support:request_fragment_who");
-        if ((localObject != null) && (arrayOfString != null) && (localObject.length == arrayOfString.length)) {
-          break label133;
+        String[] arrayOfString = paramBundle.getStringArray("android:support:request_fragment_who");
+        int i;
+        if ((localObject != null) && (arrayOfString != null) && (localObject.length == arrayOfString.length))
+        {
+          this.mPendingFragmentActivityResults = new SparseArrayCompat(localObject.length);
+          i = 0;
         }
-        Log.w("FragmentActivity", "Invalid requestCode mapping in savedInstanceState.");
+        while (i < localObject.length)
+        {
+          this.mPendingFragmentActivityResults.put(localObject[i], arrayOfString[i]);
+          i += 1;
+          continue;
+          Log.w("FragmentActivity", "Invalid requestCode mapping in savedInstanceState.");
+        }
       }
     }
-    for (;;)
+    if (this.mPendingFragmentActivityResults == null)
     {
-      if (this.mPendingFragmentActivityResults == null)
-      {
-        this.mPendingFragmentActivityResults = new SparseArrayCompat();
-        this.mNextCandidateRequestIndex = 0;
-      }
-      super.onCreate(paramBundle);
-      this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
-      this.mFragments.dispatchCreate();
-      return;
-      label133:
-      this.mPendingFragmentActivityResults = new SparseArrayCompat(localObject.length);
-      int i = 0;
-      while (i < localObject.length)
-      {
-        this.mPendingFragmentActivityResults.put(localObject[i], arrayOfString[i]);
-        i += 1;
-      }
+      this.mPendingFragmentActivityResults = new SparseArrayCompat();
+      this.mNextCandidateRequestIndex = 0;
     }
+    super.onCreate(paramBundle);
+    this.mFragmentLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+    this.mFragments.dispatchCreate();
   }
   
   public boolean onCreatePanelMenu(int paramInt, @NonNull Menu paramMenu)
@@ -273,23 +275,21 @@ public class FragmentActivity
   @Nullable
   public View onCreateView(@Nullable View paramView, @NonNull String paramString, @NonNull Context paramContext, @NonNull AttributeSet paramAttributeSet)
   {
-    View localView2 = dispatchFragmentsOnCreateView(paramView, paramString, paramContext, paramAttributeSet);
-    View localView1 = localView2;
-    if (localView2 == null) {
-      localView1 = super.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    View localView = dispatchFragmentsOnCreateView(paramView, paramString, paramContext, paramAttributeSet);
+    if (localView == null) {
+      return super.onCreateView(paramView, paramString, paramContext, paramAttributeSet);
     }
-    return localView1;
+    return localView;
   }
   
   @Nullable
   public View onCreateView(@NonNull String paramString, @NonNull Context paramContext, @NonNull AttributeSet paramAttributeSet)
   {
-    View localView2 = dispatchFragmentsOnCreateView(null, paramString, paramContext, paramAttributeSet);
-    View localView1 = localView2;
-    if (localView2 == null) {
-      localView1 = super.onCreateView(paramString, paramContext, paramAttributeSet);
+    View localView = dispatchFragmentsOnCreateView(null, paramString, paramContext, paramAttributeSet);
+    if (localView == null) {
+      return super.onCreateView(paramString, paramContext, paramAttributeSet);
     }
-    return localView1;
+    return localView;
   }
   
   protected void onDestroy()
@@ -310,14 +310,14 @@ public class FragmentActivity
     if (super.onMenuItemSelected(paramInt, paramMenuItem)) {
       return true;
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return false;
-    case 0: 
-      return this.mFragments.dispatchOptionsItemSelected(paramMenuItem);
+      if (paramInt != 6) {
+        return false;
+      }
+      return this.mFragments.dispatchContextItemSelected(paramMenuItem);
     }
-    return this.mFragments.dispatchContextItemSelected(paramMenuItem);
+    return this.mFragments.dispatchOptionsItemSelected(paramMenuItem);
   }
   
   @CallSuper
@@ -335,15 +335,10 @@ public class FragmentActivity
   
   public void onPanelClosed(int paramInt, @NonNull Menu paramMenu)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      super.onPanelClosed(paramInt, paramMenu);
-      return;
+    if (paramInt == 0) {
       this.mFragments.dispatchOptionsMenuClosed(paramMenu);
     }
+    super.onPanelClosed(paramInt, paramMenu);
   }
   
   protected void onPause()
@@ -385,27 +380,27 @@ public class FragmentActivity
   {
     this.mFragments.noteStateNotSaved();
     int i = paramInt >> 16 & 0xFFFF;
-    String str;
     if (i != 0)
     {
       i -= 1;
-      str = (String)this.mPendingFragmentActivityResults.get(i);
+      String str = (String)this.mPendingFragmentActivityResults.get(i);
       this.mPendingFragmentActivityResults.remove(i);
-      if (str == null) {
+      if (str == null)
+      {
         Log.w("FragmentActivity", "Activity result delivered for unknown Fragment.");
+        return;
       }
+      Fragment localFragment = this.mFragments.findFragmentByWho(str);
+      if (localFragment == null)
+      {
+        paramArrayOfString = new StringBuilder();
+        paramArrayOfString.append("Activity result no fragment exists for who: ");
+        paramArrayOfString.append(str);
+        Log.w("FragmentActivity", paramArrayOfString.toString());
+        return;
+      }
+      localFragment.onRequestPermissionsResult(paramInt & 0xFFFF, paramArrayOfString, paramArrayOfInt);
     }
-    else
-    {
-      return;
-    }
-    Fragment localFragment = this.mFragments.findFragmentByWho(str);
-    if (localFragment == null)
-    {
-      Log.w("FragmentActivity", "Activity result no fragment exists for who: " + str);
-      return;
-    }
-    localFragment.onRequestPermissionsResult(paramInt & 0xFFFF, paramArrayOfString, paramArrayOfInt);
   }
   
   protected void onResume()
@@ -422,7 +417,7 @@ public class FragmentActivity
     this.mFragments.dispatchResume();
   }
   
-  public void onSaveInstanceState(@NonNull Bundle paramBundle)
+  protected void onSaveInstanceState(@NonNull Bundle paramBundle)
   {
     super.onSaveInstanceState(paramBundle);
     markFragmentsCreated();
@@ -488,7 +483,7 @@ public class FragmentActivity
     try
     {
       this.mRequestedPermissionsFromFragment = true;
-      ActivityCompat.requestPermissions(this, paramArrayOfString, (allocateRequestIndex(paramFragment) + 1 << 16) + (0xFFFF & paramInt));
+      ActivityCompat.requestPermissions(this, paramArrayOfString, (allocateRequestIndex(paramFragment) + 1 << 16) + (paramInt & 0xFFFF));
       return;
     }
     finally
@@ -542,7 +537,7 @@ public class FragmentActivity
       this.mStartedActivityFromFragment = false;
     }
     checkForValidRequestCode(paramInt);
-    ActivityCompat.startActivityForResult(this, paramIntent, (allocateRequestIndex(paramFragment) + 1 << 16) + (0xFFFF & paramInt), paramBundle);
+    ActivityCompat.startActivityForResult(this, paramIntent, (allocateRequestIndex(paramFragment) + 1 << 16) + (paramInt & 0xFFFF), paramBundle);
     this.mStartedActivityFromFragment = false;
   }
   
@@ -576,7 +571,7 @@ public class FragmentActivity
       this.mStartedIntentSenderFromFragment = false;
     }
     checkForValidRequestCode(paramInt1);
-    ActivityCompat.startIntentSenderForResult(this, paramIntentSender, (allocateRequestIndex(paramFragment) + 1 << 16) + (0xFFFF & paramInt1), paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+    ActivityCompat.startIntentSenderForResult(this, paramIntentSender, (allocateRequestIndex(paramFragment) + 1 << 16) + (paramInt1 & 0xFFFF), paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
     this.mStartedIntentSenderFromFragment = false;
   }
   
@@ -610,7 +605,7 @@ public class FragmentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentActivity
  * JD-Core Version:    0.7.0.1
  */

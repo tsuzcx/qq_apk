@@ -18,20 +18,21 @@ class ReceiptMessageDetailFragment$OnTextLongClickedListener
   public boolean onLongClick(View paramView)
   {
     paramView = (ReceiptMessageDetailFragment)this.a.get();
-    if ((paramView == null) || (!paramView.isAdded())) {
-      return false;
+    if ((paramView != null) && (paramView.isAdded()))
+    {
+      ActionSheet localActionSheet = ActionSheet.create(paramView.getBaseActivity());
+      localActionSheet.addButton(2131691291);
+      localActionSheet.addCancelButton(2131690728);
+      localActionSheet.setOnButtonClickListener(new ReceiptMessageDetailFragment.OnTextLongClickedListener.1(this, paramView, localActionSheet));
+      localActionSheet.show();
+      return true;
     }
-    ActionSheet localActionSheet = ActionSheet.create(paramView.getActivity());
-    localActionSheet.addButton(2131691369);
-    localActionSheet.addCancelButton(2131690800);
-    localActionSheet.setOnButtonClickListener(new ReceiptMessageDetailFragment.OnTextLongClickedListener.1(this, paramView, localActionSheet));
-    localActionSheet.show();
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.OnTextLongClickedListener
  * JD-Core Version:    0.7.0.1
  */

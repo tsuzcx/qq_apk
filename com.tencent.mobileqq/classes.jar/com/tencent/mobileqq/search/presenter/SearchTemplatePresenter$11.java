@@ -12,15 +12,15 @@ class SearchTemplatePresenter$11
     this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850038);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849965);
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130850037);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130849964);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.SearchTemplatePresenter.11
  * JD-Core Version:    0.7.0.1
  */

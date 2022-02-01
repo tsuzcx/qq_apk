@@ -25,82 +25,112 @@ class QQMapActivity$9
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
     String str;
-    GeoPoint localGeoPoint;
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null) && (paramSosoLbsInfo.mLocation.address != null))
-    {
+    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null) && (paramSosoLbsInfo.mLocation.address != null)) {
       str = paramSosoLbsInfo.mLocation.address;
-      if (QLog.isColorLevel()) {
-        QLog.d("get_location", 2, "onLocationFinish errCode=" + paramInt);
-      }
-      if ((paramInt != 0) || (paramSosoLbsInfo == null) || (paramSosoLbsInfo.mLocation == null)) {
-        break label546;
-      }
-      localGeoPoint = new GeoPoint((int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D), (int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
-      if (this.a.s)
-      {
-        if (!this.a.k) {
-          break label181;
-        }
-        label129:
-        this.a.h();
-        this.a.s = false;
-      }
-      if (this.a.k) {
-        break label253;
-      }
-      this.a.a(localGeoPoint, str);
-    }
-    for (;;)
-    {
-      label181:
-      label253:
-      try
-      {
-        this.a.dismissDialog(0);
-        return;
-      }
-      catch (IllegalArgumentException paramSosoLbsInfo) {}
+    } else {
       str = "";
-      break;
-      this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsTencentMap.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(localGeoPoint.getLatitudeE6() / 1000000.0D, localGeoPoint.getLongitudeE6() / 1000000.0D)));
-      this.a.g = str;
-      this.a.c.setVisibility(0);
-      this.a.a(localGeoPoint);
-      break label129;
-      this.a.z();
-      long l = System.currentTimeMillis();
-      if (l - this.a.jdField_a_of_type_Long > 5000L)
+    }
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onLocationFinish errCode=");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("get_location", 2, ((StringBuilder)localObject1).toString());
+    }
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
+    {
+      localObject1 = new GeoPoint((int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D), (int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
+      Object localObject2;
+      double d1;
+      double d2;
+      if (this.a.mIsGetMyLocation)
       {
-        if ((this.a.e != null) && (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelPolyline == null))
+        if (!this.a.startWithPos)
         {
-          double d = QQMapRoutingHelper.a(localGeoPoint.getLongitudeE6() / 1000000.0D, localGeoPoint.getLatitudeE6() / 1000000.0D, this.a.jdField_b_of_type_Double, this.a.jdField_a_of_type_Double);
-          this.a.m();
-          this.a.e.setText(QQMapRoutingHelper.a(d));
+          localObject2 = this.a.tencentMap;
+          d1 = ((GeoPoint)localObject1).getLatitudeE6();
+          Double.isNaN(d1);
+          d1 /= 1000000.0D;
+          d2 = ((GeoPoint)localObject1).getLongitudeE6();
+          Double.isNaN(d2);
+          ((TencentMap)localObject2).moveCamera(CameraUpdateFactory.newLatLng(new LatLng(d1, d2 / 1000000.0D)));
+          localObject2 = this.a;
+          ((QQMapActivity)localObject2).location = str;
+          ((QQMapActivity)localObject2).pinView.setVisibility(0);
+          this.a.updateLocationAddress((GeoPoint)localObject1);
         }
-        this.a.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint = localGeoPoint;
-        this.a.p = str;
-        this.a.q = paramSosoLbsInfo.mLocation.name;
-        if (this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker != null)
+        this.a.onFetchDataSuceeded();
+        this.a.mIsGetMyLocation = false;
+      }
+      if (!this.a.startWithPos)
+      {
+        this.a.addMyPosition((GeoPoint)localObject1, str);
+      }
+      else
+      {
+        this.a.addSelfLay();
+        long l = System.currentTimeMillis();
+        if (l - this.a.mLastUpdateSelfPoiTime > 5000L)
         {
-          this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker.setPosition(new LatLng(this.a.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLatitudeE6() / 1000000.0D, this.a.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint.getLongitudeE6() / 1000000.0D));
-          this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker.setSnippet("");
-          QQMapActivity.a(this.a.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelMarker);
+          if ((this.a.mDistanceTxt != null) && (this.a.mPolyLine == null))
+          {
+            d1 = ((GeoPoint)localObject1).getLongitudeE6();
+            Double.isNaN(d1);
+            d1 /= 1000000.0D;
+            d2 = ((GeoPoint)localObject1).getLatitudeE6();
+            Double.isNaN(d2);
+            d1 = QQMapRoutingHelper.a(d1, d2 / 1000000.0D, this.a.longitude, this.a.latitude);
+            this.a.listenDistanceChange();
+            this.a.mDistanceTxt.setText(QQMapRoutingHelper.a(d1));
+          }
+          localObject2 = this.a;
+          ((QQMapActivity)localObject2).mSelfGeoPoint = ((GeoPoint)localObject1);
+          ((QQMapActivity)localObject2).mSelfAddress = str;
+          ((QQMapActivity)localObject2).mSelfPoiName = paramSosoLbsInfo.mLocation.name;
+          if (this.a.mSelfLocationMarker != null)
+          {
+            paramSosoLbsInfo = this.a.mSelfLocationMarker;
+            d1 = this.a.mSelfGeoPoint.getLatitudeE6();
+            Double.isNaN(d1);
+            d1 /= 1000000.0D;
+            d2 = this.a.mSelfGeoPoint.getLongitudeE6();
+            Double.isNaN(d2);
+            paramSosoLbsInfo.setPosition(new LatLng(d1, d2 / 1000000.0D));
+            this.a.mSelfLocationMarker.setSnippet("");
+            QQMapActivity.showInfoWindow(this.a.mSelfLocationMarker);
+          }
+          if (QLog.isColorLevel())
+          {
+            paramSosoLbsInfo = new StringBuilder();
+            paramSosoLbsInfo.append("onLocationFinish, mSelfPoint=");
+            paramSosoLbsInfo.append(this.a.mSelfGeoPoint);
+            paramSosoLbsInfo.append(",addr=");
+            paramSosoLbsInfo.append(str);
+            paramSosoLbsInfo.append(",poiName=");
+            paramSosoLbsInfo.append(this.a.mSelfPoiName);
+            QLog.d("get_location", 2, paramSosoLbsInfo.toString());
+          }
+          this.a.mLastUpdateSelfPoiTime = l;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("get_location", 2, "onLocationFinish, mSelfPoint=" + this.a.jdField_b_of_type_ComTencentMapLibBasemapDataGeoPoint + ",addr=" + str + ",poiName=" + this.a.q);
-        }
-        this.a.jdField_a_of_type_Long = l;
-        continue;
-        label546:
-        this.a.y();
-        new Handler().post(new QQMapActivity.9.1(this));
       }
     }
+    else
+    {
+      this.a.onFetchDataFailed();
+      new Handler().post(new QQMapActivity.9.1(this));
+    }
+    try
+    {
+      this.a.dismissDialog(0);
+      return;
+    }
+    catch (IllegalArgumentException paramSosoLbsInfo) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQMapActivity.9
  * JD-Core Version:    0.7.0.1
  */

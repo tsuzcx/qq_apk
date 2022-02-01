@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
@@ -36,13 +37,13 @@ class HomeWorkTroopSelectorFragment$1
     ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_uin_list_key", localArrayList2);
     ((Intent)localObject).putStringArrayListExtra("HomeWorkConstants:homework_async_name_list_key", localArrayList1);
     this.a.getActivity().setResult(262, (Intent)localObject);
-    this.a.getActivity().doOnBackPressed();
+    this.a.getQBaseActivity().doOnBackPressed();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment.1
  * JD-Core Version:    0.7.0.1
  */

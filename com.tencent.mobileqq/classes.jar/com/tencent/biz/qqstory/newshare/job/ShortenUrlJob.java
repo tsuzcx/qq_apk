@@ -35,13 +35,18 @@ public class ShortenUrlJob
   {
     Object localObject2 = PlayModeUtils.a();
     Object localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
-    String str = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
+    Object localObject3 = ((TicketManager)((QQAppInterface)localObject2).getManager(2)).getSkey((String)localObject1);
     localObject2 = new Bundle();
-    localObject1 = HttpUtil.batchUrlExchange(BaseApplication.getContext(), (String)localObject1, str, 1, this.jdField_a_of_type_JavaUtilHashMap, (Bundle)localObject2);
+    localObject1 = HttpUtil.batchUrlExchange(BaseApplication.getContext(), (String)localObject1, (String)localObject3, 1, this.jdField_a_of_type_JavaUtilHashMap, (Bundle)localObject2);
     if ((!((Bundle)localObject2).getBoolean("isSuccess", false)) && (this.c))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w(this.b, 2, "shortenUrl failed size:" + ((HashMap)localObject1).size());
+      if (QLog.isColorLevel())
+      {
+        localObject2 = this.b;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("shortenUrl failed size:");
+        ((StringBuilder)localObject3).append(((HashMap)localObject1).size());
+        QLog.w((String)localObject2, 2, ((StringBuilder)localObject3).toString());
       }
       b(false);
       return;
@@ -50,7 +55,7 @@ public class ShortenUrlJob
     b(true);
   }
   
-  public void a(Map<String, Object> paramMap)
+  protected void a(Map<String, Object> paramMap)
   {
     if ((paramMap != null) && (!paramMap.isEmpty()) && (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.isEmpty()) && (paramMap.containsKey("ShortenUrlJob_shortenedUrls"))) {
       this.jdField_a_of_type_JavaUtilHashMap = ((HashMap)ShareUtils.a(this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap, "ShortenUrlJob_shortenedUrls", this.jdField_a_of_type_JavaUtilHashMap));
@@ -59,7 +64,7 @@ public class ShortenUrlJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.ShortenUrlJob
  * JD-Core Version:    0.7.0.1
  */

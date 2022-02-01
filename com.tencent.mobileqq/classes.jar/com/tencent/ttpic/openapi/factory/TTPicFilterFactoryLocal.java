@@ -26,7 +26,7 @@ import java.nio.ByteBuffer;
 
 public class TTPicFilterFactoryLocal
 {
-  private static final String TAG = TTPicFilterFactoryLocal.class.getSimpleName();
+  private static final String TAG = "TTPicFilterFactoryLocal";
   
   public static void clearLutFiles()
   {
@@ -38,121 +38,157 @@ public class TTPicFilterFactoryLocal
   
   public static BaseFilter creatFilterById(int paramInt)
   {
+    Object localObject1 = AEModule.getLutDirPath();
     Object localObject2 = null;
-    Object localObject3 = null;
-    if (AEModule.getLutDirPath() == null) {}
-    Object localObject1;
-    label818:
-    do
+    if (localObject1 == null) {
+      return null;
+    }
+    if (paramInt != 215)
     {
-      return localObject3;
-      switch (paramInt)
-      {
-      default: 
-        localObject1 = null;
+      if (paramInt != 273) {
+        if (paramInt != 283) {
+          if (paramInt != 297) {
+            if (paramInt != 1000) {
+              if (paramInt != 249) {
+                if (paramInt != 250) {
+                  if (paramInt != 267) {
+                    if (paramInt != 268) {
+                      if (paramInt != 270) {
+                        if (paramInt != 271) {
+                          if (paramInt != 292) {
+                            if (paramInt != 293) {
+                              switch (paramInt)
+                              {
+                              default: 
+                                switch (paramInt)
+                                {
+                                default: 
+                                  switch (paramInt)
+                                  {
+                                  default: 
+                                    localObject1 = null;
+                                    break;
+                                  case 289: 
+                                    localObject1 = new GPUImageLookupFilter();
+                                    ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/ziran_lf.png", 33986));
+                                    break;
+                                  case 288: 
+                                    localObject1 = new GPUImageLookupFilter();
+                                    ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/youjiali_lf.png", 33986));
+                                    break;
+                                  case 287: 
+                                    localObject1 = new GPUImageLookupFilter();
+                                    ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/shuilian_lf.png", 33986));
+                                    break;
+                                  case 286: 
+                                    localObject1 = new GPUImageLookupFilter();
+                                    ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/tangguomeigui_lf.png", 33986));
+                                    break;
+                                  case 285: 
+                                    localObject1 = new GPUImageLookupFilter();
+                                    ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/xinye_lf.png", 33986));
+                                  }
+                                  break;
+                                case 258: 
+                                  localObject1 = new GPUImageLookupFilter();
+                                  ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/zhahuang_lf.png", 33986));
+                                  break;
+                                case 257: 
+                                  localObject1 = new GPUImageLookupFilter();
+                                  ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/dongjing_lf.png", 33986));
+                                  break;
+                                case 256: 
+                                  localObject1 = "MIC_PTU_ZIPAI_YOUNG";
+                                  break;
+                                case 255: 
+                                  localObject1 = new GPUImageLookupFilter();
+                                  ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/chongsheng_lf.png", 33986));
+                                  break;
+                                case 254: 
+                                  localObject1 = "MIC_PTU_ZIPAI_LIGHTRED";
+                                  break;
+                                case 253: 
+                                  localObject1 = new GPUImageLookupFilter();
+                                  ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/fenbi_lf.png", 33986));
+                                  break;
+                                case 252: 
+                                  localObject1 = new GPUImageLookupFilter();
+                                  ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/tianbohe_lf.png", 33986));
+                                }
+                                break;
+                              case 246: 
+                                localObject1 = "MIC_PTU_ZIPAI_FAIRYTALE";
+                                break;
+                              case 245: 
+                                localObject1 = "MIC_PTU_ZIPAI_LIGHTWHITE";
+                                break;
+                              case 244: 
+                                localObject1 = "MIC_PTU_ZIPAI_RICHRED";
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
       }
       for (;;)
       {
-        localObject3 = localObject2;
-        if (localObject2 != null) {
-          break;
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label818;
-        }
-        return PtuFilterFactory.createFilter(paramInt);
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/wuxia_lf.png", 33986));
+        localObject2 = localObject1;
         localObject1 = null;
+        break;
+        localObject1 = "MIC_PTU_FBBS_LANGMAN";
         continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/ziran_lf.png", 33986));
-        localObject1 = null;
-        continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/qiangwei_lf.png", 33986));
-        localObject1 = null;
-        continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/xinye_lf.png", 33986));
-        localObject1 = null;
-        continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/tangguomeigui_lf.png", 33986));
-        localObject1 = null;
-        continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/shuilian_lf.png", 33986));
-        localObject1 = null;
-        continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/youjiali_lf.png", 33986));
-        localObject1 = null;
-        continue;
-        localObject2 = new ChannelSplitFilter();
-        localObject1 = null;
-        continue;
-        localObject1 = "MIC_PTU_ZIPAI_LIGHTWHITE";
-        continue;
-        localObject1 = "MIC_PTU_ZIPAI_LIGHTRED";
-        continue;
+        localObject1 = new GPUImageLookupFilter();
+        ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/nuanyang_lf.png", 33986));
+        break;
         localObject1 = "MIC_PTU_ZIPAI_LIGHT";
         continue;
         localObject1 = "MIC_PTU_ZIPAI_TEAMILK";
         continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/fenbi_lf.png", 33986));
-        localObject1 = null;
-        continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/fennen_lf.png", 33986));
-        localObject1 = null;
-        continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/tianbohe_lf.png", 33986));
-        localObject1 = null;
-        continue;
+        localObject1 = new GPUImageLookupFilter();
+        ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/blackwhite_lf.png", 33986));
+        break;
         localObject1 = "MIC_PTU_ZIPAI_GRADIENT_LIPNEW";
-        continue;
-        localObject1 = "MIC_PTU_ZIPAI_FAIRYTALE";
-        continue;
-        localObject1 = "MIC_PTU_ZIPAI_RICHRED";
-        continue;
-        localObject1 = "MIC_PTU_ZIPAI_YOUNG";
-        continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/zhahuang_lf.png", 33986));
-        localObject1 = null;
-        continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/dongjing_lf.png", 33986));
-        localObject1 = null;
-        continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/chongsheng_lf.png", 33986));
-        localObject1 = null;
-        continue;
-        localObject1 = "MIC_PTU_ZIPAI_MAPLERED";
-        continue;
-        localObject1 = "MIC_PTU_ZIPAI_RICHBLUE";
         continue;
         localObject1 = "MIC_PTU_ZIPAI_RICHYELLOW";
         continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/blackwhite_lf.png", 33986));
-        localObject1 = null;
+        localObject1 = "MIC_PTU_ZIPAI_RICHBLUE";
         continue;
-        localObject2 = new GPUImageLookupFilter();
-        ((BaseFilter)localObject2).addParam(new TextureResParam("inputImageTexture2", "sh/nuanyang_lf.png", 33986));
-        localObject1 = null;
-        continue;
-        localObject1 = "MIC_PTU_FBBS_LANGMAN";
+        localObject1 = new ChannelSplitFilter();
+        break;
+        localObject1 = new GPUImageLookupFilter();
+        ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/wuxia_lf.png", 33986));
+        break;
+        localObject1 = new GPUImageLookupFilter();
+        ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/qiangwei_lf.png", 33986));
+        break;
+        localObject1 = "MIC_PTU_ZIPAI_MAPLERED";
       }
-      localObject2 = lutFilterWithID((String)localObject1);
-      localObject3 = localObject2;
-    } while (localObject2 != null);
-    filter2Image(paramInt, (String)localObject1);
-    return PtuFilterFactory.createFilter(paramInt);
+    }
+    else
+    {
+      localObject1 = new GPUImageLookupFilter();
+      ((BaseFilter)localObject1).addParam(new TextureResParam("inputImageTexture2", "sh/fennen_lf.png", 33986));
+    }
+    if (localObject1 != null) {
+      return localObject1;
+    }
+    if (TextUtils.isEmpty(localObject2)) {
+      return PtuFilterFactory.createFilter(paramInt);
+    }
+    localObject1 = lutFilterWithID(localObject2);
+    if (localObject1 == null)
+    {
+      filter2Image(paramInt, localObject2);
+      return PtuFilterFactory.createFilter(paramInt);
+    }
+    return localObject1;
   }
   
   public static void filter2Image(int paramInt, String paramString)
@@ -165,51 +201,49 @@ public class TTPicFilterFactoryLocal
   
   public static Bitmap getBitmapFromEncryptedFile(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      try
-      {
-        if (paramString.startsWith("assets://"))
-        {
-          paramString = AEModule.getContext().getAssets().open(FileUtils.getRealPath(paramString));
-          label32:
-          arrayOfByte = FileEncryptUtils.decryptFile(paramString);
-        }
+    }
+    try
+    {
+      if (paramString.startsWith("assets://")) {
+        paramString = AEModule.getContext().getAssets().open(FileUtils.getRealPath(paramString));
+      } else {
+        paramString = new FileInputStream(paramString);
       }
-      catch (Exception paramString)
-      {
-        try
-        {
-          byte[] arrayOfByte;
-          IOUtils.closeQuietly(paramString);
-          label41:
-          while (arrayOfByte != null)
-          {
-            paramString = new BitmapFactory.Options();
-            paramString.inPreferredConfig = Bitmap.Config.ARGB_8888;
-            try
-            {
-              paramString = BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length, paramString);
-              return paramString;
-            }
-            catch (OutOfMemoryError paramString)
-            {
-              LogUtils.e("BitmapUtils", "decodeByteArray", paramString, new Object[0]);
-              return null;
-            }
-            paramString = new FileInputStream(paramString);
-            break label32;
-            paramString = paramString;
-            arrayOfByte = null;
-          }
-        }
-        catch (Exception paramString)
-        {
-          break label41;
-        }
-      }
+      localObject = FileEncryptUtils.decryptFile(paramString);
+    }
+    catch (Exception paramString)
+    {
+      label58:
+      break label58;
+    }
+    try
+    {
+      IOUtils.closeQuietly(paramString);
+      paramString = (String)localObject;
+    }
+    catch (Exception paramString)
+    {
+      paramString = (String)localObject;
+      break label60;
+    }
+    paramString = null;
+    label60:
+    if (paramString == null) {
+      return null;
+    }
+    localObject = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_8888;
+    try
+    {
+      paramString = BitmapFactory.decodeByteArray(paramString, 0, paramString.length, (BitmapFactory.Options)localObject);
+      return paramString;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      LogUtils.e("BitmapUtils", "decodeByteArray", paramString, new Object[0]);
+      return null;
     }
   }
   
@@ -225,15 +259,21 @@ public class TTPicFilterFactoryLocal
   
   public static BaseFilter lutFilterWithID(String paramString)
   {
-    if (AEModule.getLutDirPath() == null) {}
-    do
-    {
+    if (AEModule.getLutDirPath() == null) {
       return null;
-      paramString = getBitmapFromEncryptedFile(AEModule.getLutDirPath() + File.separator + paramString + ".png2");
-    } while (paramString == null);
-    GPUImageLookupFilter localGPUImageLookupFilter = new GPUImageLookupFilter();
-    localGPUImageLookupFilter.addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", paramString, 33986, true));
-    return localGPUImageLookupFilter;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AEModule.getLutDirPath());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(".png2");
+    paramString = getBitmapFromEncryptedFile(((StringBuilder)localObject).toString());
+    if (paramString == null) {
+      return null;
+    }
+    localObject = new GPUImageLookupFilter();
+    ((BaseFilter)localObject).addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", paramString, 33986, true));
+    return localObject;
   }
   
   public static Bitmap preloadBaseLUTImage()
@@ -296,19 +336,23 @@ public class TTPicFilterFactoryLocal
   
   public static void saveLutOrg()
   {
-    if (AEModule.getLutDirPath() == null) {}
-    Bitmap localBitmap;
-    do
-    {
+    if (AEModule.getLutDirPath() == null) {
       return;
-      localBitmap = preloadBaseLUTImage();
-    } while (localBitmap == null);
-    BitmapUtils.saveBitmap2PNG(localBitmap, AEModule.getLutDirPath() + File.separator + "LUT_ORG.png");
+    }
+    Bitmap localBitmap = preloadBaseLUTImage();
+    if (localBitmap == null) {
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AEModule.getLutDirPath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("LUT_ORG.png");
+    BitmapUtils.saveBitmap2PNG(localBitmap, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.factory.TTPicFilterFactoryLocal
  * JD-Core Version:    0.7.0.1
  */

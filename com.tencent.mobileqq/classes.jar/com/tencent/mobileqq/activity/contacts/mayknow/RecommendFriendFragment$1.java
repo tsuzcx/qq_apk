@@ -12,52 +12,72 @@ class RecommendFriendFragment$1
 {
   RecommendFriendFragment$1(RecommendFriendFragment paramRecommendFriendFragment) {}
   
-  public void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onCancelMayKnowRecommend isSuccess:" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("onCancelMayKnowRecommend isSuccess:");
+      paramString.append(paramBoolean);
+      QLog.d("RecommendFriendFragment", 2, paramString.toString());
     }
     if (paramBoolean) {
       RecommendFriendFragment.a(this.a);
     }
   }
   
-  public void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
+  protected void onGetMayKnowRecommend(boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onGetMayKnowRecommend isSuccess=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onGetMayKnowRecommend isSuccess=");
+      paramBundle.append(paramBoolean);
+      QLog.d("RecommendFriendFragment", 2, paramBundle.toString());
     }
     if (paramBoolean) {
       RecommendFriendFragment.a(this.a);
     }
   }
   
-  public void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
+  protected void onMayKnowListPushAdd(boolean paramBoolean, List<MayKnowRecommend> paramList)
   {
     super.onMayKnowListPushAdd(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushAdd isSuccess:" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramList = new StringBuilder();
+      paramList.append("onMayKnowListPushAdd isSuccess:");
+      paramList.append(paramBoolean);
+      QLog.d("RecommendFriendFragment", 2, paramList.toString());
     }
     if (paramBoolean) {
       RecommendFriendFragment.a(this.a);
     }
   }
   
-  public void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
+  protected void onMayKnowListPushDel(boolean paramBoolean, List<String> paramList)
   {
     super.onMayKnowListPushDel(paramBoolean, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onMayKnowListPushDel isSuccess:" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      paramList = new StringBuilder();
+      paramList.append("onMayKnowListPushDel isSuccess:");
+      paramList.append(paramBoolean);
+      QLog.d("RecommendFriendFragment", 2, paramList.toString());
     }
     if (paramBoolean) {
       RecommendFriendFragment.a(this.a);
     }
   }
   
-  public void onMayknowStateChanged(boolean paramBoolean)
+  protected void onMayknowStateChanged(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RecommendFriendFragment", 2, "onMayknowStateChanged isSuccess:" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onMayknowStateChanged isSuccess:");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("RecommendFriendFragment", 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
@@ -74,7 +94,7 @@ class RecommendFriendFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.mayknow.RecommendFriendFragment.1
  * JD-Core Version:    0.7.0.1
  */

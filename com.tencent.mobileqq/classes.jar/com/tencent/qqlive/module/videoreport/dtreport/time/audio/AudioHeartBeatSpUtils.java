@@ -34,35 +34,35 @@ public class AudioHeartBeatSpUtils
   
   public static void saveAudioSessionLastHeartBeat(String paramString1, String paramString2)
   {
-    for (;;)
+    try
     {
-      try
+      Map localMap = getLastHeartBeatMap();
+      Object localObject = localMap;
+      if (localMap == null) {
+        localObject = new HashMap();
+      }
+      if (TextUtils.isEmpty(paramString2))
       {
-        Map localMap = getLastHeartBeatMap();
-        Object localObject = localMap;
-        if (localMap == null) {
-          localObject = new HashMap();
+        boolean bool = ((Map)localObject).containsKey(paramString1);
+        if (!bool) {
+          return;
         }
-        if (TextUtils.isEmpty(paramString2))
-        {
-          boolean bool = ((Map)localObject).containsKey(paramString1);
-          if (!bool) {
-            return;
-          }
-          ((Map)localObject).remove(paramString1);
-          paramString1 = JsonUtils.getJsonFromMap((Map)localObject);
-          SPUtils.put(ReportUtils.getContext(), "last_audio_heart_beat_map", paramString1);
-          continue;
-        }
+        ((Map)localObject).remove(paramString1);
+      }
+      else
+      {
         ((Map)localObject).put(paramString1, paramString2);
       }
-      finally {}
+      paramString1 = JsonUtils.getJsonFromMap((Map)localObject);
+      SPUtils.put(ReportUtils.getContext(), "last_audio_heart_beat_map", paramString1);
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.time.audio.AudioHeartBeatSpUtils
  * JD-Core Version:    0.7.0.1
  */

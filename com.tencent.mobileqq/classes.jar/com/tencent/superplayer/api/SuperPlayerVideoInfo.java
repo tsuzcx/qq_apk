@@ -84,108 +84,81 @@ public class SuperPlayerVideoInfo
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    label130:
-    label154:
-    label178:
-    do
+    if (paramObject != null)
     {
-      do
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (SuperPlayerVideoInfo)paramObject;
+      if (this.mVideoSource != paramObject.mVideoSource) {
+        return false;
+      }
+      if (this.mVideoType != paramObject.mVideoType) {
+        return false;
+      }
+      if (this.mBusiPlatform != paramObject.mBusiPlatform) {
+        return false;
+      }
+      Object localObject = this.mVid;
+      if (localObject != null)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        return bool1;
-                        bool1 = bool3;
-                      } while (paramObject == null);
-                      bool1 = bool3;
-                    } while (getClass() != paramObject.getClass());
-                    paramObject = (SuperPlayerVideoInfo)paramObject;
-                    bool1 = bool3;
-                  } while (this.mVideoSource != paramObject.mVideoSource);
-                  bool1 = bool3;
-                } while (this.mVideoType != paramObject.mVideoType);
-                bool1 = bool3;
-              } while (this.mBusiPlatform != paramObject.mBusiPlatform);
-              if (this.mVid == null) {
-                break;
-              }
-              bool1 = bool3;
-            } while (!this.mVid.equals(paramObject.mVid));
-            if (this.mPid == null) {
-              break label232;
-            }
-            bool1 = bool3;
-          } while (!this.mPid.equals(paramObject.mPid));
-          if (this.mRequestDefinition == null) {
-            break label241;
-          }
-          bool1 = bool3;
-        } while (!this.mRequestDefinition.equals(paramObject.mRequestDefinition));
-        if (this.mLocalSavePath == null) {
-          break label250;
+        if (!((String)localObject).equals(paramObject.mVid)) {
+          return false;
         }
-        bool1 = bool3;
-      } while (!this.mLocalSavePath.equals(paramObject.mLocalSavePath));
-      if (this.mFileId == null) {
-        break label259;
       }
-      bool1 = bool3;
-    } while (!this.mFileId.equals(paramObject.mFileId));
-    label202:
-    if (this.mCookies != null) {
-      bool1 = this.mCookies.equals(paramObject.mCookies);
+      else if (paramObject.mVid != null) {
+        return false;
+      }
+      localObject = this.mPid;
+      if (localObject != null)
+      {
+        if (!((String)localObject).equals(paramObject.mPid)) {
+          return false;
+        }
+      }
+      else if (paramObject.mPid != null) {
+        return false;
+      }
+      localObject = this.mRequestDefinition;
+      if (localObject != null)
+      {
+        if (!((String)localObject).equals(paramObject.mRequestDefinition)) {
+          return false;
+        }
+      }
+      else if (paramObject.mRequestDefinition != null) {
+        return false;
+      }
+      localObject = this.mLocalSavePath;
+      if (localObject != null)
+      {
+        if (!((String)localObject).equals(paramObject.mLocalSavePath)) {
+          return false;
+        }
+      }
+      else if (paramObject.mLocalSavePath != null) {
+        return false;
+      }
+      localObject = this.mFileId;
+      if (localObject != null)
+      {
+        if (!((String)localObject).equals(paramObject.mFileId)) {
+          return false;
+        }
+      }
+      else if (paramObject.mFileId != null) {
+        return false;
+      }
+      localObject = this.mCookies;
+      if (localObject != null) {
+        return ((ArrayList)localObject).equals(paramObject.mCookies);
+      }
+      return paramObject.mCookies == null;
     }
-    for (;;)
-    {
-      return bool1;
-      if (paramObject.mVid == null) {
-        break;
-      }
-      return false;
-      label232:
-      if (paramObject.mPid == null) {
-        break label130;
-      }
-      return false;
-      label241:
-      if (paramObject.mRequestDefinition == null) {
-        break label154;
-      }
-      return false;
-      label250:
-      if (paramObject.mLocalSavePath == null) {
-        break label178;
-      }
-      return false;
-      label259:
-      if (paramObject.mFileId == null) {
-        break label202;
-      }
-      return false;
-      bool1 = bool2;
-      if (paramObject.mCookies != null) {
-        bool1 = false;
-      }
-    }
+    return false;
   }
   
   public int getBusiPlatform()
@@ -225,8 +198,9 @@ public class SuperPlayerVideoInfo
   
   public String getPlayUrl()
   {
-    if ((this.mPlayUrls != null) && (this.mPlayUrls.length > 0)) {
-      return this.mPlayUrls[0];
+    String[] arrayOfString = this.mPlayUrls;
+    if ((arrayOfString != null) && (arrayOfString.length > 0)) {
+      return arrayOfString[0];
     }
     return null;
   }
@@ -238,10 +212,12 @@ public class SuperPlayerVideoInfo
   
   public String getRequestDefinition()
   {
-    if (this.mRequestDefinition == null) {
-      return "";
+    String str2 = this.mRequestDefinition;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return this.mRequestDefinition;
+    return str1;
   }
   
   public TPDownloadParamData getTPDownloadParamData()
@@ -291,55 +267,50 @@ public class SuperPlayerVideoInfo
   
   public int hashCode()
   {
-    int i1 = 0;
     int i2 = this.mVideoSource;
     int i3 = this.mVideoType;
     int i4 = this.mBusiPlatform;
+    Object localObject = this.mVid;
+    int i1 = 0;
     int i;
-    int j;
-    label51:
-    int k;
-    label66:
-    int m;
-    if (this.mVid != null)
-    {
-      i = this.mVid.hashCode();
-      if (this.mPid == null) {
-        break label167;
-      }
-      j = this.mPid.hashCode();
-      if (this.mRequestDefinition == null) {
-        break label172;
-      }
-      k = this.mRequestDefinition.hashCode();
-      if (this.mLocalSavePath == null) {
-        break label177;
-      }
-      m = this.mLocalSavePath.hashCode();
-      label82:
-      if (this.mFileId == null) {
-        break label183;
-      }
-    }
-    label167:
-    label172:
-    label177:
-    label183:
-    for (int n = this.mFileId.hashCode();; n = 0)
-    {
-      if (this.mCookies != null) {
-        i1 = this.mCookies.hashCode();
-      }
-      return (n + (m + (k + (j + (i + ((i2 * 31 + i3) * 31 + i4) * 31) * 31) * 31) * 31) * 31) * 31 + i1;
+    if (localObject != null) {
+      i = ((String)localObject).hashCode();
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label51;
-      k = 0;
-      break label66;
-      m = 0;
-      break label82;
     }
+    localObject = this.mPid;
+    int j;
+    if (localObject != null) {
+      j = ((String)localObject).hashCode();
+    } else {
+      j = 0;
+    }
+    localObject = this.mRequestDefinition;
+    int k;
+    if (localObject != null) {
+      k = ((String)localObject).hashCode();
+    } else {
+      k = 0;
+    }
+    localObject = this.mLocalSavePath;
+    int m;
+    if (localObject != null) {
+      m = ((String)localObject).hashCode();
+    } else {
+      m = 0;
+    }
+    localObject = this.mFileId;
+    int n;
+    if (localObject != null) {
+      n = ((String)localObject).hashCode();
+    } else {
+      n = 0;
+    }
+    localObject = this.mCookies;
+    if (localObject != null) {
+      i1 = ((ArrayList)localObject).hashCode();
+    }
+    return (((((((i2 * 31 + i3) * 31 + i4) * 31 + i) * 31 + j) * 31 + k) * 31 + m) * 31 + n) * 31 + i1;
   }
   
   public void setBusiPlatform(int paramInt)
@@ -419,27 +390,44 @@ public class SuperPlayerVideoInfo
   
   public String toString()
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("SuperPlayerVideoInfo[ mVideoSource:");
-    if (this.mVideoSource == 1) {}
-    for (String str = "tvideo";; str = "directUrl")
-    {
-      localStringBuilder2.append(str).append(", ");
-      localStringBuilder1.append("mVideoType:").append(this.mVideoType).append(", ");
-      localStringBuilder1.append("mBusiPlatform:").append(this.mBusiPlatform).append(", ");
-      localStringBuilder1.append("mVid:").append(this.mVid).append(", ");
-      localStringBuilder1.append("mPid:").append(this.mPid).append(", ");
-      localStringBuilder1.append("mPlayUrls:").append(Arrays.toString(this.mPlayUrls)).append(", ");
-      localStringBuilder1.append("mRequestDefn:").append(this.mRequestDefinition).append(" ");
-      localStringBuilder1.append("mFormat:").append(this.mFormat).append(" ");
-      localStringBuilder1.append("]");
-      return localStringBuilder1.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SuperPlayerVideoInfo[ mVideoSource:");
+    String str;
+    if (this.mVideoSource == 1) {
+      str = "tvideo";
+    } else {
+      str = "directUrl";
     }
+    localStringBuilder.append(str);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("mVideoType:");
+    localStringBuilder.append(this.mVideoType);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("mBusiPlatform:");
+    localStringBuilder.append(this.mBusiPlatform);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("mVid:");
+    localStringBuilder.append(this.mVid);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("mPid:");
+    localStringBuilder.append(this.mPid);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("mPlayUrls:");
+    localStringBuilder.append(Arrays.toString(this.mPlayUrls));
+    localStringBuilder.append(", ");
+    localStringBuilder.append("mRequestDefn:");
+    localStringBuilder.append(this.mRequestDefinition);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("mFormat:");
+    localStringBuilder.append(this.mFormat);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerVideoInfo
  * JD-Core Version:    0.7.0.1
  */

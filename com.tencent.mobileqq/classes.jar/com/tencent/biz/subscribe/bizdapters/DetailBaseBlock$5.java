@@ -14,26 +14,27 @@ class DetailBaseBlock$5
   
   public void a(int paramInt)
   {
-    QLog.d(DetailBaseBlock.jdField_a_of_type_JavaLangString, 2, "count:" + paramInt);
-    if ((DetailBaseBlock.n(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock) != null) && (paramInt == 1))
-    {
-      if (TimeAndCountHelper.a().a(DetailBaseBlock.o(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock), "subscribe_sp_key_show_praise_guide") != 0) {
-        break label90;
+    String str = DetailBaseBlock.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("count:");
+    localStringBuilder.append(paramInt);
+    QLog.d(str, 2, localStringBuilder.toString());
+    if ((DetailBaseBlock.n(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock) != null) && (paramInt == 1)) {
+      if (TimeAndCountHelper.a().a(DetailBaseBlock.o(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock), "subscribe_sp_key_show_praise_guide") == 0)
+      {
+        if ((this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) && (!this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a())) {
+          this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock.f();
+        }
       }
-      if ((this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar != null) && (!this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock.jdField_a_of_type_ComTencentBizSubscribeCommentCommentBottomBar.a())) {
-        this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock.f();
+      else if ((TimeAndCountHelper.a().a(DetailBaseBlock.p(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock), "subscribe_sp_key_show_follow_guide") == 0) && (!SubscribeUtils.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed))) {
+        this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock.e();
       }
     }
-    label90:
-    while ((TimeAndCountHelper.a().a(DetailBaseBlock.p(this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock), "subscribe_sp_key_show_follow_guide") != 0) || (SubscribeUtils.a(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed))) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizSubscribeBizdaptersDetailBaseBlock.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.DetailBaseBlock.5
  * JD-Core Version:    0.7.0.1
  */

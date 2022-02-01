@@ -49,16 +49,19 @@ public class AccessTokenHelper
   
   public static void writeAccessToken(Context paramContext, Oauth2AccessToken paramOauth2AccessToken)
   {
-    if ((paramContext == null) || (paramOauth2AccessToken == null) || (TextUtils.isEmpty(paramOauth2AccessToken.getAccessToken()))) {
-      return;
+    if ((paramContext != null) && (paramOauth2AccessToken != null))
+    {
+      if (TextUtils.isEmpty(paramOauth2AccessToken.getAccessToken())) {
+        return;
+      }
+      paramContext = paramContext.getSharedPreferences("com_weibo_sdk_android", 0).edit();
+      paramContext.putString("uid", paramOauth2AccessToken.getUid());
+      paramContext.putString("userName", paramOauth2AccessToken.getScreenName());
+      paramContext.putString("access_token", paramOauth2AccessToken.getAccessToken());
+      paramContext.putString("refresh_token", paramOauth2AccessToken.getRefreshToken());
+      paramContext.putLong("expires_in", paramOauth2AccessToken.getExpiresTime());
+      paramContext.apply();
     }
-    paramContext = paramContext.getSharedPreferences("com_weibo_sdk_android", 0).edit();
-    paramContext.putString("uid", paramOauth2AccessToken.getUid());
-    paramContext.putString("userName", paramOauth2AccessToken.getScreenName());
-    paramContext.putString("access_token", paramOauth2AccessToken.getAccessToken());
-    paramContext.putString("refresh_token", paramOauth2AccessToken.getRefreshToken());
-    paramContext.putLong("expires_in", paramOauth2AccessToken.getExpiresTime());
-    paramContext.apply();
   }
 }
 

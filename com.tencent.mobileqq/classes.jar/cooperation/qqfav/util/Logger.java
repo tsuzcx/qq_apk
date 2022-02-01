@@ -13,15 +13,11 @@ public class Logger
   {
     StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
     int i = 0;
-    for (;;)
+    while (i < arrayOfStackTraceElement.length)
     {
-      if (i < arrayOfStackTraceElement.length)
+      if (Logger.class.getName().equals(arrayOfStackTraceElement[i].getClassName()))
       {
-        if (Logger.class.getName().equals(arrayOfStackTraceElement[i].getClassName())) {
-          jdField_a_of_type_Int = i;
-        }
-      }
-      else {
+        jdField_a_of_type_Int = i;
         return;
       }
       i += 1;
@@ -35,43 +31,56 @@ public class Logger
   
   private void a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3)
   {
-    switch (paramInt1)
+    if ((paramInt1 == 2) || (paramInt1 == 4)) {}
+    StringBuilder localStringBuilder;
+    try
     {
-    }
-    for (;;)
-    {
-      StringBuilder localStringBuilder;
-      try
+      boolean bool = QLog.isDevelopLevel();
+      if (!bool)
       {
-        localStringBuilder = a(paramInt3);
-        if (paramString2 != null) {
-          localStringBuilder.append(paramString2);
-        }
-        paramString2 = paramString1;
-        if (paramString1 == null) {
-          paramString2 = this.jdField_a_of_type_JavaLangString;
-        }
-        switch (paramInt2)
-        {
-        default: 
+        return;
+        bool = QLog.isColorLevel();
+        if (!bool) {
           return;
         }
       }
-      finally {}
-      if (!QLog.isDevelopLevel())
-      {
-        continue;
-        if (!QLog.isColorLevel())
-        {
-          continue;
-          QLog.e(paramString2, paramInt1, localStringBuilder.toString());
-          continue;
-          QLog.w(paramString2, paramInt1, localStringBuilder.toString());
-          continue;
-          QLog.i(paramString2, paramInt1, localStringBuilder.toString());
-          continue;
-          QLog.d(paramString2, paramInt1, localStringBuilder.toString());
-        }
+      localStringBuilder = a(paramInt3);
+      if (paramString2 != null) {
+        localStringBuilder.append(paramString2);
+      }
+      paramString2 = paramString1;
+      if (paramString1 != null) {
+        break label139;
+      }
+      paramString2 = this.jdField_a_of_type_JavaLangString;
+    }
+    finally {}
+    QLog.e(paramString2, paramInt1, localStringBuilder.toString());
+    break label131;
+    label92:
+    QLog.w(paramString2, paramInt1, localStringBuilder.toString());
+    break label131;
+    label106:
+    QLog.i(paramString2, paramInt1, localStringBuilder.toString());
+    break label131;
+    label120:
+    QLog.d(paramString2, paramInt1, localStringBuilder.toString());
+    for (;;)
+    {
+      label131:
+      return;
+      label139:
+      if (paramInt2 == 3) {
+        break label120;
+      }
+      if (paramInt2 == 4) {
+        break label106;
+      }
+      if (paramInt2 == 5) {
+        break label92;
+      }
+      if (paramInt2 == 6) {
+        break;
       }
     }
   }
@@ -107,7 +116,7 @@ public class Logger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     cooperation.qqfav.util.Logger
  * JD-Core Version:    0.7.0.1
  */

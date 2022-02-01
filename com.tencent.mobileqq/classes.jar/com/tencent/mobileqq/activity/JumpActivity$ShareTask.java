@@ -4,7 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import com.tencent.mobileqq.app.parser.JumpActivityHelper;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.app.parser.tempapi.IQJumpApi;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class JumpActivity$ShareTask
   extends AsyncTask<Object, Void, Uri>
@@ -24,13 +25,13 @@ public class JumpActivity$ShareTask
   protected void a(Uri paramUri)
   {
     this.jdField_a_of_type_AndroidContentIntent.setData(paramUri);
-    ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_AndroidContentIntent);
+    ((IQJumpApi)QRoute.api(IQJumpApi.class)).startForwardActivity(this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity, this.jdField_a_of_type_AndroidContentIntent);
     this.jdField_a_of_type_ComTencentMobileqqActivityJumpActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JumpActivity.ShareTask
  * JD-Core Version:    0.7.0.1
  */

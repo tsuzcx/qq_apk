@@ -37,17 +37,18 @@ public class PAGImageLayer
   
   public void replaceImage(PAGImage paramPAGImage)
   {
-    if (paramPAGImage == null) {}
-    for (long l = 0L;; l = paramPAGImage.nativeContext)
-    {
-      replaceImage(l);
-      return;
+    long l;
+    if (paramPAGImage == null) {
+      l = 0L;
+    } else {
+      l = paramPAGImage.nativeContext;
     }
+    replaceImage(l);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.libpag.PAGImageLayer
  * JD-Core Version:    0.7.0.1
  */

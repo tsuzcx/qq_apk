@@ -19,14 +19,18 @@ class QQLSActivity$22
     Object localObject1 = (ActivityManager)this.this$0.getSystemService("activity");
     try
     {
-      Object localObject2 = ((ActivityManager)localObject1).getRunningTasks(1);
+      localObject2 = ((ActivityManager)localObject1).getRunningTasks(1);
       localObject1 = AppSetting.c;
       if ((localObject2 != null) && (((List)localObject2).size() > 0))
       {
         localObject2 = ((ActivityManager.RunningTaskInfo)((List)localObject2).get(0)).topActivity.getClassName();
         boolean bool = QQLSActivity.e(this.this$0);
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "qqlsActivity onpause by :" + (String)localObject2);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("qqlsActivity onpause by :");
+          localStringBuilder.append((String)localObject2);
+          QLog.d("QQLSActivity", 2, localStringBuilder.toString());
         }
         if ((((String)localObject2).equals("com.tencent.mobileqq.activity.GesturePWDUnlockActivity")) && (bool))
         {
@@ -49,15 +53,20 @@ class QQLSActivity$22
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQLSActivity", 2, "qqlsActivity MSG_SETTO_FRONT by locking activity not to front e=" + localException);
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("qqlsActivity MSG_SETTO_FRONT by locking activity not to front e=");
+        ((StringBuilder)localObject2).append(localException);
+        QLog.d("QQLSActivity", 2, ((StringBuilder)localObject2).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQLSActivity.22
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.biz.pubaccount.weishi_new.recommend;
 
 import UserGrowth.stSimpleMetaFeed;
+import UserGrowth.stWaterFallCardStyle;
 import com.tencent.biz.pubaccount.weishi_new.download.wsapp.WSFallKeyPicMonitor;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
@@ -26,11 +27,15 @@ class WSGridItemExpose$2
         if (!WSGridItemExpose.a(this.this$0).containsKey(Integer.valueOf(i)))
         {
           WSGridItemExpose.a(this.this$0).put(Integer.valueOf(i), localstSimpleMetaFeed.id);
-          WSLog.b("weishi-report", "put:" + i);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("put:");
+          localStringBuilder.append(i);
+          WSLog.b("weishi-report", localStringBuilder.toString());
           localHashMap1.put(Integer.valueOf(i), localstSimpleMetaFeed);
           localHashMap2.put(Integer.valueOf(i), localstSimpleMetaFeed.id);
         }
-        if (this.jdField_a_of_type_Boolean) {
+        int j = localstSimpleMetaFeed.waterFallCardStyle.cardType;
+        if ((this.jdField_a_of_type_Boolean) && (j != 11) && (j != 12)) {
           WSFallKeyPicMonitor.a(1, WeishiUtils.a(localstSimpleMetaFeed, true));
         }
       }
@@ -42,7 +47,7 @@ class WSGridItemExpose$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.WSGridItemExpose.2
  * JD-Core Version:    0.7.0.1
  */

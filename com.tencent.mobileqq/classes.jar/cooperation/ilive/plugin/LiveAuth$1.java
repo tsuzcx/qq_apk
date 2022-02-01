@@ -12,20 +12,19 @@ final class LiveAuth$1
   {
     if ((paramBoolean) && (paramstAuth != null))
     {
-      if (LiveAuth.access$000() == 1) {
+      if (LiveAuth.access$000() == 1)
+      {
         QLog.e("IliveAuth", 1, "onGetAuthInfo drawer stop get PluginToken");
+        return;
       }
+      LiveAuth.liveToken(paramstAuth.sUid, paramstAuth.sSessionKey);
+      ElapseStat.b("refreshToken");
     }
-    else {
-      return;
-    }
-    LiveAuth.liveToken(paramstAuth.sUid, paramstAuth.sSessionKey);
-    ElapseStat.b("refreshToken");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.plugin.LiveAuth.1
  * JD-Core Version:    0.7.0.1
  */

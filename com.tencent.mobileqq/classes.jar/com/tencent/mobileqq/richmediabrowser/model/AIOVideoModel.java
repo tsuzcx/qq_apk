@@ -5,29 +5,30 @@ import android.support.v4.util.MQLruCache;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.GlobalImageCache;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
+import com.tencent.richmediabrowser.api.decorator.IDecoratorModel;
+import com.tencent.richmediabrowser.core.IBaseModelBuilder;
 import java.io.File;
 
 public class AIOVideoModel
-  extends BrowserBaseModel
+  implements IDecoratorModel
 {
   public Drawable a(AIOVideoData paramAIOVideoData)
   {
-    URLDrawable localURLDrawable = null;
     File localFile = a(paramAIOVideoData, 0);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    localURLDrawableOptions.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
+    localURLDrawableOptions.mFailedDrawable = URLDrawableHelperConstants.a;
     if ((localFile != null) && (GlobalImageCache.a.get(a(paramAIOVideoData, 0)) != null)) {
-      localURLDrawable = URLDrawable.getDrawable(a(paramAIOVideoData, 0), localURLDrawableOptions);
+      return URLDrawable.getDrawable(a(paramAIOVideoData, 0), localURLDrawableOptions);
     }
-    while (localFile == null) {
-      return localURLDrawable;
+    if (localFile != null)
+    {
+      paramAIOVideoData = URLDrawable.getDrawable(a(paramAIOVideoData, 0), localURLDrawableOptions);
+      paramAIOVideoData.downloadImediatly();
+      return paramAIOVideoData;
     }
-    paramAIOVideoData = URLDrawable.getDrawable(a(paramAIOVideoData, 0), localURLDrawableOptions);
-    paramAIOVideoData.downloadImediatly();
-    return paramAIOVideoData;
+    return null;
   }
   
   public File a(AIOVideoData paramAIOVideoData, int paramInt)
@@ -35,22 +36,25 @@ public class AIOVideoModel
     if (paramAIOVideoData == null) {
       return null;
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      paramAIOVideoData = null;
+      if (paramInt != 1) {
+        paramAIOVideoData = null;
+      } else {
+        paramAIOVideoData = paramAIOVideoData.b;
+      }
     }
-    while ((paramAIOVideoData != null) && (!paramAIOVideoData.equals("I:N")))
+    else {
+      paramAIOVideoData = paramAIOVideoData.a;
+    }
+    if ((paramAIOVideoData != null) && (!paramAIOVideoData.equals("I:N")))
     {
       paramAIOVideoData = new File(paramAIOVideoData);
-      if (!paramAIOVideoData.exists()) {
-        break;
+      if (paramAIOVideoData.exists()) {
+        return paramAIOVideoData;
       }
-      return paramAIOVideoData;
-      paramAIOVideoData = paramAIOVideoData.a;
-      continue;
-      paramAIOVideoData = paramAIOVideoData.b;
     }
+    return null;
   }
   
   public String a(AIOVideoData paramAIOVideoData, int paramInt)
@@ -58,57 +62,72 @@ public class AIOVideoModel
     if (paramAIOVideoData == null) {
       return null;
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      paramAIOVideoData = null;
-    }
-    while ((paramAIOVideoData != null) && (!paramAIOVideoData.equals("I:N")))
-    {
-      if (paramAIOVideoData.startsWith("/")) {
-        break label88;
+      if (paramInt != 1) {
+        paramAIOVideoData = null;
+      } else {
+        paramAIOVideoData = paramAIOVideoData.b;
       }
-      return "file:/" + paramAIOVideoData;
+    }
+    else {
       paramAIOVideoData = paramAIOVideoData.a;
-      continue;
-      paramAIOVideoData = paramAIOVideoData.b;
     }
-    label88:
-    if (paramAIOVideoData.startsWith("//")) {
-      return "file:" + paramAIOVideoData;
+    if ((paramAIOVideoData != null) && (!paramAIOVideoData.equals("I:N")))
+    {
+      if (!paramAIOVideoData.startsWith("/"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("file:/");
+        localStringBuilder.append(paramAIOVideoData);
+        return localStringBuilder.toString();
+      }
+      if (paramAIOVideoData.startsWith("//"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("file:");
+        localStringBuilder.append(paramAIOVideoData);
+        return localStringBuilder.toString();
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file:");
+      localStringBuilder.append(paramAIOVideoData);
+      return localStringBuilder.toString();
     }
-    return "file:" + paramAIOVideoData;
+    return null;
   }
   
   public void a(AIOVideoData paramAIOVideoData, int paramInt, String paramString)
   {
     if ("I:E".equals(paramString))
     {
-      switch (paramInt)
+      if (paramInt != 0)
       {
-      default: 
-        return;
-      case 0: 
-        paramAIOVideoData.d = true;
+        if (paramInt != 1) {
+          return;
+        }
+        paramAIOVideoData.e = true;
         return;
       }
-      paramAIOVideoData.e = true;
+      paramAIOVideoData.d = true;
       return;
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      paramAIOVideoData.a = paramString;
+      if (paramInt != 1) {
+        return;
+      }
+      paramAIOVideoData.b = paramString;
       return;
     }
-    paramAIOVideoData.b = paramString;
+    paramAIOVideoData.a = paramString;
   }
+  
+  public void a(IBaseModelBuilder paramIBaseModelBuilder) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.model.AIOVideoModel
  * JD-Core Version:    0.7.0.1
  */

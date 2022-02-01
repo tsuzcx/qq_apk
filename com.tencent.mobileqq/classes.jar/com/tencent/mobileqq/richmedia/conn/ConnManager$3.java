@@ -10,12 +10,13 @@ class ConnManager$3
   public void run()
   {
     ConnManager.a(this.this$0).b(10);
-    this.this$0.a(ConnManager.a(this.this$0), this.a);
+    ConnManager localConnManager = this.this$0;
+    localConnManager.a(ConnManager.a(localConnManager), this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.conn.ConnManager.3
  * JD-Core Version:    0.7.0.1
  */

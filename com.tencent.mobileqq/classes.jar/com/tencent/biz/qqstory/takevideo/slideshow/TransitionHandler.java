@@ -58,8 +58,12 @@ public class TransitionHandler
   
   public void a(String paramString, LocalMediaInfo paramLocalMediaInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SlideShowProcessor", 2, "setCatcheMediaInfo path : " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setCatcheMediaInfo path : ");
+      localStringBuilder.append(paramString);
+      QLog.d("SlideShowProcessor", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, paramLocalMediaInfo);
   }
@@ -69,7 +73,7 @@ public class TransitionHandler
     return this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramString);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return null;
   }
@@ -78,7 +82,7 @@ public class TransitionHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.TransitionHandler
  * JD-Core Version:    0.7.0.1
  */

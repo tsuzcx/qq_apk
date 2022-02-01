@@ -6,31 +6,36 @@ import UserGrowth.stWaterFallItemStrategy;
 import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.uilayer.framewrok.util.RIJJumpUtils;
 import com.tencent.biz.pubaccount.weishi_new.WSRecommendAdapter;
 import com.tencent.biz.pubaccount.weishi_new.config.WSGlobalConfig;
+import com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpABTestManager;
 import com.tencent.biz.pubaccount.weishi_new.download.RockDownloadListenerWrapper;
 import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 import com.tencent.biz.pubaccount.weishi_new.download.WeishiDownloadUtil;
+import com.tencent.biz.pubaccount.weishi_new.openws.WSOpenWeiShiHelper;
+import com.tencent.biz.pubaccount.weishi_new.openws.WSOpenWeiShiReport;
+import com.tencent.biz.pubaccount.weishi_new.openws.data.WSOpenWeiShiData;
 import com.tencent.biz.pubaccount.weishi_new.recommend.WSGridBeaconReport;
 import com.tencent.biz.pubaccount.weishi_new.report.UserActionReportPresenter;
 import com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898;
-import com.tencent.biz.pubaccount.weishi_new.report.WSReportUtils;
 import com.tencent.biz.pubaccount.weishi_new.util.WSDeviceUtils;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiScehmeUtil;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageOpenParams;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.WSVerticalBeaconReport;
 import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.glue.router.api.IRIJJumpUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
-import cooperation.vip.VasAdvSupport;
+import com.tencent.mobileqq.vas.adv.api.IVasAdvApi;
 import java.util.ArrayList;
+import java.util.List;
 import mqq.os.MqqHandler;
 
 public class WSGridCardPresenter
@@ -54,11 +59,14 @@ public class WSGridCardPresenter
   {
     if (paramstSimpleMetaFeed != null)
     {
-      String str = "weishi://feed?feed_id=" + paramstSimpleMetaFeed.id;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("weishi://feed?feed_id=");
+      ((StringBuilder)localObject).append(paramstSimpleMetaFeed.id);
+      localObject = ((StringBuilder)localObject).toString();
       if (!TextUtils.isEmpty(paramstSimpleMetaFeed.weishi_jump_url)) {
-        str = paramstSimpleMetaFeed.weishi_jump_url;
+        localObject = paramstSimpleMetaFeed.weishi_jump_url;
       }
-      return str;
+      return localObject;
     }
     return null;
   }
@@ -68,24 +76,29 @@ public class WSGridCardPresenter
     if (paramContext == null) {
       return;
     }
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      try
-      {
-        int i = a();
-        WSLog.d("WSGridCardPresenter", "open weishi scheme = " + paramString + ", weishi_jump_url = " + paramstSimpleMetaFeed.weishi_jump_url);
-        WeishiScehmeUtil.a(paramContext.getApplicationContext(), "biz_src_jc_gzh_weishi", paramString, 1, i, paramInt2);
-        UserActionReportPresenter.a(1, 114, paramInt1, paramstSimpleMetaFeed, null);
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        paramContext.printStackTrace();
-        WSLog.d("WSGridCardPresenter", "open weishi error scheme = " + paramString);
-        return;
-      }
+    if (TextUtils.isEmpty(paramString)) {
       paramString = a(paramstSimpleMetaFeed);
+    }
+    try
+    {
+      int i = a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("open weishi scheme = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", weishi_jump_url = ");
+      localStringBuilder.append(paramstSimpleMetaFeed.weishi_jump_url);
+      WSLog.d("WSGridCardPresenter", localStringBuilder.toString());
+      WeishiScehmeUtil.a(paramContext.getApplicationContext(), "biz_src_jc_gzh_weishi", paramString, 1, i, paramInt2);
+      UserActionReportPresenter.a(1, 114, paramInt1, paramstSimpleMetaFeed, null);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+      paramContext = new StringBuilder();
+      paramContext.append("open weishi error scheme = ");
+      paramContext.append(paramString);
+      WSLog.d("WSGridCardPresenter", paramContext.toString());
     }
   }
   
@@ -102,8 +115,13 @@ public class WSGridCardPresenter
   
   private String b(stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    if ((paramstSimpleMetaFeed != null) && (!TextUtils.isEmpty(paramstSimpleMetaFeed.id))) {
-      return "weishi://feed?feed_id=" + paramstSimpleMetaFeed.id + "&logsour=2020020032";
+    if ((paramstSimpleMetaFeed != null) && (!TextUtils.isEmpty(paramstSimpleMetaFeed.id)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("weishi://feed?feed_id=");
+      localStringBuilder.append(paramstSimpleMetaFeed.id);
+      localStringBuilder.append("&logsour=2020020032");
+      return localStringBuilder.toString();
     }
     return "";
   }
@@ -129,36 +147,27 @@ public class WSGridCardPresenter
     WSDownloadParams localWSDownloadParams = new WSDownloadParams();
     localWSDownloadParams.mScene = 1;
     localWSDownloadParams.mLinkStrategyType = a();
-    Activity localActivity;
-    if (i < 10000)
-    {
+    if (i < 10000) {
       i = 104;
-      localWSDownloadParams.mEventId = i;
-      localWSDownloadParams.mTestId = WSReportDc00898.b();
-      localWSDownloadParams.mScheme = a(paramstSimpleMetaFeed);
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardContract$View.a();
-      localActivity = (Activity)paramContext;
-      if (localObject == null) {
-        break label154;
-      }
-      paramContext = ((WSRecommendAdapter)localObject).a();
-      label98:
-      if (localObject == null) {
-        break label159;
-      }
-    }
-    label154:
-    label159:
-    for (Object localObject = ((WSRecommendAdapter)localObject).a();; localObject = null)
-    {
-      WeishiDownloadUtil.a(localActivity, localWSDownloadParams, paramContext, (RockDownloadListenerWrapper)localObject);
-      UserActionReportPresenter.a(1, 115, paramInt, paramstSimpleMetaFeed, WeishiDownloadUtil.a(localWSDownloadParams.mScene, localWSDownloadParams.mLinkStrategyType, localWSDownloadParams.mEventId));
-      return;
+    } else {
       i = 100;
-      break;
-      paramContext = null;
-      break label98;
     }
+    localWSDownloadParams.mEventId = i;
+    localWSDownloadParams.mTestId = WSReportDc00898.b();
+    localWSDownloadParams.mScheme = a(paramstSimpleMetaFeed);
+    WSRecommendAdapter localWSRecommendAdapter = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardContract$View.a();
+    Activity localActivity = (Activity)paramContext;
+    RockDownloadListenerWrapper localRockDownloadListenerWrapper = null;
+    if (localWSRecommendAdapter != null) {
+      paramContext = localWSRecommendAdapter.a();
+    } else {
+      paramContext = null;
+    }
+    if (localWSRecommendAdapter != null) {
+      localRockDownloadListenerWrapper = localWSRecommendAdapter.a();
+    }
+    WeishiDownloadUtil.a(localActivity, localWSDownloadParams, paramContext, localRockDownloadListenerWrapper);
+    UserActionReportPresenter.a(1, 115, paramInt, paramstSimpleMetaFeed, WeishiDownloadUtil.a(localWSDownloadParams.mScene, localWSDownloadParams.mLinkStrategyType, localWSDownloadParams.mEventId));
   }
   
   private void d(Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
@@ -168,7 +177,7 @@ public class WSGridCardPresenter
       stH5OpInfo localstH5OpInfo = paramstSimpleMetaFeed.h5_op_info;
       if ((localstH5OpInfo != null) && (!TextUtils.isEmpty(localstH5OpInfo.h5Url)))
       {
-        RIJJumpUtils.a(paramContext, localstH5OpInfo.h5Url);
+        ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).jumpToUrl(paramContext, localstH5OpInfo.h5Url);
         WSReportDc00898.a(140, localstH5OpInfo.type, paramInt, paramstSimpleMetaFeed.h5_op_info.id);
         WSGridBeaconReport.a("gzh_click", 1000004, paramstSimpleMetaFeed, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString);
       }
@@ -180,7 +189,12 @@ public class WSGridCardPresenter
     WSReportDc00898.a(true);
     if ((paramContext instanceof BaseActivity))
     {
-      paramContext = JumpParser.a(((BaseActivity)paramContext).app, paramContext, paramstSimpleMetaFeed.video_url + "&click_index=" + (paramInt + 1));
+      QQAppInterface localQQAppInterface = ((BaseActivity)paramContext).app;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramstSimpleMetaFeed.video_url);
+      localStringBuilder.append("&click_index=");
+      localStringBuilder.append(paramInt + 1);
+      paramContext = JumpParser.a(localQQAppInterface, paramContext, localStringBuilder.toString());
       if (paramContext != null) {
         paramContext.a();
       }
@@ -190,16 +204,13 @@ public class WSGridCardPresenter
     }
   }
   
-  public void a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean)
+  public void a(Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed, boolean paramBoolean1, boolean paramBoolean2)
   {
-    VasAdvSupport.a().a();
-    paramArrayList.add(paramstSimpleMetaFeed);
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardContract$View.a().c = (paramInt - 0);
-    WSReportUtils.b(String.valueOf(System.currentTimeMillis()));
-    WSVerticalBeaconReport.a(paramInt);
-    WSVerticalBeaconReport.b(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString);
-    WSVerticalBeaconReport.a(paramstSimpleMetaFeed.id);
-    WSVerticalPageFragment.a(new WSVerticalPageOpenParams(paramContext, "recommend_tab", "feeds").b(paramBoolean).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString).a(paramArrayList).a(0).a(false));
+    ((IVasAdvApi)QRoute.api(IVasAdvApi.class)).initTbsEnvironment();
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(paramstSimpleMetaFeed);
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newRecommendHolderWSGridCardContract$View.a().c = (paramInt + 0);
+    WSVerticalPageFragment.a(new WSVerticalPageOpenParams(paramContext, "recommend_tab", "feeds").b(paramBoolean1).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString).a(localArrayList).a(0).a(false).c(paramInt).b(paramstSimpleMetaFeed.id).c(String.valueOf(System.currentTimeMillis())).c(paramBoolean2));
     if ((paramInt == 0) && (paramstSimpleMetaFeed.video_type == 7))
     {
       WSReportDc00898.a(141, paramstSimpleMetaFeed.id);
@@ -233,80 +244,98 @@ public class WSGridCardPresenter
     }
   }
   
-  public boolean a(Context paramContext, int paramInt, ArrayList<stSimpleMetaFeed> paramArrayList, stSimpleMetaFeed paramstSimpleMetaFeed)
+  public boolean a(Context paramContext, int paramInt, stSimpleMetaFeed paramstSimpleMetaFeed)
   {
-    boolean bool1;
-    label39:
-    boolean bool2;
-    label55:
-    int j;
-    if (a() == 2)
-    {
+    int i;
+    if (a() == 2) {
       i = 1;
-      if (i == 0) {
-        break label421;
-      }
-      Object localObject = paramstSimpleMetaFeed.waterFallItemStrategy;
-      if ((localObject == null) || (!((stWaterFallItemStrategy)localObject).isCallWeishi)) {
-        break label273;
-      }
-      bool1 = true;
-      if ((localObject == null) || (!((stWaterFallItemStrategy)localObject).isDonwloadWeish)) {
-        break label279;
-      }
-      bool2 = true;
-      i = WSGlobalConfig.a().b(1);
-      j = WSGlobalConfig.a().c(1);
-      if (!WeishiGuideUtils.a(BaseApplicationImpl.getApplication())) {
-        break label292;
-      }
-      bool2 = WSGlobalConfig.a().a(1);
-      WSLog.d("WSGridCardPresenter", "openCallWeishi = " + bool1 + ", isOpenVideoPage = " + bool2 + ", callCount = " + i + ", openCallWSCount = " + this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_Int);
-      if ((!bool1) || (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_Int >= i)) {
-        break label421;
-      }
-      WSReportDc00898.a(112, Integer.valueOf(114));
-      WSGridBeaconReport.a("gzh_click", paramstSimpleMetaFeed, UserActionReportPresenter.a(paramstSimpleMetaFeed, paramInt), 1000003, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString);
-      localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
-      ((WSRecommendAdapter)localObject).jdField_a_of_type_Int += 1;
-      if (i >= 10000) {
-        break label285;
-      }
-    }
-    label273:
-    label279:
-    label285:
-    for (int i = 104;; i = 100)
-    {
-      if (bool2) {
-        a(paramContext, paramInt, paramArrayList, paramstSimpleMetaFeed, false);
-      }
-      a(paramContext, paramInt, paramstSimpleMetaFeed.weishi_jump_url, paramstSimpleMetaFeed, i);
-      return true;
+    } else {
       i = 0;
-      break;
-      bool1 = false;
-      break label39;
-      bool2 = false;
-      break label55;
     }
-    label292:
-    WSLog.d("WSGridCardPresenter", "openDownloadWeishi = " + bool2 + ", downloadCount = " + j + ", openDownloadWSCount = " + WSRecommendAdapter.b);
-    if ((bool2) && (WSRecommendAdapter.b < j))
+    if (i != 0)
     {
-      WSReportDc00898.a(112, Integer.valueOf(115));
-      WSGridBeaconReport.a("gzh_click", paramstSimpleMetaFeed, UserActionReportPresenter.a(paramstSimpleMetaFeed, paramInt), 1000002, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString);
-      a(paramContext, paramInt, paramArrayList, paramstSimpleMetaFeed, false);
-      ThreadManager.getUIHandler().postDelayed(new WSGridCardPresenter.2(this, paramContext, paramInt, paramstSimpleMetaFeed), 50L);
-      return true;
+      Object localObject = paramstSimpleMetaFeed.waterFallItemStrategy;
+      boolean bool1;
+      if ((localObject != null) && (((stWaterFallItemStrategy)localObject).isCallWeishi)) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      boolean bool2;
+      if ((localObject != null) && (((stWaterFallItemStrategy)localObject).isDonwloadWeish)) {
+        bool2 = true;
+      } else {
+        bool2 = false;
+      }
+      i = WSGlobalConfig.a().b(1);
+      int j = WSGlobalConfig.a().c(1);
+      if (WeishiGuideUtils.a(BaseApplicationImpl.getApplication()))
+      {
+        bool2 = WSGlobalConfig.a().a(1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("openCallWeishi = ");
+        ((StringBuilder)localObject).append(bool1);
+        ((StringBuilder)localObject).append(", isOpenVideoPage = ");
+        ((StringBuilder)localObject).append(bool2);
+        ((StringBuilder)localObject).append(", callCount = ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(", openCallWSCount = ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_Int);
+        WSLog.d("WSGridCardPresenter", ((StringBuilder)localObject).toString());
+        if ((bool1) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_Int < i))
+        {
+          WSReportDc00898.a(112, Integer.valueOf(114));
+          WSGridBeaconReport.a("gzh_click", paramstSimpleMetaFeed, UserActionReportPresenter.a(paramstSimpleMetaFeed, paramInt), 1000003, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString);
+          localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter;
+          ((WSRecommendAdapter)localObject).jdField_a_of_type_Int += 1;
+          if (i < 10000) {
+            i = 104;
+          } else {
+            i = 100;
+          }
+          bool1 = WSExpABTestManager.a().i();
+          if (bool2)
+          {
+            a(paramContext, paramInt, paramstSimpleMetaFeed, false, bool1);
+          }
+          else if (bool1)
+          {
+            localObject = WSExpABTestManager.a().a();
+            ((WSOpenWeiShiData)localObject).e(paramstSimpleMetaFeed.weishi_jump_url);
+            WSOpenWeiShiHelper.a().a(paramContext, (WSOpenWeiShiData)localObject, WSOpenWeiShiReport.a(paramstSimpleMetaFeed, "fullscreen_videoplay", this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString, "feeds"));
+          }
+          if (!bool1) {
+            a(paramContext, paramInt, paramstSimpleMetaFeed.weishi_jump_url, paramstSimpleMetaFeed, i);
+          }
+          return true;
+        }
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("openDownloadWeishi = ");
+        ((StringBuilder)localObject).append(bool2);
+        ((StringBuilder)localObject).append(", downloadCount = ");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(", openDownloadWSCount = ");
+        ((StringBuilder)localObject).append(WSRecommendAdapter.b);
+        WSLog.d("WSGridCardPresenter", ((StringBuilder)localObject).toString());
+        if ((bool2) && (WSRecommendAdapter.b < j))
+        {
+          WSReportDc00898.a(112, Integer.valueOf(115));
+          WSGridBeaconReport.a("gzh_click", paramstSimpleMetaFeed, UserActionReportPresenter.a(paramstSimpleMetaFeed, paramInt), 1000002, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSRecommendAdapter.jdField_a_of_type_JavaLangString);
+          a(paramContext, paramInt, paramstSimpleMetaFeed, false, false);
+          ThreadManager.getUIHandler().postDelayed(new WSGridCardPresenter.2(this, paramContext, paramInt, paramstSimpleMetaFeed), 50L);
+          return true;
+        }
+      }
     }
-    label421:
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.holder.WSGridCardPresenter
  * JD-Core Version:    0.7.0.1
  */

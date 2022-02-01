@@ -13,57 +13,65 @@ public class UriUtil
   
   public static String a(String paramString, int paramInt)
   {
-    str = "";
-    localObject = str;
-    if (!TextUtils.isEmpty(paramString))
+    boolean bool = TextUtils.isEmpty(paramString);
+    String str = "";
+    Object localObject = str;
+    if (!bool)
     {
       localObject = str;
-      if (paramInt <= 0) {}
-    }
-    try
-    {
-      paramString = Uri.parse(paramString);
-      localObject = str;
-      if (paramString.isHierarchical())
-      {
-        paramString = paramString.getHost();
-        localObject = str;
-        if (paramString != null)
+      if (paramInt > 0) {
+        try
         {
-          paramString = paramString.split("\\.");
+          paramString = Uri.parse(paramString);
           localObject = str;
-          if (paramString.length > 0)
+          if (paramString.isHierarchical())
           {
-            int i = Math.max(0, paramString.length - (paramInt + 1));
-            localObject = new StringBuilder(256);
-            ((StringBuilder)localObject).append(paramString[i]);
-            i += 1;
-            while (i < paramString.length)
+            paramString = paramString.getHost();
+            localObject = str;
+            if (paramString != null)
             {
-              ((StringBuilder)localObject).append('.').append(paramString[i]);
-              i += 1;
+              paramString = paramString.split("\\.");
+              localObject = str;
+              if (paramString.length > 0)
+              {
+                int i = Math.max(0, paramString.length - (paramInt + 1));
+                localObject = new StringBuilder(256);
+                ((StringBuilder)localObject).append(paramString[i]);
+                i += 1;
+                while (i < paramString.length)
+                {
+                  ((StringBuilder)localObject).append('.');
+                  ((StringBuilder)localObject).append(paramString[i]);
+                  i += 1;
+                }
+                localObject = ((StringBuilder)localObject).toString();
+              }
             }
-            localObject = ((StringBuilder)localObject).toString();
           }
+        }
+        catch (Exception paramString)
+        {
+          paramString.printStackTrace();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getSpecifiedLevelDomain error: ");
+          ((StringBuilder)localObject).append(paramString);
+          QLog.e("UriUtils", 1, ((StringBuilder)localObject).toString());
+          localObject = str;
         }
       }
     }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        QLog.e("UriUtils", 1, "getSpecifiedLevelDomain error: " + paramString);
-        localObject = str;
-      }
-    }
-    QLog.i("UriUtils", 1, "domain=" + (String)localObject + ",level=" + paramInt);
+    paramString = new StringBuilder();
+    paramString.append("domain=");
+    paramString.append((String)localObject);
+    paramString.append(",level=");
+    paramString.append(paramInt);
+    QLog.i("UriUtils", 1, paramString.toString());
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.utils.UriUtil
  * JD-Core Version:    0.7.0.1
  */

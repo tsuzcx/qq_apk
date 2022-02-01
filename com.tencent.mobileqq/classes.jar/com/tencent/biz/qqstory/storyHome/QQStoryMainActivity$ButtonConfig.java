@@ -18,37 +18,50 @@ public class QQStoryMainActivity$ButtonConfig
     this.jdField_a_of_type_Int = 3;
     this.jdField_a_of_type_JavaLangString = null;
     paramString = (String)((StoryConfigManager)SuperManager.a(10)).b(paramString, "");
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_Int = paramString.optInt("show", 3);
-      if (this.jdField_a_of_type_Int >= 0)
+    if (!TextUtils.isEmpty(paramString)) {
+      try
       {
-        this.c = paramString.optString("url");
-        this.jdField_a_of_type_JavaLangString = paramString.optString("icon");
-        this.b = paramString.optString("text");
+        paramString = new JSONObject(paramString);
+        this.jdField_a_of_type_Int = paramString.optInt("show", 3);
+        if (this.jdField_a_of_type_Int >= 0)
+        {
+          this.c = paramString.optString("url");
+          this.jdField_a_of_type_JavaLangString = paramString.optString("icon");
+          this.b = paramString.optString("text");
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      do
+      catch (Exception paramString)
       {
         this.jdField_a_of_type_Int = 3;
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, "ButtonConfig exc: " + QLog.getStackTraceString(paramString));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("ButtonConfig exc: ");
+          localStringBuilder.append(QLog.getStackTraceString(paramString));
+          QLog.d("Q.qqstory.home.QQStoryMainActivity", 2, localStringBuilder.toString());
+        }
+      }
     }
   }
   
   public String toString()
   {
-    return "ButtonConfig: show = " + this.jdField_a_of_type_Int + ", iconText = " + this.b + ", iconUrl = " + this.jdField_a_of_type_JavaLangString + ", jumpUrl = " + this.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ButtonConfig: show = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", iconText = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", iconUrl = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", jumpUrl = ");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.QQStoryMainActivity.ButtonConfig
  * JD-Core Version:    0.7.0.1
  */

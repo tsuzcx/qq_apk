@@ -1,37 +1,74 @@
 package com.tencent.mobileqq.search.util;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.SearchHistoryManager;
-import com.tencent.mobileqq.data.SearchHistory;
+import android.text.TextUtils;
+import android.view.View;
+import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.search.business.contact.model.ContactSearchModelGlobalTroop;
+import com.tencent.mobileqq.search.business.contact.model.ContactSearchModelGlobalTroopMember;
+import com.tencent.mobileqq.search.business.contact.model.IContactSearchModel;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 final class SearchUtils$1
   implements Runnable
 {
-  SearchUtils$1(String paramString1, int paramInt, String paramString2, String paramString3, QQAppInterface paramQQAppInterface) {}
+  SearchUtils$1(View paramView, IContactSearchModel paramIContactSearchModel) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.SearchUtils", 2, "saveSearchHistory, displayName:" + this.jdField_a_of_type_JavaLangString);
+    HashMap localHashMap = new HashMap();
+    Object localObject = (Integer)this.jdField_a_of_type_AndroidViewView.getTag(2131380885);
+    int j = -1;
+    int i;
+    if (localObject != null) {
+      i = ((Integer)localObject).intValue();
+    } else {
+      i = -1;
     }
-    SearchHistory localSearchHistory = new SearchHistory();
-    localSearchHistory.type = this.jdField_a_of_type_Int;
-    localSearchHistory.uin = this.b;
-    localSearchHistory.troopUin = this.c;
-    localSearchHistory.displayName = this.jdField_a_of_type_JavaLangString;
-    SearchHistoryManager localSearchHistoryManager = (SearchHistoryManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.SEARCHHISTORY_MANAGER);
-    if (localSearchHistoryManager == null) {
-      return;
+    localHashMap.put("itemLinePosition", String.valueOf(i + 1));
+    localHashMap.put("matchDegree", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.b()));
+    localHashMap.put("className", this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.getClass().getSimpleName());
+    localHashMap.put("keyword", this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.b());
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.jdField_a_of_type_JavaUtilHashMap != null) {
+      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.jdField_a_of_type_JavaUtilHashMap);
     }
-    localSearchHistoryManager.a(localSearchHistory);
-    com.tencent.mobileqq.search.activity.UniteSearchActivity.c = true;
+    localObject = this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel;
+    if ((localObject instanceof ContactSearchModelGlobalTroopMember)) {
+      localObject = ((ContactSearchModelGlobalTroopMember)localObject).a;
+    } else if ((localObject instanceof ContactSearchModelGlobalTroop)) {
+      localObject = ((ContactSearchModelGlobalTroop)localObject).a;
+    } else {
+      localObject = "";
+    }
+    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.jdField_a_of_type_ComTencentCommonAppAppInterface != null))
+    {
+      int k = SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject);
+      localHashMap.put("troopMask", String.valueOf(SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject)));
+      localObject = SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqSearchBusinessContactModelIContactSearchModel.jdField_a_of_type_ComTencentCommonAppAppInterface, (String)localObject);
+      i = j;
+      if (localObject != null) {
+        i = ((TroopInfo)localObject).wMemberNum;
+      }
+      localHashMap.put("troopMask", String.valueOf(k));
+      localHashMap.put("troopMemberNum", String.valueOf(i));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Report troop member click, troopMask:");
+        ((StringBuilder)localObject).append(k);
+        ((StringBuilder)localObject).append(" troopMemberNum:");
+        ((StringBuilder)localObject).append(i);
+        QLog.d("searchUtils", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+    StatisticCollector.getInstance(MobileQQ.sMobileQQ.getApplicationContext()).collectPerformance(null, "ContactSearchMatchDegree", true, 0L, 0L, SearchUtils.a(localHashMap), "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.SearchUtils.1
  * JD-Core Version:    0.7.0.1
  */

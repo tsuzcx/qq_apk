@@ -13,37 +13,34 @@ class f
   
   public void onNetworkChanged()
   {
-    ab.c("LogReportManager", "onNetworkChanged,netState:" + GlobalUtil.getNetStatus());
-    Class[] arrayOfClass = e.d();
-    int j = arrayOfClass.length;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("onNetworkChanged,netState:");
+    ((StringBuilder)localObject1).append(GlobalUtil.getNetStatus());
+    ab.c("LogReportManager", ((StringBuilder)localObject1).toString());
+    localObject1 = e.d();
+    int j = localObject1.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      Object localObject2 = localObject1[i];
+      try
       {
-        Class localClass = arrayOfClass[i];
-        try
-        {
-          if (localClass.equals(b.class)) {
-            b.g().c();
-          }
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-          }
+        if (localObject2.equals(b.class)) {
+          b.g().c();
         }
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      i += 1;
     }
     k.a().post(new g(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantsdk.internal.logreport.f
  * JD-Core Version:    0.7.0.1
  */

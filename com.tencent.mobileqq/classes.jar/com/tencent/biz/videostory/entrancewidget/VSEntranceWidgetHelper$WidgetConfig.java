@@ -24,59 +24,67 @@ public class VSEntranceWidgetHelper$WidgetConfig
   
   public void a(String paramString)
   {
-    Object localObject = new File(paramString);
-    if (((File)localObject).exists())
+    Object localObject1 = new File(paramString);
+    if (((File)localObject1).exists())
     {
       this.jdField_a_of_type_Boolean = true;
-      localObject = Arrays.asList(((File)localObject).list());
-      String str;
-      if (((List)localObject).contains("bg@2x.png"))
+      localObject1 = Arrays.asList(((File)localObject1).list());
+      Object localObject2;
+      if (((List)localObject1).contains("bg@2x.png"))
       {
-        str = paramString + "/" + "bg@2x.png";
-        if (!new File(str).exists()) {
-          break label195;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append("/");
+        ((StringBuilder)localObject2).append("bg@2x.png");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        if (new File((String)localObject2).exists()) {
+          this.c = ((String)localObject2);
+        } else {
+          this.jdField_a_of_type_Boolean = false;
         }
-        this.c = str;
       }
-      if (((List)localObject).contains("camera@2x.png"))
+      if (((List)localObject1).contains("camera@2x.png"))
       {
-        str = paramString + "/" + "camera@2x.png";
-        if (!new File(str).exists()) {
-          break label203;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append("/");
+        ((StringBuilder)localObject2).append("camera@2x.png");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        if (new File((String)localObject2).exists()) {
+          this.d = ((String)localObject2);
+        } else {
+          this.jdField_a_of_type_Boolean = false;
         }
-        this.d = str;
+      }
+      if (((List)localObject1).contains("point@2x.png"))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append("/");
+        ((StringBuilder)localObject1).append("point@2x.png");
+        paramString = ((StringBuilder)localObject1).toString();
+        if (new File(paramString).exists())
+        {
+          this.e = paramString;
+          return;
+        }
+        this.jdField_a_of_type_Boolean = false;
       }
     }
-    for (;;)
-    {
-      if (((List)localObject).contains("point@2x.png"))
-      {
-        paramString = paramString + "/" + "point@2x.png";
-        if (!new File(paramString).exists()) {
-          break label211;
-        }
-        this.e = paramString;
-      }
-      return;
-      label195:
-      this.jdField_a_of_type_Boolean = false;
-      break;
-      label203:
-      this.jdField_a_of_type_Boolean = false;
-    }
-    label211:
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public boolean a()
   {
-    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "isResourceReady:" + this.jdField_a_of_type_Boolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isResourceReady:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, localStringBuilder.toString());
     return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidgetHelper.WidgetConfig
  * JD-Core Version:    0.7.0.1
  */

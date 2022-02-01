@@ -58,41 +58,43 @@ public class Soso
   
   public static ArrayList<Wifi_V2> a(ArrayList<SosoWifi> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
-      SosoWifi localSosoWifi = (SosoWifi)paramArrayList.next();
-      if (localSosoWifi != null) {
-        localArrayList.add(a(localSosoWifi));
+      ArrayList localArrayList = new ArrayList();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        SosoWifi localSosoWifi = (SosoWifi)paramArrayList.next();
+        if (localSosoWifi != null) {
+          localArrayList.add(a(localSosoWifi));
+        }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public static ArrayList<Cell_V2> b(ArrayList<SosoCell> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext())
+    if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
     {
-      SosoCell localSosoCell = (SosoCell)paramArrayList.next();
-      if (localSosoCell != null) {
-        localArrayList.add(a(localSosoCell));
+      ArrayList localArrayList = new ArrayList();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        SosoCell localSosoCell = (SosoCell)paramArrayList.next();
+        if (localSosoCell != null) {
+          localArrayList.add(a(localSosoCell));
+        }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzone.api.impl.util.Soso
  * JD-Core Version:    0.7.0.1
  */

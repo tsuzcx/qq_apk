@@ -14,80 +14,79 @@ class a
   
   public void run()
   {
-    int k = 0;
-    String str1;
-    if ((this.a != null) && (this.b != null))
+    if (this.a != null)
     {
-      str1 = this.b.getAction();
-      if (!TextUtils.isEmpty(str1)) {}
-    }
-    else
-    {
-      return;
-      break label123;
-    }
-    label33:
-    ArrayList localArrayList;
-    String str2;
-    int i;
-    for (;;)
-    {
-      if ((str1.equals("com.tencent.process.exit")) || (str1.equals("com.tencent.process.tmdownloader.exit"))) {
-        if (this.b.getExtras() != null)
+      Object localObject1 = this.b;
+      if (localObject1 != null)
+      {
+        localObject1 = ((Intent)localObject1).getAction();
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          return;
+        }
+        Object localObject2;
+        if ((!((String)localObject1).equals("com.tencent.process.exit")) && (!((String)localObject1).equals("com.tencent.process.tmdownloader.exit")))
         {
-          localArrayList = this.b.getExtras().getStringArrayList("procNameList");
-          str2 = this.b.getExtras().getString("verify");
-          if ((str2 == null) || (str2.length() == 0)) {
-            i = 0;
+          if ((!((String)localObject1).equals("mqq.intent.action.ACCOUNT_EXPIRED")) && (!((String)localObject1).equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!((String)localObject1).equals("mqq.intent.action.ACCOUNT_KICKED")) && (!((String)localObject1).equals("mqq.intent.action.LOGOUT")))
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("mqq.intent.action.EXIT");
+            ((StringBuilder)localObject2).append(this.a.getPackageName());
+            if (!((String)localObject1).equals(((StringBuilder)localObject2).toString())) {}
+          }
+          else
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("action : ");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ab.c("MQQCloseServiceReceiver", ((StringBuilder)localObject2).toString());
+            MobileQQCloseServiceReceiver.a(this.c, this.a);
+          }
+        }
+        else
+        {
+          if (this.b.getExtras() == null) {
+            return;
+          }
+          localObject2 = this.b.getExtras().getStringArrayList("procNameList");
+          String str = this.b.getExtras().getString("verify");
+          int m = 1;
+          int k = 0;
+          int j;
+          if ((str != null) && (str.length() != 0) && ((str.equals(MobileQQCloseServiceReceiver.a(this.c, (ArrayList)localObject2, (String)localObject1, false))) || (str.equals(MobileQQCloseServiceReceiver.a(this.c, (ArrayList)localObject2, (String)localObject1, true))))) {
+            j = 1;
+          } else {
+            j = 0;
+          }
+          int i = m;
+          if (localObject2 != null) {
+            if (((ArrayList)localObject2).size() == 0)
+            {
+              i = m;
+            }
+            else
+            {
+              localObject1 = this.c.c(this.a);
+              i = 0;
+              while (k < ((ArrayList)localObject2).size())
+              {
+                if (((String)localObject1).equals(((ArrayList)localObject2).get(k))) {
+                  i = 1;
+                }
+                k += 1;
+              }
+            }
+          }
+          if ((j != 0) && (i != 0)) {
+            MobileQQCloseServiceReceiver.a(this.c, this.a);
           }
         }
       }
-    }
-    for (;;)
-    {
-      int m;
-      if ((localArrayList == null) || (localArrayList.size() == 0))
-      {
-        m = 1;
-        label123:
-        if ((i == 0) || (m == 0)) {
-          break label33;
-        }
-        MobileQQCloseServiceReceiver.a(this.c, this.a);
-        return;
-        if ((!str2.equals(MobileQQCloseServiceReceiver.a(this.c, localArrayList, str1, false))) && (!str2.equals(MobileQQCloseServiceReceiver.a(this.c, localArrayList, str1, true)))) {
-          break label349;
-        }
-        i = 1;
-        continue;
-      }
-      str1 = this.c.c(this.a);
-      int j = 0;
-      for (;;)
-      {
-        m = j;
-        if (k >= localArrayList.size()) {
-          break;
-        }
-        if (str1.equals(localArrayList.get(k))) {
-          j = 1;
-        }
-        k += 1;
-      }
-      if ((!str1.equals("mqq.intent.action.ACCOUNT_EXPIRED")) && (!str1.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!str1.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!str1.equals("mqq.intent.action.LOGOUT")) && (!str1.equals("mqq.intent.action.EXIT" + this.a.getPackageName()))) {
-        break label33;
-      }
-      ab.c("MQQCloseServiceReceiver", "action : " + str1);
-      MobileQQCloseServiceReceiver.a(this.c, this.a);
-      return;
-      label349:
-      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadclient.a
  * JD-Core Version:    0.7.0.1
  */

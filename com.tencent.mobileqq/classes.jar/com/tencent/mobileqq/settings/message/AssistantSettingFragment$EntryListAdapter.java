@@ -29,10 +29,11 @@ class AssistantSettingFragment$EntryListAdapter
   
   private void b(List<CTEntry> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.isEmpty()) {
+        return;
+      }
       int i = paramList.size() - 1;
       while (i >= 0)
       {
@@ -76,38 +77,43 @@ class AssistantSettingFragment$EntryListAdapter
   
   public boolean a(short[] paramArrayOfShort)
   {
+    boolean bool1 = false;
     int i = 0;
-    boolean bool = false;
-    if ((!bool) && (paramArrayOfShort != null)) {}
-    label90:
     for (;;)
     {
-      try
-      {
-        if (i < paramArrayOfShort.length)
+      if ((!bool1) && (paramArrayOfShort != null)) {
+        try
         {
-          int j = 0;
-          if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
-            break label90;
-          }
-          int k = paramArrayOfShort[i];
-          int m = ((CTEntry)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_a_of_type_Short;
-          if (k == m)
+          if (i < paramArrayOfShort.length)
           {
-            bool = true;
+            int j = 0;
+            boolean bool2;
+            for (;;)
+            {
+              bool2 = bool1;
+              if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
+                break;
+              }
+              int k = paramArrayOfShort[i];
+              int m = ((CTEntry)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_a_of_type_Short;
+              if (k == m)
+              {
+                bool2 = true;
+                break;
+              }
+              j += 1;
+            }
             i += 1;
-            break;
+            bool1 = bool2;
           }
-          j += 1;
-          continue;
         }
-        return bool;
-      }
-      catch (Throwable paramArrayOfShort)
-      {
-        paramArrayOfShort.printStackTrace();
+        catch (Throwable paramArrayOfShort)
+        {
+          paramArrayOfShort.printStackTrace();
+        }
       }
     }
+    return bool1;
   }
   
   public int getCount()
@@ -118,7 +124,7 @@ class AssistantSettingFragment$EntryListAdapter
   public Object getItem(int paramInt)
   {
     if ((paramInt >= 0) && (paramInt < getCount())) {
-      return (CTEntry)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
   }
@@ -134,80 +140,69 @@ class AssistantSettingFragment$EntryListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject1;
-    Object localObject2;
-    boolean bool;
-    label58:
-    label99:
-    int i;
+    FormMultiLineSwitchItem localFormMultiLineSwitchItem;
     if (!(paramView instanceof FormSwitchItem))
     {
-      localObject1 = new FormMultiLineSwitchItem(this.jdField_a_of_type_AndroidContentContext);
-      paramView = (View)localObject1;
-      localObject2 = (CTEntry)getItem(paramInt);
-      if (localObject2 != null)
-      {
-        paramView.setText(((CTEntry)localObject2).jdField_a_of_type_JavaLangString);
-        if (((CTEntry)localObject2).e) {
-          break label174;
-        }
-        bool = true;
-        paramView.setChecked(bool);
-        if ((((CTEntry)localObject2).jdField_a_of_type_Int != 3) || (!((CTEntry)localObject2).e)) {
-          break label180;
-        }
-        paramView.setSecendLineText(this.jdField_a_of_type_AndroidContentContext.getString(2131698929));
-        paramView.setSecondLineTextViewVisibility(0);
-      }
-      i = getCount();
-      if ((paramInt != 0) || (i != 1)) {
-        break label203;
-      }
-      if (!this.jdField_a_of_type_Boolean) {
-        break label195;
-      }
-      paramView.setBgType(2);
+      localFormMultiLineSwitchItem = new FormMultiLineSwitchItem(this.jdField_a_of_type_AndroidContentContext);
+      paramView = localFormMultiLineSwitchItem;
     }
-    for (;;)
+    else
     {
-      paramView.setTag(localObject2);
-      paramView.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
-      localObject2 = (FormMultiLineSwitchItem)paramView;
-      localObject1 = paramView;
-      paramView = (View)localObject2;
-      break;
-      label174:
-      bool = false;
-      break label58;
-      label180:
-      paramView.setSecendLineText("");
-      paramView.setSecondLineTextViewVisibility(8);
-      break label99;
-      label195:
-      paramView.setBgType(0);
-      continue;
-      label203:
-      if (paramInt == 0) {
-        paramView.setBgType(1);
-      } else if (paramInt == i - 1)
+      localFormMultiLineSwitchItem = (FormMultiLineSwitchItem)paramView;
+    }
+    CTEntry localCTEntry = (CTEntry)getItem(paramInt);
+    if (localCTEntry != null)
+    {
+      localFormMultiLineSwitchItem.setText(localCTEntry.jdField_a_of_type_JavaLangString);
+      localFormMultiLineSwitchItem.setChecked(localCTEntry.e ^ true);
+      if ((localCTEntry.jdField_a_of_type_Int == 3) && (localCTEntry.e))
+      {
+        localFormMultiLineSwitchItem.setSecendLineText(this.jdField_a_of_type_AndroidContentContext.getString(2131699008));
+        localFormMultiLineSwitchItem.setSecondLineTextViewVisibility(0);
+      }
+      else
+      {
+        localFormMultiLineSwitchItem.setSecendLineText("");
+        localFormMultiLineSwitchItem.setSecondLineTextViewVisibility(8);
+      }
+    }
+    int i = getCount();
+    if ((paramInt == 0) && (i == 1))
+    {
+      if (this.jdField_a_of_type_Boolean) {
+        localFormMultiLineSwitchItem.setBgType(2);
+      } else {
+        localFormMultiLineSwitchItem.setBgType(0);
+      }
+    }
+    else if (paramInt == 0)
+    {
+      localFormMultiLineSwitchItem.setBgType(1);
+    }
+    else
+    {
+      i -= 1;
+      if (paramInt == i)
       {
         if (this.jdField_a_of_type_Boolean) {
-          paramView.setBgType(2);
+          localFormMultiLineSwitchItem.setBgType(2);
         } else {
-          paramView.setBgType(3);
+          localFormMultiLineSwitchItem.setBgType(3);
         }
       }
-      else if ((paramInt > 0) && (paramInt < i - 1)) {
-        paramView.setBgType(2);
+      else if ((paramInt > 0) && (paramInt < i)) {
+        localFormMultiLineSwitchItem.setBgType(2);
       }
     }
+    localFormMultiLineSwitchItem.setTag(localCTEntry);
+    localFormMultiLineSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.EntryListAdapter
  * JD-Core Version:    0.7.0.1
  */

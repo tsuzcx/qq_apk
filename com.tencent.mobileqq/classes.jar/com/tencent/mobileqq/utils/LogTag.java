@@ -25,10 +25,9 @@ public class LogTag
   
   public static void a(String paramString1, String paramString2)
   {
-    Object localObject2;
     if (QLog.isColorLevel())
     {
-      localObject2 = (LinkedList)a.get();
+      Object localObject2 = (LinkedList)a.get();
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
@@ -43,17 +42,15 @@ public class LogTag
         ((StringBuilder)localObject2).append("    ");
         i += 1;
       }
-      if (((LinkedList)a.get()).size() != 0) {}
+      if (((LinkedList)a.get()).size() == 0) {
+        return;
+      }
+      ((StringBuilder)localObject2).append(paramString2);
+      ((StringBuilder)localObject2).append(":cost ");
+      ((StringBuilder)localObject2).append(SystemClock.uptimeMillis() - ((Long)((LinkedList)a.get()).removeFirst()).longValue());
+      ((StringBuilder)localObject2).append("ms");
+      QLog.i(paramString1, 2, ((StringBuilder)localObject2).toString());
     }
-    else
-    {
-      return;
-    }
-    ((StringBuilder)localObject2).append(paramString2);
-    ((StringBuilder)localObject2).append(":cost ");
-    ((StringBuilder)localObject2).append(SystemClock.uptimeMillis() - ((Long)((LinkedList)a.get()).removeFirst()).longValue());
-    ((StringBuilder)localObject2).append("ms");
-    QLog.i(paramString1, 2, ((StringBuilder)localObject2).toString());
   }
   
   public static void a(String paramString1, String paramString2, String paramString3)
@@ -61,18 +58,24 @@ public class LogTag
     if (QLog.isColorLevel())
     {
       StringBuilder localStringBuilder = new StringBuilder("PreUploadVideo");
-      localStringBuilder.append("[").append(paramString1).append("] ");
-      if (paramString2 != null) {
-        localStringBuilder.append("status:").append(paramString2).append(" ");
+      localStringBuilder.append("[");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("] ");
+      if (paramString2 != null)
+      {
+        localStringBuilder.append("status:");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(" ");
       }
-      localStringBuilder.append("content:").append(paramString3);
+      localStringBuilder.append("content:");
+      localStringBuilder.append(paramString3);
       QLog.i("PreUploadVideo", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.LogTag
  * JD-Core Version:    0.7.0.1
  */

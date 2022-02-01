@@ -25,7 +25,11 @@ public class ELog
   
   public static void debug2(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    Log.d("pcg_monitor", format(paramString1 + " " + paramString2, paramVarArgs));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(paramString2);
+    Log.d("pcg_monitor", format(localStringBuilder.toString(), paramVarArgs));
   }
   
   public static void error(String paramString, Object... paramVarArgs)
@@ -38,13 +42,24 @@ public class ELog
   protected static String format(String paramString, Object... paramVarArgs)
   {
     String str = getFuncTag();
-    if (paramString == null) {
-      return str + "msg is null";
+    if (paramString == null)
+    {
+      paramString = new StringBuilder();
+      paramString.append(str);
+      paramString.append("msg is null");
+      return paramString.toString();
     }
-    if ((paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return str + paramString;
+    if ((paramVarArgs != null) && (paramVarArgs.length != 0))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(String.format(Locale.US, paramString, paramVarArgs));
+      return localStringBuilder.toString();
     }
-    return str + String.format(Locale.US, paramString, paramVarArgs);
+    paramVarArgs = new StringBuilder();
+    paramVarArgs.append(str);
+    paramVarArgs.append(paramString);
+    return paramVarArgs.toString();
   }
   
   private static StackTraceElement getCurrentStackTrace()
@@ -65,17 +80,26 @@ public class ELog
   
   private static String getFuncTag()
   {
-    if (isUseFuncTag())
+    boolean bool = isUseFuncTag();
+    Object localObject1 = "";
+    if (bool)
     {
       StackTraceElement localStackTraceElement = getCurrentStackTrace();
       if (localStackTraceElement != null)
       {
-        String str2 = localStackTraceElement.getFileName();
-        String str1 = str2;
-        if (str2 == null) {
-          str1 = "";
+        Object localObject2 = localStackTraceElement.getFileName();
+        if (localObject2 != null) {
+          localObject1 = localObject2;
         }
-        return "(" + str1 + ":" + localStackTraceElement.getLineNumber() + ")" + localStackTraceElement.getMethodName() + " ";
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("(");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append(localStackTraceElement.getLineNumber());
+        ((StringBuilder)localObject2).append(")");
+        ((StringBuilder)localObject2).append(localStackTraceElement.getMethodName());
+        ((StringBuilder)localObject2).append(" ");
+        return ((StringBuilder)localObject2).toString();
       }
     }
     return "";
@@ -84,16 +108,13 @@ public class ELog
   private static int getStackOffset(StackTraceElement[] paramArrayOfStackTraceElement, Class paramClass)
   {
     int i = 5;
-    if (i < paramArrayOfStackTraceElement.length)
+    while (i < paramArrayOfStackTraceElement.length)
     {
       String str = paramArrayOfStackTraceElement[i].getClassName();
-      if ((paramClass.equals(Log.class)) && (i < paramArrayOfStackTraceElement.length - 1) && (paramArrayOfStackTraceElement[(i + 1)].getClassName().equals(Log.class.getName()))) {}
-      while (!str.equals(paramClass.getName()))
-      {
-        i += 1;
-        break;
+      if (((!paramClass.equals(Log.class)) || (i >= paramArrayOfStackTraceElement.length - 1) || (!paramArrayOfStackTraceElement[(i + 1)].getClassName().equals(Log.class.getName()))) && (str.equals(paramClass.getName()))) {
+        return i + 1;
       }
-      return i + 1;
+      i += 1;
     }
     return -1;
   }
@@ -170,7 +191,13 @@ public class ELog
   
   public static void step(String paramString1, int paramInt, String paramString2, Object... paramVarArgs)
   {
-    Log.d("pcg_monitor", format(paramString1 + " step: " + paramInt + ". " + paramString2, paramVarArgs));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" step: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(". ");
+    localStringBuilder.append(paramString2);
+    Log.d("pcg_monitor", format(localStringBuilder.toString(), paramVarArgs));
   }
   
   public static void warn(String paramString, Object... paramVarArgs)
@@ -182,7 +209,7 @@ public class ELog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.utils.ELog
  * JD-Core Version:    0.7.0.1
  */

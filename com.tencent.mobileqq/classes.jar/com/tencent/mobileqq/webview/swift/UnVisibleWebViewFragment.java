@@ -1,31 +1,19 @@
 package com.tencent.mobileqq.webview.swift;
 
 import android.content.Intent;
-import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.biz.common.util.Util;
-import com.tencent.biz.ui.TouchWebView;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkHandler;
+import com.tencent.mobileqq.teamwork.TeamWorkHandlerUtils;
 import com.tencent.mobileqq.teamwork.WebViewWrapperForDoc;
-import com.tencent.mobileqq.webview.sonic.SonicClientImpl;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.TbsAccelerator;
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
+import com.tencent.mobileqq.webview.swift.utils.WebViewKernelCallBack;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
-import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.smtt.sdk.CookieManager;
 import com.tencent.smtt.sdk.CookieSyncManager;
-import com.tencent.smtt.sdk.QbSdk;
-import com.tencent.smtt.sdk.WebSettings;
 
 public class UnVisibleWebViewFragment
   extends WebViewFragment
@@ -43,46 +31,13 @@ public class UnVisibleWebViewFragment
   
   private void a(String paramString)
   {
-    CookieManager.getInstance().setCookie(".docs.qq.com", "preloading_id=" + TeamWorkHandler.a(paramString));
+    CookieManager localCookieManager = CookieManager.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("preloading_id=");
+    localStringBuilder.append(TeamWorkHandlerUtils.a(paramString));
+    localCookieManager.setCookie(".docs.qq.com", localStringBuilder.toString());
     CookieSyncManager.createInstance(BaseApplicationImpl.getApplication());
     CookieSyncManager.getInstance().sync();
-  }
-  
-  public WebViewWrapperForDoc a(ViewGroup paramViewGroup)
-  {
-    boolean bool2 = false;
-    if ((this.mUIStyle.b & 0x40) != 0L) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      this.a = new WebViewWrapperForDoc(this.mApp, super.getActivity(), this, this.intent, bool1);
-      this.a.a(this.sonicClient);
-      TouchWebView localTouchWebView = this.a.a();
-      if (this.sonicClient != null) {
-        this.sonicClient.bindWebView(localTouchWebView);
-      }
-      this.mPluginEngine.a(localTouchWebView);
-      localTouchWebView.setPluginEngine(this.mPluginEngine);
-      if ((localTouchWebView instanceof SwiftReuseTouchWebView))
-      {
-        SwiftBrowserStatistics localSwiftBrowserStatistics = this.mStatistics;
-        bool1 = bool2;
-        if (1 == ((SwiftReuseTouchWebView)localTouchWebView).b) {
-          bool1 = true;
-        }
-        localSwiftBrowserStatistics.u = bool1;
-      }
-      if (localTouchWebView.getX5WebViewExtension() != null) {
-        this.mX5CoreActive = true;
-      }
-      localTouchWebView.getView().setOnTouchListener(this);
-      if (this.mNightMode) {
-        localTouchWebView.setMask(true);
-      }
-      if (paramViewGroup != null) {
-        paramViewGroup.addView(localTouchWebView);
-      }
-      return this.a;
-    }
   }
   
   void a()
@@ -90,131 +45,36 @@ public class UnVisibleWebViewFragment
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_WebViewFragment", 2, "onDestroy");
     }
-    SwiftBrowserStatistics localSwiftBrowserStatistics = this.mStatistics;
+    Object localObject = getStatistics();
     this.isDestroyed = true;
-    localSwiftBrowserStatistics.l = true;
-    if (this.a != null)
+    ((SwiftBrowserStatistics)localObject).k = true;
+    localObject = this.a;
+    if (localObject != null)
     {
-      this.a.a();
+      ((WebViewWrapperForDoc)localObject).b();
       this.a = null;
       this.webView = null;
     }
     this.mApp = null;
   }
   
-  protected void initWebView()
+  public WebViewWrapper createWebViewWrapper(boolean paramBoolean)
   {
-    int i = -1;
-    long l1;
-    long l2;
-    if (this.webView == null)
-    {
-      this.webView = a(null).a();
-      this.webView.getView().setOnTouchListener(this);
-      this.webView.setOnLongClickListener(new UnVisibleWebViewFragment.WebViewLongClickedListener(this));
-      l1 = System.currentTimeMillis();
-      if ((this.mUIStyle.a & 0x10000) == 0L) {
-        break label429;
-      }
-      i = 2;
-      if (AppSetting.g) {
-        i = 2;
-      }
-      this.webView.getSettings().setCacheMode(i);
-      if (QLog.isColorLevel()) {
-        QLog.i("WebLog_WebViewFragment", 2, "setCacheMode=" + i);
-      }
-      this.webView.getSettings().setAllowFileAccessFromFileURLs(false);
-      this.webView.getSettings().setAllowUniversalAccessFromFileURLs(false);
-      l2 = System.currentTimeMillis();
-      this.mStatistics.n = (l2 - l1);
-      this.mStatistics.S = l2;
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_WebViewFragment", 2, "init browser, cost = " + this.mStatistics.n);
-      }
-      l2 = System.currentTimeMillis();
-      IX5WebViewExtension localIX5WebViewExtension = this.webView.getX5WebViewExtension();
-      if (localIX5WebViewExtension == null) {
-        break label485;
-      }
-      i = 1;
-      label225:
-      if (i == 0) {
-        break label514;
-      }
-      Bundle localBundle = SwiftWebViewUtils.a();
-      if (localBundle != null) {
-        localIX5WebViewExtension.invokeMiscMethod("setDomainsAndArgumentForImageRequest", localBundle);
-      }
-      if (!this.mStatistics.w) {
-        break label490;
-      }
-      l1 = 2L;
-      if (!(this.webView instanceof SwiftReuseTouchWebView)) {
-        break label538;
-      }
-      if (1 != ((SwiftReuseTouchWebView)this.webView).b) {
-        break label509;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      label292:
-      if (QLog.isColorLevel()) {
-        QLog.i("WebLog_WebViewFragment", 2, String.format("reportInitPerformance, initType: %d, webViewType: %d, TbsAccelerator.sCostTime: %d", new Object[] { Long.valueOf(l1), Integer.valueOf(i), Long.valueOf(SwiftWebAccelerator.TbsAccelerator.a) }));
-      }
-      System.currentTimeMillis();
-      this.webView.reportInitPerformance(l1, i, this.mStatistics.jdField_c_of_type_Long, SwiftWebAccelerator.TbsAccelerator.a);
-      System.currentTimeMillis();
-      this.mStatistics.e = 2;
-      label514:
-      for (this.mStatistics.g = String.valueOf(QbSdk.getTbsVersion(BaseApplicationImpl.getApplication()));; this.mStatistics.g = String.valueOf(Build.VERSION.SDK_INT))
-      {
-        l1 = System.currentTimeMillis();
-        if (QLog.isColorLevel()) {
-          QLog.i("WebLog_WebViewFragment", 2, "setDomainsAndArgumentForImageRequest, cost=" + (l1 - l2));
-        }
-        return;
-        label429:
-        switch (this.intent.getIntExtra("reqType", -1))
-        {
-        case 2: 
-        case 3: 
-        default: 
-          break;
-        case 1: 
-          i = 2;
-          break;
-        case 4: 
-          i = 0;
-          break;
-          label485:
-          i = 0;
-          break label225;
-          label490:
-          if (SwiftBrowserStatistics.s) {}
-          for (i = 1;; i = 0)
-          {
-            l1 = i;
-            break;
-          }
-          label509:
-          i = 0;
-          break label292;
-          this.mStatistics.e = 1;
-        }
-      }
-      label538:
-      i = 0;
-    }
+    WebViewWrapperForDoc localWebViewWrapperForDoc = new WebViewWrapperForDoc(getAppRuntime(), super.getActivity(), getWebViewKernelCallBack(), this.intent, paramBoolean);
+    this.a = localWebViewWrapperForDoc;
+    return localWebViewWrapperForDoc;
+  }
+  
+  public WebViewKernelCallBack getWebViewKernelCallBack()
+  {
+    return new UnVisibleWebViewFragment.1(this, this.webViewSurface);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     paramLayoutInflater.setVisibility(8);
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -223,35 +83,10 @@ public class UnVisibleWebViewFragment
     super.onDestroy();
     a();
   }
-  
-  public void startLoadUrl()
-  {
-    Util.a("Web_readyToLoadUrl");
-    if (this.webView == null) {
-      return;
-    }
-    initFinish();
-    if ((this.mStatistics.i) && (this.mStatistics.k > 0L))
-    {
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "plugin_start_time", 0, 1, (int)((System.nanoTime() - this.mStatistics.k) / 1000000L), "", "", "", "" + this.mStatistics.jdField_c_of_type_Int);
-      this.mStatistics.k = 0L;
-    }
-    this.mStatistics.r = System.currentTimeMillis();
-    long l = this.mStatistics.r;
-    l = this.mStatistics.b;
-    a(this.mUrl);
-    if (!TextUtils.isEmpty(this.mUrl))
-    {
-      QLog.i("WebLog_WebViewFragment", 1, "tendocpreload , UnVisibleWebViewFragment  preload =" + this.webView);
-      this.webView.loadUrl(this.mUrl);
-    }
-    Util.b("Web_readyToLoadUrl");
-    this.mStatistics.a(this.webView, this.mUrl, 0, 0, 0, 0, 0, null);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.UnVisibleWebViewFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -37,44 +37,40 @@ class ViewBoundsCheck
   {
     int j = this.mCallback.getParentStart();
     int k = this.mCallback.getParentEnd();
-    if (paramInt2 > paramInt1) {}
-    Object localObject;
-    View localView;
-    for (int i = 1;; i = -1)
+    int i;
+    if (paramInt2 > paramInt1) {
+      i = 1;
+    } else {
+      i = -1;
+    }
+    Object localObject2;
+    for (Object localObject1 = null; paramInt1 != paramInt2; localObject1 = localObject2)
     {
-      localObject = null;
-      if (paramInt1 == paramInt2) {
-        break label172;
-      }
-      localView = this.mCallback.getChildAt(paramInt1);
+      View localView = this.mCallback.getChildAt(paramInt1);
       int m = this.mCallback.getChildStart(localView);
       int n = this.mCallback.getChildEnd(localView);
       this.mBoundFlags.setBounds(j, k, m, n);
-      if (paramInt3 == 0) {
-        break;
+      if (paramInt3 != 0)
+      {
+        this.mBoundFlags.resetFlags();
+        this.mBoundFlags.addFlags(paramInt3);
+        if (this.mBoundFlags.boundsMatch()) {
+          return localView;
+        }
       }
-      this.mBoundFlags.resetFlags();
-      this.mBoundFlags.addFlags(paramInt3);
-      if (!this.mBoundFlags.boundsMatch()) {
-        break;
+      localObject2 = localObject1;
+      if (paramInt4 != 0)
+      {
+        this.mBoundFlags.resetFlags();
+        this.mBoundFlags.addFlags(paramInt4);
+        localObject2 = localObject1;
+        if (this.mBoundFlags.boundsMatch()) {
+          localObject2 = localView;
+        }
       }
-      return localView;
-    }
-    if (paramInt4 != 0)
-    {
-      this.mBoundFlags.resetFlags();
-      this.mBoundFlags.addFlags(paramInt4);
-      if (this.mBoundFlags.boundsMatch()) {
-        localObject = localView;
-      }
-    }
-    for (;;)
-    {
       paramInt1 += i;
-      break;
-      label172:
-      return localObject;
     }
+    return localObject1;
   }
   
   boolean isViewWithinBoundFlags(View paramView, int paramInt)
@@ -91,7 +87,7 @@ class ViewBoundsCheck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.ViewBoundsCheck
  * JD-Core Version:    0.7.0.1
  */

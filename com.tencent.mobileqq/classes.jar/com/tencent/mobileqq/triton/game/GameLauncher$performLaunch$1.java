@@ -32,7 +32,7 @@ final class GameLauncher$performLaunch$1
     {
       this.$onLaunchBegin.invoke();
       GameLauncher.access$injectGameInfo(this.this$0);
-      Object localObject1 = ScriptLoader.INSTANCE.getGameScripts(GameLauncher.access$getMTritonEngine$p(this.this$0).getEngineContext().getGamePackage());
+      localObject1 = ScriptLoader.INSTANCE.getGameScripts(GameLauncher.access$getMTritonEngine$p(this.this$0).getEngineContext().getGamePackage());
       Object localObject2 = (ScriptFile)((Map)localObject1).get(ScriptContextType.OPEN_DATA);
       if ((localObject2 != null) && (((ScriptFile)localObject2).getValid() == true))
       {
@@ -47,19 +47,22 @@ final class GameLauncher$performLaunch$1
       }
       ((ArrayList)localObject3).add(((ScriptRuntime)localObject2).loadScript((ScriptFile)localObject1));
     }
-    catch (Throwable localThrowable2)
-    {
-      label185:
-      break label185;
-    }
+    catch (Throwable localThrowable2) {}
     l = SystemClock.uptimeMillis() - l;
-    Logger.i$default("GameLauncher", "launch game [" + GameLauncher.access$getMTritonEngine$p(this.this$0).getEngineContext().getGamePackage().getId() + "] cost time: " + l + " ms", null, 4, null);
-    GameLauncher.access$notifyGameLaunched(this.this$0, l, (List)GameLauncher.access$getMGameScriptLoadStatics$p(this.this$0), localThrowable1);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("launch game [");
+    ((StringBuilder)localObject1).append(GameLauncher.access$getMTritonEngine$p(this.this$0).getEngineContext().getGamePackage().getId());
+    ((StringBuilder)localObject1).append("] cost time: ");
+    ((StringBuilder)localObject1).append(l);
+    ((StringBuilder)localObject1).append(" ms");
+    Logger.i$default("GameLauncher", ((StringBuilder)localObject1).toString(), null, 4, null);
+    localObject1 = this.this$0;
+    GameLauncher.access$notifyGameLaunched((GameLauncher)localObject1, l, (List)GameLauncher.access$getMGameScriptLoadStatics$p((GameLauncher)localObject1), localThrowable2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.game.GameLauncher.performLaunch.1
  * JD-Core Version:    0.7.0.1
  */

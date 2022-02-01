@@ -10,10 +10,10 @@ class KMeansSplitStrategy$2
   
   public int a(StoryAlbum paramStoryAlbum1, StoryAlbum paramStoryAlbum2)
   {
-    if (paramStoryAlbum1.f() == paramStoryAlbum2.f()) {
+    if (paramStoryAlbum1.e() == paramStoryAlbum2.e()) {
       return 0;
     }
-    if (paramStoryAlbum1.f() > paramStoryAlbum2.f()) {
+    if (paramStoryAlbum1.e() > paramStoryAlbum2.e()) {
       return 1;
     }
     return -1;
@@ -21,7 +21,7 @@ class KMeansSplitStrategy$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.strategy.KMeansSplitStrategy.2
  * JD-Core Version:    0.7.0.1
  */

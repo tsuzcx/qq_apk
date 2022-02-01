@@ -20,14 +20,15 @@ public final class ExtDataItem
   
   public static ExtDataItem[] a()
   {
-    if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem == null) {
-        jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem = new ExtDataItem[0];
+    if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem == null) {
+          jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem = new ExtDataItem[0];
+        }
       }
-      return jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem;
     }
+    return jdField_a_of_type_ArrayOfComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoExtDataItem;
   }
   
   public ExtDataItem a()
@@ -43,23 +44,29 @@ public final class ExtDataItem
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 10: 
-        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+      if (i == 0) {
         break;
       }
-      this.b = paramCodedInputByteBufferNano.readString();
+      if (i != 10)
+      {
+        if (i != 18)
+        {
+          if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+            return this;
+          }
+        }
+        else {
+          this.b = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
+        this.jdField_a_of_type_JavaLangString = paramCodedInputByteBufferNano.readString();
+      }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
     int i = j;
@@ -86,7 +93,7 @@ public final class ExtDataItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.ExtDataItem
  * JD-Core Version:    0.7.0.1
  */

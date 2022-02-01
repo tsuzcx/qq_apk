@@ -13,17 +13,18 @@ public abstract class AbsWSJump
   
   public boolean a()
   {
-    if ((this.a == null) || (this.a.get() == null)) {
-      return false;
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
+      return a((IWSStSchemaJumpFactor)this.a.get());
     }
-    return a((IWSStSchemaJumpFactor)this.a.get());
+    return false;
   }
   
   public abstract boolean a(IWSStSchemaJumpFactor paramIWSStSchemaJumpFactor);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.jump.AbsWSJump
  * JD-Core Version:    0.7.0.1
  */

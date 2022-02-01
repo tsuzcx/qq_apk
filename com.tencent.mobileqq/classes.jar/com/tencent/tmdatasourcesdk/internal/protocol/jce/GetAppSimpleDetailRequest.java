@@ -31,14 +31,15 @@ public final class GetAppSimpleDetailRequest
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.appReqList != null) {
-      paramJceOutputStream.write(this.appReqList, 0);
+    ArrayList localArrayList = this.appReqList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdatasourcesdk.internal.protocol.jce.GetAppSimpleDetailRequest
  * JD-Core Version:    0.7.0.1
  */

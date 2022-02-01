@@ -19,38 +19,37 @@ class SmallScreenWatchTogether$2
     if (!this.jdField_a_of_type_Boolean) {
       i = paramInt + 1;
     }
-    switch (i)
+    if (i != 0)
     {
-    default: 
-    case 0: 
-      do
+      if (i != 1)
       {
+        if (i != 2) {
+          return;
+        }
+        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenWatchTogether.b();
         return;
-        paramView = SessionMgr.a().a();
-      } while (!paramView.A());
-      ((WTogetherMng)VideoController.a().a.a(15)).d(paramView);
-      return;
-    case 1: 
+      }
       paramView = SessionMgr.a().a();
       VideoController localVideoController = VideoController.a();
-      if (paramView.z != -1) {}
-      for (;;)
-      {
-        localVideoController.a(paramView.d, 237);
-        localVideoController.b(237);
-        localVideoController.b(paramView.d, paramView.z);
-        paramView.a("onClick_quit", false);
-        paramView.b("onClick_quit", 0);
-        return;
+      if (paramView.z == -1) {
         paramView.z = 0;
       }
+      localVideoController.a(paramView.c, 237);
+      localVideoController.b(237);
+      localVideoController.b(paramView.c, paramView.z);
+      paramView.a("onClick_quit", false);
+      paramView.c("onClick_quit", 0);
+      return;
     }
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenWatchTogether.b();
+    paramView = SessionMgr.a().a();
+    if (paramView.r()) {
+      ((WTogetherMng)VideoController.a().a.a(16)).d(paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenWatchTogether.2
  * JD-Core Version:    0.7.0.1
  */

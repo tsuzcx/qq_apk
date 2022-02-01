@@ -79,25 +79,35 @@ public class PTSAppInstance$PTSLiteAppInstance
       localObject = new HashMap();
     }
     ((HashMap)localObject).put("pts:pageName", getPageName());
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      PTSLog.i("PTSAppInstance", "[triggerLiteEvent] unknown, eventType = " + paramInt);
-      return;
-    case 1: 
-      this.liteEventListener.onTapEventTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5)
+            {
+              paramString = new StringBuilder();
+              paramString.append("[triggerLiteEvent] unknown, eventType = ");
+              paramString.append(paramInt);
+              PTSLog.i("PTSAppInstance", paramString.toString());
+              return;
+            }
+            this.liteEventListener.onScrollViewItemExposureTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
+            return;
+          }
+          this.liteEventListener.onSwiperDragTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
+          return;
+        }
+        this.liteEventListener.onSwiperItemExposureTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
+        return;
+      }
       this.liteEventListener.onExposureTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
       return;
-    case 3: 
-      this.liteEventListener.onSwiperItemExposureTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
-      return;
-    case 4: 
-      this.liteEventListener.onSwiperDragTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
-      return;
     }
-    this.liteEventListener.onScrollViewItemExposureTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
+    this.liteEventListener.onTapEventTriggered(paramString, (HashMap)localObject, paramView, paramPTSComposer);
   }
   
   public String updateData(String paramString)
@@ -111,7 +121,7 @@ public class PTSAppInstance$PTSLiteAppInstance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.PTSAppInstance.PTSLiteAppInstance
  * JD-Core Version:    0.7.0.1
  */

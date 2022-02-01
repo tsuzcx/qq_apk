@@ -25,7 +25,7 @@ public class PhoneContactFaceDrawable
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapManager.b(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130842261);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapManager.b(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130842159);
     this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidTextTextPaint.setColor(-1);
     this.jdField_a_of_type_Int = Math.min(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
@@ -34,26 +34,27 @@ public class PhoneContactFaceDrawable
   public void draw(Canvas paramCanvas)
   {
     Rect localRect = getBounds();
-    float f1 = localRect.width() / this.jdField_a_of_type_Int;
-    float f2 = this.jdField_a_of_type_Int / 2;
-    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(f1 * f2);
+    float f1 = localRect.width();
+    int i = this.jdField_a_of_type_Int;
+    f1 /= i;
+    float f2 = i / 2;
+    this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(f2 * f1);
     Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidTextTextPaint.getFontMetrics();
     paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        break label172;
-      }
-    }
-    label172:
-    for (int i = 0;; i = (int)Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidTextTextPaint))
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (str != null)
     {
-      int j = (int)(localFontMetrics.descent - localFontMetrics.ascent);
-      j = localRect.left;
+      if (str == null) {
+        i = 0;
+      } else {
+        i = (int)Layout.getDesiredWidth(str, this.jdField_a_of_type_AndroidTextTextPaint);
+      }
+      f1 = localFontMetrics.descent;
+      f1 = localFontMetrics.ascent;
+      int j = localRect.left;
       i = (localRect.width() - i) / 2;
-      f1 = localRect.top;
-      int k = (int)(localRect.height() / 2.0F + f1 - (localFontMetrics.bottom - localFontMetrics.top) / 2.0F - localFontMetrics.top);
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, i + j, k, this.jdField_a_of_type_AndroidTextTextPaint);
-      return;
+      int k = (int)(localRect.top + localRect.height() / 2.0F - (localFontMetrics.bottom - localFontMetrics.top) / 2.0F - localFontMetrics.top);
+      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, j + i, k, this.jdField_a_of_type_AndroidTextTextPaint);
     }
   }
   
@@ -84,7 +85,7 @@ public class PhoneContactFaceDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneContactFaceDrawable
  * JD-Core Version:    0.7.0.1
  */

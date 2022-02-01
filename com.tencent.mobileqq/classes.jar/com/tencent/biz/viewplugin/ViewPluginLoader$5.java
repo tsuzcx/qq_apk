@@ -16,25 +16,32 @@ class ViewPluginLoader$5
   
   public void run()
   {
-    String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      QLog.e("ViewPluginLoader", 1, "fTargetFile = " + this.jdField_a_of_type_JavaLangString);
-    }
-    do
+    Object localObject1 = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("fTargetFile = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      QLog.e("ViewPluginLoader", 1, ((StringBuilder)localObject1).toString());
       return;
-      Object localObject = new File(this.jdField_a_of_type_JavaLangString);
-      Bundle localBundle = new Bundle();
-      localObject = new DownloadTask(str, (File)localObject);
-      ((DownloadTask)localObject).b = 3;
-      this.this$0.a().a((DownloadTask)localObject, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, localBundle);
-    } while (!QLog.isColorLevel());
-    QLog.d("ViewPluginLoader", 2, "start Download url = " + str);
+    }
+    Object localObject3 = new File(this.jdField_a_of_type_JavaLangString);
+    Object localObject2 = new Bundle();
+    localObject3 = new DownloadTask((String)localObject1, (File)localObject3);
+    ((DownloadTask)localObject3).b = 3;
+    this.this$0.a().startDownload((DownloadTask)localObject3, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, (Bundle)localObject2);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("start Download url = ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("ViewPluginLoader", 2, ((StringBuilder)localObject2).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.viewplugin.ViewPluginLoader.5
  * JD-Core Version:    0.7.0.1
  */

@@ -36,7 +36,7 @@ public final class SuixintieCheckItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.SuixintieCheckItem
  * JD-Core Version:    0.7.0.1
  */

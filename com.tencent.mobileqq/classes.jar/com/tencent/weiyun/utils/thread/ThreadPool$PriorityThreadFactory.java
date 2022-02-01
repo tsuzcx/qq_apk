@@ -18,7 +18,11 @@ final class ThreadPool$PriorityThreadFactory
   
   public Thread newThread(Runnable paramRunnable)
   {
-    return new ThreadPool.PriorityThreadFactory.1(this, paramRunnable, this.mName + '-' + this.mNumber.getAndIncrement());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mName);
+    localStringBuilder.append('-');
+    localStringBuilder.append(this.mNumber.getAndIncrement());
+    return new ThreadPool.PriorityThreadFactory.1(this, paramRunnable, localStringBuilder.toString());
   }
   
   public void setPriority(int paramInt)
@@ -28,7 +32,7 @@ final class ThreadPool$PriorityThreadFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.utils.thread.ThreadPool.PriorityThreadFactory
  * JD-Core Version:    0.7.0.1
  */

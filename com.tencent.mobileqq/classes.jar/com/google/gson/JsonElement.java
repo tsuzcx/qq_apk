@@ -62,7 +62,10 @@ public abstract class JsonElement
     if (isJsonArray()) {
       return (JsonArray)this;
     }
-    throw new IllegalStateException("Not a JSON Array: " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Not a JSON Array: ");
+    localStringBuilder.append(this);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public JsonNull getAsJsonNull()
@@ -70,7 +73,10 @@ public abstract class JsonElement
     if (isJsonNull()) {
       return (JsonNull)this;
     }
-    throw new IllegalStateException("Not a JSON Null: " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Not a JSON Null: ");
+    localStringBuilder.append(this);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public JsonObject getAsJsonObject()
@@ -78,7 +84,10 @@ public abstract class JsonElement
     if (isJsonObject()) {
       return (JsonObject)this;
     }
-    throw new IllegalStateException("Not a JSON Object: " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Not a JSON Object: ");
+    localStringBuilder.append(this);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public JsonPrimitive getAsJsonPrimitive()
@@ -86,7 +95,10 @@ public abstract class JsonElement
     if (isJsonPrimitive()) {
       return (JsonPrimitive)this;
     }
-    throw new IllegalStateException("Not a JSON Primitive: " + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Not a JSON Primitive: ");
+    localStringBuilder.append(this);
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   public long getAsLong()
@@ -148,7 +160,7 @@ public abstract class JsonElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.JsonElement
  * JD-Core Version:    0.7.0.1
  */

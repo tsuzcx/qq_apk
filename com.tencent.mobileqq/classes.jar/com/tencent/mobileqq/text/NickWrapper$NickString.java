@@ -44,156 +44,158 @@ public class NickWrapper$NickString
   
   private void a(StringBuilder paramStringBuilder, int paramInt)
   {
-    int k = this.jdField_a_of_type_JavaLangString.length();
     int m = this.jdField_a_of_type_JavaLangString.length();
-    int n = (int)(paramInt * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
-    paramInt = 0;
-    while (paramInt < m)
+    int n = this.jdField_a_of_type_JavaLangString.length();
+    int i1 = (int)(paramInt * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
+    int i = 0;
+    while (i < n)
     {
-      if ((paramStringBuilder.charAt(paramInt) == '<') && (paramInt < k - 2))
+      if ((paramStringBuilder.charAt(i) == '<') && (i < m - 2))
       {
-        int i = paramStringBuilder.charAt(paramInt + 1);
-        if ((i == 36) && (paramInt < k - 3))
+        int k = i + 1;
+        paramInt = paramStringBuilder.charAt(k);
+        if ((paramInt == 36) && (i < m - 3))
         {
-          int j = paramStringBuilder.charAt(paramInt + 2);
-          if (QQText.IS_FXXKED_MTK) {
-            paramStringBuilder.replace(paramInt + 1, paramInt + 3, "##");
+          int i2 = i + 2;
+          int j = paramStringBuilder.charAt(i2);
+          boolean bool = QQText.IS_FXXKED_MTK;
+          paramInt = 10;
+          if (bool) {
+            paramStringBuilder.replace(k, i + 3, "##");
+          } else if (j == 10) {
+            paramStringBuilder.setCharAt(i2, 'ú');
           }
           char[] arrayOfChar;
-          for (;;)
+          if (j < QQSysFaceUtil.maxServerId())
           {
-            if (j < QQSysFaceUtil.maxServerId())
+            k = i + 3;
+            if (paramStringBuilder.charAt(k) == '>')
             {
-              if (paramStringBuilder.charAt(paramInt + 3) == '>')
-              {
-                j = QQSysFaceUtil.convertToLocal(j);
-                i = j;
-                if (j == 250) {
-                  i = 10;
-                }
-                if (i >= EmotcationConstants.VALID_SYS_EMOTCATION_COUNT) {
-                  break label834;
-                }
-                a(new NickWrapper.QQEmojiTextUnit(paramStringBuilder.substring(paramInt, paramInt + 4), i, n));
-                paramInt += 4;
-                break;
-                if (j != 10) {
-                  continue;
-                }
-                paramStringBuilder.setCharAt(paramInt + 2, 'ú');
-                continue;
+              j = QQSysFaceUtil.convertToLocal(j);
+              if (j != 250) {
+                paramInt = j;
               }
-              if (paramStringBuilder.charAt(paramInt + 6) != '>') {
-                break label834;
+              if (paramInt >= EmotcationConstants.VALID_SYS_EMOTCATION_COUNT) {
+                break label849;
+              }
+              j = i + 4;
+              a(new NickWrapper.QQEmojiTextUnit(paramStringBuilder.substring(i, j), paramInt, i1));
+              paramInt = j;
+            }
+            else
+            {
+              if (paramStringBuilder.charAt(i + 6) != '>') {
+                break label849;
               }
               arrayOfChar = new char[3];
-              arrayOfChar[0] = paramStringBuilder.charAt(paramInt + 3);
-              arrayOfChar[1] = paramStringBuilder.charAt(paramInt + 4);
-              arrayOfChar[2] = ((char)(paramStringBuilder.charAt(paramInt + 5) & 0xFF));
-              i = 0;
-              if (i < 3)
+              arrayOfChar[0] = paramStringBuilder.charAt(k);
+              arrayOfChar[1] = paramStringBuilder.charAt(i + 4);
+              arrayOfChar[2] = ((char)(paramStringBuilder.charAt(i + 5) & 0xFF));
+              paramInt = 0;
+              while (paramInt < 3)
               {
-                if (arrayOfChar[i] == 'ú') {
-                  arrayOfChar[i] = '\n';
+                if (arrayOfChar[paramInt] == 'ú') {
+                  arrayOfChar[paramInt] = '\n';
+                } else if (arrayOfChar[paramInt] == 'þ') {
+                  arrayOfChar[paramInt] = '\r';
                 }
-                for (;;)
-                {
-                  i += 1;
-                  break;
-                  if (arrayOfChar[i] == 'þ') {
-                    arrayOfChar[i] = '\r';
-                  }
-                }
+                paramInt += 1;
               }
-              a(new NickWrapper.QQSmallEmojiTextUnit(paramStringBuilder.substring(paramInt, paramInt + 7), j, n));
-              i = 2;
-              if (i < 5)
+              k = i + 7;
+              a(new NickWrapper.QQSmallEmojiTextUnit(paramStringBuilder.substring(i, k), j, i1));
+              j = 2;
+              for (;;)
               {
-                if (paramStringBuilder.charAt(paramInt + i) == '\n') {
-                  paramStringBuilder.setCharAt(paramInt + i, 'ú');
-                }
-                for (;;)
-                {
-                  i += 1;
+                paramInt = k;
+                if (j >= 5) {
                   break;
-                  if (paramStringBuilder.charAt(paramInt + i) == '\r') {
-                    paramStringBuilder.setCharAt(paramInt + i, 'þ');
-                  }
                 }
+                paramInt = i + j;
+                if (paramStringBuilder.charAt(paramInt) == '\n') {
+                  paramStringBuilder.setCharAt(paramInt, 'ú');
+                } else if (paramStringBuilder.charAt(paramInt) == '\r') {
+                  paramStringBuilder.setCharAt(paramInt, 'þ');
+                }
+                j += 1;
               }
-              paramInt += 7;
-              break;
             }
           }
-          if ((j >= 255) && (paramInt + 6 < k))
+          else
           {
-            if (paramStringBuilder.charAt(paramInt + 6) == '>')
+            if (j >= 255)
             {
-              arrayOfChar = new char[3];
-              arrayOfChar[0] = paramStringBuilder.charAt(paramInt + 3);
-              arrayOfChar[1] = paramStringBuilder.charAt(paramInt + 4);
-              arrayOfChar[2] = ((char)(paramStringBuilder.charAt(paramInt + 5) & 0xFF));
-              i = 0;
-              if (i < 3)
+              paramInt = i + 6;
+              if (paramInt < m)
               {
-                if (arrayOfChar[i] == 'ú') {
-                  arrayOfChar[i] = '\n';
+                if (paramStringBuilder.charAt(paramInt) != '>') {
+                  break label849;
                 }
+                arrayOfChar = new char[3];
+                arrayOfChar[0] = paramStringBuilder.charAt(i + 3);
+                arrayOfChar[1] = paramStringBuilder.charAt(i + 4);
+                arrayOfChar[2] = ((char)(paramStringBuilder.charAt(i + 5) & 0xFF));
+                paramInt = 0;
+                while (paramInt < 3)
+                {
+                  if (arrayOfChar[paramInt] == 'ú') {
+                    arrayOfChar[paramInt] = '\n';
+                  } else if (arrayOfChar[paramInt] == 'þ') {
+                    arrayOfChar[paramInt] = '\r';
+                  }
+                  paramInt += 1;
+                }
+                k = i + 7;
+                a(new NickWrapper.QQSmallEmojiTextUnit(paramStringBuilder.substring(i, k), j, i1));
+                j = 2;
                 for (;;)
                 {
-                  i += 1;
-                  break;
-                  if (arrayOfChar[i] == 'þ') {
-                    arrayOfChar[i] = '\r';
+                  paramInt = k;
+                  if (j >= 5) {
+                    break;
                   }
+                  paramInt = i + j;
+                  if (paramStringBuilder.charAt(paramInt) == '\n') {
+                    paramStringBuilder.setCharAt(paramInt, 'ú');
+                  } else if (paramStringBuilder.charAt(paramInt) == '\r') {
+                    paramStringBuilder.setCharAt(paramInt, 'þ');
+                  }
+                  j += 1;
                 }
               }
-              a(new NickWrapper.QQSmallEmojiTextUnit(paramStringBuilder.substring(paramInt, paramInt + 7), j, n));
-              i = 2;
-              if (i < 5)
-              {
-                if (paramStringBuilder.charAt(paramInt + i) == '\n') {
-                  paramStringBuilder.setCharAt(paramInt + i, 'ú');
-                }
-                for (;;)
-                {
-                  i += 1;
-                  break;
-                  if (paramStringBuilder.charAt(paramInt + i) == '\r') {
-                    paramStringBuilder.setCharAt(paramInt + i, 'þ');
-                  }
-                }
-              }
-              paramInt += 7;
             }
-          }
-          else if (j == 250)
-          {
+            if (j != 250) {
+              break label849;
+            }
             if (QQText.IS_FXXKED_MTK) {
-              paramStringBuilder.replace(paramInt + 1, paramInt + 3, "##");
+              paramStringBuilder.replace(k, i + 3, "##");
             }
-            a(new NickWrapper.QQEmojiTextUnit(paramStringBuilder.substring(paramInt, paramInt + 4), 10, n));
-            paramInt += 4;
+            paramInt = i + 4;
+            a(new NickWrapper.QQEmojiTextUnit(paramStringBuilder.substring(i, paramInt), 10, i1));
           }
         }
-        else if (((i == 37) || (i == 38)) && (paramInt < k - 6))
+        else
         {
-          a(new NickWrapper.QQColorTextUnit(paramStringBuilder.substring(paramInt, paramInt + 7)));
-          paramInt += 7;
+          if (((paramInt != 37) && (paramInt != 38)) || (i >= m - 6)) {
+            break label849;
+          }
+          paramInt = i + 7;
+          a(new NickWrapper.QQColorTextUnit(paramStringBuilder.substring(i, paramInt)));
         }
       }
       else
       {
-        if ((Character.isHighSurrogate(paramStringBuilder.charAt(paramInt))) && (paramInt <= k - 2) && (Character.isSurrogatePair(paramStringBuilder.charAt(paramInt), paramStringBuilder.charAt(paramInt + 1))) && (a(paramStringBuilder.toString().codePointAt(paramInt))))
-        {
-          a(new NickWrapper.EmojiTextUnit(paramStringBuilder.substring(paramInt, paramInt + 2)));
-          paramInt += 2;
-          continue;
+        if ((!Character.isHighSurrogate(paramStringBuilder.charAt(i))) || (i > m - 2) || (!Character.isSurrogatePair(paramStringBuilder.charAt(i), paramStringBuilder.charAt(i + 1))) || (!a(paramStringBuilder.toString().codePointAt(i)))) {
+          break label829;
         }
-        a(new NickWrapper.NormalTextUnit(String.valueOf(paramStringBuilder.charAt(paramInt))));
+        paramInt = i + 2;
+        a(new NickWrapper.EmojiTextUnit(paramStringBuilder.substring(i, paramInt)));
       }
-      label834:
-      paramInt += 1;
+      i = paramInt;
+      continue;
+      label829:
+      a(new NickWrapper.NormalTextUnit(String.valueOf(paramStringBuilder.charAt(i))));
+      label849:
+      i += 1;
     }
   }
   
@@ -287,7 +289,7 @@ public class NickWrapper$NickString
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.text.NickWrapper.NickString
  * JD-Core Version:    0.7.0.1
  */

@@ -29,23 +29,33 @@ public final class RawMeasureSDK$Recorder
   
   public Recorder values(float... paramVarArgs)
   {
-    if ((paramVarArgs.length <= 0) || (paramVarArgs.length != this.rawMeasure.policies.length)) {
-      throw new IllegalArgumentException("指标长度不正确" + paramVarArgs.length + ", " + this.rawMeasure.policies.length);
-    }
-    StatValue[] arrayOfStatValue = new StatValue[paramVarArgs.length];
-    int i = 0;
-    while (i < paramVarArgs.length)
+    if ((paramVarArgs.length > 0) && (paramVarArgs.length == this.rawMeasure.policies.length))
     {
-      arrayOfStatValue[i] = StatValue.create(paramVarArgs[i], this.rawMeasure.policies[i]);
-      i += 1;
+      localObject = new StatValue[paramVarArgs.length];
+      int i = 0;
+      while (i < paramVarArgs.length)
+      {
+        localObject[i] = StatValue.create(paramVarArgs[i], this.rawMeasure.policies[i]);
+        i += 1;
+      }
+      this.values = ((StatValue[])localObject);
+      return this;
     }
-    this.values = arrayOfStatValue;
-    return this;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("指标长度不正确");
+    ((StringBuilder)localObject).append(paramVarArgs.length);
+    ((StringBuilder)localObject).append(", ");
+    ((StringBuilder)localObject).append(this.rawMeasure.policies.length);
+    paramVarArgs = new IllegalArgumentException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramVarArgs;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.RawMeasureSDK.Recorder
  * JD-Core Version:    0.7.0.1
  */

@@ -16,36 +16,51 @@ class CameraProxy$2
   public void run()
   {
     QLog.i("CameraProxy", 2, "startCameraPreview.");
-    if ((CameraProxy.a(this.this$0) != 2) || (CameraProxy.a(this.this$0) == null) || (CameraProxy.a(this.this$0)))
+    if ((CameraProxy.a(this.this$0) == 2) && (CameraProxy.a(this.this$0) != null) && (!CameraProxy.a(this.this$0)))
     {
-      QLog.i("CameraProxy", 2, String.format("cancel to start preview. mCurCameraState=%s mARCamera=%s mIsCameraPreviewing=%s", new Object[] { Integer.valueOf(CameraProxy.a(this.this$0)), CameraProxy.a(this.this$0), Boolean.valueOf(CameraProxy.a(this.this$0)) }));
+      Object localObject = this.this$0;
+      CameraProxy.b((CameraProxy)localObject, CameraProxy.a((CameraProxy)localObject).a());
+      localObject = this.this$0;
+      CameraProxy.c((CameraProxy)localObject, CameraProxy.a((CameraProxy)localObject).b());
+      localObject = this.this$0;
+      CameraProxy.d((CameraProxy)localObject, CameraProxy.a((CameraProxy)localObject).c());
+      localObject = this.this$0;
+      ARCamera localARCamera = CameraProxy.a((CameraProxy)localObject);
+      CameraProxy localCameraProxy = this.this$0;
+      CameraProxy.a((CameraProxy)localObject, localARCamera.a(localCameraProxy, this.a, localCameraProxy));
+      if (CameraProxy.a(this.this$0))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("start preview successfully. mCurCameraState = ");
+        ((StringBuilder)localObject).append(CameraProxy.a(this.this$0));
+        QLog.i("CameraProxy", 2, ((StringBuilder)localObject).toString());
+        CameraProxy.a(this.this$0, true, 0, 1);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("openCamera end. mIsCameraPreviewing = ");
+        ((StringBuilder)localObject).append(CameraProxy.a(this.this$0));
+        QLog.i("CameraProxy", 2, ((StringBuilder)localObject).toString());
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start preview failed. mCurCameraState = ");
+      ((StringBuilder)localObject).append(CameraProxy.a(this.this$0));
+      QLog.i("CameraProxy", 2, ((StringBuilder)localObject).toString());
+      CameraProxy.a(this.this$0).a();
+      CameraProxy.a(this.this$0, 0);
+      CameraProxy.a(this.this$0, false, 0, 2);
+      localObject = new HashMap();
+      ((HashMap)localObject).put("ar_model", Build.MODEL);
+      ((HashMap)localObject).put("ar_type", "2");
+      ((HashMap)localObject).put("ar_reason", String.valueOf(-4));
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AndroidARException", true, 0L, 0L, (HashMap)localObject, "", true);
       return;
     }
-    CameraProxy.b(this.this$0, CameraProxy.a(this.this$0).a());
-    CameraProxy.c(this.this$0, CameraProxy.a(this.this$0).b());
-    CameraProxy.d(this.this$0, CameraProxy.a(this.this$0).c());
-    CameraProxy.a(this.this$0, CameraProxy.a(this.this$0).a(this.this$0, this.a, this.this$0));
-    if (CameraProxy.a(this.this$0))
-    {
-      QLog.i("CameraProxy", 2, "start preview successfully. mCurCameraState = " + CameraProxy.a(this.this$0));
-      CameraProxy.a(this.this$0, true, 0, 1);
-      QLog.i("CameraProxy", 2, "openCamera end. mIsCameraPreviewing = " + CameraProxy.a(this.this$0));
-      return;
-    }
-    QLog.i("CameraProxy", 2, "start preview failed. mCurCameraState = " + CameraProxy.a(this.this$0));
-    CameraProxy.a(this.this$0).a();
-    CameraProxy.a(this.this$0, 0);
-    CameraProxy.a(this.this$0, false, 0, 2);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("ar_model", Build.MODEL);
-    localHashMap.put("ar_type", "2");
-    localHashMap.put("ar_reason", String.valueOf(-4));
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "AndroidARException", true, 0L, 0L, localHashMap, "", true);
+    QLog.i("CameraProxy", 2, String.format("cancel to start preview. mCurCameraState=%s mARCamera=%s mIsCameraPreviewing=%s", new Object[] { Integer.valueOf(CameraProxy.a(this.this$0)), CameraProxy.a(this.this$0), Boolean.valueOf(CameraProxy.a(this.this$0)) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.CameraProxy.2
  * JD-Core Version:    0.7.0.1
  */

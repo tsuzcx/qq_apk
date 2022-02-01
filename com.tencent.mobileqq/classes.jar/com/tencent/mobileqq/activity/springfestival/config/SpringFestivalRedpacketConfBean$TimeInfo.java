@@ -10,12 +10,18 @@ public class SpringFestivalRedpacketConfBean$TimeInfo
   
   public String toString()
   {
-    return "TimeInfo{beginTime=" + this.beginTime + ", endTime=" + this.endTime + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TimeInfo{beginTime=");
+    localStringBuilder.append(this.beginTime);
+    localStringBuilder.append(", endTime=");
+    localStringBuilder.append(this.endTime);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfBean.TimeInfo
  * JD-Core Version:    0.7.0.1
  */

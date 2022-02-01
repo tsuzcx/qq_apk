@@ -12,9 +12,9 @@ import java.util.ArrayList;
 
 public class QCircleHostLbsHelper
 {
-  public static void getBatchPoiFromServer(ArrayList<GpsInfo4LocalImage> paramArrayList)
+  public static void getBatchPoiFromServer(ArrayList<GpsInfo4LocalImage> paramArrayList, boolean paramBoolean)
   {
-    ((IQzoneLbsServiceApi)QRoute.api(IQzoneLbsServiceApi.class)).getBatchPoiFromServer(paramArrayList);
+    ((IQzoneLbsServiceApi)QRoute.api(IQzoneLbsServiceApi.class)).getBatchPoiFromServer(paramArrayList, paramBoolean);
   }
   
   public static SosoLbsInfo getCachedLbsInfo(String paramString)
@@ -39,7 +39,7 @@ public class QCircleHostLbsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostLbsHelper
  * JD-Core Version:    0.7.0.1
  */

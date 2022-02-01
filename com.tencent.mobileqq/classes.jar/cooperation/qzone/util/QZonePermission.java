@@ -3,9 +3,9 @@ package cooperation.qzone.util;
 import android.app.Activity;
 import android.os.Build.VERSION;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
-import com.tencent.mobileqq.pluginsdk.IPluginActivity;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.DialogUtil;
-import cooperation.qzone.QzonePluginProxyActivity;
+import com.tencent.qzonehub.api.IQzoneMixApi;
 import mqq.app.BaseActivity;
 import mqq.app.QQPermissionCallback;
 
@@ -13,16 +13,14 @@ public class QZonePermission
 {
   private static Activity getRealActivity(Activity paramActivity)
   {
-    Activity localActivity;
     if (paramActivity == null) {
-      localActivity = null;
+      return null;
     }
-    do
-    {
-      return localActivity;
-      localActivity = paramActivity;
-    } while (!(paramActivity instanceof BasePluginActivity));
-    return ((BasePluginActivity)paramActivity).getOutActivity();
+    Activity localActivity = paramActivity;
+    if ((paramActivity instanceof BasePluginActivity)) {
+      localActivity = ((BasePluginActivity)paramActivity).getOutActivity();
+    }
+    return localActivity;
   }
   
   public static boolean requestStoragePermission(Activity paramActivity)
@@ -32,21 +30,19 @@ public class QZonePermission
   
   public static boolean requestStoragePermission(Activity paramActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
   {
-    if (paramActivity == null) {}
-    do
-    {
+    if (paramActivity == null) {
       return false;
-      if ((paramActivity instanceof BasePluginActivity)) {
-        return requestStoragePermission((BasePluginActivity)paramActivity, paramQQPermissionCallback, paramInt);
-      }
-      if ((paramActivity instanceof QzonePluginProxyActivity)) {
-        return requestStoragePermissionForPluginProxyActivity((QzonePluginProxyActivity)paramActivity, paramQQPermissionCallback, paramInt);
-      }
-      if ((paramActivity instanceof BaseActivity)) {
-        return requestStoragePermissionForBaseActivity((BaseActivity)paramActivity, paramQQPermissionCallback, paramInt);
-      }
-    } while (!(paramActivity instanceof Activity));
-    return requestStoragePermissionForActivity(paramActivity);
+    }
+    if ((paramActivity instanceof BasePluginActivity)) {
+      return requestStoragePermission((BasePluginActivity)paramActivity, paramQQPermissionCallback, paramInt);
+    }
+    if ((paramActivity instanceof BaseActivity)) {
+      return requestStoragePermissionForBaseActivity((BaseActivity)paramActivity, paramQQPermissionCallback, paramInt);
+    }
+    if ((paramActivity instanceof Activity)) {
+      return requestStoragePermissionForActivity(paramActivity);
+    }
+    return ((IQzoneMixApi)QRoute.api(IQzoneMixApi.class)).requestStoragePermission(paramActivity, paramQQPermissionCallback, paramInt);
   }
   
   public static boolean requestStoragePermission(BasePluginActivity paramBasePluginActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
@@ -87,26 +83,10 @@ public class QZonePermission
     }
     return true;
   }
-  
-  private static boolean requestStoragePermissionForPluginProxyActivity(QzonePluginProxyActivity paramQzonePluginProxyActivity, QQPermissionCallback paramQQPermissionCallback, int paramInt)
-  {
-    if (paramQzonePluginProxyActivity == null) {}
-    do
-    {
-      return false;
-      if ((Build.VERSION.SDK_INT < 23) || ((paramQzonePluginProxyActivity.checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) && (paramQzonePluginProxyActivity.checkSelfPermission("android.permission.WRITE_EXTERNAL_STORAGE") == 0))) {
-        break;
-      }
-      paramQzonePluginProxyActivity = paramQzonePluginProxyActivity.getRealPluginActivity();
-    } while (paramQzonePluginProxyActivity == null);
-    paramQzonePluginProxyActivity.requestPermissions(paramQQPermissionCallback, paramInt, new String[] { "android.permission.READ_EXTERNAL_STORAGE", "android.permission.WRITE_EXTERNAL_STORAGE" });
-    return false;
-    return true;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.QZonePermission
  * JD-Core Version:    0.7.0.1
  */

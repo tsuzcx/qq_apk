@@ -39,8 +39,9 @@ public class o
   
   public void a()
   {
-    if (this.a != null) {
-      this.a.b();
+    d locald = this.a;
+    if (locald != null) {
+      locald.b();
     }
     this.c = null;
     this.d = false;
@@ -56,7 +57,8 @@ public class o
   
   public void a(o.a parama)
   {
-    if ((this.a == null) || (!this.a.c())) {
+    d locald = this.a;
+    if ((locald == null) || (!locald.c())) {
       c();
     }
     this.c = parama;
@@ -80,27 +82,28 @@ public class o
   
   public void b(String paramString)
   {
-    do
+    try
     {
-      try
-      {
-        paramString = new JSONObject(paramString).optString("action");
-        if (this.c == null) {
-          return;
-        }
-      }
-      catch (Exception paramString)
-      {
-        LogUtils.e("hippy_console", "revceive invalid live reload msg");
+      paramString = new JSONObject(paramString).optString("action");
+      if (this.c == null) {
         return;
       }
-    } while (!paramString.equals("compileSuccess"));
-    this.e.post(new o.3(this));
+      if (paramString.equals("compileSuccess")) {
+        this.e.post(new o.3(this));
+      }
+      return;
+    }
+    catch (Exception paramString)
+    {
+      label48:
+      break label48;
+    }
+    LogUtils.e("hippy_console", "revceive invalid live reload msg");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.o
  * JD-Core Version:    0.7.0.1
  */

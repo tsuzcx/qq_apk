@@ -9,20 +9,21 @@ class TroopMemberApiService$2
 {
   TroopMemberApiService$2(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
+  protected void a(boolean paramBoolean, int paramInt, Bundle paramBundle)
   {
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       this.a.a(147, paramBundle);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("TroopMemberApiService", 2, new Object[] { "onWebPushResp isSuc:", Boolean.valueOf(paramBoolean), " type:", Integer.valueOf(paramInt) });
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopMemberApiService", 2, new Object[] { "onWebPushResp isSuc:", Boolean.valueOf(paramBoolean), " type:", Integer.valueOf(paramInt) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.2
  * JD-Core Version:    0.7.0.1
  */

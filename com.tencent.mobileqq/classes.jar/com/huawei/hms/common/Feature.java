@@ -14,7 +14,7 @@ public class Feature
   public static final int ARGS_NAME = 1;
   public static final int ARGS_SVC_VER = 2;
   public static final int ARGS_VER = 3;
-  public static final Parcelable.Creator<Feature> CREATOR = new a();
+  public static final Parcelable.Creator<Feature> CREATOR = new FeatureCreator();
   private static final int SVC_VER = -1;
   private final long apiVersion;
   private final String name;
@@ -35,13 +35,14 @@ public class Feature
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof Feature)) {}
-    do
-    {
+    if (!(paramObject instanceof Feature)) {
       return false;
-      paramObject = (Feature)paramObject;
-    } while ((!this.name.equals(paramObject.getName())) || (getVersion() != paramObject.getVersion()));
-    return true;
+    }
+    paramObject = (Feature)paramObject;
+    if (!this.name.equals(paramObject.getName())) {
+      return false;
+    }
+    return getVersion() == paramObject.getVersion();
   }
   
   public String getName()
@@ -51,11 +52,12 @@ public class Feature
   
   public long getVersion()
   {
-    long l = this.apiVersion;
-    if (-1L == this.apiVersion) {
-      l = this.serviceVersion;
+    long l2 = this.apiVersion;
+    long l1 = l2;
+    if (-1L == l2) {
+      l1 = this.serviceVersion;
     }
-    return l;
+    return l1;
   }
   
   public int hashCode()
@@ -79,7 +81,7 @@ public class Feature
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.Feature
  * JD-Core Version:    0.7.0.1
  */

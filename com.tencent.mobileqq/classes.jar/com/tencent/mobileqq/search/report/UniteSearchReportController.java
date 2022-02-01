@@ -2,30 +2,17 @@ package com.tencent.mobileqq.search.report;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.search.GroupSearchModelFileEntity;
-import com.tencent.mobileqq.search.ftsmsg.FTSGroupSearchModelMessage;
-import com.tencent.mobileqq.search.model.GroupSearchModeTitle;
-import com.tencent.mobileqq.search.model.GroupSearchModelLocalContact;
-import com.tencent.mobileqq.search.model.GroupSearchModelLocalTroop;
-import com.tencent.mobileqq.search.model.GroupSearchModelMessage;
-import com.tencent.mobileqq.search.model.GroupSearchModelMostUsed;
-import com.tencent.mobileqq.search.model.GroupSearchModelMultiChat;
-import com.tencent.mobileqq.search.model.GroupSearchModelPublicAcnt;
-import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.servlet.ReportServlet;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qqfav.globalsearch.GroupSearchModelFavorite;
-import java.util.List;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 
 public class UniteSearchReportController
 {
-  public static final String a = UniteSearchReportController.class.getSimpleName();
+  public static final String a = "UniteSearchReportController";
   public static String b = "";
   
   public static String a()
@@ -41,346 +28,251 @@ public class UniteSearchReportController
     if (paramInt == 2) {
       return "contact";
     }
-    if ((paramInt == 21) || (paramInt == 3)) {
-      return "dongtai";
-    }
-    if ((paramInt == 25) || (paramInt == 10)) {
+    if ((paramInt != 21) && (paramInt != 3))
+    {
+      if ((paramInt != 25) && (paramInt != 10)) {
+        return "unknown";
+      }
       return "kandian";
     }
-    return "unknown";
+    return "dongtai";
   }
   
-  public static void a(int paramInt1, int paramInt2, GroupSearchModeTitle paramGroupSearchModeTitle)
+  public static void a(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2)
   {
-    if ((paramGroupSearchModeTitle == null) || (paramGroupSearchModeTitle.a() == null)) {}
-    do
+    int i = 1;
+    if (paramAppInterface == null)
     {
-      do
-      {
-        return;
-      } while (!paramGroupSearchModeTitle.a());
-      if (paramGroupSearchModeTitle.a().equals(GroupSearchModelMessage.a)) {
-        a(null, 0, paramInt2, "0X8009D4E", 0, 0, null, null);
-      }
-      if (paramGroupSearchModeTitle.a().equals(GroupSearchModelLocalContact.a)) {
-        a(null, 0, paramInt2, "0X8009D38", 0, 0, null, null);
-      }
-      if (paramGroupSearchModeTitle.a().equals(GroupSearchModelLocalTroop.a)) {
-        a(null, 0, paramInt2, "0X8009D3C", 0, 0, null, null);
-      }
-    } while (!paramGroupSearchModeTitle.a().equals(HardCodeUtil.a(2131715748)));
-    a(null, 0, paramInt2, "0X8009D52", 0, 0, null, null);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2)
-  {
-    if (paramQQAppInterface == null)
-    {
-      paramQQAppInterface = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(paramQQAppInterface instanceof QQAppInterface))
+      paramAppInterface = MobileQQ.sMobileQQ.peekAppRuntime();
+      if (!(paramAppInterface instanceof AppInterface))
       {
         QLog.e(a, 1, "app is null");
         return;
       }
-      paramQQAppInterface = (QQAppInterface)paramQQAppInterface;
+      paramAppInterface = (AppInterface)paramAppInterface;
     }
-    for (;;)
+    if (paramInt1 != 0)
     {
-      int i = 0;
-      if (paramInt1 != 0) {
-        switch (paramInt1)
-        {
-        default: 
-          paramInt1 = i;
-        }
+      if (paramInt1 == 1) {
+        break label92;
       }
-      for (;;)
-      {
-        String str2 = "" + paramInt3;
-        String str1 = "" + paramInt4;
-        try
-        {
-          Integer.valueOf(str2);
-          ReportController.b(paramQQAppInterface, "dc00898", "", "", "qqsearch", paramString1, paramInt1, 0, str2, str1, paramString2, "");
-          return;
-        }
-        catch (Exception localException)
-        {
-          ReportController.b(paramQQAppInterface, "dc00898", "", "", "qqsearch", paramString1, paramInt1, 0, "0", str1, paramString2, "");
-          return;
-        }
-        paramInt1 = 1;
-        continue;
-        paramInt1 = 2;
-        continue;
-        paramInt1 = 3;
-        continue;
-        switch (paramInt2)
-        {
-        default: 
-          paramInt1 = 0;
-          break;
-        case 1: 
-          paramInt1 = 1;
-          break;
-        case 2: 
-          paramInt1 = 2;
-          break;
-        case 21: 
-          paramInt1 = 3;
-        }
+      if (paramInt1 == 2) {
+        break label89;
       }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, String paramString3)
-  {
-    int i = 0;
-    if (paramInt1 != 0) {
-      switch (paramInt1)
-      {
-      default: 
-        if (paramString2 == null) {
-          paramString2 = "";
-        }
-        break;
-      }
-    }
-    for (;;)
-    {
-      if (paramString3 == null) {
-        paramString3 = "";
-      }
-      for (;;)
-      {
-        ReportController.b(paramQQAppInterface, "dc00898", "", "", "qqsearch", paramString1, i, 0, paramInt3 + "", paramInt4 + "", paramString2, paramString3);
-        QLog.d("searchReportClick898", 2, " source: " + paramInt1 + " from: " + paramInt2 + "  sopName: " + paramString1 + " r1: " + paramInt3 + " r2: " + paramInt4 + " r3: " + paramString2 + " r4: " + paramString3);
-        return;
-        i = 1;
-        break;
-        i = 2;
-        break;
-        i = 3;
-        break;
-        if (paramInt2 != 0) {}
-        switch (paramInt2)
-        {
-        default: 
-          i = 0;
-          break;
-        case 1: 
-          i = 1;
-          break;
-        case 2: 
-          i = 2;
-          break;
-        case 21: 
-          i = 3;
-          break;
-        case 25: 
-          i = 4;
-          break;
-        }
-      }
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, ReportModelDC02528 paramReportModelDC02528)
-  {
-    a("dc02528", paramQQAppInterface, paramReportModelDC02528);
-    if (QLog.isColorLevel()) {}
-  }
-  
-  public static void a(Object paramObject, String paramString, int paramInt)
-  {
-    if ((paramObject instanceof GroupSearchModeTitle)) {
-      a(0, paramInt, (GroupSearchModeTitle)paramObject);
-    }
-    if ((paramObject instanceof GroupSearchModelMostUsed)) {
-      a(null, 0, paramInt, "0X8009D30", 0, 0, null, null);
-    }
-    Object localObject;
-    int i;
-    label137:
-    label270:
-    label533:
-    if ((paramObject instanceof GroupSearchModelLocalContact))
-    {
-      localObject = (GroupSearchModelLocalContact)paramObject;
-      if (((GroupSearchModelLocalContact)localObject).a() == null) {
-        break label611;
-      }
-      i = ((GroupSearchModelLocalContact)localObject).a().size();
-      if (i > ((GroupSearchModelLocalContact)localObject).a())
-      {
-        i = ((GroupSearchModelLocalContact)localObject).a();
-        SearchUtils.a("all_result", "exp_contact", new String[] { "" + paramString, "" + i });
-        a(null, 0, paramInt, "0X8009D36", 0, 0, null, null);
+      if (paramInt1 == 3) {
+        break label83;
       }
     }
     else
     {
-      if ((paramObject instanceof GroupSearchModelLocalTroop)) {
-        a(null, 0, paramInt, "0X8009D3A", 0, 0, null, null);
+      if (paramInt2 == 1) {
+        break label92;
       }
-      if ((paramObject instanceof FTSGroupSearchModelMessage))
-      {
-        localObject = (FTSGroupSearchModelMessage)paramObject;
-        if (((FTSGroupSearchModelMessage)localObject).a() == null) {
-          break label655;
-        }
-        i = ((FTSGroupSearchModelMessage)localObject).a().size();
-        if (i <= ((FTSGroupSearchModelMessage)localObject).a()) {
-          break label652;
-        }
-        i = ((FTSGroupSearchModelMessage)localObject).a();
-        label215:
-        SearchUtils.a("all_result", "exp_talk", new String[] { "" + paramString, "" + i });
-        a(null, 0, paramInt, "0X8009D4C", 0, 0, null, null);
+      if (paramInt2 == 2) {
+        break label89;
       }
-      if ((paramObject instanceof GroupSearchModelFavorite))
-      {
-        localObject = (GroupSearchModelFavorite)paramObject;
-        if (((GroupSearchModelFavorite)localObject).a() == null) {
-          break label699;
-        }
-        i = ((GroupSearchModelFavorite)localObject).a().size();
-        if (i <= ((GroupSearchModelFavorite)localObject).a()) {
-          break label696;
-        }
-        i = ((GroupSearchModelFavorite)localObject).a();
-        label329:
-        SearchUtils.a("all_result", "exp_collect", new String[] { "" + paramString, "" + i });
-      }
-      if ((paramObject instanceof GroupSearchModelFileEntity))
-      {
-        localObject = (GroupSearchModelFileEntity)paramObject;
-        if (((GroupSearchModelFileEntity)localObject).a() == null) {
-          break label743;
-        }
-        i = ((GroupSearchModelFileEntity)localObject).a().size();
-        if (i <= ((GroupSearchModelFileEntity)localObject).a()) {
-          break label740;
-        }
-        i = ((GroupSearchModelFileEntity)localObject).a();
-        label431:
-        SearchUtils.a("all_result", "exp_file", new String[] { "" + paramString, "" + i });
-      }
-      label486:
-      if ((paramObject instanceof GroupSearchModelMultiChat))
-      {
-        localObject = (GroupSearchModelMultiChat)paramObject;
-        if (((GroupSearchModelMultiChat)localObject).a() == null) {
-          break label787;
-        }
-        i = ((GroupSearchModelMultiChat)localObject).a().size();
-        if (i <= ((GroupSearchModelMultiChat)localObject).a()) {
-          break label784;
-        }
-        i = ((GroupSearchModelMultiChat)localObject).a();
-        SearchUtils.a("all_result", "exp_discuss", new String[] { "" + paramString, "" + i });
+      if (paramInt2 == 21) {
+        break label83;
       }
     }
-    for (;;)
+    i = 0;
+    break label92;
+    label83:
+    i = 3;
+    break label92;
+    label89:
+    i = 2;
+    label92:
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("");
+    ((StringBuilder)localObject1).append(paramInt3);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(paramInt4);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    try
     {
-      label384:
-      if ((paramObject instanceof GroupSearchModelPublicAcnt)) {
-        a(null, 0, paramInt, "0X8009D50", 0, 0, null, null);
-      }
+      Integer.valueOf((String)localObject1);
+      ReportController.b(paramAppInterface, "dc00898", "", "", "qqsearch", paramString1, i, 0, (String)localObject1, (String)localObject2, paramString2, "");
       return;
-      break;
-      label611:
-      SearchUtils.a("all_result", "exp_contact", new String[] { "" + paramString, "0" });
-      break label137;
-      label652:
-      break label215;
-      label655:
-      SearchUtils.a("all_result", "exp_talk", new String[] { "" + paramString, "0" });
-      break label270;
-      label696:
-      break label329;
-      label699:
-      SearchUtils.a("all_result", "exp_collect", new String[] { "" + paramString, "0" });
-      break label384;
-      label740:
-      break label431;
-      label743:
-      SearchUtils.a("all_result", "exp_file", new String[] { "" + paramString, "0" });
-      break label486;
-      label784:
-      break label533;
-      label787:
-      SearchUtils.a("all_result", "exp_discuss", new String[] { "" + paramString, "0" });
     }
+    catch (Exception localException)
+    {
+      label187:
+      break label187;
+    }
+    ReportController.b(paramAppInterface, "dc00898", "", "", "qqsearch", paramString1, i, 0, "0", (String)localObject2, paramString2, "");
   }
   
-  public static void a(String paramString, QQAppInterface paramQQAppInterface, ReportModel paramReportModel)
+  public static void a(AppInterface paramAppInterface, int paramInt1, int paramInt2, String paramString1, int paramInt3, int paramInt4, String paramString2, String paramString3)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      if (!QLog.isColorLevel()) {}
-    }
-    do
+    int i = 3;
+    if (paramInt1 != 0)
     {
-      return;
-      if (paramReportModel != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    return;
-    QQAppInterface localQQAppInterface = paramQQAppInterface;
-    if (paramQQAppInterface == null)
-    {
-      localQQAppInterface = paramQQAppInterface;
-      if (BaseApplicationImpl.sProcessId == 1)
+      if (paramInt1 != 1)
       {
-        AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().peekAppRuntime();
-        localQQAppInterface = paramQQAppInterface;
+        if (paramInt1 != 2)
+        {
+          if (paramInt1 != 3) {
+            i = 0;
+          }
+        }
+        else {
+          i = 2;
+        }
+      }
+      else {
+        i = 1;
+      }
+    }
+    else
+    {
+      if (paramInt2 != 0) {
+        if (paramInt2 != 1)
+        {
+          if (paramInt2 != 2)
+          {
+            if (paramInt2 != 21)
+            {
+              if (paramInt2 == 25)
+              {
+                i = 4;
+                break label96;
+              }
+            }
+            else
+            {
+              i = 3;
+              break label96;
+            }
+          }
+          else
+          {
+            i = 2;
+            break label96;
+          }
+        }
+        else
+        {
+          i = 1;
+          break label96;
+        }
+      }
+      i = 0;
+    }
+    label96:
+    if (paramString2 == null) {
+      paramString2 = "";
+    }
+    if (paramString3 == null) {
+      paramString3 = "";
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt3);
+    ((StringBuilder)localObject).append("");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt4);
+    localStringBuilder.append("");
+    ReportController.b(paramAppInterface, "dc00898", "", "", "qqsearch", paramString1, i, 0, (String)localObject, localStringBuilder.toString(), paramString2, paramString3);
+    paramAppInterface = new StringBuilder();
+    paramAppInterface.append(" source: ");
+    paramAppInterface.append(paramInt1);
+    paramAppInterface.append(" from: ");
+    paramAppInterface.append(paramInt2);
+    paramAppInterface.append("  sopName: ");
+    paramAppInterface.append(paramString1);
+    paramAppInterface.append(" r1: ");
+    paramAppInterface.append(paramInt3);
+    paramAppInterface.append(" r2: ");
+    paramAppInterface.append(paramInt4);
+    paramAppInterface.append(" r3: ");
+    paramAppInterface.append(paramString2);
+    paramAppInterface.append(" r4: ");
+    paramAppInterface.append(paramString3);
+    QLog.d("searchReportClick898", 2, paramAppInterface.toString());
+  }
+  
+  public static void a(AppInterface paramAppInterface, ReportModelDC02528 paramReportModelDC02528)
+  {
+    a("dc02528", paramAppInterface, paramReportModelDC02528);
+    QLog.isColorLevel();
+  }
+  
+  public static void a(String paramString, AppInterface paramAppInterface, ReportModel paramReportModel)
+  {
+    if (TextUtils.isEmpty(paramString))
+    {
+      QLog.isColorLevel();
+      return;
+    }
+    if (paramReportModel == null)
+    {
+      QLog.isColorLevel();
+      return;
+    }
+    AppInterface localAppInterface = paramAppInterface;
+    if (paramAppInterface == null)
+    {
+      localAppInterface = paramAppInterface;
+      if (MobileQQ.sProcessId == 1)
+      {
+        AppRuntime localAppRuntime = MobileQQ.sMobileQQ.peekAppRuntime();
+        localAppInterface = paramAppInterface;
         if (localAppRuntime != null)
         {
-          localQQAppInterface = paramQQAppInterface;
-          if ((localAppRuntime instanceof QQAppInterface)) {
-            localQQAppInterface = (QQAppInterface)localAppRuntime;
+          localAppInterface = paramAppInterface;
+          if ((localAppRuntime instanceof AppInterface)) {
+            localAppInterface = (AppInterface)localAppRuntime;
           }
         }
       }
     }
-    if (localQQAppInterface == null)
+    if (localAppInterface == null)
     {
-      paramQQAppInterface = new Intent();
-      paramQQAppInterface.setClassName(BaseApplicationImpl.sApplication, "com.tencent.mobileqq.statistics.ReportReceiver");
-      paramQQAppInterface.putExtra("reporting_tag", paramString);
-      paramQQAppInterface.putExtra("reporting_detail", paramReportModel);
-      paramQQAppInterface.putExtra("reporting_count", paramReportModel.report_count);
-      paramQQAppInterface.putExtra("is_runtime", 1);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramQQAppInterface);
+      paramAppInterface = new Intent();
+      paramAppInterface.setClassName(MobileQQ.sMobileQQ, "com.tencent.mobileqq.statistics.ReportReceiver");
+      paramAppInterface.putExtra("reporting_tag", paramString);
+      paramAppInterface.putExtra("reporting_detail", paramReportModel);
+      paramAppInterface.putExtra("reporting_count", paramReportModel.report_count);
+      paramAppInterface.putExtra("is_runtime", 1);
+      MobileQQ.sMobileQQ.sendBroadcast(paramAppInterface);
       return;
     }
-    b(paramString, localQQAppInterface, paramReportModel);
+    b(paramString, localAppInterface, paramReportModel);
   }
   
-  protected static void b(String paramString, QQAppInterface paramQQAppInterface, ReportModel paramReportModel)
+  protected static void b(String paramString, AppInterface paramAppInterface, ReportModel paramReportModel)
   {
-    if ((paramReportModel == null) || (paramQQAppInterface == null)) {
-      if (!QLog.isColorLevel()) {}
-    }
-    do
+    if ((paramReportModel != null) && (paramAppInterface != null))
     {
+      paramReportModel.uin = paramAppInterface.getCurrentAccountUin();
+      paramReportModel.version = "8.7.0";
+      Object localObject = new NewIntent(paramAppInterface.getApplication(), ReportServlet.class);
+      ((NewIntent)localObject).putExtra("sendType", 2);
+      ((NewIntent)localObject).putExtra("tag", paramString);
+      ((NewIntent)localObject).putExtra("content", paramReportModel.toReportString());
+      ((NewIntent)localObject).setWithouLogin(true);
+      paramAppInterface.startServlet((NewIntent)localObject);
+      if (QLog.isColorLevel())
+      {
+        paramAppInterface = a;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("reportEventRuntime, tag = ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(", model = ");
+        ((StringBuilder)localObject).append(paramReportModel);
+        QLog.d(paramAppInterface, 2, ((StringBuilder)localObject).toString());
+      }
       return;
-      paramReportModel.uin = paramQQAppInterface.getCurrentAccountUin();
-      paramReportModel.version = "8.5.5";
-      NewIntent localNewIntent = new NewIntent(paramQQAppInterface.getApplication(), ReportServlet.class);
-      localNewIntent.putExtra("sendType", 2);
-      localNewIntent.putExtra("tag", paramString);
-      localNewIntent.putExtra("content", paramReportModel.toReportString());
-      localNewIntent.setWithouLogin(true);
-      paramQQAppInterface.startServlet(localNewIntent);
-    } while (!QLog.isColorLevel());
-    QLog.d(a, 2, "reportEventRuntime, tag = " + paramString + ", model = " + paramReportModel);
+    }
+    QLog.isColorLevel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.report.UniteSearchReportController
  * JD-Core Version:    0.7.0.1
  */

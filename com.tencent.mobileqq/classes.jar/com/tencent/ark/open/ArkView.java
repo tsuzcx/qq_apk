@@ -9,6 +9,7 @@ import android.view.ViewTreeObserver;
 import com.tencent.ark.ArkEnvironmentManager;
 import com.tencent.ark.ArkTextureView;
 import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.ark.Logger;
 import com.tencent.ark.open.delegate.ArkDelegateManager;
 import java.lang.ref.WeakReference;
 
@@ -35,7 +36,7 @@ public class ArkView
   public ArkView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    ArkAppCacheMgr.setupArkEnvironment(true);
+    ArkDelegateManager.setupArkEnvironment(true);
     this.mContext = paramContext;
     setOnTouchListener(this);
     paramContext = this.mContext.getResources().getDisplayMetrics();
@@ -54,10 +55,12 @@ public class ArkView
       StringBuilder localStringBuilder = new StringBuilder("loadImpl() appPath=");
       localStringBuilder.append(paramInitInfo.appPath);
       this.mArkModel = new ArkModel(ArkDelegateManager.getInstance().getApplicationCallback(), this.mHardwareRenderingEnable);
-      localStringBuilder.append(",gpuRenderingEnabled=").append(this.mHardwareRenderingEnable);
+      localStringBuilder.append(",gpuRenderingEnabled=");
+      localStringBuilder.append(this.mHardwareRenderingEnable);
       setInputCallback(ArkDelegateManager.getInstance().getInputCallback());
-      if (this.mArkViewCallback != null) {
-        setLoadCallback((ArkViewImplement.LoadCallback)this.mArkViewCallback.get());
+      WeakReference localWeakReference = this.mArkViewCallback;
+      if (localWeakReference != null) {
+        setLoadCallback((ArkViewImplement.LoadCallback)localWeakReference.get());
       }
       float f2 = this.mScale;
       float f1 = f2;
@@ -65,55 +68,108 @@ public class ArkView
         f1 = this.mContext.getResources().getDisplayMetrics().scaledDensity;
       }
       this.mArkModel.setAppPath(paramInitInfo.appPath);
-      this.mArkModel.init(paramInitInfo.appName, paramInitInfo.appView, paramInitInfo.minVersion, paramInitInfo.metaData, paramInitInfo.appConfig, f1);
-      if (this.mMinSize != null)
+      this.mArkModel.setResPath(paramInitInfo.resPath);
+      this.mArkModel.init(paramInitInfo.appID, paramInitInfo.view, paramInitInfo.minVersion, paramInitInfo.meta, paramInitInfo.config, f1);
+      paramInitInfo = this.mMinSize;
+      if (paramInitInfo != null)
       {
-        this.mArkModel.setMinSize(this.mMinSize.width, this.mMinSize.height);
-        localStringBuilder.append(".mMinSize=(").append(this.mMinSize.width).append(",").append(this.mMinSize.height).append(")");
+        this.mArkModel.setMinSize(paramInitInfo.width, this.mMinSize.height);
+        localStringBuilder.append(".mMinSize=(");
+        localStringBuilder.append(this.mMinSize.width);
+        localStringBuilder.append(",");
+        localStringBuilder.append(this.mMinSize.height);
+        localStringBuilder.append(")");
       }
-      if (this.mMaxSize != null)
+      paramInitInfo = this.mMaxSize;
+      if (paramInitInfo != null)
       {
-        this.mArkModel.setMaxSize(this.mMaxSize.width, this.mMaxSize.height);
-        localStringBuilder.append(".mMaxSize=(").append(this.mMaxSize.width).append(",").append(this.mMaxSize.height).append(")");
+        this.mArkModel.setMaxSize(paramInitInfo.width, this.mMaxSize.height);
+        localStringBuilder.append(".mMaxSize=(");
+        localStringBuilder.append(this.mMaxSize.width);
+        localStringBuilder.append(",");
+        localStringBuilder.append(this.mMaxSize.height);
+        localStringBuilder.append(")");
       }
-      if (this.mPrefferSize != null)
+      paramInitInfo = this.mPrefferSize;
+      if (paramInitInfo != null)
       {
-        this.mArkModel.setMaxSize(this.mPrefferSize.width, this.mPrefferSize.height);
-        localStringBuilder.append(".mPrefferSize=(").append(this.mPrefferSize.width).append(",").append(this.mPrefferSize.height).append(")");
+        this.mArkModel.setMaxSize(paramInitInfo.width, this.mPrefferSize.height);
+        localStringBuilder.append(".mPrefferSize=(");
+        localStringBuilder.append(this.mPrefferSize.width);
+        localStringBuilder.append(",");
+        localStringBuilder.append(this.mPrefferSize.height);
+        localStringBuilder.append(")");
       }
-      if (this.mRadius > 0.0F) {
-        super.setClipRadius(this.mRadius);
+      f1 = this.mRadius;
+      if (f1 > 0.0F) {
+        super.setClipRadius(f1);
       }
-      if (this.mRadiusTop > 0.0F) {
-        super.setClipRadiusTop(this.mRadiusTop);
+      f1 = this.mRadiusTop;
+      if (f1 > 0.0F) {
+        super.setClipRadiusTop(f1);
       }
-      if (this.mBorderType >= 0) {
-        super.setBorderType(this.mBorderType);
+      int i = this.mBorderType;
+      if (i >= 0) {
+        super.setBorderType(i);
       }
-      ENV.logI("ArkApp.ArkView", localStringBuilder.toString());
+      Logger.logI("ArkApp.ArkView", localStringBuilder.toString());
       super.initArkView(this.mArkModel);
     }
+  }
+  
+  public boolean load(ArkView.InitInfo paramInitInfo, ArkViewImplement.LoadCallback paramLoadCallback)
+  {
+    if ((paramInitInfo != null) && (paramInitInfo.isValid()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("load app=");
+      localStringBuilder.append(paramInitInfo.appID);
+      localStringBuilder.append(", view=");
+      localStringBuilder.append(paramInitInfo.view);
+      Logger.logI("ArkApp.ArkView", localStringBuilder.toString());
+      this.mArkViewCallback = new WeakReference(paramLoadCallback);
+      if (this.mGetArkViewSize)
+      {
+        loadImpl(paramInitInfo);
+        this.mInfo = null;
+      }
+      else
+      {
+        this.mInfo = paramInitInfo;
+      }
+      return true;
+    }
+    return false;
   }
   
   public boolean load(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, ArkViewImplement.LoadCallback paramLoadCallback)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      ENV.logI("ArkApp.ArkView", "load appname=" + paramString1 + ", appView=" + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("load appname=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", appView=");
+      localStringBuilder.append(paramString2);
+      Logger.logI("ArkApp.ArkView", localStringBuilder.toString());
       this.mArkViewCallback = new WeakReference(paramLoadCallback);
-      paramLoadCallback = new ArkView.InitInfo(null);
+      paramLoadCallback = new ArkView.InitInfo();
       paramLoadCallback.appPath = "";
-      paramLoadCallback.appName = paramString1;
-      paramLoadCallback.appView = paramString2;
+      paramLoadCallback.appID = paramString1;
+      paramLoadCallback.view = paramString2;
       paramLoadCallback.minVersion = paramString3;
-      paramLoadCallback.metaData = paramString4;
-      paramLoadCallback.appConfig = paramString5;
-      if (this.mGetArkViewSize) {
+      paramLoadCallback.meta = paramString4;
+      paramLoadCallback.config = paramString5;
+      if (this.mGetArkViewSize)
+      {
         loadImpl(paramLoadCallback);
+        this.mInfo = null;
       }
-      for (this.mInfo = null;; this.mInfo = paramLoadCallback) {
-        return true;
+      else
+      {
+        this.mInfo = paramLoadCallback;
       }
+      return true;
     }
     return false;
   }
@@ -123,20 +179,29 @@ public class ArkView
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
       this.mArkViewCallback = new WeakReference(paramLoadCallback);
-      ENV.logI("ArkApp.ArkView", "loadPath appname=" + paramString2 + ", appView=" + paramString3);
-      paramLoadCallback = new ArkView.InitInfo(null);
+      paramLoadCallback = new StringBuilder();
+      paramLoadCallback.append("loadPath appname=");
+      paramLoadCallback.append(paramString2);
+      paramLoadCallback.append(", appView=");
+      paramLoadCallback.append(paramString3);
+      Logger.logI("ArkApp.ArkView", paramLoadCallback.toString());
+      paramLoadCallback = new ArkView.InitInfo();
       paramLoadCallback.appPath = paramString1;
-      paramLoadCallback.appName = paramString2;
-      paramLoadCallback.appView = paramString3;
+      paramLoadCallback.appID = paramString2;
+      paramLoadCallback.view = paramString3;
       paramLoadCallback.minVersion = "";
-      paramLoadCallback.metaData = paramString4;
-      paramLoadCallback.appConfig = paramString5;
-      if (this.mGetArkViewSize) {
+      paramLoadCallback.meta = paramString4;
+      paramLoadCallback.config = paramString5;
+      if (this.mGetArkViewSize)
+      {
         loadImpl(paramLoadCallback);
+        this.mInfo = null;
       }
-      for (this.mInfo = null;; this.mInfo = paramLoadCallback) {
-        return true;
+      else
+      {
+        this.mInfo = paramLoadCallback;
       }
+      return true;
     }
     return false;
   }
@@ -145,7 +210,7 @@ public class ArkView
   {
     if (this.mArkModel != null)
     {
-      ENV.logI("ArkApp.ArkView", "onDestroy()");
+      Logger.logI("ArkApp.ArkView", "onDestroy()");
       this.mArkModel.doOnEvent(2);
       this.mArkModel = null;
     }
@@ -155,7 +220,7 @@ public class ArkView
   {
     if (this.mArkModel != null)
     {
-      ENV.logI("ArkApp.ArkView", "onPause()");
+      Logger.logI("ArkApp.ArkView", "onPause()");
       this.mArkModel.doOnEvent(0);
     }
   }
@@ -164,7 +229,7 @@ public class ArkView
   {
     if (this.mArkModel != null)
     {
-      ENV.logI("ArkApp.ArkView", "onResume()");
+      Logger.logI("ArkApp.ArkView", "onResume()");
       this.mArkModel.doOnEvent(1);
     }
   }
@@ -173,45 +238,69 @@ public class ArkView
   {
     if (paramInt < 0)
     {
-      ENV.logI("ArkApp.ArkView", "setBorderType invalid type=" + paramInt);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setBorderType invalid type=");
+      localStringBuilder.append(paramInt);
+      Logger.logI("ArkApp.ArkView", localStringBuilder.toString());
       return;
     }
     this.mBorderType = paramInt;
-    ENV.logI("ArkApp.ArkView", "setBorderType invalid type=" + this.mBorderType);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setBorderType invalid type=");
+    localStringBuilder.append(this.mBorderType);
+    Logger.logI("ArkApp.ArkView", localStringBuilder.toString());
   }
   
   public void setClipRadius(float paramFloat)
   {
     if (paramFloat < 0.0F)
     {
-      ENV.logI("ArkApp.ArkView", "setClipRadius invalid radius=" + paramFloat);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setClipRadius invalid radius=");
+      localStringBuilder.append(paramFloat);
+      Logger.logI("ArkApp.ArkView", localStringBuilder.toString());
       return;
     }
     this.mRadius = paramFloat;
-    ENV.logI("ArkApp.ArkView", "setClipRadius radius=" + paramFloat);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setClipRadius radius=");
+    localStringBuilder.append(paramFloat);
+    Logger.logI("ArkApp.ArkView", localStringBuilder.toString());
   }
   
   public void setClipRadiusTop(float paramFloat)
   {
     if (paramFloat < 0.0F)
     {
-      ENV.logI("ArkApp.ArkView", "setClipRadiusTop invalid radiusTop=" + paramFloat);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setClipRadiusTop invalid radiusTop=");
+      localStringBuilder.append(paramFloat);
+      Logger.logI("ArkApp.ArkView", localStringBuilder.toString());
       return;
     }
     this.mRadiusTop = paramFloat;
-    ENV.logI("ArkApp.ArkView", "setClipRadiusTop radiusTop=" + paramFloat);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setClipRadiusTop radiusTop=");
+    localStringBuilder.append(paramFloat);
+    Logger.logI("ArkApp.ArkView", localStringBuilder.toString());
   }
   
   public void setHardwareRenderingEnable(boolean paramBoolean)
   {
     this.mHardwareRenderingEnable = paramBoolean;
-    ENV.logI("ArkApp.ArkView", "setHardwareRenderingEnable:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setHardwareRenderingEnable:");
+    localStringBuilder.append(paramBoolean);
+    Logger.logI("ArkApp.ArkView", localStringBuilder.toString());
   }
   
   public void setOnStartTemporaryDetach(boolean paramBoolean)
   {
     this.mOnStartTemporaryDetach = paramBoolean;
-    ENV.logI("ArkApp.ArkView", "setOnStartTemporaryDetach:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setOnStartTemporaryDetach:");
+    localStringBuilder.append(paramBoolean);
+    Logger.logI("ArkApp.ArkView", localStringBuilder.toString());
   }
   
   public void setScaleDensity(float paramFloat)
@@ -221,32 +310,47 @@ public class ArkView
   
   public boolean setSize(ArkAppInfo.Size paramSize1, ArkAppInfo.Size paramSize2, ArkAppInfo.Size paramSize3)
   {
-    if ((paramSize1 != null) || (paramSize2 != null) || (paramSize3 != null))
-    {
-      StringBuilder localStringBuilder = new StringBuilder("setSize");
-      localStringBuilder.append(".hitSize=(").append(this.mHintSize.width).append(",").append(this.mHintSize.height).append(")");
-      if (paramSize1 != null)
-      {
-        this.mPrefferSize.width = paramSize1.width;
-        this.mPrefferSize.height = paramSize1.height;
-        localStringBuilder.append(".prefferSize=(").append(this.mPrefferSize.width).append(",").append(this.mPrefferSize.height).append(")");
-      }
-      if (paramSize2 != null)
-      {
-        this.mMinSize.width = paramSize2.width;
-        this.mMinSize.height = paramSize2.height;
-        localStringBuilder.append(".minSize=(").append(this.mMinSize.width).append(",").append(this.mMinSize.height).append(")");
-      }
-      if (paramSize3 != null)
-      {
-        this.mMaxSize.width = paramSize3.width;
-        this.mMaxSize.height = paramSize3.height;
-        localStringBuilder.append(".maxSize=(").append(this.mMaxSize.width).append(",").append(this.mMaxSize.height).append(")");
-      }
-      ENV.logI("ArkApp.ArkView", localStringBuilder.toString());
-      return true;
+    if ((paramSize1 == null) && (paramSize2 == null) && (paramSize3 == null)) {
+      return false;
     }
-    return false;
+    StringBuilder localStringBuilder = new StringBuilder("setSize");
+    localStringBuilder.append(".hitSize=(");
+    localStringBuilder.append(this.mHintSize.width);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.mHintSize.height);
+    localStringBuilder.append(")");
+    if (paramSize1 != null)
+    {
+      this.mPrefferSize.width = paramSize1.width;
+      this.mPrefferSize.height = paramSize1.height;
+      localStringBuilder.append(".prefferSize=(");
+      localStringBuilder.append(this.mPrefferSize.width);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.mPrefferSize.height);
+      localStringBuilder.append(")");
+    }
+    if (paramSize2 != null)
+    {
+      this.mMinSize.width = paramSize2.width;
+      this.mMinSize.height = paramSize2.height;
+      localStringBuilder.append(".minSize=(");
+      localStringBuilder.append(this.mMinSize.width);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.mMinSize.height);
+      localStringBuilder.append(")");
+    }
+    if (paramSize3 != null)
+    {
+      this.mMaxSize.width = paramSize3.width;
+      this.mMaxSize.height = paramSize3.height;
+      localStringBuilder.append(".maxSize=(");
+      localStringBuilder.append(this.mMaxSize.width);
+      localStringBuilder.append(",");
+      localStringBuilder.append(this.mMaxSize.height);
+      localStringBuilder.append(")");
+    }
+    Logger.logI("ArkApp.ArkView", localStringBuilder.toString());
+    return true;
   }
   
   public boolean updateSize(ArkAppInfo.Size paramSize)
@@ -255,8 +359,12 @@ public class ArkView
     {
       setViewRect(paramSize.width, paramSize.height);
       StringBuilder localStringBuilder = new StringBuilder("updateSize");
-      localStringBuilder.append(".setViewRect=(").append(paramSize.width).append(",").append(paramSize.height).append(")");
-      ENV.logI("ArkApp.ArkView", localStringBuilder.toString());
+      localStringBuilder.append(".setViewRect=(");
+      localStringBuilder.append(paramSize.width);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramSize.height);
+      localStringBuilder.append(")");
+      Logger.logI("ArkApp.ArkView", localStringBuilder.toString());
       return true;
     }
     return false;

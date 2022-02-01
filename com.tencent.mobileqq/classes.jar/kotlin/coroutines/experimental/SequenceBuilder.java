@@ -22,14 +22,12 @@ public abstract class SequenceBuilder<T>
   public final Object yieldAll(@NotNull Iterable<? extends T> paramIterable, @NotNull Continuation<? super Unit> paramContinuation)
   {
     if (((paramIterable instanceof Collection)) && (((Collection)paramIterable).isEmpty())) {
-      paramIterable = Unit.INSTANCE;
+      return Unit.INSTANCE;
     }
-    do
-    {
+    paramIterable = yieldAll(paramIterable.iterator(), paramContinuation);
+    if (paramIterable == IntrinsicsKt.getCOROUTINE_SUSPENDED()) {
       return paramIterable;
-      paramContinuation = yieldAll(paramIterable.iterator(), paramContinuation);
-      paramIterable = paramContinuation;
-    } while (paramContinuation == IntrinsicsKt.getCOROUTINE_SUSPENDED());
+    }
     return Unit.INSTANCE;
   }
   
@@ -48,7 +46,7 @@ public abstract class SequenceBuilder<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.experimental.SequenceBuilder
  * JD-Core Version:    0.7.0.1
  */

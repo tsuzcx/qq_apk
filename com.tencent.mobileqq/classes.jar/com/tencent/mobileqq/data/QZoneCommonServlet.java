@@ -12,8 +12,10 @@ public class QZoneCommonServlet
 {
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramIntent == null) {}
-    while (!(paramIntent instanceof QzoneCommonIntent)) {
+    if (paramIntent == null) {
+      return;
+    }
+    if (!(paramIntent instanceof QzoneCommonIntent)) {
       return;
     }
     paramIntent = (QzoneCommonIntent)paramIntent;
@@ -25,20 +27,23 @@ public class QZoneCommonServlet
     if ((paramIntent instanceof QzoneCommonIntent))
     {
       QZoneCommonRequest localQZoneCommonRequest = ((QzoneCommonIntent)paramIntent).getRequest();
-      byte[] arrayOfByte = localQZoneCommonRequest.encode();
-      paramIntent = arrayOfByte;
-      if (arrayOfByte == null) {
+      Object localObject = localQZoneCommonRequest.encode();
+      paramIntent = (Intent)localObject;
+      if (localObject == null) {
         paramIntent = new byte[4];
       }
       paramPacket.setTimeout(30000L);
-      paramPacket.setSSOCommand("SQQzoneSvc." + localQZoneCommonRequest.uniKey());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("SQQzoneSvc.");
+      ((StringBuilder)localObject).append(localQZoneCommonRequest.uniKey());
+      paramPacket.setSSOCommand(((StringBuilder)localObject).toString());
       paramPacket.putSendData(paramIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.QZoneCommonServlet
  * JD-Core Version:    0.7.0.1
  */

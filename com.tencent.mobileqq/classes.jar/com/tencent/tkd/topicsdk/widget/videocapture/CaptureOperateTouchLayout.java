@@ -59,7 +59,7 @@ public final class CaptureOperateTouchLayout
   
   private final int a(float paramFloat)
   {
-    return (int)(this.jdField_b_of_type_Int * paramFloat);
+    return (int)(paramFloat * this.jdField_b_of_type_Int);
   }
   
   private final int a(float paramFloat, boolean paramBoolean)
@@ -69,12 +69,9 @@ public final class CaptureOperateTouchLayout
   
   private final void a()
   {
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout$OnCaptureOperateCallback != null)
-    {
-      CaptureOperateTouchLayout.OnCaptureOperateCallback localOnCaptureOperateCallback = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout$OnCaptureOperateCallback;
-      if (localOnCaptureOperateCallback != null) {
-        localOnCaptureOperateCallback.a(this.jdField_a_of_type_Int);
-      }
+    CaptureOperateTouchLayout.OnCaptureOperateCallback localOnCaptureOperateCallback = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout$OnCaptureOperateCallback;
+    if ((localOnCaptureOperateCallback != null) && (localOnCaptureOperateCallback != null)) {
+      localOnCaptureOperateCallback.a(this.jdField_a_of_type_Int);
     }
   }
   
@@ -108,9 +105,15 @@ public final class CaptureOperateTouchLayout
       if (localImageView == null) {
         Intrinsics.throwUninitializedPropertyAccessException("indicator");
       }
-      if (f1 > f2 + localImageView.getWidth()) {}
+      if (f1 <= f2 + localImageView.getWidth())
+      {
+        i = 1;
+        break label96;
+      }
     }
-    for (int i = 1; i != 0; i = 0) {
+    int i = 0;
+    label96:
+    if (i != 0) {
       return;
     }
     f1 = paramMotionEvent.getRawX();
@@ -128,23 +131,27 @@ public final class CaptureOperateTouchLayout
       Intrinsics.throwUninitializedPropertyAccessException("indicator");
     }
     localObject = ((ImageView)localObject).getParent();
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.view.View");
+    if (localObject != null)
+    {
+      int i = ((View)localObject).getRight();
+      localObject = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (localObject == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("indicator");
+      }
+      return i - ((ImageView)localObject).getWidth();
     }
-    int i = ((View)localObject).getRight();
-    localObject = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (localObject == null) {
-      Intrinsics.throwUninitializedPropertyAccessException("indicator");
-    }
-    return i - ((ImageView)localObject).getWidth();
+    throw new TypeCastException("null cannot be cast to non-null type android.view.View");
   }
   
   private final int b(float paramFloat, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      return (int)((paramFloat - this.jdField_a_of_type_Float) * this.d + this.c);
+    if (paramBoolean)
+    {
+      float f1 = this.jdField_a_of_type_Float;
+      float f2 = this.d;
+      return (int)(this.c + (paramFloat - f1) * f2);
     }
-    return (int)((float)this.jdField_a_of_type_Long * paramFloat) / 1000 * 1000;
+    return (int)(paramFloat * (float)this.jdField_a_of_type_Long) / 1000 * 1000;
   }
   
   public final float a()
@@ -179,7 +186,19 @@ public final class CaptureOperateTouchLayout
     float f = (i - ((ImageView)localObject).getWidth()) * paramFloat;
     this.jdField_b_of_type_Float = paramFloat;
     this.jdField_a_of_type_Int = a(paramFloat, paramBoolean);
-    TLog.b("CaptureOperateTouchLayout", "onIndicatorChange percent: " + paramFloat + " progressX: " + f + " duration: " + this.jdField_a_of_type_Long + ' ' + "videoSeekPosition: " + this.jdField_a_of_type_Int + " longPressStartVideoSeekPercent: " + this.jdField_a_of_type_Float);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onIndicatorChange percent: ");
+    ((StringBuilder)localObject).append(paramFloat);
+    ((StringBuilder)localObject).append(" progressX: ");
+    ((StringBuilder)localObject).append(f);
+    ((StringBuilder)localObject).append(" duration: ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+    ((StringBuilder)localObject).append(' ');
+    ((StringBuilder)localObject).append("videoSeekPosition: ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append(" longPressStartVideoSeekPercent: ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Float);
+    TLog.b("CaptureOperateTouchLayout", ((StringBuilder)localObject).toString());
     localObject = this.jdField_a_of_type_AndroidWidgetImageView;
     if (localObject == null) {
       Intrinsics.throwUninitializedPropertyAccessException("indicator");
@@ -248,16 +267,16 @@ public final class CaptureOperateTouchLayout
     this.jdField_a_of_type_AndroidWidgetImageView = paramImageView;
     this.jdField_a_of_type_AndroidWidgetTextView = paramTextView1;
     this.jdField_b_of_type_AndroidWidgetTextView = paramTextView2;
-    paramTextView2.setText(R.string.x);
+    paramTextView2.setText(R.string.s);
     this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureVideoMeasureScaleView = paramVideoMeasureScaleView;
     this.jdField_b_of_type_Int = paramInt;
-    this.d = (e * paramInt);
+    this.d = (paramInt * e);
     paramImageView.setOnTouchListener((View.OnTouchListener)new CaptureOperateTouchLayout.IndicatorTouchListener(this, (CaptureOperateTouchLayout.IndicatorLongPressCallback)new CaptureOperateTouchLayout.setup.1(this, paramTextView2, paramVideoMeasureScaleView, paramImageView)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocapture.CaptureOperateTouchLayout
  * JD-Core Version:    0.7.0.1
  */

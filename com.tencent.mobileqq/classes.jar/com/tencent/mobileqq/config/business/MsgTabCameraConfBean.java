@@ -21,30 +21,34 @@ public class MsgTabCameraConfBean
         if (i < j)
         {
           JSONObject localJSONObject = new JSONObject(paramArrayOfQConfItem[i].a);
-          if (localJSONObject.has("cameraSwitchOnMessageTab")) {
-            localMsgTabCameraConfBean.a = Integer.valueOf(localJSONObject.optString("cameraSwitchOnMessageTab")).intValue();
+          if (!localJSONObject.has("cameraSwitchOnMessageTab")) {
+            break label117;
           }
+          localMsgTabCameraConfBean.a = Integer.valueOf(localJSONObject.optString("cameraSwitchOnMessageTab")).intValue();
+          break label117;
         }
-        else
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("MsgTabCameraConfBean", 2, "onParsed switch= " + localMsgTabCameraConfBean.a);
-          }
+          paramArrayOfQConfItem = new StringBuilder();
+          paramArrayOfQConfItem.append("onParsed switch= ");
+          paramArrayOfQConfItem.append(localMsgTabCameraConfBean.a);
+          QLog.d("MsgTabCameraConfBean", 2, paramArrayOfQConfItem.toString());
           return localMsgTabCameraConfBean;
         }
       }
       catch (Throwable paramArrayOfQConfItem)
       {
         QLog.e("MsgTabCameraConfBean", 1, "MsgTabCameraConfBean parse error, ", paramArrayOfQConfItem);
-        return localMsgTabCameraConfBean;
       }
+      return localMsgTabCameraConfBean;
+      label117:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MsgTabCameraConfBean
  * JD-Core Version:    0.7.0.1
  */

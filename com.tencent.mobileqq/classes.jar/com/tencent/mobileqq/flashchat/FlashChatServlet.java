@@ -57,76 +57,80 @@ public class FlashChatServlet
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
     boolean bool;
-    int i;
-    Bundle localBundle;
-    if (paramFromServiceMsg == null)
-    {
+    if (paramFromServiceMsg == null) {
       bool = false;
-      i = paramIntent.getIntExtra("req_type", 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("FlashChat", 2, "onReceive cmd:" + i);
-      }
-      localBundle = new Bundle();
-      if (!bool) {}
+    } else {
+      bool = paramFromServiceMsg.isSuccess();
     }
-    do
+    int i = paramIntent.getIntExtra("req_type", 0);
+    if (QLog.isColorLevel())
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onReceive cmd:");
+      ((StringBuilder)localObject1).append(i);
+      QLog.d("FlashChat", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = new Bundle();
+    if (bool) {
       try
       {
-        localObject = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
-        paramFromServiceMsg = new byte[((ByteBuffer)localObject).getInt() - 4];
-        ((ByteBuffer)localObject).get(paramFromServiceMsg);
-        switch (i)
+        Object localObject2 = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
+        paramFromServiceMsg = new byte[((ByteBuffer)localObject2).getInt() - 4];
+        ((ByteBuffer)localObject2).get(paramFromServiceMsg);
+        if (i == 1)
         {
+          localObject2 = a(paramFromServiceMsg);
+          if (localObject2 != null)
+          {
+            ((FlashChatManager)getAppRuntime().getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).a((ArrayList)localObject2, true, paramFromServiceMsg);
+            notifyObserver(paramIntent, 967, bool, (Bundle)localObject1, FlashChatObserver.class);
+            return;
+          }
         }
       }
       catch (Exception paramFromServiceMsg)
       {
-        for (;;)
-        {
-          Object localObject;
-          paramFromServiceMsg.printStackTrace();
-        }
+        paramFromServiceMsg.printStackTrace();
       }
-      notifyObserver(paramIntent, 967, false, localBundle, FlashChatObserver.class);
-      return;
-      bool = paramFromServiceMsg.isSuccess();
-      break;
-      localObject = a(paramFromServiceMsg);
-    } while (localObject == null);
-    ((FlashChatManager)getAppRuntime().getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).a((ArrayList)localObject, true, paramFromServiceMsg);
-    notifyObserver(paramIntent, 967, bool, localBundle, FlashChatObserver.class);
+    }
+    notifyObserver(paramIntent, 967, false, (Bundle)localObject1, FlashChatObserver.class);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     int i = paramIntent.getIntExtra("req_type", -1);
-    if (QLog.isColorLevel()) {
-      QLog.d("FlashChat", 2, "onSend cmd:" + i);
-    }
-    switch (i)
+    if (QLog.isColorLevel())
     {
+      paramIntent = new StringBuilder();
+      paramIntent.append("onSend cmd:");
+      paramIntent.append(i);
+      QLog.d("FlashChat", 2, paramIntent.toString());
     }
-    do
-    {
+    if (i != 1) {
       return;
-      paramIntent = new FlashChatSso.TSsoReq();
-      paramIntent.i32_cmd.set(1);
-      paramIntent.i32_implat.set(109);
-      paramIntent.str_qq_ver.set("8.5.5");
-      paramIntent = paramIntent.toByteArray();
-      ByteBuffer localByteBuffer = ByteBuffer.allocate(paramIntent.length + 4);
-      localByteBuffer.putInt(paramIntent.length + 4).put(paramIntent);
-      paramIntent = localByteBuffer.array();
-      paramPacket.setSSOCommand("Flashchat.OpReq");
-      paramPacket.putSendData(paramIntent);
-    } while (!QLog.isColorLevel());
-    QLog.d("FlashChat", 2, "FlashChatServlet onSend ssoCmd:" + "Flashchat.OpReq");
+    }
+    paramIntent = new FlashChatSso.TSsoReq();
+    paramIntent.i32_cmd.set(1);
+    paramIntent.i32_implat.set(109);
+    paramIntent.str_qq_ver.set("8.7.0");
+    paramIntent = paramIntent.toByteArray();
+    ByteBuffer localByteBuffer = ByteBuffer.allocate(paramIntent.length + 4);
+    localByteBuffer.putInt(paramIntent.length + 4).put(paramIntent);
+    paramIntent = localByteBuffer.array();
+    paramPacket.setSSOCommand("Flashchat.OpReq");
+    paramPacket.putSendData(paramIntent);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("FlashChatServlet onSend ssoCmd:");
+      paramIntent.append("Flashchat.OpReq");
+      QLog.d("FlashChat", 2, paramIntent.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatServlet
  * JD-Core Version:    0.7.0.1
  */

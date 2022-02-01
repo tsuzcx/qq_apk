@@ -15,45 +15,43 @@ public class YybHandleUtil
   public static String a = "YybHandleUtil";
   public static String b = "APK/MobileAssistant_main.apk";
   public static String c = "yyb.apk";
-  public static final String d = HardCodeUtil.a(2131716853);
+  public static final String d = HardCodeUtil.a(2131716503);
   
   public static String a(int paramInt)
   {
     if (paramInt < 0) {
       return null;
     }
-    float f2 = paramInt;
+    float f1 = paramInt;
     paramInt = 0;
-    float f1;
-    String str2;
-    String str1;
-    if (f2 / 1048576.0F > 1.0F)
+    float f2 = f1 / 1048576.0F;
+    if (f2 > 1.0F)
     {
-      f1 = f2 / 1048576.0F;
       paramInt = 2;
-      str2 = new DecimalFormat("#.#").format(f1);
-      if (paramInt != 2) {
-        break label92;
-      }
-      str1 = "MB";
-    }
-    for (;;)
-    {
-      return str2 + str1;
       f1 = f2;
-      if (f2 / 1024.0F <= 1.0F) {
-        break;
-      }
-      f1 = f2 / 1024.0F;
-      paramInt = 1;
-      break;
-      label92:
-      if (paramInt == 1) {
-        str1 = "KB";
-      } else {
-        str1 = "B";
+    }
+    else
+    {
+      f2 = f1 / 1024.0F;
+      if (f2 > 1.0F)
+      {
+        paramInt = 1;
+        f1 = f2;
       }
     }
+    String str2 = new DecimalFormat("#.#").format(f1);
+    String str1;
+    if (paramInt == 2) {
+      str1 = "MB";
+    } else if (paramInt == 1) {
+      str1 = "KB";
+    } else {
+      str1 = "B";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str2);
+    localStringBuilder.append(str1);
+    return localStringBuilder.toString();
   }
   
   public static void a()
@@ -64,13 +62,17 @@ public class YybHandleUtil
   
   public static boolean a()
   {
-    String str = CommonDataAdapter.a().a().getFilesDir().getAbsolutePath() + File.separator + c;
-    return AppUtil.a(CommonDataAdapter.a().a(), str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(CommonDataAdapter.a().a().getFilesDir().getAbsolutePath());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(c);
+    localObject = ((StringBuilder)localObject).toString();
+    return AppUtil.a(CommonDataAdapter.a().a(), (String)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.YybHandleUtil
  * JD-Core Version:    0.7.0.1
  */

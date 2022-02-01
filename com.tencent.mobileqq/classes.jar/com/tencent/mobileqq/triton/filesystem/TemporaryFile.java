@@ -42,18 +42,18 @@ public final class TemporaryFile
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof TemporaryFile))
       {
         paramObject = (TemporaryFile)paramObject;
-        if ((!Intrinsics.areEqual(this.file, paramObject.file)) || (!Intrinsics.areEqual(this.pathInGame, paramObject.pathInGame))) {}
+        if ((Intrinsics.areEqual(this.file, paramObject.file)) && (Intrinsics.areEqual(this.pathInGame, paramObject.pathInGame))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -70,28 +70,36 @@ public final class TemporaryFile
   
   public int hashCode()
   {
-    int j = 0;
     Object localObject = this.file;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      localObject = this.pathInGame;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      return i * 31 + j;
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = localObject.hashCode();
+    } else {
+      i = 0;
     }
+    localObject = this.pathInGame;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    }
+    return i * 31 + j;
   }
   
   @NotNull
   public String toString()
   {
-    return "TemporaryFile(file=" + this.file + ", pathInGame=" + this.pathInGame + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TemporaryFile(file=");
+    localStringBuilder.append(this.file);
+    localStringBuilder.append(", pathInGame=");
+    localStringBuilder.append(this.pathInGame);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.filesystem.TemporaryFile
  * JD-Core Version:    0.7.0.1
  */

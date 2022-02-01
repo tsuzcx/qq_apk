@@ -23,101 +23,105 @@ public class TroopFileThumbnailDownloader
   
   public static TroopFileThumbnailDownloader a(QQAppInterface paramQQAppInterface, long paramLong1, String paramString1, long paramLong2, List<String> paramList, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2, String paramString4)
   {
-    String str = "";
+    String str;
     if (paramString1 == null) {
       str = "strSavePath is null";
+    } else if (paramString1.length() == 0) {
+      str = "strSavePath is empty";
+    } else if (paramList == null) {
+      str = "lstUrl is null";
+    } else if (paramList.size() == 0) {
+      str = "lstUrl is empty";
+    } else if (paramString2 == null) {
+      str = "urlParams is null";
+    } else if (paramString2.length() == 0) {
+      str = "urlParams is empty";
+    } else {
+      str = "";
     }
-    while (!TextUtils.isEmpty(str))
+    if (!TextUtils.isEmpty(str))
     {
-      TroopFileTransferUtil.Log.a("TroopFileThumbDownloader", TroopFileTransferUtil.Log.a, "getFileDownloader " + str);
+      int i = TroopFileTransferUtil.Log.a;
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("getFileDownloader ");
+      paramQQAppInterface.append(str);
+      TroopFileTransferUtil.Log.a("TroopFileThumbDownloader", i, paramQQAppInterface.toString());
       return null;
-      if (paramString1.length() == 0) {
-        str = "strSavePath is empty";
-      } else if (paramList == null) {
-        str = "lstUrl is null";
-      } else if (paramList.size() == 0) {
-        str = "lstUrl is empty";
-      } else if (paramString2 == null) {
-        str = "urlParams is null";
-      } else if (paramString2.length() == 0) {
-        str = "urlParams is empty";
-      }
     }
     return new TroopFileThumbnailDownloader(paramQQAppInterface, paramLong1, paramString1, paramLong2, paramList, paramString2, paramString3, paramBoolean1, paramBoolean2, paramString4);
   }
   
+  public long a()
+  {
+    long l = this.g;
+    if (l <= 6000L)
+    {
+      this.g = (2000L + l);
+      return l;
+    }
+    return 2000L;
+  }
+  
   public void a(HttpMsg paramHttpMsg)
   {
-    int k = 0;
     if (!this.c) {
-      break label10;
+      return;
     }
-    label10:
-    while (this.d) {
+    if (this.d) {
       return;
     }
     paramHttpMsg = paramHttpMsg.getResponseProperty("Set-Cookie");
-    i = k;
-    for (;;)
+    k = 0;
+    j = k;
+    try
     {
-      try
+      if (!TextUtils.isEmpty(paramHttpMsg))
       {
-        if (!TextUtils.isEmpty(paramHttpMsg))
+        j = k;
+        if (paramHttpMsg.contains("duration"))
         {
-          i = k;
-          if (paramHttpMsg.contains("duration"))
+          paramHttpMsg = paramHttpMsg.trim().split(";");
+          j = k;
+          if (paramHttpMsg != null)
           {
-            paramHttpMsg = paramHttpMsg.trim().split(";");
-            i = k;
-            if (paramHttpMsg != null)
+            j = k;
+            if (paramHttpMsg.length > 0)
             {
-              i = k;
-              if (paramHttpMsg.length > 0)
+              int i = 0;
+              for (;;)
               {
-                j = 0;
-                i = k;
-                if (j < paramHttpMsg.length)
-                {
-                  String[] arrayOfString = paramHttpMsg[j].split("=");
-                  if ((arrayOfString == null) || (arrayOfString.length != 2) || (!"duration".equals(arrayOfString[0]))) {
-                    continue;
-                  }
-                  i = Integer.parseInt(arrayOfString[1]);
+                j = k;
+                if (i >= paramHttpMsg.length) {
+                  break;
                 }
+                String[] arrayOfString = paramHttpMsg[i].split("=");
+                if ((arrayOfString != null) && (arrayOfString.length == 2) && ("duration".equals(arrayOfString[0])))
+                {
+                  j = Integer.parseInt(arrayOfString[1]);
+                  break;
+                }
+                i += 1;
               }
             }
           }
         }
       }
-      catch (Exception paramHttpMsg)
+    }
+    catch (Exception paramHttpMsg)
+    {
+      for (;;)
       {
-        int j;
-        i = 0;
-        continue;
+        j = k;
       }
-      if ((i == 0) || (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink == null) || (!(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink instanceof TroopFileThumbnailDownloader.IFileThumbDownloaderSink))) {
-        break;
-      }
-      ((TroopFileThumbnailDownloader.IFileThumbDownloaderSink)this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink).a(i);
-      return;
-      j += 1;
+    }
+    if ((j != 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink != null) && ((this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink instanceof TroopFileThumbnailDownloader.IFileThumbDownloaderSink))) {
+      ((TroopFileThumbnailDownloader.IFileThumbDownloaderSink)this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDownloadITroopFileDownloaderSink).a(j);
     }
   }
   
   public void a(boolean paramBoolean)
   {
     this.b = paramBoolean;
-  }
-  
-  public long b()
-  {
-    if (this.g <= 6000L)
-    {
-      long l = this.g;
-      this.g = (2000L + this.g);
-      return l;
-    }
-    return 2000L;
   }
   
   public void b(boolean paramBoolean)
@@ -132,7 +136,7 @@ public class TroopFileThumbnailDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -24,18 +24,24 @@ public abstract class MagicfaceBaseDecoder
   public void a()
   {
     d();
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.jdField_a_of_type_Boolean)
+    {
       this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData.a();
-    }
-    try
-    {
-      new Thread(new MagicfaceBaseDecoder.1(this)).start();
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("MagicfaceBaseDecoder", 1, "startDecoder err:" + localOutOfMemoryError.getMessage());
+      try
+      {
+        new Thread(new MagicfaceBaseDecoder.1(this)).start();
+        return;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("startDecoder err:");
+          localStringBuilder.append(localOutOfMemoryError.getMessage());
+          QLog.e("MagicfaceBaseDecoder", 1, localStringBuilder.toString());
+        }
+      }
     }
   }
   
@@ -104,7 +110,7 @@ public abstract class MagicfaceBaseDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder
  * JD-Core Version:    0.7.0.1
  */

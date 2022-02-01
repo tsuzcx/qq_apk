@@ -9,9 +9,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QFileExcitingC2CUploadConfigBean
-  implements IExcitingC2CUploadConfig, IQStorageSafable<String>
+  implements IQFileExcitingC2CUploadConfigBean, IQStorageSafable<String>
 {
-  static boolean jdField_a_of_type_Boolean = true;
+  static boolean jdField_a_of_type_Boolean = false;
   static boolean b = true;
   private long jdField_a_of_type_Long = 20971520L;
   private ExcitingTransferUploadChnConfigInfo jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
@@ -49,39 +49,25 @@ public class QFileExcitingC2CUploadConfigBean
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.nTotoalDataTimeout = paramJSONObject.getLong("totoaldatatimeout");
         this.jdField_a_of_type_Long = paramJSONObject.getLong("limitedsize");
       }
-      for (;;)
+      else
       {
-        QLog.i("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, "parse Exciting-C2C-Upload config: enable:" + this.c + " LimitedSize:" + this.jdField_a_of_type_Long + " " + this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.toString());
-        return;
         this.jdField_a_of_type_Long = 20971520L;
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo = new ExcitingTransferUploadChnConfigInfo();
       }
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("parse Exciting-C2C-Upload config: enable:");
+      paramJSONObject.append(this.c);
+      paramJSONObject.append(" LimitedSize:");
+      paramJSONObject.append(this.jdField_a_of_type_Long);
+      paramJSONObject.append(" ");
+      paramJSONObject.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferUploadChnConfigInfo.toString());
+      QLog.i("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, paramJSONObject.toString());
       return;
     }
     catch (JSONException paramJSONObject)
     {
       QLog.e("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramJSONObject));
     }
-  }
-  
-  public static void a(boolean paramBoolean)
-  {
-    jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  public static void b(boolean paramBoolean)
-  {
-    b = paramBoolean;
-  }
-  
-  public static boolean b()
-  {
-    return jdField_a_of_type_Boolean;
-  }
-  
-  public static boolean c()
-  {
-    return b;
   }
   
   public long a()
@@ -96,7 +82,6 @@ public class QFileExcitingC2CUploadConfigBean
   
   public void a(String paramString)
   {
-    int k = 0;
     this.jdField_a_of_type_JavaLangString = paramString.toLowerCase();
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
@@ -104,48 +89,48 @@ public class QFileExcitingC2CUploadConfigBean
       a();
       return;
     }
-    try
-    {
-      paramString = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      if (paramString.length() == 0)
-      {
-        QLog.w("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, "configContent is empty json, use default value");
-        a();
-        return;
-      }
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramString));
-      return;
-    }
-    JSONArray localJSONArray = paramString.names();
-    int i = 0;
     for (;;)
     {
-      int j = k;
-      if (i < localJSONArray.length())
+      int i;
+      try
       {
-        Object localObject = localJSONArray.getString(i).trim();
-        if (!TextUtils.isEmpty((CharSequence)localObject))
+        paramString = new JSONObject(this.jdField_a_of_type_JavaLangString);
+        if (paramString.length() == 0)
         {
-          localObject = paramString.optJSONObject((String)localObject).getJSONObject("upload");
-          if (localObject != null)
-          {
-            a((JSONObject)localObject);
-            j = 1;
+          QLog.w("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, "configContent is empty json, use default value");
+          a();
+          return;
+        }
+        JSONArray localJSONArray = paramString.names();
+        int k = 0;
+        i = 0;
+        int j = k;
+        if (i < localJSONArray.length())
+        {
+          Object localObject = localJSONArray.getString(i).trim();
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            break label166;
           }
+          localObject = paramString.optJSONObject((String)localObject).getJSONObject("upload");
+          if (localObject == null) {
+            break label166;
+          }
+          a((JSONObject)localObject);
+          j = 1;
+        }
+        if (j == 0)
+        {
+          QLog.w("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, "configContent no Exciting-C2C-Upload config, use default value");
+          a();
+          return;
         }
       }
-      else
+      catch (JSONException paramString)
       {
-        if (j != 0) {
-          break;
-        }
-        QLog.w("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, "configContent no Exciting-C2C-Upload config, use default value");
-        a();
-        return;
+        QLog.e("QFileExcitingC2CUploadConfigBean<FileAssistant>", 1, QLog.getStackTraceString(paramString));
       }
+      return;
+      label166:
       i += 1;
     }
   }
@@ -157,7 +142,7 @@ public class QFileExcitingC2CUploadConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileExcitingC2CUploadConfigBean
  * JD-Core Version:    0.7.0.1
  */

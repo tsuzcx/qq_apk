@@ -44,24 +44,22 @@ public class CheckBindingStateRequest
     try
     {
       localStCheckBindingStateRsp.mergeFrom(paramArrayOfByte);
-      if (localStCheckBindingStateRsp != null)
-      {
-        paramJSONObject.put("key_check_State", localStCheckBindingStateRsp.bindingState.get());
-        return paramJSONObject;
-      }
+      paramJSONObject.put("key_check_State", localStCheckBindingStateRsp.bindingState.get());
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("CheckBindingStateRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("CheckBindingStateRequest", paramJSONObject.toString());
     }
-    QMLog.d("CheckBindingStateRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.CheckBindingStateRequest
  * JD-Core Version:    0.7.0.1
  */

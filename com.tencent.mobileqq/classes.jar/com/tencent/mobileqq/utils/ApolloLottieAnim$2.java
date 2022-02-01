@@ -12,23 +12,29 @@ class ApolloLottieAnim$2
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    if (3 == paramDownloadTask.a()) {
+    Object localObject;
+    if (3 == paramDownloadTask.a())
+    {
       this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloLottieAnim", 2, "downloadZip onDone task.getStatus()->" + paramDownloadTask.a());
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim.a = 2;
-      this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqUtilsApolloLottieAnim;
+      ((ApolloLottieAnim)localObject).a = 2;
+      ((ApolloLottieAnim)localObject).a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("downloadZip onDone task.getStatus()->");
+      ((StringBuilder)localObject).append(paramDownloadTask.a());
+      QLog.d("ApolloLottieAnim", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ApolloLottieAnim.2
  * JD-Core Version:    0.7.0.1
  */

@@ -25,12 +25,14 @@ class UKYOTachi$TachiStatus
   
   private void updataHittingStatus(long paramLong)
   {
-    if (this.mCurrentStatus == UKYOTachi.UKYOTACHISTATUS.MOVING) {}
-    while (this.mCurFrameIndex + 1 < this.mTachiSetting.mFrames[UKYOTachi.UKYOTACHISTATUS.HITTING.getValue()]) {
+    if (this.mCurrentStatus == UKYOTachi.UKYOTACHISTATUS.MOVING) {
       return;
     }
-    this.mCurrentStatus = UKYOTachi.UKYOTACHISTATUS.MOVING;
-    Log.i("greatgao020", "TACHI  HITTING over");
+    if (this.mCurFrameIndex + 1 >= this.mTachiSetting.mFrames[UKYOTachi.UKYOTACHISTATUS.HITTING.getValue()])
+    {
+      this.mCurrentStatus = UKYOTachi.UKYOTACHISTATUS.MOVING;
+      Log.i("greatgao020", "TACHI  HITTING over");
+    }
   }
   
   private void updateFrameIndex(long paramLong)
@@ -50,31 +52,38 @@ class UKYOTachi$TachiStatus
   
   private void updateStatus(boolean paramBoolean)
   {
-    if ((!paramBoolean) && (this.mCurrentStatus == UKYOTachi.UKYOTACHISTATUS.MOVING)) {}
-    while ((!paramBoolean) || (this.mCurrentStatus != UKYOTachi.UKYOTACHISTATUS.MOVING)) {
+    if ((!paramBoolean) && (this.mCurrentStatus == UKYOTachi.UKYOTACHISTATUS.MOVING)) {
       return;
     }
-    this.mCurrentStatus = UKYOTachi.UKYOTACHISTATUS.HITTING;
-    updateStartTime(UKYOTachi.access$000(this.this$0));
-    Log.i("greatgao020", "TACHI  HITTING start");
+    if ((paramBoolean) && (this.mCurrentStatus == UKYOTachi.UKYOTACHISTATUS.MOVING))
+    {
+      this.mCurrentStatus = UKYOTachi.UKYOTACHISTATUS.HITTING;
+      updateStartTime(UKYOTachi.access$000(this.this$0));
+      Log.i("greatgao020", "TACHI  HITTING start");
+    }
   }
   
   protected String getImageId()
   {
-    if (this.mTachiSetting != null) {
-      return this.mTachiSetting.getImageID(this.mCurrentStatus);
+    TachiSetting localTachiSetting = this.mTachiSetting;
+    if (localTachiSetting != null) {
+      return localTachiSetting.getImageID(this.mCurrentStatus);
     }
     return null;
   }
   
   public void reset()
   {
-    int i = 0;
     this.mCurrentStatus = UKYOTachi.UKYOTACHISTATUS.MOVING;
+    int i = 0;
     this.mCurFrameIndex = 0;
-    while (i < this.mPlayingStarTime.length)
+    for (;;)
     {
-      this.mPlayingStarTime[i] = -1L;
+      long[] arrayOfLong = this.mPlayingStarTime;
+      if (i >= arrayOfLong.length) {
+        break;
+      }
+      arrayOfLong[i] = -1L;
       i += 1;
     }
   }
@@ -91,87 +100,94 @@ class UKYOTachi$TachiStatus
   
   public void updateHittingStatus(List<IHittingStatus> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0) || (this.mTachiPositionRect == null)) {
-      return;
-    }
-    paramList = paramList.iterator();
-    for (int i = 0; paramList.hasNext(); i = 1)
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      label30:
-      IHittingStatus localIHittingStatus = (IHittingStatus)paramList.next();
-      RectF localRectF1 = localIHittingStatus.getRectF();
-      if ((localIHittingStatus.isHitting()) || (!localIHittingStatus.isAppear()) || (localRectF1 == null)) {
-        break label30;
+      if (this.mTachiPositionRect == null) {
+        return;
       }
-      RectF localRectF2 = new RectF();
-      localRectF2.set(this.mTachiPositionRect);
-      localRectF2.left *= 1.1F;
-      localRectF2.right *= 0.9F;
-      boolean bool = RectF.intersects(localRectF1, localRectF2);
-      Log.i("greatgao01", "apple:" + localRectF1.toString() + "<->" + this.mTachiPositionRect.toString() + ",isIntersects:" + bool);
-      localIHittingStatus.updateHitting(bool);
-      if ((!bool) || (i != 0)) {
-        break label215;
+      int i = 0;
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        IHittingStatus localIHittingStatus = (IHittingStatus)paramList.next();
+        RectF localRectF = localIHittingStatus.getRectF();
+        if ((!localIHittingStatus.isHitting()) && (localIHittingStatus.isAppear()) && (localRectF != null))
+        {
+          Object localObject = new RectF();
+          ((RectF)localObject).set(this.mTachiPositionRect);
+          ((RectF)localObject).left *= 1.1F;
+          ((RectF)localObject).right *= 0.9F;
+          boolean bool = RectF.intersects(localRectF, (RectF)localObject);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("apple:");
+          ((StringBuilder)localObject).append(localRectF.toString());
+          ((StringBuilder)localObject).append("<->");
+          ((StringBuilder)localObject).append(this.mTachiPositionRect.toString());
+          ((StringBuilder)localObject).append(",isIntersects:");
+          ((StringBuilder)localObject).append(bool);
+          Log.i("greatgao01", ((StringBuilder)localObject).toString());
+          localIHittingStatus.updateHitting(bool);
+          if ((bool) && (i == 0))
+          {
+            updateStatus(true);
+            i = 1;
+          }
+        }
       }
-      updateStatus(true);
-    }
-    label215:
-    for (;;)
-    {
-      break label30;
-      break;
     }
   }
   
   protected float[] updatePositions(List<PointF> paramList, float[] paramArrayOfFloat, float paramFloat)
   {
+    boolean bool = CollectionUtils.isEmpty(paramList);
     int j = 0;
-    if ((CollectionUtils.isEmpty(paramList)) || (paramArrayOfFloat == null) || (paramArrayOfFloat.length < 3)) {}
-    for (boolean bool = true;; bool = false)
+    if ((!bool) && (paramArrayOfFloat != null) && (paramArrayOfFloat.length >= 3)) {
+      bool = false;
+    } else {
+      bool = true;
+    }
+    this.mIsAppear = bool;
+    if (this.mIsAppear)
     {
-      this.mIsAppear = bool;
-      if (!this.mIsAppear) {
-        break;
-      }
       this.mTachiPositionRect = null;
       return null;
     }
     paramArrayOfFloat = (PointF)paramList.get(this.mTachiSetting.alignFacePoints[0]);
-    if (this.mTachiSetting.alignFacePoints.length == 1)
-    {
+    if (this.mTachiSetting.alignFacePoints.length == 1) {
       i = this.mTachiSetting.alignFacePoints[0];
-      paramList = (PointF)paramList.get(i);
-      paramList = new PointF((paramArrayOfFloat.x + paramList.x) / 2.0F, (paramArrayOfFloat.y + paramList.y) / 2.0F);
-      paramList.x = ((float)(paramList.x / this.mFaceDetScale));
-      paramList.y = (this.mTachiSetting.mRoleSizeYFactor * this.mTachiSetting.mHeight);
-      paramFloat = paramList.x;
-      if (this.mTachiSetting.anchorPoint == null) {
-        break label355;
-      }
-    }
-    label355:
-    for (int i = this.mTachiSetting.anchorPoint[0];; i = 0)
-    {
-      paramFloat -= i;
-      float f1 = paramList.y;
-      i = j;
-      if (this.mTachiSetting.anchorPoint != null) {
-        i = this.mTachiSetting.anchorPoint[1];
-      }
-      f1 -= i;
-      float f2 = paramFloat + this.mTachiSetting.mItemWidth;
-      float f3 = this.mTachiSetting.mItemHeight + f1;
-      paramList = AlgoUtils.calPositions(paramFloat, f3, f2, f1, this.mTachiSetting.mWidth, this.mTachiSetting.mHeight);
-      this.mTachiPositionRect = new RectF(paramFloat, f1 + this.mTachiSetting.mItemHeight / 4, f2, f3 - this.mTachiSetting.mItemHeight / 4);
-      return AlgoUtils.adjustPosition(paramList, this.mTachiSetting.audioScaleFactor);
+    } else {
       i = this.mTachiSetting.alignFacePoints[1];
-      break;
     }
+    paramList = (PointF)paramList.get(i);
+    paramList = new PointF((paramArrayOfFloat.x + paramList.x) / 2.0F, (paramArrayOfFloat.y + paramList.y) / 2.0F);
+    double d1 = paramList.x;
+    double d2 = this.mFaceDetScale;
+    Double.isNaN(d1);
+    paramList.x = ((float)(d1 / d2));
+    paramList.y = (this.mTachiSetting.mRoleSizeYFactor * this.mTachiSetting.mHeight);
+    paramFloat = paramList.x;
+    if (this.mTachiSetting.anchorPoint != null) {
+      i = this.mTachiSetting.anchorPoint[0];
+    } else {
+      i = 0;
+    }
+    paramFloat -= i;
+    float f1 = paramList.y;
+    int i = j;
+    if (this.mTachiSetting.anchorPoint != null) {
+      i = this.mTachiSetting.anchorPoint[1];
+    }
+    f1 -= i;
+    float f2 = this.mTachiSetting.mItemWidth + paramFloat;
+    float f3 = this.mTachiSetting.mItemHeight + f1;
+    paramList = AlgoUtils.calPositions(paramFloat, f3, f2, f1, this.mTachiSetting.mWidth, this.mTachiSetting.mHeight);
+    this.mTachiPositionRect = new RectF(paramFloat, f1 + this.mTachiSetting.mItemHeight / 4, f2, f3 - this.mTachiSetting.mItemHeight / 4);
+    return AlgoUtils.adjustPosition(paramList, this.mTachiSetting.audioScaleFactor);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.juyoujinggame.UKYOTachi.TachiStatus
  * JD-Core Version:    0.7.0.1
  */

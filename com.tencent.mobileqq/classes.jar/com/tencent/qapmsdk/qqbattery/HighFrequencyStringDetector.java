@@ -33,57 +33,56 @@ public class HighFrequencyStringDetector
   @Nullable
   public Map<String, Integer> getHighFrequencyString()
   {
-    HashMap localHashMap = null;
-    label110:
-    for (;;)
+    synchronized (this.map)
     {
-      synchronized (this.map)
+      Iterator localIterator = this.map.entrySet().iterator();
+      Object localObject1 = null;
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.map.entrySet().iterator();
-        if (localIterator.hasNext())
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if (((Integer)localEntry.getValue()).intValue() >= this.maxAppearCount)
         {
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          if (((Integer)localEntry.getValue()).intValue() < this.maxAppearCount) {
-            break label110;
+          Object localObject3 = localObject1;
+          if (localObject1 == null) {
+            localObject3 = new HashMap();
           }
-          if (localHashMap == null)
-          {
-            localHashMap = new HashMap();
-            localHashMap.put(localEntry.getKey(), localEntry.getValue());
-            break label110;
-          }
-        }
-        else
-        {
-          return localHashMap;
+          ((Map)localObject3).put(localEntry.getKey(), localEntry.getValue());
+          localObject1 = localObject3;
         }
       }
+      return localObject1;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   public void putString(String paramString)
   {
+    synchronized (this.map)
+    {
+      if (this.map.containsKey(paramString)) {
+        this.map.put(paramString, Integer.valueOf(((Integer)this.map.get(paramString)).intValue() + 1));
+      } else {
+        this.map.put(paramString, Integer.valueOf(1));
+      }
+      while (this.map.size() > this.maintainCount)
+      {
+        paramString = (Map.Entry)this.map.entrySet().iterator().next();
+        this.map.remove(paramString.getKey());
+      }
+      return;
+    }
     for (;;)
     {
-      synchronized (this.map)
-      {
-        if (this.map.containsKey(paramString))
-        {
-          this.map.put(paramString, Integer.valueOf(((Integer)this.map.get(paramString)).intValue() + 1));
-          if (this.map.size() <= this.maintainCount) {
-            break;
-          }
-          paramString = (Map.Entry)this.map.entrySet().iterator().next();
-          this.map.remove(paramString.getKey());
-        }
-      }
-      this.map.put(paramString, Integer.valueOf(1));
+      throw paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.HighFrequencyStringDetector
  * JD-Core Version:    0.7.0.1
  */

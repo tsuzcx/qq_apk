@@ -19,10 +19,10 @@ public class ActivityWatcher
 {
   private static final String TAG = "QAPM_memory_ActivityWatcher";
   @Nullable
-  private static Object sCurrentActivityThread = null;
+  private static Object sCurrentActivityThread;
   private static boolean sMonitoring = false;
   @Nullable
-  private static Instrumentation sOldInstr = null;
+  private static Instrumentation sOldInstr;
   
   private static void afterOnDestroy(@NonNull Activity paramActivity)
   {
@@ -49,86 +49,64 @@ public class ActivityWatcher
     }
     try
     {
-      Method localMethod = Class.forName("android.app.ActivityThread").getDeclaredMethod("currentActivityThread", new Class[0]);
-      localMethod.setAccessible(true);
-      sCurrentActivityThread = localMethod.invoke(null, new Object[] { null });
-      if (sCurrentActivityThread == null) {
-        throw new IllegalStateException("Failed to invoke currentActivityThread");
+      Object localObject = Class.forName("android.app.ActivityThread").getDeclaredMethod("currentActivityThread", new Class[0]);
+      ((Method)localObject).setAccessible(true);
+      sCurrentActivityThread = ((Method)localObject).invoke(null, new Object[] { null });
+      if (sCurrentActivityThread != null)
+      {
+        localObject = sCurrentActivityThread.getClass().getDeclaredField("mInstrumentation");
+        ((Field)localObject).setAccessible(true);
+        localObject = (Instrumentation)((Field)localObject).get(sCurrentActivityThread);
+        if (localObject != null)
+        {
+          if (localObject.getClass().equals(Instrumentation.class))
+          {
+            if (!localObject.getClass().equals(ActivityWatcher.MonitorInstrumentation.class))
+            {
+              sOldInstr = (Instrumentation)localObject;
+              localObject = sCurrentActivityThread.getClass().getDeclaredField("mInstrumentation");
+              ((Field)localObject).setAccessible(true);
+              ((Field)localObject).set(sCurrentActivityThread, new ActivityWatcher.MonitorInstrumentation(null));
+              sMonitoring = true;
+              return true;
+            }
+            throw new RuntimeException("Buddy you already hacked the system.");
+          }
+          throw new IllegalStateException("Not an Instrumentation instance. Maybe something is modified in this system.");
+        }
+        throw new IllegalStateException("Failed to get mInstrumentation.");
       }
+      throw new IllegalStateException("Failed to invoke currentActivityThread");
+    }
+    catch (Exception localException)
+    {
+      Logger.INSTANCE.exception("QAPM_memory_ActivityWatcher", localException);
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      Logger.INSTANCE.exception("QAPM_memory_ActivityWatcher", localNoSuchFieldException);
+    }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      Logger.INSTANCE.exception("QAPM_memory_ActivityWatcher", localInvocationTargetException);
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      Logger.INSTANCE.exception("QAPM_memory_ActivityWatcher", localIllegalAccessException);
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      Logger.INSTANCE.exception("QAPM_memory_ActivityWatcher", localIllegalArgumentException);
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      Logger.INSTANCE.exception("QAPM_memory_ActivityWatcher", localNoSuchMethodException);
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
       Logger.INSTANCE.exception("QAPM_memory_ActivityWatcher", localClassNotFoundException);
-      bool = false;
-      return bool;
-      Object localObject = sCurrentActivityThread.getClass().getDeclaredField("mInstrumentation");
-      ((Field)localObject).setAccessible(true);
-      localObject = (Instrumentation)((Field)localObject).get(sCurrentActivityThread);
-      if (localObject == null) {
-        throw new IllegalStateException("Failed to get mInstrumentation.");
-      }
     }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      for (;;)
-      {
-        Logger.INSTANCE.exception("QAPM_memory_ActivityWatcher", localNoSuchMethodException);
-        bool = false;
-      }
-      if (!localNoSuchMethodException.getClass().equals(Instrumentation.class)) {
-        throw new IllegalStateException("Not an Instrumentation instance. Maybe something is modified in this system.");
-      }
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
-      {
-        Logger.INSTANCE.exception("QAPM_memory_ActivityWatcher", localIllegalArgumentException);
-        bool = false;
-      }
-      if (localIllegalArgumentException.getClass().equals(ActivityWatcher.MonitorInstrumentation.class)) {
-        throw new RuntimeException("Buddy you already hacked the system.");
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        Logger.INSTANCE.exception("QAPM_memory_ActivityWatcher", localIllegalAccessException);
-        bool = false;
-        continue;
-        sOldInstr = localIllegalAccessException;
-        Field localField = sCurrentActivityThread.getClass().getDeclaredField("mInstrumentation");
-        localField.setAccessible(true);
-        localField.set(sCurrentActivityThread, new ActivityWatcher.MonitorInstrumentation(null));
-        sMonitoring = true;
-        bool = true;
-      }
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      for (;;)
-      {
-        Logger.INSTANCE.exception("QAPM_memory_ActivityWatcher", localInvocationTargetException);
-        bool = false;
-      }
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
-      {
-        Logger.INSTANCE.exception("QAPM_memory_ActivityWatcher", localNoSuchFieldException);
-        bool = false;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Logger.INSTANCE.exception("QAPM_memory_ActivityWatcher", localException);
-        boolean bool = false;
-      }
-    }
+    return false;
   }
   
   @TargetApi(14)
@@ -144,7 +122,7 @@ public class ActivityWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.memory.leakdetect.ActivityWatcher
  * JD-Core Version:    0.7.0.1
  */

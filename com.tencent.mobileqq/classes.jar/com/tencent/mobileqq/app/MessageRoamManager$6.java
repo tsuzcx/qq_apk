@@ -14,15 +14,19 @@ class MessageRoamManager$6
   {
     if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
     {
-      SharedPreferences localSharedPreferences = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("vip_message_roam_passwordmd5_and_signature_file", 0);
+      Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("vip_message_roam_passwordmd5_and_signature_file", 0);
       String str = Base64.encodeToString(this.this$0.jdField_a_of_type_ArrayOfByte, 0);
-      localSharedPreferences.edit().putString("vip_message_roam_passwordmd5" + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), str).commit();
+      localObject = ((SharedPreferences)localObject).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("vip_message_roam_passwordmd5");
+      localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((SharedPreferences.Editor)localObject).putString(localStringBuilder.toString(), str).commit();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageRoamManager.6
  * JD-Core Version:    0.7.0.1
  */

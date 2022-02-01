@@ -12,23 +12,24 @@ class DynamicAvatarManager$1
   
   public void run()
   {
-    boolean bool;
-    DynamicAvatarManager localDynamicAvatarManager;
     if (DynamicAvatarManager.a(this.this$0) != null)
     {
-      bool = VideoEnvironment.checkAndLoadAVCodec();
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.dynamicAvatar", 2, "loadVideoSo runnable has run and loaded is " + bool);
+      boolean bool = VideoEnvironment.checkAndLoadAVCodec();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("loadVideoSo runnable has run and loaded is ");
+        ((StringBuilder)localObject).append(bool);
+        QLog.i("Q.dynamicAvatar", 2, ((StringBuilder)localObject).toString());
       }
-      localDynamicAvatarManager = this.this$0;
-      if (!bool) {
-        break label108;
+      Object localObject = this.this$0;
+      int i;
+      if (bool) {
+        i = 2;
+      } else {
+        i = 0;
       }
-    }
-    label108:
-    for (int i = 2;; i = 0)
-    {
-      localDynamicAvatarManager.b = i;
+      ((DynamicAvatarManager)localObject).b = i;
       if ((!bool) && ((DynamicAvatarManager.a(this.this$0) instanceof QQAppInterface)))
       {
         if (QLog.isColorLevel()) {
@@ -36,13 +37,12 @@ class DynamicAvatarManager$1
         }
         ShortVideoResDownload.a((QQAppInterface)DynamicAvatarManager.a(this.this$0), false);
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -32,11 +32,12 @@ import com.tencent.open.appcommon.AppClient;
 import com.tencent.open.downloadnew.DownloadConstants;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.IQzoneShareApi.WXShareListener;
+import com.tencent.qzonehub.api.impl.QZoneHelperProxyImpl;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
-import cooperation.qzone.share.WXShareFromQZHelper.WXShareListener;
 import cooperation.qzone.util.QZLog;
 import cooperation.qzone.util.QzoneAuthorizeConfig;
 import java.util.ArrayList;
@@ -52,78 +53,70 @@ public class QZoneWebViewJsHandleLogic
   private static final String JS_CALL_CARE_SPECIAL_FAMOUS_SPACE_METHOD = "UpdateFamousSpaceVpageOptions";
   public static final String STR_GAMEMATES = "gamemates";
   public static final String TAG = "QZoneWebViewJsHandleLogic";
-  static String mShareMsgCallback = null;
-  static CustomWebView webview = null;
-  static WXShareFromQZHelper.WXShareListener wxShareListener = new QZoneWebViewJsHandleLogic.1();
+  static String mShareMsgCallback;
+  static CustomWebView webview;
+  static IQzoneShareApi.WXShareListener wxShareListener = new QZoneWebViewJsHandleLogic.1();
   
   public static String appendQueryParameter(String paramString1, String paramString2, String paramString3)
   {
     if (TextUtils.isEmpty(paramString1)) {
       return paramString1;
     }
-    String str = paramString2 + '=';
-    int i = paramString1.indexOf(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append('=');
+    localObject = ((StringBuilder)localObject).toString();
     int j;
-    if (i != -1)
-    {
-      if (i == 0) {}
-      do
+    for (int i = paramString1.indexOf((String)localObject); i != -1; i = paramString1.indexOf((String)localObject, i + ((String)localObject).length())) {
+      if (i != 0)
       {
-        i = paramString1.indexOf(str, str.length() + i);
-        break;
         j = paramString1.charAt(i - 1);
-      } while ((j != 63) && (j != 35) && (j != 38));
+        if ((j == 63) || (j == 35) || (j == 38)) {
+          break;
+        }
+      }
     }
-    int k;
     if (i > -1)
     {
-      k = i + str.length();
+      int k = ((String)localObject).length() + i;
       j = k;
-      if (j < paramString1.length())
+      while (j < paramString1.length())
       {
         int m = paramString1.charAt(j);
-        if ((m != 38) && (m != 35)) {}
-      }
-      else
-      {
-        if ((!paramString2.equals("_wv")) || (i <= paramString1.indexOf('#'))) {
-          break label188;
+        if ((m == 38) || (m == 35)) {
+          break;
         }
-        paramString1 = Uri.parse(paramString1).buildUpon().appendQueryParameter(paramString2, paramString3).toString();
+        j += 1;
       }
+      if ((paramString2.equals("_wv")) && (i > paramString1.indexOf('#'))) {
+        return Uri.parse(paramString1).buildUpon().appendQueryParameter(paramString2, paramString3).toString();
+      }
+      paramString2 = new StringBuilder(paramString1.substring(0, k));
+      paramString2.append(paramString3);
+      paramString2.append(paramString1.substring(j));
+      return paramString2.toString();
     }
-    for (;;)
-    {
-      return paramString1;
-      j += 1;
-      break;
-      label188:
-      paramString1 = paramString1.substring(0, k) + paramString3 + paramString1.substring(j);
-      continue;
-      paramString1 = Uri.parse(paramString1).buildUpon().appendQueryParameter(paramString2, paramString3).toString();
-    }
+    return Uri.parse(paramString1).buildUpon().appendQueryParameter(paramString2, paramString3).toString();
   }
   
   public static String appendWVParameter(String paramString, int paramInt, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return paramString;
-      try
-      {
-        String str = Uri.parse(paramString).getQueryParameter("_wv");
-        if (str == null) {
-          return appendQueryParameter(paramString, "_wv", String.valueOf(paramInt));
-        }
-        if (paramBoolean)
-        {
-          str = appendQueryParameter(paramString, "_wv", String.valueOf(Integer.valueOf(str).intValue() | paramInt));
-          return str;
-        }
-      }
-      catch (Exception localException) {}
     }
+    try
+    {
+      String str2 = Uri.parse(paramString).getQueryParameter("_wv");
+      if (str2 == null) {
+        return appendQueryParameter(paramString, "_wv", String.valueOf(paramInt));
+      }
+      String str1 = paramString;
+      if (paramBoolean) {
+        str1 = appendQueryParameter(paramString, "_wv", String.valueOf(paramInt | Integer.valueOf(str2).intValue()));
+      }
+      return str1;
+    }
+    catch (Exception localException) {}
     return paramString;
   }
   
@@ -141,38 +134,38 @@ public class QZoneWebViewJsHandleLogic
   
   public static boolean disPatchMethod(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String paramString, String... paramVarArgs)
   {
-    if ("updateFeedContainer".equalsIgnoreCase(paramString)) {
-      updateFeedContainer(paramPluginRuntime, paramVarArgs);
-    }
-    do
+    if ("updateFeedContainer".equalsIgnoreCase(paramString))
     {
+      updateFeedContainer(paramPluginRuntime, paramVarArgs);
       return true;
-      if ("SendGiftFinished".equalsIgnoreCase(paramString))
-      {
-        handleSendGift(paramPluginRuntime, paramVarArgs);
-        return true;
+    }
+    if ("SendGiftFinished".equalsIgnoreCase(paramString))
+    {
+      handleSendGift(paramPluginRuntime, paramVarArgs);
+      return true;
+    }
+    if ("sendGiftSuccess".equalsIgnoreCase(paramString))
+    {
+      handleSendGiftSuccess(paramPluginRuntime, paramVarArgs);
+      return true;
+    }
+    if ("openAppDetail".equalsIgnoreCase(paramString))
+    {
+      handleOpenAppDetail(paramPluginRuntime, paramVarArgs);
+      return true;
+    }
+    if ("Schema".equalsIgnoreCase(paramString))
+    {
+      handleSchema(paramWebViewPlugin, paramPluginRuntime, paramVarArgs);
+      return true;
+    }
+    if ("refreshFeeds".equals(paramString))
+    {
+      if (paramPluginRuntime.a() != null) {
+        doRefreshFeed(paramPluginRuntime.a());
       }
-      if ("sendGiftSuccess".equalsIgnoreCase(paramString))
-      {
-        handleSendGiftSuccess(paramPluginRuntime, paramVarArgs);
-        return true;
-      }
-      if ("openAppDetail".equalsIgnoreCase(paramString))
-      {
-        handleOpenAppDetail(paramPluginRuntime, paramVarArgs);
-        return true;
-      }
-      if ("Schema".equalsIgnoreCase(paramString))
-      {
-        handleSchema(paramWebViewPlugin, paramPluginRuntime, paramVarArgs);
-        return true;
-      }
-      if (!"refreshFeeds".equals(paramString)) {
-        break;
-      }
-    } while (paramPluginRuntime.a() == null);
-    doRefreshFeed(paramPluginRuntime.a());
-    return true;
+      return true;
+    }
     if ("UpdateFamousSpaceVpageOptions".equalsIgnoreCase(paramString))
     {
       handleCareSpecialFamousSpace(paramPluginRuntime, paramVarArgs[0]);
@@ -220,11 +213,11 @@ public class QZoneWebViewJsHandleLogic
     Intent localIntent;
     if (paramContext != null)
     {
-      String str1 = QzoneConfig.getInstance().getConfig("MiniVideo", "DownloadWeishiFromMarket", "market://details?id=com.tencent.weishi");
-      if (!TextUtils.isEmpty(str1))
+      str = QzoneConfig.getInstance().getConfig("MiniVideo", "DownloadWeishiFromMarket", "market://details?id=com.tencent.weishi");
+      if (!TextUtils.isEmpty(str))
       {
         localIntent = new Intent("android.intent.action.VIEW");
-        localIntent.setData(Uri.parse(str1));
+        localIntent.setData(Uri.parse(str));
         QZoneHelper.addSource(localIntent);
       }
     }
@@ -235,12 +228,13 @@ public class QZoneWebViewJsHandleLogic
     }
     catch (Exception localException)
     {
-      String str2;
-      do
-      {
-        str2 = QzoneConfig.getInstance().getConfig("MiniVideo", "DownloadWeishiFromURL", "https://android.myapp.com/myapp/detail.htm?apkName=com.tencent.weishi");
-      } while (TextUtils.isEmpty(str2));
-      localIntent.setData(Uri.parse(str2));
+      label53:
+      break label53;
+    }
+    String str = QzoneConfig.getInstance().getConfig("MiniVideo", "DownloadWeishiFromURL", "https://isee.weishi.qq.com/iseev2/1/PSg56S8_e/index.html?_wwv=4096");
+    if (!TextUtils.isEmpty(str))
+    {
+      localIntent.setData(Uri.parse(str));
       try
       {
         paramContext.startActivity(localIntent);
@@ -253,111 +247,53 @@ public class QZoneWebViewJsHandleLogic
     }
   }
   
-  /* Error */
   private static void handleCareSpecialFamousSpace(WebViewPlugin.PluginRuntime paramPluginRuntime, String paramString)
   {
-    // Byte code:
-    //   0: iconst_m1
-    //   1: istore_3
-    //   2: aload_0
-    //   3: ifnonnull +4 -> 7
-    //   6: return
-    //   7: new 278	org/json/JSONObject
-    //   10: dup
-    //   11: aload_1
-    //   12: invokespecial 279	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   15: astore 5
-    //   17: aload 5
-    //   19: ldc_w 281
-    //   22: invokevirtual 284	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   25: istore_2
-    //   26: aload 5
-    //   28: ldc_w 286
-    //   31: invokevirtual 289	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   34: astore_1
-    //   35: aload 5
-    //   37: ldc_w 291
-    //   40: invokevirtual 284	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   43: istore 4
-    //   45: iload 4
-    //   47: istore_3
-    //   48: new 215	android/content/Intent
-    //   51: dup
-    //   52: invokespecial 216	android/content/Intent:<init>	()V
-    //   55: astore 5
-    //   57: aload 5
-    //   59: ldc_w 293
-    //   62: invokevirtual 222	android/content/Intent:setAction	(Ljava/lang/String;)Landroid/content/Intent;
-    //   65: pop
-    //   66: aload 5
-    //   68: ldc_w 281
-    //   71: iload_2
-    //   72: invokevirtual 297	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
-    //   75: pop
-    //   76: aload 5
-    //   78: ldc_w 286
-    //   81: aload_1
-    //   82: invokestatic 303	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   85: invokevirtual 306	android/content/Intent:putExtra	(Ljava/lang/String;J)Landroid/content/Intent;
-    //   88: pop
-    //   89: aload 5
-    //   91: ldc_w 308
-    //   94: ldc_w 310
-    //   97: invokevirtual 313	android/content/Intent:putExtra	(Ljava/lang/String;Ljava/lang/String;)Landroid/content/Intent;
-    //   100: pop
-    //   101: aload 5
-    //   103: ldc_w 291
-    //   106: iload_3
-    //   107: invokevirtual 297	android/content/Intent:putExtra	(Ljava/lang/String;I)Landroid/content/Intent;
-    //   110: pop
-    //   111: aload_0
-    //   112: invokevirtual 180	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   115: astore_0
-    //   116: aload_0
-    //   117: ifnull -111 -> 6
-    //   120: aload_0
-    //   121: aload 5
-    //   123: invokevirtual 228	android/app/Activity:sendBroadcast	(Landroid/content/Intent;)V
-    //   126: return
-    //   127: astore 5
-    //   129: ldc_w 315
-    //   132: astore_1
-    //   133: iconst_m1
-    //   134: istore_2
-    //   135: aload 5
-    //   137: invokevirtual 318	org/json/JSONException:printStackTrace	()V
-    //   140: goto -92 -> 48
-    //   143: astore 5
-    //   145: ldc_w 315
-    //   148: astore_1
-    //   149: goto -14 -> 135
-    //   152: astore 5
-    //   154: goto -19 -> 135
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	157	0	paramPluginRuntime	WebViewPlugin.PluginRuntime
-    //   0	157	1	paramString	String
-    //   25	110	2	i	int
-    //   1	106	3	j	int
-    //   43	3	4	k	int
-    //   15	107	5	localObject	Object
-    //   127	9	5	localJSONException1	JSONException
-    //   143	1	5	localJSONException2	JSONException
-    //   152	1	5	localJSONException3	JSONException
-    // Exception table:
-    //   from	to	target	type
-    //   7	26	127	org/json/JSONException
-    //   26	35	143	org/json/JSONException
-    //   35	45	152	org/json/JSONException
+    if (paramPluginRuntime == null) {
+      return;
+    }
+    Object localObject = "0";
+    int j = -1;
+    int i;
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(paramString);
+      i = localJSONObject.optInt("isconcern");
+      paramString = (String)localObject;
+      try
+      {
+        localObject = localJSONObject.optString("uin");
+        paramString = (String)localObject;
+        int k = localJSONObject.optInt("noSpecialCareToast");
+        paramString = (String)localObject;
+        j = k;
+      }
+      catch (JSONException localJSONException1) {}
+      localJSONException2.printStackTrace();
+    }
+    catch (JSONException localJSONException2)
+    {
+      i = -1;
+      paramString = (String)localObject;
+    }
+    localObject = new Intent();
+    ((Intent)localObject).setAction("JsCallNativeAction");
+    ((Intent)localObject).putExtra("isconcern", i);
+    ((Intent)localObject).putExtra("uin", Long.parseLong(paramString));
+    ((Intent)localObject).putExtra("key_jump_from", "key_from_h5_cover_user_home");
+    ((Intent)localObject).putExtra("noSpecialCareToast", j);
+    paramPluginRuntime = paramPluginRuntime.a();
+    if (paramPluginRuntime != null) {
+      paramPluginRuntime.sendBroadcast((Intent)localObject);
+    }
   }
   
   private static void handleClickWeiShiWidget(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    Activity localActivity;
     if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      localActivity = paramPluginRuntime.a();
-      if (PackageUtil.a(localActivity, "com.tencent.weishi"))
+      Object localObject = paramPluginRuntime.a();
+      if (PackageUtil.a((Context)localObject, "com.tencent.weishi"))
       {
         paramPluginRuntime = "";
         try
@@ -375,37 +311,47 @@ public class QZoneWebViewJsHandleLogic
             paramPluginRuntime = paramVarArgs;
             QZoneHelper.addSource(localIntent);
             paramPluginRuntime = paramVarArgs;
-            List localList = localActivity.getPackageManager().queryIntentActivities(localIntent, 65536);
-            if (localList == null) {
-              break label177;
+            List localList = ((Context)localObject).getPackageManager().queryIntentActivities(localIntent, 65536);
+            if (localList != null)
+            {
+              paramPluginRuntime = paramVarArgs;
+              if (localList.size() > 0)
+              {
+                paramPluginRuntime = paramVarArgs;
+                ((Context)localObject).startActivity(localIntent);
+                break label149;
+              }
             }
             paramPluginRuntime = paramVarArgs;
-            if (localList.size() <= 0) {
-              break label177;
-            }
-            paramPluginRuntime = paramVarArgs;
-            localActivity.startActivity(localIntent);
+            goToDownloadWeiShiApp((Context)localObject);
           }
-          for (;;)
-          {
-            paramPluginRuntime = paramVarArgs;
-            if (!QLog.isColorLevel()) {
-              break;
-            }
-            paramPluginRuntime = paramVarArgs;
-            QLog.d("QZoneWebViewJsHandleLogic", 1, "weishi schema is " + paramVarArgs);
+          label149:
+          paramPluginRuntime = paramVarArgs;
+          if (!QLog.isColorLevel()) {
             return;
-            label177:
-            paramPluginRuntime = paramVarArgs;
-            goToDownloadWeiShiApp(localActivity);
           }
-          goToDownloadWeiShiApp(localActivity);
+          paramPluginRuntime = paramVarArgs;
+          localObject = new StringBuilder();
+          paramPluginRuntime = paramVarArgs;
+          ((StringBuilder)localObject).append("weishi schema is ");
+          paramPluginRuntime = paramVarArgs;
+          ((StringBuilder)localObject).append(paramVarArgs);
+          paramPluginRuntime = paramVarArgs;
+          QLog.d("QZoneWebViewJsHandleLogic", 1, ((StringBuilder)localObject).toString());
+          return;
         }
         catch (Exception paramVarArgs)
         {
-          QLog.e("QZoneWebViewJsHandleLogic", 1, "handleClickWeiShiWidget catch an exception. weishi schema is " + paramPluginRuntime, paramVarArgs);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("handleClickWeiShiWidget catch an exception. weishi schema is ");
+          ((StringBuilder)localObject).append(paramPluginRuntime);
+          QLog.e("QZoneWebViewJsHandleLogic", 1, ((StringBuilder)localObject).toString(), paramVarArgs);
           return;
         }
+      }
+      else
+      {
+        goToDownloadWeiShiApp((Context)localObject);
       }
     }
   }
@@ -417,8 +363,12 @@ public class QZoneWebViewJsHandleLogic
       paramPluginRuntime = new Intent("qzone.pickgamemates");
       paramPluginRuntime.putExtra("gamemates", paramVarArgs[0]);
       BaseApplicationImpl.getApplication().sendBroadcast(paramPluginRuntime);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneWebViewJsHandleLogic", 1, "handleGameMates = " + paramVarArgs[0]);
+      if (QLog.isColorLevel())
+      {
+        paramPluginRuntime = new StringBuilder();
+        paramPluginRuntime.append("handleGameMates = ");
+        paramPluginRuntime.append(paramVarArgs[0]);
+        QLog.d("QZoneWebViewJsHandleLogic", 1, paramPluginRuntime.toString());
       }
     }
   }
@@ -444,48 +394,73 @@ public class QZoneWebViewJsHandleLogic
           if (!TextUtils.isEmpty((CharSequence)localObject2)) {
             i = Integer.parseInt((String)localObject2);
           }
-          localObject2 = new StringBuilder();
-          if (!TextUtils.isEmpty(str1)) {
-            ((StringBuilder)localObject2).append(DownloadConstants.b).append("=").append(str1);
-          }
-          if (!TextUtils.isEmpty(paramVarArgs)) {
-            ((StringBuilder)localObject2).append("&").append(DownloadConstants.f).append("=").append(paramVarArgs);
-          }
-          if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-            ((StringBuilder)localObject2).append("&").append(DownloadConstants.c).append("=").append((String)localObject1);
-          }
-          if (!TextUtils.isEmpty(str2)) {
-            ((StringBuilder)localObject2).append("&").append(DownloadConstants.d).append("=").append(str2);
-          }
-          if (!TextUtils.isEmpty(str3)) {
-            ((StringBuilder)localObject2).append("&").append(DownloadConstants.i).append("=").append(str3);
-          }
-          if (!TextUtils.isEmpty(str4)) {
-            ((StringBuilder)localObject2).append("&").append(DownloadConstants.e).append("=").append(str4);
-          }
-          if (!TextUtils.isEmpty(str5)) {
-            ((StringBuilder)localObject2).append("&").append(DownloadConstants.C).append("=").append(str5);
-          }
-          paramVarArgs = ((StringBuilder)localObject2).toString();
-          localObject1 = new Bundle();
-          ((Bundle)localObject1).putInt("from", i);
-          ((Bundle)localObject1).putString("schemaUrl", paramVarArgs);
-          QZoneHelper.addSource((Bundle)localObject1);
-          AppClient.a(paramPluginRuntime.a(), (Bundle)localObject1);
-          return;
         }
         catch (NumberFormatException localNumberFormatException)
         {
-          for (;;)
+          i = j;
+          if (QLog.isColorLevel())
           {
+            QLog.e("QZoneWebViewJsHandleLogic", 2, "from 错误", localNumberFormatException);
             i = j;
-            if (QLog.isColorLevel())
-            {
-              QLog.e("QZoneWebViewJsHandleLogic", 2, "from 错误", localNumberFormatException);
-              i = j;
-            }
           }
         }
+        StringBuilder localStringBuilder = new StringBuilder();
+        boolean bool = TextUtils.isEmpty(str1);
+        if (!bool)
+        {
+          localStringBuilder.append(DownloadConstants.b);
+          localStringBuilder.append("=");
+          localStringBuilder.append(str1);
+        }
+        bool = TextUtils.isEmpty(paramVarArgs);
+        if (!bool)
+        {
+          localStringBuilder.append("&");
+          localStringBuilder.append(DownloadConstants.f);
+          localStringBuilder.append("=");
+          localStringBuilder.append(paramVarArgs);
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          localStringBuilder.append("&");
+          localStringBuilder.append(DownloadConstants.c);
+          localStringBuilder.append("=");
+          localStringBuilder.append((String)localObject1);
+        }
+        if (!TextUtils.isEmpty(str2))
+        {
+          localStringBuilder.append("&");
+          localStringBuilder.append(DownloadConstants.d);
+          localStringBuilder.append("=");
+          localStringBuilder.append(str2);
+        }
+        if (!TextUtils.isEmpty(str3))
+        {
+          localStringBuilder.append("&");
+          localStringBuilder.append(DownloadConstants.i);
+          localStringBuilder.append("=");
+          localStringBuilder.append(str3);
+        }
+        if (!TextUtils.isEmpty(str4))
+        {
+          localStringBuilder.append("&");
+          localStringBuilder.append(DownloadConstants.e);
+          localStringBuilder.append("=");
+          localStringBuilder.append(str4);
+        }
+        if (!TextUtils.isEmpty(str5))
+        {
+          localStringBuilder.append("&");
+          localStringBuilder.append(DownloadConstants.D);
+          localStringBuilder.append("=");
+          localStringBuilder.append(str5);
+        }
+        paramVarArgs = localStringBuilder.toString();
+        localObject1 = new Bundle();
+        ((Bundle)localObject1).putInt("from", i);
+        ((Bundle)localObject1).putString("schemaUrl", paramVarArgs);
+        QZoneHelper.addSource((Bundle)localObject1);
+        AppClient.a(paramPluginRuntime.a(), (Bundle)localObject1);
         return;
       }
       catch (JSONException paramPluginRuntime)
@@ -499,306 +474,334 @@ public class QZoneWebViewJsHandleLogic
   
   private static void handlePublishMoodSilently(WebViewPlugin.PluginRuntime paramPluginRuntime, String[] paramArrayOfString)
   {
-    int i = 0;
-    Object localObject1 = null;
-    if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null) && (paramArrayOfString != null) && (paramArrayOfString.length > 0)) {}
-    for (;;)
+    int i;
+    if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null) && (paramArrayOfString != null) && (paramArrayOfString.length > 0)) {
+      i = 0;
+    }
+    try
     {
-      try
+      localObject3 = new JSONObject(paramArrayOfString[0]);
+      str1 = (String)((JSONObject)localObject3).opt("content");
+      str2 = (String)((JSONObject)localObject3).opt("videoPath");
+      j = ((JSONObject)localObject3).optInt("issynctoweibo");
+      ((JSONObject)localObject3).getJSONObject("lbsinfo");
+      paramArrayOfString = ((JSONObject)localObject3).getJSONObject("source");
+      if (paramArrayOfString == null) {
+        break label373;
+      }
+      paramArrayOfString = paramArrayOfString.optString("subtype");
+    }
+    catch (Exception paramPluginRuntime)
+    {
+      for (;;)
       {
-        Object localObject3 = new JSONObject(paramArrayOfString[0]);
-        String str1 = (String)((JSONObject)localObject3).opt("content");
-        String str2 = (String)((JSONObject)localObject3).opt("videoPath");
-        int j = ((JSONObject)localObject3).optInt("issynctoweibo");
-        ((JSONObject)localObject3).getJSONObject("lbsinfo");
-        paramArrayOfString = ((JSONObject)localObject3).getJSONObject("source");
-        if (paramArrayOfString != null)
+        Object localObject3;
+        String str1;
+        String str2;
+        int j;
+        HashMap localHashMap;
+        Object localObject2;
+        int k;
+        ArrayList localArrayList;
+        JSONArray localJSONArray;
+        continue;
+        paramArrayOfString = null;
+        continue;
+        Object localObject1 = null;
+      }
+    }
+    localHashMap = new HashMap();
+    localObject1 = ((JSONObject)localObject3).getJSONObject("extend_info");
+    if (localObject1 != null)
+    {
+      localObject2 = ((JSONObject)localObject1).optString("checkinfall");
+      k = ((JSONObject)localObject1).optInt("comm_self_define_tail_id");
+      localHashMap.put("checkinfall", localObject2);
+      localHashMap.put("comm_self_define_tail_id", String.valueOf(k));
+    }
+    localArrayList = new ArrayList();
+    localObject1 = ((JSONObject)localObject3).getJSONObject("right_info");
+    if (localObject1 != null)
+    {
+      localObject2 = ((JSONObject)localObject1).optString("ugc_right");
+      localJSONArray = ((JSONObject)localObject1).optJSONArray("allow_uins");
+      localObject1 = localObject2;
+      if (localJSONArray != null) {
+        for (;;)
         {
-          paramArrayOfString = paramArrayOfString.optString("subtype");
-          HashMap localHashMap = new HashMap();
-          Object localObject2 = ((JSONObject)localObject3).getJSONObject("extend_info");
-          if (localObject2 != null)
-          {
-            localObject4 = ((JSONObject)localObject2).optString("checkinfall");
-            int k = ((JSONObject)localObject2).optInt("comm_self_define_tail_id");
-            localHashMap.put("checkinfall", localObject4);
-            localHashMap.put("comm_self_define_tail_id", String.valueOf(k));
+          localObject1 = localObject2;
+          if (i >= localJSONArray.length()) {
+            break;
           }
-          Object localObject4 = new ArrayList();
-          Object localObject5 = ((JSONObject)localObject3).getJSONObject("right_info");
-          if (localObject5 != null)
-          {
-            localObject2 = ((JSONObject)localObject5).optString("ugc_right");
-            localObject5 = ((JSONObject)localObject5).optJSONArray("allow_uins");
-            localObject1 = localObject2;
-            if (localObject5 != null)
-            {
-              localObject1 = localObject2;
-              if (i < ((JSONArray)localObject5).length())
-              {
-                ((ArrayList)localObject4).add((String)((JSONArray)localObject5).get(i));
-                i += 1;
-                continue;
-              }
-            }
-          }
-          localObject2 = new HashMap();
-          localObject3 = ((JSONObject)localObject3).getJSONObject("stored_extend_info");
-          if (localObject3 != null) {
-            ((HashMap)localObject2).put("event_tags", ((JSONObject)localObject3).optString("event_tags"));
-          }
-          localObject3 = new ArrayList();
-          ((ArrayList)localObject3).add(str2);
-          QZoneHelper.UserInfo.getInstance().qzone_uin = paramPluginRuntime.a().getCurrentAccountUin();
-          QZoneHelper.publishPictureMoodSilently(str1, (ArrayList)localObject3, j, null, paramArrayOfString, localObject1, (ArrayList)localObject4, (HashMap)localObject2, localHashMap, "value.videoSign", 2);
-          return;
+          localArrayList.add((String)localJSONArray.get(i));
+          i += 1;
         }
       }
-      catch (Exception paramPluginRuntime)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
+      localObject2 = new HashMap();
+      localObject3 = ((JSONObject)localObject3).getJSONObject("stored_extend_info");
+      if (localObject3 != null) {
+        ((HashMap)localObject2).put("event_tags", ((JSONObject)localObject3).optString("event_tags"));
+      }
+      localObject3 = new ArrayList();
+      ((ArrayList)localObject3).add(str2);
+      QZoneHelper.UserInfo.getInstance().qzone_uin = paramPluginRuntime.a().getCurrentAccountUin();
+      QZoneHelper.publishPictureMoodSilently(str1, (ArrayList)localObject3, j, null, paramArrayOfString, (String)localObject1, localArrayList, (HashMap)localObject2, localHashMap, "value.videoSign", 2);
+      return;
+      if (QLog.isColorLevel()) {
         QLog.w("QZoneWebViewJsHandleLogic", 2, "handlePickQzoneAlbum,decode param error");
-        return;
       }
-      paramArrayOfString = null;
+      return;
     }
   }
   
   private static void handleSchema(WebViewPlugin paramWebViewPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramPluginRuntime == null) || (paramVarArgs.length <= 0)) {}
-    Object localObject5;
-    Object localObject2;
-    Object localObject3;
-    Object localObject4;
-    int i;
-    label398:
-    label718:
-    do
+    if ((paramVarArgs != null) && (paramPluginRuntime != null)) {
+      if (paramVarArgs.length <= 0) {
+        return;
+      }
+    }
+    for (;;)
     {
-      do
+      try
       {
-        do
-        {
-          for (;;)
-          {
-            return;
-            try
-            {
-              localObject5 = new JSONObject(paramVarArgs[0]);
-              localObject1 = ((JSONObject)localObject5).optString("schema");
-              if (TextUtils.isEmpty((CharSequence)localObject1)) {
-                continue;
-              }
-              paramVarArgs = paramPluginRuntime.a().getUrl();
-              if (!QzoneAuthorizeConfig.getInstance().hasJsApiRight(paramVarArgs, (String)localObject1))
-              {
-                QLog.e("QZoneWebViewJsHandleLogic", 1, "has no right handle this jsapi");
-                return;
-              }
-            }
-            catch (JSONException paramWebViewPlugin)
-            {
-              paramWebViewPlugin.printStackTrace();
-              QLog.e("QZoneWebViewJsHandleLogic", 1, "handleSchema", paramWebViewPlugin);
-              return;
-            }
-            paramVarArgs = ((JSONObject)localObject5).optJSONObject("dealparam");
-            if (paramVarArgs == null) {
-              break label1100;
-            }
-            localObject2 = paramVarArgs.optString("url");
-            paramVarArgs = paramVarArgs.optString("blogurl", "");
-            if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2))) {
-              break label1085;
-            }
-            localObject3 = (String)localObject1 + "&url=" + (String)localObject2;
-            localObject1 = localObject2;
-            localObject2 = localObject3;
-            if (QLog.isColorLevel()) {
-              QLog.d("QZoneWebViewPlugin", 2, " handleSchema scheme:" + (String)localObject2);
-            }
-            localObject4 = null;
-            if (paramPluginRuntime != null) {
-              localObject4 = paramPluginRuntime.a();
-            }
-            localObject3 = localObject4;
-            if (localObject4 != null)
-            {
-              localObject3 = localObject4;
-              if ((localObject4 instanceof BasePluginActivity)) {
-                localObject3 = ((BasePluginActivity)localObject4).getOutActivity();
-              }
-            }
-            localObject4 = localObject3;
-            if (localObject3 != null)
-            {
-              localObject4 = localObject3;
-              if ((localObject3 instanceof BasePluginActivity)) {
-                localObject4 = ((BasePluginActivity)localObject3).getOutActivity();
-              }
-            }
-            bool = ((String)localObject2).startsWith("mqzone://arouse/userhome");
-            if (bool)
-            {
-              if (localObject4 == null) {
-                continue;
-              }
-              try
-              {
-                if (((String)localObject2).indexOf("uin=") != -1)
-                {
-                  paramWebViewPlugin = ((String)localObject2).substring(((String)localObject2).indexOf("uin=") + 4, ((String)localObject2).length());
-                  QZoneHelper.forwardToUserHome((Context)localObject4, QZoneHelper.UserInfo.getInstance(), paramWebViewPlugin, 0, 0, 0);
-                  return;
-                }
-              }
-              catch (Exception paramWebViewPlugin)
-              {
-                paramWebViewPlugin.printStackTrace();
-                return;
-              }
-            }
-          }
-          if (!((String)localObject2).startsWith("mqzone://arouse/webtofeeddetail")) {
-            break;
-          }
-        } while (localObject4 == null);
-        paramPluginRuntime = paramPluginRuntime.a((Activity)localObject4);
-        if (!(paramPluginRuntime instanceof WebViewPluginContainer)) {
-          break label1116;
-        }
-        i = ((WebViewPluginContainer)paramPluginRuntime).switchRequestCode(paramWebViewPlugin, (byte)3);
-        if (TextUtils.isEmpty(paramVarArgs))
-        {
-          QZoneHelper.forwardToDetail((Activity)localObject4, QZoneHelper.UserInfo.getInstance(), (String)localObject1, i);
+        Object localObject5 = new JSONObject(paramVarArgs[0]);
+        paramVarArgs = ((JSONObject)localObject5).optString("schema");
+        if (TextUtils.isEmpty(paramVarArgs)) {
           return;
         }
-        QZoneHelper.forwardToDetail((Activity)localObject4, QZoneHelper.UserInfo.getInstance(), (String)localObject1, i, paramVarArgs);
-        return;
-        if (!((String)localObject2).startsWith("mqzone://arouse/detail")) {
-          break;
+        localObject1 = paramPluginRuntime.a().getUrl();
+        if (!QzoneAuthorizeConfig.getInstance().hasJsApiRight((String)localObject1, paramVarArgs))
+        {
+          QLog.e("QZoneWebViewJsHandleLogic", 1, "has no right handle this jsapi");
+          return;
         }
-      } while (localObject4 == null);
-      paramVarArgs = Uri.parse((String)localObject2);
-      localObject1 = paramVarArgs.getQueryParameter("uin");
-      localObject2 = paramVarArgs.getQueryParameter("appid");
-      localObject3 = paramVarArgs.getQueryParameter("cellid");
-      localObject5 = paramVarArgs.getQueryParameter("subid");
-      Object localObject6 = paramVarArgs.getQueryParameter("source");
-      String str1 = paramVarArgs.getQueryParameter("cookie");
-      String str2 = paramVarArgs.getQueryParameter("local_city_feedindex");
-      String str3 = paramVarArgs.getQueryParameter("ugckey");
-      String str4 = paramVarArgs.getQueryParameter("feedData");
-      String str5 = paramVarArgs.getQueryParameter("needShowBottom");
-      String str6 = paramVarArgs.getQueryParameter("urlForTodayInHistory");
-      String str7 = paramVarArgs.getQueryParameter("buttonText");
-      Bundle localBundle = new Bundle();
-      if (localObject6 != null) {
-        localBundle.putString("source", (String)localObject6);
+        localObject2 = ((JSONObject)localObject5).optJSONObject("dealparam");
+        if (localObject2 == null) {
+          break label1165;
+        }
+        localObject1 = ((JSONObject)localObject2).optString("url");
+        String str1 = ((JSONObject)localObject2).optString("blogurl", "");
+        localObject2 = paramVarArgs;
+        localObject3 = str1;
+        localObject4 = localObject1;
+        if (!TextUtils.isEmpty(paramVarArgs))
+        {
+          localObject2 = paramVarArgs;
+          localObject3 = str1;
+          localObject4 = localObject1;
+          if (!TextUtils.isEmpty((CharSequence)localObject1))
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(paramVarArgs);
+            ((StringBuilder)localObject2).append("&url=");
+            ((StringBuilder)localObject2).append((String)localObject1);
+            localObject2 = ((StringBuilder)localObject2).toString();
+            localObject3 = str1;
+            localObject4 = localObject1;
+          }
+        }
+        bool = QLog.isColorLevel();
+        if (bool)
+        {
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(" handleSchema scheme:");
+          paramVarArgs.append((String)localObject2);
+          QLog.d("QZoneWebViewPlugin", 2, paramVarArgs.toString());
+        }
+        if (paramPluginRuntime == null) {
+          break label1177;
+        }
+        localObject1 = paramPluginRuntime.a();
+        paramVarArgs = (String[])localObject1;
+        if (localObject1 != null)
+        {
+          paramVarArgs = (String[])localObject1;
+          if ((localObject1 instanceof BasePluginActivity)) {
+            paramVarArgs = ((BasePluginActivity)localObject1).getOutActivity();
+          }
+        }
+        localObject1 = paramVarArgs;
+        if (paramVarArgs != null)
+        {
+          localObject1 = paramVarArgs;
+          if ((paramVarArgs instanceof BasePluginActivity)) {
+            localObject1 = ((BasePluginActivity)paramVarArgs).getOutActivity();
+          }
+        }
+        bool = ((String)localObject2).startsWith("mqzone://arouse/userhome");
+        if ((bool) && (localObject1 == null)) {
+          break label1164;
+        }
+        try
+        {
+          if (((String)localObject2).indexOf("uin=") == -1) {
+            break label1164;
+          }
+          paramWebViewPlugin = ((String)localObject2).substring(((String)localObject2).indexOf("uin=") + 4, ((String)localObject2).length());
+          QZoneHelper.forwardToUserHome((Context)localObject1, QZoneHelper.UserInfo.getInstance(), paramWebViewPlugin, 0, 0, 0);
+          return;
+        }
+        catch (Exception paramWebViewPlugin)
+        {
+          paramWebViewPlugin.printStackTrace();
+          return;
+          bool = ((String)localObject2).startsWith("mqzone://arouse/webtofeeddetail");
+          i = 3;
+          if (bool)
+          {
+            if (localObject1 == null) {
+              break label1164;
+            }
+            paramPluginRuntime = paramPluginRuntime.a((Activity)localObject1);
+            if ((paramPluginRuntime instanceof WebViewPluginContainer)) {
+              i = ((WebViewPluginContainer)paramPluginRuntime).switchRequestCode(paramWebViewPlugin, (byte)3);
+            }
+            if (TextUtils.isEmpty((CharSequence)localObject3))
+            {
+              QZoneHelper.forwardToDetail((Activity)localObject1, QZoneHelper.UserInfo.getInstance(), (String)localObject4, i);
+              return;
+            }
+            QZoneHelper.forwardToDetail((Activity)localObject1, QZoneHelper.UserInfo.getInstance(), (String)localObject4, i, (String)localObject3);
+            return;
+          }
+          if (((String)localObject2).startsWith("mqzone://arouse/detail"))
+          {
+            if (localObject1 == null) {
+              break label1164;
+            }
+            paramVarArgs = Uri.parse((String)localObject2);
+            localObject2 = paramVarArgs.getQueryParameter("uin");
+            localObject3 = paramVarArgs.getQueryParameter("appid");
+            localObject4 = paramVarArgs.getQueryParameter("cellid");
+            str1 = paramVarArgs.getQueryParameter("subid");
+            Object localObject6 = paramVarArgs.getQueryParameter("source");
+            String str2 = paramVarArgs.getQueryParameter("cookie");
+            String str3 = paramVarArgs.getQueryParameter("local_city_feedindex");
+            String str4 = paramVarArgs.getQueryParameter("ugckey");
+            String str5 = paramVarArgs.getQueryParameter("feedData");
+            String str6 = paramVarArgs.getQueryParameter("needShowBottom");
+            String str7 = paramVarArgs.getQueryParameter("urlForTodayInHistory");
+            String str8 = paramVarArgs.getQueryParameter("buttonText");
+            localObject5 = new Bundle();
+            if (localObject6 != null) {
+              ((Bundle)localObject5).putString("source", (String)localObject6);
+            }
+            if (str2 != null) {
+              ((Bundle)localObject5).putString("cookie", str2);
+            }
+            if (str3 != null) {
+              ((Bundle)localObject5).putString("local_city_feedindex", str3);
+            }
+            if (str4 != null) {
+              ((Bundle)localObject5).putString("ugckey", str4);
+            }
+            if (str5 != null) {
+              ((Bundle)localObject5).putString("local_city_feedData", str5);
+            }
+            if (str6 != null) {
+              ((Bundle)localObject5).putString("show_share_btn", str6);
+            }
+            if (str7 != null) {
+              ((Bundle)localObject5).putString("share_url", str7);
+            }
+            if (str8 != null) {
+              ((Bundle)localObject5).putString("share_btn_text", str8);
+            }
+            localObject6 = paramPluginRuntime.a((Activity)localObject1);
+            if (!(localObject6 instanceof WebViewPluginContainer)) {
+              break label1183;
+            }
+            i = ((WebViewPluginContainer)localObject6).switchRequestCode(paramWebViewPlugin, (byte)3);
+            paramWebViewPlugin = QZoneHelper.UserInfo.getInstance();
+            paramWebViewPlugin.qzone_uin = paramPluginRuntime.a().getAccount();
+            paramPluginRuntime = new Bundle();
+            paramPluginRuntime.putString("source", paramVarArgs.getQueryParameter("source"));
+            paramPluginRuntime.putString("bypassparam", paramVarArgs.getQueryParameter("bypassparam"));
+            paramPluginRuntime.putAll((Bundle)localObject5);
+            QZoneHelper.forwardToDetail((Activity)localObject1, paramWebViewPlugin, (String)localObject2, (String)localObject3, (String)localObject4, str1, i, paramPluginRuntime);
+            return;
+          }
+          if ("mqzone://arouse/dynamicnickname".equalsIgnoreCase((String)localObject2))
+          {
+            if ((paramPluginRuntime == null) || (paramPluginRuntime.a() == null) || (paramPluginRuntime.a() == null)) {
+              break label1164;
+            }
+            QZoneHelper.forwardToQZoneFlashNickNameSetting(paramPluginRuntime.a(), paramPluginRuntime.a().getAccount());
+            return;
+          }
+          if (((String)localObject2).startsWith("mqzone://arouse/uploadphoto"))
+          {
+            QZoneHelperProxyImpl.forwardToUploadPhoto(paramWebViewPlugin, paramPluginRuntime, paramPluginRuntime.a(), paramPluginRuntime.a().getAccount(), (String)localObject2);
+            return;
+          }
+          if ((!((String)localObject2).startsWith("mqzone://arouse/facade")) && (!((String)localObject2).startsWith("mqzonev2://arouse/facade")))
+          {
+            if (((String)localObject2).startsWith("mqzone://arouse/moodVoiceRecord"))
+            {
+              QZoneHelperProxyImpl.forwardToOpenRecordPanel(paramWebViewPlugin, paramPluginRuntime, paramPluginRuntime.a(), paramPluginRuntime.a().getAccount(), (String)localObject2);
+              return;
+            }
+            paramVarArgs = new Intent("action_js2qzone");
+            localObject3 = new Bundle();
+            ((Bundle)localObject3).putString("cmd", "Schema");
+            ((Bundle)localObject3).putString("schema", (String)localObject2);
+            if (((JSONObject)localObject5).optInt("showQzoneProgressDialog", 1) == 0) {
+              break label1188;
+            }
+            bool = true;
+            paramVarArgs.putExtras((Bundle)localObject3);
+            if (QLog.isColorLevel())
+            {
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("handleSchema actionString: ");
+              ((StringBuilder)localObject3).append(paramVarArgs.getAction());
+              ((StringBuilder)localObject3).append("scheme:");
+              ((StringBuilder)localObject3).append((String)localObject2);
+              QLog.d("QZoneWebViewPlugin", 2, ((StringBuilder)localObject3).toString());
+            }
+            if (((String)localObject2).startsWith("mqzone://arouse/openvideolayer"))
+            {
+              i = QZoneWebViewPlugin.generateRequestCode(paramWebViewPlugin, paramPluginRuntime, 4);
+              QZoneHelper.forwardToQzoneTransluentActivity((Activity)localObject1, QZoneHelper.UserInfo.getInstance(), paramVarArgs, i, bool);
+              return;
+            }
+            QZoneHelper.forwardToQzoneTransluentActivity((Activity)localObject1, QZoneHelper.UserInfo.getInstance(), paramVarArgs, -1, bool);
+            return;
+          }
+          jumpQzoneScheme(paramPluginRuntime.a(), (String)localObject2, 81, paramPluginRuntime);
+          return;
+        }
+        catch (JSONException paramWebViewPlugin) {}
+        paramWebViewPlugin.printStackTrace();
       }
-      if (str1 != null) {
-        localBundle.putString("cookie", str1);
-      }
-      if (str2 != null) {
-        localBundle.putString("local_city_feedindex", str2);
-      }
-      if (str3 != null) {
-        localBundle.putString("ugckey", str3);
-      }
-      if (str4 != null) {
-        localBundle.putString("local_city_feedData", str4);
-      }
-      if (str5 != null) {
-        localBundle.putString("show_share_btn", str5);
-      }
-      if (str6 != null) {
-        localBundle.putString("share_url", str6);
-      }
-      if (str7 != null) {
-        localBundle.putString("share_btn_text", str7);
-      }
-      localObject6 = paramPluginRuntime.a((Activity)localObject4);
-      if (!(localObject6 instanceof WebViewPluginContainer)) {
-        break label1121;
-      }
-      i = ((WebViewPluginContainer)localObject6).switchRequestCode(paramWebViewPlugin, (byte)3);
-      paramWebViewPlugin = QZoneHelper.UserInfo.getInstance();
-      paramWebViewPlugin.qzone_uin = paramPluginRuntime.a().getAccount();
-      paramPluginRuntime = new Bundle();
-      paramPluginRuntime.putString("source", paramVarArgs.getQueryParameter("source"));
-      paramPluginRuntime.putString("bypassparam", paramVarArgs.getQueryParameter("bypassparam"));
-      paramPluginRuntime.putAll(localBundle);
-      QZoneHelper.forwardToDetail((Activity)localObject4, paramWebViewPlugin, (String)localObject1, (String)localObject2, (String)localObject3, (String)localObject5, i, paramPluginRuntime);
+      catch (JSONException paramWebViewPlugin) {}
+      QLog.e("QZoneWebViewJsHandleLogic", 1, "handleSchema", paramWebViewPlugin);
+      label1164:
       return;
-      if (!"mqzone://arouse/dynamicnickname".equalsIgnoreCase((String)localObject2)) {
-        break;
-      }
-    } while ((paramPluginRuntime == null) || (paramPluginRuntime.a() == null) || (paramPluginRuntime.a() == null));
-    QZoneHelper.forwardToQZoneFlashNickNameSetting(paramPluginRuntime.a(), paramPluginRuntime.a().getAccount());
-    return;
-    if (((String)localObject2).startsWith("mqzone://arouse/uploadphoto"))
-    {
-      QZoneHelper.forwardToUploadPhoto(paramWebViewPlugin, paramPluginRuntime, paramPluginRuntime.a(), paramPluginRuntime.a().getAccount(), (String)localObject2);
-      return;
-    }
-    if ((((String)localObject2).startsWith("mqzone://arouse/facade")) || (((String)localObject2).startsWith("mqzonev2://arouse/facade")))
-    {
-      jumpQzoneScheme(paramPluginRuntime.a(), (String)localObject2, 81, paramPluginRuntime);
-      return;
-    }
-    if (((String)localObject2).startsWith("mqzone://arouse/moodVoiceRecord"))
-    {
-      QZoneHelper.forwardToOpenRecordPanel(paramWebViewPlugin, paramPluginRuntime, paramPluginRuntime.a(), paramPluginRuntime.a().getAccount(), (String)localObject2);
-      return;
-    }
-    paramVarArgs = new Intent("action_js2qzone");
-    Object localObject1 = new Bundle();
-    ((Bundle)localObject1).putString("cmd", "Schema");
-    ((Bundle)localObject1).putString("schema", (String)localObject2);
-    if (((JSONObject)localObject5).optInt("showQzoneProgressDialog", 1) != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramVarArgs.putExtras((Bundle)localObject1);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneWebViewPlugin", 2, "handleSchema actionString: " + paramVarArgs.getAction() + "scheme:" + (String)localObject2);
-      }
-      if (((String)localObject2).startsWith("mqzone://arouse/openvideolayer"))
-      {
-        i = QZoneWebViewPlugin.generateRequestCode(paramWebViewPlugin, paramPluginRuntime, 4);
-        QZoneHelper.forwardToQzoneTransluentActivity((Activity)localObject4, QZoneHelper.UserInfo.getInstance(), paramVarArgs, i, bool);
-        return;
-      }
-      QZoneHelper.forwardToQzoneTransluentActivity((Activity)localObject4, QZoneHelper.UserInfo.getInstance(), paramVarArgs, -1, bool);
-      return;
-      label1085:
-      localObject3 = localObject1;
-      localObject1 = localObject2;
-      localObject2 = localObject3;
-      break;
-      label1100:
-      localObject3 = null;
-      localObject2 = localObject1;
-      paramVarArgs = null;
-      localObject1 = localObject3;
-      break;
-      label1116:
-      i = 3;
-      break label398;
-      label1121:
-      i = 3;
-      break label718;
+      label1165:
+      Object localObject3 = null;
+      Object localObject4 = null;
+      Object localObject2 = paramVarArgs;
+      continue;
+      label1177:
+      Object localObject1 = null;
+      continue;
+      label1183:
+      int i = 3;
+      continue;
+      label1188:
+      boolean bool = false;
     }
   }
   
   private static void handleSendGift(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
-    for (;;)
+    if (paramVarArgs != null)
     {
-      return;
+      if (paramVarArgs.length <= 0) {
+        return;
+      }
       try
       {
         Object localObject = new JSONObject(paramVarArgs[0]);
@@ -811,7 +814,7 @@ public class QZoneWebViewJsHandleLogic
           if ((paramVarArgs != null) && (paramVarArgs.length() > 0) && (localJSONArray != null) && (localJSONArray.length() == paramVarArgs.length()))
           {
             if ((((JSONObject)localObject).has("toast")) && (((JSONObject)localObject).getBoolean("toast"))) {
-              QQToast.a(paramPluginRuntime.a(), 2, 2131689532, 0).a();
+              QQToast.a(paramPluginRuntime.a(), 2, 2131689559, 0).a();
             }
             localObject = new long[paramVarArgs.length()];
             long[] arrayOfLong = new long[localJSONArray.length()];
@@ -832,7 +835,16 @@ public class QZoneWebViewJsHandleLogic
             paramPluginRuntime.a().finish();
             if (QLog.isColorLevel())
             {
-              QLog.d("QZoneWebViewJsHandleLogic", 2, "the giftid is " + j + "\n the giftmessage is" + str + "\n the uins are: " + paramVarArgs.toString() + "\n the birthdays are: " + localJSONArray.toString());
+              paramPluginRuntime = new StringBuilder();
+              paramPluginRuntime.append("the giftid is ");
+              paramPluginRuntime.append(j);
+              paramPluginRuntime.append("\n the giftmessage is");
+              paramPluginRuntime.append(str);
+              paramPluginRuntime.append("\n the uins are: ");
+              paramPluginRuntime.append(paramVarArgs.toString());
+              paramPluginRuntime.append("\n the birthdays are: ");
+              paramPluginRuntime.append(localJSONArray.toString());
+              QLog.d("QZoneWebViewJsHandleLogic", 2, paramPluginRuntime.toString());
               return;
             }
           }
@@ -847,120 +859,129 @@ public class QZoneWebViewJsHandleLogic
   
   private static void handleSendGiftSuccess(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      return;
-    }
-    try
+    if (paramVarArgs != null)
     {
-      LocalMultiProcConfig.putString("BirthdayGiftSendSuccessList", new JSONObject(paramVarArgs[0]).optString("uins"));
-      return;
-    }
-    catch (JSONException paramPluginRuntime)
-    {
-      QLog.e("QZoneWebViewJsHandleLogic", 1, paramPluginRuntime, new Object[0]);
+      if (paramVarArgs.length <= 0) {
+        return;
+      }
+      try
+      {
+        LocalMultiProcConfig.putString("BirthdayGiftSendSuccessList", new JSONObject(paramVarArgs[0]).optString("uins"));
+        return;
+      }
+      catch (JSONException paramPluginRuntime)
+      {
+        QLog.e("QZoneWebViewJsHandleLogic", 1, paramPluginRuntime, new Object[0]);
+      }
     }
   }
   
   private static void handleShowFollowActionSheet(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0)) {}
-    try
-    {
-      int i = new JSONObject(paramVarArgs[0]).optInt("followStatus");
-      paramPluginRuntime = new Intent("showFollowActionSheet");
-      paramPluginRuntime.putExtra("followStatus", i);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramPluginRuntime);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneWebViewJsHandleLogic", 1, "followStatus = " + i);
+    if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0)) {
+      try
+      {
+        int i = new JSONObject(paramVarArgs[0]).optInt("followStatus");
+        paramPluginRuntime = new Intent("showFollowActionSheet");
+        paramPluginRuntime.putExtra("followStatus", i);
+        BaseApplicationImpl.getApplication().sendBroadcast(paramPluginRuntime);
+        if (QLog.isColorLevel())
+        {
+          paramPluginRuntime = new StringBuilder();
+          paramPluginRuntime.append("followStatus = ");
+          paramPluginRuntime.append(i);
+          QLog.d("QZoneWebViewJsHandleLogic", 1, paramPluginRuntime.toString());
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception paramPluginRuntime)
-    {
-      QLog.e("QZoneWebViewJsHandleLogic", 1, "handleShowFollowActionSheet catch an exception. ", paramPluginRuntime);
+      catch (Exception paramPluginRuntime)
+      {
+        QLog.e("QZoneWebViewJsHandleLogic", 1, "handleShowFollowActionSheet catch an exception. ", paramPluginRuntime);
+      }
     }
   }
   
   private static void handleUpdateIsSpecialFollow(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0)) {}
-    try
-    {
-      int i = new JSONObject(paramVarArgs[0]).optInt("isSpecialFollow", -1);
-      paramPluginRuntime = new Intent("updateIsSpecialFollow");
-      paramPluginRuntime.putExtra("isSpecialFollow", i);
-      BaseApplicationImpl.getApplication().sendBroadcast(paramPluginRuntime);
-      if (QLog.isColorLevel()) {
-        QLog.d("QZoneWebViewJsHandleLogic", 1, "followStatus = " + i);
+    if ((paramPluginRuntime != null) && (paramPluginRuntime.a() != null) && (paramVarArgs != null) && (paramVarArgs.length > 0)) {
+      try
+      {
+        int i = new JSONObject(paramVarArgs[0]).optInt("isSpecialFollow", -1);
+        paramPluginRuntime = new Intent("updateIsSpecialFollow");
+        paramPluginRuntime.putExtra("isSpecialFollow", i);
+        BaseApplicationImpl.getApplication().sendBroadcast(paramPluginRuntime);
+        if (QLog.isColorLevel())
+        {
+          paramPluginRuntime = new StringBuilder();
+          paramPluginRuntime.append("followStatus = ");
+          paramPluginRuntime.append(i);
+          QLog.d("QZoneWebViewJsHandleLogic", 1, paramPluginRuntime.toString());
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception paramPluginRuntime)
-    {
-      QLog.e("QZoneWebViewJsHandleLogic", 1, "handleUpdateIsSpecialFollow catch an exception. ", paramPluginRuntime);
+      catch (Exception paramPluginRuntime)
+      {
+        QLog.e("QZoneWebViewJsHandleLogic", 1, "handleUpdateIsSpecialFollow catch an exception. ", paramPluginRuntime);
+      }
     }
   }
   
   static void handleUrl(String paramString, Context paramContext)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("handleUrl", 2, "browse url fail:" + paramString);
-      }
-    }
-    do
+    if (TextUtils.isEmpty(paramString))
     {
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("browse url fail:");
+        paramContext.append(paramString);
+        QLog.d("handleUrl", 2, paramContext.toString());
+      }
       return;
-      paramString = appendWVParameter(paramString, 7, false);
-      Intent localIntent = new Intent(BaseApplication.getContext(), QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", paramString);
-      localIntent.putExtra("fromQZone", true);
-      localIntent.putExtra("injectrecommend", true);
-      localIntent.setData(Uri.parse(paramString));
-      localIntent.addFlags(268435456);
-      localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131717706));
-      paramContext.startActivity(localIntent);
-    } while (!QLog.isColorLevel());
-    QLog.d("handleurl", 2, "jump to browser: " + paramString);
+    }
+    paramString = appendWVParameter(paramString, 7, false);
+    Intent localIntent = new Intent(BaseApplication.getContext(), QQBrowserDelegationActivity.class);
+    localIntent.putExtra("url", paramString);
+    localIntent.putExtra("fromQZone", true);
+    localIntent.putExtra("injectrecommend", true);
+    localIntent.setData(Uri.parse(paramString));
+    localIntent.addFlags(268435456);
+    localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131717365));
+    paramContext.startActivity(localIntent);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("jump to browser: ");
+      paramContext.append(paramString);
+      QLog.d("handleurl", 2, paramContext.toString());
+    }
   }
   
   private static int jumpQzoneScheme(Context paramContext, String paramString, int paramInt, WebViewPlugin.PluginRuntime paramPluginRuntime)
   {
-    int i = 2;
     if (paramContext == null) {
       return 5;
     }
-    if (checkScheme(paramString)) {
+    if (checkScheme(paramString))
+    {
       if (supportJumpToQzone(paramContext, paramInt))
       {
         if (QLog.isColorLevel()) {
           QLog.d("QZoneWebViewPlugin", 2, "simpleSchemeJump");
         }
         simpleSchemeJump(paramContext, Uri.parse(paramString));
-        paramInt = 1;
+        return 1;
       }
-    }
-    for (;;)
-    {
-      return paramInt;
       if (QLog.isColorLevel()) {
         QLog.d("QZoneWebViewPlugin", 2, "showQzoneAppDownloadDialog");
       }
       showQzoneAppDownloadDialog(paramContext, paramPluginRuntime);
-      paramInt = i;
-      continue;
-      if (URLUtil.isNetworkUrl(paramString))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneWebViewPlugin", 2, "isNetworkUrl do nothing");
-        }
-        paramInt = 5;
-      }
-      else
-      {
-        paramInt = 5;
-      }
+      return 2;
     }
+    if ((URLUtil.isNetworkUrl(paramString)) && (QLog.isColorLevel())) {
+      QLog.d("QZoneWebViewPlugin", 2, "isNetworkUrl do nothing");
+    }
+    return 5;
   }
   
   static void shareMiniProgramFromQzone(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
@@ -1006,20 +1027,22 @@ public class QZoneWebViewJsHandleLogic
   public static void showQzoneAppDownloadDialog(Context paramContext, WebViewPlugin.PluginRuntime paramPluginRuntime)
   {
     paramPluginRuntime = DialogUtil.a(paramContext, 0);
-    paramPluginRuntime.setMessage(paramContext.getString(2131719905));
-    paramPluginRuntime.setPositiveButton(paramContext.getString(2131691898), new QZoneWebViewJsHandleLogic.4(paramContext));
-    paramPluginRuntime.setNegativeButton(paramContext.getString(2131693296), new QZoneWebViewJsHandleLogic.5(paramPluginRuntime));
+    paramPluginRuntime.setMessage(paramContext.getString(2131719637));
+    paramPluginRuntime.setPositiveButton(paramContext.getString(2131691827), new QZoneWebViewJsHandleLogic.4(paramContext));
+    paramPluginRuntime.setNegativeButton(paramContext.getString(2131693250), new QZoneWebViewJsHandleLogic.5(paramPluginRuntime));
     try
     {
-      if (!paramPluginRuntime.isShowing()) {
+      if (!paramPluginRuntime.isShowing())
+      {
         paramPluginRuntime.show();
+        return;
       }
-      return;
     }
     catch (Exception paramContext)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("showQzoneAppDownloadDialog", 2, "mDialog.show() exception", paramContext);
+      if (QLog.isColorLevel()) {
+        QLog.e("showQzoneAppDownloadDialog", 2, "mDialog.show() exception", paramContext);
+      }
     }
   }
   
@@ -1033,61 +1056,50 @@ public class QZoneWebViewJsHandleLogic
   
   public static boolean supportJumpToQzone(Context paramContext, int paramInt)
   {
-    boolean bool2 = false;
-    Object localObject = null;
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo("com.qzone", 0);
-      boolean bool1 = bool2;
-      if (paramContext != null)
-      {
-        bool1 = bool2;
-        if (paramContext.versionCode >= paramInt) {
-          bool1 = true;
-        }
-      }
-      return bool1;
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      for (;;)
-      {
-        paramContext = localObject;
-      }
+      label15:
+      break label15;
     }
+    paramContext = null;
+    return (paramContext != null) && (paramContext.versionCode >= paramInt);
   }
   
   private static void updateFeedContainer(WebViewPlugin.PluginRuntime paramPluginRuntime, String... paramVarArgs)
   {
-    if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {}
-    do
+    if (paramVarArgs != null)
     {
-      for (;;)
-      {
+      if (paramVarArgs.length <= 0) {
         return;
-        try
+      }
+      try
+      {
+        if (new JSONObject(paramVarArgs[0]).getInt("height") <= 0)
         {
-          if (new JSONObject(paramVarArgs[0]).getInt("height") <= 0)
-          {
-            if (!(paramPluginRuntime.a().getParent() instanceof RelativeLayout)) {
-              continue;
-            }
+          if ((paramPluginRuntime.a().getParent() instanceof RelativeLayout)) {
             ((RelativeLayout)paramPluginRuntime.a().getParent()).setVisibility(8);
           }
         }
-        catch (JSONException paramPluginRuntime)
+        else if ((paramPluginRuntime.a().getParent() instanceof RelativeLayout))
         {
-          QLog.e("QZoneWebViewJsHandleLogic", 1, paramPluginRuntime, new Object[0]);
+          ((RelativeLayout)paramPluginRuntime.a().getParent()).setVisibility(0);
           return;
         }
       }
-    } while (!(paramPluginRuntime.a().getParent() instanceof RelativeLayout));
-    ((RelativeLayout)paramPluginRuntime.a().getParent()).setVisibility(0);
+      catch (JSONException paramPluginRuntime)
+      {
+        QLog.e("QZoneWebViewJsHandleLogic", 1, paramPluginRuntime, new Object[0]);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewJsHandleLogic
  * JD-Core Version:    0.7.0.1
  */

@@ -18,33 +18,48 @@ public class QLBQJsPlugin
     this.mPluginNameSpace = "qlbq";
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (!"qlbq".equals(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QLBQJsPlugin", 2, "handleJsRequest qlbqjs, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
-    }
-    try
+    if ((!TextUtils.isEmpty(paramString1)) && ("qlbq".equals(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-      if ("openGroupEmotion".equals(paramString3)) {
-        PublicFragmentActivity.a(this.mRuntime.a(), EmoticonGroupStoreFragment.class);
+      if (QLog.isColorLevel())
+      {
+        paramJsBridgeListener = new StringBuilder();
+        paramJsBridgeListener.append("handleJsRequest qlbqjs, url=");
+        paramJsBridgeListener.append(paramString1);
+        paramJsBridgeListener.append(", pkgName=");
+        paramJsBridgeListener.append(paramString2);
+        paramJsBridgeListener.append(", methodName=");
+        paramJsBridgeListener.append(paramString3);
+        QLog.d("QLBQJsPlugin", 2, paramJsBridgeListener.toString());
+      }
+      try
+      {
+        if ("openGroupEmotion".equals(paramString3)) {
+          PublicFragmentActivity.a(this.mRuntime.a(), EmoticonGroupStoreFragment.class);
+        }
+      }
+      catch (Throwable paramJsBridgeListener)
+      {
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append("handleJsRequest exception url=");
+        paramVarArgs.append(paramString1);
+        paramVarArgs.append(", pkgName=");
+        paramVarArgs.append(paramString2);
+        paramVarArgs.append(", methodName=");
+        paramVarArgs.append(paramString3);
+        paramVarArgs.append(", msg=");
+        paramVarArgs.append(paramJsBridgeListener.getMessage());
+        QLog.e("QLBQJsPlugin", 2, paramVarArgs.toString());
       }
       return true;
     }
-    catch (Throwable paramJsBridgeListener)
-    {
-      for (;;)
-      {
-        QLog.e("QLBQJsPlugin", 2, "handleJsRequest exception url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3 + ", msg=" + paramJsBridgeListener.getMessage());
-      }
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.QLBQJsPlugin
  * JD-Core Version:    0.7.0.1
  */

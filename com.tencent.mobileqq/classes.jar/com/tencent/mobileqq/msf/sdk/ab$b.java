@@ -17,21 +17,33 @@ public class ab$b
   
   public void run()
   {
-    if (("LongConn.OffPicUp".equalsIgnoreCase(this.b.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(this.b.getServiceCmd()))) {
-      QLog.d("MSF.D.RemoteServiceProxy", 1, "enter MonitorTaskWrapper.run(), appseq is " + this.b.getAppSeq());
+    if (("LongConn.OffPicUp".equalsIgnoreCase(this.b.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(this.b.getServiceCmd())))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("enter MonitorTaskWrapper.run(), appseq is ");
+      ((StringBuilder)localObject).append(this.b.getAppSeq());
+      QLog.d("MSF.D.RemoteServiceProxy", 1, ((StringBuilder)localObject).toString());
     }
     Object localObject = (ToServiceMsg)ab.e.get(Integer.valueOf(this.b.getAppSeq()));
     if ((localObject != null) && (((ToServiceMsg)localObject).getAttribute("appTimeoutReq", Integer.valueOf(-1)) == this.b.getAttribute("appTimeoutReq", Integer.valueOf(-2))) && ((ToServiceMsg)ab.e.remove(Integer.valueOf(this.b.getAppSeq())) != null))
     {
-      QLog.d("MSF.D.RemoteServiceProxy", 1, "found timeout req, appseq is " + this.b.getAppSeq());
-      localObject = this.a.a(this.b, this.b.getServiceName() + " timeout");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("found timeout req, appseq is ");
+      ((StringBuilder)localObject).append(this.b.getAppSeq());
+      QLog.d("MSF.D.RemoteServiceProxy", 1, ((StringBuilder)localObject).toString());
+      localObject = this.a;
+      ToServiceMsg localToServiceMsg = this.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.b.getServiceName());
+      localStringBuilder.append(" timeout");
+      localObject = ((ab)localObject).a(localToServiceMsg, localStringBuilder.toString());
       this.a.a(this.b, (FromServiceMsg)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.ab.b
  * JD-Core Version:    0.7.0.1
  */

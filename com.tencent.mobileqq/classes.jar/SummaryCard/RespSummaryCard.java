@@ -6,6 +6,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -472,254 +473,329 @@ public final class RespSummaryCard
     paramJceOutputStream.write(this.iFace, 0);
     paramJceOutputStream.write(this.bSex, 1);
     paramJceOutputStream.write(this.bAge, 2);
-    if (this.strNick != null) {
-      paramJceOutputStream.write(this.strNick, 3);
+    Object localObject = this.strNick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.strRemark != null) {
-      paramJceOutputStream.write(this.strRemark, 4);
+    localObject = this.strRemark;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.iLevel, 5);
-    if (this.strProvince != null) {
-      paramJceOutputStream.write(this.strProvince, 6);
+    localObject = this.strProvince;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.strCity != null) {
-      paramJceOutputStream.write(this.strCity, 7);
+    localObject = this.strCity;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.strSign != null) {
-      paramJceOutputStream.write(this.strSign, 8);
+    localObject = this.strSign;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.strGroupName != null) {
-      paramJceOutputStream.write(this.strGroupName, 9);
+    localObject = this.strGroupName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.strGroupNick != null) {
-      paramJceOutputStream.write(this.strGroupNick, 10);
+    localObject = this.strGroupNick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.strMobile != null) {
-      paramJceOutputStream.write(this.strMobile, 11);
+    localObject = this.strMobile;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
-    if (this.strContactName != null) {
-      paramJceOutputStream.write(this.strContactName, 12);
+    localObject = this.strContactName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
     paramJceOutputStream.write(this.ulShowControl, 13);
-    if (this.strQzoneFeedsDesc != null) {
-      paramJceOutputStream.write(this.strQzoneFeedsDesc, 14);
+    localObject = this.strQzoneFeedsDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
-    if (this.oLatestPhotos != null) {
-      paramJceOutputStream.write(this.oLatestPhotos, 15);
+    localObject = this.oLatestPhotos;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 15);
     }
     paramJceOutputStream.write(this.iVoteCount, 16);
     paramJceOutputStream.write(this.iLastestVoteCount, 17);
     paramJceOutputStream.write(this.bValid4Vote, 18);
-    if (this.strCountry != null) {
-      paramJceOutputStream.write(this.strCountry, 19);
+    localObject = this.strCountry;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
-    if (this.strStatus != null) {
-      paramJceOutputStream.write(this.strStatus, 20);
+    localObject = this.strStatus;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 20);
     }
-    if (this.strAutoRemark != null) {
-      paramJceOutputStream.write(this.strAutoRemark, 21);
+    localObject = this.strAutoRemark;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 21);
     }
     paramJceOutputStream.write(this.lCacheControl, 22);
     paramJceOutputStream.write(this.lUIN, 23);
     paramJceOutputStream.write(this.iPhotoCount, 24);
     paramJceOutputStream.write(this.eAddOption, 25);
-    if (this.vAddQuestion != null) {
-      paramJceOutputStream.write(this.vAddQuestion, 26);
+    localObject = this.vAddQuestion;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 26);
     }
-    if (this.vSeed != null) {
-      paramJceOutputStream.write(this.vSeed, 27);
+    localObject = this.vSeed;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 27);
     }
-    if (this.strDiscussName != null) {
-      paramJceOutputStream.write(this.strDiscussName, 28);
+    localObject = this.strDiscussName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 28);
     }
-    if (this.stVipInfo != null) {
-      paramJceOutputStream.write(this.stVipInfo, 29);
+    localObject = this.stVipInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 29);
     }
-    if (this.strShowName != null) {
-      paramJceOutputStream.write(this.strShowName, 30);
+    localObject = this.strShowName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 30);
     }
-    if (this.stVoiceInfo != null) {
-      paramJceOutputStream.write(this.stVoiceInfo, 31);
+    localObject = this.stVoiceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 31);
     }
-    if (this.vRichSign != null) {
-      paramJceOutputStream.write(this.vRichSign, 32);
+    localObject = this.vRichSign;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 32);
     }
     paramJceOutputStream.write(this.uSignModifyTime, 33);
-    if (this.vRespLastGameInfo != null) {
-      paramJceOutputStream.write(this.vRespLastGameInfo, 34);
+    localObject = this.vRespLastGameInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 34);
     }
     paramJceOutputStream.write(this.lUserFlag, 35);
     paramJceOutputStream.write(this.uLoginDays, 36);
-    if (this.strLoginDesc != null) {
-      paramJceOutputStream.write(this.strLoginDesc, 37);
+    localObject = this.strLoginDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 37);
     }
     paramJceOutputStream.write(this.uTemplateId, 38);
     paramJceOutputStream.write(this.uQQMasterLoginDays, 39);
     paramJceOutputStream.write(this.ulFaceAddonId, 40);
-    if (this.vRespTemplateInfo != null) {
-      paramJceOutputStream.write(this.vRespTemplateInfo, 41);
+    localObject = this.vRespTemplateInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 41);
     }
-    if (this.strRespMusicInfo != null) {
-      paramJceOutputStream.write(this.strRespMusicInfo, 42);
+    localObject = this.strRespMusicInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 42);
     }
-    if (this.vRespStarInfo != null) {
-      paramJceOutputStream.write(this.vRespStarInfo, 43);
+    localObject = this.vRespStarInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 43);
     }
-    if (this.stDiamonds != null) {
-      paramJceOutputStream.write(this.stDiamonds, 44);
+    localObject = this.stDiamonds;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 44);
     }
     paramJceOutputStream.write(this.uAccelerateMultiple, 45);
-    if (this.vvRespServices != null) {
-      paramJceOutputStream.write(this.vvRespServices, 46);
+    localObject = this.vvRespServices;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 46);
     }
-    if (this.strSpaceName != null) {
-      paramJceOutputStream.write(this.strSpaceName, 47);
+    localObject = this.strSpaceName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 47);
     }
-    if (this.stDateCard != null) {
-      paramJceOutputStream.write(this.stDateCard, 48);
+    localObject = this.stDateCard;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 48);
     }
     paramJceOutputStream.write(this.iBirthday, 49);
-    if (this.stQCallInfo != null) {
-      paramJceOutputStream.write(this.stQCallInfo, 50);
+    localObject = this.stQCallInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 50);
     }
-    if (this.stGiftInfo != null) {
-      paramJceOutputStream.write(this.stGiftInfo, 51);
+    localObject = this.stGiftInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 51);
     }
-    if (this.stPanSocialInfo != null) {
-      paramJceOutputStream.write(this.stPanSocialInfo, 52);
+    localObject = this.stPanSocialInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 52);
     }
-    if (this.stVideoInfo != null) {
-      paramJceOutputStream.write(this.stVideoInfo, 53);
+    localObject = this.stVideoInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 53);
     }
-    if (this.vTempChatSig != null) {
-      paramJceOutputStream.write(this.vTempChatSig, 54);
+    localObject = this.vTempChatSig;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 54);
     }
-    if (this.stInterestTag != null) {
-      paramJceOutputStream.write(this.stInterestTag, 55);
+    localObject = this.stInterestTag;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 55);
     }
-    if (this.stUserFeed != null) {
-      paramJceOutputStream.write(this.stUserFeed, 56);
+    localObject = this.stUserFeed;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 56);
     }
-    if (this.stQiqiVideoInfo != null) {
-      paramJceOutputStream.write(this.stQiqiVideoInfo, 57);
+    localObject = this.stQiqiVideoInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 57);
     }
-    if (this.stPrivInfo != null) {
-      paramJceOutputStream.write(this.stPrivInfo, 58);
+    localObject = this.stPrivInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 58);
     }
-    if (this.stApollo != null) {
-      paramJceOutputStream.write(this.stApollo, 59);
+    localObject = this.stApollo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 59);
     }
-    if (this.stAddFrdSrcInfo != null) {
-      paramJceOutputStream.write(this.stAddFrdSrcInfo, 60);
+    localObject = this.stAddFrdSrcInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 60);
     }
-    if (this.stBindPhoneInfo != null) {
-      paramJceOutputStream.write(this.stBindPhoneInfo, 61);
+    localObject = this.stBindPhoneInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 61);
     }
-    if (this.vVisitingCardInfo != null) {
-      paramJceOutputStream.write(this.vVisitingCardInfo, 62);
+    localObject = this.vVisitingCardInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 62);
     }
-    if (this.strVoteLimitedNotice != null) {
-      paramJceOutputStream.write(this.strVoteLimitedNotice, 63);
+    localObject = this.strVoteLimitedNotice;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 63);
     }
     paramJceOutputStream.write(this.bHaveVotedCnt, 64);
     paramJceOutputStream.write(this.bAvailVoteCnt, 65);
-    if (this.strEIMBindPhoneNum != null) {
-      paramJceOutputStream.write(this.strEIMBindPhoneNum, 66);
+    localObject = this.strEIMBindPhoneNum;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 66);
     }
-    if (this.strEIMId != null) {
-      paramJceOutputStream.write(this.strEIMId, 67);
+    localObject = this.strEIMId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 67);
     }
-    if (this.strEmail != null) {
-      paramJceOutputStream.write(this.strEmail, 68);
+    localObject = this.strEmail;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 68);
     }
     paramJceOutputStream.write(this.uCareer, 69);
-    if (this.strPersonal != null) {
-      paramJceOutputStream.write(this.strPersonal, 70);
+    localObject = this.strPersonal;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 70);
     }
-    if (this.vHotChatInfo != null) {
-      paramJceOutputStream.write(this.vHotChatInfo, 71);
+    localObject = this.vHotChatInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 71);
     }
-    if (this.stOlympicInfo != null) {
-      paramJceOutputStream.write(this.stOlympicInfo, 72);
+    localObject = this.stOlympicInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 72);
     }
-    if (this.stCoverInfo != null) {
-      paramJceOutputStream.write(this.stCoverInfo, 73);
+    localObject = this.stCoverInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 73);
     }
-    if (this.stNowBroadcastInfo != null) {
-      paramJceOutputStream.write(this.stNowBroadcastInfo, 74);
+    localObject = this.stNowBroadcastInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 74);
     }
-    if (this.stEimInfo != null) {
-      paramJceOutputStream.write(this.stEimInfo, 75);
+    localObject = this.stEimInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 75);
     }
-    if (this.stVideoHeadInfo != null) {
-      paramJceOutputStream.write(this.stVideoHeadInfo, 78);
+    localObject = this.stVideoHeadInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 78);
     }
     paramJceOutputStream.write(this.iContactNotBindQQ, 79);
-    if (this.stMedalWallInfo != null) {
-      paramJceOutputStream.write(this.stMedalWallInfo, 80);
+    localObject = this.stMedalWallInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 80);
     }
-    if (this.vvRespServicesBigOrder != null) {
-      paramJceOutputStream.write(this.vvRespServicesBigOrder, 81);
+    localObject = this.vvRespServicesBigOrder;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 81);
     }
-    if (this.vResp0x5ebInfo != null) {
-      paramJceOutputStream.write(this.vResp0x5ebInfo, 82);
+    localObject = this.vResp0x5ebInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 82);
     }
-    if (this.stNearbyGodInfo != null) {
-      paramJceOutputStream.write(this.stNearbyGodInfo, 83);
+    localObject = this.stNearbyGodInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 83);
     }
-    if (this.vRespQQStoryInfo != null) {
-      paramJceOutputStream.write(this.vRespQQStoryInfo, 84);
+    localObject = this.vRespQQStoryInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 84);
     }
-    if (this.vRespCustomLabelInfo != null) {
-      paramJceOutputStream.write(this.vRespCustomLabelInfo, 85);
+    localObject = this.vRespCustomLabelInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 85);
     }
-    if (this.vPraiseList != null) {
-      paramJceOutputStream.write(this.vPraiseList, 86);
+    localObject = this.vPraiseList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 86);
     }
-    if (this.stCampusCircleInfo != null) {
-      paramJceOutputStream.write(this.stCampusCircleInfo, 87);
+    localObject = this.stCampusCircleInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 87);
     }
-    if (this.stTimInfo != null) {
-      paramJceOutputStream.write(this.stTimInfo, 88);
+    localObject = this.stTimInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 88);
     }
-    if (this.stQimInfo != null) {
-      paramJceOutputStream.write(this.stQimInfo, 89);
+    localObject = this.stQimInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 89);
     }
-    if (this.stHeartInfo != null) {
-      paramJceOutputStream.write(this.stHeartInfo, 90);
+    localObject = this.stHeartInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 90);
     }
-    if (this.vQzoneCoverInfo != null) {
-      paramJceOutputStream.write(this.vQzoneCoverInfo, 91);
+    localObject = this.vQzoneCoverInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 91);
     }
-    if (this.vNearbyTaskInfo != null) {
-      paramJceOutputStream.write(this.vNearbyTaskInfo, 92);
+    localObject = this.vNearbyTaskInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 92);
     }
-    if (this.vNowInfo != null) {
-      paramJceOutputStream.write(this.vNowInfo, 93);
+    localObject = this.vNowInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 93);
     }
     paramJceOutputStream.write(this.uFriendGroupId, 94);
-    if (this.vCommLabel != null) {
-      paramJceOutputStream.write(this.vCommLabel, 95);
+    localObject = this.vCommLabel;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 95);
     }
-    if (this.vExtendCard != null) {
-      paramJceOutputStream.write(this.vExtendCard, 96);
+    localObject = this.vExtendCard;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 96);
     }
-    if (this.strQzoneHeader != null) {
-      paramJceOutputStream.write(this.strQzoneHeader, 97);
+    localObject = this.strQzoneHeader;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 97);
     }
-    if (this.mapQzoneEx != null) {
-      paramJceOutputStream.write(this.mapQzoneEx, 98);
+    localObject = this.mapQzoneEx;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 98);
     }
-    if (this.vRespKandianInfo != null) {
-      paramJceOutputStream.write(this.vRespKandianInfo, 99);
+    localObject = this.vRespKandianInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 99);
     }
-    if (this.stWeishiInfo != null) {
-      paramJceOutputStream.write(this.stWeishiInfo, 100);
+    localObject = this.stWeishiInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 100);
     }
     paramJceOutputStream.write(this.uRichCardNameVer, 101);
     paramJceOutputStream.write(this.uCurMulType, 102);
-    if (this.vLongNickTopicInfo != null) {
-      paramJceOutputStream.write(this.vLongNickTopicInfo, 103);
+    localObject = this.vLongNickTopicInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 103);
     }
     paramJceOutputStream.write(this.i0x6d4Success, 104);
   }

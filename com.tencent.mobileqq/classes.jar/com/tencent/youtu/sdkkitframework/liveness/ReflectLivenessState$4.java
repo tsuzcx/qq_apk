@@ -10,12 +10,15 @@ class ReflectLivenessState$4
   {
     put("process_action", "failed");
     put("error_code", Integer.valueOf(5242883));
-    put("message", CommonUtils.makeMessageJson(5242883, "msg_param_error", "Init YTReflect SDK failed with " + this.val$initR));
+    paramReflectLivenessState = new StringBuilder();
+    paramReflectLivenessState.append("Init YTReflect SDK failed with ");
+    paramReflectLivenessState.append(this.val$initR);
+    put("message", CommonUtils.makeMessageJson(5242883, "msg_param_error", paramReflectLivenessState.toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.ReflectLivenessState.4
  * JD-Core Version:    0.7.0.1
  */

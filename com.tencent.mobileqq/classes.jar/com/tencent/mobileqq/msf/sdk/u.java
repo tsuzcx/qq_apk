@@ -23,20 +23,28 @@ class u
   
   public boolean addServicePushMsg(FromServiceMsg paramFromServiceMsg)
   {
-    if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getServiceCmd() == null)) {
-      return false;
-    }
-    boolean bool;
-    if (v.c.contains(paramFromServiceMsg.getServiceCmd()))
+    if (paramFromServiceMsg != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadSplit", 2, "addServicePushMsg, high priority added, " + paramFromServiceMsg.getServiceCmd());
+      if (paramFromServiceMsg.getServiceCmd() == null) {
+        return false;
       }
-      paramFromServiceMsg.extraData.putInt(v.a, getQueueSize());
-      bool = this.highPriorityMessagePairs.add(new MsfMessagePair(null, paramFromServiceMsg));
-    }
-    for (;;)
-    {
+      boolean bool;
+      if (v.c.contains(paramFromServiceMsg.getServiceCmd()))
+      {
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder();
+          ((StringBuilder)???).append("addServicePushMsg, high priority added, ");
+          ((StringBuilder)???).append(paramFromServiceMsg.getServiceCmd());
+          QLog.d("ThreadSplit", 2, ((StringBuilder)???).toString());
+        }
+        paramFromServiceMsg.extraData.putInt(v.a, getQueueSize());
+        bool = this.highPriorityMessagePairs.add(new MsfMessagePair(null, paramFromServiceMsg));
+      }
+      else
+      {
+        bool = this.serviceRespMessagePairs.add(new MsfMessagePair(null, paramFromServiceMsg));
+      }
       if (paramFromServiceMsg.getServiceCmd().equals("SharpSvr.s2c")) {
         o.a().a(o.a.e, paramFromServiceMsg.getWupBuffer(), 0);
       }
@@ -45,9 +53,9 @@ class u
         this.syncQueueLock.notify();
         c.a().onRespToApp(null, paramFromServiceMsg);
         return bool;
-        bool = this.serviceRespMessagePairs.add(new MsfMessagePair(null, paramFromServiceMsg));
       }
     }
+    return false;
   }
   
   public boolean addServiceRespMsg(MsfMessagePair paramMsfMessagePair)
@@ -55,19 +63,26 @@ class u
     boolean bool;
     if ((paramMsfMessagePair.fromServiceMsg != null) && (paramMsfMessagePair.fromServiceMsg.getServiceCmd() != null) && (v.c.contains(paramMsfMessagePair.fromServiceMsg.getServiceCmd())))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ThreadSplit", 2, "addServiceRespMsg, high priority added, " + paramMsfMessagePair.fromServiceMsg.getServiceCmd());
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("addServiceRespMsg, high priority added, ");
+        ((StringBuilder)???).append(paramMsfMessagePair.fromServiceMsg.getServiceCmd());
+        QLog.d("ThreadSplit", 2, ((StringBuilder)???).toString());
       }
       paramMsfMessagePair.fromServiceMsg.extraData.putInt(v.a, getQueueSize());
       paramMsfMessagePair.fromServiceMsg.extraData.putLong(v.b, System.currentTimeMillis());
       bool = this.highPriorityMessagePairs.add(paramMsfMessagePair);
+    }
+    else
+    {
+      bool = this.serviceRespMessagePairs.add(paramMsfMessagePair);
     }
     synchronized (this.syncQueueLock)
     {
       this.syncQueueLock.notify();
       c.a().onRespToApp(paramMsfMessagePair.toServiceMsg, paramMsfMessagePair.fromServiceMsg);
       return bool;
-      bool = this.serviceRespMessagePairs.add(paramMsfMessagePair);
     }
   }
   
@@ -120,14 +135,15 @@ class u
         if ((this.serviceRespMessagePairs.size() == 0) && (this.highPriorityMessagePairs.size() == 0)) {
           this.syncQueueLock.wait();
         }
-        label34:
-        return;
       }
     }
     catch (InterruptedException localInterruptedException)
     {
-      break label34;
+      label41:
+      break label41;
     }
+    return;
+    throw localObject2;
   }
   
   public void setBootBroadcastName(String paramString)
@@ -137,7 +153,7 @@ class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.u
  * JD-Core Version:    0.7.0.1
  */

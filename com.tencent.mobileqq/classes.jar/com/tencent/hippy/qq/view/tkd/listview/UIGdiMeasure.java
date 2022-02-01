@@ -29,32 +29,34 @@ public class UIGdiMeasure
     }
     float[] arrayOfFloat = new float[m];
     this.mPaint.getTextWidths(paramString.subSequence(0, m).toString(), arrayOfFloat);
-    int i = 0;
     int j = 0;
-    int k = i;
-    float f2;
-    if (j < m)
+    int i = 0;
+    int k;
+    for (;;)
     {
-      i = (int)(i + arrayOfFloat[j]);
-      if (i > paramInt) {
-        k = i;
-      }
-    }
-    else if (paramArrayOfFloat != null)
-    {
-      f2 = k;
+      k = i;
       if (j >= m) {
-        break label150;
+        break;
       }
-    }
-    label150:
-    for (f1 = arrayOfFloat[j];; f1 = 0.0F)
-    {
-      paramArrayOfFloat[0] = (f2 - f1);
-      return j;
+      i = (int)(i + arrayOfFloat[j]);
+      if (i > paramInt)
+      {
+        k = i;
+        break;
+      }
       j += 1;
-      break;
     }
+    if (paramArrayOfFloat != null)
+    {
+      float f2 = k;
+      if (j < m) {
+        f1 = arrayOfFloat[j];
+      } else {
+        f1 = 0.0F;
+      }
+      paramArrayOfFloat[0] = (f2 - f1);
+    }
+    return j;
   }
   
   public float getCharHeight()
@@ -94,7 +96,7 @@ public class UIGdiMeasure
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.UIGdiMeasure
  * JD-Core Version:    0.7.0.1
  */

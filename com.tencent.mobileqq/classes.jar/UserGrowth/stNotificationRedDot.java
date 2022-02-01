@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stNotificationRedDot
   extends JceStruct
 {
-  static int cache_type = 0;
+  static int cache_type;
   public String text = "";
   public int type = 0;
   
@@ -28,14 +28,15 @@ public final class stNotificationRedDot
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);
-    if (this.text != null) {
-      paramJceOutputStream.write(this.text, 1);
+    String str = this.text;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stNotificationRedDot
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.model;
 
 import android.content.Context;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.bubble.BubbleInfo;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.qphone.base.util.QLog;
@@ -20,29 +20,33 @@ class ChatBackgroundManager$3
   
   public void a(boolean paramBoolean, Vector<Integer> paramVector)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
+    if (paramBoolean)
     {
-      paramVector = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
-      if ((paramVector != null) && (paramVector.a() != null) && (paramVector.a().a != null))
+      paramVector = this.jdField_a_of_type_AndroidContentContext;
+      if ((paramVector != null) && ((paramVector instanceof BaseActivity)))
       {
-        ChatXListView localChatXListView = paramVector.a().a;
-        int i = localChatXListView.getFirstVisiblePosition();
-        int j = localChatXListView.getLastVisiblePosition();
-        while (i <= j)
+        paramVector = ((BaseActivity)paramVector).getChatFragment();
+        if ((paramVector != null) && (paramVector.a() != null) && (paramVector.a().a != null))
         {
-          Object localObject = AIOUtils.a(localChatXListView, i);
-          if ((localObject != null) && (((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof BaseBubbleBuilder.ViewHolder)))
+          ChatXListView localChatXListView = paramVector.a().a;
+          int i = localChatXListView.getFirstVisiblePosition();
+          int j = localChatXListView.getLastVisiblePosition();
+          while (i <= j)
           {
-            localObject = (BaseBubbleBuilder.ViewHolder)((View)localObject).getTag();
-            if ((((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo != null) && (!((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.a) && (((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.b))
+            Object localObject = AIOUtils.a(localChatXListView, i);
+            if ((localObject != null) && (((View)localObject).getTag() != null) && ((((View)localObject).getTag() instanceof BaseBubbleBuilder.ViewHolder)))
             {
-              if (QLog.isColorLevel()) {
-                QLog.d("ChatBackgroundManager", 2, "BgThemeColorExtractListener.onBgThemeColorExtracted: success=true, refresh AIO.");
+              localObject = (BaseBubbleBuilder.ViewHolder)((View)localObject).getTag();
+              if ((((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo != null) && (!((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.a) && (((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo.b))
+              {
+                if (QLog.isColorLevel()) {
+                  QLog.d("ChatBackgroundManager", 2, "BgThemeColorExtractListener.onBgThemeColorExtracted: success=true, refresh AIO.");
+                }
+                paramVector.a().a(((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage, 1);
               }
-              paramVector.a().a(((BaseBubbleBuilder.ViewHolder)localObject).jdField_a_of_type_ComTencentMobileqqDataChatMessage, 1);
             }
+            i += 1;
           }
-          i += 1;
         }
       }
     }
@@ -50,7 +54,7 @@ class ChatBackgroundManager$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.model.ChatBackgroundManager.3
  * JD-Core Version:    0.7.0.1
  */

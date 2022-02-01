@@ -23,95 +23,106 @@ class TroopHWFileDownloadManager$5
   
   public void onDownloadSDKTaskStateChanged(TMAssistantDownloadClient paramTMAssistantDownloadClient, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    int j = 6;
-    String str = "";
-    Object localObject;
+    int j = 4;
+    Object localObject2 = "";
     int i;
     if (paramInt1 == 4)
     {
-      str = (String)TroopHWFileDownloadManager.b(this.a).get(paramString1);
-      localObject = "";
+      localObject1 = (String)TroopHWFileDownloadManager.b(this.a).get(paramString1);
       try
       {
         paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.getDownloadTaskState(paramString1);
-        if (paramTMAssistantDownloadClient != null) {
-          break label153;
+        if (paramTMAssistantDownloadClient == null) {
+          paramTMAssistantDownloadClient = null;
+        } else {
+          paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.mSavePath;
         }
-        paramTMAssistantDownloadClient = null;
       }
       catch (Exception paramTMAssistantDownloadClient)
       {
-        for (;;)
-        {
-          QLog.e(TroopHWFileDownloadManager.a, 2, paramTMAssistantDownloadClient.toString());
-          paramTMAssistantDownloadClient = (TMAssistantDownloadClient)localObject;
-          continue;
-          QLog.e(TroopHWFileDownloadManager.a, 2, "file renameTo faild frompath:" + paramTMAssistantDownloadClient + " topath:" + str);
-          i = 0;
-        }
-        QLog.e(TroopHWFileDownloadManager.a, 2, "file not exist path:" + paramTMAssistantDownloadClient);
+        QLog.e(TroopHWFileDownloadManager.a, 2, paramTMAssistantDownloadClient.toString());
+        paramTMAssistantDownloadClient = (TMAssistantDownloadClient)localObject2;
       }
       if (!TextUtils.isEmpty(paramTMAssistantDownloadClient))
       {
-        localObject = new File(paramTMAssistantDownloadClient);
-        if (((File)localObject).exists()) {
-          if (((File)localObject).renameTo(new File(str)))
+        localObject2 = new File(paramTMAssistantDownloadClient);
+        StringBuilder localStringBuilder;
+        if (((File)localObject2).exists())
+        {
+          if (((File)localObject2).renameTo(new File((String)localObject1)))
           {
             i = 1;
-            if (i != 0) {
-              break label265;
-            }
-            paramTMAssistantDownloadClient = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.a(this.a).get(paramString1);
-            if (paramTMAssistantDownloadClient != null) {
-              paramTMAssistantDownloadClient.a(paramString1, 6, 0, "", "");
-            }
-            TroopHWFileDownloadManager.a(this.a).remove(paramString1);
-            TroopHWFileDownloadManager.b(this.a).remove(paramString1);
+            break label228;
           }
+          localObject2 = TroopHWFileDownloadManager.a;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("file renameTo faild frompath:");
+          localStringBuilder.append(paramTMAssistantDownloadClient);
+          localStringBuilder.append(" topath:");
+          localStringBuilder.append((String)localObject1);
+          QLog.e((String)localObject2, 2, localStringBuilder.toString());
+        }
+        else
+        {
+          localObject2 = TroopHWFileDownloadManager.a;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("file not exist path:");
+          localStringBuilder.append(paramTMAssistantDownloadClient);
+          QLog.e((String)localObject2, 2, localStringBuilder.toString());
         }
       }
-    }
-    label153:
-    do
-    {
-      return;
-      paramTMAssistantDownloadClient = paramTMAssistantDownloadClient.mSavePath;
-      break;
-      for (;;)
+      else
       {
-        i = 0;
-        break;
         QLog.e(TroopHWFileDownloadManager.a, 2, "currentPath is null");
       }
-      paramTMAssistantDownloadClient = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.a(this.a).get(paramString1);
-    } while (paramTMAssistantDownloadClient == null);
-    label265:
-    switch (paramInt1)
-    {
-    default: 
-      paramInt1 = 0;
+      i = 0;
+      label228:
+      paramTMAssistantDownloadClient = (TMAssistantDownloadClient)localObject1;
+      if (i == 0)
+      {
+        paramTMAssistantDownloadClient = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.a(this.a).get(paramString1);
+        if (paramTMAssistantDownloadClient != null) {
+          paramTMAssistantDownloadClient.a(paramString1, 6, 0, "", "");
+        }
+        TroopHWFileDownloadManager.a(this.a).remove(paramString1);
+        TroopHWFileDownloadManager.b(this.a).remove(paramString1);
+      }
     }
-    for (;;)
+    else
     {
-      paramTMAssistantDownloadClient.a(paramString1, paramInt1, paramInt2, paramString2, str);
-      return;
-      paramInt1 = 2;
-      continue;
-      TroopHWFileDownloadManager.a(this.a).remove(paramString1);
-      TroopHWFileDownloadManager.b(this.a).remove(paramString1);
-      paramInt1 = j;
-      continue;
-      paramInt1 = 3;
-      TroopHWFileDownloadManager.a(this.a).remove(paramString1);
-      TroopHWFileDownloadManager.b(this.a).remove(paramString1);
-      continue;
-      paramInt1 = 4;
-      continue;
-      paramInt1 = 1;
-      continue;
-      paramInt1 = 5;
-      TroopHWFileDownloadManager.a(this.a).remove(paramString1);
-      TroopHWFileDownloadManager.b(this.a).remove(paramString1);
+      paramTMAssistantDownloadClient = "";
+    }
+    Object localObject1 = (TroopHWFileDownloadManager.OnDownloadStateListener)TroopHWFileDownloadManager.a(this.a).get(paramString1);
+    if (localObject1 != null)
+    {
+      i = j;
+      switch (paramInt1)
+      {
+      default: 
+        i = 0;
+        break;
+      case 6: 
+        TroopHWFileDownloadManager.a(this.a).remove(paramString1);
+        TroopHWFileDownloadManager.b(this.a).remove(paramString1);
+        i = 5;
+        break;
+      case 5: 
+        TroopHWFileDownloadManager.a(this.a).remove(paramString1);
+        TroopHWFileDownloadManager.b(this.a).remove(paramString1);
+        i = 6;
+        break;
+      case 4: 
+        TroopHWFileDownloadManager.a(this.a).remove(paramString1);
+        TroopHWFileDownloadManager.b(this.a).remove(paramString1);
+        i = 3;
+        break;
+      case 2: 
+        i = 2;
+        break;
+      case 1: 
+        i = 1;
+      }
+      ((TroopHWFileDownloadManager.OnDownloadStateListener)localObject1).a(paramString1, i, paramInt2, paramString2, paramTMAssistantDownloadClient);
     }
   }
   
@@ -119,7 +130,7 @@ class TroopHWFileDownloadManager$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWFileDownloadManager.5
  * JD-Core Version:    0.7.0.1
  */

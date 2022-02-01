@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.vas.ipc.remote;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.biz.pubaccount.api.IPublicAccountObserver.OnCallback;
 import eipc.EIPCModule;
 import eipc.EIPCResult;
 
 class LiveDelivery$4
-  extends PublicAccountObserver
+  extends IPublicAccountObserver.OnCallback
 {
   LiveDelivery$4(LiveDelivery paramLiveDelivery, EIPCModule paramEIPCModule, int paramInt) {}
   
@@ -22,7 +22,7 @@ class LiveDelivery$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ipc.remote.LiveDelivery.4
  * JD-Core Version:    0.7.0.1
  */

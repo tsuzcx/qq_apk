@@ -12,9 +12,14 @@ class PeakJceServiceBase$1
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("PeakJceServiceBase", 2, "req cmd: " + (String)localObject);
+    localObject = this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getServiceCmd();
+    StringBuilder localStringBuilder1;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("req cmd: ");
+      localStringBuilder1.append((String)localObject);
+      QLog.d("PeakJceServiceBase", 2, localStringBuilder1.toString());
     }
     if ("MessageSvc.PbSendMsg".equalsIgnoreCase((String)localObject))
     {
@@ -34,9 +39,13 @@ class PeakJceServiceBase$1
     catch (Exception localException)
     {
       localException.printStackTrace();
-      if (QLog.isColorLevel()) {
-        QLog.e("PeakJceServiceBase", 2, "handleRequest Exception. cmd = " + (String)localObject, localException);
+      if (!QLog.isColorLevel()) {
+        break label261;
       }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("handleRequest Exception. cmd = ");
+      localStringBuilder2.append((String)localObject);
+      QLog.e("PeakJceServiceBase", 2, localStringBuilder2.toString(), localException);
       localObject = new FromServiceMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getUin(), (String)localObject);
       ((FromServiceMsg)localObject).setMsgFail();
       this.this$0.a(false, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, (FromServiceMsg)localObject, localException);
@@ -44,18 +53,24 @@ class PeakJceServiceBase$1
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PeakJceServiceBase", 2, "handleRequest OutOfMemoryError. cmd = " + (String)localObject);
-      }
-      localObject = new FromServiceMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getUin(), (String)localObject);
-      ((FromServiceMsg)localObject).setMsgFail();
-      this.this$0.a(false, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, (FromServiceMsg)localObject, null);
+      label129:
+      break label129;
     }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("handleRequest OutOfMemoryError. cmd = ");
+      localStringBuilder1.append((String)localObject);
+      QLog.d("PeakJceServiceBase", 2, localStringBuilder1.toString());
+    }
+    localObject = new FromServiceMsg(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getUin(), (String)localObject);
+    ((FromServiceMsg)localObject).setMsgFail();
+    this.this$0.a(false, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, (FromServiceMsg)localObject, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.PeakJceServiceBase.1
  * JD-Core Version:    0.7.0.1
  */

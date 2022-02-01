@@ -5,8 +5,8 @@ import java.text.SimpleDateFormat;
 
 public class TimeUtil
 {
-  private static long mCpuTime = 0L;
-  private static long mServerTime = 0L;
+  private static long mCpuTime;
+  private static long mServerTime;
   
   public static String convertTimestampToDate(long paramLong, String paramString)
   {
@@ -24,21 +24,22 @@ public class TimeUtil
   
   public static long getServerCurTime()
   {
-    if (mServerTime <= 0L) {
+    long l = mServerTime;
+    if (l <= 0L) {
       return System.currentTimeMillis();
     }
-    return mServerTime + (SystemClock.elapsedRealtime() - mCpuTime);
+    return l + (SystemClock.elapsedRealtime() - mCpuTime);
   }
   
   public static void setServerUTCTime(long paramLong)
   {
-    mServerTime = 1000L * paramLong;
+    mServerTime = paramLong * 1000L;
     mCpuTime = SystemClock.elapsedRealtime();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.TimeUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -15,20 +15,28 @@ class PtvTemplateManager$4$1
   
   public void onResp(NetResp paramNetResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PtvTemplateManager", 2, "onResp url: " + this.a.a.resurl + " resultcode: " + paramNetResp.mHttpCode);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResp url: ");
+      localStringBuilder.append(this.a.a.resurl);
+      localStringBuilder.append(" resultcode: ");
+      localStringBuilder.append(paramNetResp.mHttpCode);
+      QLog.i("PtvTemplateManager", 2, localStringBuilder.toString());
     }
     this.a.a.usable = this.a.this$0.a(this.a.a);
-    if (this.a.a.usable) {}
-    try
-    {
-      ZipUtils.unZipFile(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.a.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (IOException paramNetResp)
-    {
-      while (!QLog.isColorLevel()) {}
-      paramNetResp.printStackTrace();
+    if (this.a.a.usable) {
+      try
+      {
+        ZipUtils.unZipFile(new File(PtvTemplateManager.jdField_a_of_type_JavaIoFile, this.a.a.name), PtvTemplateManager.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      catch (IOException paramNetResp)
+      {
+        if (QLog.isColorLevel()) {
+          paramNetResp.printStackTrace();
+        }
+      }
     }
   }
   
@@ -36,7 +44,7 @@ class PtvTemplateManager$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.PtvTemplateManager.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -30,21 +30,22 @@ public class QCircleReportOutboxTaskCacheData
   
   public void writeTo(ContentValues paramContentValues)
   {
-    if (this.mTask != null)
+    Object localObject = this.mTask;
+    if (localObject != null)
     {
-      paramContentValues.put("cache_key", this.mTask.getCacheKey());
-      Parcel localParcel = Parcel.obtain();
-      localParcel.setDataPosition(0);
-      ParcelableWrapper.writeDataToParcel(localParcel, 0, this.mTask);
-      byte[] arrayOfByte = localParcel.marshall();
-      localParcel.recycle();
+      paramContentValues.put("cache_key", ((QCircleReportOutboxTask)localObject).getCacheKey());
+      localObject = Parcel.obtain();
+      ((Parcel)localObject).setDataPosition(0);
+      ParcelableWrapper.writeDataToParcel((Parcel)localObject, 0, this.mTask);
+      byte[] arrayOfByte = ((Parcel)localObject).marshall();
+      ((Parcel)localObject).recycle();
       paramContentValues.put("save_data", arrayOfByte);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskCacheData
  * JD-Core Version:    0.7.0.1
  */

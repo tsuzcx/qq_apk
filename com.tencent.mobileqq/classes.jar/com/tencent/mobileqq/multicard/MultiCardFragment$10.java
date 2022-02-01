@@ -12,19 +12,22 @@ class MultiCardFragment$10
 {
   public void onClick(View paramView)
   {
-    TextView localTextView = (TextView)MultiCardFragment.a(this.a).findViewById(2131380694);
+    TextView localTextView = (TextView)MultiCardFragment.a(this.a).findViewById(2131379968);
     VelocityUtil.a -= 1;
     if (VelocityUtil.a < 1) {
       VelocityUtil.a = 1;
     }
-    localTextView.setText(HardCodeUtil.a(2131707007) + VelocityUtil.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131707029));
+    localStringBuilder.append(VelocityUtil.a);
+    localTextView.setText(localStringBuilder.toString());
     MultiCardFragment.b(this.a);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardFragment.10
  * JD-Core Version:    0.7.0.1
  */
